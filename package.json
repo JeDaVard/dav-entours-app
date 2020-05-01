@@ -32,5 +32,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "Tour web app client side",
+  "main": "index.js",
+  "author": "Davit Vardanyan",
+  "license": "ISC"
 }
