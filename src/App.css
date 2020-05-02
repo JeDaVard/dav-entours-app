@@ -1,39 +1,65 @@
-.App {
-  text-align: center;
+@font-face {
+  font-family: 'CE';
+  src: url('./fonts/airbnbcereal-black-webfont.woff2') format('woff2'),
+  url('./fonts/airbnbcereal-black-webfont.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+@font-face {
+  font-family: 'CB';
+  src: url('./fonts/airbnbcereal-bold-webfont.woff2') format('woff2'),
+  url('./fonts/airbnbcereal-bold-webfont.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-float infinite 3s ease-in-out;
-  }
+@font-face {
+  font-family: 'CN';
+  src: url('./fonts/airbnbcereal-book-webfont.woff2') format('woff2'),
+  url('./fonts/airbnbcereal-book-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
 
-.App-header {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+@font-face {
+  font-family: 'CL';
+  src: url('./fonts/airbnbcereal-light-webfont.woff2') format('woff2'),
+  url('./fonts/airbnbcereal-light-webfont.woff') format('woff');
+  font-weight: 200;
+  font-style: normal;
+
 }
 
-.App-link {
-  color: rgb(112, 76, 182);
+@font-face {
+  font-family: 'CM';
+  src: url('./fonts/airbnbcereal-medium-webfont.woff2') format('woff2'),
+  url('./fonts/airbnbcereal-medium-webfont.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+
 }
 
-@keyframes App-logo-float {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(10px)
-  }
-  100% {
-    transform: translateY(0px)
-  }
+*,
+*::before,
+*::after
+{
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: 'CN', -apple-system, sans-serif;
+  box-sizing: border-box;
+}
+
+.row {
+  width: 90%;
+  max-width: 180rem;
+  margin: 0 auto;
 }

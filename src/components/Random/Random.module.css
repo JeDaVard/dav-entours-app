@@ -21,10 +21,10 @@
 
 .Random__grid {
     display: grid;
-    grid-template-rows: repeat(2, 22vw);
-    grid-template-columns: repeat(4, 22vw);
+    grid-template-rows: repeat(2, 21.9vw);
+    grid-template-columns: repeat(4, 21.9vw);
     grid-gap: 1.2rem;
-
+    justify-content: center;
 }
 
 .Random__post {

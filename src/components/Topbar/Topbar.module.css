@@ -1,8 +1,23 @@
 .Topbar {
+    font-family: 'CM', -apple-system, sans-serif;
+    background: rgba(255, 255, 255, 0.95);
+    width: 100%;
+    position: fixed;
+    top: 0;
+    backdrop-filter: blur(10px);
+    z-index: 100;
+    transition: all .3s;
+}
+
+.headerShadow {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .2)
+}
+
+.Topbar__content {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: #cccccc;
+    height: 80px;
 }
 
 .Topbar__logo {
@@ -10,22 +25,5 @@
 }
 
 .Topbar__logo img {
-    width: 50px;
-}
-
-.Topbar__right {
-    display: flex;
-    align-items: center;
-}
-
-.Topbar__geo {
-    font-size: 1.6rem;
-}
-
-.Topbar__menu {
-    font-size: 1.6rem;
-}
-
-.Topbar__user {
-    font-size: 1.6rem;
+    width: 128px;
 }

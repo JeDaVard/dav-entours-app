@@ -1,18 +1,127 @@
 .Popular {
+    margin: 4rem 0;
+}
+
+.Popular__content {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 2rem 0;
 }
 
 .Popular__tour {
-
+    position: relative;
+    width: 32.5%;
+    height: 31rem;
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
 }
 
 .Popular__image {
-    width: 200px;
+    width: 100%;
+    height: 26rem;
+    position: relative;
+}
+
+.Popular__image img {
+    width: 100%;
+    height: 26rem;
+}
+
+.Popular__price {
+    font-weight: 900;
+    color: rgba(0, 0, 0, 0.70);
+    padding: .8rem;
+    font-size: 1.6rem;
+    position: absolute;
+    top: 1.4rem;
+    right: 1.4rem;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(2px);
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.08);
 }
 
 .Popular__title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    font-size: 1.6rem;
+    padding: 1rem 1.6rem;
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(4px);
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.22);
+}
+
+.new {
+    font-weight: 900;
+    color: rgba(0, 0, 0, 0.70);
+    padding: .8rem;
     font-size: 1rem;
+    position: absolute;
+    top: 1.4rem;
+    left: 1.4rem;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(2px);
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.08);
+}
+
+
+.Popular__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: .8rem;
+}
+
+.Popular__user {
+    position: relative;
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.Popular__user img {
+    width: 32px;
+    border-radius: 50%;
+    border: 2px solid rgba(0, 0, 0, 0.10)
+}
+
+.Popular__user p {
+    margin-left: 4px;
+}
+
+.Popular__user::after {
+    content: '';
+    position: absolute;
+    left: 36px;
+    top: 24px;
+    width: 0;
+    height: 2px;
+    background: rgba(0, 0, 0, 0.66);
+    border-radius: 2px;
+    transition: all .2s;
+}
+
+.Popular__user:hover::after {
+    width: 72%;
+}
+
+.Popular__user:hover p {
+    color: rgba(0, 0, 0, 0.76);;
+}
+
+.Popular__loc {
+    padding-right: 1rem;
+}
+
+.Popular__date {
+
 }

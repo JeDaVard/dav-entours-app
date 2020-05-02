@@ -1,0 +1,56 @@
+.Navigation {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+}
+
+.Navigation a {
+    text-decoration: none;
+}
+
+.Navigation__geo {
+    margin-right: 3rem;
+}
+
+.Navigation__menu {
+    list-style: none;
+    display: flex;
+}
+
+.Navigation__menu li {
+    margin: 0 .2rem;
+}
+
+.Navigation__menu a {
+    background: transparent;
+    color: black;
+    padding: 1rem 1.5rem;
+    border-radius: 60px;
+    transition: all .1s;
+}
+
+.Navigation__menu a:hover {
+    background: #4fc877;
+    color: white;
+    padding: 1rem 1.5rem;
+}
+
+.Navigation__user {
+}
+
+.Navigation__signup {
+    padding: 1rem 1.5rem;
+    border-radius: 60px;
+    background: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 1px rgba(0, 0, 0, 0.14);
+    transition: all .2s;
+}
+
+.Navigation__signup:hover {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.18);
+}

@@ -2,6 +2,11 @@
 
 }
 
+.Top__content {
+    display: flex;
+    justify-content: space-between;
+}
+
 .Top__title {
 
 }
