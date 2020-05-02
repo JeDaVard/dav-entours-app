@@ -1,0 +1,49 @@
+.Foot {
+    padding: 1rem 0;
+}
+
+.Foot__content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.Foot__col {
+
+}
+
+.Foot__title {
+
+}
+
+.Foot__col ul {
+    list-style: none;
+    padding: 0;
+}
+
+.Foot__bottom {
+    display: flex;
+    justify-content: space-between;
+}
+
+.Foot__rules {
+
+}
+
+.Foot__right {
+    display: flex;
+    justify-content: space-between;
+}
+
+.Foot__geo {
+    margin: 0 2rem;
+}
+
+.Foot__social {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Foot__socialIcon {
+    margin: 0 .5rem;
+}

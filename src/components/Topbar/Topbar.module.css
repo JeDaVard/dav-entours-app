@@ -1,0 +1,31 @@
+.Topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #cccccc;
+}
+
+.Topbar__logo {
+
+}
+
+.Topbar__logo img {
+    width: 50px;
+}
+
+.Topbar__right {
+    display: flex;
+    align-items: center;
+}
+
+.Topbar__geo {
+    font-size: 1.6rem;
+}
+
+.Topbar__menu {
+    font-size: 1.6rem;
+}
+
+.Topbar__user {
+    font-size: 1.6rem;
+}

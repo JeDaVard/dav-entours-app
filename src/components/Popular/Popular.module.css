@@ -1,0 +1,18 @@
+.Popular {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 2rem 0;
+}
+
+.Popular__tour {
+
+}
+
+.Popular__image {
+    width: 200px;
+}
+
+.Popular__title {
+    font-size: 1rem;
+}
