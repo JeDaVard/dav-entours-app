@@ -1,5 +1,6 @@
 import React from "react";
 import classes from './Foot.module.css';
+import Separator from "../Separator/Separator";
 
 function Foot() {
     return (
@@ -39,9 +40,16 @@ function Foot() {
                         </ul>
                     </div>
                 </div>
+                <Separator />
                 <div className={classes.Foot__bottom}>
                     <div className={classes.Foot__rules}>
-                        <p>copyright</p>
+                        <p>© 2020 Entours Inc. All rights reserved</p>
+                        <ul>
+                            &nbsp; · &nbsp;
+                            <li><a href="">Privacy</a></li>
+                            &nbsp; · &nbsp;
+                            <li><a href="">Terms</a></li>
+                        </ul>
                     </div>
                     <div className={classes.Foot__right}>
                         <div className={classes.Foot__geo}>

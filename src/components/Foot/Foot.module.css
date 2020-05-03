@@ -5,28 +5,57 @@
 .Foot__content {
     display: flex;
     justify-content: space-between;
+    font-size: 1.4rem;
+    padding: 3rem 0;
 }
 
-.Foot__col {
-
-}
 
 .Foot__title {
-
+    padding-bottom: .4rem;
+}
+.Foot__col ul li {
+    list-style: none;
+    padding: .6rem .6rem .6rem 0;
 }
 
-.Foot__col ul {
-    list-style: none;
-    padding: 0;
+.Foot__col a {
+    text-decoration: none;
+    color: black;
+    transition: all .2s;
+}
+
+.Foot__col a:hover {
+    color: rgba(0, 0, 0, 0.62);
 }
 
 .Foot__bottom {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    font-size: 1.4rem;
+    padding: 2rem 0;
 }
 
 .Foot__rules {
+    display: flex;
+}
 
+.Foot__rules ul {
+    list-style: none;
+}
+
+.Foot__rules ul li {
+    display: inline;
+}
+
+.Foot__rules a {
+    color: black;
+    text-decoration: none;
+    transition: all .1s;
+}
+
+.Foot__rules a:hover {
+    color: rgba(0, 0, 0, 0.6);
 }
 
 .Foot__right {

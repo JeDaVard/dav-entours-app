@@ -1,0 +1,21 @@
+.TourImages {
+    margin: 4rem auto;
+}
+
+.TourImages__grid {
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.TourImages__gridRow {
+    display: flex;
+    width: 100%;
+}
+.TourImages__grid img {
+    width: 50%;
+    height: 25%;
+    object-fit: cover;
+    border: .05rem solid white;
+}
+

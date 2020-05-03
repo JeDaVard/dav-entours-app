@@ -12,10 +12,10 @@
     position: relative;
     width: 32.5%;
     height: 31rem;
-    background: white;
+    background: #f5f5f5;
     border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+    /*box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);*/
 }
 
 .Popular__image {
@@ -71,18 +71,18 @@
 
 
 .Popular__bottom {
+    font-family: 'CM', -apple-system, sans-serif;
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-size: 1.2rem;
-    font-weight: bold;
+    font-weight: 500;
     padding: .8rem;
 }
 
 .Popular__user {
     position: relative;
     color: black;
-    font-weight: bold;
     text-decoration: none;
     display: flex;
     align-items: center;

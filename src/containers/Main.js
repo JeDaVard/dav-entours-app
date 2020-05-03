@@ -6,16 +6,18 @@ import Become from "../components/Become/Become";
 import Random from "../components/Random/Random";
 import Top from "../components/Top/Top";
 import Foot from "../components/Foot/Foot";
+import Separator from "../components/Separator/Separator";
 
 function Main() {
     return (
         <>
-            <Topbar />
+            <Topbar transparent={false}/>
             <Search />
             <Popular />
             <Become />
             <Random />
             <Top />
+            <Separator />
             <Foot />
         </>
     )

@@ -1,0 +1,72 @@
+.TourHead__cover {
+    position: relative;
+    width: 100%;
+}
+
+.TourHead__cover img {
+    width: 100%;
+}
+
+.TourHead {
+    display: flex;
+    width: 90%;
+    justify-content: space-between;
+    top: 40%;
+    position: absolute;
+}
+
+.TourHead__left {
+    width: 50%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.TourHead__hash {
+    display: flex;
+    color: rgba(0, 0, 0, 0.64);
+}
+
+.TourHead__hash p {
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 5px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    backdrop-filter: blur(4px);
+    padding: .4rem .6rem;
+    margin-right: 1rem;
+    box-shadow: 0 0 4px rgba(0, 0, 0, .2);
+}
+
+.TourHead__left h2 {
+    font-size: 4rem;
+    font-weight: bold;
+    text-shadow: 0 0 4px rgba(0, 0, 0, 0.24);
+}
+
+
+.TourHead__left h4 {
+    font-size: 1.6rem;
+    font-weight: bold;
+    text-shadow: 0 0 4px rgba(0, 0, 0, 0.24);
+}
+
+
+.TourHead__info {
+    position: absolute;
+    display: flex;
+    bottom: 2rem;
+    left: 5%;
+    color: rgba(0, 0, 0, 0.65);
+    font-size: 1.6rem;
+    /*text-shadow: 0 0 4px rgba(0, 0, 0, 0.24);*/
+}
+
+.TourHead__info p {
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 5px;
+    backdrop-filter: blur(4px);
+    padding: 1rem 1.4rem;
+    margin-right: 1rem;
+    box-shadow: 0 0 4px rgba(0, 0, 0, .2);
+}

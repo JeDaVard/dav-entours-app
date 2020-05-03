@@ -1,21 +1,88 @@
 .Top {
+    padding: 3rem 0;
+}
 
+
+.Top__title {
+    margin-bottom: 2rem;
+}
+
+.Top__title h3 {
+    font-size: 2rem;
+}
+
+.Top__title p {
+    font-size: 1.4rem;
 }
 
 .Top__content {
     display: flex;
-    justify-content: space-between;
+    width: 100%;
+    overflow-x: scroll;
+    scrollbar-base-color: rgba(0, 0, 0, 0.17)
 }
 
-.Top__title {
+.Top__content::-webkit-scrollbar {    display: none;}
+
+.Top__user {
+    position: relative;
+    margin: 1rem 2rem 1rem 0;
+    display: flex;
+    border-radius: 100px;
+    min-width: 36rem;
+    max-width: 36rem;
+    height: 12rem;
+    background: #ffffff;
+    overflow: hidden;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.14);
+}
+
+.Top__user img {
 
 }
 
-.Top__content {
-
+.Top__rating {
+    position: absolute;
+    background: transparent;
+    padding: 1rem;
+    width: 8rem;
+    height: 8rem;
+    right: 0;
+    border-radius: 50%;
+    text-align: center;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #222222;
 }
 
-.Top {
-
+.Top__rating img {
+    width: 16px;
 }
 
+.Top__rating h2 {
+    font-size: 2rem;
+}
+
+.Top__rating p {
+    font-size: 1.2rem;
+    opacity: .8;
+}
+
+.Top__userinfo {
+    margin-left: .5rem;
+}
+
+.Top__userinfo img {
+    width: 12px;
+    margin-right: 1rem;
+}
+
+.Top__userinfo h3 {
+    font-size: 1.6rem;
+    padding: 1rem;
+}
+
+.Top__userinfo p {
+    font-size: 1.2rem;
+    padding: .4rem;
+}

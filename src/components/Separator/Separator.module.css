@@ -1,0 +1,5 @@
+.Separator {
+    border: .05rem solid rgba(0, 0, 0, 0.14);
+    margin: auto;
+    width: 100%;
+}

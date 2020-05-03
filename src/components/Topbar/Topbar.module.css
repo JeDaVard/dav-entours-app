@@ -9,6 +9,17 @@
     transition: all .3s;
 }
 
+.Topbar__transparent {
+    font-family: 'CM', -apple-system, sans-serif;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.44), transparent);
+    width: 100%;
+    position: fixed;
+    top: 0;
+    backdrop-filter: blur(0);
+    z-index: 100;
+    transition: all .3s;
+}
+
 .headerShadow {
     box-shadow: 0 1px 3px rgba(0, 0, 0, .2)
 }
