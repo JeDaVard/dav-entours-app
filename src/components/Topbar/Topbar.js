@@ -9,6 +9,14 @@ function Topbar(props) {
 
     const [ headerTransparent, setHeaderTransparent ] = useState(initialTransparency)
     const [ headerShadow, setHeaderShadow ] = useState('');
+    const [ profileDrop, setProfileDrop ] = useState(false)
+
+    const profileHandler = (e) => {
+        setProfileDrop(!profileDrop)
+    }
+    const closeHandler = () => {
+        setProfileDrop(false)
+    }
 
     let shadowInterval;
     const shadowHandler = function(){
@@ -29,7 +37,7 @@ function Topbar(props) {
                 }
                 clearInterval(shadowInterval)
             }
-        }, 200)
+        }, 100)
     }
     useEffect(() => {
         window.addEventListener('scroll', shadowHandler)
@@ -41,16 +49,25 @@ function Topbar(props) {
     }, [])
 
     return (
-        <header className={`${!headerTransparent ? classes.Topbar : classes.Topbar__transparent} ${headerShadow}`}>
-            <div className="row">
-                <div className={classes.Topbar__content}>
-                    <div className={classes.Topbar__logo}>
-                        {!headerTransparent ? <img src={logo} alt="logo" /> : <img src={logo2} alt="logo" />}
+        <>
+            <div className={`${!headerTransparent ? classes.Topbar__blur : classes.Topbar__blur + ' ' + classes.Topbar__blur__transparent}`}></div>
+            <header className={`${!headerTransparent ? classes.Topbar : classes.Topbar__transparent} ${headerShadow}`}>
+                <div className="row">
+                    <div className={classes.Topbar__content}>
+                        <div className={classes.Topbar__logo}>
+                            {!headerTransparent ? <img src={logo} alt="logo" /> : <img src={logo2} alt="logo" />}
+                        </div>
+                        <Navigation
+                            transparent={headerTransparent}
+                            isLogged={props.isLogged}
+                            profileHandler={profileHandler}
+                            profileDrop={profileDrop}
+                            handleClose={closeHandler}
+                        />
                     </div>
-                    <Navigation transparent={headerTransparent}/>
                 </div>
-            </div>
-        </header>
+            </header>
+        </>
     )
 }
 

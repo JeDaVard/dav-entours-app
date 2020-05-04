@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useCallback} from "react";
+import React, {useState, useEffect} from "react";
 import Topbar from "../components/Topbar/Topbar";
 import Separator from "../components/Separator/Separator";
 import Foot from "../components/Foot/Foot";
@@ -13,7 +13,7 @@ function Tour() {
         visible: false
     });
 
-    const handleScroll = useCallback(() => {
+    const handleScroll = () => {
         const { prevScrollPos } = showPopDown;
 
         const currentScrollPos = window.pageYOffset;
@@ -23,7 +23,7 @@ function Tour() {
             prevScrollPos: currentScrollPos,
             visible
         }))
-    }, [showPopDown.prevScrollPos]);
+    };
 
     useEffect(() => {
         window.addEventListener("scroll", handleScroll);
@@ -33,7 +33,7 @@ function Tour() {
 
     return (
         <>
-            <Topbar transparent={true}/>
+            <Topbar transparent={true} isLogged={true}/>
             <TourHead />
             <TourDescription />
             <Separator />

@@ -4,9 +4,24 @@
     width: 100%;
     position: fixed;
     top: 0;
-    backdrop-filter: blur(10px);
+    height: 8rem;
+    /*backdrop-filter: blur(10px);*/
     z-index: 100;
     transition: all .3s;
+}
+
+.Topbar__blur {
+    backdrop-filter: blur(10px);
+    width: 100%;
+    position: fixed;
+    top: 0;
+    height: 8rem;
+    z-index: 100;
+    transition: all .3s;
+}
+
+.Topbar__blur__transparent {
+    backdrop-filter: blur(0);
 }
 
 .Topbar__transparent {
@@ -15,7 +30,7 @@
     width: 100%;
     position: fixed;
     top: 0;
-    backdrop-filter: blur(0);
+    /*backdrop-filter: blur(0);*/
     z-index: 100;
     transition: all .3s;
 }

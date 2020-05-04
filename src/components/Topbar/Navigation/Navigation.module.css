@@ -54,7 +54,7 @@
     position: absolute;
     height: 100%;
     width: 100%;
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px) brightness(120%);
     opacity: 0;
     transition: all .2s;
     z-index: -1;
@@ -65,17 +65,19 @@
 }
 
 .Navigation__user {
+    position: relative;
+    user-select: none;
 }
 
 .Navigation__signup {
-    padding: 1rem 1.5rem;
+    padding: 0 .3rem 0 .6rem;
     border-radius: 60px;
     background: white;
     font-size: 1.5rem;
     font-weight: bold;
     cursor: pointer;
     border: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow: 0 2px 1px rgba(0, 0, 0, 0.14);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.14);
     transition: all .2s;
 }
 
@@ -84,14 +86,23 @@
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.18);
 }
 
-
+.Navigation__signup button {
+    padding: .9rem 1rem;
+    font-size: 1.5rem;
+    outline: 0;
+    color: black;
+    font-weight: bold;
+    background: transparent;
+    border:none;
+    cursor: pointer;
+}
 
 .Navigation__signup__transparent {
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0);
     position: relative;
     background: rgba(255, 255, 255, 0.2);
     color: white;
-    box-shadow: 0 2px 1px rgba(0, 0, 0, 0.14);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.14);
 }
 
 .Navigation__signup__transparent:hover {
@@ -109,11 +120,87 @@
     position: absolute;
     height: 100%;
     width: 100%;
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px) brightness(120%);
     transition: all .2s;
     z-index: -1;
 }
 
 .Navigation__signup__transparent:hover::before {
     background: rgba(38, 38, 38, 0.2);
+}
+
+.Navigation__signup__transparent button {
+    color: white;
+}
+
+.Navigation__profile {
+    padding: .3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.Navigation__profile img {
+    width: 32px;
+    border-radius: 50%;
+}
+.Navigation__profile p {
+    padding: .5rem;
+    font-weight: normal;
+}
+
+.Navigation__profileDrop {
+    position: absolute;
+    right: 0;
+    margin-top: 1rem;
+    width: 240px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 14px;
+    backdrop-filter: blur(6px);
+    box-shadow: 0 -2px  rgba(0, 0, 0, .04);
+    z-index: 101;
+    transition: all .2s;
+}
+
+.Navigation__profileDrop__close {
+    transform: translateY(-5rem);
+    visibility: hidden;
+    opacity: 0;
+}
+
+.Navigation__profileDrop__open {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.Navigation__profileDrop__ul1,
+.Navigation__profileDrop__ul2 {
+    list-style: none;
+    margin: 1rem auto;
+    font-size: 1.4rem;
+}
+
+.Navigation__profileDrop__ul2 {
+    font-weight: 200;
+}
+
+.Navigation__profileDrop__ul2 {
+    font-family: 'CL', -apple-system, sans-serif;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.Navigation__profileDrop ul li {
+    padding: 1rem 1.6rem;
+    transition: all .1s;
+}
+
+.Navigation__profileDrop ul li:hover,
+.Navigation__profileDrop ul li:active {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.Navigation__profileDrop ul a li {
+    text-decoration: none;
+    color: black;
 }
