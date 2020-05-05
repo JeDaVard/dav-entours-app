@@ -1,0 +1,14 @@
+.backdrop-enter {
+    opacity: 0;
+}
+.backdrop-enter-active {
+    opacity: 1;
+    transition: all 200ms;
+}
+.backdrop-exit {
+    opacity: 1;
+}
+.backdrop-exit-active {
+    opacity: 0;
+    transition: all 200ms;
+}

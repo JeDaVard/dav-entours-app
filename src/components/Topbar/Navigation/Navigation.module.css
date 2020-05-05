@@ -15,6 +15,7 @@
 .Navigation__menu {
     list-style: none;
     display: flex;
+    font-weight: 500;
 }
 
 .Navigation__menu li {
@@ -74,7 +75,7 @@
     border-radius: 60px;
     background: white;
     font-size: 1.5rem;
-    font-weight: bold;
+    font-weight: 700;
     cursor: pointer;
     border: 1px solid rgba(0, 0, 0, 0.1);
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.14);
@@ -91,7 +92,7 @@
     font-size: 1.5rem;
     outline: 0;
     color: black;
-    font-weight: bold;
+    font-weight: 700;
     background: transparent;
     border:none;
     cursor: pointer;
@@ -146,7 +147,7 @@
 }
 .Navigation__profile p {
     padding: .5rem;
-    font-weight: normal;
+    font-weight: 500;
 }
 
 .Navigation__profileDrop {
@@ -163,31 +164,23 @@
 }
 
 .Navigation__profileDrop__close {
-    transform: translateY(-5rem);
+    transform: translateY(-4rem);
+    width: 180px;
     visibility: hidden;
     opacity: 0;
-}
-
-.Navigation__profileDrop__open {
-    transform: translateY(0);
-    opacity: 1;
 }
 
 .Navigation__profileDrop__ul1,
 .Navigation__profileDrop__ul2 {
     list-style: none;
     margin: 1rem auto;
-    font-size: 1.4rem;
-}
-
-.Navigation__profileDrop__ul2 {
-    font-weight: 200;
-}
-
-.Navigation__profileDrop__ul2 {
-    font-family: 'CL', -apple-system, sans-serif;
     font-size: 1.3rem;
-    font-weight: bold;
+    font-weight: 500;
+}
+
+.Navigation__profileDrop__ul2 {
+    font-weight: 400;
+    font-size: 1.3rem;
 }
 
 .Navigation__profileDrop ul li {

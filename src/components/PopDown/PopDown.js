@@ -1,6 +1,7 @@
 import React from "react";
 import classes from './PopDown.module.css';
 import user from './user-4.jpg';
+import AnimatedButton from "../UI/AnimatedButton/AnimatedButton";
 
 function PopDown(props) {
     const show = !props.show ? ` ${classes.hide}` : '';
@@ -16,7 +17,7 @@ function PopDown(props) {
                     </div>
                     <div className={classes.PopDown__purchase}>
                         <h2>$149 per person</h2>
-                        <button>Reserve a place</button>
+                        <AnimatedButton button={true} fn={() => console.log('hello')}>Reserve a place</AnimatedButton>
                     </div>
                 </div>
             </div>

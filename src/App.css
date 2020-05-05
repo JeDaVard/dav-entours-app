@@ -1,44 +1,45 @@
 @font-face {
-  font-family: 'CE';
-  src: url('./fonts/airbnbcereal-black-webfont.woff2') format('woff2'),
-  url('./fonts/airbnbcereal-black-webfont.woff') format('woff');
+  font-family: 'EtoursFont';
+  src: url('assets/fonts/airbnbcereal-black-webfont.woff2') format('woff2'),
+  url('assets/fonts/airbnbcereal-black-webfont.woff') format('woff');
   font-weight: 900;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'CB';
-  src: url('./fonts/airbnbcereal-bold-webfont.woff2') format('woff2'),
-  url('./fonts/airbnbcereal-bold-webfont.woff') format('woff');
-  font-weight: bold;
+  font-family: 'EtoursFont';
+  src: url('assets/fonts/airbnbcereal-bold-webfont.woff2') format('woff2'),
+  url('assets/fonts/airbnbcereal-bold-webfont.woff') format('woff');
+  font-weight: 700;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'CN';
-  src: url('./fonts/airbnbcereal-book-webfont.woff2') format('woff2'),
-  url('./fonts/airbnbcereal-book-webfont.woff') format('woff');
-  font-weight: normal;
+  font-family: 'EtoursFont';
+  src: url('assets/fonts/airbnbcereal-medium-webfont.woff2') format('woff2'),
+  url('assets/fonts/airbnbcereal-medium-webfont.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+
+}
+
+@font-face {
+  font-family: 'EtoursFont';
+  src: url('assets/fonts/airbnbcereal-book-webfont.woff2') format('woff2'),
+  url('assets/fonts/airbnbcereal-book-webfont.woff') format('woff');
+  font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'CL';
-  src: url('./fonts/airbnbcereal-light-webfont.woff2') format('woff2'),
-  url('./fonts/airbnbcereal-light-webfont.woff') format('woff');
+  font-family: 'EtoursFont';
+  src: url('assets/fonts/airbnbcereal-light-webfont.woff2') format('woff2'),
+  url('assets/fonts/airbnbcereal-light-webfont.woff') format('woff');
   font-weight: 200;
   font-style: normal;
 
 }
 
-@font-face {
-  font-family: 'CM';
-  src: url('./fonts/airbnbcereal-medium-webfont.woff2') format('woff2'),
-  url('./fonts/airbnbcereal-medium-webfont.woff') format('woff');
-  font-weight: 500;
-  font-style: normal;
-
-}
 
 *,
 *::before,
@@ -54,7 +55,8 @@ html {
 }
 
 body {
-  font-family: 'CN', -apple-system, sans-serif;
+  line-height: 1.4;
+  font-family: 'EtoursFont', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   box-sizing: border-box;
 }
 

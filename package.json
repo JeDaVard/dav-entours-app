@@ -10,7 +10,9 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-redux": "^7.1.3",
-    "react-scripts": "3.4.1"
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "3.4.1",
+    "react-transition-group": "^4.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -36,5 +38,8 @@
   "description": "Tour web app client side",
   "main": "index.js",
   "author": "Davit Vardanyan",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "prettier": "^2.0.5"
+  }
 }

@@ -35,7 +35,7 @@
 .TourDescription__user h3 {
     font-size: 1.5rem;
     margin-left: 5px;
-    font-weight: bold;
+    font-weight: 500;
     flex: 1 1 0
 }
 

@@ -1,6 +1,6 @@
 import React from "react";
 import classes from './Foot.module.css';
-import Separator from "../Separator/Separator";
+import Separator from "../UI/Separator/Separator";
 
 function Foot() {
     return (

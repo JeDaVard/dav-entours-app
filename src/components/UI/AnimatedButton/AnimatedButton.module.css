@@ -1,0 +1,48 @@
+.AnimatedButton {
+    text-align: center;
+    position: relative;
+    display: inline-block;
+    padding: 1.2rem 2rem;
+    outline: 0;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 18px;
+    border-radius: 6px;
+    background: linear-gradient(45deg, #3db062, #7ce29f);
+    overflow: hidden;
+    width: 100%;
+    transition: filter .4s;
+}
+
+.AnimatedButton:hover,
+.AnimatedButton:active {
+    filter: brightness(105%);
+}
+
+.AnimatedButton span {
+    position: absolute;
+    background: #7ce29f;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    border-radius: 50%;
+    animation: animate 1400ms ease-in infinite;
+}
+
+@keyframes animate {
+    0% {
+        width: 0;
+        height: 0;
+        opacity: .5;
+    }
+    50% {
+        width: 800px;
+        height: 800px;
+        opacity: .1;
+    }
+    100% {
+        width: 800px;
+        height: 800px;
+        opacity: 0;
+    }
+}

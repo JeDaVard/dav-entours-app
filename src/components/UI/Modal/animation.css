@@ -1,0 +1,16 @@
+.modal-enter {
+    transform: translate(-50%, -10%);
+    opacity: 0;
+}
+.modal-enter-active {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+    transition: all 200ms ;
+    transition-delay: 200ms;
+}
+.modal-exit {
+    opacity: 1;
+}
+.modal-exit-active {
+    opacity: 0;
+}

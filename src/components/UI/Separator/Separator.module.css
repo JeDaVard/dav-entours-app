@@ -1,0 +1,20 @@
+.Separator {
+    margin: auto;
+    width: 100%;
+}
+
+.light {
+    border: .05rem solid rgba(0, 0, 0, 0.06);
+}
+
+.normal {
+    border: .05rem solid rgba(0, 0, 0, 0.14);
+}
+
+.dark {
+    border: .05rem solid rgba(0, 0, 0, 0.2);
+}
+
+.primary {
+    border: .05rem solid #4fc877;
+}

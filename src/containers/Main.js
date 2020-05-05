@@ -6,7 +6,7 @@ import Become from "../components/Become/Become";
 import Random from "../components/Random/Random";
 import Top from "../components/Top/Top";
 import Foot from "../components/Foot/Foot";
-import Separator from "../components/Separator/Separator";
+import Separator from "../components/UI/Separator/Separator";
 
 function Main() {
     return (

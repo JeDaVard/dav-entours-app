@@ -1,0 +1,44 @@
+.Modal {
+    background: white;
+    width: 44rem;
+    border-radius: 14px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 102;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
+    transition: all;
+}
+
+.Modal__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 700;
+    padding: 1rem 2rem;
+}
+
+.Modal__header button {
+    text-align: center;
+    font-size: 3rem;
+    width: 4rem;
+    height: 4rem;
+    padding: 0 0 .5rem;
+    background: transparent;
+    border-radius: 20px;
+    outline: 0;
+    border: none;
+    cursor: pointer;
+    transition: all .2s;
+    margin-right: -1rem;
+}
+
+.Modal__header button:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.Modal__main {
+    padding: 2rem;
+    font-size: 1.5rem;
+}

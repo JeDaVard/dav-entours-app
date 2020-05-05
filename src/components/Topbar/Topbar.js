@@ -63,6 +63,8 @@ function Topbar(props) {
                             profileHandler={profileHandler}
                             profileDrop={profileDrop}
                             handleClose={closeHandler}
+                            loginModal={props.onLogin}
+                            signUpModal={props.onSignUp}
                         />
                     </div>
                 </div>
