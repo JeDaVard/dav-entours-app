@@ -3,6 +3,8 @@ import classes from './AnimatedButton.module.css';
 
 function AnimatedButton(props) {
     const handleButtonAnimation = function (e) {
+        props.prevent && e.preventDefault();
+
         let x = e.nativeEvent.offsetX;
         let y = e.nativeEvent.offsetY;
 
@@ -19,18 +21,26 @@ function AnimatedButton(props) {
             ripples.remove();
         }, 1200);
     };
+    const button = props.type === 'submit' ? <button
+        onClick={handleButtonAnimation}
+        className={classes.AnimatedButton}
+        type={'submit'}
+    >
+        {props.children}
+    </button> : <button
+        onClick={handleButtonAnimation}
+        className={classes.AnimatedButton}
+    >
+        {props.children}
+    </button>;
+
     return (
         <>
             {props.button ? (
-                <button
-                    onClick={handleButtonAnimation}
-                    className={classes.AnimatedButton}
-                >
-                    {props.children}
-                </button>
+                button
             ) : (
                 <a
-                    href="#"
+                    href="/#"
                     type={'submit'}
                     onClick={handleButtonAnimation}
                     className={classes.AnimatedButton}

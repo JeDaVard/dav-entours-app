@@ -1,0 +1,131 @@
+.Loading__button {
+    width: 100%;
+    position: relative;
+    height: 4.5rem;
+    background: linear-gradient(45deg, #3db062, #7ce29f);
+    border-radius: 6px;
+    text-align: center;
+    transition: all .4s;
+}
+
+.Loading__center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.Loading {
+    display: inline-block;
+    position: relative;
+    margin-left: -17%;
+    /*width: 80px;*/
+    /*height: 80px;*/
+}
+.Loading div {
+    position: absolute;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: #4fc877;
+    animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+
+.Loading div:nth-child(1) {
+    left: 8px;
+    animation: Loading1 0.6s infinite;
+}
+.Loading div:nth-child(2) {
+    left: 8px;
+    animation: Loading2 0.6s infinite;
+}
+.Loading div:nth-child(3) {
+    left: 32px;
+    animation: Loading2 0.6s infinite;
+}
+.Loading div:nth-child(4) {
+    left: 56px;
+    animation: Loading3 0.6s infinite;
+}
+@keyframes Loading1 {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+@keyframes Loading3 {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(0);
+    }
+}
+@keyframes Loading2 {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(24px, 0);
+    }
+}
+
+.Loading__white {
+    display: inline-block;
+    position: relative;
+    margin-left: -17%;
+    /*width: 80px;*/
+    /*height: 80px;*/
+}
+.Loading__white div {
+    position: absolute;
+    /*top: 33px;*/
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: #ffffff;
+    animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+
+.Loading__white div:nth-child(1) {
+    left: 8px;
+    animation: Loading1 0.6s infinite;
+}
+.Loading__white div:nth-child(2) {
+    left: 8px;
+    animation: Loading2 0.6s infinite;
+}
+.Loading__white div:nth-child(3) {
+    left: 32px;
+    animation: Loading2 0.6s infinite;
+}
+.Loading__white div:nth-child(4) {
+    left: 56px;
+    animation: Loading3 0.6s infinite;
+}
+@keyframes Loading1 {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+@keyframes Loading3 {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(0);
+    }
+}
+@keyframes Loading2 {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(24px, 0);
+    }
+}

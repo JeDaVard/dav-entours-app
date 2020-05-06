@@ -1,0 +1,165 @@
+.LoginForm {
+
+}
+
+.LoginForm__relative {
+    position: relative;
+    margin: 2rem 0;
+}
+
+.LoginForm input {
+    position: relative;
+    padding: 1rem;
+    display: block;
+    height: 5.5rem;
+    width: 100%;
+    border-top: 1px solid rgba(0, 0, 0, 0.3);
+    border-left: 1px solid rgba(0, 0, 0, 0.3);
+    border-right: 1px solid rgba(0, 0, 0, 0.3);
+    border-bottom: none;
+    outline: 0;
+    font-size: 2rem;
+    transition: all .2s;
+}
+
+.LoginForm label {
+
+}
+
+.LoginForm input:hover {
+    background: #f8f8f8;
+}
+
+.LoginForm input:first-of-type {
+    border-radius: 10px 10px 0 0;
+}
+
+.LoginForm input:last-of-type {
+    border-radius: 0 0 10px 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.LoginForm__options {
+    display: flex;
+    justify-content: space-between;
+    color: rgba(0, 0, 0, 0.42)
+}
+
+.LoginForm__options a {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.68);
+    transition: all .2s
+}
+
+.LoginForm__options a:hover,
+.LoginForm__options a:active {
+    color: black;
+}
+
+
+
+.LoginForm__preview {
+    position: relative;
+    height: 6.6rem;
+    margin: 2rem auto;
+    background: white;
+}
+
+.LoginForm input[type=file] {
+    width: 0.1px;
+    height: 0.1px;
+    display: none;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    border: 1px solid black;
+    z-index: -1000;
+}
+
+.LoginForm__fileInput + label {
+    font-size: 1.25em;
+    font-weight: 700;
+    color: black;
+    background-color: black;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.LoginForm__fileInput:focus + label,
+.LoginForm__fileInput + label:hover {
+    background-color: red;
+}
+
+.LoginForm__user {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    height: 100%;
+    background: white;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+    border-radius: 50px;
+    padding: 1rem .5rem;
+    color: #393939;
+}
+
+.LoginForm__user h2 {
+    padding: 0 1rem;
+    /*margin: 0 2rem;*/
+}
+
+.LoginForm__image {
+    border-radius: 100px;
+    background: white;
+    overflow: hidden;
+    width: 5.6rem;
+    height: 5.6rem;
+}
+.LoginForm__pText {
+    font-size: 1.2rem;
+    color: rgba(0, 0, 0, 0.44);
+    padding: .6rem;
+    width: 86%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.LoginForm__pText a,
+.LoginForm__pText a:visited {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.7);
+    transition: all .2s;
+}
+.LoginForm__pText a:hover {
+    color: rgba(0, 0, 0, 0.55);
+}
+
+.LoginForm input[name=name] {
+    border-radius: 8px;
+}
+
+
+/*.LoginForm button {*/
+/*    margin-top: 2rem;*/
+/*    width: 100%;*/
+/*    height: 5.5rem;*/
+/*    padding: 1.2rem;*/
+/*    font-size: 1.6rem;*/
+/*    border-radius: 10px;*/
+/*    background: #4fc877;*/
+/*    color: white;*/
+/*    font-weight: 700;*/
+/*    border: none;*/
+/*    cursor: pointer;*/
+/*    transition: all .2s;*/
+/*    outline: 0;*/
+/*}*/
+
+/*.LoginForm button:hover,*/
+/*.LoginForm button:active {*/
+/*    background: #57d07f;*/
+/*    box-shadow: 0 0 10px rgba(0, 0, 0, 0.06);*/
+/*}*/

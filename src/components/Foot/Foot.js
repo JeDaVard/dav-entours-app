@@ -10,33 +10,33 @@ function Foot() {
                     <div className={classes.Foot__col}>
                         <ul>
                             <h3 className={classes.Foot__title}>About</h3>
-                            <li><a href="">Accessibility</a></li>
-                            <li><a href="">Trust & Safety</a></li>
-                            <li><a href="">Newsroom</a></li>
+                            <li><a href="/">Accessibility</a></li>
+                            <li><a href="/">Trust & Safety</a></li>
+                            <li><a href="/">Newsroom</a></li>
                         </ul>
                     </div>
                     <div className={classes.Foot__col}>
                         <ul>
                             <h3 className={classes.Foot__title}>About</h3>
-                            <li><a href="">Accessibility</a></li>
-                            <li><a href="">Trust & Safety</a></li>
-                            <li><a href="">Newsroom</a></li>
+                            <li><a href="/">Accessibility</a></li>
+                            <li><a href="/">Trust & Safety</a></li>
+                            <li><a href="/">Newsroom</a></li>
                         </ul>
                     </div>
                     <div className={classes.Foot__col}>
                         <ul>
                             <h3 className={classes.Foot__title}>About</h3>
-                            <li><a href="">Accessibility</a></li>
-                            <li><a href="">Trust & Safety</a></li>
-                            <li><a href="">Newsroom</a></li>
+                            <li><a href="/">Accessibility</a></li>
+                            <li><a href="/">Trust & Safety</a></li>
+                            <li><a href="/">Newsroom</a></li>
                         </ul>
                     </div>
                     <div className={classes.Foot__col}>
                         <ul>
                             <h3 className={classes.Foot__title}>About</h3>
-                            <li><a href="">Accessibility</a></li>
-                            <li><a href="">Trust & Safety</a></li>
-                            <li><a href="">Newsroom</a></li>
+                            <li><a href="/">Accessibility</a></li>
+                            <li><a href="/">Trust & Safety</a></li>
+                            <li><a href="/">Newsroom</a></li>
                         </ul>
                     </div>
                 </div>
@@ -46,9 +46,9 @@ function Foot() {
                         <p>© 2020 Entours Inc. All rights reserved</p>
                         <ul>
                             &nbsp; · &nbsp;
-                            <li><a href="">Privacy</a></li>
+                            <li><a href="/">Privacy</a></li>
                             &nbsp; · &nbsp;
-                            <li><a href="">Terms</a></li>
+                            <li><a href="/">Terms</a></li>
                         </ul>
                     </div>
                     <div className={classes.Foot__right}>

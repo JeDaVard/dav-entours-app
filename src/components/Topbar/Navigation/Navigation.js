@@ -16,7 +16,7 @@ function Navigation(props) {
                     <li><a href="/">GEO</a></li>
                     <li><a href="/">Make a tour</a></li>
                     <li><a href="/">Help</a></li>
-                    <li><a href="#" onClick={props.loginModal}>Log In</a></li>
+                    <li><a href="/#" onClick={props.loginModal}>Log In</a></li>
                 </ul>
         <OutsideAlerter delegate={props.handleClose}>
                 <div className={classes.Navigation__user}>
@@ -25,15 +25,15 @@ function Navigation(props) {
                     </div>
                     <div className={!props.profileDrop ? `${classes.Navigation__profileDrop} ${classes.Navigation__profileDrop__close}` : `${classes.Navigation__profileDrop}`}>
                         <ul className={classes.Navigation__profileDrop__ul1}>
-                           <a href=""> <li>Messages</li></a>
-                            <a href=""> <li>Trips</li></a>
-                            <a href=""> <li>Saved</li></a>
+                           <a href="/"> <li>Messages</li></a>
+                            <a href="/"> <li>Trips</li></a>
+                            <a href="/"> <li>Saved</li></a>
                         </ul>
                         <Separator />
                         <ul className={classes.Navigation__profileDrop__ul2}>
-                            <a href=""><li>Account</li></a>
-                            <a href=""> <li>Help</li></a>
-                            <a href=""> <li>Logout</li></a>
+                            <a href="/"><li>Account</li></a>
+                            <a href="/"> <li>Help</li></a>
+                            <a href="/"> <li>Logout</li></a>
                         </ul>
                     </div>
                 </div>

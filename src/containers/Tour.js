@@ -7,7 +7,7 @@ import TourDescription from '../components/TourDescription/TourDescription';
 import TourImages from '../components/TourImages/TourImages';
 import PopDown from '../components/PopDown/PopDown';
 import Modal from '../components/UI/Modal/Modal';
-import LoginForm from '../components/LoginForm/LoginForm';
+import LoginForm from './LoginForm/LoginForm';
 
 function Tour() {
     const [showPopDown, setShowPopDown] = useState({
@@ -16,7 +16,7 @@ function Tour() {
     });
     const [auth, setAuth] = useState({
         modal: false,
-        login: false,
+        login: ['Login', false],
     });
 
     const authModalClose = () => {
@@ -28,13 +28,13 @@ function Tour() {
     const loginModalHandler = () => {
         setAuth({
             modal: true,
-            login: true,
+            login: ['Login', true],
         });
     };
     const signUpModalHandler = () => {
         setAuth({
             modal: true,
-            login: false,
+            login: ['Sign Up', false],
         });
     };
 
@@ -69,10 +69,10 @@ function Tour() {
             <Modal
                 onClick={authModalClose}
                 showBackdrop={auth.modal}
-                title={'Authentication'}
+                title={auth.login[0]}
             >
                 <LoginForm
-                    login={auth.login}
+                    login={auth.login[1]}
                     onSignUp={signUpModalHandler}
                     onLogin={loginModalHandler}
                 />

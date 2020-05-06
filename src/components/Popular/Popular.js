@@ -21,7 +21,7 @@ function Popular() {
                             </div>
                         </div>
                         <div className={classes.Popular__bottom}>
-                            <a href="" className={classes.Popular__user}>
+                            <a href="/" className={classes.Popular__user}>
                                 <img src={image4} alt="user"/>
                                 <p>Andrew Jonsons</p>
                             </a>
@@ -43,7 +43,7 @@ function Popular() {
                             </div>
                         </div>
                         <div className={classes.Popular__bottom}>
-                            <a href="" className={classes.Popular__user}>
+                            <a href="/" className={classes.Popular__user}>
                                 <img src={image4} alt="user"/>
                                 <p>Andrew Jonsons</p>
                             </a>
@@ -65,7 +65,7 @@ function Popular() {
                             </div>
                         </div>
                         <div className={classes.Popular__bottom}>
-                            <a href="" className={classes.Popular__user}>
+                            <a href="/" className={classes.Popular__user}>
                                 <img src={image4} alt="user"/>
                                 <p>Andrew Jonsons</p>
                             </a>

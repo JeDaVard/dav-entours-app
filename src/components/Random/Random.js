@@ -24,21 +24,21 @@ function Random() {
                             <h2>Mix secret sangria with Pedro from Lisbon Stretch</h2>
                             <p>Vardenis, Armenia</p>
                         </div>
-                        <img src={image3} alt="image"/>
+                        <img src={image3} alt="tour"/>
                     </div>
                     <div className={`${classes.Random__post} ${classes.post2}`}>
                         <div className={classes.Random__info}>
                             <h2>Mix secret sangria with Pedro from Lisbon Stretch</h2>
                             <p>Los Angeles, USA</p>
                         </div>
-                        <img src={image2} alt="image"/>
+                        <img src={image2} alt="tour"/>
                     </div>
                     <div className={`${classes.Random__post} ${classes.post3}`}>
                         <div className={classes.Random__info}>
                             <h2>Mix secret sangria with Pedro from Lisbon Stretch</h2>
                             <p>Sicilia, Italy</p>
                         </div>
-                        <img src={image1} alt="image"/>
+                        <img src={image1} alt="tour"/>
                     </div>
                     <div className={`${classes.Random__post} ${classes.post4}`}>
                         <div className={classes.Random__info}>
