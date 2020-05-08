@@ -1,12 +1,22 @@
-import React from 'react';
-// import Main from './containers/Main';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { checkAuth } from "./app/actions";
+import Main from './containers/Main';
 import './App.css';
-import Tour from "./containers/Tour";
+import Tour from './containers/Tour';
 
-function App() {
-  return (
-    <Tour />
-  );
+function App(props) {
+    const { checkAuth } = props;
+
+    useEffect(() => {
+        checkAuth();
+    }, [checkAuth]);
+
+    return <Main />;
 }
 
-export default App;
+const mapDispatchToProps = dispatch => ({
+  checkAuth: () => dispatch(checkAuth())
+})
+
+export default connect(null, mapDispatchToProps)(App);

@@ -5,17 +5,26 @@ import classes from './LoginForm.module.css';
 import AnimatedButton from '../../components/UI/AnimatedButton/AnimatedButton';
 import Loading from '../../components/UI/Loading/Loading';
 import Image from '../../components/UI/Image/Image';
-import Separator from '../../components/UI/Separator/Separator';
-import user from '../../components/Topbar/Navigation/user.jpg';
 import { generateBase64FromImage } from '../../utils/generateBase64FromImage';
 import validator from "validator";
+import { validateState } from "../../utils/validateState";
+import AnimatedValidation from "../../components/UI/AnimatedValidation/AnimatedValidation";
 
 function LoginForm(props) {
     const [state, setState] = useState({
         input: {
-            email: '',
-            password: '',
-            name: '',
+            email: {
+                value: '',
+                valid: true,
+            },
+            password: {
+                value: '',
+                valid: true
+            },
+            name: {
+                value: '',
+                valid: true
+            },
             image: null,
         },
         nextUp: false,
@@ -46,7 +55,7 @@ function LoginForm(props) {
                 });
         } else {
             const updated = { ...state.input };
-            updated[target.name] = target.value;
+            updated[target.name].value = target.value;
 
             setState((state) => ({
                 ...state,
@@ -55,26 +64,32 @@ function LoginForm(props) {
             }));
         }
     };
-    const authHandler = async (e) => {
+    const authHandler = async (e, login) => {
         e.preventDefault();
 
-        props.login
-            ? props.auth({
-                  email: state.input.email,
-                  password: state.input.password,
-              })
-            : props.auth({
-                  email: state.input.email,
-                  password: state.input.password,
-              });
+        if (!login) {
+            const validName = !state.input.name.value.match(/\d/)
+                && state.input.name.value.trim().split(' ').length > 1;
+            validateState(validName, 'name', setState);
+        }
+
+        props.auth({
+            email: state.input.email.value.trim(),
+            password: state.input.password.value,
+            name: state.input.name.value ? state.input.name.value.trim() : '',
+            image: state.input.image,
+        }, login)
     };
-    const continueHandler = () => {
-        const validEmail = validator.isEmail(state.input.email)
-        const validPassword = validator.isByteLength(state.input.password, {min:6, max: undefined})
+    const continueHandler = async () => {
+        const validEmail = validator.isEmail(state.input.email.value)
+        validateState(validEmail, 'email', setState)
+
+        const validPassword = validator.isByteLength(state.input.password.value, {min:8, max: undefined})
+        validateState(validPassword, 'password', setState)
+
         if (validEmail && validPassword) {
             setState(state => ({
                 ...state,
-                isValid: true,
                 nextUp: true
             }))
         }
@@ -88,7 +103,7 @@ function LoginForm(props) {
 
     const formButton = props.login
         ? (
-        <AnimatedButton button={true} type={'submit'} prevent>
+        <AnimatedButton button={true} type={'submit'}>
             Login &#8594;
         </AnimatedButton>
         ) : (
@@ -104,22 +119,27 @@ function LoginForm(props) {
                 </AnimatedButton>
             </div>
             <form
-                onSubmit={(e) => authHandler(e)}
+                onSubmit={(e) => authHandler(e, props.login)}
                 className={classes.LoginForm}
             >
-                <input
-                    type="text"
-                    name="name"
-                    autoComplete={'name'}
-                    placeholder={'Full Name'}
-                    onChange={inputHandler}
-                />
+                <div className={classes.LoginForm__relative}>
+                    <input
+                        type="text"
+                        name="name"
+                        autoComplete={'name'}
+                        placeholder={'Full Name'}
+                        onChange={inputHandler}
+                    />
+                    <AnimatedValidation startCondition={!state.input.name.valid}>
+                        Seems you entered an invalid full name
+                    </AnimatedValidation>
+                </div>
                 <p className={classes.LoginForm__pText}>Choose your image by taping on default avatar down below</p>
                 <div className={classes.LoginForm__preview}>
                     <div className={classes.LoginForm__user}>
                         <h2>
-                            {state.input.name
-                                ? state.input.name.split(' ')[0]
+                            {state.input.name.value
+                                ? state.input.name.value.split(' ')[0]
                                 : 'Entours'}
                         </h2>
                         <div>
@@ -177,7 +197,7 @@ function LoginForm(props) {
                 {props.login && <a href="/sign-up">Forgot password?</a>}
             </div>
             <form
-                onSubmit={(e) => authHandler(e)}
+                onSubmit={(e) => authHandler(e, props.login)}
                 className={classes.LoginForm}
             >
                 <div className={classes.LoginForm__relative}>
@@ -188,6 +208,9 @@ function LoginForm(props) {
                         placeholder={'E-mail'}
                         onChange={inputHandler}
                     />
+                    <AnimatedValidation startCondition={!state.input.email.valid}>
+                        You must enter a valid email address
+                    </AnimatedValidation>
                     <input
                         type="password"
                         name="password"
@@ -195,6 +218,9 @@ function LoginForm(props) {
                         placeholder={'Password'}
                         onChange={inputHandler}
                     />
+                    <AnimatedValidation startCondition={!state.input.password.valid}>
+                        Password must have 8 or bigger length
+                    </AnimatedValidation>
                 </div>
                 {props.loading ? (
                     <Loading white button/>
@@ -217,7 +243,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    auth: (data) => dispatch(actions.auth(data)),
+    auth: (data, login) => dispatch(actions.auth(data, login)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);

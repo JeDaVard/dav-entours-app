@@ -1,0 +1,15 @@
+.invalid-enter {
+    height: 0;
+}
+.invalid-enter-active {
+    height: 3rem;
+    transition: all 200ms ;
+}
+.invalid-exit {
+    height: 3rem;
+}
+.invalid-exit-active {
+    height: 0;
+    margin-top: -.9rem;
+    opacity: 0;
+}

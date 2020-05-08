@@ -1,0 +1,12 @@
+.LoginForm__invalid {
+    border-top: 1px solid rgba(0, 0, 0, 0.3);
+    border-left: 1px solid rgba(0, 0, 0, 0.3);
+    border-right: 1px solid rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(164, 54, 19, 0.71);
+    color: white;
+    padding: .4rem;
+    transition: all .2s;
+}

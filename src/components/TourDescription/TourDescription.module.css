@@ -49,7 +49,7 @@
 .TourDescription__right {
     padding: 2rem;
     width: 50%;
-    background: #f3f3f3;
+    background: linear-gradient(to right, #f3f3f3, #ffffff);
 }
 
 

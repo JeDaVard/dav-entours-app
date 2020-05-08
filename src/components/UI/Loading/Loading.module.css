@@ -18,7 +18,7 @@
 .Loading {
     display: inline-block;
     position: relative;
-    margin-left: -17%;
+    margin-left: -20%;
     /*width: 80px;*/
     /*height: 80px;*/
 }
@@ -75,7 +75,7 @@
 .Loading__white {
     display: inline-block;
     position: relative;
-    margin-left: -17%;
+    margin-left: -20%;
     /*width: 80px;*/
     /*height: 80px;*/
 }

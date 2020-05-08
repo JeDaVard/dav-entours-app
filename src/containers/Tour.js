@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 import Topbar from '../components/Topbar/Topbar';
 import Separator from '../components/UI/Separator/Separator';
 import Foot from '../components/Foot/Foot';
@@ -9,7 +10,8 @@ import PopDown from '../components/PopDown/PopDown';
 import Modal from '../components/UI/Modal/Modal';
 import LoginForm from './LoginForm/LoginForm';
 
-function Tour() {
+function Tour(props) {
+    console.log(props)
     const [showPopDown, setShowPopDown] = useState({
         prevScrollPos: window.pageYOffset,
         visible: false,
@@ -61,7 +63,7 @@ function Tour() {
         <>
             <Topbar
                 transparent={true}
-                isLogged={false}
+                isLogged={props.isLogged}
                 loginModal={authModalClose}
                 onSignUp={signUpModalHandler}
                 onLogin={loginModalHandler}
@@ -88,4 +90,8 @@ function Tour() {
     );
 }
 
-export default Tour;
+const mapStateToProps = state =>({
+    isLogged: !!state.auth.token
+})
+
+export default connect(mapStateToProps)(Tour);

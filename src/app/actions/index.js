@@ -1,3 +1,5 @@
 export {
-    auth
+    auth,
+    checkAuth,
+    logout
 } from './auth/actions'

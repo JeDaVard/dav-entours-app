@@ -18,8 +18,11 @@
     font-weight: 500;
 }
 
-.Navigation__menu li {
-    margin: 0 .2rem;
+.Navigation__menu li:first-of-type {
+    margin-right: 4rem;
+}
+.Navigation__menu li:last-of-type {
+    margin-right: 2rem;
 }
 
 .Navigation__menu a {
@@ -71,7 +74,7 @@
 }
 
 .Navigation__signup {
-    padding: 0 .3rem 0 .6rem;
+    padding: 0;
     border-radius: 60px;
     background: white;
     font-size: 1.5rem;
@@ -88,7 +91,7 @@
 }
 
 .Navigation__signup button {
-    padding: .9rem 1rem;
+    padding: .9rem 1.2rem;
     font-size: 1.5rem;
     outline: 0;
     color: black;
@@ -126,28 +129,28 @@
     z-index: -1;
 }
 
-.Navigation__signup__transparent:hover::before {
-    background: rgba(38, 38, 38, 0.2);
-}
-
-.Navigation__signup__transparent button {
-    color: white;
-}
-
 .Navigation__profile {
-    padding: .3rem;
+    padding: .3rem .4rem .3rem 1rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
 .Navigation__profile img {
-    width: 32px;
+    width: 30px;
     border-radius: 50%;
 }
 .Navigation__profile p {
     padding: .5rem;
     font-weight: 500;
+}
+
+.Navigation__signup__transparent:hover::before {
+    background: rgba(38, 38, 38, 0.2);
+}
+
+.Navigation__signup__transparent button {
+    color: white;
 }
 
 .Navigation__profileDrop {
