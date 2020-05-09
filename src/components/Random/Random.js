@@ -5,7 +5,8 @@ import image2 from './2.jpg'
 import image3 from './3.jpg'
 import image4 from './4.jpeg'
 
-function Random() {
+function Random(props) {
+    console.log(props)
     return (
         <section className={classes.Random}>
             <div className="row">
@@ -19,6 +20,7 @@ function Random() {
                     </div>
                 </div>
                 <div className={classes.Random__grid}>
+
                     <div className={`${classes.Random__post} ${classes.post1}`}>
                         <div className={classes.Random__info}>
                             <h2>Mix secret sangria with Pedro from Lisbon Stretch</h2>

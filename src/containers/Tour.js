@@ -1,44 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import Topbar from '../components/Topbar/Topbar';
+// import Topbar from '../components/Topbar/Topbar';
 import Separator from '../components/UI/Separator/Separator';
-import Foot from '../components/Foot/Foot';
+// import Foot from '../components/Foot/Foot';
 import TourHead from '../components/TourHead/TourHead';
 import TourDescription from '../components/TourDescription/TourDescription';
 import TourImages from '../components/TourImages/TourImages';
 import PopDown from '../components/PopDown/PopDown';
-import Modal from '../components/UI/Modal/Modal';
-import LoginForm from './LoginForm/LoginForm';
+// import Modal from '../components/UI/Modal/Modal';
+// import LoginForm from './LoginForm/LoginForm';
 
 function Tour(props) {
-    console.log(props)
     const [showPopDown, setShowPopDown] = useState({
         prevScrollPos: window.pageYOffset,
         visible: false,
     });
-    const [auth, setAuth] = useState({
-        modal: false,
-        login: ['Login', false],
-    });
-
-    const authModalClose = () => {
-        setAuth((state) => ({
-            ...state,
-            modal: false,
-        }));
-    };
-    const loginModalHandler = () => {
-        setAuth({
-            modal: true,
-            login: ['Login', true],
-        });
-    };
-    const signUpModalHandler = () => {
-        setAuth({
-            modal: true,
-            login: ['Sign Up', false],
-        });
-    };
 
     const handleScroll = () => {
         const { prevScrollPos } = showPopDown;
@@ -58,33 +34,12 @@ function Tour(props) {
 
         return () => window.removeEventListener('scroll', handleScroll);
     }, [handleScroll]);
-
     return (
         <>
-            <Topbar
-                transparent={true}
-                isLogged={props.isLogged}
-                loginModal={authModalClose}
-                onSignUp={signUpModalHandler}
-                onLogin={loginModalHandler}
-            />
-            <Modal
-                onClick={authModalClose}
-                showBackdrop={auth.modal}
-                title={auth.login[0]}
-            >
-                <LoginForm
-                    login={auth.login[1]}
-                    onSignUp={signUpModalHandler}
-                    onLogin={loginModalHandler}
-                />
-            </Modal>
             <TourHead />
             <TourDescription />
             <Separator />
             <TourImages />
-            <Separator />
-            <Foot />
             <PopDown show={showPopDown.visible} />
         </>
     );

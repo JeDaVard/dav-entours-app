@@ -4,7 +4,7 @@ import Separator from "../UI/Separator/Separator";
 
 function Foot() {
     return (
-        <footer className={classes.Foot}>
+        <div className={classes.Foot}>
             <div className="row">
                 <div className={classes.Foot__content}>
                     <div className={classes.Foot__col}>
@@ -62,7 +62,7 @@ function Foot() {
                     </div>
                 </div>
             </div>
-        </footer>
+        </div>
     )
 }
 

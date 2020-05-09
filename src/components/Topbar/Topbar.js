@@ -5,7 +5,7 @@ import logo2 from './entours2.png'
 import Navigation from "./Navigation/Navigation";
 
 function Topbar(props) {
-    const initialTransparency = window.scrollY === 0;
+    const initialTransparency = props.transparent ? window.scrollY === 0 : false;
 
     const [ headerTransparent, setHeaderTransparent ] = useState(initialTransparency)
     const [ headerShadow, setHeaderShadow ] = useState('');
@@ -51,7 +51,7 @@ function Topbar(props) {
     return (
         <>
             <div className={`${!headerTransparent ? classes.Topbar__blur : classes.Topbar__blur + ' ' + classes.Topbar__blur__transparent}`}></div>
-            <header className={`${!headerTransparent ? classes.Topbar : classes.Topbar__transparent} ${headerShadow}`}>
+            <div className={`${!headerTransparent ? classes.Topbar : classes.Topbar__transparent} ${headerShadow}`}>
                 <div className="row">
                     <div className={classes.Topbar__content}>
                         <div className={classes.Topbar__logo}>
@@ -68,7 +68,7 @@ function Topbar(props) {
                         />
                     </div>
                 </div>
-            </header>
+            </div>
         </>
     )
 }

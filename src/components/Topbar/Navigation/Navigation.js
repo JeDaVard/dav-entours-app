@@ -32,7 +32,7 @@ function Navigation(props) {
                             <a href="/"> <li>Trips</li></a>
                             <a href="/"> <li>Saved</li></a>
                         </ul>
-                        <Separator />
+                        <Separator color={'light'}/>
                         <ul className={classes.Navigation__profileDrop__ul2}>
                             <a href="/"><li>Account</li></a>
                             <a href="/"> <li>Help</li></a>

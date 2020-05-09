@@ -8,17 +8,14 @@ import Top from "../components/Top/Top";
 import Foot from "../components/Foot/Foot";
 import Separator from "../components/UI/Separator/Separator";
 
-function Main() {
+function Main(props) {
     return (
         <>
-            <Topbar transparent={false}/>
             <Search />
-            <Popular />
+            <Popular populars={props.populars} />
             <Become />
-            <Random />
+            <Random randoms={props.randoms} />
             <Top />
-            <Separator />
-            <Foot />
         </>
     )
 }
