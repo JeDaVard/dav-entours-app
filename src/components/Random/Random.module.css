@@ -50,16 +50,16 @@
     grid-gap: 1.2rem;
     justify-content: center;
 }
-.post1 {
+.Random__grid :first-child {
     grid-area: 1 / 1 / 3 / 3;
 }
-.post2 {
+.Random__grid :nth-child(2) {
     grid-area: 1 / 3 / 2 / 4;
 }
-.post3 {
+.Random__grid :nth-child(3) {
     grid-area: 1 / 4 / 2 / 5;
 }
-.post4 {
+.Random__grid :last-child {
     grid-area: 2 / 3 / 3 / 5;
 }
 .Random__post {

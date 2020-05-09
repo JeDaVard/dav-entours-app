@@ -4,13 +4,13 @@ import { connect } from 'react-redux';
 import {checkAuth, fetchPopulars, fetchRandoms} from './app/actions';
 import Main from './containers/Main';
 import './App.css';
-// import Tour from './containers/Tour';
+import Tour from './containers/Tour';
 import LoginForm from './containers/LoginForm/LoginForm';
 import Modal from './components/UI/Modal/Modal';
 import Layout from './components/Layout/Layout';
 import Topbar from './components/Topbar/Topbar';
-// import Search from './components/Search/Search';
-// import Top from './components/Top/Top';
+import Search from './components/Search/Search';
+import Top from './components/Top/Top';
 import Separator from './components/UI/Separator/Separator';
 import Foot from './components/Foot/Foot';
 
@@ -94,7 +94,8 @@ function App(props) {
                         <Foot />
                     </>
                 }>
-                <Main populars={props.populars} randoms={props.randoms}/>
+                {/*<Main populars={props.populars} randoms={props.randoms}/>*/}
+                <Tour />
                 <Modal
                     onClick={authModalClose}
                     showBackdrop={auth.modal}
