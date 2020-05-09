@@ -1,0 +1,12 @@
+.TopItemLoading {
+    position: relative;
+    margin: 1rem 2rem 1rem 0;
+    display: flex;
+    border-radius: 100px;
+    min-width: 36rem;
+    max-width: 36rem;
+    height: 12rem;
+    background: #ffffff;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.14);
+    overflow: hidden;
+}

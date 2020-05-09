@@ -1,0 +1,85 @@
+.Top__usercontainer {
+}
+
+.Top__user {
+    position: relative;
+    margin: 1rem 2rem 1rem 0;
+    display: flex;
+    border-radius: 100px;
+    min-width: 36rem;
+    max-width: 36rem;
+    height: 12rem;
+    background: #ffffff;
+    overflow: hidden;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.14);
+    transition: all .2s;
+    cursor: pointer;
+}
+
+.Top__userImage img {
+    transition: all .2s;
+    width: 12rem;
+    height: 12rem;
+}
+
+.Top__rating {
+    position: absolute;
+    background: transparent;
+    padding: 1rem;
+    width: 8rem;
+    height: 8rem;
+    right: 0;
+    border-radius: 50%;
+    text-align: center;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #222222;
+}
+
+.Top__rating img {
+    width: 16px;
+}
+
+.Top__rating h2 {
+    color: #3db062;
+    font-size: 2rem;
+}
+
+.Top__rating p {
+    color: #804115;
+    font-size: 1.2rem;
+    opacity: .8;
+}
+
+.Top__userinfo {
+    margin-left: .5rem;
+}
+
+.Top__userinfo img {
+    width: 14px;
+    margin-right: 1rem;
+}
+
+.Top__userinfo h3 {
+    color: #444444;
+    font-size: 1.5rem;
+    padding: 1rem;
+    transition: all .1s;
+}
+
+.Top__userinfo p {
+    font-size: 1.2rem;
+    padding: .4rem;
+}
+
+.Top__user:hover .Top__userinfo h3 {
+    color: #222222;
+}
+
+.Top__user:hover  {
+    filter: brightness(1.1);
+}
+
+.Top__user:active {
+    box-shadow: 1px 0 4px rgba(0, 0, 0, 0.14);
+}

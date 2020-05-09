@@ -9,9 +9,9 @@ export default () => (
                 height={310}
                 width={400}
                 speed={0.7}
-                gradientRatio={3}
-                backgroundColor={'#f3f3f3'}
-                foregroundColor={'#fff'}
+                gradientRatio={1}
+                backgroundColor={'#f1f1f1'}
+                foregroundColor={'#f8f8f8'}
                 viewBox="0 0 400 310"
             >
                 <rect x="0" y="0" rx="3" ry="3" width="400" height="220" />

@@ -1,4 +1,5 @@
-import * as actions from './types'
+import * as actions from './types';
+import { fetchData } from "../../../utils/asyncFetchDispatch";
 
 const popularsStart = () => ({
     type: actions.FEED_POPULARS_START
@@ -31,24 +32,6 @@ const randomsFailed = error => ({
     type: actions.FEED_RANDOMS_FAILED,
     error
 })
-
-function fetchData(start, success, failed, url) {
-    return async dispatch => {
-        try {
-            dispatch(start())
-
-            const response = await fetch(url);
-            const result = await response.json();
-
-            if (result.status === 'failed') {
-                return dispatch(failed(`Oops.. ${result.error.message}`))
-            }
-            dispatch(success(result.data.data))
-        } catch (e) {
-            dispatch(failed(`Oops.. ${e}`))
-        }
-    }
-}
 
 export const fetchPopulars = () => (
     fetchData(popularsStart, popularsSuccess, popularsFailed, 'http://localhost:5000/api/tour')

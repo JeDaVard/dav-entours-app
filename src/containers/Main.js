@@ -15,7 +15,7 @@ function Main(props) {
             <Popular populars={props.populars} />
             <Become />
             <Random randoms={props.randoms} />
-            <Top />
+            <Top users={props.topUsers}/>
         </>
     )
 }

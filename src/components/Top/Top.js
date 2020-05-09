@@ -1,97 +1,33 @@
-import React from "react";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import TopItemLoading from './TopItemLoading';
 import classes from './Top.module.css';
-import user from './user.jpg'
+import TopItem from './TopItem';
 
-function Top() {
+function Top(props) {
     return (
         <section className={classes.Top}>
             <div className="row">
-                    <div className={classes.Top__title}>
-                        <h3>Top tourmakers</h3>
-                        <p>Monthly most active tourmaker</p>
-                    </div>
-                <div className={classes.Top__content}>
-
-                        <div className={classes.Top__usercontainer}>
-                            <div className={classes.Top__user}>
-                                <div>
-                                    <img src={user} alt="user"/>
-                                </div>
-                                <div className={classes.Top__userinfo}>
-                                    <h3><img src={user} alt=""/> John Wick</h3>
-                                    <p>Joined in 2018</p>
-                                    <p>Speaks Engish, French</p>
-                                    <p>8 Tours</p>
-                                </div>
-                                <div className={classes.Top__rating}>
-                                    <img src={user} alt="user"/>
-                                    <h2>4.8</h2>
-                                    <p>(127)</p>
-                                </div>
-                            </div>
-                        </div>
-
-                    <div className={classes.Top__usercontainer}>
-                        <div className={classes.Top__user}>
-                            <div>
-                                <img src={user} alt="user"/>
-                            </div>
-                            <div className={classes.Top__userinfo}>
-                                <h3><img src={user} alt=""/> John Wick</h3>
-                                <p>Joined in 2018</p>
-                                <p>Speaks Engish, French</p>
-                                <p>8 Tours</p>
-                            </div>
-                            <div className={classes.Top__rating}>
-                                <img src={user} alt="user"/>
-                                <h2>4.8</h2>
-                                <p>(127)</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className={classes.Top__usercontainer}>
-                        <div className={classes.Top__user}>
-                            <div>
-                                <img src={user} alt="user"/>
-                            </div>
-                            <div className={classes.Top__userinfo}>
-                                <h3><img src={user} alt=""/> John Wick</h3>
-                                <p>Joined in 2018</p>
-                                <p>Speaks Engish, French</p>
-                                <p>8 Tours</p>
-                            </div>
-                            <div className={classes.Top__rating}>
-                                <img src={user} alt="user"/>
-                                <h2>4.8</h2>
-                                <p>(127)</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className={classes.Top__usercontainer}>
-                        <div className={classes.Top__user}>
-                            <div>
-                                <img src={user} alt="user"/>
-                            </div>
-                            <div className={classes.Top__userinfo}>
-                                <h3><img src={user} alt=""/> John Wick</h3>
-                                <p>Joined in 2018</p>
-                                <p>Speaks Engish, French</p>
-                                <p>8 Tours</p>
-                            </div>
-                            <div className={classes.Top__rating}>
-                                <img src={user} alt="user"/>
-                                <h2>4.8</h2>
-                                <p>(127)</p>
-                            </div>
-                        </div>
-                    </div>
-
+                <div className={classes.Top__title}>
+                    <h3>Top tourmakers</h3>
+                    <p>Monthly most active tourmaker</p>
                 </div>
+
+                <div className={classes.Top__content}>
+                    {!props.loading && props.users.data.length ? (
+                        props.users.data.map((user) => <TopItem user={user} key={user._id}/>)
+                    ) : (
+                        <>
+                            <TopItemLoading />
+                            <TopItemLoading />
+                            <TopItemLoading />
+                        </>
+                    )}
+                </div>
+
             </div>
         </section>
-    )
+    );
 }
 
-export default Top
+export default Top;

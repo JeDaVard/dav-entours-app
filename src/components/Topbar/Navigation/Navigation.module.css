@@ -167,7 +167,7 @@
 }
 
 .Navigation__profileDrop__close {
-    transform: translateY(-4rem);
+    transform: translateY(-1rem);
     width: 180px;
     visibility: hidden;
     opacity: 0;

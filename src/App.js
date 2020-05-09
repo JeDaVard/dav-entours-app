@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import {checkAuth, fetchPopulars, fetchRandoms} from './app/actions';
+import {checkAuth, fetchPopulars, fetchRandoms, fetchTopUsers} from './app/actions';
 import Main from './containers/Main';
 import './App.css';
 import Tour from './containers/Tour';
@@ -16,7 +16,7 @@ import Foot from './components/Foot/Foot';
 
 function App(props) {
     // console.log(props)
-    const { checkAuth, fetchPopulars, fetchRandoms } = props;
+    const { checkAuth, fetchPopulars, fetchRandoms, fetchTopUsers } = props;
 
     const [auth, setAuth] = useState({
         modal: false,
@@ -30,7 +30,8 @@ function App(props) {
     useEffect(() => {
         fetchPopulars();
         fetchRandoms();
-    }, [fetchPopulars, fetchRandoms])
+        fetchTopUsers()
+    }, [fetchPopulars, fetchRandoms, fetchTopUsers])
 
     const authModalClose = () => {
         setAuth((state) => ({
@@ -94,8 +95,8 @@ function App(props) {
                         <Foot />
                     </>
                 }>
-                {/*<Main populars={props.populars} randoms={props.randoms}/>*/}
-                <Tour />
+                <Main populars={props.populars} randoms={props.randoms} topUsers={props.users}/>
+                {/*<Tour />*/}
                 <Modal
                     onClick={authModalClose}
                     showBackdrop={auth.modal}
@@ -115,14 +116,16 @@ function App(props) {
 const mapStateToProps = state => ({
     loggedIn: !!state.auth.token,
     populars: state.feed.populars,
-    randoms: state.feed.randoms
+    randoms: state.feed.randoms,
+    users: state.user.users
 })
 
 
 const mapDispatchToProps = (dispatch) => ({
     checkAuth: () => dispatch(checkAuth()),
     fetchPopulars: () => dispatch(fetchPopulars()),
-    fetchRandoms: () => dispatch(fetchRandoms())
+    fetchRandoms: () => dispatch(fetchRandoms()),
+    fetchTopUsers: () => dispatch(fetchTopUsers()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(App));
