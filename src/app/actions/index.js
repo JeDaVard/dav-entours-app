@@ -6,7 +6,8 @@ export {
 
 export {
     fetchPopulars,
-    fetchRandoms
+    fetchRandoms,
+    fetchTour
 } from './feed/actions'
 
 export {

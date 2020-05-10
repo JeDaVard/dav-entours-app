@@ -10,6 +10,10 @@
     transition: all .3s;
 }
 
+.Topbar__relative {
+    height: 8rem;
+}
+
 .Topbar__blur {
     backdrop-filter: blur(10px);
     width: 100%;
@@ -36,7 +40,8 @@
 }
 
 .headerShadow {
-    box-shadow: 0 1px 3px rgba(0, 0, 0, .2)
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .2);
+    position: fixed;
 }
 
 .Topbar__content {

@@ -5,21 +5,33 @@
     position: relative;
     margin: 1rem 2rem 1rem 0;
     display: flex;
+    align-items: center;
     border-radius: 100px;
     min-width: 36rem;
     max-width: 36rem;
     height: 12rem;
     background: #ffffff;
-    overflow: hidden;
-    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.14);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     transition: all .2s;
     cursor: pointer;
 }
 
-.Top__userImage img {
+.Top__imageFrame {
+    margin-left: 1rem;
+    shape-outside: circle(50% at 50% 50%);
+    clip-path: circle(50% at 50% 50%);
+    width: 10rem;
+    height: 10rem;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.Top__userImage {
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+    transform: scale(1.2);
     transition: all .2s;
-    width: 12rem;
-    height: 12rem;
 }
 
 .Top__rating {
@@ -73,12 +85,16 @@
 }
 
 .Top__user:hover .Top__userinfo h3 {
-    color: #222222;
+    color: #555555;
 }
 
-.Top__user:hover  {
-    filter: brightness(1.1);
+.Top__user:hover .Top__userImage {
+    transform: scale(1);
 }
+
+/*.Top__user:hover  {*/
+/*    filter: brightness(1.1);*/
+/*}*/
 
 .Top__user:active {
     box-shadow: 1px 0 4px rgba(0, 0, 0, 0.14);

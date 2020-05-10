@@ -12,18 +12,18 @@
 }
 
 .Random__info {
-    padding: 2rem 2rem;
+    padding: 1rem 2rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background: rgba(45, 45, 45, 0.9);
+    background: rgba(34, 34, 34, 1);
     bottom: 0;
-    border-radius: 0 0 18px 18px;
+    border-radius: 0 0 17px 17px;
     color: white;
     width: 100%;
     position: absolute;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 -4px 0 rgba(79, 79, 79, 0.7);
+    /*!*backdrop-filter: blur(10px);*! performance reasons*/
+    /*!*box-shadow: 0 -4px 0 rgba(79, 79, 79, 0.7);*! performance reasons*/
     z-index: 1;
 }
 

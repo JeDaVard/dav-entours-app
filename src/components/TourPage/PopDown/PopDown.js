@@ -1,7 +1,7 @@
 import React from "react";
 import classes from './PopDown.module.css';
 import user from './user-4.jpg';
-import AnimatedButton from "../UI/AnimatedButton/AnimatedButton";
+import AnimatedButton from "../../UI/AnimatedButton/AnimatedButton";
 
 function PopDown(props) {
     const show = !props.show ? ` ${classes.hide}` : '';

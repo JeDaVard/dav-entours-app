@@ -9,6 +9,10 @@ const initialState = {
         loading: true,
         data: []
     },
+    tour: {
+        loading: true,
+        data: {}
+    },
     error: null
 };
 
@@ -62,6 +66,32 @@ const feedReducer = (state = initialState, action) => {
                 ...state,
                 randoms: {
                     ...state.randoms,
+                    loading: false
+                },
+                error: action.error
+            }
+        case actionTypes.FETCH_TOUR_START:
+            return {
+                ...state,
+                tour: {
+                    ...state.tour,
+                    loading: true
+                },
+                error: null
+            }
+        case actionTypes.FETCH_TOUR_SUCCESS:
+            return {
+                ...state,
+                tour: {
+                    data: action.payload.tour,
+                    loading: false
+                }
+            }
+        case actionTypes.FETCH_TOUR_FAILED:
+            return {
+                ...state,
+                tour: {
+                    ...state.tour,
                     loading: false
                 },
                 error: action.error

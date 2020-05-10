@@ -4,7 +4,6 @@ import { logout } from "../../../app/actions";
 import classes from "./Navigation.module.css";
 import Separator from "../../UI/Separator/Separator";
 import OutsideAlerter from "../../../hocs/EventDelegator";
-import user from "./user.jpg";
 
 function Navigation(props) {
     const { name, photo } = props;

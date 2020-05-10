@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
-import {checkAuth, fetchPopulars, fetchRandoms, fetchTopUsers} from './app/actions';
+import { connect } from "react-redux";
+import { checkAuth } from './app/actions';
 import Main from './containers/Main';
 import './App.css';
-import Tour from './containers/Tour';
+import TourPage from './components/TourPage/TourPage';
+import UserPage from './components/UserPage/UserPage';
 import LoginForm from './containers/LoginForm/LoginForm';
 import Modal from './components/UI/Modal/Modal';
 import Layout from './components/Layout/Layout';
 import Topbar from './components/Topbar/Topbar';
 import Search from './components/Search/Search';
-import Top from './components/Top/Top';
 import Separator from './components/UI/Separator/Separator';
 import Foot from './components/Foot/Foot';
 
 function App(props) {
     // console.log(props)
-    const { checkAuth, fetchPopulars, fetchRandoms, fetchTopUsers } = props;
+    const { checkAuth } = props;
 
     const [auth, setAuth] = useState({
         modal: false,
@@ -26,12 +26,6 @@ function App(props) {
     useEffect(() => {
         checkAuth();
     }, [checkAuth]);
-
-    useEffect(() => {
-        fetchPopulars();
-        fetchRandoms();
-        fetchTopUsers()
-    }, [fetchPopulars, fetchRandoms, fetchTopUsers])
 
     const authModalClose = () => {
         setAuth((state) => ({
@@ -51,6 +45,12 @@ function App(props) {
             login: ['Sign Up', false],
         });
     };
+
+    // if (props.match.path.match(/^tour\/:id.+?/)) {
+    //     setUI({transparentTop: true})
+    // } else {
+    //     setUI({transparentTop: false})
+    // }
 
 
     let routes = (
@@ -82,7 +82,7 @@ function App(props) {
             <Layout
                 header={
                     <Topbar
-                        transparent={false}
+                        {...props}
                         isLogged={props.loggedIn}
                         loginModal={authModalClose}
                         onSignUp={signUpModalHandler}
@@ -95,8 +95,12 @@ function App(props) {
                         <Foot />
                     </>
                 }>
-                <Main populars={props.populars} randoms={props.randoms} topUsers={props.users}/>
-                {/*<Tour />*/}
+                <Switch>
+                    <Route path="/user/:id" component={UserPage} />
+                    <Route path="/tour/:slug" component={TourPage} />
+                    <Route path="/" component={Main} />
+                </Switch>
+
                 <Modal
                     onClick={authModalClose}
                     showBackdrop={auth.modal}
@@ -114,18 +118,6 @@ function App(props) {
 }
 
 const mapStateToProps = state => ({
-    loggedIn: !!state.auth.token,
-    populars: state.feed.populars,
-    randoms: state.feed.randoms,
-    users: state.user.users
-})
-
-
-const mapDispatchToProps = (dispatch) => ({
-    checkAuth: () => dispatch(checkAuth()),
-    fetchPopulars: () => dispatch(fetchPopulars()),
-    fetchRandoms: () => dispatch(fetchRandoms()),
-    fetchTopUsers: () => dispatch(fetchTopUsers()),
+    loggedIn: !!state.auth.token
 });
-
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(App));
+export default connect(mapStateToProps, { checkAuth })(withRouter(App));

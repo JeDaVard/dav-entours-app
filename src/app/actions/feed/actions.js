@@ -33,10 +33,30 @@ const randomsFailed = error => ({
     error
 })
 
+const fetchTourStart = () => ({
+    type: actions.FETCH_TOUR_START
+})
+
+const fetchTourSuccess = tour => ({
+    type: actions.FETCH_TOUR_SUCCESS,
+    payload: {
+        tour
+    }
+})
+
+const fetchTourFailed = error => ({
+    type: actions.FETCH_TOUR_FAILED,
+    error
+})
+
 export const fetchPopulars = () => (
     fetchData(popularsStart, popularsSuccess, popularsFailed, 'http://localhost:5000/api/tour')
 );
 
 export const fetchRandoms = () => (
     fetchData(randomsStart, randomsSuccess, randomsFailed, 'http://localhost:5000/api/tour')
+);
+
+export const fetchTour = slug => (
+    fetchData(fetchTourStart, fetchTourSuccess, fetchTourFailed, `http://localhost:5000/api/tour/${slug}`)
 );

@@ -1,20 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-// import Topbar from '../components/Topbar/Topbar';
-import Separator from '../components/UI/Separator/Separator';
-// import Foot from '../components/Foot/Foot';
-import TourHead from '../components/TourHead/TourHead';
-import TourDescription from '../components/TourDescription/TourDescription';
-import TourImages from '../components/TourImages/TourImages';
-import PopDown from '../components/PopDown/PopDown';
-// import Modal from '../components/UI/Modal/Modal';
-// import LoginForm from './LoginForm/LoginForm';
+import { fetchTour } from "../../app/actions";
+import Separator from '../UI/Separator/Separator';
+import TourHead from './TourHead/TourHead';
+import TourDescription from './TourDescription/TourDescription';
+import TourImages from './TourImages/TourImages';
+import PopDown from './PopDown/PopDown';
 
-function Tour(props) {
+function TourPage(props) {
+    const { fetchTour } = props;
+
     const [showPopDown, setShowPopDown] = useState({
         prevScrollPos: window.pageYOffset,
         visible: false,
     });
+
+    useEffect(() => {
+        fetchTour(props.match.params.slug)
+    }, [fetchTour])
 
     const handleScroll = () => {
         const { prevScrollPos } = showPopDown;
@@ -24,6 +27,7 @@ function Tour(props) {
             prevScrollPos < currentScrollPos && currentScrollPos > 70;
 
         setShowPopDown((state) => ({
+            ...state,
             prevScrollPos: currentScrollPos,
             visible,
         }));
@@ -45,8 +49,13 @@ function Tour(props) {
     );
 }
 
-const mapStateToProps = state =>({
-    isLogged: !!state.auth.token
+const mapStateToProps = state => ({
+    tour: state.feed.tour.data,
+    loading: state.feed.tour.loading
+});
+
+const mapDispatchToProps = dispatch => ({
+    fetchTour: slug => dispatch(fetchTour(slug))
 })
 
-export default connect(mapStateToProps)(Tour);
+export default connect(mapStateToProps, mapDispatchToProps )(TourPage);

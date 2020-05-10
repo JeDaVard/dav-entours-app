@@ -1,12 +1,11 @@
 import React from "react";
 import classes from './TopItem.module.css';
-import user from "./user.jpg";
 
 export default ({ user }) => (
     <div className={classes.Top__usercontainer}>
         <div className={classes.Top__user}>
-            <div className={classes.Top__userImage}>
-                <img src={`http://localhost:5000/images/user/${user.photo}`} alt={user.name}/>
+            <div className={classes.Top__imageFrame}>
+                <img src={`http://localhost:5000/images/user/${user.photo}`} alt={user.name} className={classes.Top__userImage}/>
             </div>
             <div className={classes.Top__userinfo}>
                 <h3><img src={`http://localhost:5000/images/user/${user.photo}`} alt=""/>{user.name.slice(0,19)}...</h3>
