@@ -85,6 +85,7 @@
 }
 
 .Popular__user img {
+    height: 32px;
     width: 32px;
     border-radius: 50%;
     border: 2px solid rgba(0, 0, 0, 0.10)

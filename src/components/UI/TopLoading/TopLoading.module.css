@@ -1,0 +1,32 @@
+.TopLoading {
+    top: 0;
+    left: 0;
+    position:fixed;
+    height: 20px;
+    background: #27c4f5
+    linear-gradient(to right, #27c4f5, #a307ba, #fd8d32, #58c322, #27c4f5);
+    background-size: 500%;
+    animation: 2s linear infinite loadingBarProgress,
+    0.5s ease-out loadingBarEnter;
+    transform-origin: left;
+    width: 100%;
+    z-index: 9000;
+}
+
+@keyframes loadingBarProgress {
+    0% {
+        background-position: 0% 0;
+    }
+    to {
+        background-position: 125% 0;
+    }
+}
+
+@keyframes loadingBarEnter {
+    0% {
+        transform: scaleX(0);
+    }
+    to {
+        transform: scaleX(1);
+    }
+}

@@ -13,6 +13,13 @@ import Topbar from './components/Topbar/Topbar';
 import Search from './components/Search/Search';
 import Separator from './components/UI/Separator/Separator';
 import Foot from './components/Foot/Foot';
+import TopLoading from "./components/UI/TopLoading/TopLoading";
+
+const LazyPage = React.lazy(() => {
+    return new Promise(resolve => {
+        setTimeout(() => resolve(import('./components/TourPage/TourPage')),3000)
+    })
+})
 
 function App(props) {
     // console.log(props)
@@ -102,11 +109,13 @@ function App(props) {
                         <Foot />
                     </>
                 }>
-                <Switch>
-                    <Route path="/user/:id" component={UserPage} />
-                    <Route path="/tour/:slug" component={TourPage} />
-                    <Route path="/" component={Main} />
-                </Switch>
+                    <React.Suspense fallback={<TopLoading />}>
+                        <Switch>
+                            <Route path="/user/:id" component={UserPage} />
+                            <Route path="/tour/:slug" component={LazyPage} />
+                            <Route path="/" component={Main} />
+                        </Switch>
+                    </React.Suspense>
 
                 <Modal
                     onClick={authModalClose}

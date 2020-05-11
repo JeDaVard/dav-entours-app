@@ -23,7 +23,9 @@
     align-items: center;
     width: 100%;
     overflow-x: scroll;
-    scrollbar-base-color: rgba(0, 0, 0, 0.17)
+    scrollbar-base-color: rgba(0, 0, 0, 0.17);
 }
 
-.Popular__content::-webkit-scrollbar {    display: none;}
+.Popular__content::-webkit-scrollbar {
+    display: none;
+}

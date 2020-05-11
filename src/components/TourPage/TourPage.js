@@ -7,6 +7,7 @@ import TourDescription from './TourDescription/TourDescription';
 import TourImages from './TourImages/TourImages';
 import PopDown from './PopDown/PopDown';
 
+
 function TourPage(props) {
     const { fetchTour } = props;
 
