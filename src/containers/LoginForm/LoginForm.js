@@ -78,7 +78,7 @@ function LoginForm(props) {
             password: state.input.password.value,
             name: state.input.name.value ? state.input.name.value.trim() : '',
             image: state.input.image,
-        }, login)
+        }, login);
     };
     const continueHandler = async () => {
         const validEmail = validator.isEmail(state.input.email.value)

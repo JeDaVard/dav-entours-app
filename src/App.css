@@ -65,3 +65,33 @@ body {
   max-width: 180rem;
   margin: 0 auto;
 }
+
+.globalA,
+.globalA:visited {
+  color: rgb(0, 138, 80);
+  position: relative;
+  text-decoration: none;
+  font-size: 1.6rem;
+  transition: color .2s;
+}
+.globalA:hover,
+.globalA:active {
+  color: rgb(7, 171, 102);
+}
+.globalA::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  border-radius: 2px;
+  width: 0;
+  height: 1px;
+  background: rgb(7, 171, 102);
+  filter: brightness(1.1);
+  transition: width .2s;
+}
+
+.globalA:visited::after,
+.globalA:hover::after {
+  width: 100%;
+}

@@ -7,15 +7,15 @@ return(
     <div className={classes.Popular__tourcontainer}>
         <div className={classes.Popular__tour}>
             <div className={classes.Popular__image}>
-                <Link to={{pathname: `/tour/${popular.slug}`}} target="_blank"><img src={`http://localhost:5000/images/tour/${popular.imageCover}`} alt={popular.name}/></Link>
+                <Link to={{pathname: `/tour/${popular.slug}`, state: popular }} ><img src={`http://localhost:5000/images/tour/${popular.imageCover}`} alt={popular.name}/></Link>
                 {new Date() - new Date(popular.createdAt) < 30*24*60*60*1000 && <div className={classes.new}><p>NEW</p></div>}
                 <div className={classes.Popular__price}><p>$299 | {popular.duration} days</p></div>
-                <Link to={`/tour/${popular.slug}`} target="_blank"><div className={classes.Popular__title}>
+                <Link to={{pathname: `/tour/${popular.slug}`, state: popular }} ><div className={classes.Popular__title}>
                     <b>{popular.name}</b>
                 </div></Link>
             </div>
             <div className={classes.Popular__bottom}>
-                <Link to={`/user/${popular.author._id}`} target="_blank" className={classes.Popular__user}>
+                <Link to={`/user/${popular.author._id}`}  className={classes.Popular__user}>
                     <img src={`http://localhost:5000/images/user/${popular.author.photo}`} alt="user"/>
                     <p>{popular.author.name}</p>
                 </Link>

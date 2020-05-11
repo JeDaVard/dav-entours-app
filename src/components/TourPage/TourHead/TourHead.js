@@ -1,30 +1,95 @@
-import React from "react";
+import React from 'react';
+import { connect } from 'react-redux';
+import ContentLoader from 'react-content-loader';
 import classes from './TourHead.module.css';
-import cover from './cover.jpg';
+import {CSSTransition} from "react-transition-group";
+import '../animation.css'
 
-function TourHead() {
+function TourHead(props) {
+    const { tour, loading } = props;
     return (
         <div className={classes.TourHead__cover}>
-            <img src={cover} alt=""/>
+            <CSSTransition
+                in={!loading}
+                timeout={400}
+                classNames="coverImage"
+                unmountOnExit
+            >
+                <img
+                    src={`http://localhost:5000/images/tour/${tour.imageCover}`}
+                    alt=""
+                />
+            </CSSTransition>
             <div className={'row'}>
-                <div className={classes.TourHead}>
-                    <div className={classes.TourHead__left}>
-                        <div className={classes.TourHead__hash}>
-                            <p>#mountain</p>
-                            <p>#mountain</p>
+                <CSSTransition
+                    in={!loading}
+                    timeout={400}
+                    classNames="tourTitle"
+                    unmountOnExit
+                >
+                    <div className={classes.TourHead}>
+                        <div className={classes.TourHead__left}>
+                            <div className={classes.TourHead__hash}>
+                                {!loading &&
+                                    (tour.hashtags ? (
+                                        tour.hashtags.map((hash) => (
+                                            <p key={hash}>#{hash}</p>
+                                        ))
+                                    ) : (
+                                        <p>0 hashtags</p>
+                                    ))}
+                            </div>
+                            <h2>{tour.name}</h2>
+                            <h4>
+                                {tour.startLocation &&
+                                    tour.startLocation.description}
+                            </h4>
                         </div>
-                        <h2>THE FOREST HIKER TOUR HIKER TOUR</h2>
-                        <h4>California, USA</h4>
                     </div>
-                </div>
-                <div className={classes.TourHead__info}>
-                    <p>NEXT DATE: <b>April 2021</b></p>
-                    <p>DIFFICULTY: <b>Easy</b></p>
-                    <p>PARTICIPANTS: <b>25 People</b></p>
-                </div>
+                </CSSTransition>
+                <CSSTransition
+                    in={!loading}
+                    timeout={600}
+                    classNames="tourBottom"
+                    unmountOnExit
+                >
+                <>
+                    {!loading && (
+                        (
+                            <div className={classes.TourHead__info}>
+                                <p>
+                                    NEXT DATE:{' '}
+                                    <b>
+                                        {tour.startLocation &&
+                                        new Date(
+                                            tour.startDates[0]
+                                        ).toLocaleDateString()}
+                                    </b>
+                                </p>
+                                <p>
+                                    DIFFICULTY: <b>{tour.difficulty}</b>
+                                </p>
+                                <p>
+                                    PARTICIPANTS:{' '}
+                                    <b>
+                                        {tour.participants.length
+                                            ? tour.participants.length + ' Participants'
+                                            : 'Be the first'}
+                                    </b>
+                                </p>
+                            </div>
+                        )
+                    )}
+                    </>
+                </CSSTransition>
             </div>
         </div>
-    )
+    );
 }
 
-export default TourHead
+const mapStateToProps = (state) => ({
+    tour: state.feed.tour.data,
+    loading: state.feed.tour.loading,
+});
+
+export default connect(mapStateToProps)(TourHead);

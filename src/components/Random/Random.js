@@ -24,7 +24,7 @@ function Random(props) {
 
                 {!props.randoms.loading && props.randoms.data.length ? (
                     <div className={classes.Random__grid}>
-                        {props.randoms.data.map( random => <RandomItem tour={random} key={random._id}/>)}
+                        {props.randoms.data.slice(0,4).map( random => <RandomItem tour={random} key={random._id}/>)}
                     </div>
                 ) : (
                     <RandomItemLoading />

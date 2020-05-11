@@ -11,5 +11,6 @@ export {
 } from './feed/actions'
 
 export {
-    fetchTopUsers
+    fetchTopUsers,
+    fetchUser
 } from './user/actions'

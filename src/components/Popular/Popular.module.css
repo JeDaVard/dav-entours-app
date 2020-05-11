@@ -2,6 +2,22 @@
     margin: 4rem 0;
 }
 
+.Popular a,
+.Popular a:visited {
+    font-size: 1.3rem;
+    color: black;
+}
+
+.Popular a:hover,
+.Popular a:active {
+    font-size: 1.3rem;
+    color: black;
+}
+
+.Popular a::after {
+    display: none;
+}
+
 .Popular__content {
     display: flex;
     align-items: center;

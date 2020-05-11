@@ -9,7 +9,7 @@ export default ({ user }) => (
             </div>
             <div className={classes.Top__userinfo}>
                 <h3><img src={`http://localhost:5000/images/user/${user.photo}`} alt=""/>{user.name.slice(0,19)}...</h3>
-                <p>Joined in {new Date(user.createdAt).getMonth() + '/' + new Date(user.createdAt).getFullYear()}</p>
+                <p>Joined in {new Date(user.createdAt).getMonth()+1 + '/' + new Date(user.createdAt).getFullYear()}</p>
                 <p>Speaks - {user.speaks.map(lang => lang) }</p>
                 <p>{user.tours.length ? <b>{user.tours.length}</b> : 'Doesn\'t have'} tours</p>
             </div>

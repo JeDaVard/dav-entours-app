@@ -1,0 +1,48 @@
+.coverImage-enter {
+    opacity: 0;
+}
+.coverImage-enter-active {
+    opacity: 1;
+    transition: all 400ms;
+}
+.coverImage-exit {
+    opacity: 1;
+}
+.coverImage-exit-active {
+    opacity: 0;
+    transition: all 400ms;
+}
+
+.tourTitle-enter {
+    opacity: 0;
+    transform: translateX(-10%);
+}
+.tourTitle-enter-active {
+    transform: translateX(0%);
+    opacity: 1;
+    transition: all 400ms ease;
+}
+.tourTitle-exit {
+    opacity: 1;
+}
+.tourTitle-exit-active {
+    opacity: 0;
+    transition: all 400ms;
+}
+
+.tourBottom-enter {
+    opacity: 0;
+    transform: translateY(100%);
+}
+.tourBottom-enter-active {
+    transform: translateX(0%);
+    opacity: 1;
+    transition: all 400ms .2s;
+}
+.tourBottom-exit {
+    opacity: 1;
+}
+.tourBottom-exit-active {
+    opacity: 0;
+    transition: all 400ms .2s;
+}

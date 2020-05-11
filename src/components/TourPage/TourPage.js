@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { fetchTour } from "../../app/actions";
+import { fetchTour } from '../../app/actions';
 import Separator from '../UI/Separator/Separator';
 import TourHead from './TourHead/TourHead';
 import TourDescription from './TourDescription/TourDescription';
@@ -16,8 +16,8 @@ function TourPage(props) {
     });
 
     useEffect(() => {
-        fetchTour(props.match.params.slug)
-    }, [fetchTour])
+        fetchTour(props.match.params.slug, props.location.state);
+    }, [fetchTour]);
 
     const handleScroll = () => {
         const { prevScrollPos } = showPopDown;
@@ -49,13 +49,8 @@ function TourPage(props) {
     );
 }
 
-const mapStateToProps = state => ({
-    tour: state.feed.tour.data,
-    loading: state.feed.tour.loading
+const mapDispatchToProps = (dispatch) => ({
+    fetchTour: (slug, readyTour) => dispatch(fetchTour(slug, readyTour)),
 });
 
-const mapDispatchToProps = dispatch => ({
-    fetchTour: slug => dispatch(fetchTour(slug))
-})
-
-export default connect(mapStateToProps, mapDispatchToProps )(TourPage);
+export default connect(null, mapDispatchToProps)(TourPage);

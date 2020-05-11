@@ -1,0 +1,84 @@
+.UserPage__stuff {
+}
+
+.UserPage__stuff a,
+.UserPage__stuff a:visited {
+    color: rgba(0, 0, 0, 0.8);
+    position: relative;
+    text-decoration: none;
+    transition: color .2s;
+}
+.UserPage__stuff a:hover,
+.UserPage__stuff a:active {
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.UserPage__stuff h1 {
+    font-weight: 500;
+    font-size: 2rem;
+    margin: 1rem 0;
+}
+
+.UserPage__listingSection {
+}
+
+.UserPage__listings {
+    display: flex;
+    width: 100%;
+    overflow-x: scroll;
+    scrollbar-base-color: rgba(0, 0, 0, 0.17)
+}
+
+.UserPage__listings::-webkit-scrollbar {    display: none;}
+
+.UserPage__listing {
+    padding: .5rem .5rem 0 .5rem;
+    margin: 1rem 1rem 1rem 0;
+}
+
+.UserPage__listing img {
+    width: 300px;
+    height: 180px;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+.UserPage__listingTitle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: .5rem;
+}
+
+.UserPage__listingTitle h2 {
+    font-weight: 500;
+}
+
+.UserPage__listingTitleRight {
+    display: flex;
+    align-self: center;
+    font-size: 1.5rem;
+}
+.UserPage__listingTitleRight p {
+    padding: .1rem;
+    color: #9f4c37;
+}
+
+.UserPage__listingTitleRight b {
+    font-size: 1.6rem;
+    color: #2ea455;
+}
+
+
+.UserPage__listingInfo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: .5rem 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.36);
+    border-radius: 5px;
+}
+
+.UserPage__listingInfo p {
+    font-size: 1.3rem;
+}

@@ -2,6 +2,37 @@
     padding: 1rem 0;
 }
 
+.Foot a,
+.Foot a:visited {
+    color: rgba(0, 0, 0, 0.7);
+    font-weight: 500;
+    position: relative;
+    text-decoration: none;
+    font-size: 1.4rem;
+    transition: color .2s;
+}
+.Foot a:hover,
+.Foot a:active {
+    color: rgba(0, 0, 0, 0.6);
+}
+.Foot a::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    border-radius: 2px;
+    width: 0;
+    height: 1.5px;
+    background: rgba(0, 0, 0, 0.5);
+    filter: brightness(1.1);
+    transition: width .2s;
+}
+
+.Foot a:visited::after,
+.Foot a:hover::after {
+    width: 100%;
+}
+
 .Foot__content {
     display: flex;
     justify-content: space-between;
@@ -12,20 +43,12 @@
 
 .Foot__title {
     padding-bottom: .4rem;
+    color: rgba(0, 0, 0, 0.4);
+    font-size: 1.3rem;
 }
 .Foot__col ul li {
     list-style: none;
     padding: .6rem .6rem .6rem 0;
-}
-
-.Foot__col a {
-    text-decoration: none;
-    color: black;
-    transition: all .2s;
-}
-
-.Foot__col a:hover {
-    color: rgba(0, 0, 0, 0.62);
 }
 
 .Foot__bottom {

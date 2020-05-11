@@ -15,7 +15,7 @@
 }
 
 .Topbar__blur {
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(7px);
     width: 100%;
     position: fixed;
     top: 0;
@@ -51,8 +51,8 @@
     height: 80px;
 }
 
-.Topbar__logo {
-
+.Topbar__logo a::after {
+    display: none;
 }
 
 .Topbar__logo img {

@@ -23,6 +23,13 @@ function App(props) {
         login: ['Login', false],
     });
 
+    if (props.loggedIn && auth.modal) {
+        setAuth(state => ({
+            ...state,
+                modal: false
+        }))
+    }
+
     useEffect(() => {
         checkAuth();
     }, [checkAuth]);

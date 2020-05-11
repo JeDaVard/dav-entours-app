@@ -4,6 +4,8 @@ import { logout } from "../../../app/actions";
 import classes from "./Navigation.module.css";
 import Separator from "../../UI/Separator/Separator";
 import OutsideAlerter from "../../../hocs/EventDelegator";
+import {Link} from "react-router-dom";
+import Logout from "./Logout";
 
 function Navigation(props) {
     const { name, photo } = props;
@@ -35,7 +37,7 @@ function Navigation(props) {
                         <ul className={classes.Navigation__profileDrop__ul2}>
                             <a href="/"><li>Account</li></a>
                             <a href="/"> <li>Help</li></a>
-                            <a href="/" onClick={e => {e.preventDefault(); props.logout()}}> <li>Logout</li></a>
+                            <Logout onClose={props.handleClose}/>
                         </ul>
                     </div>
                 </div>
@@ -49,8 +51,4 @@ const mapStateToProps = state => ({
     name: state.auth.name.split(' ')[0]
 });
 
-const mapDispatchToProps = dispatch => ({
-   logout: () => dispatch(logout())
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Navigation)
+export default connect(mapStateToProps)(Navigation)

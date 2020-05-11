@@ -57,6 +57,12 @@ export const fetchRandoms = () => (
     fetchData(randomsStart, randomsSuccess, randomsFailed, 'http://localhost:5000/api/tour')
 );
 
-export const fetchTour = slug => (
-    fetchData(fetchTourStart, fetchTourSuccess, fetchTourFailed, `http://localhost:5000/api/tour/${slug}`)
-);
+export const fetchTour = (slug, readyTour) => {
+    if (readyTour) {
+        return dispatch => {
+            dispatch(fetchTourSuccess(readyTour))
+        }
+    } else {
+        return fetchData(fetchTourStart, fetchTourSuccess, fetchTourFailed, `http://localhost:5000/api/tour/${slug}`)
+    }
+};

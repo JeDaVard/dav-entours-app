@@ -29,8 +29,13 @@
     background: transparent;
     color: black;
     padding: 1rem 1.5rem;
+    font-size: 1.4rem;
     border-radius: 60px;
     transition: all .1s;
+}
+
+.Navigation__menu a::after {
+    display: none;
 }
 
 .Navigation__menu a:hover {
@@ -187,8 +192,13 @@
 }
 
 .Navigation__profileDrop ul li {
+    font-size: 1.3rem;
     padding: 1rem 1.6rem;
     transition: all .1s;
+}
+
+.Navigation__profileDrop a::after {
+    display: none;
 }
 
 .Navigation__profileDrop ul li:hover,

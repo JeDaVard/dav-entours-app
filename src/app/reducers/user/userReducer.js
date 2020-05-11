@@ -4,8 +4,12 @@ const initialState = {
     users: {
         data: [],
         loading: false,
-        error: null
     },
+    user: {
+        data: {},
+        loading: false,
+    },
+    error: null
 }
 
 const userReducer = (state = initialState, action) => {
@@ -15,9 +19,9 @@ const userReducer = (state = initialState, action) => {
                 ...state,
                 users: {
                     ...state.users,
-                    loading: true,
-                    error: null
-                }
+                    loading: true
+                },
+                error: null
             }
         case actionTypes.FETCH_USERS_SUCCESS:
             return {
@@ -25,9 +29,9 @@ const userReducer = (state = initialState, action) => {
                 users: {
                     ...state.users,
                     data: action.payload.users,
-                    loading: false,
-                    error: null
-                }
+                    loading: false
+                },
+                error: null
             }
         case actionTypes.FETCH_USERS_FAILED:
             return {
@@ -35,8 +39,36 @@ const userReducer = (state = initialState, action) => {
                 users: {
                     ...state.users,
                     loading: false,
-                    error: action.error
-                }
+                },
+                error: action.error
+            }
+        case actionTypes.FETCH_USER_START:
+            return {
+                ...state,
+                user: {
+                    ...state.user,
+                    loading: true
+                },
+                error: null
+            }
+        case actionTypes.FETCH_USER_SUCCESS:
+            return {
+                ...state,
+                user: {
+                    ...state.user,
+                    data: action.payload.user,
+                    loading: false
+                },
+                error: null
+            }
+        case actionTypes.FETCH_USER_FAILED:
+            return {
+                ...state,
+                user: {
+                    ...state.user,
+                    loading: false,
+                },
+                error: action.error
             }
         default:
             return state

@@ -1,27 +1,27 @@
-import React from "react";
+import React from 'react';
 import classes from './TourImages.module.css';
-import image1 from './1.jpg'
-import image2 from './2.jpg'
-import image3 from './3.jpg'
-import image4 from './4.jpeg'
+import { connect } from 'react-redux';
 
-function TourImages() {
+function TourImages(props) {
+    const { loading, tour: { images } } = props;
     return (
         <section className={classes.TourImages}>
             <div className="row">
                 <div className={classes.TourImages__grid}>
-                    <div className={classes.TourImages__gridRow}>
-                        <img src={image1} alt=""/>
-                        <img src={image2} alt=""/>
-                    </div>
-                    <div className={classes.TourImages__gridRow}>
-                        <img src={image3} alt=""/>
-                        <img src={image4} alt=""/>
-                    </div>
+                    {!loading && images.map(image => (
+                        <div className={classes.TourImages__frame} key={image}>
+                            <img src={`http://localhost:5000/images/tour/${image}`} alt="" />
+                        </div>
+                    ))}
                 </div>
             </div>
         </section>
-    )
+    );
 }
 
-export default TourImages
+const mapStateToProps = (state) => ({
+    tour: state.feed.tour.data,
+    loading: state.feed.tour.loading,
+});
+
+export default connect(mapStateToProps)(TourImages);

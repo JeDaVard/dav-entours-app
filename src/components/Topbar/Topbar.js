@@ -21,7 +21,6 @@ function Topbar(props) {
     const closeHandler = () => {
         setProfileDrop(false)
     }
-
     const topBarHandler = function() {
         if (!isTransparent) {
             if (window.scrollY < 1) {
