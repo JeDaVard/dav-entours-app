@@ -6,15 +6,13 @@ function TourImages(props) {
     const { loading, tour: { images } } = props;
     return (
         <section className={classes.TourImages}>
-            <div className="row">
                 <div className={classes.TourImages__grid}>
                     {!loading && images.map(image => (
                         <div className={classes.TourImages__frame} key={image}>
-                            <img src={`http://localhost:5000/images/tour/${image}`} alt="" />
+                            <img src={`http://localhost:5000/images/tour/${image}`} alt="tour image" />
                         </div>
                     ))}
                 </div>
-            </div>
         </section>
     );
 }

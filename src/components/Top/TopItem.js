@@ -1,4 +1,5 @@
 import React from "react";
+import moment from "moment";
 import classes from './TopItem.module.css';
 
 export default ({ user }) => (
@@ -8,10 +9,12 @@ export default ({ user }) => (
                 <img src={`http://localhost:5000/images/user/${user.photo}`} alt={user.name} className={classes.Top__userImage}/>
             </div>
             <div className={classes.Top__userinfo}>
-                <h3><img src={`http://localhost:5000/images/user/${user.photo}`} alt=""/>{user.name.slice(0,19)}...</h3>
-                <p>Joined in {new Date(user.createdAt).getMonth()+1 + '/' + new Date(user.createdAt).getFullYear()}</p>
-                <p>Speaks - {user.speaks.map(lang => lang) }</p>
-                <p>{user.tours.length ? <b>{user.tours.length}</b> : 'Doesn\'t have'} tours</p>
+                <h3><img src={`http://localhost:5000/images/user/${user.photo}`} alt=""/>{user.name.length > 21 ? user.name.slice(0,19)+'...' : user.name}</h3>
+                <div className={classes.Top__userinfoDetails}>
+                    <p>Joined in {moment(user.createdAt).format('MMM YYYY')}</p>
+                    <p>{user.tours.length ? <b>{user.tours.length}</b> : 'Doesn\'t have'} tours</p>
+                    <p>Speaks - {user.speaks.map(lang => lang) }</p>
+                </div>
             </div>
             <div className={classes.Top__rating}>
                 <img src={`http://localhost:5000/images/user/${user.photo}`} alt="user"/>

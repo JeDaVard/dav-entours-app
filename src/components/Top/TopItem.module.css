@@ -1,4 +1,4 @@
-.Top__usercontainer {
+.Top__usercontainer a {
 }
 
 .Top__user {
@@ -14,6 +14,10 @@
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     transition: all .2s;
     cursor: pointer;
+}
+
+.Top__user a {
+    text-decoration: none;
 }
 
 .Top__imageFrame {
@@ -76,13 +80,15 @@
 .Top__userinfo h3 {
     color: #444444;
     font-size: 1.5rem;
-    padding: 1rem;
+    margin-top: -1rem;
+    padding: .6rem;
     transition: all .1s;
 }
 
-.Top__userinfo p {
-    font-size: 1.2rem;
-    padding: .4rem;
+.Top__userinfoDetails {
+    margin-top: -.5rem;
+    font-size: 1.3rem;
+    padding: .2rem .6rem;
 }
 
 .Top__user:hover .Top__userinfo h3 {

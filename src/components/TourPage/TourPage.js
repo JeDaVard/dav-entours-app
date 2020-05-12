@@ -46,7 +46,7 @@ function TourPage(props) {
             <TourDescription />
             <Separator />
             <TourImages />
-            <Separator margin={'4 2'}/>
+            <Separator margin={'0 2'}/>
             <TourReviews />
             <PopDown show={showPopDown.visible} />
         </>

@@ -1,5 +1,4 @@
 .TourImages {
-    margin: 4rem auto;
 }
 
 .TourImages__grid {
@@ -7,19 +6,24 @@
     overflow: hidden;
     display: flex;
     width: 100%;
-    border-radius: 20px;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
 }
 
 .TourImages__frame {
-    width: 50%;
-    height: 400px;
+    width: 33.3333%;
+    min-width: 33.3333%;
+    height: 300px;
 }
 
 .TourImages__grid img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border: .05rem solid white;
+    transform: scale(1.1);
+    transition: all .2s;
 }
 
+.TourImages__frame:hover img{
+    transform: scale(1);
+}

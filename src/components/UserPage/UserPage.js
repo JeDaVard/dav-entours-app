@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import UserListings from "./UserListings/UserListings";
 import UserReviews from "./UserReviews/UserReviews";
 import Loading2 from "../UI/Loading/Loading2";
+import TopLoading from "../UI/TopLoading/TopLoading";
 
 function UserPage(props) {
     const { fetchUser } = props;
@@ -50,12 +51,16 @@ function UserPage(props) {
                         </section>
                         <div className={classes.UserPage__more}>
                             <Separator margin={'0 1'}/>
-                            <UserListings />
-                            <Separator margin={'2 2'} />
+                            {props.user.tours && (
+                                <>
+                                    <UserListings />
+                                    <Separator margin={'2 2'} />
+                                </>
+                            )}
                             <UserReviews />
                         </div>
                     </div>
-            ) : <Loading2 />}
+            ) : <TopLoading />}
             </div>
         </div>
     )

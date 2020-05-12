@@ -1,5 +1,6 @@
 .Popular {
     margin: 4rem 0;
+    color: rgba(0, 0, 0, 0.7);
 }
 
 .Popular a,
@@ -11,7 +12,7 @@
 .Popular a:hover,
 .Popular a:active {
     font-size: 1.3rem;
-    color: black;
+    color: rgba(0, 0, 0, 0.8);
 }
 
 .Popular a::after {

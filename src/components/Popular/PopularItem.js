@@ -9,7 +9,7 @@ return(
             <div className={classes.Popular__image}>
                 <Link to={{pathname: `/tour/${popular.slug}`, state: popular }} ><img src={`http://localhost:5000/images/tour/${popular.imageCover}`} alt={popular.name}/></Link>
                 {new Date() - new Date(popular.createdAt) < 30*24*60*60*1000 && <div className={classes.new}><p>NEW</p></div>}
-                <div className={classes.Popular__price}><p>$299 | {popular.duration} days</p></div>
+                <div className={classes.Popular__price}><h3>${popular.price}</h3><p>{popular.duration} days</p></div>
                 <Link to={{pathname: `/tour/${popular.slug}`, state: popular }} ><div className={classes.Popular__title}>
                     <b>{popular.name}</b>
                 </div></Link>

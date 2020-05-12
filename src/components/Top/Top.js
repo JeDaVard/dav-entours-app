@@ -3,6 +3,7 @@ import React from 'react';
 import TopItemLoading from './TopItemLoading';
 import classes from './Top.module.css';
 import TopItem from './TopItem';
+import {Link} from "react-router-dom";
 
 function Top(props) {
     return (
@@ -15,7 +16,11 @@ function Top(props) {
 
                 <div className={classes.Top__content}>
                     {!props.loading && props.users.data.length ? (
-                        props.users.data.map((user) => <TopItem user={user} key={user._id}/>)
+                        props.users.data.map((user) => (
+                            <Link to={{pathname: `/user/${user._id}`}} key={user._id}>
+                                <TopItem user={user}/>
+                            </Link>
+                        ))
                     ) : (
                         <>
                             <TopItemLoading />
