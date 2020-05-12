@@ -29,15 +29,14 @@ function Navigation(props) {
                     </div>
                     <div className={!props.profileDrop ? `${classes.Navigation__profileDrop} ${classes.Navigation__profileDrop__close}` : `${classes.Navigation__profileDrop}`}>
                         <ul className={classes.Navigation__profileDrop__ul1}>
-                           <a href="/"> <li>Messages</li></a>
+                            <a href="/"><li>Profile</li></a>
+                            <a href="/"> <li>Messages</li></a>
                             <a href="/"> <li>Trips</li></a>
                             <a href="/"> <li>Saved</li></a>
                         </ul>
                         <Separator color={'light'}/>
                         <ul className={classes.Navigation__profileDrop__ul2}>
-                            <a href="/"><li>Account</li></a>
-                            <a href="/"> <li>Help</li></a>
-                            <Logout onClose={props.handleClose}/>
+                            <Logout onClose={props.handleClose}>Logout</Logout>
                         </ul>
                     </div>
                 </div>

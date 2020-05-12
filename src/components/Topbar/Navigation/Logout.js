@@ -10,7 +10,7 @@ const Logout = props => {
     }
     return (
         <>
-            <Link to={'/'} onClick={onLogout}><li>Logout</li></Link>
+            <Link to={'/'} onClick={onLogout}><li>{props.children}</li></Link>
             </>
     )
 }

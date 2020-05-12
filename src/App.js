@@ -105,6 +105,7 @@ function App(props) {
                     <Switch>
                         <Route path="/user/:id" component={UserPage} />
                         <Route path="/tour/:slug" component={TourPage} />
+                        <Route path="/me" component={UserPage} />
                         <Route path="/" component={Main} />
                     </Switch>
 
