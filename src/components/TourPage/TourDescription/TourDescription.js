@@ -16,7 +16,7 @@ function TourDescription(props) {
                             <div className={classes.TourDescription__users}>
                                 <Link to={{pathname: `/user/${!loading && tour.author._id}`}}>
                                     <div className={classes.TourDescription__user}>
-                                        <img src={`http://localhost:5000/images/user/${!loading && tour.author.photo}`} alt="user"/>
+                                        <img src={`${process.env.REACT_APP_SERVER}/images/user/${!loading && tour.author.photo}`} alt="user"/>
                                         <h3>{!loading && tour.author.name}</h3>
                                         <p>Author</p>
                                     </div>
@@ -24,7 +24,7 @@ function TourDescription(props) {
                                 {!loading &&  tour.guides.map( guide => (
                                     <Link to={{pathname: `/user/${guide._id}`}} key={guide._id}>
                                         <div className={classes.TourDescription__user}>
-                                            <img src={`http://localhost:5000/images/user/${guide.photo}`} alt="user"/>
+                                            <img src={`${process.env.REACT_APP_SERVER}/images/user/${guide.photo}`} alt="user"/>
                                             <h3>{guide.name}</h3>
                                             <p>Guide</p>
                                         </div>

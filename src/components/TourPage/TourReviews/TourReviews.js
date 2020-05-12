@@ -6,7 +6,6 @@ import Separator from "../../UI/Separator/Separator";
 import {Link} from "react-router-dom";
 
 const TourReviews = ({ tour, reviews, loading }) => {
-    console.log(reviews)
     return (
         <>
             <div className={classes.Reviews}>
@@ -30,7 +29,7 @@ const TourReviews = ({ tour, reviews, loading }) => {
                             <div className={classes.Reviews__review} key={review._id}>
                                 <div className={classes.Reviews__reviewInfo}>
                                     <Link to={{pathname: `/user/${review.author._id}`}}>
-                                        <img src={`http://localhost:5000/images/user/${review.author.photo}`} alt={review.author.name}/>
+                                        <img src={`${process.env.REACT_APP_SERVER}/images/user/${review.author.photo}`} alt={review.author.name}/>
                                     </Link>
                                     <div className={classes.Reviews__reviewer}>
                                         <Link to={{pathname: `/user/${review.author._id}`}}>

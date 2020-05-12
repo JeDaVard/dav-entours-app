@@ -25,8 +25,8 @@ export const auth = (data, login) => async (dispatch) => {
         dispatch(authStart());
 
         const url = login
-            ? 'http://localhost:5000/api/user/login'
-            : 'http://localhost:5000/api/user/sign-up';
+            ? `${process.env.REACT_APP_SERVER}/api/user/login`
+            : `${process.env.REACT_APP_SERVER}/api/user/sign-up`;
         const response = await fetch(url, {
             method: 'POST',
             mode: 'cors',

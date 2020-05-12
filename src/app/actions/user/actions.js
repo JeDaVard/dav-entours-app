@@ -1,48 +1,84 @@
 import * as actions from './types';
-import { fetchData } from "../../../utils/asyncFetchDispatch";
+import { fetchData } from '../../../utils/asyncFetchDispatch';
+import { getCookie } from '../../../utils/cookies';
 
 const fetchUsersStart = () => ({
-    type: actions.FETCH_USERS_START
-})
+    type: actions.FETCH_USERS_START,
+});
 
-const fetchUsersSUCCESS = users => ({
+const fetchUsersSUCCESS = (users) => ({
     type: actions.FETCH_USERS_SUCCESS,
     payload: {
-        users
-    }
-})
+        users,
+    },
+});
 
-const fetchUsersFailed = error => ({
+const fetchUsersFailed = (error) => ({
     type: actions.FETCH_USERS_FAILED,
-    error
-})
+    error,
+});
 
 const fetchUserStart = () => ({
-    type: actions.FETCH_USER_START
-})
+    type: actions.FETCH_USER_START,
+});
 
-const fetchUserSUCCESS = user => ({
+const fetchUserSUCCESS = (user) => ({
     type: actions.FETCH_USER_SUCCESS,
     payload: {
-        user
-    }
-})
+        user,
+    },
+});
 
-const fetchUserFailed = error => ({
+const fetchUserFailed = (error) => ({
     type: actions.FETCH_USER_FAILED,
-    error
-})
+    error,
+});
 
-export const fetchTopUsers = () => (
-    fetchData(fetchUsersStart, fetchUsersSUCCESS, fetchUsersFailed, 'http://localhost:5000/api/user')
-)
+const fetchMeStart = () => ({
+    type: actions.FETCH_ME_START,
+});
+
+const fetchMeSUCCESS = (me) => ({
+    type: actions.FETCH_ME_SUCCESS,
+    payload: {
+        me,
+    },
+});
+
+const fetchMeFailed = (error) => ({
+    type: actions.FETCH_ME_FAILED,
+    error,
+});
+
+export const fetchTopUsers = () =>
+    fetchData(
+        fetchUsersStart,
+        fetchUsersSUCCESS,
+        fetchUsersFailed,
+        `${process.env.REACT_APP_SERVER}/api/user`
+    );
 
 export const fetchUser = (id, readyState) => {
     if (readyState) {
-        return dispatch => {
-            dispatch(fetchUserSUCCESS(readyState))
-        }
+        return (dispatch) => {
+            dispatch(fetchUserSUCCESS(readyState));
+        };
     } else {
-        return fetchData(fetchUserStart, fetchUserSUCCESS, fetchUserFailed, `http://localhost:5000/api/user/${id}`)
+        return fetchData(
+            fetchUserStart,
+            fetchUserSUCCESS,
+            fetchUserFailed,
+            `${process.env.REACT_APP_SERVER}/api/user/${id}`
+        );
     }
-}
+};
+
+export const fetchMe = () => {
+    return fetchData(
+        fetchMeStart,
+        fetchMeSUCCESS,
+        fetchMeFailed,
+        `${process.env.REACT_APP_SERVER}/api/user/me`,
+        getCookie('authToken')
+    );
+};

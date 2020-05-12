@@ -11,7 +11,7 @@ export default ({ tour }) => (
                 <h2>{tour.name}</h2>
                 <p>{tour.startLocation.description}</p>
             </div>
-            <img src={`http://localhost:5000/images/tour/${tour.imageCover}`} alt="tour"/>
+            <img src={`${process.env.REACT_APP_SERVER}/images/tour/${tour.imageCover}`} alt="tour"/>
         </Link>
     </div>
 )

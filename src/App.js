@@ -16,6 +16,7 @@ import Foot from './components/Foot/Foot';
 
 function App(props) {
     // console.log(props)
+    console.log(process.env.REACT_APP_SERVER)
     const { checkAuth } = props;
 
     const [auth, setAuth] = useState({
@@ -105,7 +106,7 @@ function App(props) {
                     <Switch>
                         <Route path="/user/:id" component={UserPage} />
                         <Route path="/tour/:slug" component={TourPage} />
-                        <Route path="/me" component={UserPage} />
+                        <Route path="/me" render={props => <UserPage {...props} />} />
                         <Route path="/" component={Main} />
                     </Switch>
 

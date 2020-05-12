@@ -15,7 +15,7 @@ const UserListings = ({ tours }) => {
                             <Link to={{pathname: `/tour/${tour.slug}`, state: tour}}>
                                 <div className={classes.UserPage__listingImage}>
                                     <img
-                                        src={`http://localhost:5000/images/tour/${tour.imageCover}`}
+                                        src={`${process.env.REACT_APP_SERVER}/images/tour/${tour.imageCover}`}
                                         alt={tour.name}
                                     />
                                 </div>
@@ -48,8 +48,4 @@ const UserListings = ({ tours }) => {
     )
 }
 
-const mapStateToProps = state => ({
-    tours: state.user.user.data.tours
-})
-
-export default connect(mapStateToProps)(UserListings)
+export default UserListings

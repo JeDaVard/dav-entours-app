@@ -12,5 +12,6 @@ export {
 
 export {
     fetchTopUsers,
-    fetchUser
+    fetchUser,
+    fetchMe
 } from './user/actions'

@@ -16,7 +16,7 @@ function TourHead(props) {
                 unmountOnExit
             >
                 <img
-                    src={`http://localhost:5000/images/tour/${tour.imageCover}`}
+                    src={`${process.env.REACT_APP_SERVER}/images/tour/${tour.imageCover}`}
                     alt=""
                 />
             </CSSTransition>

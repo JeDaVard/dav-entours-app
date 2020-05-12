@@ -1,24 +1,34 @@
 import React, { useEffect } from 'react';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { fetchUser } from '../../app/actions';
+import { fetchUser, fetchMe } from '../../app/actions';
 import classes from './UserPage.module.css';
 import Separator from '../UI/Separator/Separator';
 import { Link } from 'react-router-dom';
 import UserListings from './UserListings/UserListings';
 import UserReviews from './UserReviews/UserReviews';
-import Loading2 from '../UI/Loading/Loading2';
 import TopLoading from '../UI/TopLoading/TopLoading';
 
 function UserPage(props) {
-    const { fetchUser } = props;
+    const { fetchUser, fetchMe, location: {pathname} } = props;
+    let user = pathname.startsWith('/me') ? props.me : props.user;
+    console.log(props)
     let reviews = [];
 
-    useEffect(() => {
-        fetchUser(props.match.params.id);
-    }, [fetchUser]);
+    // if (props.match.params.id === props.myID) {
+    //     <Redirect to={'/me'}/>
+    // }
 
-    if (props.user.tours) {
-        props.user.tours
+    useEffect(() => {
+        if (pathname.startsWith('/me')) {
+            fetchMe()
+        } else {
+            fetchUser(props.match.params.id)
+        }
+    }, [fetchUser, fetchMe, pathname]);
+
+    if (user.tours && user.tours.length) {
+        user.tours
             .map((tour) =>
                 tour.reviews.map( (review) => ({
                     ...review,
@@ -34,15 +44,15 @@ function UserPage(props) {
     return (
         <div className={classes.UserPage}>
             <div className="row">
-                {props.user.name ? (
+                {user.name ? (
                     <div className={classes.UserPage__content}>
                         <section className={classes.UserPage__profile}>
                             <div className={classes.UserPage__profileTop}>
-                                <h2>{props.user.name}</h2>
+                                <h2>{user.name}</h2>
                                 <div className={classes.UserPage__photoFrame}>
                                     <div className={classes.UserPage__photo}>
                                         <img
-                                            src={`http://localhost:5000/images/user/${props.user.photo}`}
+                                            src={`${process.env.REACT_APP_SERVER}/images/user/${user.photo}`}
                                             alt=""
                                         />
                                     </div>
@@ -54,31 +64,31 @@ function UserPage(props) {
                                 <h3>
                                     <b>{reviews.length}</b> Reviews
                                 </h3>
-                                <h3>Speaks - {props.user.speaks}</h3>
+                                <h3>Speaks - {user.speaks}</h3>
                             </div>
                             <Separator margin={'2 2'} />
                             <h2>
                                 Hi, I'm{' '}
-                                {props.user && props.user.name.split(' ')[0]}
+                                {user && user.name.split(' ')[0]}
                             </h2>
                             <h3>
                                 Joined{' '}
-                                {new Date(props.user.createdAt).getMonth() +
+                                {new Date(user.createdAt).getMonth() +
                                     1 +
                                     ' ' +
                                     new Date(
-                                        props.user.createdAt
+                                        user.createdAt
                                     ).getFullYear()}
                             </h3>
                             <h3>&nbsp;&nbsp;·&nbsp;&nbsp;</h3>
                             <Link to={'/'}>Edit profile</Link>
-                            <p>{props.user.about}</p>
+                            <p>{user.about}</p>
                         </section>
                         <div className={classes.UserPage__more}>
                             <Separator margin={'0 2'} />
-                            {props.user.tours.length > 0 && (
+                            {user.tours.length > 0 && (
                                 <>
-                                    <UserListings />
+                                    <UserListings tours={user.tours}/>
                                     <Separator margin={'2 2'} />
                                 </>
                             )}
@@ -96,10 +106,14 @@ function UserPage(props) {
 const mapStateToProps = (state) => ({
     user: state.user.user.data,
     loading: state.user.user.loading,
+    me: state.user.me.data,
+    meLoading: state.user.me.loading,
+    myID: state.auth.userId
 });
 
 const mapDispatchToState = (dispatch) => ({
     fetchUser: (id, readyState) => dispatch(fetchUser(id, readyState)),
+    fetchMe: () => dispatch(fetchMe()),
 });
 
 export default connect(mapStateToProps, mapDispatchToState)(UserPage);

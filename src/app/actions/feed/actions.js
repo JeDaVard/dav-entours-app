@@ -50,11 +50,11 @@ const fetchTourFailed = error => ({
 })
 
 export const fetchPopulars = () => (
-    fetchData(popularsStart, popularsSuccess, popularsFailed, 'http://localhost:5000/api/tour')
+    fetchData(popularsStart, popularsSuccess, popularsFailed, `${process.env.REACT_APP_SERVER}/api/tour`)
 );
 
 export const fetchRandoms = () => (
-    fetchData(randomsStart, randomsSuccess, randomsFailed, 'http://localhost:5000/api/tour')
+    fetchData(randomsStart, randomsSuccess, randomsFailed, `${process.env.REACT_APP_SERVER}/api/tour`)
 );
 
 export const fetchTour = (slug, readyTour) => {
@@ -63,6 +63,6 @@ export const fetchTour = (slug, readyTour) => {
             dispatch(fetchTourSuccess(readyTour))
         }
     } else {
-        return fetchData(fetchTourStart, fetchTourSuccess, fetchTourFailed, `http://localhost:5000/api/tour/${slug}`)
+        return fetchData(fetchTourStart, fetchTourSuccess, fetchTourFailed, `${process.env.REACT_APP_SERVER}/api/tour/${slug}`)
     }
 };

@@ -29,7 +29,7 @@ function Navigation(props) {
                     </div>
                     <div className={!props.profileDrop ? `${classes.Navigation__profileDrop} ${classes.Navigation__profileDrop__close}` : `${classes.Navigation__profileDrop}`}>
                         <ul className={classes.Navigation__profileDrop__ul1}>
-                            <a href="/"><li>Profile</li></a>
+                            <Link to={{pathname: '/me'}}><li>Profile</li></Link>
                             <a href="/"> <li>Messages</li></a>
                             <a href="/"> <li>Trips</li></a>
                             <a href="/"> <li>Saved</li></a>
@@ -46,7 +46,7 @@ function Navigation(props) {
 }
 
 const mapStateToProps = state => ({
-    photo: `http://localhost:5000/images/user/${state.auth.photo}`,
+    photo: `${process.env.REACT_APP_SERVER}/images/user/${state.auth.photo}`,
     name: state.auth.name.split(' ')[0]
 });
 

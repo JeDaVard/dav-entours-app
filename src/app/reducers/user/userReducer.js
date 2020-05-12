@@ -9,6 +9,10 @@ const initialState = {
         data: {},
         loading: false,
     },
+    me: {
+        data: {},
+        loading: false,
+    },
     error: null
 }
 
@@ -66,6 +70,34 @@ const userReducer = (state = initialState, action) => {
                 ...state,
                 user: {
                     ...state.user,
+                    loading: false,
+                },
+                error: action.error
+            }
+        case actionTypes.FETCH_ME_START:
+            return {
+                ...state,
+                me: {
+                    ...state.me,
+                    loading: true
+                },
+                error: null
+            }
+        case actionTypes.FETCH_ME_SUCCESS:
+            return {
+                ...state,
+                me: {
+                    ...state.me,
+                    data: action.payload.me,
+                    loading: false
+                },
+                error: null
+            }
+        case actionTypes.FETCH_ME_FAILED:
+            return {
+                ...state,
+                me: {
+                    ...state.me,
                     loading: false,
                 },
                 error: action.error

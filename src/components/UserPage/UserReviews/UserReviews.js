@@ -4,7 +4,6 @@ import classes from './UserReviews.module.css';
 import {Link} from "react-router-dom";
 
 const UserReviews = ({ reviews, loading }) => {
-    console.log(reviews)
     return (
         <section className={classes.UserPage__stuff}>
             <div className={classes.UserPage__reviews}>
@@ -16,20 +15,20 @@ const UserReviews = ({ reviews, loading }) => {
                             <div className={classes.UserPage__participated}>
                                 <div>
                                     <h6>Participated&nbsp;
-                                        <Link to={{pathname: `/tour/${review.participated.slug}`}}>
+                                        <Link to={loc => ({...loc, pathname: `/tour/${review.participated.slug}`})}>
                                             {review.participated.name} tour
                                         </Link>
                                     </h6>
                                     <h5>{moment(review.createdAt).format('DD MMM YYYY')}</h5>
                                 </div>
-                                <Link to={{pathname: `/tour/${review.participated.slug}`}}>
-                                    <img src={`http://localhost:5000/images/tour/${review.participated.image}`} alt={review.participated.name}/>
+                                <Link to={loc => ({...loc, pathname: `/tour/${review.participated.slug}`})}>
+                                    <img src={`${process.env.REACT_APP_SERVER}/images/tour/${review.participated.image}`} alt={review.participated.name}/>
                                 </Link>
                             </div>
                             <p>{review.review}</p>
                             <div className={classes.UserPage__reviewer}>
                                 <Link to={{pathname: `/user/${review.author._id}`}}>
-                                    <img src={`http://localhost:5000/images/user/${review.author.photo}`} alt={review.author.name}/>
+                                    <img src={`${process.env.REACT_APP_SERVER}/images/user/${review.author.photo}`} alt={review.author.name}/>
                                 </Link>
                                 <div>
                                     <Link to={{pathname: `/user/${review.author._id}`}}>

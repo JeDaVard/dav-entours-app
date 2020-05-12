@@ -9,7 +9,7 @@ function TourImages(props) {
                 <div className={classes.TourImages__grid}>
                     {!loading && images.map(image => (
                         <div className={classes.TourImages__frame} key={image}>
-                            <img src={`http://localhost:5000/images/tour/${image}`} alt="tour image" />
+                            <img src={`${process.env.REACT_APP_SERVER}/images/tour/${image}`} alt="tour image" />
                         </div>
                     ))}
                 </div>
