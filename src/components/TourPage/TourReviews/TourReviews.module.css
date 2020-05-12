@@ -1,0 +1,77 @@
+.Reviews {
+    color: rgba(0, 0, 0, 0.76);
+}
+
+.Reviews p {
+    color: rgba(0, 0, 0, 0.76);
+    font-size: 1.5rem;
+    padding: 1rem 0;
+}
+
+.Reviews a {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.76);
+    transition: all .2s;
+}
+
+
+.Reviews h2 {
+    font-size: 2.4rem;
+}
+
+.Reviews a:hover {
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.Reviews__info {
+    display: flex;
+    align-items: center;
+}
+
+.Reviews__rating {
+    color: #20a74d;
+    font-size: 1.6rem;
+}
+
+.Reviews__quantity h3 {
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+.Reviews__content {
+}
+
+.Reviews__review {
+    padding: 2rem 0;
+}
+
+.Reviews__review:not(:last-of-type) {
+    border-bottom: .1rem solid rgba(0, 0, 0, 0.08);
+}
+
+/*.Reviews__review {*/
+/*    border-bottom: .1rem solid rgba(0, 0, 0, 0.08);*/
+/*}*/
+
+.Reviews__reviewInfo {
+    display: flex;
+    align-items: center;
+}
+
+
+.Reviews__reviewInfo img {
+    margin-right: 1.2rem;
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.Reviews__reviewer h3 {
+    font-size: 1.5rem;
+}
+
+.Reviews__reviewer h4 {
+    font-size: 1.3rem;
+    font-weight: 400;
+}

@@ -1,6 +1,11 @@
 .Separator {
-    margin: auto;
     width: 100%;
+    border: .05rem solid rgba(0, 0, 0, 0.14);
+}
+
+.Separator__vertical {
+    width: 0;
+    height: 100%;
     border: .05rem solid rgba(0, 0, 0, 0.14);
 }
 
@@ -9,7 +14,7 @@
 }
 
 .normal {
-    border: .05rem solid rgba(0, 0, 0, 0.14);
+    border: .05rem solid rgba(0, 0, 0, 0.08);
 }
 
 .dark {

@@ -1,5 +1,6 @@
 .TourDescription {
     margin: -.3rem auto 0 auto;
+    color: rgba(0, 0, 0, 0.8);
 }
 
 .TourDescription__content {
@@ -16,6 +17,11 @@
     padding: 2rem;
 }
 
+.TourDescription__users a {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.81);
+}
+
 .TourDescription__user {
     display: flex;
     align-items: center;
@@ -24,11 +30,28 @@
     width: 100%;
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.12);
     border-radius: 24px;
+    transition: all .2s;
 }
+
+.TourDescription__user:hover,
+.TourDescription__user:visited,
+.TourDescription__user:active {
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.TourDescription__user:hover img,
+.TourDescription__user:visited img,
+.TourDescription__user:active img {
+    filter: brightness(1.1);
+}
+
 
 .TourDescription__user img {
     width: 48px;
+    height: 48px;
+    object-fit: cover;
     border-radius: 50%;
+    transition: all .2s;
     /*border: 2px solid rgba(0, 0, 0, 0.08);*/
 }
 

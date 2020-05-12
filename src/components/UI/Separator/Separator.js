@@ -3,10 +3,23 @@ import classes from './Separator.module.css';
 
 const Separator = (props) => {
     const styles = {
-        margin: `${props.margin ? props.margin : '0'}rem 0`
+        margin: props.vertical ? (
+            `${props.margin ? '0 ' + props.margin.split(' ')[1]+'rem ' + '0 ' + props.margin.split(' ')[0]+'rem': '0'}`
+        ) : (
+            `${props.margin ? props.margin.split(' ')[0]+'rem 0 ' + props.margin.split(' ')[1]+'rem 0': '0'}`
+        )
     }
+
+    if (props.height) styles.height = props.height+'rem';
+
     return (
-    <div className={[classes.Separator, classes[props.color]].join(' ')} style={styles}> </div>
+        <>
+            {props.vertical ? (
+                <div className={[classes.Separator__vertical, classes[props.color]].join(' ')} style={styles}> </div>
+            ) : (
+                <div className={[classes.Separator, classes[props.color]].join(' ')} style={styles}> </div>
+            )}
+        </>
     )
 }
 

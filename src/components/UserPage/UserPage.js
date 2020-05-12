@@ -32,14 +32,14 @@ function UserPage(props) {
                                 </div>
                                 <a href="/">Update image</a>
                             </div>
-                            <Separator margin={'2'} />
+                            <Separator margin={'2 2'} />
                             <div className={classes.UserPage__stats}>
                                 <h3>
                                     <b>{props.user.reviews.length}</b> Reviews
                                 </h3>
                                 <h3>Speaks - {props.user.speaks}</h3>
                             </div>
-                            <Separator margin={'2'} />
+                            <Separator margin={'2 2'} />
                             <h2>Hi, I'm {props.user && props.user.name.split(' ')[0]}</h2>
                             <h3>Joined {new Date(props.user.createdAt).getMonth()+1 + ' ' + new Date(props.user.createdAt).getFullYear()}</h3>
                             <h3>&nbsp;&nbsp;·&nbsp;&nbsp;</h3>
@@ -49,11 +49,9 @@ function UserPage(props) {
                             </p>
                         </section>
                         <div className={classes.UserPage__more}>
-                            <div style={{ padding: '0 0 1rem 0' }}>
-                                <Separator />
-                            </div>
+                            <Separator margin={'0 1'}/>
                             <UserListings />
-                            <Separator margin={'2'} />
+                            <Separator margin={'2 2'} />
                             <UserReviews />
                         </div>
                     </div>

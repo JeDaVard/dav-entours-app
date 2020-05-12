@@ -6,6 +6,7 @@ import TourHead from './TourHead/TourHead';
 import TourDescription from './TourDescription/TourDescription';
 import TourImages from './TourImages/TourImages';
 import PopDown from './PopDown/PopDown';
+import TourReviews from "./TourReviews/TourReviews";
 
 
 function TourPage(props) {
@@ -45,6 +46,8 @@ function TourPage(props) {
             <TourDescription />
             <Separator />
             <TourImages />
+            <Separator margin={'4 2'}/>
+            <TourReviews />
             <PopDown show={showPopDown.visible} />
         </>
     );
