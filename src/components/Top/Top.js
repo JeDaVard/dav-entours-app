@@ -6,6 +6,7 @@ import TopItem from './TopItem';
 import {Link} from "react-router-dom";
 
 function Top(props) {
+    console.log(props)
     return (
         <section className={classes.Top}>
             <div className="row">

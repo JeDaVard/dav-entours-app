@@ -19,7 +19,7 @@ export default ({ user }) => (
             <div className={classes.Top__rating}>
                 <img src={`${process.env.REACT_APP_SERVER}/images/user/${user.photo}`} alt="user"/>
                 <h2>{user.tours.length ? user.tours.reduce((sum, val, index, arr) => arr[index].ratingsAverage + sum, 0)/user.tours.length : '0'}</h2>
-                <p>(<b>{user.reviews.length || '0'}</b>)</p>
+                <p>(<b>{user.tours.length ? user.tours.reduce((sum, val, index, arr) => arr[index].guides.length*3 + sum, 0) : '0'}</b>)</p>
             </div>
         </div>
     </div>

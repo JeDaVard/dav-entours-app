@@ -6,28 +6,118 @@
 .Search__content {
     margin: 0 auto;
     width: 100%;
-    height: 60px;
+    height: 7rem;
     position: relative;
     border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.04);
 }
 
-.Search__form input {
-    height: 60px;
-    outline: 0;
-    background: white;
+.Search__form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Search__inputs {
+    width: 88%;
+    display: flex;
+    align-items: center;
+    flex: 1 1;
+}
+
+.Search__inputbox {
+    width: 33.3333%;
+    height: 7rem;
+}
+
+.Search__inputbox label {
+    height: 100%;
+    width: 100%;
     border-radius: 10px;
-    font-size: 2rem;
+    padding: 1.6rem 2rem;
     border: 2px solid transparent;
-    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
     transition: all .2s;
-    width: 30%;
 }
 
-.Search__form input:hover {
-    border: 2px solid rgba(0, 0, 0, 0.1);
+.Search__inputbox label:hover {
+    border: 2px solid rgb(207, 207, 207);
 }
 
-.Search__form input:focus {
-    border: 2px solid rgba(0, 0, 0, 0.4);
+.Search__inputbox input:focus .Search__inputbox label {
+    border: 2px solid rgb(71, 71, 71);
+}
+
+.Search__inputbox div {
+    align-self: flex-start;
+    font-size: 1.1rem;
+    line-height: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding-bottom: 4px;
+}
+
+.Search__inputbox input {
+    width: 100%;
+    font-size: 1.4rem;
+    border: 0
+}
+.Search__inputbox input::placeholder {
+    color: #6d6d6d;
+}
+
+.Search__inputbox input:focus {
+    outline: 0;
+}
+
+.Search__input {
+    width: 33.333%;
+    height: 100%;
+    display: inline-block;
+    /*border: 2px solid black;*/
+}
+
+.Search__input button {
+    outline: 0;
+    margin-top: -1px;
+    background: transparent;
+    width: 100%;
+    padding: 1.6rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-items: flex-start;
+    border-radius: 1rem;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all .2s;
+}
+
+.Search__input button:hover {
+    border: 2px solid rgb(207, 207, 207);
+}
+
+.Search__input button:focus {
+    border: 2px solid rgb(71, 71, 71);
+}
+
+.Search__input button div:first-of-type {
+    font-size: 1.1rem;
+    line-height: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding-bottom: 4px;
+}
+
+.Search__input button div:last-of-type {
+    font-size: 1.4rem;
+    color: #6d6d6d;
+}
+
+.Search__button {
+    margin: 0 1rem;
 }

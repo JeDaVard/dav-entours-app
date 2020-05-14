@@ -3,14 +3,13 @@
 }
 .coverImage-enter-active {
     opacity: 1;
-    transition: all 400ms;
+    transition: all 300ms;
 }
 .coverImage-exit {
     opacity: 1;
 }
 .coverImage-exit-active {
     opacity: 0;
-    transition: all 400ms;
 }
 
 .tourTitle-enter {

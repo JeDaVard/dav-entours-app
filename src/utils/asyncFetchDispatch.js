@@ -12,8 +12,7 @@ function fetchData(start, success, failed, url, token) {
                 })
                 : await fetch(url);
             const result = await response.json();
-
-            if (result.status === 'failed' || result.status === 'fail') {
+            if (result.status === 'failed' || result.status === 'fail' || result.status === 'error') {
                 return dispatch(failed(`Oops.. ${result.message}`))
             }
             dispatch(success(result.data.data))

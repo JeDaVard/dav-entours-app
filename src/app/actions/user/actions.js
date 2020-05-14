@@ -34,22 +34,6 @@ const fetchUserFailed = (error) => ({
     error,
 });
 
-const fetchMeStart = () => ({
-    type: actions.FETCH_ME_START,
-});
-
-const fetchMeSUCCESS = (me) => ({
-    type: actions.FETCH_ME_SUCCESS,
-    payload: {
-        me,
-    },
-});
-
-const fetchMeFailed = (error) => ({
-    type: actions.FETCH_ME_FAILED,
-    error,
-});
-
 export const fetchTopUsers = () =>
     fetchData(
         fetchUsersStart,
@@ -58,11 +42,19 @@ export const fetchTopUsers = () =>
         `${process.env.REACT_APP_SERVER}/api/user`
     );
 
-export const fetchUser = (id, readyState) => {
+export const fetchUser = (id, me, readyState) => {
     if (readyState) {
         return (dispatch) => {
             dispatch(fetchUserSUCCESS(readyState));
         };
+    } else if (me) {
+        return fetchData(
+            fetchUserStart,
+            fetchUserSUCCESS,
+            fetchUserFailed,
+            `${process.env.REACT_APP_SERVER}/api/user/me`,
+            getCookie('authToken')
+        );
     } else {
         return fetchData(
             fetchUserStart,
@@ -71,14 +63,4 @@ export const fetchUser = (id, readyState) => {
             `${process.env.REACT_APP_SERVER}/api/user/${id}`
         );
     }
-};
-
-export const fetchMe = () => {
-    return fetchData(
-        fetchMeStart,
-        fetchMeSUCCESS,
-        fetchMeFailed,
-        `${process.env.REACT_APP_SERVER}/api/user/me`,
-        getCookie('authToken')
-    );
 };

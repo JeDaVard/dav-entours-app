@@ -5,6 +5,7 @@ import logo2 from './entours2.png'
 import Navigation from "./Navigation/Navigation";
 import {Link} from "react-router-dom";
 
+
 function Topbar(props) {
     const isTransparent = !!props.location.pathname.match(/^\/tour\/.*/);
     const initialTopBar = {
@@ -66,7 +67,6 @@ function Topbar(props) {
 
     return (
         <>
-            <div className={`${!topBar.transparent ? classes.Topbar__blur : classes.Topbar__blur + ' ' + classes.Topbar__blur__transparent}`}></div>
             <div
                 className={`${
                     !topBar.transparent

@@ -1,0 +1,113 @@
+.StyledButton {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    font-size: 1.4rem;
+    line-height: 16px;
+    font-weight: 600;
+    padding: 1.7rem 3rem;
+    color: rgb(255, 255, 255);
+    width: 100%;
+    text-decoration: none;
+    border-radius: 8px;
+    overflow: hidden;
+    outline: none;
+    transition: box-shadow 0.2s ease 0s, -ms-transform 0.1s ease 0s,
+    -webkit-transform 0.1s ease 0s, transform 0.1s ease 0s;
+    border-width: initial;
+    border-style: none;
+    border-color: initial;
+    border-image: initial;
+    background: linear-gradient(
+            to right,
+            #5ddd9a 0%,
+            #4fc877 50%,
+            #3ac87f 100%
+            /*rgb(230, 30, 77) 0%,*/
+            /*rgb(227, 28, 95) 50%,*/
+            /*rgb(215, 4, 102) 100%*/
+    );
+}
+
+.StyledButton:hover {
+    color: rgb(255, 255, 255);
+    border-radius: 8px;
+    border-width: initial;
+    border-style: none;
+    border-color: initial;
+    border-image: initial;
+    background: linear-gradient(
+            to right,
+            #5ddd9a 0%,
+            #4fc877 50%,
+            #3ac87f 100%
+    );
+}
+
+.StyledButton:active {
+    transform: scale(0.96);
+    border: none;
+    background: #4fc877;
+    color: #ffffff;
+}
+
+.StyledButton__effectContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    -webkit-mask-image: -webkit-radial-gradient(center, white, black);
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+}
+
+.StyledButton__effect {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-width: 200px;
+    background-size: 200% 200%;
+    opacity: 0;
+    background-image: radial-gradient(
+            circle at center center,
+            #59e3b3 0%,
+            #47d27a 27.5%,
+            #4fc885 40%,
+            #3ac87f 57.5%,
+            rgb(189, 30, 89) 75%,
+            rgb(189, 30, 89) 100%
+    );
+    transition: opacity 1.25s ease 0s;
+}
+
+.StyledButton__effect:hover {
+    opacity: 1;
+}
+
+.StyledButton__effect:active {
+    transition: -ms-transform 2s, -webkit-transform 2s, transform 2s,
+    opacity 2s;
+    opacity: 0;
+    transform: scale(5);
+}
+
+.StyledButton__text {
+    display: block;
+    position: relative;
+    pointer-events: none;
+}
+
+.for_future_the_icon {
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: horizontal;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}

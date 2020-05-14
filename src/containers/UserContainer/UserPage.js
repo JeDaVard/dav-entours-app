@@ -1,31 +1,22 @@
 import React, { useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { fetchUser, fetchMe } from '../../app/actions';
+import { fetchUser } from '../../app/actions';
 import classes from './UserPage.module.css';
-import Separator from '../UI/Separator/Separator';
+import Separator from '../../components/UI/Separator/Separator';
 import { Link } from 'react-router-dom';
-import UserListings from './UserListings/UserListings';
-import UserReviews from './UserReviews/UserReviews';
-import TopLoading from '../UI/TopLoading/TopLoading';
+import UserListings from '../../components/UserPage/UserListings/UserListings';
+import UserReviews from '../../components/UserPage/UserReviews/UserReviews';
+import TopLoading from '../../components/UI/TopLoading/TopLoading';
 
 function UserPage(props) {
-    const { fetchUser, fetchMe, location: {pathname} } = props;
-    let user = pathname.startsWith('/me') ? props.me : props.user;
+    const { fetchUser, location: {pathname}, user } = props;
     console.log(props)
     let reviews = [];
 
-    // if (props.match.params.id === props.myID) {
-    //     <Redirect to={'/me'}/>
-    // }
-
     useEffect(() => {
-        if (pathname.startsWith('/me')) {
-            fetchMe()
-        } else {
-            fetchUser(props.match.params.id)
-        }
-    }, [fetchUser, fetchMe, pathname]);
+        fetchUser(props.match.params.id, pathname.startsWith('/me'))
+    }, [fetchUser, pathname]);
 
     if (user.tours && user.tours.length) {
         user.tours
@@ -43,8 +34,9 @@ function UserPage(props) {
 
     return (
         <div className={classes.UserPage}>
+            {props.loading && <TopLoading />}
             <div className="row">
-                {user.name ? (
+                {user.name && (
                     <div className={classes.UserPage__content}>
                         <section className={classes.UserPage__profile}>
                             <div className={classes.UserPage__profileTop}>
@@ -95,8 +87,6 @@ function UserPage(props) {
                             <UserReviews reviews={reviews} />
                         </div>
                     </div>
-                ) : (
-                    <TopLoading />
                 )}
             </div>
         </div>
@@ -105,15 +95,11 @@ function UserPage(props) {
 
 const mapStateToProps = (state) => ({
     user: state.user.user.data,
-    loading: state.user.user.loading,
-    me: state.user.me.data,
-    meLoading: state.user.me.loading,
-    myID: state.auth.userId
+    loading: state.user.user.loading
 });
 
 const mapDispatchToState = (dispatch) => ({
-    fetchUser: (id, readyState) => dispatch(fetchUser(id, readyState)),
-    fetchMe: () => dispatch(fetchMe()),
+    fetchUser: (id, me, readyState) => dispatch(fetchUser(id, me, readyState)),
 });
 
 export default connect(mapStateToProps, mapDispatchToState)(UserPage);

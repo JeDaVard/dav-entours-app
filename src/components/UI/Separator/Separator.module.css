@@ -13,6 +13,10 @@
     border: .05rem solid rgba(0, 0, 0, 0.06);
 }
 
+.middle {
+    border: .05rem solid rgba(0, 0, 0, 0.12);
+}
+
 .normal {
     border: .05rem solid rgba(0, 0, 0, 0.08);
 }

@@ -11,7 +11,7 @@ function TourHead(props) {
         <div className={classes.TourHead__cover}>
             <CSSTransition
                 in={!loading}
-                timeout={400}
+                timeout={300}
                 classNames="coverImage"
                 unmountOnExit
             >

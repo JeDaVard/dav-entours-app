@@ -4,8 +4,8 @@ import { connect } from "react-redux";
 import { checkAuth } from './app/actions';
 import Main from './containers/Main';
 import './App.css';
-import TourPage from './components/TourPage/TourPage';
-import UserPage from './components/UserPage/UserPage';
+import TourPage from './containers/TourContainer/TourPage';
+import UserPage from './containers/UserContainer/UserPage';
 import LoginForm from './containers/LoginForm/LoginForm';
 import Modal from './components/UI/Modal/Modal';
 import Layout from './components/Layout/Layout';
@@ -13,11 +13,19 @@ import Topbar from './components/Topbar/Topbar';
 import Search from './components/Search/Search';
 import Separator from './components/UI/Separator/Separator';
 import Foot from './components/Foot/Foot';
+import Error from "./components/Error/Error";
 
 function App(props) {
     // console.log(props)
-    console.log(process.env.REACT_APP_SERVER)
     const { checkAuth } = props;
+
+    const [ error, setError ] = useState(false)
+
+    useEffect(() => {
+        if (props.error) {
+            setError(true)
+        }
+    }, [props.error])
 
     const [auth, setAuth] = useState({
         modal: false,
@@ -54,39 +62,9 @@ function App(props) {
         });
     };
 
-    // if (props.match.path.match(/^tour\/:id.+?/)) {
-    //     setUI({transparentTop: true})
-    // } else {
-    //     setUI({transparentTop: false})
-    // }
-
-
-    let routes = (
-        <>
-        {/*// <Switch>*/}
-        {/*//     <Route*/}
-        {/*//         path="/"*/}
-        {/*//         exact*/}
-        {/*//         render={props => (*/}
-        {/*//             <FeedPage userId={this.state.userId} token={this.state.token} />*/}
-        {/*//         )}*/}
-        {/*//     />*/}
-        {/*//     <Route*/}
-        {/*//         path="/:postId"*/}
-        {/*//         render={props => (*/}
-        {/*//             <SinglePostPage*/}
-        {/*//                 {...props}*/}
-        {/*//                 userId={this.state.userId}*/}
-        {/*//                 token={this.state.token}*/}
-        {/*//             />*/}
-        {/*//         )}*/}
-        {/*//     />*/}
-        {/*// </Switch>*/}
-        </>
-    )
-
     return (
         <>
+            {props.error && <Error onClose={() => {setError(false)}} show={error}>{props.error}</Error>}
             <Layout
                 header={
                     <Topbar
@@ -103,12 +81,13 @@ function App(props) {
                         <Foot />
                     </>
                 }>
-                    <Switch>
-                        <Route path="/user/:id" component={UserPage} />
-                        <Route path="/tour/:slug" component={TourPage} />
-                        <Route path="/me" render={props => <UserPage {...props} />} />
-                        <Route path="/" component={Main} />
-                    </Switch>
+
+                <Switch>
+                    <Route path="/user/:id" component={UserPage} />
+                    <Route path="/tour/:slug" component={TourPage} />
+                    <Route path="/me" component={UserPage} />
+                    <Route path="/" component={Main} />
+                </Switch>
 
                 <Modal
                     onClick={authModalClose}
@@ -127,6 +106,8 @@ function App(props) {
 }
 
 const mapStateToProps = state => ({
-    loggedIn: !!state.auth.token
+    loggedIn: !!state.auth.token,
+    error: state.user.error || state.feed.error,
+    loading: state.user.user.loading
 });
 export default connect(mapStateToProps, { checkAuth })(withRouter(App));

@@ -221,6 +221,9 @@ function LoginForm(props) {
                     <AnimatedValidation startCondition={!state.input.password.valid}>
                         Password must have 8 or bigger length
                     </AnimatedValidation>
+                    <AnimatedValidation startCondition={props.error}>
+                        {props.error}
+                    </AnimatedValidation>
                 </div>
                 {props.loading ? (
                     <Loading white button/>
@@ -240,6 +243,7 @@ function LoginForm(props) {
 
 const mapStateToProps = (state) => ({
     loading: state.auth.loading,
+    error: state.auth.error
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -1,0 +1,14 @@
+.error-enter {
+    height: 0;
+}
+.error-enter-active {
+    height: 4.5rem;
+    transition: all .3s;
+}
+.error-exit {
+    height: 4.5rem;
+}
+.error-exit-active {
+    height: 0;
+    transition: all .3s;
+}

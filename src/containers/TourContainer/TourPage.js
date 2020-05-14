@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { fetchTour } from '../../app/actions';
-import Separator from '../UI/Separator/Separator';
-import TourHead from './TourHead/TourHead';
-import TourDescription from './TourDescription/TourDescription';
-import TourImages from './TourImages/TourImages';
-import PopDown from './PopDown/PopDown';
-import TourReviews from "./TourReviews/TourReviews";
+import Separator from '../../components/UI/Separator/Separator';
+import TourHead from '../../components/TourPage/TourHead/TourHead';
+import TourDescription from '../../components/TourPage/TourDescription/TourDescription';
+import TourImages from '../../components/TourPage/TourImages/TourImages';
+import PopDown from '../../components/TourPage/PopDown/PopDown';
+import TourReviews from "../../components/TourPage/TourReviews/TourReviews";
+import TopLoading from "../../components/UI/TopLoading/TopLoading";
 
 
 function TourPage(props) {
@@ -42,6 +43,7 @@ function TourPage(props) {
     }, [handleScroll]);
     return (
         <>
+            {props.loading && <TopLoading />}
             <TourHead />
             <TourDescription />
             <Separator />
@@ -53,8 +55,12 @@ function TourPage(props) {
     );
 }
 
+const mapStateToProps = state => ({
+    loading: state.feed.tour.loading
+})
+
 const mapDispatchToProps = (dispatch) => ({
     fetchTour: (slug, readyTour) => dispatch(fetchTour(slug, readyTour)),
 });
 
-export default connect(null, mapDispatchToProps)(TourPage);
+export default connect(mapStateToProps, mapDispatchToProps)(TourPage);

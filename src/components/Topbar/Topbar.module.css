@@ -1,31 +1,26 @@
 .Topbar {
     font-weight: 500;
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.92);
     width: 100%;
     position: fixed;
-    top: 0;
     height: 8rem;
-    /*backdrop-filter: blur(10px);*/
+    /*top: 0;*/
     z-index: 100;
-    transition: all .3s;
+    transition: all .4s;
+}
+
+.Topbar::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0);
+    backdrop-filter: blur(10px);
+    z-index: -1;
 }
 
 .Topbar__relative {
     height: 8rem;
-}
-
-.Topbar__blur {
-    backdrop-filter: blur(7px);
-    width: 100%;
-    position: fixed;
-    top: 0;
-    height: 8rem;
-    z-index: 100;
-    transition: all .3s;
-}
-
-.Topbar__blur__transparent {
-    backdrop-filter: blur(0);
 }
 
 .Topbar__transparent {
@@ -33,10 +28,10 @@
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.44), transparent);
     width: 100%;
     position: fixed;
-    top: 0;
+    /*top: 0;*/
     /*backdrop-filter: blur(0);*/
     z-index: 100;
-    transition: all .3s;
+    transition: all .4s;
 }
 
 .headerShadow {
@@ -57,4 +52,5 @@
 
 .Topbar__logo img {
     width: 128px;
+    height: 37px;
 }

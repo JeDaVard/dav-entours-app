@@ -34,7 +34,8 @@
     margin-right: -1rem;
 }
 
-.Modal__header button:hover {
+.Modal__header button:hover,
+.Modal__header button:active {
     background: rgba(0, 0, 0, 0.1);
 }
 
