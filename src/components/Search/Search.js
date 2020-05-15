@@ -35,8 +35,8 @@ function Search() {
                                 <div className={classes.Search__cell}>
                                     <div className={classes.Search__q}>
                                         <button className={classes.Search__buttonBox}>
-                                            <div className={classes.Search__buttonBox__title}>Tour start / end</div>
-                                            <div className={classes.Search__buttonBox__selection}>Add dates</div>
+                                            <div className={classes.Search__buttonBox__title}>Participants</div>
+                                            <div className={classes.Search__buttonBox__selection}>Add participants</div>
                                         </button>
                                     </div>
                                 </div>

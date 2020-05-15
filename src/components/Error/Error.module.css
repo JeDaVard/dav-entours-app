@@ -29,11 +29,11 @@
 .Error button {
     text-align: center;
     font-size: 3rem;
+    position: relative;
     color: white;
     width: 4rem;
     height: 4rem;
     padding: 0 0 .5rem;
-    border-radius: 20px;
     outline: 0;
     border: none;
     cursor: pointer;
@@ -41,7 +41,22 @@
     background: transparent;
 }
 
-.Error button:hover,
-.Error button:active {
-    background: rgba(255, 255, 255, 0.2);
+.Error button::after {
+    content: '';
+    width: 80%;
+    height: 80%;
+    background: #4fc877;
+    border-radius: 20px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    transition: opacity .2s;
+    z-index: -1;
+}
+
+.Error button:hover::after,
+.Error button:active::after {
+    opacity: 1;
 }
