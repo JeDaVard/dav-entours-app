@@ -12,112 +12,118 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
     border: 1px solid rgba(0, 0, 0, 0.04);
 }
-
 .Search__form {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.Search__inputs {
-    width: 88%;
-    display: flex;
-    align-items: center;
-    flex: 1 1;
-}
-
-.Search__inputbox {
-    width: 33.3333%;
-    height: 7rem;
-}
-
-.Search__inputbox label {
-    height: 100%;
+    border: 1px solid #f7f7f7;
+    border-radius: 12px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.08);
+    color: #222222;
+    display: -webkit-inline-flex;
+    display: inline-flex;
     width: 100%;
-    border-radius: 10px;
-    padding: 1.6rem 2rem;
+    position: relative;
+}
+.Search__search {
+    display: inline-flex;
+    width: 100%;
+}
+.Search__but {
+    padding: 11px;
+    margin-left: 2px;
+}
+.Search__sep {
+    align-self: center;
+    border-right: 1px solid #DDDDDD;
+    -webkit-flex: 0 1 0px;
+    flex: 0 1 0px;
+    height: 44px;
+}
+.Search__cell {
+    flex: 1 0 0;
+}
+.Search__q {
+    margin: -1px;
+    position: relative;
+}
+.Search__loc {
+    transition: border-color 0.2s ease;
     border: 2px solid transparent;
-    display: flex;
-    flex-direction: column;
+    border-radius: 12px;
+    display: block;
+    padding: 16px 22px;
     cursor: pointer;
-    transition: all .2s;
+    position: relative;
+    text-align: left;
+    z-index: 2;
 }
-
-.Search__inputbox label:hover {
-    border: 2px solid rgb(207, 207, 207);
-}
-
-.Search__inputbox input:focus .Search__inputbox label {
-    border: 2px solid rgb(71, 71, 71);
-}
-
-.Search__inputbox div {
-    align-self: flex-start;
-    font-size: 1.1rem;
-    line-height: 1.2rem;
+.Search__loc__name {
+    font-size: 10px;
+    line-height: 12px;
     font-weight: 700;
     letter-spacing: 0.04em;
     text-transform: uppercase;
     padding-bottom: 4px;
 }
-
-.Search__inputbox input {
+.Search__loc__input {
+    display: block;
+    border: 0;
+    margin: 0;
+    padding: 0;
     width: 100%;
-    font-size: 1.4rem;
-    border: 0
+    background: none;
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 600;
+    color: #222222;
+    text-overflow: ellipsis;
 }
-.Search__inputbox input::placeholder {
-    color: #6d6d6d;
-}
-
-.Search__inputbox input:focus {
+.Search__loc__input:focus {
     outline: 0;
 }
-
-.Search__input {
-    width: 33.333%;
-    height: 100%;
+.Search__loc__input::placeholder {
+    font-weight: 400;
+}
+.Search__loc:hover {
+    border: 2px solid #DDDDDD;
+}
+.Search__loc:focus {
+    border: 2px solid #222222;
+}
+.Search__buttonBox {
+    width: 100%;
     display: inline-block;
-    /*border: 2px solid black;*/
-}
-
-.Search__input button {
-    outline: 0;
-    margin-top: -1px;
-    background: transparent;
-    width: 100%;
-    padding: 1.6rem 2rem;
-    display: flex;
-    flex-direction: column;
-    justify-items: flex-start;
-    border-radius: 1rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    position: relative;
     cursor: pointer;
+    z-index: 2;
+    margin: 0;
+    padding: 16px 22px;
+    border-radius: 12px;
     border: 2px solid transparent;
-    transition: all .2s;
+    background: transparent;
+    text-align: left;
+    transition: all 0.2s ease;
 }
-
-.Search__input button:hover {
-    border: 2px solid rgb(207, 207, 207);
+.Search__buttonBox:hover {
+    border: 2px solid #DDDDDD;
 }
-
-.Search__input button:focus {
-    border: 2px solid rgb(71, 71, 71);
+.Search__buttonBox:active, .Search__buttonBox:focus {
+    outline: 0;
+    border: 2px solid #222222;
 }
-
-.Search__input button div:first-of-type {
-    font-size: 1.1rem;
-    line-height: 1.2rem;
+.Search__buttonBox__title {
+    font-size: 10px;
+    line-height: 12px;
     font-weight: 700;
     letter-spacing: 0.04em;
     text-transform: uppercase;
     padding-bottom: 4px;
 }
-
-.Search__input button div:last-of-type {
-    font-size: 1.4rem;
-    color: #6d6d6d;
-}
-
-.Search__button {
-    margin: 0 1rem;
+.Search__buttonBox__selection {
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 400;
+    color: #222222;
+    opacity: 0.7;
 }
