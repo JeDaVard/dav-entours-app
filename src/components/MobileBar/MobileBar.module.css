@@ -1,3 +1,9 @@
+.MobileNav {
+    margin-bottom: env(safe-area-inset-bottom);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+}
+
 .MobileBar {
     position: fixed;
     width: 100%;
@@ -14,10 +20,10 @@
 }
 
 .MobileBar__tab__active {
-    animation: tabchange .2s;
+    animation: tabChange .2s;
 }
 
-@keyframes tabchange {
+@keyframes tabChange {
     0% {
         transform: scale(1);
     }
