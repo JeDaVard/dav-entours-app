@@ -24,6 +24,7 @@
     .MobileBar__bar {
         bottom: -3rem;
     }
+}
 
 .MobileBar__bar:before {
     content: '';
