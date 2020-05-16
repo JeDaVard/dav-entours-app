@@ -21,9 +21,9 @@
     border-image: initial;
     background: linear-gradient(
             to right,
-            #5ddd9a 0%,
+            #3ac87f 0%,
             #4fc877 50%,
-            #3ac87f 100%
+            #5ddd9a 100%
             /*rgb(230, 30, 77) 0%,*/
             /*rgb(227, 28, 95) 50%,*/
             /*rgb(215, 4, 102) 100%*/
@@ -39,9 +39,9 @@
     border-image: initial;
     background: linear-gradient(
             to right,
-            #5ddd9a 0%,
+            #3ac87f 0%,
             #4fc877 50%,
-            #3ac87f 100%
+            #5ddd9a 100%
     );
 }
 
@@ -73,8 +73,8 @@
     opacity: 0;
     background-image: radial-gradient(
             circle at center center,
-            #59e3b3 0%,
-            #47d27a 27.5%,
+            #59e3ac 0%,
+            #41ca73 27.5%,
             #4fc885 40%,
             #3ac87f 57.5%,
             rgb(189, 30, 89) 75%,
