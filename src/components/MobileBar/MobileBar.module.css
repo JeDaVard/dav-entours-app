@@ -20,14 +20,10 @@
     z-index: 100;
 }
 
-/*@media only screen*/
-/*and (min-device-width : 375px)*/
-/*and (max-device-width : 812px)*/
-/*and (-webkit-device-pixel-ratio : 3) {*/
-/*    .MobileBar__bar {*/
-/*        bottom: 0;*/
-/*    }*/
-/*}*/
+@media all and (display-mode: standalone) {
+    .MobileBar__bar {
+        bottom: -3rem;
+    }
 
 .MobileBar__bar:before {
     content: '';
