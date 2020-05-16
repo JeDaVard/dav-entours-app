@@ -7,7 +7,7 @@
     height: 6rem;
     background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(5px);
-    z-index: 100;
+    z-index: 99;
     box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.14);
     transition: all .2s;
     color: rgba(0, 0, 0, 0.75);
@@ -57,6 +57,15 @@
     color: #118d3a;
 }
 
+.PopDown__ratingIcon {
+    width: 1.6rem;
+    height: 1.6rem;
+    fill: #fff;
+    padding: .2rem;
+    background: #4fc877;
+    border-radius: 50%;
+}
+
 .PopDown__purchase {
     display: flex;
     align-items: center;
@@ -76,4 +85,47 @@
     color: white;
     background: #4fc877;
     flex: 1 0 0;
+}
+
+
+@media screen and (max-width: 743px) {
+    .PopDown {
+        height: 12rem;
+        padding-bottom: 6rem;
+        transition: all .4s;
+    }
+    .PopDown__user {
+        display: none;
+    }
+    .PopDown__purchase h2 {
+        display: none;
+    }
+    .PopDown__userMobile {
+        display: flex;
+        flex-direction: column;
+    }
+    .PopDown__userMobile__title h3 {
+        font-size: 1.3rem;
+        font-weight: 400;
+    }
+    .PopDown__userMobile__title {
+        display: flex;
+        align-items: center;
+    }
+    .PopDown__userMobile__title b {
+        font-size: 1.4rem;
+        color: #118d3a;
+    }
+    .PopDown__userMobile__title p {
+        font-size: 1.2rem;
+    }
+}
+@media screen and (min-width: 744px) {
+    .PopDown__userMobile__title {
+        display: none;
+    }
+
+    .PopDown__userMobile {
+        display: none;
+    }
 }

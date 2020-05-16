@@ -14,3 +14,9 @@ export {
     fetchTopUsers,
     fetchUser,
 } from './user/actions'
+
+
+export {
+    setMobile,
+    setDesktop
+} from './ui/actions'

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import { connect } from "react-redux";
-import { checkAuth } from './app/actions';
+import { checkAuth, setDesktop, setMobile } from './app/actions';
 import Main from './containers/Main';
 import './App.css';
 import TourPage from './containers/TourContainer/TourPage';
@@ -15,10 +15,11 @@ import Separator from './components/UI/Separator/Separator';
 import Foot from './components/Foot/Foot';
 import Error from "./components/Error/Error";
 import MobileBar from "./components/MobileBar/MobileBar";
+import debounce from "./utils/debounce";
 
 function App(props) {
     // console.log(props)
-    const { checkAuth } = props;
+    const { checkAuth, setDesktop, setMobile } = props;
 
     const [ error, setError ] = useState(false)
 
@@ -39,6 +40,22 @@ function App(props) {
                 modal: false
         }))
     }
+
+    useEffect(() => {
+        const debouncedHandleResize = debounce(function handleResize() {
+            if (window.innerWidth <= 743 && !props.isMobile) {
+            console.log(window.innerWidth)
+                setMobile()
+            } else if (window.innerWidth > 743 && props.isMobile) {
+                setDesktop()
+            }
+        },300)
+
+        window.addEventListener('resize', debouncedHandleResize)
+        return () => {
+            window.removeEventListener('resize', debouncedHandleResize)
+        }
+    })
 
     useEffect(() => {
         checkAuth();
@@ -68,19 +85,28 @@ function App(props) {
             {props.error && <Error onClose={() => {setError(false)}} show={error}>{props.error}</Error>}
             <Layout
                 header={
-                    <Topbar
-                        {...props}
-                        isLogged={props.loggedIn}
-                        loginModal={authModalClose}
-                        onSignUp={signUpModalHandler}
-                        onLogin={loginModalHandler}
-                    />
+                    props.isMobile
+                        ? <MobileBar
+                            name={props.name}
+                            photo={props.photo}
+                        />
+                        : <Topbar
+                                {...props}
+                                name={props.name}
+                                photo={props.photo}
+                                isLogged={props.loggedIn}
+                                loginModal={authModalClose}
+                                onSignUp={signUpModalHandler}
+                                onLogin={loginModalHandler}
+                            />
                 }
                 footer={
-                    <>
-                        <Separator margin={'4 0'}/>
-                        <Foot />
-                    </>
+                    props.isMobile
+                        ? <div style={{height: '6rem', width: '100%'}}> </div>
+                        : <>
+                            <Separator margin={'4 0'}/>
+                            <Foot />
+                        </>
                 }>
 
                 <Switch>
@@ -108,6 +134,9 @@ function App(props) {
 const mapStateToProps = state => ({
     loggedIn: !!state.auth.token,
     error: state.user.error || state.feed.error,
-    loading: state.user.user.loading
+    loading: state.user.user.loading,
+    isMobile: state.ui.display.isMobile,
+    photo: `${process.env.REACT_APP_SERVER}/images/user/${state.auth.photo}`,
+    name: state.auth.name.split(' ')[0]
 });
-export default connect(mapStateToProps, { checkAuth })(withRouter(App));
+export default connect(mapStateToProps, { checkAuth, setDesktop, setMobile })(withRouter(App));

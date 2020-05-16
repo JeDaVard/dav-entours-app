@@ -2,10 +2,10 @@ import React, { useEffect } from "react";
 import { connect } from 'react-redux';
 import { fetchPopulars, fetchRandoms, fetchTopUsers } from '../app/actions';
 import Search from "../components/Search/Search";
-import Popular from "../components/Popular/Popular";
-import Become from "../components/Become/Become";
-import Random from "../components/Random/Random";
-import Top from "../components/Top/Top";
+import Popular from "../components/MainPage/Popular/Popular";
+import Become from "../components/MainPage/Become/Become";
+import Random from "../components/MainPage/Random/Random";
+import Top from "../components/MainPage/Top/Top";
 
 function Main(props) {
     const { fetchPopulars, fetchRandoms, fetchTopUsers } = props;

@@ -7,22 +7,32 @@
 .MobileBar__bar {
     height: 12.5rem;
     width: 100%;
-    padding-bottom: 6rem;
+    padding-bottom: 6.5rem;
     left: 0;
     right: 0;
-    bottom: -6rem;
+    bottom: -6.5rem;
     border-top: 1px solid rgba(0, 0, 0, 0.14);
     box-shadow: 1px 0 6px rgba(0, 0, 0, 0.08);
     background: rgba(255, 255, 255, 0.85);
     position: fixed;
     display: flex;
     overflow: hidden;
-    z-index: 100;
+    z-index: 1000;
 }
 
-@media all and (display-mode: standalone) {
+@media all
+and (display-mode: standalone)
+and (orientation: portrait) {
     .MobileBar__bar {
-        bottom: -3rem;
+        bottom: -3.5rem;
+    }
+}
+
+@media all
+and (display-mode: standalone)
+and (orientation: landscape) {
+    .MobileBar__bar {
+        bottom: -5.5rem;
     }
 }
 
@@ -110,15 +120,15 @@
 }
 
 .MobileBar__icon {
-    height: 2.6rem;
-    width: 2.6rem;
+    height: 2.4rem;
+    width: 2.4rem;
     fill: rgba(0, 0, 0, 0.6);
     margin: .3rem 0;
 }
 
 .MobileBar__photo {
-    width: 2.8rem;
-    height: 2.8rem;
+    width: 2.6rem;
+    height: 2.6rem;
     border: 2px solid rgba(0, 0, 0, 0.6);
     border-radius: 50%;
     display: flex;

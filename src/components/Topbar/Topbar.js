@@ -1,12 +1,11 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import classes from './Topbar.module.css';
 import logo from './entours.png'
 import logo2 from './entours2.png'
 import Navigation from "./Navigation/Navigation";
-import {Link, Switch} from "react-router-dom";
+import { Link } from "react-router-dom";
 import MobileBar from "../MobileBar/MobileBar";
-import Layout from "../Layout/Layout";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 
 
 function Topbar(props) {
@@ -66,7 +65,7 @@ function Topbar(props) {
         return () => {
             window.removeEventListener('scroll', topBarHandler)
         }
-    }, [topBarHandler])
+    }, [isTransparent])
 
     return (
         <>
@@ -114,14 +113,12 @@ function Topbar(props) {
             {!isTransparent && (
                 <div className={classes.Topbar__relative}></div>
             )}
-            <MobileBar photo={props.photo} />
         </>
     );
 }
 
 const mapStateToProps = state => ({
-    photo: `${process.env.REACT_APP_SERVER}/images/user/${state.auth.photo}`,
-    name: state.auth.name.split(' ')[0]
+
 });
 
 export default connect(mapStateToProps)(Topbar)

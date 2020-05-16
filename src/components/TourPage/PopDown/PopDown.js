@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from 'react-redux';
 import classes from './PopDown.module.css';
-import user from './user-4.jpg';
 import AnimatedButton from "../../UI/AnimatedButton/AnimatedButton";
+import sprite from "../../../assets/icons/sprite.svg";
 
 function PopDown(props) {
     const show = !props.show ? ` ${classes.hide}` : '';
@@ -15,12 +15,33 @@ function PopDown(props) {
                         <h3>{props.tour.name}</h3>
                         <div className={classes.PopDown__rating}>
                             <p><b>{props.tour.ratingsAverage}</b></p>
-                            <p>&nbsp;({props.tour.ratingsQuantity})</p>
+                            &nbsp;
+                            <svg className={classes.PopDown__ratingIcon}>
+                                <use href={sprite + "#icon-star"} />
+                            </svg>
+                            &nbsp;
+                            <p>({props.tour.ratingsQuantity})</p>
+                        </div>
+                    </div>
+                    <div className={classes.PopDown__userMobile}>
+                        <div className={classes.PopDown__userMobile__price}>
+                            <h2>${props.tour.price} per person</h2>
+                        </div>
+                        <div className={classes.PopDown__userMobile__title}>
+                            <h3>{props.tour.name} - </h3>
+                            &nbsp;
+                            <p><b>{props.tour.ratingsAverage}</b></p>
+                            &nbsp;
+                            <svg className={classes.PopDown__ratingIcon}>
+                                <use href={sprite + "#icon-star"} />
+                            </svg>
+                            &nbsp;
+                            <p>({props.tour.ratingsQuantity})</p>
                         </div>
                     </div>
                     <div className={classes.PopDown__purchase}>
                         <h2>${props.tour.price} per person</h2>
-                        <AnimatedButton button={true} fn={() => console.log('hello')}>Reserve a place</AnimatedButton>
+                        <AnimatedButton button={true} fn={() => console.log('hello')}>Reserve</AnimatedButton>
                     </div>
                 </div>
             </div>
