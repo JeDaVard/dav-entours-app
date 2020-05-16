@@ -45,9 +45,4 @@ function Navigation(props) {
     )
 }
 
-const mapStateToProps = state => ({
-    photo: `${process.env.REACT_APP_SERVER}/images/user/${state.auth.photo}`,
-    name: state.auth.name.split(' ')[0]
-});
-
-export default connect(mapStateToProps)(Navigation)
+export default Navigation

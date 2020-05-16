@@ -14,6 +14,7 @@ import Search from './components/Search/Search';
 import Separator from './components/UI/Separator/Separator';
 import Foot from './components/Foot/Foot';
 import Error from "./components/Error/Error";
+import MobileBar from "./components/MobileBar/MobileBar";
 
 function App(props) {
     // console.log(props)
@@ -88,7 +89,6 @@ function App(props) {
                     <Route path="/me" component={UserPage} />
                     <Route path="/" component={Main} />
                 </Switch>
-
                 <Modal
                     onClick={authModalClose}
                     showBackdrop={auth.modal}

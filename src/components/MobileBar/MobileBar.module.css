@@ -1,0 +1,105 @@
+.MobileBar {
+    position: fixed;
+    width: 100%;
+    height: 6.5rem;
+    background: rgba(255, 255, 255, 0.85);
+    z-index: 100;
+    bottom: 0;
+    left: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.14);
+    box-shadow: 1px 0 6px rgba(0, 0, 0, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.MobileBar__tab__active {
+    animation: tabchange .2s;
+}
+
+@keyframes tabchange {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.MobileBar__tab__active h2 {
+    color: #4fc877;
+}
+.MobileBar__tab__active .MobileBar__icon {
+    fill: #4fc877;
+}
+.MobileBar__tab__active .MobileBar__photo {
+    border: 2px solid #4fc877;
+}
+
+.MobileBar a,
+.MobileBar a:visited {
+    width: 20%;
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.MobileBar a:hover h2 {
+    color: #4fc877;
+}
+
+.MobileBar a:hover .MobileBar__icon {
+    fill: #4fc877;
+}
+
+.MobileBar a:hover .MobileBar__photo {
+    border: 2px solid #4fc877;
+}
+
+.MobileBar h2 {
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.MobileBar:before {
+    content: '';
+    background: transparent;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backdrop-filter: blur(2rem);
+    z-index: -1;
+}
+
+.MobileBar__tab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.MobileBar__icon {
+    height: 2.6rem;
+    width: 2.6rem;
+    fill: rgba(0, 0, 0, 0.6);
+    margin: .3rem 0;
+}
+
+.MobileBar__photo {
+    width: 2.8rem;
+    height: 2.8rem;
+    border: 2px solid rgba(0, 0, 0, 0.6);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: .3rem 0;
+}
+
+.MobileBar__photo img {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    object-fit: cover;
+}
