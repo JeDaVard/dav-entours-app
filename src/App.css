@@ -61,6 +61,17 @@ body {
   box-sizing: border-box;
 }
 
+@media only screen
+and (min-device-width : 375px)
+and (max-device-width : 812px)
+and (-webkit-device-pixel-ratio : 3) {
+  body {
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+  }
+}
+
 .row {
   width: 90%;
   max-width: 180rem;

@@ -1,19 +1,53 @@
-.MobileNav {
+.MobileBar__bar {
     margin-bottom: env(safe-area-inset-bottom);
     padding-left: env(safe-area-inset-left);
     padding-right: env(safe-area-inset-right);
 }
 
-.MobileBar {
-    position: fixed;
+.MobileBar__bar {
+    height: 12.5rem;
     width: 100%;
-    height: 6.5rem;
-    background: rgba(255, 255, 255, 0.85);
-    z-index: 100;
-    bottom: 0;
+    padding-bottom: 6rem;
     left: 0;
+    right: 0;
+    bottom: -6rem;
     border-top: 1px solid rgba(0, 0, 0, 0.14);
     box-shadow: 1px 0 6px rgba(0, 0, 0, 0.08);
+    background: rgba(255, 255, 255, 0.85);
+    position: fixed;
+    display: flex;
+    overflow: hidden;
+    z-index: 100;
+}
+
+@media all and (display-mode: standalone) {
+    .MobileBar__bar {
+        bottom: -3rem;
+    }
+}
+
+.MobileBar__bar:before {
+    content: '';
+    background: transparent;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backdrop-filter: blur(1rem);
+    z-index: -1;
+}
+
+.MobileBar {
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    -webkit-flex: 1 0 auto;
+    -ms-flex: 1 0 auto;
+    -webkit-align-items: flex-start;
+    -webkit-justify-content: center;
+    flex: 1 0 auto;
+    margin: 0 auto;
+    max-width: 560px;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -36,13 +70,13 @@
 }
 
 .MobileBar__tab__active h2 {
-    color: #4fc877;
+    color: #3fbe7c;
 }
 .MobileBar__tab__active .MobileBar__icon {
-    fill: #4fc877;
+    fill: #3fbe7c;
 }
 .MobileBar__tab__active .MobileBar__photo {
-    border: 2px solid #4fc877;
+    border: 2px solid #3fbe7c;
 }
 
 .MobileBar a,
@@ -53,30 +87,20 @@
 }
 
 .MobileBar a:hover h2 {
-    color: #4fc877;
+    color: #3fbe7c;
 }
 
 .MobileBar a:hover .MobileBar__icon {
-    fill: #4fc877;
+    fill: #3fbe7c;
 }
 
 .MobileBar a:hover .MobileBar__photo {
-    border: 2px solid #4fc877;
+    border: 2px solid #3fbe7c;
 }
 
 .MobileBar h2 {
     font-size: 1rem;
     font-weight: 400;
-}
-
-.MobileBar:before {
-    content: '';
-    background: transparent;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    backdrop-filter: blur(2rem);
-    z-index: -1;
 }
 
 .MobileBar__tab {

@@ -11,7 +11,6 @@ import TopLoading from '../../components/UI/TopLoading/TopLoading';
 
 function UserPage(props) {
     const { fetchUser, location: {pathname}, user } = props;
-    console.log(props)
     let reviews = [];
 
     useEffect(() => {

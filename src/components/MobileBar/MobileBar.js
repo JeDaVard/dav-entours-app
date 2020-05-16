@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 
 function MobileBar(props) {
     return (
-        <nav className={classes.MobileNav}>
+        <nav className={classes.MobileBar__bar}>
             <div className={classes.MobileBar}>
                 <NavLink to={'/'} exact className={classes.MobileBar__tab} activeClassName={classes.MobileBar__tab__active}>
                     <svg className={classes.MobileBar__icon}>
