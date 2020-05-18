@@ -10,7 +10,7 @@ import LoginForm from './containers/LoginForm/LoginForm';
 import Modal from './components/UI/Modal/Modal';
 import Layout from './components/Layout/Layout';
 import Topbar from './components/Topbar/Topbar';
-import Search from './components/Search/Search';
+import Search from './components/MainPage/Search/Search';
 import Separator from './components/UI/Separator/Separator';
 import Foot from './components/Foot/Foot';
 import Error from "./components/Error/Error";
@@ -112,7 +112,12 @@ function App(props) {
                 <Switch>
                     <Route path="/user/:id" component={UserPage} />
                     <Route path="/tour/:slug" component={TourPage} />
-                    <Route path="/me" component={UserPage} />
+                    <Route path="/me" render={props => <UserPage
+                        {...props}
+                        isLoggedIn={props.loggedIn}
+                        signUp={signUpModalHandler}
+                        closeSignUp={authModalClose}
+                    />} />
                     <Route path="/" component={Main} />
                 </Switch>
                 <Modal

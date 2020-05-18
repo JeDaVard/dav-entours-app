@@ -1,10 +1,10 @@
 import React from 'react';
-import classes from './Random.module.css';
-import RandomItem from './RandomItem';
-import RandomItemLoading from './RandomItemLoading';
+import classes from './Discover.module.css';
+import DiscoverItem from './DiscoverItem';
+import DiscoverItemLoading from './DiscoverItemLoading';
 import {Link} from "react-router-dom";
 
-function Random(props) {
+function Discover(props) {
     return (
         <div className={classes.Discover}>
                     <div className="row">
@@ -28,12 +28,12 @@ function Random(props) {
                         </section>
 
                             <div className={classes.Discover__gridParent}>
-                                {!props.randoms.loading && props.randoms.data.length ? (
+                                {!props.discovers.loading && props.discovers.data.length ? (
                                     <div className={classes.Discover__grid}>
-                                        {props.randoms.data.slice(0,4).map( random => <RandomItem tour={random} key={random._id}/>)}
+                                        {props.discovers.data.slice(0,4).map( discover => <DiscoverItem tour={discover} key={discover._id}/>)}
                                     </div>
                                 ) : (
-                                    <RandomItemLoading />
+                                    <DiscoverItemLoading />
                                 )}
                             </div>
 
@@ -45,4 +45,4 @@ function Random(props) {
     );
 }
 
-export default Random;
+export default Discover;

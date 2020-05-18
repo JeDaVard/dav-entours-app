@@ -6,7 +6,7 @@
     font-size: 1.4rem;
     line-height: 16px;
     font-weight: 600;
-    padding: 1.5rem 3rem;
+    padding: 1.5rem 2.2rem;
     color: rgb(255, 255, 255);
     width: 100%;
     text-decoration: none;
@@ -95,19 +95,11 @@
 }
 
 .StyledButton__text {
-    display: block;
+    display: flex;
     position: relative;
     pointer-events: none;
 }
 
-.for_future_the_icon {
-    -webkit-box-pack: center;
-    -webkit-box-align: center;
-    -webkit-box-direction: normal;
-    -webkit-box-orient: horizontal;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    pointer-events: none;
+.StyledButton__text svg {
+    margin-right: .4rem;
 }

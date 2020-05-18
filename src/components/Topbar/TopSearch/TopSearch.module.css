@@ -1,6 +1,4 @@
 .TopSearch {
-    -webkit-flex: 1 1 auto;
-    -ms-flex: 1 1 auto;
     flex: 1 1 auto;
     min-width: 0px;
     padding: 0 24px;
@@ -8,9 +6,8 @@
 }
 
 .TopSearch__block {
-    -webkit-box-align: center;
     align-items: center;
-    box-shadow: rgba(0, 0, 0, 0.18) 0px 1px 2px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.18);
     display: inline-flex;
     height: 48px;
     max-width: 100%;
@@ -38,7 +35,6 @@
 }
 
 .TopSearch__button {
-    -webkit-appearance: none;
     cursor: pointer;
     display: inline-block;
     font-family: inherit;
@@ -54,11 +50,7 @@
     font-weight: 400;
     color: rgb(113, 113, 113);
     background: transparent;
-    border-width: 0px;
-    border-style: initial;
-    border-color: initial;
-    border-image: initial;
-    margin: 0px;
+    border: none;
     outline: none;
     padding: 0px 16px;
     text-decoration: none;
@@ -73,21 +65,19 @@
 
 
 .TopSearch__buttonName {
-    border: 0px;
+    border: 0;
     clip: rect(0 0 0 0);
     -webkit-clip-path: inset(100%);
     clip-path: inset(100%);
     height: 1px;
     overflow: hidden;
-    padding: 0px;
+    padding: 0;
     position: absolute;
     white-space: nowrap;
     width: 1px;
 }
 
 .TopSearch__searchButton {
-    -webkit-appearance: none;
-    box-sizing: initial;
     cursor: pointer;
     display: inline-block;
     font-family: inherit;
@@ -97,25 +87,23 @@
     text-align: inherit;
     user-select: auto;
     height: 100%;
-    position: relative;
-    z-index: 2;
-    color: rgb(255, 56, 92);
-    /*background: transparent;*/
-    border-image: initial;
-    margin: 0px;
+    color: #3db062;
+    background: transparent;
     outline: none;
     overflow: visible;
-    padding: 0px 15px;
+    padding: 0 15px;
     text-decoration: none;
     border-radius: 0 11px 11px 0;
     flex: 0 0 auto;
-    background: linear-gradient(to right, #3ac87f, #5ddd9a);
-    border: 1px solid #3ac87f;
-    margin-right: -1px;
+    border: none;
+    /*background: linear-gradient(to right, #3ac87f, #5ddd9a);*/
+    /*border: 1px solid #3ac87f;*/
+    /*margin-right: -1px;*/
+    /*box-shadow: 2px 0 7px rgba(0, 0, 0, 0.17);*/
 }
 
 .TopSearch__searchIcon {
     width: 2rem;
     height: 2rem;
-    fill: #fff;
+    fill: #3db062;
 }

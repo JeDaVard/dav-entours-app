@@ -11,8 +11,12 @@ function Navigation(props) {
             <nav className={classes.Navigation}>
                 <ul className={`${classes.Navigation__menu} ${props.transparent && classes.Navigation__menu__transparent}`}>
                     <li><a href="/">GEO</a></li>
-                    <li><a href="/">Make a tour</a></li>
-                    <li><a href="/">Help</a></li>
+                    {!props.hideNav && (
+                        <>
+                            <li><a href="/">Make a tour</a></li>
+                            <li><a href="/">Help</a></li>
+                        </>
+                    )}
                     {!props.isLogged && <li><a href="/#" onClick={props.loginModal}>Log In</a></li>}
                 </ul>
         <OutsideAlerter delegate={props.handleClose}>

@@ -1,7 +1,8 @@
 import React from "react";
 import classes from './Search.module.css';
-import StyledButton from "../StyledButton/StyledButton";
-import Separator from "../UI/Separator/Separator";
+import StyledButton from "../../StyledButton/StyledButton";
+import sprite from '../../../assets/icons/sprite.svg'
+import Separator from "../../UI/Separator/Separator";
 
 function Search() {
     return (
@@ -42,7 +43,12 @@ function Search() {
                                 </div>
                             </div>
                             <div className={classes.Search__but}>
-                                <StyledButton>Search</StyledButton>
+                                <StyledButton>
+                                    <svg>
+                                        <use href={sprite + '#icon-search'} />
+                                    </svg>
+                                    <span>Search</span>
+                                </StyledButton>
                             </div>
                         </div>
                     </form>

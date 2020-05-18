@@ -5,7 +5,7 @@ const initialState = {
         loading: true,
         data: []
     },
-    randoms: {
+    discovers: {
         loading: true,
         data: []
     },
@@ -44,28 +44,28 @@ const feedReducer = (state = initialState, action) => {
                 },
                 error: action.error
             }
-        case actionTypes.FEED_RANDOMS_START:
+        case actionTypes.FEED_DISCOVERS_START:
             return {
                 ...state,
-                randoms: {
-                    ...state.randoms,
+                discovers: {
+                    ...state.discovers,
                     loading: true
                 },
                 error: null
             }
-        case actionTypes.FEED_RANDOMS_SUCCESS:
+        case actionTypes.FEED_DISCOVERS_SUCCESS:
             return {
             ...state,
-            randoms: {
-                data: action.payload.randoms,
+            discovers: {
+                data: action.payload.discovers,
                 loading: false
             }
         }
-        case actionTypes.FEED_RANDOMS_FAILED:
+        case actionTypes.FEED_DISCOVERS_FAILED:
             return {
                 ...state,
-                randoms: {
-                    ...state.randoms,
+                discovers: {
+                    ...state.discovers,
                     loading: false
                 },
                 error: action.error

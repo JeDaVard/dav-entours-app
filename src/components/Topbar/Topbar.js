@@ -7,11 +7,14 @@ import { Link } from "react-router-dom";
 import MobileBar from "../MobileBar/MobileBar";
 import { connect } from "react-redux";
 import TopSearch from "./TopSearch/TopSearch";
+import {CSSTransition} from "react-transition-group";
+import './animations.css'
 
 
 function Topbar(props) {
     const isTransparent = !!props.location.pathname.match(/^\/tour\/.*/);
     const initialTopBar = {
+        topSearch: false,
         transparent: isTransparent ? window.scrollY === 0 : false,
         shadow: ''
     };
@@ -57,6 +60,22 @@ function Topbar(props) {
     }
 
     useEffect(() => {
+        if (window.scrollY > 98 && !topBar.topSearch) {
+            console.log('true', topBar.topSearch)
+            setTopBar(state => ({
+                ...state,
+                topSearch: true
+            }))
+        } else if (window.scrollY <= 98 && topBar.topSearch) {
+            console.log('false', topBar.topSearch)
+            setTopBar(state => ({
+                ...state,
+                topSearch: false
+            }))
+        }
+    }, [window.scrollY])
+
+    useEffect(() => {
         topBarHandler()
     }, [isTransparent])
 
@@ -97,8 +116,16 @@ function Topbar(props) {
                                 )}
                             </Link>
                         </div>
-                        <TopSearch />
+                        <CSSTransition
+                            in={topBar.topSearch}
+                            timeout={200}
+                            classNames="topSearchAnimation"
+                            unmountOnExit
+                            >
+                            <TopSearch />
+                        </CSSTransition>
                         <Navigation
+                            hideNav={topBar.topSearch}
                             transparent={topBar.transparent}
                             isLogged={props.isLogged}
                             profileHandler={profileHandler}
@@ -113,7 +140,7 @@ function Topbar(props) {
                 </div>
             </div>
             {!isTransparent && (
-                <div className={classes.Topbar__relative}></div>
+                <div className={classes.Topbar__relative} />
             )}
         </>
     );

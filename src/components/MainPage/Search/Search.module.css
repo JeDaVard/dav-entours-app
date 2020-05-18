@@ -31,6 +31,12 @@
     padding: 11px;
     margin-left: 2px;
 }
+.Search__but svg {
+    width: 1.6rem;
+    height: 1.6rem;
+    fill: white;
+}
+
 .Search__sep {
     align-self: center;
     border-right: 1px solid #DDDDDD;

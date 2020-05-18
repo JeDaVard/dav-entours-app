@@ -7,18 +7,19 @@ function TopSearch() {
         <div className={classes.TopSearch}>
             <div className={classes.TopSearch__block} role="search">
                 <button className={classes.TopSearch__button} data-index="0" type="button">
-                    <span className={classes.TopSearch__buttonName}>Location</span>Add
-                    location
+                    <span className={classes.TopSearch__buttonName}>Location</span>
+                    Add location
                 </button>
                 <span className={classes.TopSearch__separator}> </span>
                 <button className={classes.TopSearch__button} data-index="1" type="button">
                     <span
-                    className={classes.TopSearch__buttonName}>Check in / Check out</span>Add dates
+                    className={classes.TopSearch__buttonName}>Check in / Check out</span>
+                    Add dates
                 </button>
                 <span className={classes.TopSearch__separator}> </span>
                 <button className={classes.TopSearch__button} data-index="2" type="button">
-                    <span className={classes.TopSearch__buttonName}>Guests</span>Add
-                    guests
+                    <span className={classes.TopSearch__buttonName}>Participants</span>
+                    Participants
                 </button>
                 <span className={classes.TopSearch__separator}> </span>
                 <button className={classes.TopSearch__searchButton} aria-label="Search" type="button">

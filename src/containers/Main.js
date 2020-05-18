@@ -1,27 +1,34 @@
 import React, { useEffect } from "react";
 import { connect } from 'react-redux';
-import { fetchPopulars, fetchRandoms, fetchTopUsers } from '../app/actions';
-import Search from "../components/Search/Search";
+import { fetchPopulars, fetchDiscovers, fetchTopUsers } from '../app/actions';
+import Search from "../components/MainPage/Search/Search";
 import Popular from "../components/MainPage/Popular/Popular";
 import Become from "../components/MainPage/Become/Become";
-import Random from "../components/MainPage/Random/Random";
+import Discover from "../components/MainPage/Discover/Discover";
 import Top from "../components/MainPage/Top/Top";
+import TopSearch from "../components/Topbar/TopSearch/TopSearch";
 
 function Main(props) {
-    const { fetchPopulars, fetchRandoms, fetchTopUsers } = props;
+    const { fetchPopulars, fetchDiscovers, fetchTopUsers } = props;
 
     useEffect(() => {
         fetchPopulars();
-        fetchRandoms();
+        fetchDiscovers();
         fetchTopUsers();
-    }, [fetchPopulars, fetchRandoms, fetchTopUsers])
+    }, [fetchPopulars, fetchDiscovers, fetchTopUsers])
 
     return (
         <>
-            <Search />
+            {props.isMobile ? (
+                <>
+                    <div style={{paddingTop: '2rem'}}>
+                        <TopSearch />
+                    </div>
+                </>
+            ) : <Search />}
             <Popular populars={props.populars} />
             <Become />
-            <Random randoms={props.randoms} />
+            <Discover discovers={props.discovers} />
             <Top users={props.users}/>
         </>
     )
@@ -29,8 +36,9 @@ function Main(props) {
 
 const mapStateToProps = state => ({
     populars: state.feed.populars,
-    randoms: state.feed.randoms,
-    users: state.user.users
+    discovers: state.feed.discovers,
+    users: state.user.users,
+    isMobile: state.ui.display.isMobile
 });
 
-export default connect(mapStateToProps, { fetchPopulars, fetchRandoms, fetchTopUsers })(Main)
+export default connect(mapStateToProps, { fetchPopulars, fetchDiscovers, fetchTopUsers })(Main)

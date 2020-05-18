@@ -17,19 +17,19 @@ const popularsFailed = error => ({
     error
 })
 
-const randomsStart = () => ({
-    type: actions.FEED_RANDOMS_START
+const discoversStart = () => ({
+    type: actions.FEED_DISCOVERS_START
 })
 
-const randomsSuccess = randoms => ({
-    type: actions.FEED_RANDOMS_SUCCESS,
+const discoversSuccess = discovers => ({
+    type: actions.FEED_DISCOVERS_SUCCESS,
     payload: {
-        randoms
+        discovers
     }
 })
 
-const randomsFailed = error => ({
-    type: actions.FEED_RANDOMS_FAILED,
+const discoversFailed = error => ({
+    type: actions.FEED_DISCOVERS_FAILED,
     error
 })
 
@@ -53,8 +53,8 @@ export const fetchPopulars = () => (
     fetchData(popularsStart, popularsSuccess, popularsFailed, `${process.env.REACT_APP_SERVER}/api/tour`)
 );
 
-export const fetchRandoms = () => (
-    fetchData(randomsStart, randomsSuccess, randomsFailed, `${process.env.REACT_APP_SERVER}/api/tour`)
+export const fetchDiscovers = () => (
+    fetchData(discoversStart, discoversSuccess, discoversFailed, `${process.env.REACT_APP_SERVER}/api/tour`)
 );
 
 export const fetchTour = (slug, readyTour) => {

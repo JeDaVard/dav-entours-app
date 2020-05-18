@@ -1,6 +1,13 @@
 .Discover {
-    padding: 6rem 0;
+    padding: 3rem 0;
     background-color: #000000;
+}
+
+@media (min-width: 744px){
+    .Discover {
+        padding: 6rem 0;
+        background-color: #000000;
+    }
 }
 
 .Discover__top {
@@ -215,7 +222,7 @@
 
 .Discover__imageBetween {
     position: relative;
-    padding-top: 100%;
+    padding-top: 180%;
     background-position: 50% 50%;
     background-repeat: no-repeat;
 }
@@ -223,5 +230,11 @@
 @media (min-width: 1128px){
     .Discover__grid:nth-child(n) > :nth-child(4) .Discover__imageBetween {
         padding-top: 50%;
+    }
+}
+
+@media (min-width: 744px){
+    .Discover__imageBetween {
+        padding-top: 100%;
     }
 }

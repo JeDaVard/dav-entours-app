@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import classes from "./RandomItem.module.css";
-import parentClasses from './Random.module.css';
+import classes from "./DiscoverItem.module.css";
+import parentClasses from './Discover.module.css';
 
 export default ({ tour }) => (
     <div className={classes.Discover__post}>

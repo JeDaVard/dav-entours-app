@@ -10,11 +10,16 @@ import UserReviews from '../../components/UserPage/UserReviews/UserReviews';
 import TopLoading from '../../components/UI/TopLoading/TopLoading';
 
 function UserPage(props) {
-    const { fetchUser, location: {pathname}, user } = props;
+    const { fetchUser, location: {pathname}, user, isLoggedIn, signUp, closeSignUp } = props;
     let reviews = [];
 
     useEffect(() => {
-        fetchUser(props.match.params.id, pathname.startsWith('/me'))
+        if (isLoggedIn) {
+            fetchUser(props.match.params.id, pathname.startsWith('/me'))
+        } else {
+            signUp()
+        }
+        return () => closeSignUp()
     }, [fetchUser, pathname]);
 
     if (user.tours && user.tours.length) {
