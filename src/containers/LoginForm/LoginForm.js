@@ -9,6 +9,7 @@ import { generateBase64FromImage } from '../../utils/generateBase64FromImage';
 import validator from "validator";
 import { validateState } from "../../utils/validateState";
 import AnimatedValidation from "../../components/UI/AnimatedValidation/AnimatedValidation";
+import {Link} from "react-router-dom";
 
 function LoginForm(props) {
     const [state, setState] = useState({
@@ -182,19 +183,19 @@ function LoginForm(props) {
                 {props.login ? (
                     <p>
                         Not registered?&nbsp;
-                        <a href="/#" onClick={props.onSignUp}>
+                        <Link to={loc => loc} onClick={props.onSignUp}>
                             Sign Up
-                        </a>
+                        </Link>
                     </p>
                 ) : (
                     <p>
                         Already have account?&nbsp;
-                        <a href="/#" onClick={props.onLogin}>
+                        <Link to={loc => loc} onClick={props.onLogin}>
                             Login
-                        </a>
+                        </Link>
                     </p>
                 )}
-                {props.login && <a href="/sign-up">Forgot password?</a>}
+                {props.login && <Link to={loc => loc} >Forgot password?</Link>}
             </div>
             <form
                 onSubmit={(e) => authHandler(e, props.login)}

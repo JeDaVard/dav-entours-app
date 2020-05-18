@@ -11,16 +11,21 @@ import TopLoading from '../../components/UI/TopLoading/TopLoading';
 
 function UserPage(props) {
     const { fetchUser, location: {pathname}, user, isLoggedIn, signUp, closeSignUp } = props;
+    const isThatMe = pathname.startsWith('/me')
     let reviews = [];
 
     useEffect(() => {
-        if (isLoggedIn) {
-            fetchUser(props.match.params.id, pathname.startsWith('/me'))
+        if (isThatMe) {
+            if (isLoggedIn) {
+                fetchUser(props.match.params.id, isThatMe)
+            } else {
+                signUp()
+            }
+            return () => closeSignUp()
         } else {
-            signUp()
+            fetchUser(props.match.params.id)
         }
-        return () => closeSignUp()
-    }, [fetchUser, pathname]);
+    }, [fetchUser, pathname, isLoggedIn]);
 
     if (user.tours && user.tours.length) {
         user.tours
@@ -40,7 +45,7 @@ function UserPage(props) {
         <div className={classes.UserPage}>
             {props.loading && <TopLoading />}
             <div className="row">
-                {user.name && (
+                {!props.loading && user.name && (
                     <div className={classes.UserPage__content}>
                         <section className={classes.UserPage__profile}>
                             <div className={classes.UserPage__profileTop}>
@@ -53,7 +58,7 @@ function UserPage(props) {
                                         />
                                     </div>
                                 </div>
-                                <a href="/">Update image</a>
+                                {isThatMe && <a href="/">Update image</a> }
                             </div>
                             <Separator margin={'2 2'} />
                             <div className={classes.UserPage__stats}>
@@ -77,7 +82,7 @@ function UserPage(props) {
                                     ).getFullYear()}
                             </h3>
                             <h3>&nbsp;&nbsp;·&nbsp;&nbsp;</h3>
-                            <Link to={'/'}>Edit profile</Link>
+                            {isThatMe && <Link to={'/'}>Edit profile</Link> }
                             <p>{user.about}</p>
                         </section>
                         <div className={classes.UserPage__more}>
@@ -99,7 +104,8 @@ function UserPage(props) {
 
 const mapStateToProps = (state) => ({
     user: state.user.user.data,
-    loading: state.user.user.loading
+    loading: state.user.user.loading,
+    isLoggedIn: !!state.auth.token
 });
 
 const mapDispatchToState = (dispatch) => ({

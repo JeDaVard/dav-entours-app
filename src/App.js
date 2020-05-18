@@ -18,7 +18,7 @@ import MobileBar from "./components/MobileBar/MobileBar";
 import debounce from "./utils/debounce";
 
 function App(props) {
-    // console.log(props)
+    console.log(props)
     const { checkAuth, setDesktop, setMobile } = props;
 
     const [ error, setError ] = useState(false)
@@ -114,7 +114,6 @@ function App(props) {
                     <Route path="/tour/:slug" component={TourPage} />
                     <Route path="/me" render={props => <UserPage
                         {...props}
-                        isLoggedIn={props.loggedIn}
                         signUp={signUpModalHandler}
                         closeSignUp={authModalClose}
                     />} />
