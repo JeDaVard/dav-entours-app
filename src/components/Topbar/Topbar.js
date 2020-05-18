@@ -6,6 +6,7 @@ import Navigation from "./Navigation/Navigation";
 import { Link } from "react-router-dom";
 import MobileBar from "../MobileBar/MobileBar";
 import { connect } from "react-redux";
+import TopSearch from "./TopSearch/TopSearch";
 
 
 function Topbar(props) {
@@ -96,6 +97,7 @@ function Topbar(props) {
                                 )}
                             </Link>
                         </div>
+                        <TopSearch />
                         <Navigation
                             transparent={topBar.transparent}
                             isLogged={props.isLogged}
