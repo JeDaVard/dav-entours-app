@@ -8,13 +8,13 @@ function TopSearch() {
             <div className={classes.TopSearch__block} role="search">
                 <button className={classes.TopSearch__button} data-index="0" type="button">
                     <span className={classes.TopSearch__buttonName}>Location</span>
-                    Add location
+                    Location
                 </button>
                 <span className={classes.TopSearch__separator}> </span>
                 <button className={classes.TopSearch__button} data-index="1" type="button">
                     <span
                     className={classes.TopSearch__buttonName}>Check in / Check out</span>
-                    Add dates
+                    Dates
                 </button>
                 <span className={classes.TopSearch__separator}> </span>
                 <button className={classes.TopSearch__button} data-index="2" type="button">

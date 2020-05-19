@@ -10,7 +10,6 @@ import LoginForm from './containers/LoginForm/LoginForm';
 import Modal from './components/UI/Modal/Modal';
 import Layout from './components/Layout/Layout';
 import Topbar from './components/Topbar/Topbar';
-import Search from './components/MainPage/Search/Search';
 import Separator from './components/UI/Separator/Separator';
 import Foot from './components/Foot/Foot';
 import Error from "./components/Error/Error";
@@ -18,7 +17,7 @@ import MobileBar from "./components/MobileBar/MobileBar";
 import debounce from "./utils/debounce";
 
 function App(props) {
-    console.log(props)
+    // console.log(props)
     const { checkAuth, setDesktop, setMobile } = props;
 
     const [ error, setError ] = useState(false)
@@ -44,7 +43,6 @@ function App(props) {
     useEffect(() => {
         const debouncedHandleResize = debounce(function handleResize() {
             if (window.innerWidth <= 743 && !props.isMobile) {
-            console.log(window.innerWidth)
                 setMobile()
             } else if (window.innerWidth > 743 && props.isMobile) {
                 setDesktop()

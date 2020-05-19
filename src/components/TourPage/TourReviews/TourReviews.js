@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import classes from './TourReviews.module.css';
 import Separator from "../../UI/Separator/Separator";
 import {Link} from "react-router-dom";
+import Justicon from "../../UI/Justicon";
 
 const TourReviews = ({ tour, reviews, loading }) => {
     return (
@@ -13,7 +14,7 @@ const TourReviews = ({ tour, reviews, loading }) => {
                             <h2>Reviews</h2>
                             <div className={classes.Reviews__info}>
                                 <div className={classes.Reviews__rating}>
-                                    <h3>{!loading && (
+                                    <h3><Justicon icon={'star'}/> {!loading && (
                                         tour.ratingsAverage.toString().length === 1 ? tour.ratingsAverage+'.0' : tour.ratingsAverage
                                     )}</h3>
                                 </div>

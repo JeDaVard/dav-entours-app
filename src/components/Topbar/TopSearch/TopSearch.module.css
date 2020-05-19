@@ -14,9 +14,10 @@
     min-width: 260px;
     position: relative;
     /*vertical-align: middle;*/
-    background-color: rgba(255, 255, 255, 0.53);
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(2px);
     color: rgb(34, 34, 34);
-    border: 1px solid rgb(247, 247, 247);
+    border: 1px solid rgba(255, 255, 255, .2);
     border-radius: 12px;
     transition: box-shadow 0.2s ease 0s;
 }

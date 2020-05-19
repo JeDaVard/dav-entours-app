@@ -227,14 +227,21 @@
     background-repeat: no-repeat;
 }
 
+@media (min-width: 744px){
+    .Discover__imageBetween {
+        padding-top: 100%;
+    }
+}
+
 @media (min-width: 1128px){
     .Discover__grid:nth-child(n) > :nth-child(4) .Discover__imageBetween {
         padding-top: 50%;
     }
 }
 
-@media (min-width: 744px){
+
+@media only screen and (orientation: landscape) and (max-device-width : 812px) {
     .Discover__imageBetween {
-        padding-top: 100%;
+        padding-top: 60%;
     }
 }

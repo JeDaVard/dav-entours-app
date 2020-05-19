@@ -1,0 +1,25 @@
+.TopSearchMobile__spaceFix {
+    position: relative;
+    height: 6rem;
+}
+
+.TopSearchMobile {
+    left: 0;
+    right: 0;
+    position: fixed;
+    padding: 1.2rem 0;
+    background: rgba(255, 255, 255, .9);
+    border-bottom: 1px solid rgba(0,0,0, .12);
+    z-index: 100;
+}
+
+.TopSearchMobile::before {
+    content: '';
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 100%;
+    position: absolute;
+    backdrop-filter: blur(7px);
+    z-index: -1;
+}

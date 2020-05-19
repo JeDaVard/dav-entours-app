@@ -43,3 +43,9 @@
 .Become__right p {
     font-size: 1.6rem;
 }
+
+@media (max-width: 743px) {
+    .Become__right {
+        display: none;
+    }
+}

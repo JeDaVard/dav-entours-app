@@ -11,9 +11,6 @@
     box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.14);
     transition: all .2s;
     color: rgba(0, 0, 0, 0.75);
-    margin-bottom: env(safe-area-inset-bottom);
-    padding-left: env(safe-area-inset-left);
-    padding-right: env(safe-area-inset-right);
 }
 
 .hide {
@@ -87,6 +84,9 @@
         height: 12rem;
         padding-bottom: 6rem;
         transition: all .4s;
+        margin-bottom: env(safe-area-inset-bottom);
+        padding-left: env(safe-area-inset-left);
+        padding-right: env(safe-area-inset-right);
     }
     .PopDown__user {
         display: none;
@@ -121,5 +121,24 @@
 
     .PopDown__userMobile {
         display: none;
+    }
+}
+
+
+@media all
+and (display-mode: standalone)
+and (orientation: portrait) {
+    .PopDown {
+        height: 18rem;
+        padding-bottom: 12rem;
+    }
+}
+
+@media all
+and (display-mode: standalone)
+and (orientation: landscape) {
+    .PopDown {
+        height: 14rem;
+        padding-bottom: 8rem;
     }
 }

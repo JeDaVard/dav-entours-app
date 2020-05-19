@@ -61,15 +61,15 @@ body {
   box-sizing: border-box;
 }
 
-@media only screen
-and (min-device-width : 375px)
-and (max-device-width : 812px)
-and (-webkit-device-pixel-ratio : 3) {
+
+@media all
+and (display-mode: standalone) {
   body {
     -webkit-user-select: none;
     -webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none;
   }
+  body::-webkit-scrollbar { display: none }
 }
 
 .row {

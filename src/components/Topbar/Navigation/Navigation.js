@@ -4,21 +4,30 @@ import Separator from "../../UI/Separator/Separator";
 import OutsideAlerter from "../../../hocs/EventDelegator";
 import {Link} from "react-router-dom";
 import Logout from "./Logout";
+import Justicon from "../../UI/Justicon";
 
 function Navigation(props) {
     const { name, photo } = props;
     return (
             <nav className={classes.Navigation}>
-                <ul className={`${classes.Navigation__menu} ${props.transparent && classes.Navigation__menu__transparent}`}>
-                    <li><a href="/">GEO</a></li>
-                    {!props.hideNav && (
-                        <>
-                            <li><a href="/">Make a tour</a></li>
-                            <li><a href="/">Help</a></li>
-                        </>
-                    )}
+                <OutsideAlerter delegate={props.closeGeo}>
+                    <div className={props.geo ? classes.Navigation__geo : classes.Navigation__geo_Closed}>
+                        <ul>
+                            <Link to={{pathname: '/me'}}><li>Currency - $</li></Link>
+                            <Link to={{pathname: '/me'}}><li>English - US</li></Link>
+                        </ul>
+                    </div>
+                </OutsideAlerter>
+                <div className={`${classes.Navigation__menu} ${props.transparent && classes.Navigation__menu__transparent}`}>
+                    <Link to={'#'} onClick={props.geoHandler}>
+                        <div className={classes.Navigation__geoBox}>
+                            <Justicon icon={'globe'} className={classes.Navigation__geoIcon}/>
+                            <Justicon icon={'chevron-down'} className={classes.Navigation__geoIcon}/>
+                        </div>
+                    </Link>
+                    <Link to="/">Make a tour</Link>
                     {!props.isLogged && <li><a href="/#" onClick={props.loginModal}>Log In</a></li>}
-                </ul>
+                </div>
         <OutsideAlerter delegate={props.handleClose}>
                 <div className={classes.Navigation__user}>
                     <div className={`${classes.Navigation__signup} ${props.transparent && !props.profileDrop && classes.Navigation__signup__transparent}`}>

@@ -5,11 +5,14 @@
 
 .TourDescription__content {
     display: flex;
+    flex-direction: column;
+    padding-bottom: 2rem;
 }
+
 
 .TourDescription__left {
     padding: 2rem;
-    width: 50%;
+    flex: 0 0 50%;
 }
 
 .TourDescription__left h2 {
@@ -71,10 +74,18 @@
 
 .TourDescription__right {
     padding: 2rem;
-    width: 50%;
+    flex: 0 0 50%;
     background: linear-gradient(to right, #f3f3f3, #ffffff);
 }
 
+
+@media (min-width: 744px) {
+    .TourDescription__content {
+        display: flex;
+        flex-direction: row;
+        padding-bottom: 0;
+    }
+}
 
 .TourDescription__right h2 {
     font-size: 2rem;

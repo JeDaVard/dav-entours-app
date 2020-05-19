@@ -5,15 +5,20 @@ import { connect } from 'react-redux';
 function TourImages(props) {
     const { loading, tour: { images } } = props;
     return (
-        <section className={classes.TourImages}>
+        // <section className={classes.TourImages}>
                 <div className={classes.TourImages__grid}>
                     {!loading && images.map(image => (
                         <div className={classes.TourImages__frame} key={image}>
                             <img src={`${process.env.REACT_APP_SERVER}/images/tour/${image}`} alt="tour image" />
                         </div>
                     ))}
+                    {!loading && images.map(image => (
+                        <div className={classes.TourImages__frame} key={image}>
+                            <img src={`${process.env.REACT_APP_SERVER}/images/tour/${image}`} alt="tour image" />
+                        </div>
+                    ))}
                 </div>
-        </section>
+        // </section>
     );
 }
 

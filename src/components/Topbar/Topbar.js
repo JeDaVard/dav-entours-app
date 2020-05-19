@@ -4,14 +4,12 @@ import logo from './entours.png'
 import logo2 from './entours2.png'
 import Navigation from "./Navigation/Navigation";
 import { Link } from "react-router-dom";
-import MobileBar from "../MobileBar/MobileBar";
 import { connect } from "react-redux";
 import TopSearch from "./TopSearch/TopSearch";
-import {CSSTransition} from "react-transition-group";
-import './animations.css'
 
 
 function Topbar(props) {
+    console.log(props)
     const isTransparent = !!props.location.pathname.match(/^\/tour\/.*/);
     const initialTopBar = {
         topSearch: false,
@@ -21,6 +19,7 @@ function Topbar(props) {
     const [ topBar, setTopBar ] = useState(initialTopBar)
 
     const [ profileDrop, setProfileDrop ] = useState(false);
+    const [ geoDrop, setGeoDrop ] = useState(false);
 
     const profileHandler = () => {
         setProfileDrop(!profileDrop)
@@ -28,6 +27,13 @@ function Topbar(props) {
     const closeHandler = () => {
         setProfileDrop(false)
     }
+    const geoHandler = () => {
+        setGeoDrop(!geoDrop)
+    }
+    const closeGeoHandler = () => {
+        setGeoDrop(false)
+    }
+
     const topBarHandler = function() {
         if (!isTransparent) {
             if (window.scrollY < 1) {
@@ -60,14 +66,12 @@ function Topbar(props) {
     }
 
     useEffect(() => {
-        if (window.scrollY > 98 && !topBar.topSearch) {
-            console.log('true', topBar.topSearch)
+        if (window.scrollY > 90 && !topBar.topSearch) {
             setTopBar(state => ({
                 ...state,
                 topSearch: true
             }))
-        } else if (window.scrollY <= 98 && topBar.topSearch) {
-            console.log('false', topBar.topSearch)
+        } else if (window.scrollY <= 90 && topBar.topSearch) {
             setTopBar(state => ({
                 ...state,
                 topSearch: false
@@ -116,21 +120,16 @@ function Topbar(props) {
                                 )}
                             </Link>
                         </div>
-                        <CSSTransition
-                            in={topBar.topSearch}
-                            timeout={200}
-                            classNames="topSearchAnimation"
-                            unmountOnExit
-                            >
-                            <TopSearch />
-                        </CSSTransition>
+                        {(props.location.pathname.startsWith('/tour') || topBar.topSearch) && <TopSearch />}
                         <Navigation
-                            hideNav={topBar.topSearch}
                             transparent={topBar.transparent}
                             isLogged={props.isLogged}
                             profileHandler={profileHandler}
                             profileDrop={profileDrop}
                             handleClose={closeHandler}
+                            geo={geoDrop}
+                            geoHandler={geoHandler}
+                            closeGeo={closeGeoHandler}
                             loginModal={props.onLogin}
                             signUpModal={props.onSignUp}
                             name={props.name}

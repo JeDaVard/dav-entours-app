@@ -1,4 +1,5 @@
 .TourImages {
+    /*scroll-snap-type: x mandatory;*/
 }
 
 .TourImages__grid {
@@ -8,22 +9,47 @@
     width: 100%;
     flex-wrap: nowrap;
     overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    padding: 0 24px;
+    scroll-padding: 0 24px;
+}
+
+.TourImages__grid::-webkit-scrollbar {
+    display: none;
 }
 
 .TourImages__frame {
-    width: 33.3333%;
-    min-width: 33.3333%;
-    height: 300px;
+    scroll-snap-align: center;
+    scroll-behavior: smooth;
+    width: 100%;
+    min-width: 100%;
+    height: 600px;
 }
 
 .TourImages__grid img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transform: scale(1.1);
+    transform: scale(1.2);
     transition: all .2s;
 }
 
 .TourImages__frame:hover img{
-    transform: scale(1);
+    transform: scale(1.1);
+}
+
+@media screen and (min-width: 744px) {
+    .TourImages__frame {
+        width: 50%;
+        min-width: 50%;
+        height: 500px;
+    }
+}
+
+@media screen and (min-width: 1128px) {
+    .TourImages__frame {
+        width: 33.333%;
+        min-width: 33.333%;
+        height: 400px;
+    }
 }
