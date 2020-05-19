@@ -59,6 +59,7 @@
 .Top__rating h2 {
     color: #3db062;
     font-size: 2rem;
+    margin: -.8rem 0 -.4rem
 }
 
 .Top__rating p {
@@ -71,13 +72,20 @@
     margin-left: .5rem;
 }
 
-.Top__userinfo img {
+.Top__userinfoImg {
+    box-sizing: initial;
     width: 14px;
     height: 14px;
+    fill: #ffffff;
     margin-right: 1rem;
+    padding: .2rem;
+    background: linear-gradient(to right bottom, #f6600f, #f1d309);
+    border-radius: 50%;
 }
 
 .Top__userinfo h3 {
+    display: flex;
+    align-items: center;
     color: #444444;
     font-size: 1.5rem;
     margin-top: -1rem;

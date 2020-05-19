@@ -104,11 +104,11 @@
 .UserPage__profile h3 {
     font-size: 1.5rem;
     font-weight: 400;
-    display: inline;
 }
 
 .UserPage__stats h3 {
-    display: block;
+    display: flex;
+    align-items: center;
 }
 
 .UserPage__profileTop {
@@ -132,4 +132,25 @@
         margin-left: 4rem;
         width: 70%;
     }
+}
+
+.Justicon__star {
+    margin-right: .4rem;
+    width: 1.6rem;
+    height: 1.6rem;
+    fill: #fff;
+    padding: .2rem;
+    background: #4fc877;
+    border-radius: 50%;
+}
+
+
+.Justicon__globe {
+    margin-right: .4rem;
+    width: 1.6rem;
+    height: 1.6rem;
+    fill: #fff;
+    padding: .2rem;
+    background: #097fd7;
+    border-radius: 50%;
 }

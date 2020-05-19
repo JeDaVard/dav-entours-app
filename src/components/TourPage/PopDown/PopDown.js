@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import classes from './PopDown.module.css';
 import AnimatedButton from "../../UI/AnimatedButton/AnimatedButton";
 import sprite from "../../../assets/icons/sprite.svg";
+import Justicon from "../../UI/Justicon";
 
 function PopDown(props) {
     const show = !props.show ? ` ${classes.hide}` : '';
@@ -16,9 +17,7 @@ function PopDown(props) {
                         <div className={classes.PopDown__rating}>
                             <p><b>{props.tour.ratingsAverage}</b></p>
                             &nbsp;
-                            <svg className={classes.PopDown__ratingIcon}>
-                                <use href={sprite + "#icon-star"} />
-                            </svg>
+                            <Justicon icon={'star'}/>
                             &nbsp;
                             <p>({props.tour.ratingsQuantity})</p>
                         </div>
@@ -32,9 +31,7 @@ function PopDown(props) {
                             &nbsp;
                             <p><b>{props.tour.ratingsAverage}</b></p>
                             &nbsp;
-                            <svg className={classes.PopDown__ratingIcon}>
-                                <use href={sprite + "#icon-star"} />
-                            </svg>
+                            <Justicon icon={'star'} />
                             &nbsp;
                             <p>({props.tour.ratingsQuantity})</p>
                         </div>

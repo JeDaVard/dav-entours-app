@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import UserListings from '../../components/UserPage/UserListings/UserListings';
 import UserReviews from '../../components/UserPage/UserReviews/UserReviews';
 import TopLoading from '../../components/UI/TopLoading/TopLoading';
+import Justicon from "../../components/UI/Justicon";
 
 function UserPage(props) {
     const { fetchUser, location: {pathname}, user, isLoggedIn, signUp, closeSignUp } = props;
@@ -63,9 +64,9 @@ function UserPage(props) {
                             <Separator margin={'2 2'} />
                             <div className={classes.UserPage__stats}>
                                 <h3>
-                                    <b>{reviews.length}</b> Reviews
+                                    <Justicon icon={'star'} className={classes.Justicon__star}/> <b>{reviews.length}</b>&nbsp;Reviews
                                 </h3>
-                                <h3>Speaks - {user.speaks}</h3>
+                                <h3> <Justicon icon={'globe'} className={classes.Justicon__globe}/> Speaks - {user.speaks}</h3>
                             </div>
                             <Separator margin={'2 2'} />
                             <h2>

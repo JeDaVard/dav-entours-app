@@ -1,6 +1,7 @@
 .Popular {
     margin: 4rem 0;
     color: rgba(0, 0, 0, 0.7);
+
 }
 
 .Popular a,
@@ -21,10 +22,18 @@
 
 .Popular__content {
     display: flex;
+    position: relative;
     align-items: center;
-    width: 100%;
-    overflow-x: scroll;
     scrollbar-base-color: rgba(0, 0, 0, 0.17);
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: none;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-padding: 0 24px;
+    -webkit-scroll-snap-type: x mandatory;
+    -ms-scroll-snap-type: x mandatory;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
 }
 
 .Popular__content::-webkit-scrollbar {
