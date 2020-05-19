@@ -13,6 +13,7 @@ export {
 export {
     fetchTopUsers,
     fetchUser,
+    fetchUserSaved
 } from './user/actions'
 
 

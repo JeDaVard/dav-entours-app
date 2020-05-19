@@ -6,7 +6,7 @@ const fetchUsersStart = () => ({
     type: actions.FETCH_USERS_START,
 });
 
-const fetchUsersSUCCESS = (users) => ({
+const fetchUsersSuccess = (users) => ({
     type: actions.FETCH_USERS_SUCCESS,
     payload: {
         users,
@@ -22,7 +22,7 @@ const fetchUserStart = () => ({
     type: actions.FETCH_USER_START,
 });
 
-const fetchUserSUCCESS = (user) => ({
+const fetchUserSuccess = (user) => ({
     type: actions.FETCH_USER_SUCCESS,
     payload: {
         user,
@@ -34,10 +34,26 @@ const fetchUserFailed = (error) => ({
     error,
 });
 
+const fetchUserSavedStart = () => ({
+    type: actions.FETCH_USER_SAVED_START,
+});
+
+const fetchUserSavedSuccess = (saved) => ({
+    type: actions.FETCH_USER_SAVED_SUCCESS,
+    payload: {
+        saved,
+    },
+});
+
+const fetchUserSavedFailed = (error) => ({
+    type: actions.FETCH_USER_SAVED_FAILED,
+    error,
+});
+
 export const fetchTopUsers = () =>
     fetchData(
         fetchUsersStart,
-        fetchUsersSUCCESS,
+        fetchUsersSuccess,
         fetchUsersFailed,
         `${process.env.REACT_APP_SERVER}/api/user`
     );
@@ -45,12 +61,12 @@ export const fetchTopUsers = () =>
 export const fetchUser = (id, me, readyState) => {
     if (readyState) {
         return (dispatch) => {
-            dispatch(fetchUserSUCCESS(readyState));
+            dispatch(fetchUserSuccess(readyState));
         };
     } else if (me) {
         return fetchData(
             fetchUserStart,
-            fetchUserSUCCESS,
+            fetchUserSuccess,
             fetchUserFailed,
             `${process.env.REACT_APP_SERVER}/api/user/me`,
             getCookie('authToken')
@@ -58,9 +74,19 @@ export const fetchUser = (id, me, readyState) => {
     } else {
         return fetchData(
             fetchUserStart,
-            fetchUserSUCCESS,
+            fetchUserSuccess,
             fetchUserFailed,
             `${process.env.REACT_APP_SERVER}/api/user/${id}`
         );
     }
+};
+
+export const fetchUserSaved = (id) => {
+    return fetchData(
+        fetchUserSavedStart,
+        fetchUserSavedSuccess,
+        fetchUserSavedFailed,
+        `${process.env.REACT_APP_SERVER}/api/user/${id}`, // change the API !!!!!!!
+        getCookie('authToken')
+    );
 };

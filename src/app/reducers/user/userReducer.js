@@ -9,6 +9,12 @@ const initialState = {
         data: {},
         loading: false,
     },
+    me: {
+      saved: {
+          data: [],
+          loading: false
+      }
+    },
     error: null
 }
 
@@ -67,6 +73,42 @@ const userReducer = (state = initialState, action) => {
                 user: {
                     ...state.user,
                     loading: false,
+                },
+                error: action.error
+            }
+        case actionTypes.FETCH_USER_SAVED_START:
+            return {
+                ...state,
+                me: {
+                    ...state.me,
+                    saved: {
+                        ...state.me.saved,
+                        loading: true
+                    }
+                },
+                error: null
+            }
+        case actionTypes.FETCH_USER_SAVED_SUCCESS:
+            return {
+                ...state,
+                me: {
+                    ...state.me,
+                    saved: {
+                        data: action.payload.saved,
+                        loading: false
+                    }
+                },
+                error: null
+            }
+        case actionTypes.FETCH_USER_SAVED_FAILED:
+            return {
+                ...state,
+                me: {
+                    ...state.me,
+                    saved: {
+                        ...state.me.saved,
+                        loading: false
+                    }
                 },
                 error: action.error
             }
