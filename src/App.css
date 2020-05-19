@@ -61,7 +61,6 @@ body {
   box-sizing: border-box;
 }
 
-
 @media all
 and (display-mode: standalone) {
   body {
@@ -69,7 +68,15 @@ and (display-mode: standalone) {
     -webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none;
   }
-  body::-webkit-scrollbar { display: none }
+  body::-webkit-scrollbar {
+    display: none;
+  }
+  body::-webkit-scrollbar-track {
+    display: none;
+  }
+  body::-webkit-scrollbar-thumb {
+    display: none;
+  }
 }
 
 .row {

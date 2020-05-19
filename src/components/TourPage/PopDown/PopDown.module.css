@@ -129,8 +129,8 @@
 and (display-mode: standalone)
 and (orientation: portrait) {
     .PopDown {
-        height: 18rem;
-        padding-bottom: 12rem;
+        height: 15rem;
+        padding-bottom: 9rem;
     }
 }
 
@@ -138,7 +138,7 @@ and (orientation: portrait) {
 and (display-mode: standalone)
 and (orientation: landscape) {
     .PopDown {
-        height: 14rem;
-        padding-bottom: 8rem;
+        height: 13rem;
+        padding-bottom: 7rem;
     }
 }
