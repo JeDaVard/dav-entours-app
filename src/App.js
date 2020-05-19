@@ -15,6 +15,7 @@ import Foot from './components/Foot/Foot';
 import Error from "./components/Error/Error";
 import MobileBar from "./components/MobileBar/MobileBar";
 import debounce from "./utils/debounce";
+import Saved from "./containers/Saved/Saved";
 
 function App(props) {
     // console.log(props)
@@ -110,6 +111,7 @@ function App(props) {
                 <Switch>
                     <Route path="/user/:id" component={UserPage} />
                     <Route path="/tour/:slug" component={TourPage} />
+                    <Route path="/saved" component={Saved} />
                     <Route path="/me" render={props => <UserPage
                         {...props}
                         signUp={signUpModalHandler}

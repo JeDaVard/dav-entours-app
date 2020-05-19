@@ -227,6 +227,17 @@
     background-repeat: no-repeat;
 }
 
+.Discover__row {
+}
+
+@media screen and (min-width: 744px) {
+    .Discover__row {
+        width: 90%;
+        max-width: 180rem;
+        margin: 0 auto;
+    }
+}
+
 @media (min-width: 744px){
     .Discover__imageBetween {
         padding-top: 100%;

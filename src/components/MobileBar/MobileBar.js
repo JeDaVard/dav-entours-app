@@ -13,19 +13,19 @@ function MobileBar(props) {
                     </svg>
                     <h2>Explore</h2>
                 </NavLink>
-                <NavLink to={'/l'} className={classes.MobileBar__tab} activeClassName={classes.MobileBar__tab__active}>
+                <NavLink to={'/saved'} className={classes.MobileBar__tab} activeClassName={classes.MobileBar__tab__active}>
                     <svg className={classes.MobileBar__icon}>
                         <use href={sprite + "#icon-heart"} />
                     </svg>
                     <h2>Saved</h2>
                 </NavLink>
-                <NavLink to={'/h'} className={classes.MobileBar__tab} activeClassName={classes.MobileBar__tab__active}>
+                <NavLink to={'/mytours'} className={classes.MobileBar__tab} activeClassName={classes.MobileBar__tab__active}>
                     <svg className={classes.MobileBar__icon}>
                         <use href={sprite + "#icon-map"} />
                     </svg>
                     <h2>Tours</h2>
                 </NavLink>
-                <NavLink to={'/u'} className={classes.MobileBar__tab} activeClassName={classes.MobileBar__tab__active}>
+                <NavLink to={'/inbox'} className={classes.MobileBar__tab} activeClassName={classes.MobileBar__tab__active}>
                     <svg className={classes.MobileBar__icon}>
                         <use href={sprite + "#icon-inbox"} />
                     </svg>

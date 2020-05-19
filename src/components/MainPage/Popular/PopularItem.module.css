@@ -5,17 +5,9 @@
     min-width: 94%;
 }
 
-@media screen and (min-width: 744px) {
-    .Popular__tourcontainer {
-        padding: 1rem .6rem;
-        scroll-snap-align: start;
-        min-width: 33.333%;
-    }
-}
-
 .Popular__tour {
     position: relative;
-    height: 31rem;
+    height: 41rem;
     /*background: #f5f5f5;*/
     border-radius: 16px;
     overflow: hidden;
@@ -24,14 +16,14 @@
 
 .Popular__image {
     width: 100%;
-    height: 26rem;
+    height: 36rem;
     position: relative;
 }
 
 .Popular__image img {
     width: 100%;
     object-fit: cover;
-    height: 26rem;
+    height: 36rem;
 }
 
 .Popular__price {
@@ -131,4 +123,19 @@
 
 .Popular__date {
 
+}
+
+@media screen and (min-width: 744px) {
+    .Popular__tourcontainer {
+        padding: 1rem .6rem;
+        scroll-snap-align: start;
+        min-width: 49%;
+    }
+}
+@media screen and (min-width: 1128px) {
+    .Popular__tourcontainer {
+        padding: 1rem .6rem;
+        scroll-snap-align: start;
+        min-width: 32%;
+    }
 }

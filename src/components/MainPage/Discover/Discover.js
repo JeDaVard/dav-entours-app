@@ -26,21 +26,22 @@ function Discover(props) {
                                 <Link to={'/'}>Discover</Link>
                             </div>
                         </section>
-
-                            <div className={classes.Discover__gridParent}>
-                                {!props.discovers.loading && props.discovers.data.length ? (
-                                    <div className={classes.Discover__grid}>
-                                        {props.discovers.data.slice(0,4).map( discover => <DiscoverItem tour={discover} key={discover._id}/>)}
-                                    </div>
-                                ) : (
-                                    <DiscoverItemLoading />
-                                )}
-                            </div>
-
-                    <div className={classes.Discover__mobileLink}>
-                        <Link to={'/'}>Discover</Link>
                     </div>
-            </div>
+                    <div className={classes.Discover__row}>
+                        <div className={classes.Discover__gridParent}>
+                            {!props.discovers.loading && props.discovers.data.length ? (
+                                <div className={classes.Discover__grid}>
+                                    {props.discovers.data.slice(0,4).map( discover => <DiscoverItem tour={discover} key={discover._id}/>)}
+                                </div>
+                            ) : (
+                                <DiscoverItemLoading />
+                            )}
+                        </div>
+
+                        <div className={classes.Discover__mobileLink}>
+                            <Link to={'/'}>Discover</Link>
+                        </div>
+                    </div>
         </div>
     );
 }

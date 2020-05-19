@@ -27,6 +27,8 @@
     border-bottom: none;
     outline: 0;
     font-size: 2rem;
+    -webkit-appearance: none;
+    font-family: inherit;
     transition: all .2s;
 }
 

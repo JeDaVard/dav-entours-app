@@ -81,9 +81,7 @@ function UserPage(props) {
                                     new Date(
                                         user.createdAt
                                     ).getFullYear()}
-                            </h3>
-                            <h3>&nbsp;&nbsp;·&nbsp;&nbsp;</h3>
-                            {isThatMe && <Link to={'/'}>Edit profile</Link> }
+                                &nbsp; {isThatMe && <Link to={'/'}>Edit profile</Link> }</h3>
                             <p>{user.about}</p>
                         </section>
                         <div className={classes.UserPage__more}>
