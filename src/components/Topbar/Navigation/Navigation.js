@@ -26,7 +26,7 @@ function Navigation(props) {
                         </div>
                     </Link>
                     <Link to="/">Make a tour</Link>
-                    {!props.isLogged && <li><a href="/#" onClick={props.loginModal}>Log In</a></li>}
+                    {!props.isLogged && <Link to="/" onClick={props.loginModal}>Log In</Link>}
                 </div>
         <OutsideAlerter delegate={props.handleClose}>
                 <div className={classes.Navigation__user}>

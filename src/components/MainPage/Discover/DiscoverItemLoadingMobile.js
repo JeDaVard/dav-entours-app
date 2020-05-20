@@ -1,9 +1,10 @@
 import React from "react";
-import classes from './DiscoverItemLoading.module.css'
 import ContentLoader from "react-content-loader";
+import classes from './DiscoverItemLoadingMobile.module.css'
 
-export default () => (
-    <div className={classes.DiscoverItemLoading}>
+function DiscoverItemLoadingMobile() {
+    return (
+        <div className={classes.DiscoverItemLoadingMobile}>
             <ContentLoader
                 height={'100%'}
                 width={'100%'}
@@ -13,9 +14,10 @@ export default () => (
                 foregroundColor={'#3b3b3b'}
                 // viewBox="0 0 900 900"
             >
-                <rect x="0" y="0" rx="18" ry="18" width="66%" height="100%" />
-                <rect x="67.6%" y="0" rx="18" ry="18" width="32.4%" height="48.6%" />
-                <rect x="67.6%" y="51.4%" rx="18" ry="18" width="32.4%" height="48.6%" />
+                <rect x="0" y="0" rx="18" ry="18" width="100%" height="100%" />
             </ContentLoader>
-    </div>
-)
+        </div>
+    )
+}
+
+export default DiscoverItemLoadingMobile

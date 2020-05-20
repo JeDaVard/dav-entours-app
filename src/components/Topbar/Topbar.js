@@ -9,7 +9,6 @@ import TopSearch from "./TopSearch/TopSearch";
 
 
 function Topbar(props) {
-    console.log(props)
     const isTransparent = !!props.location.pathname.match(/^\/tour\/.*/);
     const initialTopBar = {
         topSearch: false,

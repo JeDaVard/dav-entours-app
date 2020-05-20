@@ -121,10 +121,6 @@
     padding-right: 1rem;
 }
 
-.Popular__date {
-
-}
-
 @media screen and (min-width: 744px) {
     .Popular__tourcontainer {
         padding: 1rem .6rem;

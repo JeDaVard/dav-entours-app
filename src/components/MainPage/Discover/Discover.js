@@ -1,8 +1,9 @@
 import React from 'react';
+import {Link} from "react-router-dom";
 import classes from './Discover.module.css';
 import DiscoverItem from './DiscoverItem';
 import DiscoverItemLoading from './DiscoverItemLoading';
-import {Link} from "react-router-dom";
+import DiscoverItemLoadingMobile from './DiscoverItemLoadingMobile';
 
 function Discover(props) {
     return (
@@ -34,7 +35,9 @@ function Discover(props) {
                                     {props.discovers.data.slice(0,4).map( discover => <DiscoverItem tour={discover} key={discover._id}/>)}
                                 </div>
                             ) : (
-                                <DiscoverItemLoading />
+                                <>
+                                    {props.isMobile ? <DiscoverItemLoadingMobile /> : <DiscoverItemLoading />}
+                                </>
                             )}
                         </div>
 

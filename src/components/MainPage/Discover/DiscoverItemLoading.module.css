@@ -1,3 +1,11 @@
 .DiscoverItemLoading {
+    width: 88.2vw;
+    height: 58vw;
+}
 
+@media screen and (min-width: 1128px) {
+    .DiscoverItemLoading {
+        width: 88.8vw;
+        height: 45.2vw;
+    }
 }

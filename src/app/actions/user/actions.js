@@ -86,7 +86,7 @@ export const fetchUserSaved = (id) => {
         fetchUserSavedStart,
         fetchUserSavedSuccess,
         fetchUserSavedFailed,
-        `${process.env.REACT_APP_SERVER}/api/user/${id}`, // change the API !!!!!!!
+        `${process.env.REACT_APP_SERVER}/api/tour`, // TODO change the API !!!!!!!
         getCookie('authToken')
     );
 };

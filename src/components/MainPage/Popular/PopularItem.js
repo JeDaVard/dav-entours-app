@@ -19,9 +19,6 @@ return(
                     <img src={`${process.env.REACT_APP_SERVER}/images/user/${popular.author.photo}`} alt="user"/>
                     <p>{popular.author.name}</p>
                 </Link>
-                <div className={classes.Popular__date}>
-                    {new Date(popular.startDates[0]).toDateString()}
-                </div>
                 <div className={classes.Popular__loc}>
                     {popular.startLocation.description}
                 </div>

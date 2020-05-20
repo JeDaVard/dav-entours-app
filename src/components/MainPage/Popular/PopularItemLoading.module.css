@@ -1,32 +1,25 @@
 .PopularItemLoading__itemcontainer {
     padding: 1rem .6rem;
+    scroll-snap-align: start;
+    min-width: 94%;
 }
 
 .PopularItemLoading__tour {
     position: relative;
-    width: 400px;
-    height: 31rem;
+    height: 41rem;
     overflow: hidden;
+    border-radius: 16px;
     box-shadow: 0 3px 4px rgba(0, 0, 0, 0.06);
-    border-radius: 17px;
 }
 
-/*.PopularItemLoading__tour::after {*/
-/*    content: '';*/
-/*    position: absolute;*/
-/*    width: 200%;*/
-/*    height: 100%;*/
-/*    background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.03), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.03));*/
-/*    animation-duration: 1s;*/
-/*    animation-name: loadContent;*/
-/*    animation-iteration-count: infinite;*/
-/*}*/
+@media screen and (min-width: 744px) {
+    .PopularItemLoading__itemcontainer {
+        min-width: 49%;
+    }
+}
 
-/*@keyframes loadContent {*/
-/*    0% {*/
-/*        transform: translateX(-50%);*/
-/*    }*/
-/*    100% {*/
-/*        transform: translateX(20%);*/
-/*    }*/
-/*}*/
+@media screen and (min-width: 1128px) {
+    .PopularItemLoading__itemcontainer {
+        min-width: 32%;
+    }
+}

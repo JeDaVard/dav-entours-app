@@ -17,6 +17,7 @@ import MobileBar from "./components/MobileBar/MobileBar";
 import debounce from "./utils/debounce";
 import Saved from "./containers/Saved/Saved";
 
+
 function App(props) {
     // console.log(props)
     const { checkAuth, setDesktop, setMobile } = props;

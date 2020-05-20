@@ -22,7 +22,7 @@ function Main(props) {
             {props.isMobile ? <TopSearchMobile /> : <Search />}
             <Popular populars={props.populars} />
             <Become />
-            <Discover discovers={props.discovers} />
+            <Discover discovers={props.discovers} isMobile={props.isMobile}/>
             <Top users={props.users} />
         </>
     );
