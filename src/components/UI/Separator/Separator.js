@@ -4,7 +4,7 @@ import classes from './Separator.module.css';
 const Separator = (props) => {
     const styles = {
         margin: props.vertical ? (
-            `${props.margin ? '0 ' + props.margin.split(' ')[1]+'rem ' + '0 ' + props.margin.split(' ')[0]+'rem': '0'}`
+            `${props.margin ? `0  ${props.margin.split(' ')[1]}rem 0 ${props.margin.split(' ')[0]}rem`: '0'}`
         ) : (
             `${props.margin ? props.margin.split(' ')[0]+'rem 0 ' + props.margin.split(' ')[1]+'rem 0': '0'}`
         )

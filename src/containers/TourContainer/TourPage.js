@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 import { connect } from 'react-redux';
 import { fetchTour } from '../../app/actions';
 import Separator from '../../components/UI/Separator/Separator';
@@ -12,6 +12,8 @@ import TopLoading from "../../components/UI/TopLoading/TopLoading";
 
 function TourPage(props) {
     const { fetchTour } = props;
+    const existingToursState = props.location.state;
+    const slug = props.match.params.slug;
 
     const [showPopDown, setShowPopDown] = useState({
         prevScrollPos: window.pageYOffset,
@@ -19,10 +21,10 @@ function TourPage(props) {
     });
 
     useEffect(() => {
-        fetchTour(props.match.params.slug, props.location.state);
-    }, [fetchTour]);
+        fetchTour(slug, existingToursState);
+    }, [fetchTour, existingToursState, slug]);
 
-    const handleScroll = () => {
+    const handleScroll = useCallback(() => {
         const { prevScrollPos } = showPopDown;
 
         const currentScrollPos = window.pageYOffset;
@@ -34,9 +36,10 @@ function TourPage(props) {
             prevScrollPos: currentScrollPos,
             visible,
         }));
-    };
+    }, [showPopDown]);
 
     useEffect(() => {
+
         window.addEventListener('scroll', handleScroll);
 
         return () => window.removeEventListener('scroll', handleScroll);

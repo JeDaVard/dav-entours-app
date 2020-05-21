@@ -1,7 +1,7 @@
 import React from "react";
 import {logout} from "../../../app/actions";
 import {connect} from "react-redux";
-import {Link, Redirect} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 const Logout = props => {
     const onLogout = () => {

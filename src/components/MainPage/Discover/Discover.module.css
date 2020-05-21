@@ -233,7 +233,7 @@
 @media screen and (min-width: 744px) {
     .Discover__row {
         width: 90%;
-        max-width: 180rem;
+        max-width: 150rem;
         margin: 0 auto;
     }
 }
@@ -254,11 +254,5 @@
 @media only screen and (orientation: landscape) and (max-device-width : 812px) {
     .Discover__imageBetween {
         padding-top: 60%;
-    }
-}
-
-@media (max-width: 743px) and (max-height: 812px){
-    .Discover__imageBetween {
-        padding-top: 100%;
     }
 }

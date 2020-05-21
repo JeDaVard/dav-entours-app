@@ -1,0 +1,63 @@
+
+.Tabs__box {
+    margin: 0 -20px 2rem -20px;
+}
+
+.Tabs__box a {
+    text-decoration: none;
+    display: inline-block;
+}
+
+.Tabs__box:after {
+    content: '';
+    margin: -4px 20px 0;
+    display: block;
+    border-bottom: 1px solid #DDDDDD;
+}
+
+.Tabs__button {
+    padding: 1.6rem;
+    border: none;
+    outline: none;
+    font-size: 1.4rem;
+    font-weight: 500;
+    background: transparent;
+    color: rgba(0, 0, 0, 0.5);
+    margin: .4rem;
+    cursor: pointer;
+}
+
+.Tabs__activeButton {
+    padding: 1.6rem;
+    border: none;
+    outline: none;
+    font-size: 1.4rem;
+    font-weight: 500;
+    background: transparent;
+    color: rgba(0, 0, 0, 0.8);
+    margin: .4rem;
+    cursor: pointer;
+}
+
+.Tabs__activeButton:after {
+    content: '';
+    display: block;
+    padding-top: 16px;
+    margin-bottom: -16px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.74);
+}
+
+.Tabs__button:hover,
+.Tabs__activeButton:hover {
+    color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.04);
+}
+
+@media (min-width: 744px) {
+    .Tabs__activeButton {
+        font-size: 1.6rem;
+    }
+    .Tabs__button {
+        font-size: 1.6rem;
+    }
+}

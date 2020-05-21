@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import ContentLoader from 'react-content-loader';
 import classes from './TourHead.module.css';
 import {CSSTransition} from "react-transition-group";
 import '../animation.css'

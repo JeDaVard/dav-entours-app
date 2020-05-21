@@ -17,7 +17,7 @@ function Saved(props) {
     }, [fetchUserSaved])
 
     return (
-        <div className="row">
+        <section className="row">
             <div className={classes.Saved}>
                 <h1 className={classes.Saved__name}>Saved</h1>
                 <Separator margin={'0 2'} color={'normal'}/>
@@ -56,7 +56,7 @@ function Saved(props) {
 
                 </div>
             </div>
-        </div>
+        </section>
     )
 }
 

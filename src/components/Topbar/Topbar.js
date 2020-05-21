@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect, useCallback} from "react";
 import classes from './Topbar.module.css';
 import logo from './entours.png'
 import logo2 from './entours2.png'
@@ -33,7 +33,7 @@ function Topbar(props) {
         setGeoDrop(false)
     }
 
-    const topBarHandler = function() {
+    const topBarHandler = useCallback(() => {
         if (!isTransparent) {
             if (window.scrollY < 1) {
                 setTopBar(state => ({
@@ -62,25 +62,26 @@ function Topbar(props) {
                 }))
             }
         }
-    }
+    }, [isTransparent])
 
+    const scrollPos = window.scrollY;
     useEffect(() => {
-        if (window.scrollY > 90 && !topBar.topSearch) {
+        if (scrollPos > 90 && !topBar.topSearch) {
             setTopBar(state => ({
                 ...state,
                 topSearch: true
             }))
-        } else if (window.scrollY <= 90 && topBar.topSearch) {
+        } else if (scrollPos <= 90 && topBar.topSearch) {
             setTopBar(state => ({
                 ...state,
                 topSearch: false
             }))
         }
-    }, [window.scrollY])
+    }, [scrollPos, topBar.topSearch])
 
     useEffect(() => {
         topBarHandler()
-    }, [isTransparent])
+    }, [topBarHandler])
 
     useEffect(() => {
         window.addEventListener('scroll', topBarHandler)
@@ -88,7 +89,7 @@ function Topbar(props) {
         return () => {
             window.removeEventListener('scroll', topBarHandler)
         }
-    }, [isTransparent])
+    }, [isTransparent, topBarHandler])
 
     return (
         <>

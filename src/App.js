@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
+import { Route, Switch, withRouter } from 'react-router-dom';
 import { connect } from "react-redux";
 import { checkAuth, setDesktop, setMobile } from './app/actions';
 import Main from './containers/Main';
@@ -16,6 +16,7 @@ import Error from "./components/Error/Error";
 import MobileBar from "./components/MobileBar/MobileBar";
 import debounce from "./utils/debounce";
 import Saved from "./containers/Saved/Saved";
+import MyTours from "./containers/MyTours/MyTours";
 
 
 function App(props) {
@@ -113,6 +114,7 @@ function App(props) {
                     <Route path="/user/:id" component={UserPage} />
                     <Route path="/tour/:slug" component={TourPage} />
                     <Route path="/saved" component={Saved} />
+                    <Route path="/mytours" component={MyTours} />
                     <Route path="/me" render={props => <UserPage
                         {...props}
                         signUp={signUpModalHandler}
