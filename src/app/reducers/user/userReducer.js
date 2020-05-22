@@ -1,4 +1,4 @@
-import * as actionTypes from '../../actions/user/types'
+import * as actionTypes from '../../actions/user/types';
 
 const initialState = {
     users: {
@@ -10,13 +10,17 @@ const initialState = {
         loading: false,
     },
     me: {
-      saved: {
-          data: [],
-          loading: false
-      }
+        saved: {
+            data: [],
+            loading: false,
+        },
+        tourEvents: {
+            data: [],
+            loading: false,
+        },
     },
-    error: null
-}
+    error: null,
+};
 
 const userReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -25,20 +29,20 @@ const userReducer = (state = initialState, action) => {
                 ...state,
                 users: {
                     ...state.users,
-                    loading: true
+                    loading: true,
                 },
-                error: null
-            }
+                error: null,
+            };
         case actionTypes.FETCH_USERS_SUCCESS:
             return {
                 ...state,
                 users: {
                     ...state.users,
                     data: action.payload.users,
-                    loading: false
+                    loading: false,
                 },
-                error: null
-            }
+                error: null,
+            };
         case actionTypes.FETCH_USERS_FAILED:
             return {
                 ...state,
@@ -46,27 +50,27 @@ const userReducer = (state = initialState, action) => {
                     ...state.users,
                     loading: false,
                 },
-                error: action.error
-            }
+                error: action.error,
+            };
         case actionTypes.FETCH_USER_START:
             return {
                 ...state,
                 user: {
                     ...state.user,
-                    loading: true
+                    loading: true,
                 },
-                error: null
-            }
+                error: null,
+            };
         case actionTypes.FETCH_USER_SUCCESS:
             return {
                 ...state,
                 user: {
                     ...state.user,
                     data: action.payload.user,
-                    loading: false
+                    loading: false,
                 },
-                error: null
-            }
+                error: null,
+            };
         case actionTypes.FETCH_USER_FAILED:
             return {
                 ...state,
@@ -74,8 +78,8 @@ const userReducer = (state = initialState, action) => {
                     ...state.user,
                     loading: false,
                 },
-                error: action.error
-            }
+                error: action.error,
+            };
         case actionTypes.FETCH_USER_SAVED_START:
             return {
                 ...state,
@@ -83,11 +87,11 @@ const userReducer = (state = initialState, action) => {
                     ...state.me,
                     saved: {
                         ...state.me.saved,
-                        loading: true
-                    }
+                        loading: true,
+                    },
                 },
-                error: null
-            }
+                error: null,
+            };
         case actionTypes.FETCH_USER_SAVED_SUCCESS:
             return {
                 ...state,
@@ -95,11 +99,11 @@ const userReducer = (state = initialState, action) => {
                     ...state.me,
                     saved: {
                         data: action.payload.saved,
-                        loading: false
-                    }
+                        loading: false,
+                    },
                 },
-                error: null
-            }
+                error: null,
+            };
         case actionTypes.FETCH_USER_SAVED_FAILED:
             return {
                 ...state,
@@ -107,14 +111,50 @@ const userReducer = (state = initialState, action) => {
                     ...state.me,
                     saved: {
                         ...state.me.saved,
-                        loading: false
-                    }
+                        loading: false,
+                    },
                 },
-                error: action.error
-            }
+                error: action.error,
+            };
+        case actionTypes.FETCH_USER_TOUR_EVENTS_START:
+            return {
+                ...state,
+                me: {
+                    ...state.me,
+                    tourEvents: {
+                        ...state.me.tourEvents,
+                        loading: true,
+                    },
+                },
+                error: null,
+            };
+        case actionTypes.FETCH_USER_TOUR_EVENTS_SUCCESS:
+            return {
+                ...state,
+                me: {
+                    ...state.me,
+                    tourEvents: {
+                        data: action.payload.tourEvents,
+                        loading: false,
+                    },
+                },
+                error: null,
+            };
+        case actionTypes.FETCH_USER_TOUR_EVENTS_FAILED:
+            return {
+                ...state,
+                me: {
+                    ...state.me,
+                    tourEvents: {
+                        ...state.me.tourEvents,
+                        loading: false,
+                    },
+                },
+                error: action.error,
+            };
         default:
-            return state
+            return state;
     }
-}
+};
 
 export default userReducer;

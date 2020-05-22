@@ -50,6 +50,22 @@ const fetchUserSavedFailed = (error) => ({
     error,
 });
 
+const fetchUserTourEventsStart = () => ({
+    type: actions.FETCH_USER_TOUR_EVENTS_START,
+});
+
+const fetchUserTourEventsSuccess = (tourEvents) => ({
+    type: actions.FETCH_USER_TOUR_EVENTS_SUCCESS,
+    payload: {
+        tourEvents,
+    },
+});
+
+const fetchUserTourEventsFailed = (error) => ({
+    type: actions.FETCH_USER_TOUR_EVENTS_FAILED,
+    error,
+});
+
 export const fetchTopUsers = () =>
     fetchData(
         fetchUsersStart,
@@ -86,6 +102,16 @@ export const fetchUserSaved = (id) => {
         fetchUserSavedStart,
         fetchUserSavedSuccess,
         fetchUserSavedFailed,
+        `${process.env.REACT_APP_SERVER}/api/tour`, // TODO change the API !!!!!!!
+        getCookie('authToken')
+    );
+};
+
+export const fetchUserTourEvents = (id) => {
+    return fetchData(
+        fetchUserTourEventsStart,
+        fetchUserTourEventsSuccess,
+        fetchUserTourEventsFailed,
         `${process.env.REACT_APP_SERVER}/api/tour`, // TODO change the API !!!!!!!
         getCookie('authToken')
     );

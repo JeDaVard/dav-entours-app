@@ -25,14 +25,12 @@ function Tabs({ children, defaultTab }) {
     )
     const tabContent = children.filter( child => child.props.label === activeTab)
     return (
-        <div>
+        <>
             <div className={classes.Tabs__box}>
                 {tabs}
             </div>
-            <div>
-                {tabContent}
-            </div>
-        </div>
+            {tabContent}
+        </>
     )
 }
 

@@ -19,7 +19,7 @@ function MobileBar(props) {
                     </svg>
                     <h2>Saved</h2>
                 </NavLink>
-                <NavLink to={'/mytours'} className={classes.MobileBar__tab} activeClassName={classes.MobileBar__tab__active}>
+                <NavLink to={'/tourevents'} className={classes.MobileBar__tab} activeClassName={classes.MobileBar__tab__active}>
                     <svg className={classes.MobileBar__icon}>
                         <use href={sprite + "#icon-map"} />
                     </svg>

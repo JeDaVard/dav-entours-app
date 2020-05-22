@@ -7,6 +7,7 @@ import Become from '../components/MainPage/Become/Become';
 import Discover from '../components/MainPage/Discover/Discover';
 import Top from '../components/MainPage/Top/Top';
 import TopSearchMobile from "../components/MainPage/TopSearchMobile/TopSearchMobile";
+import TopLoading from "../components/UI/TopLoading/TopLoading";
 
 function Main(props) {
     const { fetchPopulars, fetchDiscovers, fetchTopUsers } = props;

@@ -1,21 +1,10 @@
-.Saved {
-    color: rgba(0, 0, 0, 0.8);
-    margin-top: 2rem;
-}
-
-.Saved a {
-    text-decoration: none;
-    color: rgba(0, 0, 0, 0.8);
-}
-
-.Saved__content {
+.UpcomingEvents__content {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
-
 }
 
-.Saved__item {
+.UpcomingEvents__item {
     flex: 0 0 100%;
     margin-bottom: 2rem;
     background: transparent;
@@ -25,26 +14,26 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.16);
 }
 
-.Saved__item:active {
+.UpcomingEvents__item:active {
     transform: scale(.96);
 }
 
-.Saved__item:hover .Saved__image {
+.UpcomingEvents__item:hover .UpcomingEvents__image {
     transform: scale(1);
 }
 
-.Saved__item:hover {
+.UpcomingEvents__item:hover {
     filter: brightness(1.04);
 }
 
-.Saved__name {
+.UpcomingEvents__name {
     font-size: 3rem;
     font-weight: 500;
     margin-bottom: 2rem;
 }
 
 
-.Saved__imageFrame {
+.UpcomingEvents__imageFrame {
     border-radius: 18px 18px 0 0;
     overflow: hidden;
     width: 100%;
@@ -52,7 +41,7 @@
     -webkit-mask-image: -webkit-radial-gradient(center, white, black);
 }
 
-.Saved__image {
+.UpcomingEvents__image {
     backface-visibility: hidden;
     border-radius: 18px 18px 0 0;
     width: 100%;
@@ -62,33 +51,33 @@
     transition: all .4s;
 }
 
-.Saved__info {
+.UpcomingEvents__info {
     border-radius: 0 0 18px 18px;
     padding: 2rem;
 }
 
-.Saved__infoPart {
+.UpcomingEvents__infoPart {
     font-size: 1.2rem;
     color: rgba(0, 0, 0, 0.5);
     font-weight: 400;
 }
 
-.Saved__title {
+.UpcomingEvents__title {
     font-size: 1.8rem;
 }
 
-.Saved__infoBottom {
+.UpcomingEvents__infoBottom {
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-size: 1.5rem;
 }
 
-.Saved__infoBottom :last-child {
+.UpcomingEvents__infoBottom :last-child {
     font-size: 1.3rem;
 }
 
-.Saved__remove {
+.UpcomingEvents__remove {
     position: absolute;
     top: 1rem;
     right: 1rem;
@@ -99,42 +88,42 @@
     transition: background .2s;
 }
 
-.Saved__remove:hover,
-.Saved__remove:active {
+.UpcomingEvents__remove:hover,
+.UpcomingEvents__remove:active {
     background: white;
 }
 
-.Saved__removeIcon {
+.UpcomingEvents__removeIcon {
     fill: rgba(0, 0, 0, 0.8);
     width: 2rem;
     height: 2rem;
 }
 
 @media screen and (min-width: 744px) and (max-width: 1127px){
-    .Saved__item {
+    .UpcomingEvents__item {
         flex: 0 0 calc(50% - 1rem);
         margin: 0 2rem 2rem 0;
     }
 
-    .Saved__content :nth-child(even) {
+    .UpcomingEvents__content :nth-child(even) {
         margin-right: 0;
     }
 }
 
 @media screen and (min-width: 1128px) {
-    .Saved__item {
+    .UpcomingEvents__item {
         flex: 0 0 calc(33.333% - 1.333rem);
         margin: 0 2rem 2rem 0;
     }
 
-    .Saved__content :nth-child(3n) {
+    .UpcomingEvents__content :nth-child(3n) {
         margin-right: 0;
     }
-    .Saved__imageFrame {
+    .UpcomingEvents__imageFrame {
         height: 200px;
     }
 
-    .Saved__image {
+    .UpcomingEvents__image {
         height: 200px;
     }
 }

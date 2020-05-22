@@ -40,10 +40,10 @@ function Navigation(props) {
                     </div>
                     <div className={!props.profileDrop ? `${classes.Navigation__profileDrop} ${classes.Navigation__profileDrop__close}` : `${classes.Navigation__profileDrop}`}>
                         <ul className={classes.Navigation__profileDrop__ul1}>
-                            <Link to={{pathname: '/me'}}><li>Profile</li></Link>
-                            <a href="/"> <li>Messages</li></a>
-                            <a href="/"> <li>Trips</li></a>
-                            <a href="/"> <li>Saved</li></a>
+                            <Link to={{pathname: '/me'}}><li onClick={props.handleClose}>Profile</li></Link>
+                            <Link to={{pathname: '/tourevents'}}><li onClick={props.handleClose}>Tours</li></Link>
+                            <Link to={{pathname: '/saved'}}><li onClick={props.handleClose}>Saved</li></Link>
+                            <Link to={{pathname: '/inbox'}}><li onClick={props.handleClose}>Inbox</li></Link>
                         </ul>
                         <Separator color={'light'}/>
                         <ul className={classes.Navigation__profileDrop__ul2}>

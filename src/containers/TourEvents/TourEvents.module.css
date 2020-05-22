@@ -1,20 +1,14 @@
-.MyTours {
+.TourEvents {
     color: rgba(0, 0, 0, 0.8);
     margin-top: 2rem;
 }
 
-.MyTours a {
+.TourEvents a {
     text-decoration: none;
     color: rgba(0, 0, 0, 0.8);
 }
 
-.MyTours__name {
+.TourEvents__name {
     font-size: 3rem;
     font-weight: 500;
-}
-
-.MyTours__content {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
 }

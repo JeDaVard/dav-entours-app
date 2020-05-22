@@ -16,7 +16,7 @@ import Error from "./components/Error/Error";
 import MobileBar from "./components/MobileBar/MobileBar";
 import debounce from "./utils/debounce";
 import Saved from "./containers/Saved/Saved";
-import MyTours from "./containers/MyTours/MyTours";
+import TourEvents from "./containers/TourEvents/TourEvents";
 
 
 function App(props) {
@@ -114,7 +114,7 @@ function App(props) {
                     <Route path="/user/:id" component={UserPage} />
                     <Route path="/tour/:slug" component={TourPage} />
                     <Route path="/saved" component={Saved} />
-                    <Route path="/mytours" component={MyTours} />
+                    <Route path="/tourevents" component={TourEvents} />
                     <Route path="/me" render={props => <UserPage
                         {...props}
                         signUp={signUpModalHandler}
