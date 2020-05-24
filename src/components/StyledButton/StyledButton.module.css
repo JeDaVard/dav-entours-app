@@ -77,8 +77,8 @@
             #41ca73 27.5%,
             #4fc885 40%,
             #3ac87f 57.5%,
-            rgb(189, 30, 89) 75%,
-            rgb(189, 30, 89) 100%
+            rgb(19, 208, 120) 75%,
+            rgb(20, 179, 122) 100%
     );
     transition: opacity 1.25s ease 0s;
 }
@@ -98,6 +98,7 @@
     display: flex;
     position: relative;
     pointer-events: none;
+    justify-content: center;
 }
 
 .StyledButton__text svg {

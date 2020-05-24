@@ -32,19 +32,44 @@ function Saved(props) {
                             >
                                 <Link to={`/tour/${tour.slug}`}>
                                     <div className={classes.Saved__imageFrame}>
-                                        <ThumbedImage
-                                            src={`${process.env.REACT_APP_SERVER}/images/tour/${tour.imageCover}`}
-                                            thumb={`${process.env.REACT_APP_SERVER}/images/tour/${tour.imageCover.slice(0, tour.imageCover.length-4)}.thumb.jpeg`} blur={true}
-                                            className={classes.Saved__image}
-                                            alt={tour.name}
-                                        />
+                                        <div className={classes.Saved__box1}>
+                                            <ThumbedImage
+                                                src={`${process.env.REACT_APP_SERVER}/images/tour/${tour.images[0]}`}
+                                                thumb={`${process.env.REACT_APP_SERVER}/images/tour/${tour.images[0].slice(0, tour.images[0].length-4)}.thumb.jpeg`} blur={true}
+                                                className={classes.Saved__image}
+                                                alt={tour.name}
+                                            />
+                                        </div>
+                                        <div className={classes.Saved__box2}>
+                                            <div className={classes.Saved__box2c1}>
+                                                <ThumbedImage
+                                                    src={`${process.env.REACT_APP_SERVER}/images/tour/${tour.images[1]}`}
+                                                    thumb={`${process.env.REACT_APP_SERVER}/images/tour/${tour.images[1].slice(0, tour.images[1].length-4)}.thumb.jpeg`} blur={true}
+                                                    className={classes.Saved__image}
+                                                    alt={tour.name}
+                                                />
+                                            </div>
+                                            <div className={classes.Saved__box2c2}>
+                                                <ThumbedImage
+                                                    src={`${process.env.REACT_APP_SERVER}/images/tour/${tour.images[2]}`}
+                                                    thumb={`${process.env.REACT_APP_SERVER}/images/tour/${tour.images[2].slice(0, tour.images[2].length-4)}.thumb.jpeg`} blur={true}
+                                                    className={classes.Saved__image}
+                                                    alt={tour.name}
+                                                />
+                                            </div>
+                                        </div>
                                     </div>
                                 </Link>
                                 <div className={classes.Saved__info}>
-                                    <h4 className={classes.Saved__infoPart}>
-                                        Participants {tour.participants.length}/
-                                        {tour.maxGroupSize}
-                                    </h4>
+                                    <div className={classes.Saved__infoAbove}>
+                                        <h4 className={classes.Saved__infoPart}>
+                                            Participants {tour.participants.length}/
+                                            {tour.maxGroupSize}
+                                        </h4>
+                                        <div className={classes.Saved__rating}>
+                                            <h3>{tour.ratingsAverage}</h3>&nbsp;<Justicon icon={'star'}/>
+                                        </div>
+                                    </div>
                                     <Link to={'/'}>
                                         <h2 className={classes.Saved__title}>
                                             {tour.name}

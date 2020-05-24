@@ -11,17 +11,6 @@
     transition: all;
 }
 
-@media screen and (max-width: 743px) {
-    .Modal {
-        width: 100%;
-        height: 100vh;
-        top: 0;
-        left: 0;
-        transform: translate(0, 0);
-        border-radius: 0;
-    }
-}
-
 .Modal__header {
     display: flex;
     align-items: center;
@@ -53,4 +42,18 @@
 .Modal__main {
     padding: 2rem;
     font-size: 1.5rem;
+}
+
+@media screen and (max-width: 743px) {
+    .Modal {
+        width: 100%;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        transform: translate(0, 0);
+        border-radius: 0;
+    }
+    .Modal__main {
+        min-height: 86vh;
+    }
 }

@@ -1,0 +1,31 @@
+.OnlyAuth {
+    color: rgba(0, 0, 0, 0.8);
+    padding: 2rem 0;
+}
+
+.OnlyAuth__title {
+    font-size: 3rem;
+    font-weight: 500;
+}
+
+.OnlyAuth__content {
+    text-align: center;
+}
+
+.OnlyAuth a {
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.5rem;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.OnlyAuth__illustration {
+    width: 256px;
+}
+
+.OnlyAuth__switchText {
+    padding: .7rem;
+    font-size: 1.5rem;
+    font-weight: 400;
+    display: inline-block;
+}

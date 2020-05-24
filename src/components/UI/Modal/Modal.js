@@ -5,6 +5,7 @@ import { CSSTransition } from "react-transition-group";
 import BackDrop from "../BackDrop/BackDrop";
 import './animation.css';
 import Separator from "../Separator/Separator";
+import OutsideAlerter from "../../../hocs/EventDelegator";
 
 function Modal(props) {
     return ReactDOM.createPortal(
@@ -17,14 +18,16 @@ function Modal(props) {
                 unmountOnExit
             >
                 <div className={classes.Modal}>
-                    <header className={classes.Modal__header}>
-                        <h1>{props.title}</h1>
-                        <button onClick={props.onClick}>&times;</button>
-                    </header>
-                    <Separator color={'light'}/>
-                    <main className={classes.Modal__main}>
-                        {props.children}
-                    </main>
+                    <OutsideAlerter delegate={props.onClick}>
+                            <header className={classes.Modal__header}>
+                                <h1>{props.title}</h1>
+                                <button onClick={props.onClick}>&times;</button>
+                            </header>
+                            <Separator color={'light'}/>
+                            <main className={classes.Modal__main}>
+                                {props.children}
+                            </main>
+                    </OutsideAlerter>
                 </div>
             </CSSTransition>
         </>,

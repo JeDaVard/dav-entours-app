@@ -11,22 +11,14 @@ import TopLoading from '../../components/UI/TopLoading/TopLoading';
 import Justicon from "../../components/UI/Justicon";
 
 function UserPage(props) {
-    const { fetchUser, location: {pathname}, user, isLoggedIn, signUp, closeSignUp } = props;
-    const isThatMe = pathname.startsWith('/me')
+    const { fetchUser, match: {params}, user } = props;
+    const isThatMe = params.id === props.userId
     let reviews = [];
 
     useEffect(() => {
-        if (isThatMe) {
-            if (isLoggedIn) {
-                fetchUser(props.match.params.id, isThatMe)
-            } else {
-                signUp()
-            }
-            return () => closeSignUp()
-        } else {
-            fetchUser(props.match.params.id)
-        }
-    }, [fetchUser, pathname, isLoggedIn]);
+        fetchUser(params.id);
+
+    }, [fetchUser, params.id]);
 
     if (user.tours && user.tours.length) {
         user.tours
@@ -104,7 +96,8 @@ function UserPage(props) {
 const mapStateToProps = (state) => ({
     user: state.user.user.data,
     loading: state.user.user.loading,
-    isLoggedIn: !!state.auth.token
+    isLoggedIn: !!state.auth.token,
+    userId: state.auth.userId
 });
 
 const mapDispatchToState = (dispatch) => ({

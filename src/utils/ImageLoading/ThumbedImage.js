@@ -1,21 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import classes from './ThumbedImage.module.css';
 
 
 const ThumbedImage = function(props) {
     const [ state, setstate ] = useState({ ready: false });
-    let _mounted = false;
-
-    useEffect(() => {
-        _mounted = true;
-        return () => {
-            _mounted = false
-        }
-    });
+    // let _mounted = false;
+    //
+    // useEffect(() => {
+    //     _mounted = true;
+    //     return () => {
+    //         _mounted = false
+    //     }
+    // });
 
     if (!state.ready) {
         const buffer = new Image();
-        buffer.onload = () => _mounted && setstate({ ready: true });
+        buffer.onload = () => !state.ready && setstate({ ready: true });
         buffer.src = props.src;
     }
 

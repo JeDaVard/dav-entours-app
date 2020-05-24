@@ -16,7 +16,7 @@ function StyledButton(props) {
         })
     }
     return (
-        <button className={classes.StyledButton}>
+        <button className={classes.StyledButton} onClick={props.onClick}>
             <span className={classes.StyledButton__effectContainer}>
                 <span onMouseMove={mouseMoveHandler} style={styles} className={classes.StyledButton__effect}> </span>
             </span>
