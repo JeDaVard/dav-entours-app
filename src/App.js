@@ -3,9 +3,9 @@ import { Route, Switch, withRouter } from 'react-router-dom';
 import { connect } from "react-redux";
 import { checkAuth, setDesktop, setMobile } from './app/actions';
 import Main from './containers/Main';
-import './App.css';
 import TourPage from './containers/TourContainer/TourPage';
 import UserPage from './containers/UserContainer/UserPage';
+import Profile from './containers/Profile/Profile';
 import LoginForm from './containers/LoginForm/LoginForm';
 import Modal from './components/UI/Modal/Modal';
 import Layout from './components/Layout/Layout';
@@ -17,11 +17,13 @@ import MobileBar from "./components/MobileBar/MobileBar";
 import debounce from "./utils/debounce";
 import Saved from "./containers/Saved/Saved";
 import TourEvents from "./containers/TourEvents/TourEvents";
+import './App.css';
+import OnlyAuth from "./OnlyAuth/OnlyAuth";
 
 
 function App(props) {
-    // console.log(props)
-    const { checkAuth, setDesktop, setMobile } = props;
+    // console.log(props.loggedIn)
+    const { checkAuth, setDesktop, setMobile, loggedIn } = props;
 
     const [ error, setError ] = useState(false)
 
@@ -115,11 +117,17 @@ function App(props) {
                     <Route path="/tour/:slug" component={TourPage} />
                     <Route path="/saved" component={Saved} />
                     <Route path="/tourevents" component={TourEvents} />
-                    <Route path="/me" render={props => <UserPage
-                        {...props}
-                        signUp={signUpModalHandler}
-                        closeSignUp={authModalClose}
-                    />} />
+                    <Route path="/me" render={props => loggedIn ? (
+                        <Profile
+                            {...props}
+                            signUp={signUpModalHandler}
+                            closeSignUp={authModalClose}
+                        />
+                    ) : (
+                        <div>
+                            <OnlyAuth />
+                        </div>
+                    )} />
                     <Route path="/" component={Main} />
                 </Switch>
                 <Modal

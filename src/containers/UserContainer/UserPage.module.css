@@ -4,17 +4,31 @@
 }
 
 .UserPage__content {
-    padding: 4rem 0;
+    padding: 2rem 0;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
 .UserPage__profile {
-    border: 1px solid rgba(0, 0, 0, 0.14);
-    padding: 2rem;
+    border: none;
+    padding-bottom: 2rem;
     width: 100%;
     align-self: flex-start;
+}
+
+@media screen and (min-width: 744px){
+    .UserPage__content {
+        padding: 4rem 0;
+    }
+
+    .UserPage__profile {
+        border: 1px solid rgba(0, 0, 0, 0.14);
+        padding: 2rem;
+        width: 100%;
+        align-self: flex-start;
+    }
+
 }
 
 .UserPage__profile a,
@@ -48,6 +62,11 @@
 }
 
 .UserPage__profile h2 {
+    font-weight: 400;
+    margin: 0 0 .5rem 0;
+    font-size: 3rem;
+}
+.UserPage__profileTop h2 {
     font-weight: 500;
     margin: 0 0 .5rem 0;
     font-size: 1.6rem;

@@ -1,0 +1,77 @@
+.Profile {
+    padding: 2rem 0;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.Profile a {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.8);
+    transition: all .2s;
+}
+.Profile a:hover,
+.Profile a:visited,
+.Profile a:active {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.55);
+}
+
+.Profile__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Profile__name {
+    font-size: 2.4rem;
+    font-weight: 400;
+}
+
+.Profile__full {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.Profile__photo {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.Profile__bottom {
+    text-align: center;
+}
+
+.Profile__geo a {
+    font-size: 1.5rem;
+    display: inline-block;
+    padding: 1rem;
+}
+
+.Profile__out {
+    list-style: none;
+}
+
+.Profile__out li {
+    font-size: 1.5rem;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.06);
+    border-radius: 5px;
+    margin-bottom: .4rem;
+    transition: all .2s;
+}
+
+.Profile__out li:hover,
+.Profile__out li:active {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.Profile__deactivate {
+    font-size: 1.4rem;
+    display: inline-block;
+    padding: 1rem;
+}
+
+@media screen and (min-width: 744px) {
+    .Profile__bottom { display: none }
+}

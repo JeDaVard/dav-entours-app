@@ -4,7 +4,6 @@ import logo from './entours.png'
 import logo2 from './entours2.png'
 import Navigation from "./Navigation/Navigation";
 import { Link } from "react-router-dom";
-import { connect } from "react-redux";
 import TopSearch from "./TopSearch/TopSearch";
 
 
@@ -145,8 +144,4 @@ function Topbar(props) {
     );
 }
 
-const mapStateToProps = state => ({
-
-});
-
-export default connect(mapStateToProps)(Topbar)
+export default Topbar

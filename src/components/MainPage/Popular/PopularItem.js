@@ -7,7 +7,7 @@ export default ({ popular }) => {
     return (
         <div className={classes.Popular__tourcontainer}>
             <div className={classes.Popular__tour}>
-                <div className={classes.Popular__image}>
+                <div className={classes.Popular__imageFrame}>
                     <Link
                         to={{
                             pathname: `/tour/${popular.slug}`,
@@ -17,7 +17,7 @@ export default ({ popular }) => {
                         <ThumbedImage
                             src={`${process.env.REACT_APP_SERVER}/images/tour/${popular.imageCover}`}
                             thumb={`${process.env.REACT_APP_SERVER}/images/tour/${popular.imageCover.slice(0, popular.imageCover.length-4)}.thumb.jpeg`} blur={true}
-                            className={classes.PastEvents__image}
+                            className={classes.Popular__image}
                             alt={popular.name}
                         />
                     </Link>

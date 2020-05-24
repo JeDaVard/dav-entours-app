@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 
 const Logout = props => {
     const onLogout = () => {
-        props.onClose();
+        props.onClose && props.onClose();
         props.logout();
     }
     return (

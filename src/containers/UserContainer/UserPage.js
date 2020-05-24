@@ -49,6 +49,21 @@ function UserPage(props) {
                 {!props.loading && user.name && (
                     <div className={classes.UserPage__content}>
                         <section className={classes.UserPage__profile}>
+                            <h2>
+                                Hi, I'm{' '}
+                                {user && user.name.split(' ')[0]}
+                            </h2>
+                            <h3>
+                                Joined{' '}
+                                {new Date(user.createdAt).getMonth() +
+                                1 +
+                                ' ' +
+                                new Date(
+                                    user.createdAt
+                                ).getFullYear()}
+                                &nbsp; {isThatMe && <Link to={'/'}>Edit profile</Link> }</h3>
+                            <p>{user.about}</p>
+                            <Separator margin={'2 2'} color={'normal'}/>
                             <div className={classes.UserPage__profileTop}>
                                 <h2>{user.name}</h2>
                                 <div className={classes.UserPage__photoFrame}>
@@ -61,28 +76,13 @@ function UserPage(props) {
                                 </div>
                                 {isThatMe && <a href="/">Update image</a> }
                             </div>
-                            <Separator margin={'2 2'} />
+                            <Separator margin={'2 2'} color={'normal'}/>
                             <div className={classes.UserPage__stats}>
                                 <h3>
                                     <Justicon icon={'star'} className={classes.Justicon__star}/> <b>{reviews.length}</b>&nbsp;Reviews
                                 </h3>
                                 <h3> <Justicon icon={'globe'} className={classes.Justicon__globe}/> Speaks - {user.speaks}</h3>
                             </div>
-                            <Separator margin={'2 2'} />
-                            <h2>
-                                Hi, I'm{' '}
-                                {user && user.name.split(' ')[0]}
-                            </h2>
-                            <h3>
-                                Joined{' '}
-                                {new Date(user.createdAt).getMonth() +
-                                    1 +
-                                    ' ' +
-                                    new Date(
-                                        user.createdAt
-                                    ).getFullYear()}
-                                &nbsp; {isThatMe && <Link to={'/'}>Edit profile</Link> }</h3>
-                            <p>{user.about}</p>
                         </section>
                         <div className={classes.UserPage__more}>
                             <Separator margin={'0 2'} />
