@@ -16,7 +16,7 @@ function TourDescription(props) {
                             <div className={classes.TourDescription__users}>
                                 <Link to={{pathname: `/user/${!loading && tour.author._id}`}}>
                                     <div className={classes.TourDescription__user}>
-                                        <img src={`${process.env.REACT_APP_SERVER}/images/user/${!loading && tour.author.photo}`} alt="user"/>
+                                        <img src={tour.author && `${process.env.REACT_APP_SERVER}/images/user/${!loading && tour.author.photo}`} alt="user"/>
                                         <h3>{!loading && tour.author.name}</h3>
                                         <p>Author</p>
                                     </div>

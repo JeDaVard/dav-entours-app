@@ -14,16 +14,16 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.16);
 }
 
+.UpcomingEvents__item:hover {
+    filter: brightness(1.04);
+}
+
 .UpcomingEvents__item:active {
     transform: scale(.96);
 }
 
 .UpcomingEvents__item:hover .UpcomingEvents__image {
     transform: scale(1);
-}
-
-.UpcomingEvents__item:hover {
-    filter: brightness(1.04);
 }
 
 .UpcomingEvents__name {

@@ -11,7 +11,7 @@ function PopDown(props) {
             <div className="row">
                 <div className={classes.PopDown__content}>
                     <div className={classes.PopDown__user}>
-                        <img src={`${process.env.REACT_APP_SERVER}/images/tour/${props.tour.imageCover}`} alt="user"/>
+                        <img src={props.tour.imageCover && `${process.env.REACT_APP_SERVER}/images/tour/${props.tour.imageCover}`} alt="user"/>
                         <h3>{props.tour.name}</h3>
                         <div className={classes.PopDown__rating}>
                             <p><b>{props.tour.ratingsAverage}</b></p>

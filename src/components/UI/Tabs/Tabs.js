@@ -1,6 +1,5 @@
-import React, {useState, useCallback, useEffect} from "react";
+import React, {useState, useCallback } from "react";
 import classes from "./Tabs.module.css";
-import { Link } from "react-router-dom";
 
 
 function Tabs({ children, defaultTab }) {
@@ -29,7 +28,9 @@ function Tabs({ children, defaultTab }) {
             <div className={classes.Tabs__box}>
                 {tabs}
             </div>
-            {tabContent}
+            <div>
+                {tabContent}
+            </div>
         </>
     )
 }

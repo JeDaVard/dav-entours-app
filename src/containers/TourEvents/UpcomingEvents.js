@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import moment from 'moment';
 import classes from './UpcomingEvents.module.css';
 import Justicon from '../../components/UI/Justicon';
+import ProgressiveImageLoading from "../../utils/ImageLoading/ProgressiveImageLoading";
 
 function UpcomingEvents(props) {
     const { tours } = props;

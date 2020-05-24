@@ -21,7 +21,7 @@ function TourPage(props) {
     });
 
     useEffect(() => {
-        fetchTour(slug, existingToursState);
+        fetchTour(slug);
     }, [fetchTour, existingToursState, slug]);
 
     const handleScroll = useCallback(() => {

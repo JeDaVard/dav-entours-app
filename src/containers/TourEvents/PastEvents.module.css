@@ -14,16 +14,16 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.16);
 }
 
-.PastEvents__item:active {
-    transform: scale(.96);
-}
-
 .PastEvents__item:hover .PastEvents__image {
     transform: scale(1);
 }
 
 .PastEvents__item:hover {
     filter: brightness(1.04);
+}
+
+.PastEvents__item:active {
+    transform: scale(.96);
 }
 
 .PastEvents__name {

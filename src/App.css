@@ -114,3 +114,50 @@ and (display-mode: standalone) {
 .globalA:hover::after {
   width: 100%;
 }
+
+.progressive-loading-wrapper {
+  height: 100%;
+  width: 100%;
+}
+.progressive-loading-wrapper img {
+  /*min-width: 100%;*/
+  /*min-height: 100%;*/
+  opacity: 1;
+  transition: all .3s ease-in-out;
+}
+.progressive-loading-wrapper img.original {
+  position: absolute;
+  transition: all .3s ease-in-out;
+  /*object-fit: cover;*/
+}
+
+.progressive-loading-wrapper img.thumb {
+  /*object-fit: cover;*/
+}
+
+.progressive-loading-wrapper img.hide {
+  opacity: 0;
+}
+
+.backblur {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  opacity: 1;
+}
+
+.backblur2 {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(0);
+  opacity: 0;
+  transition: all .3s;
+}
