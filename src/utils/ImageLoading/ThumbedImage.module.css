@@ -1,0 +1,39 @@
+
+.ThumbedImage {
+    height: 100%;
+    width: 100%;
+}
+.ThumbedImage img {
+    transition: all .3s ease-in-out;
+}
+.ThumbedImage__original {
+    opacity: 1;
+    position: absolute;
+}
+
+.ThumbedImage__hide {
+    opacity: 0;
+}
+
+.ThumbedImage__blur {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    opacity: 1;
+}
+
+.ThumbedImage__unBlur {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(0);
+    opacity: 0;
+    transition: all .3s;
+}

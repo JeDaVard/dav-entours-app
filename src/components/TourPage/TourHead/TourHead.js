@@ -3,30 +3,19 @@ import { connect } from 'react-redux';
 import classes from './TourHead.module.css';
 import { CSSTransition } from "react-transition-group";
 import '../animation.css'
-import ProgressiveImageLoading from "../../../utils/ImageLoading/ProgressiveImageLoading";
+import ThumbedImage from "../../../utils/ImageLoading/ThumbedImage";
 
 function TourHead(props) {
     const { tour, loading } = props;
     return (
         <div className={classes.TourHead__cover}>
-            {/*<CSSTransition*/}
-            {/*    in={!loading}*/}
-            {/*    timeout={300}*/}
-            {/*    classNames="coverImage"*/}
-            {/*    unmountOnExit*/}
-            {/*>*/}
-            {tour.name &&  <ProgressiveImageLoading
+            {tour.name &&  <ThumbedImage
                 className={classes.TourHead__coverImage}
                 src={`${process.env.REACT_APP_SERVER}/images/tour/${tour.imageCover}`}
                 thumb={`${process.env.REACT_APP_SERVER}/images/tour/${tour.imageCover.slice(0, tour.imageCover.length - 4)}.thumb.jpeg`}
                 blur={true}
                 alt={tour.name}
             />}
-            {/*    <img*/}
-            {/*        src={`${process.env.REACT_APP_SERVER}/images/tour/${tour.imageCover}`}*/}
-            {/*        alt=""*/}
-            {/*    />*/}
-            {/*</CSSTransition>*/}
             <div className={'row'}>
                 <CSSTransition
                     in={!loading}

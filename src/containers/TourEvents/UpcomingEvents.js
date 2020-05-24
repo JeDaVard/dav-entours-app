@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import moment from 'moment';
 import classes from './UpcomingEvents.module.css';
 import Justicon from '../../components/UI/Justicon';
-import ProgressiveImageLoading from "../../utils/ImageLoading/ProgressiveImageLoading";
+import ThumbedImage from "../../utils/ImageLoading/ThumbedImage";
 
 function UpcomingEvents(props) {
     const { tours } = props;
@@ -14,10 +14,11 @@ function UpcomingEvents(props) {
                 <div className={classes.UpcomingEvents__item} key={tour.slug}>
                     <Link to={`/tour/${tour.slug}`}>
                         <div className={classes.UpcomingEvents__imageFrame}>
-                            <img
-                                className={classes.UpcomingEvents__image}
+                            <ThumbedImage
                                 src={`${process.env.REACT_APP_SERVER}/images/tour/${tour.imageCover}`}
-                                alt=""
+                                thumb={`${process.env.REACT_APP_SERVER}/images/tour/${tour.imageCover.slice(0, tour.imageCover.length-4)}.thumb.jpeg`} blur={true}
+                                className={classes.UpcomingEvents__image}
+                                alt={tour.name}
                             />
                         </div>
                     </Link>

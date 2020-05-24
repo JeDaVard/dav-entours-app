@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import moment from 'moment';
 import classes from './PastEvents.module.css';
 import Justicon from '../../components/UI/Justicon';
+import ThumbedImage from "../../utils/ImageLoading/ThumbedImage";
 
 function PastEvents(props) {
     const { tours } = props;
@@ -13,10 +14,11 @@ function PastEvents(props) {
                 <div className={classes.PastEvents__item} key={tour.slug}>
                     <Link to={`/tour/${tour.slug}`}>
                         <div className={classes.PastEvents__imageFrame}>
-                            <img
-                                className={classes.PastEvents__image}
+                            <ThumbedImage
                                 src={`${process.env.REACT_APP_SERVER}/images/tour/${tour.imageCover}`}
-                                alt=""
+                                thumb={`${process.env.REACT_APP_SERVER}/images/tour/${tour.imageCover.slice(0, tour.imageCover.length-4)}.thumb.jpeg`} blur={true}
+                                className={classes.PastEvents__image}
+                                alt={tour.name}
                             />
                         </div>
                     </Link>

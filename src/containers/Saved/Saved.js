@@ -7,7 +7,7 @@ import classes from './Saved.module.css';
 import Justicon from '../../components/UI/Justicon';
 import Separator from '../../components/UI/Separator/Separator';
 import TopLoading from '../../components/UI/TopLoading/TopLoading';
-import ProgressiveImageLoading from "../../utils/ImageLoading/ProgressiveImageLoading";
+import ThumbedImage from "../../utils/ImageLoading/ThumbedImage";
 
 function Saved(props) {
     const { fetchUserSaved, saved, loading } = props;
@@ -32,17 +32,12 @@ function Saved(props) {
                             >
                                 <Link to={`/tour/${tour.slug}`}>
                                     <div className={classes.Saved__imageFrame}>
-                                        <ProgressiveImageLoading
+                                        <ThumbedImage
                                             src={`${process.env.REACT_APP_SERVER}/images/tour/${tour.imageCover}`}
                                             thumb={`${process.env.REACT_APP_SERVER}/images/tour/${tour.imageCover.slice(0, tour.imageCover.length-4)}.thumb.jpeg`} blur={true}
                                             className={classes.Saved__image}
                                             alt={tour.name}
                                         />
-                                        {/*<img*/}
-                                        {/*    className={classes.Saved__image}*/}
-                                        {/*    src={}*/}
-                                        {/*    alt=""*/}
-                                        {/*/>*/}
                                     </div>
                                 </Link>
                                 <div className={classes.Saved__info}>

@@ -13,8 +13,8 @@
 
 .TourHead__coverImage {
     width: 100%;
-    height: 60rem;
-    /*object-fit: cover;*/
+    height: 100%;
+    object-fit: cover;
 }
 
 .TourHead {
