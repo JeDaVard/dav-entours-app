@@ -74,27 +74,13 @@ export const fetchTopUsers = () =>
         `${process.env.REACT_APP_SERVER}/api/user`
     );
 
-export const fetchUser = (id, me, readyState) => {
-    if (readyState) {
-        return (dispatch) => {
-            dispatch(fetchUserSuccess(readyState));
-        };
-    } else if (me) {
-        return fetchData(
-            fetchUserStart,
-            fetchUserSuccess,
-            fetchUserFailed,
-            `${process.env.REACT_APP_SERVER}/api/user/me`,
-            getCookie('authToken')
-        );
-    } else {
-        return fetchData(
-            fetchUserStart,
-            fetchUserSuccess,
-            fetchUserFailed,
-            `${process.env.REACT_APP_SERVER}/api/user/${id}`
-        );
-    }
+export const fetchUser = (id) => {
+    return fetchData(
+        fetchUserStart,
+        fetchUserSuccess,
+        fetchUserFailed,
+        `${process.env.REACT_APP_SERVER}/api/user/${id}`
+    )
 };
 
 export const fetchUserSaved = (id) => {

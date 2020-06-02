@@ -11,6 +11,7 @@ import { validateState } from "../../utils/validateState";
 import AnimatedValidation from "../../components/UI/AnimatedValidation/AnimatedValidation";
 import {Link} from "react-router-dom";
 
+
 function LoginForm(props) {
     const [state, setState] = useState({
         input: {
@@ -104,13 +105,13 @@ function LoginForm(props) {
 
     const formButton = props.login
         ? (
-        <AnimatedButton button={true} type={'submit'}>
-            Login &#8594;
-        </AnimatedButton>
+            <AnimatedButton button={true} type={'submit'}>
+                Login &#8594;
+            </AnimatedButton>
         ) : (
             <AnimatedButton button={true} fn={continueHandler} prevent>
-            Continue &#8594;
-        </AnimatedButton>
+                Continue &#8594;
+            </AnimatedButton>
         )
     const nextUp = (
         <div hidden={!state.nextUp}>

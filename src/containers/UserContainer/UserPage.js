@@ -101,7 +101,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToState = (dispatch) => ({
-    fetchUser: (id, me, readyState) => dispatch(fetchUser(id, me, readyState)),
+    fetchUser: (id) => dispatch(fetchUser(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToState)(UserPage);

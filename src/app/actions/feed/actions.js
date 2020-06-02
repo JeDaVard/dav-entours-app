@@ -57,12 +57,6 @@ export const fetchDiscovers = () => (
     fetchData(discoversStart, discoversSuccess, discoversFailed, `${process.env.REACT_APP_SERVER}/api/tour`)
 );
 
-export const fetchTour = (slug, readyTour) => {
-    if (readyTour) {
-        return dispatch => {
-            dispatch(fetchTourSuccess(readyTour))
-        }
-    } else {
-        return fetchData(fetchTourStart, fetchTourSuccess, fetchTourFailed, `${process.env.REACT_APP_SERVER}/api/tour/${slug}`)
-    }
+export const fetchTour = (slug) => {
+    return fetchData(fetchTourStart, fetchTourSuccess, fetchTourFailed, `${process.env.REACT_APP_SERVER}/api/tour/${slug}`)
 };

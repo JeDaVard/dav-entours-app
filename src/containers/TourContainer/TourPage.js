@@ -12,7 +12,6 @@ import TopLoading from "../../components/UI/TopLoading/TopLoading";
 
 function TourPage(props) {
     const { fetchTour } = props;
-    const existingToursState = props.location.state;
     const slug = props.match.params.slug;
 
     const [showPopDown, setShowPopDown] = useState({
@@ -22,7 +21,7 @@ function TourPage(props) {
 
     useEffect(() => {
         fetchTour(slug);
-    }, [fetchTour, existingToursState, slug]);
+    }, [fetchTour, slug]);
 
     const handleScroll = useCallback(() => {
         const { prevScrollPos } = showPopDown;
