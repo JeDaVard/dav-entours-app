@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useCallback} from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { fetchTour } from '../../app/actions';
 import Separator from '../../components/UI/Separator/Separator';
@@ -14,35 +14,10 @@ function TourPage(props) {
     const { fetchTour } = props;
     const slug = props.match.params.slug;
 
-    const [showPopDown, setShowPopDown] = useState({
-        prevScrollPos: window.pageYOffset,
-        visible: false,
-    });
-
     useEffect(() => {
         fetchTour(slug);
     }, [fetchTour, slug]);
 
-    const handleScroll = useCallback(() => {
-        const { prevScrollPos } = showPopDown;
-
-        const currentScrollPos = window.pageYOffset;
-        const visible =
-            prevScrollPos < currentScrollPos && currentScrollPos > 70;
-
-        setShowPopDown((state) => ({
-            ...state,
-            prevScrollPos: currentScrollPos,
-            visible,
-        }));
-    }, [showPopDown]);
-
-    useEffect(() => {
-
-        window.addEventListener('scroll', handleScroll);
-
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, [handleScroll]);
     return (
         <>
             {props.loading && <TopLoading />}
@@ -52,7 +27,7 @@ function TourPage(props) {
             <TourImages />
             <Separator margin={'0 2'}/>
             <TourReviews />
-            <PopDown show={showPopDown.visible} />
+            <PopDown />
         </>
     );
 }

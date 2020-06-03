@@ -1,11 +1,37 @@
-import React from "react";
+import React, {useCallback, useEffect, useState} from "react";
 import { connect } from 'react-redux';
 import classes from './PopDown.module.css';
 import AnimatedButton from "../../UI/AnimatedButton/AnimatedButton";
 import Justicon from "../../UI/Justicon";
 
 function PopDown(props) {
-    const show = !props.show ? ` ${classes.hide}` : '';
+    const [showPopDown, setShowPopDown] = useState({
+        prevScrollPos: window.pageYOffset,
+        visible: false,
+    });
+
+    const handleScroll = useCallback(() => {
+        const { prevScrollPos } = showPopDown;
+
+        const currentScrollPos = window.pageYOffset;
+        const visible =
+            prevScrollPos < currentScrollPos && currentScrollPos > 70;
+
+        setShowPopDown((state) => ({
+            ...state,
+            prevScrollPos: currentScrollPos,
+            visible,
+        }));
+    }, [showPopDown]);
+
+    useEffect(() => {
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, [handleScroll]);
+
+    const show = !showPopDown.visible ? ` ${classes.hide}` : '';
     return (
         <div className={`${classes.PopDown}${show}`} >
             <div className="row">

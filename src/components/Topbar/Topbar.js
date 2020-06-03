@@ -1,103 +1,43 @@
-import React, {useState, useEffect, useCallback} from "react";
+import React, { useState } from 'react';
+import withScroll from '../../hocs/withScroll';
+import classNames from 'classnames/bind';
 import classes from './Topbar.module.css';
-import logo from './entours.png'
-import logo2 from './entours2.png'
-import Navigation from "./Navigation/Navigation";
-import { Link } from "react-router-dom";
-import TopSearch from "./TopSearch/TopSearch";
-
+import logo from './entours.png';
+import logo2 from './entours2.png';
+import Navigation from './Navigation/Navigation';
+import { Link } from 'react-router-dom';
+import TopSearch from './TopSearch/TopSearch';
 
 function Topbar(props) {
-    const isTransparent = !!props.location.pathname.match(/^\/tour\/.*/);
-    const initialTopBar = {
-        topSearch: false,
-        transparent: isTransparent ? window.scrollY === 0 : false,
-        shadow: ''
-    };
-    const [ topBar, setTopBar ] = useState(initialTopBar)
+    const inTour = !!props.location.pathname.match(/^\/tour\/.*/);
+    const isTransparent = inTour && !props.triggered;
+    const cx = classNames.bind(classes);
 
-    const [ profileDrop, setProfileDrop ] = useState(false);
-    const [ geoDrop, setGeoDrop ] = useState(false);
+    const [profileDrop, setProfileDrop] = useState(false);
+    const [geoDrop, setGeoDrop] = useState(false);
 
     const profileHandler = () => {
-        setProfileDrop(!profileDrop)
-    }
+        setProfileDrop(!profileDrop);
+    };
     const closeHandler = () => {
-        setProfileDrop(false)
-    }
+        setProfileDrop(false);
+    };
     const geoHandler = () => {
-        setGeoDrop(!geoDrop)
-    }
+        setGeoDrop(!geoDrop);
+    };
     const closeGeoHandler = () => {
-        setGeoDrop(false)
-    }
-
-    const topBarHandler = useCallback(() => {
-        if (!isTransparent) {
-            if (window.scrollY < 1) {
-                setTopBar(state => ({
-                    ...state,
-                    transparent: false,
-                    shadow: ''
-                }))
-            } else {
-                setTopBar( state => ({
-                    ...state,
-                    shadow: classes.headerShadow
-                }))
-            }
-        } else {
-            if (window.scrollY < 1) {
-                setTopBar(state => ({
-                    ...state,
-                    transparent: true,
-                    shadow: ''
-                }))
-            } else {
-                setTopBar(state => ({
-                    ...state,
-                    transparent: false,
-                    shadow: classes.headerShadow
-                }))
-            }
-        }
-    }, [isTransparent])
-
-    const scrollPos = window.scrollY;
-    useEffect(() => {
-        if (scrollPos > 90 && !topBar.topSearch) {
-            setTopBar(state => ({
-                ...state,
-                topSearch: true
-            }))
-        } else if (scrollPos <= 90 && topBar.topSearch) {
-            setTopBar(state => ({
-                ...state,
-                topSearch: false
-            }))
-        }
-    }, [scrollPos, topBar.topSearch])
-
-    useEffect(() => {
-        topBarHandler()
-    }, [topBarHandler])
-
-    useEffect(() => {
-        window.addEventListener('scroll', topBarHandler)
-
-        return () => {
-            window.removeEventListener('scroll', topBarHandler)
-        }
-    }, [isTransparent, topBarHandler])
+        setGeoDrop(false);
+    };
 
     return (
         <>
             <div
-                className={`${
-                    !topBar.transparent
-                        ? classes.Topbar
-                        : classes.Topbar__transparent
-                } ${topBar.shadow}`}
+                className={cx(
+                    isTransparent
+                        ? classes.Topbar__transparent
+                        : classes.Topbar,
+                    { headerShadow: props.triggered }
+                )}
             >
                 <div className="row">
                     <div className={classes.Topbar__content}>
@@ -106,22 +46,18 @@ function Topbar(props) {
                                 to={(loc) => ({
                                     ...loc,
                                     pathname: '/',
-                                    state: {
-                                        ...loc.state,
-                                        fromTransparentTopPage: !!loc.pathname.match(/^\/tour\/.*/)
-                                    },
                                 })}
                             >
-                                {!topBar.transparent ? (
-                                    <img src={logo} alt="logo" />
-                                ) : (
+                                {isTransparent ? (
                                     <img src={logo2} alt="logo" />
+                                ) : (
+                                    <img src={logo} alt="logo" />
                                 )}
                             </Link>
                         </div>
-                        {(props.location.pathname.startsWith('/tour') || topBar.topSearch) && <TopSearch />}
+                        <TopSearch inTour={inTour} />
                         <Navigation
-                            transparent={topBar.transparent}
+                            transparent={isTransparent}
                             isLogged={props.isLogged}
                             profileHandler={profileHandler}
                             profileDrop={profileDrop}
@@ -137,11 +73,9 @@ function Topbar(props) {
                     </div>
                 </div>
             </div>
-            {!isTransparent && (
-                <div className={classes.Topbar__relative} />
-            )}
+            {!inTour && <div className={classes.Topbar__relative} />}
         </>
     );
 }
 
-export default Topbar
+export default withScroll(Topbar);

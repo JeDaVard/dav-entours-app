@@ -50,8 +50,8 @@
     min-height: 4.2rem;
     font-size: 1.6rem;
     padding: 1rem 1.6rem;
-    background: rgba(203, 203, 203, 0.6);
-    backdrop-filter: blur(7px);
+    background: rgba(172, 172, 172, 0.9);
+    /*backdrop-filter: blur(7px);*/
     text-shadow: 0 0 2px rgba(0, 0, 0, 0.16);
     color: rgba(255, 255, 255, 0.76);
 }
@@ -65,8 +65,8 @@
     top: 1.4rem;
     left: 1.4rem;
     border-radius: 6px;
-    background: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(2px);
+    background: rgba(255, 255, 255, 0.7);
+    /*backdrop-filter: blur(2px);*/
     /*box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.04);*/
 }
 
