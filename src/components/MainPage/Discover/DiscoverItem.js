@@ -21,7 +21,7 @@ export default ({ tour }) => (
                 <div className={classes.Discover__bottom}>
                     <div className={classes.Discover__title}>
                         <h2>{tour.name}</h2>
-                        <p>{tour.locations[0].description}</p>
+                        <p>{tour.summary}</p>
                     </div>
                 </div>
             </div>

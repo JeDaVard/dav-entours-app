@@ -1,4 +1,6 @@
 import React from 'react';
+import { Query } from 'react-apollo';
+import { FETCH_DISCOVER } from "./queries";
 import {Link} from "react-router-dom";
 import classes from './Discover.module.css';
 import DiscoverItem from './DiscoverItem';
@@ -30,15 +32,19 @@ function Discover(props) {
                     </div>
                     <div className={classes.Discover__row}>
                         <div className={classes.Discover__gridParent}>
-                            {!props.discovers.loading && props.discovers.data.length ? (
-                                <div className={classes.Discover__grid}>
-                                    {props.discovers.data.slice(0,4).map( discover => <DiscoverItem tour={discover} key={discover._id}/>)}
-                                </div>
-                            ) : (
-                                <>
-                                    {props.isMobile ? <DiscoverItemLoadingMobile /> : <DiscoverItemLoading />}
-                                </>
-                            )}
+                            <Query query={FETCH_DISCOVER}>
+                                {
+                                    ({loading, error, data}) => {
+                                        if (loading) return <>{props.isMobile ? <DiscoverItemLoadingMobile /> : <DiscoverItemLoading />}</>
+                                        if (error) return <h1>errror while fetching discover</h1>
+                                        return (
+                                            <div className={classes.Discover__grid}>
+                                                {data.tours.slice(0,4).map( discover => <DiscoverItem tour={discover} key={discover._id}/>)}
+                                            </div>
+                                        )
+                                    }
+                                }
+                            </Query>
                         </div>
 
                         <div className={classes.Discover__mobileLink}>

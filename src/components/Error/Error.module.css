@@ -27,13 +27,14 @@
 }
 
 .Error button {
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: 3rem;
     position: relative;
     color: white;
     width: 4rem;
     height: 4rem;
-    padding: 0 0 .7rem;
     outline: 0;
     border: none;
     cursor: pointer;

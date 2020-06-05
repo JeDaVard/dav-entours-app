@@ -10,8 +10,7 @@ export default ({ popular }) => {
                 <div className={classes.Popular__imageFrame}>
                     <Link
                         to={{
-                            pathname: `/tour/${popular.slug}`,
-                            state: popular,
+                            pathname: `/tour/${popular.slug}`
                         }}
                     >
                         <ThumbedImage
@@ -34,7 +33,6 @@ export default ({ popular }) => {
                     <Link
                         to={{
                             pathname: `/tour/${popular.slug}`,
-                            state: popular,
                         }}
                     >
                         <div className={classes.Popular__title}>

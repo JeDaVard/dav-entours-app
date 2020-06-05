@@ -16,7 +16,7 @@ function Error(props) {
                     <div className="row">
                         <div className={classes.Error__content} >
                             <h4>{props.children}</h4>
-                            <button onClick={props.onClose}>&times;</button>
+                            <button onClick={props.onClose}><div>&times;</div></button>
                         </div>
                     </div>
                 </div>

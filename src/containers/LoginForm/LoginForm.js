@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
-import * as actions from '../../app/actions';
 import classes from './LoginForm.module.css';
 import AnimatedButton from '../../components/UI/AnimatedButton/AnimatedButton';
 import Loading from '../../components/UI/Loading/Loading';
@@ -9,8 +7,10 @@ import { generateBase64FromImage } from '../../utils/generateBase64FromImage';
 import validator from "validator";
 import { validateState } from "../../utils/validateState";
 import AnimatedValidation from "../../components/UI/AnimatedValidation/AnimatedValidation";
-import {Link} from "react-router-dom";
-
+import { Link } from "react-router-dom";
+import {useMutation} from '@apollo/react-hooks';
+import { SIGN_IN, SIGN_UP } from "./queries";
+import {setCookie} from "../../utils/cookies";
 
 function LoginForm(props) {
     const [state, setState] = useState({
@@ -32,6 +32,9 @@ function LoginForm(props) {
         nextUp: false,
         isValid: false
     });
+
+    const [signIn] = useMutation(SIGN_IN);
+    const [signUp] = useMutation(SIGN_UP);
 
     const inputHandler = (e) => {
         const target = e.target;
@@ -66,7 +69,8 @@ function LoginForm(props) {
             }));
         }
     };
-    const authHandler = async (e, login) => {
+
+    const authHandler = (e, login) => {
         e.preventDefault();
 
         if (!login) {
@@ -75,13 +79,35 @@ function LoginForm(props) {
             validateState(validName, 'name', setState);
         }
 
-        props.auth({
-            email: state.input.email.value.trim(),
-            password: state.input.password.value,
-            name: state.input.name.value ? state.input.name.value.trim() : '',
-            image: state.input.image,
-        }, login);
-    };
+        const userData = login
+            ? signIn({
+                variables: {
+                    email: state.input.email.value.trim(),
+                    password: state.input.password.value,
+                },
+                onCompleted: () => {
+                    console.log('complated')
+                }
+            })
+            : signUp({
+                variables: {
+                    email: state.input.email.value.trim(),
+                    password: state.input.password.value,
+                    name: state.input.name.value ? state.input.name.value.trim() : '',
+                    image: state.input.image,
+                }
+            })
+
+        userData.then(res => {
+            setCookie('userId', res.data.login.user._id, res.data.login.expires)
+            setCookie('authToken', res.data.login.token, res.data.login.expires)
+            setCookie('exp', res.data.login.expires, res.data.login.expires)
+
+            localStorage.setItem('photo', res.data.login.user.photo);
+            localStorage.setItem('name', res.data.login.user.name);
+        })
+            .catch(err => console.log(err))
+    }
     const continueHandler = async () => {
         const validEmail = validator.isEmail(state.input.email.value)
         validateState(validEmail, 'email', setState)
@@ -243,13 +269,4 @@ function LoginForm(props) {
     );
 }
 
-const mapStateToProps = (state) => ({
-    loading: state.auth.loading,
-    error: state.auth.error
-});
-
-const mapDispatchToProps = (dispatch) => ({
-    auth: (data, login) => dispatch(actions.auth(data, login)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
+export default LoginForm;
