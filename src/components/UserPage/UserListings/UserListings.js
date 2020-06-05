@@ -1,8 +1,10 @@
 import React from "react";
 import classes from './UserListings.module.css'
 import {Link} from "react-router-dom";
+import moment from "moment";
 
 const UserListings = ({ tours }) => {
+    console.log(tours)
     return (
         <section className={classes.UserPage__stuff}>
             <div className={classes.UserPage__listingSection}>
@@ -11,7 +13,7 @@ const UserListings = ({ tours }) => {
 
                     {tours.map(tour => (
                         <div className={classes.UserPage__listing} key={tour._id}>
-                            <Link to={{pathname: `/tour/${tour.slug}`, state: tour}}>
+                            <Link to={{pathname: `/tour/${tour.slug}`}}>
                                 <div className={classes.UserPage__listingImage}>
                                     <img
                                         src={`${process.env.REACT_APP_SERVER}/images/tour/${tour.imageCover}`}
@@ -32,7 +34,7 @@ const UserListings = ({ tours }) => {
                                     <p><b>{tour.participants.length}</b>/{tour.maxGroupSize}</p>
                                 </div>
                                 <div>
-                                    <p>{new Date(tour.startDates[0]).toDateString()}</p>
+                                    <p>{moment(+tour.startDates[0]).format('dd DD MMM YYYY')}</p>
                                 </div>
                                 <div>
                                     <p>{tour.startLocation.description}</p>

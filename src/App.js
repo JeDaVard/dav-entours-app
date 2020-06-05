@@ -187,7 +187,7 @@ function App(props) {
 
 const mapStateToProps = (state) => ({
     loggedIn: !!state.auth.token,
-    error: state.user.error || state.feed.error,
+    error: state.user.error,
     loading: state.user.user.loading,
     isMobile: state.ui.display.isMobile,
     photo: `${process.env.REACT_APP_SERVER}/images/user/${state.auth.photo}`,

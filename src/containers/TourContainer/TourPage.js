@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
-import { fetchTour } from '../../app/actions';
+import React from 'react';
+import {Query, useQuery} from 'react-apollo';
+import { FETCH_TOUR } from "./queries";
 import Separator from '../../components/UI/Separator/Separator';
 import TourHead from '../../components/TourPage/TourHead/TourHead';
 import TourDescription from '../../components/TourPage/TourDescription/TourDescription';
@@ -11,33 +11,29 @@ import TopLoading from "../../components/UI/TopLoading/TopLoading";
 
 
 function TourPage(props) {
-    const { fetchTour } = props;
     const slug = props.match.params.slug;
 
-    useEffect(() => {
-        fetchTour(slug);
-    }, [fetchTour, slug]);
+    const { loading, data, error } = useQuery(FETCH_TOUR, {
+        variables: {
+            id: slug
+        }
+    });
+
+    if (loading) return <TopLoading />
+    if (error) return <h1>Error while fetching the tour</h1>
 
     return (
         <>
-            {props.loading && <TopLoading />}
-            <TourHead />
-            <TourDescription />
+            <TourHead tour={data.tour} />
+            <TourDescription tour={data.tour}/>
             <Separator />
-            <TourImages />
+            <TourImages images={data.tour.images}/>
             <Separator margin={'0 2'}/>
-            <TourReviews />
-            <PopDown />
+            <TourReviews tour={data.tour} />
+            <PopDown tour={data.tour}/>
         </>
     );
 }
 
-const mapStateToProps = state => ({
-    loading: state.feed.tour.loading
-})
 
-const mapDispatchToProps = (dispatch) => ({
-    fetchTour: (slug, readyTour) => dispatch(fetchTour(slug, readyTour)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(TourPage);
+export default TourPage

@@ -1,11 +1,10 @@
 import React from "react";
-import {connect} from "react-redux";
 import classes from './TourDescription.module.css';
 import {Link} from "react-router-dom";
 
 
 function TourDescription(props) {
-    const { loading, tour } = props;
+    const { tour } = props
     return (
         <>
            <section className={classes.TourDescription}>
@@ -14,14 +13,14 @@ function TourDescription(props) {
                         <div className={classes.TourDescription__left}>
                             <h2>YOUR TOUR GUIDES</h2>
                             <div className={classes.TourDescription__users}>
-                                <Link to={{pathname: `/user/${!loading && tour.author._id}`}}>
+                                <Link to={{pathname: `/user/${tour.author._id}`}}>
                                     <div className={classes.TourDescription__user}>
-                                        <img src={tour.author && `${process.env.REACT_APP_SERVER}/images/user/${!loading && tour.author.photo}`} alt="user"/>
-                                        <h3>{!loading && tour.author.name}</h3>
+                                        <img src={`${process.env.REACT_APP_SERVER}/images/user/${tour.author.photo}`} alt="user"/>
+                                        <h3>{tour.author.name}</h3>
                                         <p>Author</p>
                                     </div>
                                 </Link>
-                                {!loading &&  tour.guides.map( guide => (
+                                {tour.guides.map( guide => (
                                     <Link to={{pathname: `/user/${guide._id}`}} key={guide._id}>
                                         <div className={classes.TourDescription__user}>
                                             <img src={`${process.env.REACT_APP_SERVER}/images/user/${guide.photo}`} alt="user"/>
@@ -33,9 +32,10 @@ function TourDescription(props) {
                             </div>
                         </div>
                         <div className={classes.TourDescription__right}>
-                            <h2>ABOUT {tour.name && tour.name.toUpperCase()} TOUR</h2>
+                            <h2>ABOUT {tour.name.toUpperCase()} TOUR</h2>
+                            <h3>{tour.summary}</h3>
                             <p>
-                                {tour.summary}
+                                {tour.description}
                             </p>
                         </div>
                     </div>
@@ -45,9 +45,4 @@ function TourDescription(props) {
     )
 }
 
-const mapStateToProps = state => ({
-    tour: state.feed.tour.data,
-    loading: state.feed.tour.loading
-})
-
-export default connect(mapStateToProps)(TourDescription);
+export default TourDescription

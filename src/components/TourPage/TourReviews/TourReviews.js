@@ -1,12 +1,12 @@
 import React from "react";
 import moment from "moment";
-import { connect } from 'react-redux';
 import classes from './TourReviews.module.css';
 import Separator from "../../UI/Separator/Separator";
 import {Link} from "react-router-dom";
 import Justicon from "../../UI/Justicon";
 
-const TourReviews = ({ tour, reviews, loading }) => {
+const TourReviews = ({ tour }) => {
+    const { reviews } = tour;
     return (
         <>
             <div className={classes.Reviews}>
@@ -14,9 +14,7 @@ const TourReviews = ({ tour, reviews, loading }) => {
                             <h2>Reviews</h2>
                             <div className={classes.Reviews__info}>
                                 <div className={classes.Reviews__rating}>
-                                    <h3><Justicon icon={'star'}/> {!loading && (
-                                        tour.ratingsAverage.toString().length === 1 ? tour.ratingsAverage+'.0' : tour.ratingsAverage
-                                    )}</h3>
+                                    <h3><Justicon icon={'star'}/> {tour.ratingsAverage.toString().length === 1 ? tour.ratingsAverage+'.0' : tour.ratingsAverage}</h3>
                                 </div>
                                 <Separator vertical margin={'.5 .5'} color={'normal'} height={'2'}/>
                                 <div className={classes.Reviews__quantity}>
@@ -26,7 +24,7 @@ const TourReviews = ({ tour, reviews, loading }) => {
                         <Separator color={'normal'} margin={'2 0'}/>
                     <div className={classes.Reviews__content}>
 
-                        {!loading && reviews.map( review => (
+                        {reviews.map( review => (
                             <div className={classes.Reviews__review} key={review._id}>
                                 <div className={classes.Reviews__reviewInfo}>
                                     <Link to={{pathname: `/user/${review.author._id}`}}>
@@ -50,10 +48,5 @@ const TourReviews = ({ tour, reviews, loading }) => {
     )
 }
 
-const mapStateToProps = state => ({
-    tour: state.feed.tour.data,
-    reviews: state.feed.tour.data.reviews,
-    loading: state.feed.tour.loading
-})
 
-export default connect(mapStateToProps)(TourReviews)
+export default TourReviews

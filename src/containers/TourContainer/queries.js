@@ -1,8 +1,8 @@
 import gql from 'graphql-tag';
 
 export const FETCH_TOUR = gql`
-	query {
-		tours {
+	query FetchTour($id: ID!) {
+		tour(id: $id) {
 			_id
 			name
 			imageCover
@@ -10,6 +10,18 @@ export const FETCH_TOUR = gql`
 			duration
 			createdAt
 			price
+			startDates
+			description
+			summary
+			hashtags
+			startDates
+			difficulty
+			images
+			ratingsAverage
+			ratingsQuantity
+			participants {
+				_id
+			}
 			startLocation {
 				description
 			}
@@ -18,6 +30,22 @@ export const FETCH_TOUR = gql`
 				name
 				photo
 			}
+			guides {
+				_id
+				name
+				photo
+			}
+			reviews {
+				review
+				_id
+				author {
+					_id
+					photo
+					name
+					createdAt
+				}
+			}
+
 		}
 	}
 `;

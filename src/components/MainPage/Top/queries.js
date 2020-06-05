@@ -8,6 +8,9 @@ export const FETCH_TOP_USERS = gql`
 			name
             createdAt
 			speaks
+            reviews {
+                _id
+            }
             tours {
                 _id
 				ratingsAverage

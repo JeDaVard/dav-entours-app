@@ -1,21 +1,16 @@
-import React, {useEffect} from "react";
+import React from "react";
 import queryString from 'query-string';
-import { connect } from 'react-redux';
+import { Query } from 'react-apollo'
+import { FETCH_TOUR_EVENTS } from "./queries";
 import { Tabs, Tab} from "../../components/UI/Tabs/Tabs";
-import {fetchUserTourEvents} from "../../app/actions";
 import TopLoading from "../../components/UI/TopLoading/TopLoading";
 import PastEvents from "./PastEvents";
 import UpcomingEvents from "./UpcomingEvents";
 import classes from './TourEvents.module.css'
 
 function TourEvents(props) {
-    const { location, fetchUserTourEvents, loading, tours } = props;
+    const { location } = props;
     const tabParam = queryString.parse(location.search).tab;
-
-    useEffect(() => {
-        fetchUserTourEvents();
-
-    }, [fetchUserTourEvents])
 
     return (
         <section className="row">
@@ -23,10 +18,30 @@ function TourEvents(props) {
                 <h1 className={classes.TourEvents__name}>Tours</h1>
                     <Tabs defaultTab={tabParam}>
                         <Tab label={'upcoming'} tabName={'Upcoming'}>
-                            {loading && !tours.length ? <TopLoading /> : <UpcomingEvents tours={tours.slice(0,2)} />}
+                            <Query query={FETCH_TOUR_EVENTS}>
+                                {
+                                    ({loading, error, data}) => {
+                                        if (loading) return <TopLoading />
+                                        if (error) return <h1>Error while fetching upcoming tours</h1>
+                                        return (
+                                            <UpcomingEvents tours={data.tours.slice(1,3)} />
+                                        )
+                                    }
+                                }
+                            </Query>
                         </Tab>
                         <Tab label={'past'} tabName={'Past'}>
-                            {!loading && tours.length ? <PastEvents tours={tours.slice(2)} /> : null}
+                            <Query query={FETCH_TOUR_EVENTS}>
+                                {
+                                    ({loading, error, data}) => {
+                                        if (loading) return <TopLoading />
+                                        if (error) return <h1>Error while fetching upcoming tours</h1>
+                                        return (
+                                            <PastEvents tours={data.tours.slice(3)} />
+                                        )
+                                    }
+                                }
+                            </Query>
                         </Tab>
                     </Tabs>
             </div>
@@ -34,13 +49,4 @@ function TourEvents(props) {
     )
 }
 
-const mapStateToProps = state => ({
-    loading: state.user.me.tourEvents.loading,
-    tours: state.user.me.tourEvents.data
-})
-
-const mapDispatchToProps = dispatch => ({
-    fetchUserTourEvents: () => dispatch(fetchUserTourEvents())
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(TourEvents)
+export default TourEvents

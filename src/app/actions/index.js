@@ -5,12 +5,6 @@ export {
 } from './auth/actions'
 
 export {
-    fetchPopulars,
-    fetchDiscovers,
-    fetchTour
-} from './feed/actions'
-
-export {
     fetchTopUsers,
     fetchUser,
     fetchUserSaved,

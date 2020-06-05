@@ -71,7 +71,4 @@ function PopDown(props) {
     )
 }
 
-const mapStateToProps = state => ({
-    tour: state.feed.tour.data
-})
-export default connect(mapStateToProps)(PopDown)
+export default PopDown

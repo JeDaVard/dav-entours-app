@@ -22,7 +22,7 @@ export default ({ user }) => (
             <div className={classes.Top__rating}>
                 <Justicon icon={'star'}/>
                 <h2>{user.tours.length ? user.tours.reduce((sum, val, index, arr) => +arr[index].ratingsAverage + sum, 0)/user.tours.length : '0'}</h2>
-                <p>(<b>{user.tours.length ? user.tours.reduce((sum, val, index, arr) => arr[index].reviews.length*3 + sum, 0) : '0'}</b>)</p>
+                <p>(<b>{user.reviews.length}</b>)</p>
             </div>
         </div>
     </div>
