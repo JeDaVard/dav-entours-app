@@ -1,6 +1,5 @@
 import React from 'react';
 import classes from './TourHead.module.css';
-import { CSSTransition } from 'react-transition-group';
 import '../animation.css';
 import ThumbedImage from '../../../utils/ImageLoading/ThumbedImage';
 import moment from "moment";

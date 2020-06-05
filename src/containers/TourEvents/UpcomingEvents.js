@@ -35,7 +35,7 @@ function UpcomingEvents(props) {
                         <div className={classes.UpcomingEvents__infoBottom}>
                             <p>{tour.startLocation.description}</p>
                             <p>
-                                {moment(tour.startDates[0]).format(
+                                {moment(+tour.startDates[0]).format(
                                     'ddd, DD MMM YYYY'
                                 )}
                             </p>

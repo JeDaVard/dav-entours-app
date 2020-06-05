@@ -35,7 +35,7 @@ function PastEvents(props) {
                         <div className={classes.PastEvents__infoBottom}>
                             <p>{tour.startLocation.description}</p>
                             <p>
-                                {moment(tour.startDates[0]).format(
+                                {moment(+tour.startDates[0]).format(
                                     'ddd, DD MMM YYYY'
                                 )}
                             </p>

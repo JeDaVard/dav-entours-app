@@ -4,7 +4,6 @@ import { FETCH_POPULAR } from "./queries";
 import classes from './Popular.module.css';
 import PopularItem from './PopularItem';
 import PopularItemLoading from './PopularItemLoading';
-import Error from "../../Error/Error";
 
 function Popular() {
 

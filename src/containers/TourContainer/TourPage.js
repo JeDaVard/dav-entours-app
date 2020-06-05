@@ -1,5 +1,5 @@
 import React from 'react';
-import {Query, useQuery} from 'react-apollo';
+import { useQuery } from 'react-apollo';
 import { FETCH_TOUR } from "./queries";
 import Separator from '../../components/UI/Separator/Separator';
 import TourHead from '../../components/TourPage/TourHead/TourHead';

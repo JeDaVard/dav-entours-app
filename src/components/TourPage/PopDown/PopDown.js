@@ -1,5 +1,4 @@
 import React, {useCallback, useEffect, useState} from "react";
-import { connect } from 'react-redux';
 import classes from './PopDown.module.css';
 import AnimatedButton from "../../UI/AnimatedButton/AnimatedButton";
 import Justicon from "../../UI/Justicon";
