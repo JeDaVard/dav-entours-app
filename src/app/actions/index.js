@@ -1,4 +1,6 @@
 export {
     setMobile,
-    setDesktop
+    setDesktop,
+    loadingOn,
+    loadingOff
 } from './ui/actions'

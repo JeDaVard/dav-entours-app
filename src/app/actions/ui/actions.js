@@ -7,3 +7,11 @@ export const setMobile = () => ({
 export const setDesktop = () => ({
     type: actions.NORMAL_DISPLAY
 })
+
+export const loadingOff = () => ({
+    type: actions.LOADING_OFF
+})
+
+export const loadingOn = () => ({
+    type: actions.LOADING_ON
+})

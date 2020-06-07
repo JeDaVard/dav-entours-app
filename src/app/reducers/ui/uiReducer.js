@@ -3,7 +3,8 @@ import * as actionTypes from '../../actions/ui/types'
 const initialState = {
     display: {
         isMobile: window.innerWidth < 743
-    }
+    },
+    loading: false
 }
 
 const uiReducer = (state= initialState, action) => {
@@ -23,6 +24,16 @@ const uiReducer = (state= initialState, action) => {
                     ...state.display,
                     isMobile: false
                 }
+            }
+        case actionTypes.LOADING_OFF:
+            return {
+                ...state,
+                loading: false
+            }
+        case actionTypes.LOADING_ON:
+            return {
+                ...state,
+                loading: true
             }
         default:
             return state

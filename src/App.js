@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Route, Switch, withRouter } from 'react-router-dom';
+import { Redirect, Route, Switch, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setDesktop, setMobile } from './app/actions';
 import Main from './containers/Main';
@@ -23,6 +23,7 @@ import Inbox from "./containers/Inbox/Inbox";
 import { useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 import NotFound from "./components/NotFound/NotFound";
+import TopLoading from "./components/UI/TopLoading/TopLoading";
 
 
 const LOGGED_IN = gql`
@@ -33,58 +34,57 @@ const LOGGED_IN = gql`
         userId @client
 	}
 `;
-export const FETCH_TOUR = gql`
-	query FetchTour($id: ID!) {
-		tour(id: $id) {
-			_id
-			name
-			imageCover
-			slug
-			duration
-			createdAt
-			price
-			startDates
-			description
-			summary
-			hashtags
-			startDates
-			difficulty
-			images
-			ratingsAverage
-			ratingsQuantity
-			participants {
-				_id
-			}
-			startLocation {
-				description
-			}
-			author {
-				_id
-				name
-				photo
-			}
-			guides {
-				_id
-				name
-				photo
-			}
-			reviews {
-				review
-				_id
-				author {
-					_id
-					photo
-					name
-					createdAt
-				}
-			}
-
-		}
-	}
-`;
+// export const FETCH_TOUR = gql`
+// 	query FetchTour($id: ID!) {
+// 		tour(id: $id) {
+// 			_id
+// 			name
+// 			imageCover
+// 			slug
+// 			duration
+// 			createdAt
+// 			price
+// 			startDates
+// 			description
+// 			summary
+// 			hashtags
+// 			startDates
+// 			difficulty
+// 			images
+// 			ratingsAverage
+// 			ratingsQuantity
+// 			participants {
+// 				_id
+// 			}
+// 			startLocation {
+// 				description
+// 			}
+// 			author {
+// 				_id
+// 				name
+// 				photo
+// 			}
+// 			guides {
+// 				_id
+// 				name
+// 				photo
+// 			}
+// 			reviews {
+// 				review
+// 				_id
+// 				author {
+// 					_id
+// 					photo
+// 					name
+// 					createdAt
+// 				}
+// 			}
+//
+// 		}
+// 	}
+// `;
 
 function App(props) {
-    // const [ loadingT, setLoadingT ] = useState(false);
     const { setDesktop, setMobile } = props;
     const { data } = useQuery(LOGGED_IN)
     const { loggedIn, name, photo } = data;
@@ -182,7 +182,7 @@ function App(props) {
                     )
                 }
             >
-                {/*{ loadingT && <TopLoading />}*/}
+                {props.asyncLoading && <TopLoading />}
                 <Switch>
                     <Route path="/" exact component={Main} />
                     <Route path="/user/:id" component={UserPage} />
@@ -250,6 +250,7 @@ function App(props) {
 
 const mapStateToProps = (state) => ({
     isMobile: state.ui.display.isMobile,
+    asyncLoading: state.ui.loading
 });
 export default connect(mapStateToProps, { setDesktop, setMobile })(
     withRouter(App)

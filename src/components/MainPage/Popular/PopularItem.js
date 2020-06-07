@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PreloadLink from './PreloadLink'
 import classes from './PopularItem.module.css';
 import ThumbedImage from "../../../utils/ImageLoading/ThumbedImage";
 
@@ -8,10 +9,9 @@ export default ({ popular }) => {
         <div className={classes.Popular__tourcontainer}>
             <div className={classes.Popular__tour}>
                 <div className={classes.Popular__imageFrame}>
-                    <Link
-                        to={{
-                            pathname: `/tour/${popular.slug}`
-                        }}
+                    <PreloadLink
+                        to={`/tour/${popular.slug}`}
+                        slug={popular.slug}
                     >
                         <ThumbedImage
                             src={`${process.env.REACT_APP_SERVER}/images/tour/${popular.imageCover}`}
@@ -19,7 +19,7 @@ export default ({ popular }) => {
                             className={classes.Popular__image}
                             alt={popular.name}
                         />
-                    </Link>
+                    </PreloadLink>
                     {new Date() - new Date(popular.createdAt) <
                         30 * 24 * 60 * 60 * 1000 && (
                         <div className={classes.new}>

@@ -12,7 +12,8 @@ import TopLoading from "../../components/UI/TopLoading/TopLoading";
 import ScrollToTop from "../../components/UI/ScrollToTop";
 
 
-function TourPage() {
+function TourPage(props) {
+    console.log(props)
     const { slug } = useParams();
 
     const { loading, data, error } = useQuery(FETCH_TOUR, {

@@ -1,4 +1,4 @@
-import React  from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import Search from '../components/MainPage/Search/Search';
 import Popular from '../components/MainPage/Popular/Popular';
