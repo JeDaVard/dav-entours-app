@@ -1,31 +1,33 @@
 import React  from 'react';
-// import { Redirect } from 'react-router-dom';
-import { connect } from 'react-redux';
 import { Query } from 'react-apollo';
 import { FETCH_USER } from "./queries";
 import classes from './UserPage.module.css';
 import Separator from '../../components/UI/Separator/Separator';
-import { Link } from 'react-router-dom';
+import {Link, Redirect, useParams} from 'react-router-dom';
 import UserListings from '../../components/UserPage/UserListings/UserListings';
 import UserReviews from '../../components/UserPage/UserReviews/UserReviews';
 import TopLoading from '../../components/UI/TopLoading/TopLoading';
 import Justicon from "../../components/UI/Justicon";
+import { getCookie } from "../../utils/cookies";
+import ScrollToTop from "../../components/UI/ScrollToTop";
 
-function UserPage(props) {
-    const { match: {params} } = props;
-    const isThatMe = params.id === props.userId
+function UserPage() {
+    const { id } = useParams();
+    const isThatMe = id === getCookie('userId');
 
     return (
         <div className={classes.UserPage}>
             <div className="row">
-                <Query query={FETCH_USER} variables={{id: params.id}}>
+                <Query query={FETCH_USER} variables={{ id }}>
                     {
                         ({loading, error, data}) => {
                             if (loading) return <TopLoading />
                             if (error) return <h1>Error while fetching user profile</h1>
+                            if (!data.user) return <Redirect to={'/oops-not-found'}/>
                             const { user } = data;
                             return (
                                 <div className={classes.UserPage__content}>
+                                    <ScrollToTop />
                                     <section className={classes.UserPage__profile}>
                                         <h2>
                                             Hi, I'm{' '}
@@ -82,9 +84,4 @@ function UserPage(props) {
     );
 }
 
-const mapStateToProps = (state) => ({
-    isLoggedIn: !!state.auth.token,
-    userId: state.auth.userId
-});
-
-export default connect(mapStateToProps, null)(UserPage);
+export default UserPage;

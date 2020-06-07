@@ -6,11 +6,13 @@ import Become from '../components/MainPage/Become/Become';
 import Discover from '../components/MainPage/Discover/Discover';
 import Top from '../components/MainPage/Top/Top';
 import TopSearchMobile from "../components/MainPage/TopSearchMobile/TopSearchMobile";
+import ScrollToTop from "../components/UI/ScrollToTop";
 
 
 function Main(props) {
     return (
         <>
+            <ScrollToTop />
             {props.isMobile ? <TopSearchMobile /> : <Search />}
             <Popular />
             <Become />

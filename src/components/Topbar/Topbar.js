@@ -36,7 +36,7 @@ function Topbar(props) {
                     isTransparent
                         ? classes.Topbar__transparent
                         : classes.Topbar,
-                    { headerShadow: props.triggered }
+                    { opaqueHeader: props.triggered }
                 )}
             >
                 <div className="row">

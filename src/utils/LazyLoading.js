@@ -15,6 +15,7 @@ LazyLoading.defaultProps = {
 
 export default LazyLoading;
 
+// ############## USAGE ###############
 
 // const About = lazyLoading(
 //     () => {

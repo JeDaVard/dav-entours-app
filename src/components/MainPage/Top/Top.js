@@ -26,7 +26,7 @@ function Top(props) {
                                         <TopItemLoading />
                                     </>
                                 )
-                                if (error) return <h1>{error.message}</h1>
+                                if (error) return <h1>{error.message}. While fetching top users</h1>
                                 return (
                                     data.users.slice(data.users.length - 8, data.users.length).reverse().map( user => (
                                         <Link to={{pathname: `/user/${user._id}`}} key={user._id}>

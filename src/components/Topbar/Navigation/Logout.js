@@ -1,21 +1,20 @@
 import React from "react";
-import {logout} from "../../../app/actions";
-import {connect} from "react-redux";
-import {Link} from "react-router-dom";
+import { removeCookie } from "../../../utils/cookies";
+
 
 const Logout = props => {
     const onLogout = () => {
         props.onClose && props.onClose();
-        props.logout();
+        removeCookie('authToken', 'exp', 'userId');
+        localStorage.setItem('photo', 'default.jpg')
+        localStorage.setItem('name', 'Entours')
     }
+
     return (
         <>
-            <Link to={'/'} onClick={onLogout}><li>{props.children}</li></Link>
+            <a href={'/'} onClick={onLogout}><li>{props.children}</li></a>
             </>
     )
 }
 
-const mapDispatchToProps = dispatch => ({
-    logout: () => dispatch(logout())
-});
-export default connect(null, mapDispatchToProps)(Logout)
+export default Logout

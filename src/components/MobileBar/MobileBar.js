@@ -33,7 +33,7 @@ function MobileBar(props) {
                 </NavLink>
                 <NavLink to={{pathname: '/me'}} className={classes.MobileBar__tab} activeClassName={classes.MobileBar__tab__active}>
                     <div className={classes.MobileBar__photo}>
-                        <img src={props.photo} alt='user' />
+                        <img src={`${process.env.REACT_APP_SERVER}/images/user/${props.photo}`} alt='user' />
                     </div>
                     <h2>Profile</h2>
                 </NavLink>

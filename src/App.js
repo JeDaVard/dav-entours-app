@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { checkAuth, setDesktop, setMobile } from './app/actions';
+import { setDesktop, setMobile } from './app/actions';
 import Main from './containers/Main';
 import TourPage from './containers/TourContainer/TourPage';
 import UserPage from './containers/UserContainer/UserPage';
@@ -20,11 +20,74 @@ import TourEvents from './containers/TourEvents/TourEvents';
 import './App.css';
 import OnlyAuth from './OnlyAuth/OnlyAuth';
 import Inbox from "./containers/Inbox/Inbox";
+import { useQuery } from "@apollo/react-hooks";
+import gql from "graphql-tag";
+import NotFound from "./components/NotFound/NotFound";
 
+
+const LOGGED_IN = gql`
+	query IsUserLoggedIn {
+		loggedIn @client
+		name @client
+		photo @client
+        userId @client
+	}
+`;
+export const FETCH_TOUR = gql`
+	query FetchTour($id: ID!) {
+		tour(id: $id) {
+			_id
+			name
+			imageCover
+			slug
+			duration
+			createdAt
+			price
+			startDates
+			description
+			summary
+			hashtags
+			startDates
+			difficulty
+			images
+			ratingsAverage
+			ratingsQuantity
+			participants {
+				_id
+			}
+			startLocation {
+				description
+			}
+			author {
+				_id
+				name
+				photo
+			}
+			guides {
+				_id
+				name
+				photo
+			}
+			reviews {
+				review
+				_id
+				author {
+					_id
+					photo
+					name
+					createdAt
+				}
+			}
+
+		}
+	}
+`;
 
 function App(props) {
-    // console.log(props.loggedIn)
-    const { checkAuth, setDesktop, setMobile, loggedIn } = props;
+    // const [ loadingT, setLoadingT ] = useState(false);
+    const { setDesktop, setMobile } = props;
+    const { data } = useQuery(LOGGED_IN)
+    const { loggedIn, name, photo } = data;
 
     const [error, setError] = useState(false);
 
@@ -39,7 +102,7 @@ function App(props) {
         login: ['Login', false],
     });
 
-    if (props.loggedIn && auth.modal) {
+    if (loggedIn && auth.modal) {
         setAuth((state) => ({
             ...state,
             modal: false,
@@ -60,10 +123,6 @@ function App(props) {
             window.removeEventListener('resize', debouncedHandleResize);
         };
     });
-
-    useEffect(() => {
-        checkAuth();
-    }, [checkAuth]);
 
     const authModalClose = () => {
         setAuth((state) => ({
@@ -99,13 +158,13 @@ function App(props) {
             <Layout
                 header={
                     props.isMobile ? (
-                        <MobileBar name={props.name} photo={props.photo} />
+                        <MobileBar photo={photo} />
                     ) : (
                         <Topbar
                             {...props}
-                            name={props.name}
-                            photo={props.photo}
-                            isLogged={props.loggedIn}
+                            name={name}
+                            photo={photo}
+                            isLogged={loggedIn}
                             loginModal={authModalClose}
                             onSignUp={signUpModalHandler}
                             onLogin={loginModalHandler}
@@ -123,9 +182,11 @@ function App(props) {
                     )
                 }
             >
+                {/*{ loadingT && <TopLoading />}*/}
                 <Switch>
+                    <Route path="/" exact component={Main} />
                     <Route path="/user/:id" component={UserPage} />
-                    <Route path="/tour/:slug" component={TourPage} />
+                    <Route path="/tour/:slug" component={TourPage}/>
                     <Route path="/inbox" render={props =>
                         loggedIn ? (
                             <Inbox />
@@ -156,6 +217,7 @@ function App(props) {
                             loggedIn ? (
                                 <Profile
                                     {...props}
+                                    {...data}
                                     signUp={signUpModalHandler}
                                     closeSignUp={authModalClose}
                                 />
@@ -167,7 +229,8 @@ function App(props) {
                             )
                         }
                     />
-                    <Route path="/" component={Main} />
+                    <Route path="/oops-not-found" component={NotFound} />
+                    <Route path="*" component={NotFound} />
                 </Switch>
                 <Modal
                     onClick={authModalClose}
@@ -186,13 +249,8 @@ function App(props) {
 }
 
 const mapStateToProps = (state) => ({
-    loggedIn: !!state.auth.token,
-    error: state.user.error,
-    loading: state.user.user.loading,
     isMobile: state.ui.display.isMobile,
-    photo: `${process.env.REACT_APP_SERVER}/images/user/${state.auth.photo}`,
-    name: state.auth.name.split(' ')[0],
 });
-export default connect(mapStateToProps, { checkAuth, setDesktop, setMobile })(
+export default connect(mapStateToProps, { setDesktop, setMobile })(
     withRouter(App)
 );

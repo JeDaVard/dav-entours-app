@@ -26,15 +26,15 @@ function Navigation(props) {
                         </div>
                     </Link>
                     <Link to="/">Make a tour</Link>
-                    {!props.isLogged && <Link to="/" onClick={props.loginModal}>Log In</Link>}
+                    {!props.isLogged && <Link to="/" onClick={(e) => {e.preventDefault(); props.loginModal()}}>Log In</Link>}
                 </div>
         <OutsideAlerter delegate={props.handleClose}>
                 <div className={classes.Navigation__user}>
                     <div className={`${classes.Navigation__signup} ${props.transparent && !props.profileDrop && classes.Navigation__signup__transparent}`}>
                         {props.isLogged
                             ? <div className={classes.Navigation__profile} onClick={props.profileHandler}>
-                                <p>{name}</p>
-                                <img src={photo} alt="user" />
+                                <p>{name.split(' ')[0]}</p>
+                                <img src={`${process.env.REACT_APP_SERVER}/images/user/${photo}`} alt="user" />
                             </div>
                             : <button onClick={props.signUpModal}>Sign Up</button>}
                     </div>

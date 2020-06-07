@@ -1,11 +1,10 @@
 import React from "react";
-import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
 import Logout from "../../components/Topbar/Navigation/Logout";
 import classes from './Profile.module.css';
 
 function Profile(props) {
-
+console.log(props)
     return (
         <div className={classes.Profile}>
             <div className="row">
@@ -15,7 +14,7 @@ function Profile(props) {
                         <Link to={`/user/${props.userId}`} className={classes.Profile__full} >View your profile</Link>
                     </div>
                     <div>
-                        <img src={props.photo} alt={props.name} className={classes.Profile__photo}/>
+                        <img src={`${process.env.REACT_APP_SERVER}/images/user/${props.photo}`} alt={props.name.split(' ')[0]} className={classes.Profile__photo}/>
                     </div>
                 </div>
                 <div>
@@ -37,12 +36,4 @@ function Profile(props) {
     )
 }
 
-const mapStateToProps = state => ({
-    loggedIn: !!state.auth.token,
-    photo: `${process.env.REACT_APP_SERVER}/images/user/${state.auth.photo}`,
-    name: state.auth.name.split(' ')[0],
-    userId: state.auth.userId,
-});
-
-export default connect(mapStateToProps)(Profile)
-// export default Profile
+export default Profile

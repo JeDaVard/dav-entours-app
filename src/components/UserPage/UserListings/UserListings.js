@@ -4,7 +4,6 @@ import {Link} from "react-router-dom";
 import moment from "moment";
 
 const UserListings = ({ tours }) => {
-    console.log(tours)
     return (
         <section className={classes.UserPage__stuff}>
             <div className={classes.UserPage__listingSection}>

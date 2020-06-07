@@ -8,11 +8,12 @@ import validator from "validator";
 import { validateState } from "../../utils/validateState";
 import AnimatedValidation from "../../components/UI/AnimatedValidation/AnimatedValidation";
 import { Link } from "react-router-dom";
-import {useMutation} from '@apollo/react-hooks';
+import { useApolloClient, useMutation } from '@apollo/react-hooks';
 import { SIGN_IN, SIGN_UP } from "./queries";
 import {setCookie} from "../../utils/cookies";
 
 function LoginForm(props) {
+    const client = useApolloClient();
     const [state, setState] = useState({
         input: {
             email: {
@@ -33,8 +34,24 @@ function LoginForm(props) {
         isValid: false
     });
 
-    const [signIn] = useMutation(SIGN_IN);
-    const [signUp] = useMutation(SIGN_UP);
+    const [sign] = useMutation(props.login ? SIGN_IN : SIGN_UP, {
+        onCompleted({ login }) {
+            client.writeData({ data: {
+                    loggedIn: true,
+                    photo: login.user.photo,
+                    name: login.user.name,
+                    userId: login.user._id
+                }
+            });
+
+            setCookie('authToken', login.token, +login.expires)
+            setCookie('exp', login.expires, +login.expires)
+            setCookie('userId', login.user._id, +login.expires)
+
+            localStorage.setItem('photo', login.user.photo);
+            localStorage.setItem('name', login.user.name);
+        }
+    });
 
     const inputHandler = (e) => {
         const target = e.target;
@@ -79,17 +96,14 @@ function LoginForm(props) {
             validateState(validName, 'name', setState);
         }
 
-        const userData = login
-            ? signIn({
+        login
+            ? sign({
                 variables: {
                     email: state.input.email.value.trim(),
                     password: state.input.password.value,
-                },
-                onCompleted: () => {
-                    console.log('complated')
                 }
             })
-            : signUp({
+            : sign({
                 variables: {
                     email: state.input.email.value.trim(),
                     password: state.input.password.value,
@@ -97,16 +111,6 @@ function LoginForm(props) {
                     image: state.input.image,
                 }
             })
-
-        userData.then(res => {
-            setCookie('userId', res.data.login.user._id, res.data.login.expires)
-            setCookie('authToken', res.data.login.token, res.data.login.expires)
-            setCookie('exp', res.data.login.expires, res.data.login.expires)
-
-            localStorage.setItem('photo', res.data.login.user.photo);
-            localStorage.setItem('name', res.data.login.user.name);
-        })
-            .catch(err => console.log(err))
     }
     const continueHandler = async () => {
         const validEmail = validator.isEmail(state.input.email.value)
