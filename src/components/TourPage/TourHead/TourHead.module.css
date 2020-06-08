@@ -40,7 +40,7 @@
 }
 
 .TourHead__left {
-    width: 50%;
+    width: 90%;
     color: white;
     display: flex;
     flex-direction: column;
@@ -60,7 +60,7 @@
     backdrop-filter: blur(4px);
     padding: .4rem .6rem;
     margin-right: 1rem;
-    box-shadow: 0 0 4px rgba(0, 0, 0, .2);
+    box-shadow: 0 0 2px rgba(0, 0, 0, .2);
 }
 
 .TourHead__left h2 {
@@ -136,19 +136,29 @@
     flex-direction: column;
     color: rgba(0, 0, 0, 0.7);
     font-size: 1.6rem;
-    text-shadow: 0 0 4px rgba(0, 0, 0, 0.24);
 }
 
 .TourHead__info p {
-    background: rgba(255, 255, 255, 0.7);
     border-radius: 5px;
-    backdrop-filter: blur(7px);
     padding: 1rem 1.4rem;
-    margin-right: 1rem;
     margin-bottom: .6rem;
     box-shadow: 0 0 4px rgba(0, 0, 0, .2);
     display: flex;
     align-items: flex-start;
+    position: relative;
+    z-index: 1;
+}
+.TourHead__info p:before {
+    content: '';
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 100%;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(5px);
+    position: absolute;
+    z-index: -1;
 }
 
 .TourHead__info b {
@@ -164,7 +174,7 @@
 
 .TourHead__bottom h3 {
     margin-right: 1rem;
-    flex: 0 0 30%;
+    flex: 0 0 36%;
     color: white;
     font-size: 1.6rem;
     font-weight: 200;
@@ -181,6 +191,9 @@
     }
     .TourHead__left {
         align-items: flex-start;
+    }
+    .TourHead__info p {
+        margin-left: 1rem;
     }
     .TourHead {
         justify-content: flex-start;
