@@ -19,13 +19,14 @@ function Popular() {
                                         <PopularItemLoading />
                                         <PopularItemLoading />
                                         <PopularItemLoading />
+                                        <PopularItemLoading />
                                     </>
                                 )
                                 if (error) return <h1>Error while fetching popular items</h1>
                                 return (
                                         <>
                                             {data.tours.slice(4,9).map( tour => (
-                                                <PopularItem popular={tour} key={tour._id}/>
+                                                <PopularItem popular={tour} key={tour._id} />
                                             ))}
                                         </>
                                     )

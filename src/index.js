@@ -23,7 +23,7 @@ const client = new ApolloClient({
     link: new HttpLink({
         uri: process.env.REACT_APP_SERVER_API,
         headers: {
-            authorization: `Bearer ${getCookie('authToken')}`
+            authorization: getCookie('authToken') && `Bearer ${getCookie('authToken')}`
         }
     }),
 });

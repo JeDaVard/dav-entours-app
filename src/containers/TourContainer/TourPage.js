@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { useQuery } from 'react-apollo';
 import { connect } from 'react-redux';
 import { Redirect, useParams } from 'react-router-dom'
@@ -13,19 +13,22 @@ import TopLoading from "../../components/UI/TopLoading/TopLoading";
 import ScrollToTop from "../../components/UI/ScrollToTop";
 import TourHeadLoading from "../../components/TourPage/TourHead/TourHeadLoading";
 import TourHeadLoadingMobile from "../../components/TourPage/TourHead/TourHeadLoadingMobile";
+import {loadingOff} from "../../app/actions";
 
 
 function TourPage(props) {
     const { slug } = useParams();
+    const { isLoading, loadingOff } = props;
 
     const { loading, data, error } = useQuery(FETCH_TOUR, {
         variables: {
             id: slug
         }
     });
-    // const loading = true;
-    // const data  = []
-    // const error = null
+
+    useEffect(() => {
+        loadingOff()
+    }, [loadingOff, isLoading])
 
     if (loading) return (
         <>
@@ -51,7 +54,8 @@ function TourPage(props) {
 }
 
 const mSTP = s => ({
-    isMobile: s.ui.display.isMobile
+    isMobile: s.ui.display.isMobile,
+    isLoading: s.ui.loading
 })
 
-export default connect(mSTP)(TourPage)
+export default connect(mSTP, { loadingOff })(TourPage)

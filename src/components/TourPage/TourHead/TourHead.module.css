@@ -50,18 +50,17 @@
 
 .TourHead__hash {
     display: flex;
-    color: rgba(0, 0, 0, 0.64);
+    color: white;
 }
 
 .TourHead__hash p {
-    background: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    background: #4fc877;
     border-radius: 5px;
     font-size: 1.2rem;
     font-weight: 700;
-    backdrop-filter: blur(4px);
     padding: .4rem .6rem;
     margin-right: 1rem;
-    box-shadow: 0 0 2px rgba(0, 0, 0, .2);
 }
 
 .TourHead__left h2 {

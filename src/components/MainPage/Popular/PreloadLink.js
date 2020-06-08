@@ -1,12 +1,13 @@
 import React, {useState} from 'react';
 import { Redirect } from "react-router-dom";
 import { Query } from 'react-apollo';
-import {FETCH_TOUR} from "../../../containers/TourContainer/queries";
 import {loadingOff, loadingOn} from "../../../app/actions";
 import { connect } from "react-redux";
 
-function PreloadLink({to, slug, children, loadingOn, loadingOff}) {
+function PreloadLink({to, id, children, loadingOn, query, className}) {
     const [ clicked, setClicked ] = useState(false)
+
+    // console.log(query)
 
     function handleClick(e) {
         e.preventDefault();
@@ -16,9 +17,9 @@ function PreloadLink({to, slug, children, loadingOn, loadingOff}) {
     return (
         <>
             {clicked && (
-                <Query query={FETCH_TOUR} variables={{id: slug}}>
+                <Query query={query} variables={{id}}>
                     { ({loading, error}) => {
-                        if (loading) {return <></>} else loadingOff();
+                        if (loading) return <></>;
                         if (error) return <h1>Error while fetching popular tours.</h1>
                         return <Redirect to={{
                             pathname: to,
@@ -27,7 +28,7 @@ function PreloadLink({to, slug, children, loadingOn, loadingOff}) {
                     }
                 </Query>
             )}
-            <a href="/" onClick={handleClick}>{children}</a>
+            <a href="/" className={className && className} onClick={handleClick}>{children}</a>
         </>
     )
 }

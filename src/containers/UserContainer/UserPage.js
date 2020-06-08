@@ -1,4 +1,4 @@
-import React  from 'react';
+import React, {useEffect} from 'react';
 import { Query } from 'react-apollo';
 import { FETCH_USER } from "./queries";
 import classes from './UserPage.module.css';
@@ -10,10 +10,17 @@ import TopLoading from '../../components/UI/TopLoading/TopLoading';
 import Justicon from "../../components/UI/Justicon";
 import { getCookie } from "../../utils/cookies";
 import ScrollToTop from "../../components/UI/ScrollToTop";
+import {connect} from "react-redux";
+import {loadingOff} from "../../app/actions";
 
-function UserPage() {
+function UserPage(props) {
     const { id } = useParams();
+    const { isLoading, loadingOff } = props;
     const isThatMe = id === getCookie('userId');
+
+    useEffect(() => {
+        loadingOff()
+    }, [loadingOff, isLoading])
 
     return (
         <div className={classes.UserPage}>
@@ -84,4 +91,9 @@ function UserPage() {
     );
 }
 
-export default UserPage;
+const mSTP = s => ({
+    isMobile: s.ui.display.isMobile,
+    isLoading: s.ui.loading
+})
+
+export default connect(mSTP, { loadingOff })(UserPage)
