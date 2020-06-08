@@ -27,8 +27,8 @@ function TourHeadLoading() {
                             width={500}
                             speed={.5}
                             gradientRatio={1}
-                            backgroundColor={'#f1f1f1'}
-                            foregroundColor={'#f8f8f8'}
+                            backgroundColor={'#d0d0d0'}
+                            foregroundColor={'#d7d7d7'}
                             // viewBox="0 0 400 310"
                         >
                             <rect x="0" y="0" rx="3" ry="3" width="80" height="26" />
@@ -45,8 +45,8 @@ function TourHeadLoading() {
                             width={200}
                             speed={0.5}
                             gradientRatio={1}
-                            backgroundColor={'#f1f1f1'}
-                            foregroundColor={'#f8f8f8'}
+                            backgroundColor={'#d0d0d0'}
+                            foregroundColor={'#d7d7d7'}
                             // viewBox="0 0 400 310"
                         >
                             <rect x="0" y="6" rx="3" ry="3" width="200" height="20" />
@@ -59,8 +59,8 @@ function TourHeadLoading() {
                             width={500}
                             speed={0.5}
                             gradientRatio={1}
-                            backgroundColor={'#f1f1f1'}
-                            foregroundColor={'#f8f8f8'}
+                            backgroundColor={'#d0d0d0'}
+                            foregroundColor={'#d7d7d7'}
                             // viewBox="0 0 400 310"
                         >
                             <rect x="0" y="0" rx="3" ry="3" width="160" height="50" />

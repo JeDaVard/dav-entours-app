@@ -27,8 +27,8 @@ function TourHeadLoadingMobile() {
                             width={300}
                             speed={.5}
                             gradientRatio={1}
-                            backgroundColor={'#f1f1f1'}
-                            foregroundColor={'#f8f8f8'}
+                            backgroundColor={'#d0d0d0'}
+                            foregroundColor={'#d7d7d7'}
                             // viewBox="0 0 400 310"
                         >
                             <rect x="70" y="0" rx="3" ry="3" width="70" height="26" />
@@ -45,8 +45,8 @@ function TourHeadLoadingMobile() {
                             width={150}
                             speed={0.5}
                             gradientRatio={1}
-                            backgroundColor={'#f1f1f1'}
-                            foregroundColor={'#f8f8f8'}
+                            backgroundColor={'#d0d0d0'}
+                            foregroundColor={'#d7d7d7'}
                             // viewBox="0 0 400 310"
                         >
                             <rect x="0" y="6" rx="3" ry="3" width="150" height="20" />
@@ -56,15 +56,15 @@ function TourHeadLoadingMobile() {
                     </h3>
                     <div className={classes.TourHead__info}>
                         <ContentLoader
-                            height={168}
+                            height={86}
                             width={150}
                             speed={0.5}
                             gradientRatio={1}
-                            backgroundColor={'#f1f1f1'}
-                            foregroundColor={'#f8f8f8'}
+                            backgroundColor={'#d0d0d0'}
+                            foregroundColor={'#d7d7d7'}
                             // viewBox="0 0 400 310"
                         >
-                            <rect x="0" y="0" rx="3" ry="3" width="150" height="168" />
+                            <rect x="0" y="0" rx="3" ry="3" width="150" height="86" />
                             {/*<rect x="0" y="0" rx="3" ry="3" width="200" height="40" />*/}
                             {/*<rect x="0" y="0" rx="3" ry="3" width="200" height="40" />*/}
                         </ContentLoader>
