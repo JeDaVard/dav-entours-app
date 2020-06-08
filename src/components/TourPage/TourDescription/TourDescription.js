@@ -33,7 +33,6 @@ function TourDescription(props) {
                         </div>
                         <div className={classes.TourDescription__right}>
                             <h2>ABOUT {tour.name.toUpperCase()} TOUR</h2>
-                            <h3>{tour.summary}</h3>
                             <p>
                                 {tour.description}
                             </p>

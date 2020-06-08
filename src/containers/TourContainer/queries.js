@@ -19,6 +19,7 @@ export const FETCH_TOUR = gql`
 			images
 			ratingsAverage
 			ratingsQuantity
+			maxGroupSize
 			participants {
 				_id
 			}

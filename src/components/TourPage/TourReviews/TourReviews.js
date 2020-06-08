@@ -14,7 +14,7 @@ const TourReviews = ({ tour }) => {
                             <h2>Reviews</h2>
                             <div className={classes.Reviews__info}>
                                 <div className={classes.Reviews__rating}>
-                                    <h3><Justicon icon={'star'}/> {tour.ratingsAverage.toString().length === 1 ? tour.ratingsAverage+'.0' : tour.ratingsAverage}</h3>
+                                    <Justicon icon={'star'}/><h3> {tour.ratingsAverage.toString().length === 1 ? tour.ratingsAverage+'.0' : tour.ratingsAverage}</h3>
                                 </div>
                                 <Separator vertical margin={'.5 .5'} color={'normal'} height={'2'}/>
                                 <div className={classes.Reviews__quantity}>

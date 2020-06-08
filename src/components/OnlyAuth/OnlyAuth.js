@@ -1,9 +1,9 @@
 import React from "react";
 import classes from './OnlyAuth.module.css';
 import img from './a.jpg';
-import StyledButton from "../components/StyledButton/StyledButton";
+import StyledButton from "../UI/StyledButton/StyledButton";
 import {Link} from "react-router-dom";
-import Separator from "../components/UI/Separator/Separator";
+import Separator from "../UI/Separator/Separator";
 
 function OnlyAuth(props) {
     return (

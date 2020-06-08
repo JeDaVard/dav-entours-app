@@ -1,6 +1,6 @@
 import React from "react";
 import classes from './Search.module.css';
-import StyledButton from "../../StyledButton/StyledButton";
+import StyledButton from "../../UI/StyledButton/StyledButton";
 import sprite from '../../../assets/icons/sprite.svg'
 
 function Search() {

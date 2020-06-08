@@ -18,7 +18,7 @@ import debounce from './utils/debounce';
 import Saved from './containers/Saved/Saved';
 import TourEvents from './containers/TourEvents/TourEvents';
 import './App.css';
-import OnlyAuth from './OnlyAuth/OnlyAuth';
+import OnlyAuth from './components/OnlyAuth/OnlyAuth';
 import Inbox from "./containers/Inbox/Inbox";
 import { useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";

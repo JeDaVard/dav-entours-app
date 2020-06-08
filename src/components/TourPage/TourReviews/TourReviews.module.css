@@ -31,6 +31,13 @@
 .Reviews__rating {
     color: #20a74d;
     font-size: 1.6rem;
+    display: flex;
+    align-items: center;
+}
+
+.Reviews__rating h3 {
+    margin-top: .2rem;
+    margin-left: .5rem;
 }
 
 .Reviews__quantity h3 {
