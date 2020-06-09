@@ -4,7 +4,6 @@ import Logout from "../../components/Topbar/Navigation/Logout";
 import classes from './Profile.module.css';
 
 function Profile(props) {
-console.log(props)
     return (
         <div className={classes.Profile}>
             <div className="row">

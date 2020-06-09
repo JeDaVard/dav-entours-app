@@ -1,11 +1,14 @@
 import React from 'react';
 import classes from './MobileBar.module.css';
 import sprite from '../../assets/icons/sprite.svg';
-import { NavLink } from "react-router-dom";
+import { NavLink, useRouteMatch } from "react-router-dom";
 
 function MobileBar(props) {
+    const messageMatch = useRouteMatch("/inbox/:id");
+    const style = messageMatch ? { display: 'none'} : {};
+
     return (
-        <nav className={classes.MobileBar__bar}>
+        <nav className={classes.MobileBar__bar} style={style}>
             <div className={classes.MobileBar}>
                 <NavLink to={'/'} exact className={classes.MobileBar__tab} activeClassName={classes.MobileBar__tab__active}>
                     <svg className={classes.MobileBar__icon}>

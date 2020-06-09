@@ -1,4 +1,78 @@
 .Inbox {
-    padding: 2rem 0;
-    min-height: 200vh;
+    color: rgba(0, 0, 0, 0.8);
+    margin-top: 2rem;
+}
+
+.Inbox a {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.Inbox__title {
+    font-size: 3rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+}
+
+.Inbox__content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.Inbox__conversation {
+    display: flex;
+    justify-content: flex-start;
+    padding: 1rem 0 .4rem 0;
+}
+
+.Inbox__conversation:not(:last-of-type) {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.Inbox__userImage {
+    margin-right: 1.4rem;
+}
+
+.Inbox__userImage img {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+}
+
+.Inbox__mainBlock {
+    flex: 1;
+}
+
+.Inbox__mainBlock h2 {
+    font-size: 1.6rem;
+}
+
+.Inbox__mainBlock p {
+    font-size: 1.4rem;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.Inbox__userName {
+    display: flex;
+    justify-content: space-between;
+}
+
+.Inbox__date {
+    display: flex;
+    flex-direction: row;
+    /*align-items: center;*/
+}
+
+.Inbox__date h4 {
+    color: rgba(0, 0, 0, 0.6);
+    font-weight: 400;
+    font-size: 1.2rem;
+}
+
+.Inbox__dateArrow {
+    width: 1.6rem;
+    height: 1.6rem;
+    fill: rgba(0, 0, 0, 0.5);
+    margin-top: .1rem;
 }

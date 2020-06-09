@@ -7,8 +7,6 @@ import { connect } from "react-redux";
 function PreloadLink({to, id, children, loadingOn, query, className}) {
     const [ clicked, setClicked ] = useState(false)
 
-    // console.log(query)
-
     function handleClick(e) {
         e.preventDefault();
         loadingOn();
@@ -33,4 +31,4 @@ function PreloadLink({to, id, children, loadingOn, query, className}) {
     )
 }
 
-export default connect(null, { loadingOn, loadingOff })(PreloadLink)
+export default connect(null, { loadingOn })(PreloadLink)

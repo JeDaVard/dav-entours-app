@@ -1,0 +1,49 @@
+.SimpleButton {
+    flex: none;
+}
+
+.SimpleButton a {
+    margin: -4rem .4rem 0 0;
+    font-size: 1.5rem;
+    padding: 1rem 1.6rem;
+    border-radius: 10px;
+    transition: all .2s;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.SimpleButton__black a {
+    background: black;
+    color: white;
+    border: 1px solid white;
+}
+
+.SimpleButton__white a {
+    background: white;
+    color: black;
+    border: 1px solid black;
+}
+
+.SimpleButton__primary a {
+    background: white;
+    color: #33b15d;
+    border: 1px solid #33b15d;
+}
+
+.SimpleButton__black a:hover,
+.SimpleButton__black a:active {
+    background: white;
+    color: black;
+}
+
+.SimpleButton__white a:hover,
+.SimpleButton__white a:active {
+    background: black;
+    color: white;
+}
+
+.SimpleButton__primary a:hover,
+.SimpleButton__primary a:active {
+    background: #33b15d;
+    color: white;
+}
