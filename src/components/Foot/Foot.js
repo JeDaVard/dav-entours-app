@@ -1,6 +1,7 @@
 import React from "react";
 import classes from './Foot.module.css';
 import Separator from "../UI/Separator/Separator";
+import {useRouteMatch} from "react-router-dom";
 
 function Foot() {
     return (

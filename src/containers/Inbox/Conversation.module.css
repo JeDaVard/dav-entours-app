@@ -9,7 +9,7 @@
 }
 
 .Conversation__headRelative {
-    height: 11rem;
+    height: 13rem;
 }
 
 .Conversation__head {
@@ -36,7 +36,7 @@
     flex-direction: row;
     align-items: center;
     padding: .8rem;
-    background: white;
+    background: rgba(255, 255, 255, 0.6);
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
@@ -53,11 +53,11 @@
 }
 
 .Conversation__tourTitle {
-    padding-top: 1rem;
+    padding-top: .6rem;
     text-align: center;
 }
 .Conversation__tourTitle h2 {
-    font-size: 1.7rem;
+    font-size: 1.6rem;
     font-weight: 500;
 }
 

@@ -39,18 +39,15 @@
     background: transparent;
 }
 
-.MessageInput__content > :first-child {
-    margin-right: 1rem;
-}
-
 .MessageInput__form {
+    flex: 1;
     display: flex;
     align-items: center;
-    flex: 1;
 }
 
 .MessageInput__input {
-    margin-right: 1rem;
+    flex: 1;
+    margin: 0 1rem;
     width: 100%;
     outline: none;
     font-weight: 400;
@@ -58,19 +55,19 @@
     font-size: 1.6rem;
     padding: 1rem;
     border-radius: 10px;
-    border: 2px solid rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(0, 0, 0, 0.2);
     -webkit-appearance: none;
     -moz-appearance: none;
     transition: all .1s ease-in;
 }
 
 .MessageInput__input:focus {
-    border: 2px solid rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(0, 0, 0, 0.4);
 }
 
 .MessageInput__sendPhoto {
     cursor: pointer;
-    padding: .4rem;
+    padding: .3rem;
     border-radius: 50%;
     width: 4rem;
     height: 4rem;
@@ -78,7 +75,7 @@
 }
 
 .MessageInput__sendPhoto:hover {
-    background: rgba(0, 0, 0, 0.04);
+    background: rgba(0, 0, 0, 0.05);
 }
 
 .MessageInput__sendPhoto:active {
@@ -90,7 +87,7 @@
     width: 2.6rem;
     height: 2.6rem;
     margin-top: 2px;
-    margin-left: 3px;
+    margin-left: 4px;
     fill: rgba(0, 0, 0, 0.6);
     transition: all .1s ease-in;
 }
@@ -103,42 +100,23 @@
 }
 
 .MessageInput__sendIcon {
-    backface-visibility: hidden;
     box-sizing: initial;
     width: 2.6rem;
     height: 2.6rem;
-    margin-top: 3px;
+    margin-top: 4px;
+    margin-left: 3px;
     fill: rgba(0, 0, 0, 0.6);
     transition: all .1s ease-in;
 }
 
 
-.MessageInput__send {
-    cursor: pointer;
-    outline: none;
-    border: none;
-    margin-right: .5rem;
-    padding: .4rem .6rem;
-    border-radius: 50%;
-    width: 4rem;
-    height: 4rem;
-    background: transparent;
-    transition: all .1s ease-in;
-}
-
-.MessageInput__send:hover {
-    background: rgba(0, 0, 0, 0.04);
-}
-.MessageInput__send:active {
-    background: transparent;
-}
-
-.MessageInput__send:hover .MessageInput__sendIcon {
+.MessageInput__sendPhoto:hover .MessageInput__sendIcon {
     transform: scale(.9);
 }
-.MessageInput__send:active .MessageInput__sendIcon {
+.MessageInput__sendPhoto:active .MessageInput__sendIcon {
     transform: scale(1);
 }
+
 
 /*.MessageInput__sendPhotoPhotoIcon:hover,*/
 /*.MessageInput__sendPhotoPhotoIcon:active {*/
