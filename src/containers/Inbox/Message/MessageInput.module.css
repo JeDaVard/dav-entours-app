@@ -1,11 +1,9 @@
 .MessageInput {
-    display: flex;
-    bottom: 0;
+    height: 10rem;
+    bottom: -3.5rem;
     left: 0;
     align-items: center;
     border-top: rgba(0, 0, 0, 0.14) 1px solid;
-    border-bottom: rgba(0, 0, 0, 0.14) 1px solid;
-    padding: 1rem;
     color: rgba(0, 0, 0, 0.8);
     position: fixed;
     width: 100%;
@@ -13,9 +11,16 @@
     z-index: 100;
 }
 
+.MessageInput {
+    margin-bottom: env(safe-area-inset-bottom);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+}
+
 .MessageInput:before {
     content: '';
     position: absolute;
+    top: 0;
     left: 0;
     width: 100%;
     height: 100%;
@@ -23,7 +28,18 @@
     z-index: -1;
 }
 
-.MessageInput > :first-child {
+.MessageInput__content {
+    display: flex;
+    /*align-items: center;*/
+    left: 0;
+    padding: 1rem;
+    color: rgba(0, 0, 0, 0.8);
+    position: fixed;
+    width: 100%;
+    background: transparent;
+}
+
+.MessageInput__content > :first-child {
     margin-right: 1rem;
 }
 
@@ -43,6 +59,8 @@
     padding: 1rem;
     border-radius: 10px;
     border: 2px solid rgba(0, 0, 0, 0.2);
+    -webkit-appearance: none;
+    -moz-appearance: none;
     transition: all .1s ease-in;
 }
 
@@ -63,19 +81,25 @@
     background: rgba(0, 0, 0, 0.04);
 }
 
+.MessageInput__sendPhoto:active {
+    background: transparent;
+}
+
 .MessageInput__sendPhotoIcon {
     box-sizing: initial;
     width: 2.6rem;
     height: 2.6rem;
-    margin-top: 3px;
+    margin-top: 2px;
     margin-left: 3px;
     fill: rgba(0, 0, 0, 0.6);
     transition: all .1s ease-in;
 }
 
-.MessageInput__sendPhoto:hover .MessageInput__sendPhotoIcon,
-.MessageInput__sendPhoto:active .MessageInput__sendPhotoIcon {
+.MessageInput__sendPhoto:hover .MessageInput__sendPhotoIcon {
     transform: scale(.9);
+}
+.MessageInput__sendPhoto:active .MessageInput__sendPhotoIcon {
+    transform: scale(1);
 }
 
 .MessageInput__sendIcon {
@@ -93,21 +117,27 @@
     cursor: pointer;
     outline: none;
     border: none;
+    margin-right: .5rem;
     padding: .4rem .6rem;
     border-radius: 50%;
     width: 4rem;
     height: 4rem;
-    background: white;
+    background: transparent;
     transition: all .1s ease-in;
 }
 
 .MessageInput__send:hover {
     background: rgba(0, 0, 0, 0.04);
 }
+.MessageInput__send:active {
+    background: transparent;
+}
 
-.MessageInput__send:hover .MessageInput__sendIcon,
-.MessageInput__send:active .MessageInput__sendIcon {
+.MessageInput__send:hover .MessageInput__sendIcon {
     transform: scale(.9);
+}
+.MessageInput__send:active .MessageInput__sendIcon {
+    transform: scale(1);
 }
 
 /*.MessageInput__sendPhotoPhotoIcon:hover,*/

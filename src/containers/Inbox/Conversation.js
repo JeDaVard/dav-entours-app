@@ -16,16 +16,19 @@ function Conversation() {
                     <h4>Vladislav The Poker</h4>
                 </div>
                 <div className="row">
+                    <div className={classes.Conversation__tourTitle}>
+                        <h2>Some amazing tour to the moon</h2>
+                    </div>
                     <div className={classes.Conversation__tour}>
                             <div className={classes.Conversation__tourImage}>
                                 <img src={tourImg} alt="tourImg"/>
                             </div>
                             <div className={classes.Conversation__tourDetail}>
                                 <div className={classes.Conversation__tourName}>
-                                    Some Amazing Tour For You
+                                    <p>Completed</p>
                                 </div>
                                 <div className={classes.Conversation__tourOrder}>
-                                    Completed
+                                    <p>Sat, 21 Jan 2020</p>
                                 </div>
                             </div>
                             <div className={classes.Conversation_tourButton}>

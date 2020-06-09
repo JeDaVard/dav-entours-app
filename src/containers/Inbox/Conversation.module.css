@@ -52,10 +52,19 @@
     font-size: 1.2rem;
 }
 
+.Conversation__tourTitle {
+    padding-top: 1rem;
+    text-align: center;
+}
+.Conversation__tourTitle h2 {
+    font-size: 1.7rem;
+    font-weight: 500;
+}
+
 .Conversation__tour {
     display: flex;
     align-items: center;
-    padding: 1rem;
+    padding-bottom: 1rem;
 }
 
 .Conversation__tourImage {
@@ -63,8 +72,8 @@
 }
 
 .Conversation__tourImage img {
-    width: 52px;
-    height: 52px;
+    width: 48px;
+    height: 48px;
     object-fit: cover;
     border-radius: 50%;
 }
@@ -75,12 +84,13 @@
 }
 
 .Conversation__tourName {
-    font-size: 1.7rem;
-    font-weight: 500;
+    font-size: 1.4rem;
+    font-weight: 400;
 }
 
 .Conversation__tourOrder {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
+    color: rgba(0, 0, 0, 0.6);
 }
 
 .Conversation__tourButton {
