@@ -25,8 +25,8 @@ function Conversation() {
                 participants={data.conversation.participants}
                 guides={data.conversation.guides}
             />
-            <div className={classes.Conversation__headRelative} />
             <div className={classes.Conversation__main}>
+                <div className={classes.Conversation__headRelative} />
                 <div className="row">
                     {data.conversation.messages.map(message => (
                         <Message key={message._id}
@@ -36,6 +36,8 @@ function Conversation() {
                         />
                     ))}
                 </div>
+            </div>
+            <div className={classes.Conversation__bottom}>
                 <MessageInput />
             </div>
         </div>

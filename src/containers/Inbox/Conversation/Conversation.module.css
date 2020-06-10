@@ -1,5 +1,8 @@
 .Conversation {
     /*margin-top: -1rem;*/
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
     color: rgba(0, 0, 0, 0.8);
 }
 
@@ -9,9 +12,39 @@
 }
 
 .Conversation__headRelative {
-    height: 13rem;
+    height: 13.4rem;
 }
 
 .Conversation__main {
+    overflow-y: scroll;
+    flex: 1;
+    background: white;
+}
 
+.Conversation__bottom {
+    margin-bottom: -3.5rem;
+    overflow-Y: hidden;
+}
+
+
+.MessageInput {
+    margin-bottom: env(safe-area-inset-bottom);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+}
+
+@media all
+and (display-mode: standalone)
+and (orientation: portrait) {
+    .Conversation__bottom {
+        margin-bottom: -1rem;
+    }
+}
+
+@media all
+and (display-mode: standalone)
+and (orientation: landscape) {
+    .Conversation__bottom {
+        margin-bottom: -1.6rem;
+    }
 }

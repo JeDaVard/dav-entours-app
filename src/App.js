@@ -174,7 +174,9 @@ function App(props) {
                 }
                 footer={
                     props.isMobile ? (
-                        <div style={{ height: '6.5rem', width: '100%' }} />
+                        <>
+                        </>
+                        // <div style={{ height: '6.5rem', width: '100%' }} />
                     ) : (
                         <>
                             <Separator margin={'4 0'} />
