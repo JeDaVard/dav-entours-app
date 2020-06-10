@@ -33,7 +33,7 @@ function Navigation(props) {
                     <div className={`${classes.Navigation__signup} ${props.transparent && !props.profileDrop && classes.Navigation__signup__transparent}`}>
                         {props.isLogged
                             ? <div className={classes.Navigation__profile} onClick={props.profileHandler}>
-                                <p>{name.split(' ')[0]}</p>
+                                <p>{name ? name.split(' ')[0] : 'Entours'}</p>
                                 <img src={`${process.env.REACT_APP_SERVER}/images/user/${photo}`} alt="user" />
                             </div>
                             : <button onClick={props.signUpModal}>Sign Up</button>}
