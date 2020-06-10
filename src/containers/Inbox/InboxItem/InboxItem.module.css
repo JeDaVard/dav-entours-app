@@ -1,0 +1,83 @@
+.InboxItem__content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.InboxItem__conversation {
+    display: flex;
+    justify-content: flex-start;
+    padding: 1rem 0 .4rem 0;
+}
+
+.InboxItem__conversation:not(:last-of-type) {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.InboxItem__image {
+    width: 6.6rem;
+    height: 6.6rem;
+    overflow: hidden;
+    margin-right: 1.4rem;
+    border-radius: 54%;
+    display: flex;
+    justify-content: space-between;
+    border: 2px solid rgba(0, 0, 0, 0);
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+}
+
+.InboxItem__userImage {
+    width: 3rem;
+    height: 6.6rem;
+    object-fit: cover;
+}
+
+.InboxItem__tourImage {
+    width: 3rem;
+    height: 6.6rem;
+    object-fit: cover;
+    /*transform: translateX(-50%);*/
+}
+
+.InboxItem__mainBlock {
+    flex: 1;
+}
+
+.InboxItem__mainBlock h2 {
+    font-size: 1.6rem;
+    font-weight: 500;
+}
+
+.InboxItem__mainBlock h3 {
+    font-weight: 500;
+    font-size: 1.2rem;
+}
+
+.InboxItem__mainBlock p {
+    font-size: 1.4rem;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.InboxItem__userName {
+    display: flex;
+    justify-content: space-between;
+}
+
+.InboxItem__date {
+    display: flex;
+    flex-direction: row;
+    /*align-items: center;*/
+}
+
+.InboxItem__date h4 {
+    color: rgba(0, 0, 0, 0.6);
+    font-weight: 400;
+    font-size: 1.2rem;
+}
+
+.InboxItem__dateArrow {
+    width: 1.6rem;
+    height: 1.6rem;
+    fill: rgba(0, 0, 0, 0.5);
+    margin-top: .1rem;
+}

@@ -23,18 +23,23 @@
     border-radius: 50%;
 }
 
+.Message__authorGuide {
+    border: 1px solid #ffffff;
+    box-shadow: 0 0 0 2px #4fc877;
+}
+
 .Message__text {
+    background: #efefef;
+    color: rgba(0, 0, 0, 0.65);
     order: 1;
     margin: .5rem;
-    background: #31bf71;
-    color: white;
     border-radius: 1rem 1rem 1rem 4px;
     padding:  1.4rem 2rem;
 }
 
 .Message__textOwn {
-    background: #efefef;
-    color: rgba(0, 0, 0, 0.65);
+    background: #31bf71;
+    color: white;
     border-radius: 1rem 1rem 4px 1rem;
 }
 
@@ -46,9 +51,9 @@
     font-size: 1.3rem;
     font-weight: 500;
     margin-top: .6rem;
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(0, 0, 0, 0.3);
 }
 
 .Message__textOwn h4 {
-    color: rgba(0, 0, 0, 0.34);
+    color: rgba(255, 255, 255, 0.6);
 }

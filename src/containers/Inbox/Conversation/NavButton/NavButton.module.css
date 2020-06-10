@@ -1,0 +1,8 @@
+.NavButton {
+    width: 3rem;
+    height: 3rem;
+    fill: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    top: .4rem;
+    left: 5%;
+}

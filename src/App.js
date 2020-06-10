@@ -20,7 +20,7 @@ import TourEvents from './containers/TourEvents/TourEvents';
 import './App.css';
 import OnlyAuth from './components/OnlyAuth/OnlyAuth';
 import Inbox from "./containers/Inbox/Inbox";
-import Conversation from "./containers/Inbox/Conversation";
+import Conversation from "./containers/Inbox/Conversation/Conversation";
 import { useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 import NotFound from "./components/NotFound/NotFound";

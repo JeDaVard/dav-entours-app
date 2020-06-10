@@ -1,20 +1,23 @@
 import React from "react";
 import classes from './Message.module.css';
-import userImage from "../img.jpeg";
+import moment from "moment";
+import {Link} from "react-router-dom";
 
-function Message(props) {
-
+function Message({data: {text, createdAt, sender}, own, guide}) {
     return (
-        <div className={`${classes.Message} ${props.own && classes.Message__own}`}>
-            <div className={`${classes.Message__author} ${props.own && classes.Message__authorOwn}`}>
-                <img src={userImage} alt=""/>
+        <div className={`${classes.Message} ${own && classes.Message__own}`}>
+            <div className={`${classes.Message__author} ${own && classes.Message__authorOwn}`}>
+                <Link to={`/user/${sender._id}`}>
+                    <img src={`${process.env.REACT_APP_SERVER}/images/user/${sender.photo}`}
+                         className={guide && classes.Message__authorGuide}
+                         alt=""/>
+                </Link>
             </div>
-            <div className={`${classes.Message__text} ${props.own && classes.Message__textOwn}`}>
+            <div className={`${classes.Message__text} ${own && classes.Message__textOwn}`}>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur dolore est eum harum hic illo laborum officia, placeat quae quaerat, quod reiciendis reprehenderit voluptatum! Beatae culpa explicabo minima necessitatibus quod.
+                    {text}
                 </p>
-                {/*<p>ghj hjk</p>*/}
-                <h4>Sat, 12 Jun 2020</h4>
+                <h4>{moment(createdAt).format('ddd DD MMM YYYY')}</h4>
             </div>
         </div>
     )
