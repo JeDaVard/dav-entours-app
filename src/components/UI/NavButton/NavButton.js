@@ -1,7 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import classes from './NavButton.module.css'
-import Justicon from "../../../../components/UI/Justicon";
+import Justicon from "../Justicon";
 
 
 function NavButton({forward, to}) {

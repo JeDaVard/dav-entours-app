@@ -1,10 +1,8 @@
 import React from "react";
-import { Query } from 'react-apollo'
 import { useQuery } from "react-apollo";
 import { FETCH_CONVERSATION } from './queries';
 import { useParams } from "react-router-dom";
 import classes from './Conversation.module.css';
-import SimpleButton from "../../../components/UI/SimpleButton/SimpleButton";
 import Message from "../Message/Message";
 import MessageInput from "../Message/MessageInput";
 import TopLoading from "../../../components/UI/TopLoading/TopLoading";

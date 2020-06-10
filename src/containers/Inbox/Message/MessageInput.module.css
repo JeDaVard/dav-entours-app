@@ -17,6 +17,22 @@
     padding-right: env(safe-area-inset-right);
 }
 
+@media all
+and (display-mode: standalone)
+and (orientation: portrait) {
+    .MessageInput {
+        bottom: 0;
+    }
+}
+
+@media all
+and (display-mode: standalone)
+and (orientation: landscape) {
+    .MessageInput {
+        bottom: -1rem;
+    }
+}
+
 .MessageInput:before {
     content: '';
     position: absolute;
