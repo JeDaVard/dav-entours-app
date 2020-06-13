@@ -12,7 +12,7 @@ function InboxItem() {
         <Query query={FETCH_INBOXES}>
             {({loading, error, data}) => {
                 if (loading) return <TopLoading />
-                if (error) return <h2>Error while fetching inboxes, please try later</h2>
+                if (error) return <h2>{error.message}. Error while fetching inboxes, please try later</h2>
                 return <>
                     { data.conversations.map(conversation => (
                         <Link to={`/inbox/${conversation._id}`} key={conversation._id}>

@@ -14,7 +14,7 @@ function MessageInput({ convId }) {
             mutation={SEND_MESSAGE}
             optimisticResponse={{
                 sendMessage: {
-                    _id: 'optimisticID' + (Math.random() * 1000000),
+                    _id: 'optimisticID' + Math.floor((Math.random() * 1000000)),
                     text: text,
                     createdAt: Date.now(),
                     sender: {
@@ -27,12 +27,14 @@ function MessageInput({ convId }) {
                 }
             }}
             update={(cache, { data: { sendMessage } }) => {
-                const { messages } = cache.readQuery({ query: FETCH_MESSAGES, variables: {id: convId} });
-                cache.writeQuery({
-                    query: FETCH_MESSAGES,
-                    variables: {id: convId },
-                    data: { messages: [...messages, sendMessage] },
-                });
+                if (sendMessage._id.startsWith('optimistic')) {
+                    const { messages } = cache.readQuery({ query: FETCH_MESSAGES, variables: {id: convId} });
+                    cache.writeQuery({
+                        query: FETCH_MESSAGES,
+                        variables: {id: convId },
+                        data: { messages: [...messages, sendMessage] },
+                    });
+                }
             }}
         >
             {(sendMessage, { loading }) => (

@@ -16,12 +16,12 @@ import { getCookie } from "./utils/cookies";
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 
-const httpLink = new HttpLink({
-    uri: process.env.REACT_APP_SERVER_API,
-    headers: {
-        authorization: getCookie('authToken') && `Bearer ${getCookie('authToken')}`
-    }
-});
+// const httpLink = new HttpLink({
+//     uri: process.env.REACT_APP_SERVER_API,
+//     headers: {
+//         authorization: getCookie('authToken') && `Bearer ${getCookie('authToken')}`
+//     }
+// });
 
 const wsLink = new WebSocketLink({
     uri: process.env.REACT_APP_SERVER_API_WS,
@@ -33,19 +33,19 @@ const wsLink = new WebSocketLink({
     }
 });
 
-const hasSubscriptionOperation = ({ query }) => {
-    const definition = getMainDefinition(query);
-    return (
-        definition.kind === 'OperationDefinition' &&
-        definition.operation === 'subscription'
-    );
-}
-
-const link = split(
-    hasSubscriptionOperation,
-    httpLink,
-    wsLink
-);
+// const hasSubscriptionOperation = ({ query }) => {
+//     const definition = getMainDefinition(query);
+//     return (
+//         definition.kind === 'OperationDefinition' &&
+//         definition.operation === 'subscription'
+//     );
+// }
+//
+// const link = split(
+//     hasSubscriptionOperation,
+//     httpLink,
+//     wsLink
+// );
 
 const cache = new InMemoryCache();
 
@@ -53,7 +53,7 @@ const client = new ApolloClient({
     typeDefs,
     resolvers,
     cache,
-    link,
+    link: wsLink,
 });
 
 cache.writeData({

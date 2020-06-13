@@ -29,7 +29,6 @@
     overflow-Y: hidden;
 }
 
-
 .Conversation__bottom {
     margin-bottom: env(safe-area-inset-bottom);
     padding-left: env(safe-area-inset-left);
