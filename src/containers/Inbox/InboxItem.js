@@ -3,8 +3,8 @@ import { Query } from 'react-apollo';
 import { FETCH_INBOXES } from './queries'
 import moment from "moment";
 import classes from "./InboxItem.module.css";
-import Justicon from "../../../components/UI/Justicon";
-import TopLoading from "../../../components/UI/TopLoading/TopLoading";
+import Justicon from "../../components/UI/Justicon";
+import TopLoading from "../../components/UI/TopLoading/TopLoading";
 import {Link} from "react-router-dom";
 
 function InboxItem() {

@@ -1,7 +1,7 @@
 import React from "react";
 import classes from './Inbox.module.css';
 import Separator from "../../components/UI/Separator/Separator";
-import InboxItem from "./InboxItem/InboxItem";
+import InboxItem from "./InboxItem";
 
 
 function Inbox() {
