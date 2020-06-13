@@ -11,6 +11,8 @@ function Messages(props) {
     useEffect(() => {
         subscribeToNewComments()
     },[])
+
+    if (!data[0]) return <p style={{fontSize: '1.3rem', textAlign: 'center', marginTop: '.7rem', color: '#8d8d8d'}}>The conversation has no messages yet. Let's start.</p>
     return (
         <>
             {data.map(message => (

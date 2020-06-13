@@ -7,7 +7,7 @@ import { generateBase64FromImage } from '../../utils/generateBase64FromImage';
 import validator from "validator";
 import { validateState } from "../../utils/validateState";
 import AnimatedValidation from "../../components/UI/AnimatedValidation/AnimatedValidation";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { useApolloClient, useMutation } from '@apollo/react-hooks';
 import { SIGN_IN, SIGN_UP } from "./queries";
 import {setCookie} from "../../utils/cookies";

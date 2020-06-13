@@ -27,6 +27,10 @@ function MessageInput({ convId }) {
                 }
             }}
             update={(cache, { data: { sendMessage } }) => {
+                // the line below checks the new message sent, if it is an optimistic
+                // we update the cache, but we pass it await if it is the real one from the
+                // server. That's because we have receive the real one by a subscription
+                // So we'll have a copy of the same message if we update the cache for the real one too
                 if (sendMessage._id.startsWith('optimistic')) {
                     const { messages } = cache.readQuery({ query: FETCH_MESSAGES, variables: {id: convId} });
                     cache.writeQuery({

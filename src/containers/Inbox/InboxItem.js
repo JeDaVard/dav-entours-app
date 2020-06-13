@@ -30,7 +30,13 @@ function InboxItem() {
                                         </div>
                                     </div>
                                     <h2>{conversation.tour.name}</h2>
-                                    <div><p><b>{conversation.lastMessage.sender.name.split(' ')[0]}: </b>{conversation.lastMessage.text.length > 26 ? conversation.lastMessage.text.slice(0,26) + '...' : conversation.lastMessage.text}</p></div>
+                                    <div>
+                                        { conversation.lastMessage ? (
+                                            <p>
+                                                <b>{conversation.lastMessage.sender.name.split(' ')[0]}: </b>{conversation.lastMessage.text.length > 26 ? conversation.lastMessage.text.slice(0,26) + '...' : conversation.lastMessage.text}
+                                            </p>
+                                        ) : null}
+                                    </div>
                                 </div>
                             </div>
                         </Link>

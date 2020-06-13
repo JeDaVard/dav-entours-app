@@ -8,6 +8,7 @@ import { HttpLink } from "apollo-link-http";
 import { WebSocketLink } from 'apollo-link-ws';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { getMainDefinition } from 'apollo-utilities';
+import { setContext } from 'apollo-link-context';
 import { typeDefs, resolvers } from "./resolvers";
 import store from './app/store';
 import { BrowserRouter } from 'react-router-dom';
@@ -16,12 +17,20 @@ import { getCookie } from "./utils/cookies";
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 
-// const httpLink = new HttpLink({
-//     uri: process.env.REACT_APP_SERVER_API,
-//     headers: {
-//         authorization: getCookie('authToken') && `Bearer ${getCookie('authToken')}`
-//     }
-// });
+const httpLink = new HttpLink({
+    uri: process.env.REACT_APP_SERVER_API,
+});
+
+
+const authLink = setContext((_, { headers }) => {
+    const token = getCookie('authToken');
+    return {
+        headers: {
+            ...headers,
+            authorization: token ? `Bearer ${token}` : "",
+        }
+    }
+});
 
 const wsLink = new WebSocketLink({
     uri: process.env.REACT_APP_SERVER_API_WS,
@@ -33,19 +42,20 @@ const wsLink = new WebSocketLink({
     }
 });
 
-// const hasSubscriptionOperation = ({ query }) => {
-//     const definition = getMainDefinition(query);
-//     return (
-//         definition.kind === 'OperationDefinition' &&
-//         definition.operation === 'subscription'
-//     );
-// }
-//
-// const link = split(
-//     hasSubscriptionOperation,
-//     httpLink,
-//     wsLink
-// );
+const hasSubscriptionOperation = ({ query }) => {
+    const definition = getMainDefinition(query);
+    // console.log(definition.operation, definition.kind)
+    return (
+        definition.kind === 'OperationDefinition' &&
+        definition.operation === 'subscription'
+    );
+}
+
+const link = split(
+    hasSubscriptionOperation,
+    wsLink,
+    authLink.concat(httpLink),
+);
 
 const cache = new InMemoryCache();
 
@@ -53,7 +63,7 @@ const client = new ApolloClient({
     typeDefs,
     resolvers,
     cache,
-    link: wsLink,
+    link,
 });
 
 cache.writeData({
