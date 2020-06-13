@@ -1,34 +1,21 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { Redirect } from "react-router-dom";
-import { Query } from 'react-apollo';
-import {loadingOff, loadingOn} from "../../../app/actions";
+import { useLazyQuery} from 'react-apollo';
+import { loadingOn } from "../../../app/actions";
 import { connect } from "react-redux";
 
 function PreloadLink({to, id, children, loadingOn, query, className}) {
-    const [ clicked, setClicked ] = useState(false)
+    const [ fetchItem, { data, error } ] = useLazyQuery(query, { variables: { id }})
 
     function handleClick(e) {
         e.preventDefault();
         loadingOn();
-        if (!clicked) setClicked(true)
+        fetchItem();
     }
-    return (
-        <>
-            {clicked && (
-                <Query query={query} variables={{id}}>
-                    { ({loading, error}) => {
-                        if (loading) return <></>;
-                        if (error) return <h1>Error while fetching popular tours.</h1>
-                        return <Redirect to={{
-                            pathname: to,
-                        }}/>
-                    }
-                    }
-                </Query>
-            )}
-            <a href="/" className={className && className} onClick={handleClick}>{children}</a>
-        </>
-    )
+
+    if (data) return <Redirect to={to} />
+    if ( error ) return <h2>Error while fetching</h2>
+    return <a href="/" className={className && className} onClick={handleClick}>{children}</a>
 }
 
 export default connect(null, { loadingOn })(PreloadLink)

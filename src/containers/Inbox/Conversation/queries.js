@@ -6,27 +6,61 @@ export const FETCH_CONVERSATION = gql`
 			_id
 			createdAt
 			tour {
+				_id
 				imageCover
 				name
 				slug
 			}
 			participants {
+				_id
 				photo
 				name
-				_id
 			}
 			guides {
+				_id
 				photo
 				name
+			}
+		}
+	}
+`
+
+export const FETCH_MESSAGES = gql`
+	query fetchMessages($id: ID!)  {
+		messages(id: $id) {
+			_id
+			text
+			createdAt
+			sender {
+				photo
 				_id
 			}
-			messages {
-				text
-				sender {
-					photo
-					_id
-				}
-				createdAt
+		}
+	}
+`
+
+export const SEND_MESSAGE = gql`
+	mutation SendMessage($convId: ID!, $text: String!) {
+		sendMessage(convId: $convId, text: $text) {
+			_id
+			text
+			createdAt
+			sender {
+				photo
+				_id
+			}
+		}
+	}
+`
+
+export const REMOVE_MESSAGE = gql`
+	mutation RemoveMessage($id: ID!) {
+		removeMessage(id: $id) {
+			_id
+			text
+			createdAt
+			sender {
+				photo
 				_id
 			}
 		}

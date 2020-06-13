@@ -5,7 +5,6 @@ import InboxItem from "./InboxItem/InboxItem";
 
 
 function Inbox() {
-
     return (
         <section className="row">
             <div className={classes.Inbox}>

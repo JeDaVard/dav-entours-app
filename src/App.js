@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Redirect, Route, Switch, withRouter } from 'react-router-dom';
+import { Route, Switch, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setDesktop, setMobile } from './app/actions';
 import Main from './containers/Main';
@@ -144,6 +144,10 @@ function App(props) {
         });
     };
 
+    // if (props.location.pathname.match(/^\/inbox\//)) {
+    //    return <Route exact path="/inbox/:id" component={Conversation} />
+    // }
+
     return (
         <>
             {props.error && (
@@ -174,9 +178,8 @@ function App(props) {
                 }
                 footer={
                     props.isMobile ? (
-                        <>
-                        </>
-                        // <div style={{ height: '6.5rem', width: '100%' }} />
+                        !props.location.pathname.match(/^\/inbox\//) &&
+                        <div style={{ height: '6.5rem', width: '100%' }} />
                     ) : (
                         <>
                             <Separator margin={'4 0'} />
@@ -190,7 +193,7 @@ function App(props) {
                     <Route path="/" exact component={Main} />
                     <Route path="/user/:id" component={UserPage} />
                     <Route path="/tour/:slug" component={TourPage}/>
-                    <Route path="/inbox/:id" component={Conversation} />
+                    <Route exact path="/inbox/:id" component={Conversation} />
                     <Route path="/inbox" render={props =>
                         loggedIn ? (
                             <Inbox />

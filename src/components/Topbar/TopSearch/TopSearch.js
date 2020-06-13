@@ -1,10 +1,11 @@
 import React from "react";
+import { connect } from 'react-redux';
 import withScroll from "../../../hocs/withScroll";
 import classes from './TopSearch.module.css';
 import sprite from '../../../assets/icons/sprite.svg'
 
 function TopSearch(props) {
-    const show = props.inTour || props.triggered
+    const show = props.inTour || props.triggered || props.isMobile
     return (
         <>
             {show &&
@@ -38,4 +39,8 @@ function TopSearch(props) {
     )
 }
 
-export default withScroll(TopSearch, { changePoint: 86})
+const mSTP = s => ({
+    isMobile: s.ui.display.isMobile
+})
+
+export default connect(mSTP)(withScroll(TopSearch, { changePoint: 86}))
