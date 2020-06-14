@@ -1,13 +1,10 @@
-import React, {useCallback} from "react";
-import * as ReactDOM from "react-dom";
+import {useCallback} from "react";
 
 export default function useScrollToBottom(ref) {
-    const scrollToBottom = useCallback((prevent) => {
+    return useCallback((prevent) => {
         if (prevent || !ref.current) return;
 
         ref.current.scrollTo(0, ref.current.scrollHeight)
 
     }, [ref])
-
-    return scrollToBottom
 }

@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 
-export const useInfiniteScroll = ({ ref, hasMore, onLoadMore, page, setPage }) => {
+export const useInfiniteScroll = ({ ref, hasMore, onLoadMore, page }) => {
     const [isFetching, setIsFetching] = useState(false);
     const handleScroll = useCallback(() => {
         if (ref.current.scrollTop === 0 && isFetching === false && hasMore) {

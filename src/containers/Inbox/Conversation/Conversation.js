@@ -56,7 +56,7 @@ function Conversation() {
                                              convId={id}
                                              data={result.data.messages || []}
                                              guides={conversation.guides || []}
-                                             subscribeToNewComments={() => sub(subscribeToMore)}
+                                             subscribeToMessages={() => sub(subscribeToMore)}
                                              onLoadMore={(page) => {
                                                  if (page > 1) {
                                                      return result.fetchMore({

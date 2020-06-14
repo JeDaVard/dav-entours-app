@@ -1,54 +1,51 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {useCallback, useEffect, useRef, useState} from "react";
 import Message from "./Message";
 import { getCookie } from "../../../utils/cookies";
 import classes from "./Messages.module.css";
 import useScrollToBottom from "../../../hooks/useScrollToBottom";
-import { useInfiniteScroll } from "../../../hooks/useInfiniteScroll";
 
 function Messages(props) {
-    const { convId, guides, data, subscribeToNewComments } = props;
+    const { guides, data, subscribeToMessages, onLoadMore } = props;
     const selfRef = useRef(null);
 
     const [ page, setPage ] = useState(1)
 
-    const [fetching, stopFetching] = useInfiniteScroll({
-        onLoadMore: props.onLoadMore,
-        page,
-        hasMore: true,
-        ref: selfRef,
-        setPage,
-});
+    const handleScroll = useCallback(() => {
+        if (selfRef.current.scrollTop === 0) {
+            setPage(page + 1)
+        }
+    }, [selfRef, page]);
 
     const scrollToBottom = useScrollToBottom(selfRef);
 
     useEffect(() => {
-        if (fetching) {
-            stopFetching()
-        }
-    }, [])
+        const elem = selfRef.current;
+
+        if (!elem) return
+
+        elem.addEventListener('scroll', handleScroll);
+
+        return () => {
+            elem.removeEventListener('scroll', handleScroll);
+        };
+    }, [selfRef, handleScroll]);
 
     useEffect(() => {
-        props.onLoadMore(page)
-    }, [page])
+        onLoadMore(page)
+    }, [page, onLoadMore])
 
     useEffect(() => {
         scrollToBottom();
-    }, [data]);
+    }, [data, scrollToBottom]);
 
     useEffect(() => {
-        const unsubscribe = subscribeToNewComments();
+        const unsubscribe = subscribeToMessages();
         return () => unsubscribe()
     },[]);
-
-    const loadMore = () => {
-        setPage(page + 1)
-    }
-    console.log('rerendered', page)
 
     return (
         <div className={classes.main} ref={selfRef}>
             <div className={classes.headRelative} />
-            <button onClick={loadMore}>fetch more</button>
             <div className="row">
             {data[0] ? data.sort((a, b) => a.createdAt - b.createdAt).map(message => (
                     <Message
