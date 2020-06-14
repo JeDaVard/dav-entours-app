@@ -7,6 +7,7 @@ export const FETCH_CONVERSATION = gql`
 			createdAt
 			tour {
 				_id
+                slug
 				imageCover
 				name
 				slug
@@ -26,8 +27,8 @@ export const FETCH_CONVERSATION = gql`
 `
 
 export const FETCH_MESSAGES = gql`
-	query fetchMessages($id: ID!)  {
-		messages(id: $id) {
+	query fetchMessages($id: ID!, $page: Int)  {
+		messages(id: $id, page: $page) {
 			_id
 			text
 			createdAt

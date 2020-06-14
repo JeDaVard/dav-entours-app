@@ -1,29 +1,66 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import Message from "./Message";
-import {Subscription, useSubscription } from "react-apollo";
 import { getCookie } from "../../../utils/cookies";
-import {SUBSCRIBE_MESSAGE} from "../Conversation/queries";
-import DotLoading from "../../../components/UI/DotLoading/DotLoading";
+import classes from "./Messages.module.css";
+import useScrollToBottom from "../../../hooks/useScrollToBottom";
+import { useInfiniteScroll } from "../../../hooks/useInfiniteScroll";
 
 function Messages(props) {
     const { convId, guides, data, subscribeToNewComments } = props;
+    const selfRef = useRef(null);
+
+    const [ page, setPage ] = useState(1)
+
+    const [fetching, stopFetching] = useInfiniteScroll({
+        onLoadMore: props.onLoadMore,
+        page,
+        hasMore: true,
+        ref: selfRef,
+        setPage,
+});
+
+    const scrollToBottom = useScrollToBottom(selfRef);
 
     useEffect(() => {
-        subscribeToNewComments()
-    },[])
+        if (fetching) {
+            stopFetching()
+        }
+    }, [])
 
-    if (!data[0]) return <p style={{fontSize: '1.3rem', textAlign: 'center', marginTop: '.7rem', color: '#8d8d8d'}}>The conversation has no messages yet. Let's start.</p>
+    useEffect(() => {
+        props.onLoadMore(page)
+    }, [page])
+
+    useEffect(() => {
+        scrollToBottom();
+    }, [data]);
+
+    useEffect(() => {
+        const unsubscribe = subscribeToNewComments();
+        return () => unsubscribe()
+    },[]);
+
+    const loadMore = () => {
+        setPage(page + 1)
+    }
+    console.log('rerendered', page)
+
     return (
-        <>
-            {data.map(message => (
-                <Message
-                    key={message._id}
-                    data={message}
-                    guide={guides.find(p => p._id === message.sender._id)}
-                    own={message.sender._id === getCookie('userId')}
-                />
-            ))}
-        </>
+        <div className={classes.main} ref={selfRef}>
+            <div className={classes.headRelative} />
+            <button onClick={loadMore}>fetch more</button>
+            <div className="row">
+            {data[0] ? data.sort((a, b) => a.createdAt - b.createdAt).map(message => (
+                    <Message
+                        key={message._id}
+                        data={message}
+                        guide={guides.find(p => p._id === message.sender._id)}
+                        own={message.sender._id === getCookie('userId')}
+                    />
+            )) : <p style={{fontSize: '1.3rem', textAlign: 'center', marginTop: '.7rem', color: '#8d8d8d'}}>The conversation has no messages yet. Let's start.</p>}
+            </div>
+            <div className={classes.inputPlaceHolder}/>
+        </div>
     )
 }
 

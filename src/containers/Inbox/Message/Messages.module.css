@@ -1,0 +1,28 @@
+.main {
+    overflow-y: scroll;
+    height: 100vh;
+}
+
+.headRelative {
+    height: 13.4rem;
+}
+
+.inputPlaceHolder {
+    height: 6.5rem;
+}
+
+@media all
+and (display-mode: standalone)
+and (orientation: portrait) {
+    .inputPlaceHolder {
+        height: 9rem;
+    }
+}
+
+@media all
+and (display-mode: standalone)
+and (orientation: landscape) {
+    .inputPlaceHolder {
+        height: 8.4rem;
+    }
+}

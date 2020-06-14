@@ -6,8 +6,10 @@ export const FETCH_INBOXES = gql`
 			_id
 			createdAt
 			tour {
+				_id
 				imageCover
 				name
+				slug
 			}
 			guides {
 				photo

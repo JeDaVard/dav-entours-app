@@ -11,12 +11,7 @@
     text-decoration: none;
 }
 
-.Conversation__headRelative {
-    height: 13.4rem;
-}
-
 .Conversation__main {
-    overflow-y: scroll;
     flex: 1;
     background: white;
 }
@@ -35,18 +30,11 @@
     padding-right: env(safe-area-inset-right);
 }
 
-.Conversation__inputPlaceHolder {
-    height: 6.5rem;
-}
-
 @media all
 and (display-mode: standalone)
 and (orientation: portrait) {
     .Conversation__bottom {
         bottom: -1rem;
-    }
-    .Conversation__inputPlaceHolder {
-        height: 9rem;
     }
 }
 
@@ -55,9 +43,6 @@ and (display-mode: standalone)
 and (orientation: landscape) {
     .Conversation__bottom {
         bottom: -1.6rem;
-    }
-    .Conversation__inputPlaceHolder {
-        height: 8.4rem;
     }
 }
 
