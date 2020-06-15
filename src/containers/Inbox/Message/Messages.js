@@ -1,24 +1,26 @@
-import React, {useCallback, useEffect, useRef, useState} from "react";
+import React, { useEffect, useRef, useState} from "react";
 import Message from "./Message";
 import { getCookie } from "../../../utils/cookies";
 import classes from "./Messages.module.css";
 import useScrollToBottom from "../../../hooks/useScrollToBottom";
 import DotLoading from "../../../components/UI/DotLoading/DotLoading";
 import InfiniteScroll from 'react-infinite-scroller';
+import {useApolloClient} from "@apollo/react-hooks";
 
 
 
 function Messages(props) {
     const { guides, data, subscribeToMessages, onLoadMore } = props;
     const selfRef = useRef(null);
-    const [ fetch, setFetch ] = useState({
-        page: 1,
-        preventScroll: false,
-        canFetch: true,
-        fetching: false
-    })
 
-    const [ page, setPage ] = useState(2)
+    // const [ fetch, setFetch ] = useState({
+    //     page: 1,
+    //     preventScroll: false,
+    //     canFetch: true,
+    //     fetching: false
+    // })
+
+    const [ page, setPage ] = useState(1)
 
     // const handleScroll = useCallback(() => {
     //     if (selfRef.current.scrollTop === 0 && !fetch.fetching) {
@@ -79,12 +81,12 @@ function Messages(props) {
                     pageStart={0}
                     loadMore={() => {
                         setPreventScroll(true);
-                        return onLoadMore(page).then(() => {
-                            setPage(page+1)
+                        return onLoadMore(page + 1).then(() => {
+                            setPage(page + 1)
                             setPreventScroll(false);
                         })
                     }}
-                    hasMore={page < 3}
+                    hasMore={true}
                     useWindow={false}
                     isReverse={true}
                     initialLoad={false}

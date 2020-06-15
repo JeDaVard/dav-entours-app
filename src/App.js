@@ -165,15 +165,19 @@ function App(props) {
                     props.isMobile ? (
                         <MobileBar photo={photo} />
                     ) : (
-                        <Topbar
-                            {...props}
-                            name={name}
-                            photo={photo}
-                            isLogged={loggedIn}
-                            loginModal={authModalClose}
-                            onSignUp={signUpModalHandler}
-                            onLogin={loginModalHandler}
-                        />
+                        <>
+                            {!props.location.pathname.match(/^\/inbox\//) && (
+                                <Topbar
+                                    {...props}
+                                    name={name}
+                                    photo={photo}
+                                    isLogged={loggedIn}
+                                    loginModal={authModalClose}
+                                    onSignUp={signUpModalHandler}
+                                    onLogin={loginModalHandler}
+                                />
+                            )}
+                        </>
                     )
                 }
                 footer={
@@ -182,8 +186,12 @@ function App(props) {
                         <div style={{ height: '6.5rem', width: '100%' }} />
                     ) : (
                         <>
-                            <Separator margin={'4 0'} />
-                            <Foot />
+                        {!props.location.pathname.match(/^\/inbox\//) && (
+                            <>
+                                <Separator margin={'4 0'} />
+                                <Foot />
+                            </>
+                        )}
                         </>
                     )
                 }

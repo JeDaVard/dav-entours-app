@@ -46,6 +46,7 @@ function Conversation() {
             <div className={classes.Conversation__main}>
                     <Query query={FETCH_MESSAGES}
                            variables={{id}}
+                           fetchPolicy="network-only"
                            // notifyOnNetworkStatusChange={true}
                            >
                         {({subscribeToMore, ...result}) => {

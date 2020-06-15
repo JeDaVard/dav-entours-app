@@ -1,6 +1,7 @@
 .Inbox {
     color: rgba(0, 0, 0, 0.8);
     margin-top: 2rem;
+    min-height: 40rem;
 }
 
 .Inbox a {

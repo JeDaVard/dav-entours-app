@@ -7,6 +7,15 @@
     background: rgba(255, 255, 255, 0.9);
 }
 
+@media (min-width: 744px) {
+    .MessageInput {
+        border-radius: 2rem 2rem 0 0;
+        width: 60rem;
+        margin: 0 auto;
+        border: rgba(0, 0, 0, 0.14) 1px solid;
+    }
+}
+
 .MessageInput__content {
     padding: 1rem;
     color: rgba(0, 0, 0, 0.8);

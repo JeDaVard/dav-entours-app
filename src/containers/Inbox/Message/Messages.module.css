@@ -3,6 +3,16 @@
     height: 100vh;
 }
 
+@media (min-width: 744px) {
+    .main {
+        width: 60rem;
+        margin: 0 auto;
+    }
+    .main::-webkit-scrollbar {
+        display: none;
+    }
+}
+
 .headRelative {
     height: 13.4rem;
 }
