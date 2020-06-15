@@ -57,7 +57,7 @@ function Conversation() {
                                              data={result.data.messages || []}
                                              guides={conversation.guides || []}
                                              subscribeToMessages={() => sub(subscribeToMore)}
-                                             onLoadMore={(page) => {
+                                             onLoadMore={async (page) => {
                                                  if (page > 1) {
                                                      return result.fetchMore({
                                                          variables: {

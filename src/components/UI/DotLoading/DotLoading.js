@@ -3,7 +3,7 @@ import classes from './DotLoading.module.css'
 
 function DotLoading() {
     return (
-        <div className={classes.loading}>
+        <div className={classes.loading} >
             <div />
             <div />
             <div />
