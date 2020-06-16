@@ -14,31 +14,48 @@ function MessageInput({ convId }) {
             mutation={SEND_MESSAGE}
             optimisticResponse={{
                 sendMessage: {
-                    _id: 'optimisticID' + Math.floor((Math.random() * 1000000)),
-                    text: text,
-                    createdAt: Date.now(),
-                    sender: {
-                        _id: getCookie('userId'),
-                        name: 'Sending',
-                        photo: localStorage.getItem('photo'),
-                        __typename: 'User',
+                    success: true,
+                    code: '200',
+                    message: 'Successfully sent',
+                    data: {
+                        _id: 'optimisticID' + Math.floor((Math.random() * 1000000)),
+                        text: text,
+                        createdAt: Date.now(),
+                        sender: {
+                            _id: getCookie('userId'),
+                            name: 'Sending',
+                            photo: localStorage.getItem('photo'),
+                            __typename: 'User',
+                        },
+                        __typename: "Message",
                     },
-                    __typename: "Message",
-                }
+                    __typename: 'MessageMutationResponse'
+                },
             }}
             update={(cache, { data: { sendMessage } }) => {
                 // the line below checks the new message sent, if it is an optimistic
                 // we update the cache, but we pass it await if it is the real one from the
                 // server. That's because we have receive the real one by a subscription
                 // So we'll have a copy of the same message if we update the cache for the real one too
-                if (sendMessage._id.startsWith('optimistic')) {
-                    const { messages } = cache.readQuery({ query: FETCH_MESSAGES, variables: {id: convId} });
+                // console.log(sendMessage)
+                // if (sendMessage.data._id.startsWith('optimistic')) {
+                    const { me } = cache.readQuery({ query: FETCH_MESSAGES, variables: {id: convId, limit: 12} });
+                    const messages = me.conversation.messages.messages
                     cache.writeQuery({
                         query: FETCH_MESSAGES,
-                        variables: {id: convId },
-                        data: { messages: [...messages, sendMessage] },
+                        variables: {id: convId, limit: 12 },
+                        data: { me: {
+                                ...me,
+                                conversation: {
+                                    ...me.conversation,
+                                    messages: {
+                                        ...me.conversation.messages,
+                                        messages: [...messages, sendMessage.data]
+                                    }
+                                }
+                            }},
                     });
-                }
+                // }
             }}
         >
             {(sendMessage, { loading }) => (

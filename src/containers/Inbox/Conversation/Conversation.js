@@ -8,7 +8,6 @@ import TopLoading from "../../../components/UI/TopLoading/TopLoading";
 import ConversationHead from "./ConversationHead";
 import DotLoading from "../../../components/UI/DotLoading/DotLoading";
 import Messages from "../Message/Messages";
-import _ from 'lodash';
 
 
 function Conversation() {
@@ -26,16 +25,27 @@ function Conversation() {
             variables: { id },
             updateQuery: (prev, { subscriptionData }) => {
                 if (!subscriptionData.data) return prev;
-                const newFeedItem = subscriptionData.data.messageAdded;
-                // return {messages: [...prev.messages, newFeedItem]}
+                const newMessage = subscriptionData.data.messageAdded.data;
+                console.log(newMessage)
+                console.log(prev)
+                // return
                 return Object.assign({}, prev, {
-                        messages: [...prev.messages, newFeedItem]
+                        me: {
+                            ...prev.me,
+                            conversation: {
+                                ...prev.me.conversation,
+                                messages: {
+                                    ...prev.me.conversation.messages,
+                                    messages: [...prev.me.conversation.messages.messages, newMessage]
+                                }
+                            }
+                        }
                     }
                 );
             }
         })
 
-    const { conversation } = data
+    const { conversation } = data.me
     return (
         <div className={classes.Conversation}>
             <ConversationHead
@@ -45,35 +55,50 @@ function Conversation() {
             />
             <div className={classes.Conversation__main}>
                     <Query query={FETCH_MESSAGES}
-                           variables={{id}}
+                           variables={{id, limit: 12}}
                            fetchPolicy="network-only"
-                           // notifyOnNetworkStatusChange={true}
                            >
                         {({subscribeToMore, ...result}) => {
                             if (result.loading) return <div style={{marginTop: '13.4rem'}}><DotLoading /></div>
-                            if (result.error) return <h1>{error.message}</h1>
+                            if (result.error) return <h1>{result.error.message}</h1>
+                            const { hasMore, messages } = result.data.me.conversation.messages
                             return (
                                     <Messages
                                              convId={id}
-                                             data={result.data.messages || []}
+                                             hasMore={hasMore}
+                                             data={messages || []}
                                              guides={conversation.guides || []}
                                              subscribeToMessages={() => sub(subscribeToMore)}
-                                             onLoadMore={async (page) => {
-                                                 if (page > 1) {
+                                             onLoadMore={async () => {
+                                                 if (hasMore) {
                                                      return result.fetchMore({
                                                          variables: {
-                                                             page
+                                                             page: result.data.me.conversation.messages.nextPage,
+                                                             limit: hasMore ? 12 : 0
                                                          },
                                                          updateQuery: (prev, { fetchMoreResult }) => {
                                                              if (!fetchMoreResult) return prev;
-
-                                                             const merged = [...prev.messages, ...fetchMoreResult.messages]
-
+                                                             if (!fetchMoreResult.me.conversation.messages.messages) return;
+                                                             const mergedMessages = [
+                                                                 ...prev.me.conversation.messages.messages,
+                                                                 ...fetchMoreResult.me.conversation.messages.messages
+                                                             ];
                                                              return Object.assign({}, prev, {
-                                                                 messages: _.uniqBy(merged, function (e) {
-                                                                     return e._id;
-                                                                 })
-                                                             });
+                                                                 // messages: _.uniqBy(merged, function (e) {
+                                                                 //     return e._id;
+                                                                 // })
+                                                                 me: {
+                                                                     conversation: {
+                                                                         ...fetchMoreResult.me.conversation,
+                                                                         messages: {
+                                                                             ...fetchMoreResult.me.conversation.messages,
+                                                                             messages: mergedMessages
+
+                                                                         }
+                                                                     },
+                                                                     __typename: 'Me'
+                                                                 }
+                                                             })
                                                          }
                                                      })
                                                  }

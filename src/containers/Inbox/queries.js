@@ -2,23 +2,25 @@ import gql from 'graphql-tag';
 
 export const FETCH_INBOXES = gql`
 	query {
-		conversations {
-			_id
-			createdAt
-			tour {
+		me {
+			conversations {
 				_id
-				imageCover
-				name
-				slug
-			}
-			guides {
-				photo
-				name
-			}
-			lastMessage {
-				text
-				sender {
+				createdAt
+				tour {
+					_id
+					imageCover
 					name
+					slug
+				}
+				guides {
+					photo
+					name
+				}
+				lastMessage {
+					text
+					sender {
+						name
+					}
 				}
 			}
 		}

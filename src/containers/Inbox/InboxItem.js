@@ -14,7 +14,7 @@ function InboxItem() {
                 if (loading) return <TopLoading />
                 if (error) return <h2>{error.message}. Error while fetching inboxes, please try later</h2>
                 return <>
-                    { data.conversations.map(conversation => (
+                    { data.me.conversations.map(conversation => (
                         <Link to={loc => ({...loc, pathname: `/inbox/${conversation._id}`, state: { convId: conversation._id}})} key={conversation._id}>
                             <div className={classes.InboxItem__conversation}>
                                 <div className={classes.InboxItem__image}>
