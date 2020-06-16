@@ -38,7 +38,7 @@ function MessageInput({ convId }) {
                 // server. That's because we have receive the real one by a subscription
                 // So we'll have a copy of the same message if we update the cache for the real one too
                 // console.log(sendMessage)
-                // if (sendMessage.data._id.startsWith('optimistic')) {
+                if (sendMessage.data._id.startsWith('optimistic')) {
                     const { me } = cache.readQuery({ query: FETCH_MESSAGES, variables: {id: convId, limit: 12} });
                     const messages = me.conversation.messages.messages
                     cache.writeQuery({
@@ -55,7 +55,7 @@ function MessageInput({ convId }) {
                                 }
                             }},
                     });
-                // }
+                }
             }}
         >
             {(sendMessage, { loading }) => (

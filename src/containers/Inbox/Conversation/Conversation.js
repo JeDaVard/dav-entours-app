@@ -8,6 +8,7 @@ import TopLoading from "../../../components/UI/TopLoading/TopLoading";
 import ConversationHead from "./ConversationHead";
 import DotLoading from "../../../components/UI/DotLoading/DotLoading";
 import Messages from "../Message/Messages";
+import _ from 'lodash';
 
 
 function Conversation() {
@@ -25,10 +26,12 @@ function Conversation() {
             variables: { id },
             updateQuery: (prev, { subscriptionData }) => {
                 if (!subscriptionData.data) return prev;
-                const newMessage = subscriptionData.data.messageAdded.data;
-                console.log(newMessage)
-                console.log(prev)
-                // return
+                const newMessage = subscriptionData.data.messageAdded;
+                // the filter below: now when in general messages query
+                // we have a fetchPolicy "network-only", we can't remove
+                // the optimistic response automatically I guess, so here
+                // we remove it manually just at a time the message from sub is arrived
+                const oldMessages = prev.me.conversation.messages.messages.filter(m => !m._id.startsWith('optimistic'))
                 return Object.assign({}, prev, {
                         me: {
                             ...prev.me,
@@ -36,7 +39,7 @@ function Conversation() {
                                 ...prev.me.conversation,
                                 messages: {
                                     ...prev.me.conversation.messages,
-                                    messages: [...prev.me.conversation.messages.messages, newMessage]
+                                    messages: [...oldMessages, newMessage]
                                 }
                             }
                         }
@@ -83,16 +86,16 @@ function Conversation() {
                                                                  ...prev.me.conversation.messages.messages,
                                                                  ...fetchMoreResult.me.conversation.messages.messages
                                                              ];
+
                                                              return Object.assign({}, prev, {
-                                                                 // messages: _.uniqBy(merged, function (e) {
-                                                                 //     return e._id;
-                                                                 // })
                                                                  me: {
                                                                      conversation: {
                                                                          ...fetchMoreResult.me.conversation,
                                                                          messages: {
                                                                              ...fetchMoreResult.me.conversation.messages,
-                                                                             messages: mergedMessages
+                                                                             messages: _.uniqBy(mergedMessages, function (e) {
+                                                                                     return e._id;
+                                                                                 })
 
                                                                          }
                                                                      },

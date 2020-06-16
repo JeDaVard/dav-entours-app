@@ -10,16 +10,22 @@ function Message({data: {text, createdAt, sender, _id }, own, guide}) {
     const [mutate] = useMutation(REMOVE_MESSAGE, {
             optimisticResponse: {
                 removeMessage: {
-                    _id,
-                    text: '[Removed]',
-                    createdAt: createdAt,
-                    sender: {
-                        _id: sender._id,
-                        name: sender.name,
-                        photo: sender.photo,
-                        __typename: 'User',
+                    success: true,
+                    code: '200',
+                    message: 'Removed successfully!',
+                    data: {
+                        _id,
+                        text: '[Removed]',
+                        createdAt: createdAt,
+                        sender: {
+                            _id: sender._id,
+                            name: sender.name,
+                            photo: sender.photo,
+                            __typename: 'User',
+                        },
+                        __typename: "Message",
                     },
-                    __typename: "Message",
+                    __typename: 'MessageMutationResponse'
                 },
                 __typename: "Mutation",
             },

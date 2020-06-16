@@ -93,17 +93,12 @@ export const REMOVE_MESSAGE = gql`
 export const SUBSCRIBE_MESSAGE = gql`
 	subscription MessageAdded($id: ID!) {
 		messageAdded(convId: $id) {
-			success
-			code
-			message
-			data {
+			_id
+			text
+			createdAt
+			sender {
+				photo
 				_id
-				text
-				createdAt
-				sender {
-					photo
-					_id
-				}
 			}
 		}
 	}
