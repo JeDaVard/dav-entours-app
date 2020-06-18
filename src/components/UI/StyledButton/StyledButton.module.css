@@ -73,12 +73,13 @@
     opacity: 0;
     background-image: radial-gradient(
             circle at center center,
-            #59e3ac 0%,
-            #41ca73 27.5%,
-            #4fc885 40%,
-            #3ac87f 57.5%,
-            rgb(19, 208, 120) 75%,
-            rgb(20, 179, 122) 100%
+            #49d76c 0%,
+            #38d25f 8%,
+            #2ec872 27.5%,
+            #32c368 40%,
+            #2dba78 57.5%,
+            #28b56d 75%,
+            #28b779 100%
     );
     transition: opacity 1.25s ease 0s;
 }

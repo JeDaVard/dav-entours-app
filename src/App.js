@@ -25,6 +25,8 @@ import { useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 import NotFound from "./components/NotFound/NotFound";
 import TopLoading from "./components/UI/TopLoading/TopLoading";
+import Make from "./containers/Make/Make";
+import MyTours from "./containers/MyTours/MyTours";
 
 
 const LOGGED_IN = gql`
@@ -200,6 +202,8 @@ function App(props) {
                 <Switch>
                     <Route path="/" exact component={Main} />
                     <Route path="/user/:id" component={UserPage} />
+                    <Route path="/make" component={Make}/>
+                    <Route path="/mytours" component={MyTours}/>
                     <Route path="/tour/:slug" component={TourPage}/>
                     <Route exact path="/inbox/:id" component={Conversation} />
                     <Route path="/inbox" render={props =>

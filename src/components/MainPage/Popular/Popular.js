@@ -6,7 +6,6 @@ import PopularItem from './PopularItem';
 import PopularItemLoading from './PopularItemLoading';
 
 function Popular() {
-
     return (
         <section className={classes.Popular}>
             <div className="row">
@@ -22,10 +21,10 @@ function Popular() {
                                         <PopularItemLoading />
                                     </>
                                 )
-                                if (error) return <h1>Error while fetching popular items</h1>
+                                if (error) return (process.env.NODE_ENV === 'production' ? <h1>Error while fetching popular items</h1> : error.message)
                                 return (
                                         <>
-                                            {data.tours.slice(4,9).map( tour => (
+                                            {data.tours.slice(0,4).map( tour => (
                                                 <PopularItem popular={tour} key={tour._id} />
                                             ))}
                                         </>

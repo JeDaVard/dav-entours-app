@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import classes from './StyledButton.module.css'
+import { Link } from "react-router-dom";
 
 function StyledButton(props) {
     const [ styles, setStyles ] = useState({})
@@ -15,15 +16,30 @@ function StyledButton(props) {
             "--mouse-y": y * 2.25,
         })
     }
-    return (
-        <button className={classes.StyledButton} onClick={props.onClick}>
+    const button = (
+        <>
             <span className={classes.StyledButton__effectContainer}>
                 <span onMouseMove={mouseMoveHandler} style={styles} className={classes.StyledButton__effect}> </span>
             </span>
             <span className={classes.StyledButton__text}>
                 {props.children}
                 </span>
-        </button>
+        </>
+    )
+    return (
+        <>
+            {
+                !props.to ? (
+                    <button className={classes.StyledButton} onClick={props.onClick}>
+                        {button}
+                    </button>
+                ) : (
+                    <Link className={classes.StyledButton} to={props.to} style={{color: 'white'}}>
+                        {button}
+                    </Link>
+                )
+            }
+        </>
     );
 }
 

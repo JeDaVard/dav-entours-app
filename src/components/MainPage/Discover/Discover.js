@@ -36,7 +36,7 @@ function Discover(props) {
                                 {
                                     ({loading, error, data}) => {
                                         if (loading) return <>{props.isMobile ? <DiscoverItemLoadingMobile /> : <DiscoverItemLoading />}</>
-                                        if (error) return <h1>errror while fetching discover</h1>
+                                        if (error) return <h1>Error while fetching discover</h1>
                                         return (
                                             <div className={classes.Discover__grid}>
                                                 {data.tours.slice(0,4).map( discover => <DiscoverItem tour={discover} key={discover._id}/>)}
