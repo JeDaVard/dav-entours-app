@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 import TopSearch from './TopSearch/TopSearch';
 
 function Topbar(props) {
-    const inTour = !!props.location.pathname.match(/^\/tour\/.*/);
+    const inTour = !!props.location.pathname.match(/^\/tour\/.*/) || !!props.location.pathname.match(/^\/make.*/);
     const isTransparent = inTour && !props.triggered;
     const cx = classNames.bind(classes);
 
