@@ -1,0 +1,117 @@
+.tourBox:not(:first-of-type) {
+    margin-top: 2rem;
+}
+
+.imageFrame {
+    position: relative;
+    width: 100%;
+    height: 40rem;
+    /*border-radius: 1rem;*/
+}
+
+.image {
+    width: 100%;
+    height: 40rem;
+    /*border-radius: 1rem;*/
+    object-fit: cover;
+}
+
+.main {
+    position: absolute;
+    height: 100%;
+    left: 0;
+    right: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 2rem;
+}
+
+.instruments {
+    display: flex;
+}
+
+.instruments > :not(:last-child) {
+    margin-right: 1rem;
+}
+
+.stats {
+    background: #f8f8f8;
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+.remove {
+    background: #f5f5f5;
+    padding: .7rem .7rem .4rem .7rem;
+    border-radius: 12px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.14);
+    transition: background .2s;
+}
+
+.remove:hover,
+.remove:active {
+    background: white;
+}
+
+.removeIcon {
+    fill: rgba(0, 0, 0, 0.8);
+    width: 2rem;
+    height: 2rem;
+}
+
+.bottom {
+    color: white;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 70%, transparent);
+}
+
+.tourTitle {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    line-height: 4.4rem;
+    font-size: 2rem;
+}
+
+.ratingBox {
+    align-items: flex-end;
+    margin-left: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.ratingQuantity {
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
+.rating {
+    display: flex;
+    font-size: 1rem;
+    color: #4fc877;
+    align-items: center;
+}
+
+.startLoc {
+    font-size: 1.3rem;
+    font-weight: 400;
+}
+.nextStart {
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.bottomInfo {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding-bottom: 2rem;
+}

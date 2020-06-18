@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import classes from './Make.module.css';
 import t from './1-1.jpg'
 import StyledButton from "../../components/UI/StyledButton/StyledButton";
@@ -6,6 +6,21 @@ import Separator from "../../components/UI/Separator/Separator";
 import Input from "../../components/UI/Input/Input";
 
 function Make() {
+    const [ input, setInput ] = useState({
+        title: '',
+        difficulty: 'easy',
+        maxSize: 2,
+    })
+
+    const inputHandler = (e) => {
+        const target = e.target;
+
+        setInput(p => ({
+            ...p,
+            [target.name]: target.value
+        }))
+    }
+
     return (
         <div className={classes.make}>
             <div className={classes.imageFrame}>
@@ -22,9 +37,9 @@ function Make() {
                     <Separator color={'light'} margin={'1 2'}/>
                 </div>
                     <form action="" className={classes.makeForm}>
-                        <Input name={'title'} placeholder={'Tour Title'}/>
-                        <Input name={'difficulty'} options={[{value: 'easy', name: 'Difficulty level: Easy'}, {value: 'hard', name: 'Difficulty level: Hard'}]}/>
-                        <Input name={'maxSize'} options={[{value: 1, name: 'Group Size: 1'}, {value: 1, name: 'Group Size: 2'}]}/>
+                        <Input type="text" name="title" placeholder="Tour Title" onChange={inputHandler}/>
+                        <Input name={'difficulty'} value={input.difficulty} onChange={inputHandler} options={[{value: 'easy', name: 'Difficulty level: Easy'}, {value: 'hard', name: 'Difficulty level: Hard'}]}/>
+                        <Input name={'maxSize'} value={input.maxSize} onChange={inputHandler} options={[{value: 1, name: 'Group Size: 1'}, {value: 2, name: 'Group Size: 2'}]}/>
 
                         <StyledButton type={'submit'}>Get Started &#8594;</StyledButton>
                     </form>
