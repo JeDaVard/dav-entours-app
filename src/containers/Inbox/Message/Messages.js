@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useRef, useState} from "react";
+import React, { useEffect, useRef, useState} from "react";
 import Message from "./Message";
 import { getCookie } from "../../../utils/cookies";
 import classes from "./Messages.module.css";
@@ -9,7 +9,7 @@ import InfiniteScroll from 'react-infinite-scroller';
 
 
 function Messages(props) {
-    const { hasMore, guides, data, subscribeToMessages, onLoadMore } = props;
+    const { hasMore, guides, data, subscribeToMessages, onLoadMore, convId } = props;
 
     const selfRef = useRef(null);
 
@@ -50,6 +50,7 @@ function Messages(props) {
                          {!hasMore && data.length > 12 && <p style={{fontSize: '1.3rem', textAlign: 'center', marginTop: '1.2rem', color: '#8d8d8d'}}>The start of the conversation</p>}
                          {data[0] ? data.sort((a, b) => a.createdAt - b.createdAt).map(message => (
                              <Message
+                                 convId={convId}
                                  key={message._id}
                                  data={message}
                                  guide={guides.find(p => p._id === message.sender._id)}

@@ -6,7 +6,7 @@ import Justicon from "../../../components/UI/Justicon";
 import {useMutation} from "@apollo/react-hooks";
 import { REMOVE_MESSAGE } from "../Conversation/queries";
 
-function Message({data: {text, createdAt, sender, _id }, own, guide}) {
+function Message({data: {text, createdAt, sender, _id, isImage, convId }, own, guide}) {
     const [mutate] = useMutation(REMOVE_MESSAGE, {
             optimisticResponse: {
                 removeMessage: {
@@ -17,6 +17,7 @@ function Message({data: {text, createdAt, sender, _id }, own, guide}) {
                         _id,
                         text: '[Removed]',
                         createdAt: createdAt,
+                        isImage: false,
                         sender: {
                             _id: sender._id,
                             name: sender.name,
@@ -31,6 +32,12 @@ function Message({data: {text, createdAt, sender, _id }, own, guide}) {
             },
     });
 
+    const image = (
+        <div className={classes.Message__photoFrame}>
+            <img src={text.startsWith('http') ? text : `${process.env.REACT_APP_SERVER}/users/${sender._id}/conversations/${convId}/${text}`} alt="tour moment" className={classes.Message__photo}/>
+        </div>
+    );
+
     return (
         <div className={`${classes.Message} ${own ? classes.Message__own : ''}`}>
             <div className={`${classes.Message__author} ${own ? classes.Message__authorOwn  : ''}`}>
@@ -41,9 +48,9 @@ function Message({data: {text, createdAt, sender, _id }, own, guide}) {
                 </Link>
             </div>
             <div className={`${classes.Message__text} ${own ? classes.Message__textOwn : ''} ${text === '[Removed]' ? classes.Message__textRemoved : ''} ${_id.startsWith('optimistic') ? classes.Message__textOwnOptimistic : ''}`}>
-                <p>
-                    {text}
-                </p>
+
+                {isImage && text !== '[Removed]' ? image : <p>{text}</p>}
+
                 <div className={`${classes.Message__textOptions} ${text === '[Removed]' ? classes.Message__textOptionsRemoved : ''}`}>
                     <h4>{moment(createdAt).format('HH:MM | DD MMM YYYY')}</h4>
                     {own && text !== '[Removed]' && <button onClick={() => mutate({variables: { id: _id }})} className={classes.Message__textRemove}>

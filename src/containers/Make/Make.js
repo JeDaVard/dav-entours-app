@@ -24,7 +24,7 @@ function Make() {
     return (
         <div className={classes.make}>
             <div className={classes.imageFrame}>
-                <img src={t} className={classes.image} alt="tour photo"/>
+                <img src={t} className={classes.image} alt="tour demo"/>
                 <div className={classes.title}>
                     <div className="row">
                         <h1>Earn money as a tour maker</h1>

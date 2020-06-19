@@ -76,8 +76,8 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    line-height: 4.4rem;
-    font-size: 2rem;
+    line-height: 4rem;
+    font-size: 1.6rem;
 }
 
 .ratingBox {

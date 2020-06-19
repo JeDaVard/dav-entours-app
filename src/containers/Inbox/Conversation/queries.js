@@ -40,6 +40,7 @@ export const FETCH_MESSAGES = gql`
 					messages {
 						_id
 						text
+						isImage
 						createdAt
 						sender {
 							photo
@@ -61,6 +62,7 @@ export const SEND_MESSAGE = gql`
 			data {
 				_id
 				text
+				isImage
 				createdAt
 				sender {
 					photo
@@ -80,6 +82,7 @@ export const REMOVE_MESSAGE = gql`
 			data {
 				_id
 				text
+				isImage
 				createdAt
 				sender {
 					photo
@@ -95,6 +98,7 @@ export const SUBSCRIBE_MESSAGE = gql`
 		messageAdded(convId: $id) {
 			_id
 			text
+			isImage
 			createdAt
 			sender {
 				photo

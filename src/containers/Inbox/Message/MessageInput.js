@@ -20,6 +20,7 @@ function MessageInput({ convId }) {
                     data: {
                         _id: 'optimisticID' + Math.floor((Math.random() * 1000000)),
                         text: text,
+                        isImage: false,
                         createdAt: Date.now(),
                         sender: {
                             _id: getCookie('userId'),

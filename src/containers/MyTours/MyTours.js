@@ -37,7 +37,6 @@ function MyTours() {
                         <Tab label={'guide'} tabName={'Guide'}>
                             <Query query={FETCH_MY_GUIDE_TOURS}>
                                 {({loading, error, data}) => {
-                                    console.log(data)
                                     if (loading) return <TopLoading />
                                     if (error) return <h1>Error while fetching tours</h1>
                                     return (
