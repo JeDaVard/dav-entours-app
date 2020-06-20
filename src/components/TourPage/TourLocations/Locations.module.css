@@ -1,0 +1,102 @@
+.locList {
+    color: white;
+    width: 100%;
+    background: #4fc877;
+    padding: 1rem 0;
+    display: flex;
+}
+
+.locList h3 {
+    font-size: 2.4rem;
+    padding-bottom: 1rem;
+}
+
+.locations {
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: column;
+}
+
+.locListItemBlock {
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 0 3rem rgba(0, 0, 0, 0.08);
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    margin-bottom: 1rem;
+}
+
+@media (min-width: 744px) {
+    .locations {
+        flex-direction: row;
+    }
+    .locListItemBlock {
+        margin-bottom: 1rem;
+        width: calc(33.3% - 2rem/3);
+    }
+    .locListItemBlock:not(:nth-child(3n)) {
+        margin-right: 1rem;
+    }
+}
+
+@media (min-width: 744px) and (max-width: 1127px) {
+    .locListItemBlock:not(:nth-child(3n)) {
+        margin-right: 0;
+    }
+    .locListItemBlock:not(:nth-child(2n)) {
+        margin-right: 1rem;
+    }
+    .locListItemBlock {
+        width: calc(50% - .5rem);
+        margin-bottom: 1rem;
+    }
+}
+
+.locListItem {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    padding-bottom: .6rem;
+}
+
+.locListItem:after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 4px;
+    background: white;
+    height: 2px;
+    border-radius: 2px;
+    width: 100%;
+    transition: all .2s;
+}
+
+.locListItem:hover:after {
+    height: 0;
+}
+
+.locItem {
+    display: flex;
+    align-items: center;
+}
+
+.locListButton {
+    margin-left: .3rem;
+    cursor: pointer;
+    font-size: 1.5rem;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: white;
+    font-weight: 700;
+}
+
+.locationDesc {
+    font-size: 1.4rem;
+    padding-right: 1rem;
+}
+
+.locIcon {
+    width: 1.6rem;
+    height: 1.6rem;
+    fill: white
+}
