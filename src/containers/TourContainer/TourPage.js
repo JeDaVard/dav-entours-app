@@ -7,8 +7,9 @@ import Separator from '../../components/UI/Separator/Separator';
 import TourHead from '../../components/TourPage/TourHead/TourHead';
 import TourDescription from '../../components/TourPage/TourDescription/TourDescription';
 import TourImages from '../../components/TourPage/TourImages/TourImages';
-import PopDown from '../../components/TourPage/PopDown/PopDown';
+import TourMap from "../../components/TourPage/TourMap/TourMap";
 import TourReviews from "../../components/TourPage/TourReviews/TourReviews";
+import PopDown from '../../components/TourPage/PopDown/PopDown';
 import TopLoading from "../../components/UI/TopLoading/TopLoading";
 import ScrollToTop from "../../components/UI/ScrollToTop";
 import TourHeadLoading from "../../components/TourPage/TourHead/TourHeadLoading";
@@ -46,6 +47,7 @@ function TourPage(props) {
             <TourDescription tour={data.tour}/>
             <Separator />
             <TourImages images={data.tour.images}/>
+            <TourMap data={{start: data.tour.startLocation, locations: data.tour.locations}}/>
             <Separator margin={'0 2'}/>
             <TourReviews tour={data.tour} />
             <PopDown tour={data.tour}/>

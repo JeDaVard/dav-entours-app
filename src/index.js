@@ -17,6 +17,7 @@ import { getCookie } from "./utils/cookies";
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 
+
 const httpLink = new HttpLink({
     uri: process.env.REACT_APP_SERVER_API,
 });

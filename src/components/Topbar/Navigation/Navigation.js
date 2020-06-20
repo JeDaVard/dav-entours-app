@@ -25,7 +25,7 @@ function Navigation(props) {
                             <Justicon icon={'chevron-down'} className={classes.Navigation__geoIcon}/>
                         </div>
                     </Link>
-                    <Link to="/">Make a tour</Link>
+                    <Link to="/make">Make a tour</Link>
                     {!props.isLogged && <Link to="/" onClick={(e) => {e.preventDefault(); props.loginModal()}}>Log In</Link>}
                 </div>
         <OutsideAlerter delegate={props.handleClose}>

@@ -1,0 +1,26 @@
+.mapFrame {
+    color: rgba(0, 0, 0, 0.6);
+    position: relative;
+    height: 40rem;
+    width: 100%;
+    overflow: hidden;
+}
+
+.marker {
+    background: url('./pin.png') no-repeat;
+    background-size: contain;
+    width: 3rem;
+    height: 3.8rem;
+    cursor: pointer;
+}
+
+.popUp {
+    font-size: 1.3rem;
+    /*color: #000;*/
+}
+
+.locList {
+    width: 100%;
+    background: #3db062;
+    padding: 1rem 0;
+}

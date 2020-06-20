@@ -10,7 +10,6 @@ export const FETCH_TOUR = gql`
 			duration
 			createdAt
 			price
-			startDates
 			description
 			summary
 			hashtags
@@ -20,11 +19,21 @@ export const FETCH_TOUR = gql`
 			ratingsAverage
 			ratingsQuantity
 			maxGroupSize
+			
 			participants {
 				_id
 			}
 			startLocation {
 				description
+				coordinates
+				address
+			}
+			locations {
+				_id
+				description
+				coordinates
+				address
+				day
 			}
 			author {
 				_id

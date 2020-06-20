@@ -10,7 +10,6 @@ import DotLoading from "../../../components/UI/DotLoading/DotLoading";
 import Messages from "../Message/Messages";
 import _ from 'lodash';
 
-
 function Conversation() {
     const { id } = useParams();
     const { loading, error, data } = useQuery(FETCH_CONVERSATION, {
