@@ -6,7 +6,7 @@ import Separator from "../../components/UI/Separator/Separator";
 import {Tab, Tabs} from "../../components/UI/Tabs/Tabs";
 import queryString from "query-string";
 import MyToursItem from "./MyTourItem";
-import {FETCH_MY_GUIDE_TOURS, FETCH_MY_TOURS} from "./queries";
+import {FETCH_MY_DRAFT_TOURS, FETCH_MY_GUIDE_TOURS, FETCH_MY_TOURS} from "./queries";
 import TopLoading from "../../components/UI/TopLoading/TopLoading";
 
 function MyTours() {
@@ -42,6 +42,21 @@ function MyTours() {
                                     return (
                                         <>
                                             {data.me.asGuide.map(tour => (
+                                                <MyToursItem key={tour._id} data={tour}/>
+                                            ))}
+                                        </>
+                                    )
+                                }}
+                            </Query>
+                        </Tab>
+                        <Tab label={'draft'} tabName={'Draft'}>
+                            <Query query={FETCH_MY_DRAFT_TOURS}>
+                                {({loading, error, data}) => {
+                                    if (loading) return <TopLoading />
+                                    if (error) return <h1>Error while fetching tours</h1>
+                                    return (
+                                        <>
+                                            {data.me.draft.map(tour => (
                                                 <MyToursItem key={tour._id} data={tour}/>
                                             ))}
                                         </>

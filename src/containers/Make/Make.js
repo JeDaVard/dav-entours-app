@@ -5,94 +5,33 @@ import StyledButton from "../../components/UI/StyledButton/StyledButton";
 import Separator from "../../components/UI/Separator/Separator";
 import Input from "../../components/UI/Input/Input";
 // import "mapbox-gl/dist/mapbox-gl.css"
-// import "react-map-gl-geocoder/dist/mapbox-gl-geocoder.css"
+import "react-map-gl-geocoder/dist/mapbox-gl-geocoder.css"
+import mapboxgl from 'mapbox-gl';
+import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder'
 
-import MapGL, { Marker } from "react-map-gl";
-import DeckGL, { GeoJsonLayer } from "deck.gl";
-import Geocoder from "react-map-gl-geocoder";
-
+import MapGL  from "react-map-gl";
+// import Geocoder from "react-map-gl-geocoder";
 
 const token = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN
 
-class SearchableMap extends Component {
-    state = {
-        viewport :{
-            latitude: 0,
-            longitude: 0,
-            zoom: 2
-        },
-        searchResultLayer: null
-    }
-
-    mapRef = React.createRef()
-
-    handleViewportChange = viewport => {
-        this.setState({
-            viewport: { ...this.state.viewport, ...viewport }
-        })
-    }
-    // if you are happy with Geocoder default settings, you can just use handleViewportChange directly
-    handleGeocoderViewportChange = viewport => {
-        const geocoderDefaultOverrides = { transitionDuration: 1000 };
-
-        return this.handleViewportChange({
-            ...viewport,
-            ...geocoderDefaultOverrides
-        });
-    };
-
-    handleOnResult = event => {
-        this.setState({
-            searchResultLayer: new GeoJsonLayer({
-                id: "search-result",
-                data: event.result.geometry,
-                getFillColor: [255, 0, 0, 128],
-                getRadius: 1000,
-                pointRadiusMinPixels: 10,
-                pointRadiusMaxPixels: 10
-            })
-        })
-    }
-
-    render(){
-        console.log(this.state.viewport.latitude)
-        const { viewport, searchResultLayer} = this.state
-        return (
-            <div style={{ height: '100vh'}}>
-                <h1 style={{textAlign: 'center', fontSize: '25px', fontWeight: 'bolder' }}>Use the search bar to find a location or click <a href="/">here</a> to find your location</h1>
-                <MapGL
-                    ref={this.mapRef}
-                    {...viewport}
-                    mapStyle="mapbox://styles/mapbox/streets-v9"
-                    width="100%"
-                    height="90%"
-                    onViewportChange={this.handleViewportChange}
-                    mapboxApiAccessToken={token}
-                >
-                    <Geocoder
-                        mapRef={this.mapRef}
-                        onResult={this.handleOnResult}
-                        onViewportChange={this.handleGeocoderViewportChange}
-                        mapboxApiAccessToken={token}
-                        position='top-left'
-                    />
-
-                    {/*<input/>*/}
-                </MapGL>
-
-                <DeckGL {...viewport} layers={[searchResultLayer]} />
-            </div>
-        )
-    }
-}
-
+mapboxgl.accessToken = token;
 
 function Make() {
     const [ input, setInput ] = useState({
         title: '',
         difficulty: 'easy',
-        maxSize: 2,
+        maxSize: 4,
     })
+
+    const maxGroupSizeOptions = []
+    for (let i = 1; i <= 20; i++) {
+        maxGroupSizeOptions.push({value: i, name: `Group Size: ${i}`})
+    }
+    const difficultyOptions = [
+        {value: 'easy', name: 'Difficulty: Easy'},
+        {value: 'medium', name: 'Difficulty: Medium'},
+        {value: 'hard', name: 'Difficulty: Hard'}
+    ]
 
     const inputHandler = (e) => {
         const target = e.target;
@@ -119,17 +58,74 @@ function Make() {
                     <Separator color={'light'} margin={'1 2'}/>
                 </div>
                     <form action="" className={classes.makeForm}>
-                        <Input type="text" name="title" placeholder="Tour Title" onChange={inputHandler}/>
-                        <Input name={'difficulty'} value={input.difficulty} onChange={inputHandler} options={[{value: 'easy', name: 'Difficulty level: Easy'}, {value: 'hard', name: 'Difficulty level: Hard'}]}/>
-                        <Input name={'maxSize'} value={input.maxSize} onChange={inputHandler} options={[{value: 1, name: 'Group Size: 1'}, {value: 2, name: 'Group Size: 2'}]}/>
+                        <Input
+                            type="text"
+                            name="title"
+                            placeholder="Tour Name"
+                            onChange={inputHandler}/>
+                        <Input
+                            name={'difficulty'}
+                            value={input.difficulty}
+                            onChange={inputHandler}
+                            options={difficultyOptions}/>
+                        <Input
+                            name={'maxSize'}
+                            value={input.maxSize}
+                            onChange={inputHandler}
+                            options={maxGroupSizeOptions}/>
 
                         <StyledButton type={'submit'}>Get Started &#8594;</StyledButton>
                     </form>
             </div>
             <div>
             <div style={{width: '100%', height: '40rem', position: 'relative'}}>
-                <SearchableMap />
+                {/*<SearchableMap />*/}
+                <Search />
             </div>
+            </div>
+        </div>
+    )
+}
+
+function Search() {
+    const [ state, setState ] = useState([]);
+
+    // const theRef = useRef(null)
+
+    // useEffect(() => {
+// console.log(theRef.current)
+// console.log(document.getElementById('mmap'))
+//         var geocoder = new MapboxGeocoder({
+//             accessToken: mapboxgl.accessToken,
+//             types: 'country,region,place,postcode,locality,neighborhood'
+//         });
+//         geocoder.addTo(document.getElementById('mmap'))
+//     }, )
+
+    const changeHandler = async (e) => {
+        const target = e.target
+        try {
+            if (target.value !== '')
+            {
+                const res = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${target.value}.json?access_token=${token}&limit=5`)
+                const data = await res.json()
+                console.log(data)
+                setState(data.features)
+            } else {
+                setState([])
+            }
+        } catch (e) {
+            console.log('error')
+        }
+    }
+
+    return (
+        <div>
+            <input type="text" onChange={changeHandler}/>
+            <div>
+                {state.map(loc => (
+                    <p key={loc.id}>{loc.text}</p>
+                ))}
             </div>
         </div>
     )

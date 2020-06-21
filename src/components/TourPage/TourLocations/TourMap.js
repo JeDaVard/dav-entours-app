@@ -1,6 +1,6 @@
 import React from "react";
 import classes from './TourMap.module.css'
-import ReactMapGL, {Marker, NavigationControl, Popup} from "react-map-gl";
+import ReactMapGL, {Marker, NavigationControl, Popup } from "react-map-gl";
 
 const TourMap =  React.forwardRef((props, ref) => {
     const { viewport, nextViewportHandler } = props;
@@ -35,6 +35,7 @@ const TourMap =  React.forwardRef((props, ref) => {
                             <div className={classes.marker} />
                         </Marker>
                             <Popup
+                                sortByDepth={true}
                                 closeButton={false}
                                 latitude={loc.coordinates[1]}
                                 longitude={loc.coordinates[0]}

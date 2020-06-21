@@ -8,19 +8,20 @@ import {Link} from "react-router-dom";
 function MyToursItem({data}) {
     return (
         <div className={classes.tourBox}>
-            <Link to={`/tour/${data.slug}`}>
+            <Link to={data.draft ? `/tour/${data.slug}/edit/heading` : `/tour/${data.slug}`}>
             <div className={classes.imageFrame}>
-                    <ThumbedImage
+                {data.imageCover && <ThumbedImage
                         src={`${process.env.REACT_APP_SERVER}/images/tour/${data.imageCover}`}
                         thumb={`${process.env.REACT_APP_SERVER}/images/tour/${data.imageCover.slice(0, data.imageCover.length-4)}.thumb.jpeg`} blur={true}
                         className={classes.image}
                         alt={data.name}
-                    />
+                    />}
                 <div className={classes.main}>
                     <div className={classes.top}>
                         <div className={classes.stats}>
                             <div>
-                                <h2>{data.participants.length} / {data.maxGroupSize} participants</h2>
+                                {!!data.participants.length &&
+                                (<h2>{data.participants.length} / {data.maxGroupSize} participants</h2>)}
                             </div>
                         </div>
                         <div className={classes.instruments}>
@@ -30,12 +31,14 @@ function MyToursItem({data}) {
                                     className={classes.removeIcon}
                                 />
                             </div>
-                            <div className={classes.remove}>
-                                <Justicon
-                                    icon={'edit'}
-                                    className={classes.removeIcon}
-                                />
-                            </div>
+                            <Link to={`/tour/${data.slug}/edit/heading`}>
+                                <div className={classes.remove}>
+                                    <Justicon
+                                        icon={'edit'}
+                                        className={classes.removeIcon}
+                                    />
+                                </div>
+                            </Link>
                             <div className={classes.remove}>
                                 <Justicon
                                     icon={'trash'}
@@ -50,18 +53,21 @@ function MyToursItem({data}) {
                                 <h1>{data.name.length > 40 ? data.name.slice(40) : data.name}</h1>
                             </div>
                             <div className={classes.bottomInfo}>
-                                <div className={classes.startLoc}>
-                                    <p className={classes.nextStart}>{moment(+data.startDates[0]).format('ddd DD MMMM YYYY')}</p>
-                                    <p>{data.startLocation.description}</p>
-                                </div>
-                                <div className={classes.ratingBox}>
-                                    <div className={classes.rating}>
-                                        <Justicon icon={'star'}/> <h2>&nbsp; {data.ratingsAverage}</h2>
+                                {data.startLocation &&
+                                    <div className={classes.startLoc}>
+                                        <p className={classes.nextStart}>{moment(+data.startDates[0]).format('ddd DD MMMM YYYY')}</p>
+                                        <p>{data.startLocation.description}</p>
                                     </div>
-                                    <div className={classes.ratingQuantity}>
-                                        <p>{data.ratingsQuantity} reviews</p>
-                                    </div>
-                                </div>
+                                }
+                                {data.ratingsQuantity > 1 &&
+                                        <div className={classes.ratingBox}>
+                                            <div className={classes.rating}>
+                                                <Justicon icon={'star'}/> <h2>&nbsp; {data.ratingsAverage}</h2>
+                                            </div>
+                                            <div className={classes.ratingQuantity}>
+                                                <p>{data.ratingsQuantity} reviews</p>
+                                            </div>
+                                        </div>}
                             </div>
                         </div>
                     </div>

@@ -27,6 +27,7 @@ import NotFound from "./components/NotFound/NotFound";
 import TopLoading from "./components/UI/TopLoading/TopLoading";
 import Make from "./containers/Make/Make";
 import MyTours from "./containers/MyTours/MyTours";
+import EditTour from "./containers/Make/EditTour";
 
 
 const LOGGED_IN = gql`
@@ -201,10 +202,11 @@ function App(props) {
                 {props.asyncLoading && <TopLoading />}
                 <Switch>
                     <Route path="/" exact component={Main} />
+                    <Route path="/tour/:slug/edit" component={EditTour}/>
                     <Route path="/user/:id" component={UserPage} />
                     <Route path="/make" component={Make}/>
                     <Route path="/mytours" component={MyTours}/>
-                    <Route path="/tour/:slug" component={TourPage}/>
+                    <Route exact path="/tour/:slug" component={TourPage}/>
                     <Route exact path="/inbox/:id" component={Conversation} />
                     <Route path="/inbox" render={props =>
                         loggedIn ? (
