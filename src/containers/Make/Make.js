@@ -1,4 +1,5 @@
 import React, {Component, useEffect, useRef, useState} from "react";
+import { useHistory } from 'react-router-dom';
 import classes from './Make.module.css';
 import t from './1-1.jpg'
 import StyledButton from "../../components/UI/StyledButton/StyledButton";
@@ -10,6 +11,10 @@ import mapboxgl from 'mapbox-gl';
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder'
 
 import MapGL  from "react-map-gl";
+import {useMutation} from "@apollo/react-hooks";
+import {MAKE_A_TOUR} from "./queries";
+import DotLoading from "../../components/UI/DotLoading/DotLoading";
+import TopLoading from "../../components/UI/TopLoading/TopLoading";
 // import Geocoder from "react-map-gl-geocoder";
 
 const token = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN
@@ -17,10 +22,19 @@ const token = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN
 mapboxgl.accessToken = token;
 
 function Make() {
+    const history = useHistory()
     const [ input, setInput ] = useState({
-        title: '',
+        name: '',
         difficulty: 'easy',
-        maxSize: 4,
+        maxGroupSize: 4,
+    })
+
+    const [makeATour, { loading }] = useMutation(MAKE_A_TOUR, {
+        variables: {
+            name: input.name,
+            difficulty: input.difficulty,
+            maxGroupSize: input.maxGroupSize
+        }
     })
 
     const maxGroupSizeOptions = []
@@ -33,6 +47,15 @@ function Make() {
         {value: 'hard', name: 'Difficulty: Hard'}
     ]
 
+    const onMakeATour = (e) => {
+        e.preventDefault();
+
+        makeATour()
+            .then((res) => {
+                history.push(`/tour/${res.data.makeATour.data.slug}/edit/heading`)
+            })
+    }
+
     const inputHandler = (e) => {
         const target = e.target;
 
@@ -44,6 +67,7 @@ function Make() {
 
     return (
         <div className={classes.make}>
+            {loading && <TopLoading />}
             <div className={classes.imageFrame}>
                 <img src={t} className={classes.image} alt="tour demo"/>
                 <div className={classes.title}>
@@ -57,10 +81,10 @@ function Make() {
                 <div className={classes.separator}>
                     <Separator color={'light'} margin={'1 2'}/>
                 </div>
-                    <form action="" className={classes.makeForm}>
+                    <form onSubmit={onMakeATour} className={classes.makeForm}>
                         <Input
                             type="text"
-                            name="title"
+                            name="name"
                             placeholder="Tour Name"
                             onChange={inputHandler}/>
                         <Input
@@ -69,12 +93,12 @@ function Make() {
                             onChange={inputHandler}
                             options={difficultyOptions}/>
                         <Input
-                            name={'maxSize'}
-                            value={input.maxSize}
+                            name={'maxGroupSize'}
+                            value={input.maxGroupSize}
                             onChange={inputHandler}
                             options={maxGroupSizeOptions}/>
 
-                        <StyledButton type={'submit'}>Get Started &#8594;</StyledButton>
+                        <StyledButton type={'submit'}>{loading ? <>Saving...</> : <>Get Started &#8594;</>}</StyledButton>
                     </form>
             </div>
             <div>
@@ -109,7 +133,6 @@ function Search() {
             {
                 const res = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${target.value}.json?access_token=${token}&limit=5`)
                 const data = await res.json()
-                console.log(data)
                 setState(data.features)
             } else {
                 setState([])

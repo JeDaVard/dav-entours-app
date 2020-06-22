@@ -5,7 +5,7 @@ import Justicon from "../Justicon";
 function Input(props) {
     if (props.options) return (
         <label className={classes.makeInputBox}>
-            Select one
+            &nbsp;
             <select value={props.value} className={classes.select} name={props.name} onChange={props.onChange}>
                 {props.options.map(option => (
                     <option value={option.value} key={option.name}>{option.name}</option>

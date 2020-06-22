@@ -8,14 +8,16 @@ import {Link} from "react-router-dom";
 function MyToursItem({data}) {
     return (
         <div className={classes.tourBox}>
-            <Link to={data.draft ? `/tour/${data.slug}/edit/heading` : `/tour/${data.slug}`}>
             <div className={classes.imageFrame}>
-                {data.imageCover && <ThumbedImage
-                        src={`${process.env.REACT_APP_SERVER}/images/tour/${data.imageCover}`}
-                        thumb={`${process.env.REACT_APP_SERVER}/images/tour/${data.imageCover.slice(0, data.imageCover.length-4)}.thumb.jpeg`} blur={true}
-                        className={classes.image}
-                        alt={data.name}
-                    />}
+                {data.imageCover &&
+                <Link to={data.draft ? `/tour/${data.slug}/edit/heading` : `/tour/${data.slug}`}>
+                    <ThumbedImage
+                            src={`${process.env.REACT_APP_SERVER}/images/tour/${data.imageCover}`}
+                            thumb={`${process.env.REACT_APP_SERVER}/images/tour/${data.imageCover.slice(0, data.imageCover.length-4)}.thumb.jpeg`} blur={true}
+                            className={classes.image}
+                            alt={data.name}
+                        />
+                    </Link> }
                 <div className={classes.main}>
                     <div className={classes.top}>
                         <div className={classes.stats}>
@@ -73,7 +75,6 @@ function MyToursItem({data}) {
                     </div>
                 </div>
             </div>
-            </Link>
         </div>
     )
 }

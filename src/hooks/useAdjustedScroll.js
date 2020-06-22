@@ -20,7 +20,7 @@ export const useAdjustedScroll = (ref) => {
                 : node.clientHeight;
 
         node.scrollTop = node.scrollHeight - height;
-        console.log(previousScroll)
+        // console.log(previousScroll)
 
         // saves current scroll details
         if (previousScroll && node.scrollTop !== previousScroll.top) {
