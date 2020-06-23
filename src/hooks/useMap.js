@@ -2,11 +2,13 @@ import {useEffect, useState} from "react";
 import mapboxgl from 'mapbox-gl'
 import 'mapbox-gl/dist/mapbox-gl.css';
 
+
 export default function useMap(ref, markRef, initialViewport) {
+    // console.log(initialViewport, 'initial viewport')
     const [ viewport, setViewport ] = useState(initialViewport)
 
-    useEffect(() => {
 
+    useEffect(() => {
         const map = new mapboxgl.Map({
             accessToken: process.env.REACT_APP_MAPBOX_ACCESS_TOKEN,
             container: ref.current,
@@ -47,5 +49,18 @@ export default function useMap(ref, markRef, initialViewport) {
 
     }, [])
 
+    // useEffect(() => {
+    //     map.flyTo({
+    //         center: [viewport.longitude, viewport.latitude],
+    //         zoom: 9,
+    //         bearing: 0,
+    //         speed: 1, // make the flying slow
+    //         curve: 1, // change the speed at which it zooms out
+    //         easing: function(t) {
+    //             return t;
+    //         },
+    //         essential: true
+    //     });
+    // }, [initialViewport])
     return viewport
 }

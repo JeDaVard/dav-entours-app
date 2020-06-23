@@ -6,7 +6,8 @@ const initialState = {
         longitude: -116.214531,
         latitude: 51.417611,
         zoom: 4
-    }
+    },
+    selLoc: {}
 }
 
 const searchLocation = (state= initialState, action) => {
@@ -25,6 +26,11 @@ const searchLocation = (state= initialState, action) => {
             return {
                 ...state,
                 viewport: action.viewport
+            }
+        case actionTypes.SELECTED_LOCATION:
+            return {
+                ...state,
+                selLoc: action.selLoc
             }
         default:
             return state

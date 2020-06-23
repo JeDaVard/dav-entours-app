@@ -9,9 +9,15 @@ export const endSearchLoc = () => ({
 })
 
 export const newViewport = (viewport) => {
-    console.log(viewport)
     return ({
         type: actions.NEW_VIEWPORT,
         viewport
+    })
+}
+
+export const selectedLocation = (selLoc) => {
+    return ({
+        type: actions.SELECTED_LOCATION,
+        selLoc
     })
 }

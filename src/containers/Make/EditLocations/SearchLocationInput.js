@@ -8,7 +8,6 @@ import SearchPopUp from "./SearchPopUp";
 
 
 function SearchLocationInput(props) {
-    console.log('rend SearchLocationInput')
     const searchRef = useRef(null);
 
     const [ viewport, setViewport ] = useState( {longitude: -116.214531, latitude: 51.417611, zoom: 4})
@@ -48,6 +47,7 @@ function SearchLocationInput(props) {
         <>
             { props.searching && (
                 <SearchPopUp
+                    closeSearch={closeSearch}
                     viewport={viewport}
                     suggestions={suggestions}
                     currentPosition={currentPosition}

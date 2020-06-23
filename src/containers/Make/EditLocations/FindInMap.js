@@ -5,8 +5,9 @@ import useMap from "../../../hooks/useMap";
 import {newViewport} from "../../../app/actions";
 import useDebounce from "../../../hooks/useDebounce";
 import Justicon from "../../../components/UI/Justicon";
+import {selectedLocation} from "../../../app/actions/searchLocation/actions";
 
-function FindInMap({viewport, newViewport}) {
+function FindInMap({viewport, newViewport, selectedLocation, closeSearch}) {
     const [ currLocation, setCurrLocation ] = useState(null)
     const mapContainer = useRef(null)
     const mark = useRef(null)
@@ -18,10 +19,19 @@ function FindInMap({viewport, newViewport}) {
         try {
             if (longitude) {
                 const res = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${longitude},${latitude}.json?access_token=${process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}`)
-                const data = await res.json()
-                setCurrLocation(data.features[0].place_name)
+                const data = await res.json();
+                if (data.features[0]) {
+                    setCurrLocation({
+                        address: data.features[0].place_name,
+                        coordinates: [data.features[0].geometry.coordinates[1], data.features[0].geometry.coordinates[0]],
+                        description: '',
+                        day: 0
+                    })
+                } else {
+                    setCurrLocation(null)
+                }
             } else {
-                setCurrLocation([])
+                setCurrLocation(null)
             }
         } catch (e) {
             console.log('error')
@@ -38,16 +48,23 @@ function FindInMap({viewport, newViewport}) {
             <div ref={mapContainer} className={classes.map} />
             <div ref={mark} className={classes.marker} />
             { currLocation && (
-                <div className={classes.chosenLocPos}>
-                    <div className={classes.chosenLoc}>
-                        <div className={classes.pin}>
-                            <Justicon icon={'map-pin'} className={classes.pinIcon}/>
-                        </div>
-                        <div className={classes.chosenLocName}>
-                            {currLocation}
+                <button
+                    style={{cursor: 'pointer'}}
+                    onClick={(e) => {
+                    selectedLocation(currLocation);
+                    closeSearch(e)
+                }}>
+                    <div className={classes.chosenLocPos}>
+                        <div className={classes.chosenLoc}>
+                            <div className={classes.pin}>
+                                <Justicon icon={'map-pin'} className={classes.pinIcon}/>
+                            </div>
+                            <div className={classes.chosenLocName}>
+                                {currLocation.address}
+                            </div>
                         </div>
                     </div>
-                </div>
+                </button>
             )}
         </div>
     )
@@ -58,7 +75,8 @@ const mSTP = s => ({
 })
 
 const mDTP = d => ({
-    newViewport: viewport => d(newViewport(viewport))
+    newViewport: viewport => d(newViewport(viewport)),
+    selectedLocation: (geoObj) => d(selectedLocation(geoObj))
 })
 
 export default connect(mSTP, mDTP)(FindInMap)
