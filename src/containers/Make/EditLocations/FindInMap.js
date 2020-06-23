@@ -23,7 +23,7 @@ function FindInMap({viewport, newViewport, selectedLocation, closeSearch}) {
                 if (data.features[0]) {
                     setCurrLocation({
                         address: data.features[0].place_name,
-                        coordinates: [data.features[0].geometry.coordinates[1], data.features[0].geometry.coordinates[0]],
+                        coordinates: data.features[0].geometry.coordinates,
                         description: '',
                         day: 0
                     })

@@ -1,6 +1,11 @@
 import gql from "graphql-tag";
 
 export const typeDefs = gql`
+	type Query {
+#		it is just a fake
+		getTours: String
+	}
+	
 	extend type Query {
 		loggedIn: Boolean!
 		photo: String!
@@ -8,6 +13,51 @@ export const typeDefs = gql`
 		userId: String!
 #		cartItems: [ID!]!
 	}
+	
+	type Location {
+		_id: ID
+		type: String
+		coordinates: [Float]
+		address: String
+		description: String
+		day: Int
+	}
+	
+	input LocationInput {
+		_id: ID
+		type: String
+		coordinates: [Float]
+		address: String
+		description: String
+		day: Int
+	}
+#	fragment editedTourResponseFields on Tour {
+#		message
+#		success
+#		code
+#		data {
+#			_id
+#			slug
+#			name
+#			hashtags
+#			maxGroupSize
+#			difficulty
+#			price
+#			summary
+#			description
+#			imageCover
+#			images
+#			locations {
+#				coordinates
+#				description
+#				day
+#				address
+#			}
+#			draft
+#		}
+#	}
+	
+	
 #	type Mutation {
 #		logout: 
 #	}

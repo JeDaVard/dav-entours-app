@@ -4,17 +4,38 @@ import TopLoading from "../../../components/UI/TopLoading/TopLoading";
 import {Form, Input, MultiInput, Textarea} from "../../../components/UI/LabeledInput/LabeledInput";
 import SearchLocationInput from "./SearchLocationInput";
 import { connect } from "react-redux";
+import StyledButton from "../../../components/UI/StyledButton/StyledButton";
+import {useMutation} from "@apollo/react-hooks";
+import {EDIT_TOUR_LOCATIONS} from "../queries";
+import {useHistory} from "react-router-dom";
+import { selectedLocation, startSearchLoc} from "../../../app/actions/searchLocation/actions";
+import Justicon from "../../../components/UI/Justicon";
 
 
 function EditLocations(props) {
-    const { newLocation } = props
-    const [ locations, setLocations ] = useState([...props.locations]);
+    const history = useHistory()
+    const { selectedLocation, startSearchLoc } = props;
+    const newLocation = {...props.newLocation}
+    const [ locations, setLocations ] = useState([...props.locations.slice().reverse()]);
+
+    const [ mutateTourLocations, { loading } ] = useMutation(EDIT_TOUR_LOCATIONS, {
+        variables: {
+            id: props._id,
+            locations: locations.slice().reverse(),
+        }
+    })
 
     useEffect(() => {
-        if (newLocation.coordinates) {
-            setLocations([...locations, newLocation])
+        if (newLocation.coordinates.length) {
+            setLocations([newLocation, ...locations])
+            selectedLocation({
+                address: '',
+                coordinates: [],
+                description: '',
+                day: null
+            })
         }
-    }, [newLocation])
+    }, [selectedLocation, newLocation])
 
     const onInputChange = (e, address) => {
         const name = e.target.name,
@@ -26,29 +47,89 @@ function EditLocations(props) {
 
         setLocations(newState)
     }
-    console.log(locations)
+    const removeLocation = (e, address) => {
+        e.preventDefault();
+
+        const newState = locations.filter(loc => loc.address !== address);
+        setLocations(newState)
+    }
+    // const changeLocation = (e, viewport) => {
+    //     e.preventDefault();
+    //
+    //     newViewport(viewport)
+    //     startSearchLoc()
+    // }
+    const addLocation = e => {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(pos) {
+                startSearchLoc({
+                    longitude: pos.coords.longitude,
+                    latitude: pos.coords.latitude,
+                    zoom: 12
+                })
+            });
+        } else {
+            startSearchLoc()
+        }
+    }
+    const onTourLocationSave = e => {
+        e.preventDefault();
+
+        mutateTourLocations()
+            .then(res => {
+                if (props.draft) {
+                    console.log('done in', props.slug)
+                    history.push(`/tour/${props.slug}/edit/gallery`)
+                }
+            })
+    }
+
+    const buttonText = props.draft ? <>Save & Next &#8594;</> : <>Save &#10003;</>
     return (
         <div className="row">
             <SearchLocationInput />
-            {/*{ loading && <TopLoading />}*/}
+            { loading && <TopLoading />}
             <div className={classes.main}>
-                <Form>
+                <StyledButton onClick={addLocation}>Add New Location</StyledButton>
+                <Form onSubmit={onTourLocationSave}>
                     {locations.map(loc => (
                         <div className={classes.locationBox} key={loc.coordinates[0]+loc.coordinates[1]}>
                             <div className={classes.addressBox}>
+                                <div className={classes.controlsBox}>
+                                    <div className={classes.coordinatesBox}>
+                                        <Justicon icon={'check'} className={classes.checkIcon}/>
+                                        <p className={classes.coordinates}>Location tied: {loc.coordinates.join(' ')}</p>
+                                    </div>
+                                    <div className={classes.controls}>
+                                        {/*<button onClick={e => changeLocation(e, {*/}
+                                        {/*    longitude: loc.coordinates[0],*/}
+                                        {/*    latitude: loc.coordinates[1],*/}
+                                        {/*    zoom: 12*/}
+                                        {/*})}>*/}
+                                        {/*    <Justicon icon={'edit'} className={classes.controlIcon}/>*/}
+                                        {/*</button>*/}
+                                        <button onClick={e => removeLocation(e, loc.address)}>
+                                            <Justicon icon={'trash'} className={classes.controlIcon}/>
+                                        </button>
+                                    </div>
+                                </div>
                                 <MultiInput>
                                     <Input
                                         id={`address${loc.coordinates[0]+loc.coordinates[1]}`}
                                         type="text"
                                         name="address"
+                                        label="Place"
                                         value={loc.address}
                                         onChange={e => onInputChange(e, loc.address)}
+                                        // inputDescription="Feel free to modify or fix the address, the map location is tied to coordinates"
                                     />
                                     <Input
+                                        id={`day${loc.coordinates[0]+loc.coordinates[1]}`}
                                         type="number"
                                         name="day"
-                                        id={`day${loc.coordinates[0]+loc.coordinates[1]}`}
+                                        label="Days"
                                         value={loc.day}
+                                        style={{flex: '0 0 8rem'}}
                                         onChange={e => onInputChange(e, loc.address)}/>
                                 </MultiInput>
                             </div>
@@ -66,6 +147,11 @@ function EditLocations(props) {
                             </div>
                         </div>
                     ))}
+                    {locations.length ? (
+                        <div className={classes.button}>
+                            <StyledButton type={'submit'}>{loading ? <>Saving...</> : buttonText}</StyledButton>
+                        </div>
+                    ) : null}
                 </Form>
             </div>
         </div>
@@ -76,7 +162,8 @@ const mSTP = s => ({
     newLocation: s.searchLocation.selLoc
 })
 const mDTP = d => ({
-
+    selectedLocation: (clear) => d(selectedLocation(clear)),
+    startSearchLoc: () => d(startSearchLoc())
 })
 
 export default connect(mSTP, mDTP)(EditLocations)

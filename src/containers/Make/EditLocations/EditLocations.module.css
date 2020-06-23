@@ -1,5 +1,5 @@
 .main {
-
+    color: rgba(0, 0, 0, 0.7);
 }
 
 @media (min-width: 744px) {
@@ -14,21 +14,77 @@
 }
 
 .locationBox {
+    /*border : 1px solid*/
+}
 
+.locationBox:not(:last-of-type) {
+    border-top: 1px solid rgba(0, 0, 0, 0.14);
+    padding-top: 1.2rem;
+}
+
+.locationBox:first-of-type {
+    border-top: none;
+    /*padding-top: 0;*/
 }
 
 .addressBox {
-
+    padding: 0;
+    margin: 0;
 }
 
-.address {
-
+.controlsBox {
+    margin-bottom: 1.4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.day {
-
+.coordinatesBox {
+    display: flex;
+    align-items: center;
 }
 
-.description {
+.coordinates {
+    font-size: 1.2rem;
+    color: rgba(0, 0, 0, 0.4);
+    margin-left: .3rem;
+}
 
+.controls {
+    display: flex;
+    align-items: center;
+}
+
+.controls button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: rgba(0, 0, 0, 0.04);
+    padding: .2rem;
+    border-radius: 50%;
+    width: 2.8rem;
+    height: 2.8rem;
+    transition: all .1s;
+}
+
+.controls button:hover,
+.controls button:active {
+    background: rgba(0, 0, 0, 0.07);
+}
+
+
+.controls > :not(:last-child) {
+    margin-right: .4rem;
+}
+
+.controlIcon {
+    width: 2rem;
+    height: 2rem;
+    fill: rgba(0, 0, 0, 0.6);
+}
+
+.checkIcon {
+    width: 1.6rem;
+    height: 1.6rem;
+    fill: #3db062;
 }

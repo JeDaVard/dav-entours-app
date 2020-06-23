@@ -208,7 +208,7 @@ function App(props) {
                     <Route path="/mytours" component={MyTours}/>
                     <Route exact path="/tour/:slug" component={TourPage}/>
                     <Route exact path="/inbox/:id" component={Conversation} />
-                    <Route path="/inbox" render={props =>
+                    <Route path="/inbox" render={_ =>
                         loggedIn ? (
                             <Inbox />
                         ) : (

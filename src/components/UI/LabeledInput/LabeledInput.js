@@ -15,12 +15,12 @@ export function Input(props) {
         autoComplete,
         required,
         maxlength = 200,
-        style
+        style,
     } = props;
 
     return (
-        <div className={classes.inputBox}>
-            <div className={!pre ? classes.input : `${classes.input} ${classes.preInput}`}>
+        <div className={classes.inputBox} style={style ? style : null}>
+            <div className={!pre ? classes.input : `${classes.input} ${classes.preInput}`} >
                 <input
                     maxLength={maxlength}
                     type={type}

@@ -7,7 +7,12 @@ const initialState = {
         latitude: 51.417611,
         zoom: 4
     },
-    selLoc: {}
+    selLoc: {
+        address: '',
+        coordinates: [],
+        description: '',
+        day: null
+    }
 }
 
 const searchLocation = (state= initialState, action) => {
@@ -15,7 +20,8 @@ const searchLocation = (state= initialState, action) => {
         case actionTypes.START_SEARCH_LOC:
             return {
                 ...state,
-                searching: true
+                searching: true,
+                viewport: action.viewport || initialState.viewport
             }
         case actionTypes.END_SEARCH_LOC:
             return {

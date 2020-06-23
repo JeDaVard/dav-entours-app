@@ -129,3 +129,33 @@ export const EDIT_TOUR_DETAILS = gql`
 		}
 	}
 `
+
+export const EDIT_TOUR_LOCATIONS = gql`
+	mutation tourLocations($id: ID! $locations: [LocationInput]) {
+		tourLocations(id: $id locations: $locations) {
+			message
+			success
+			code
+			data {
+				_id
+				slug
+				name
+				hashtags
+				maxGroupSize
+				difficulty
+				price
+				summary
+				description
+				imageCover
+				images
+				locations {
+					coordinates
+					description
+					day
+					address
+				}
+				draft
+			}
+		}
+	}
+`

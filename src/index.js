@@ -58,7 +58,9 @@ const link = split(
     authLink.concat(httpLink),
 );
 
-const cache = new InMemoryCache();
+const cache = new InMemoryCache({
+    addTypename: false
+});
 
 const client = new ApolloClient({
     typeDefs,

@@ -4,8 +4,9 @@ export const startSearchLoc = () => ({
     type: actions.START_SEARCH_LOC
 })
 
-export const endSearchLoc = () => ({
-    type: actions.END_SEARCH_LOC
+export const endSearchLoc = (viewport) => ({
+    type: actions.END_SEARCH_LOC,
+    viewport
 })
 
 export const newViewport = (viewport) => {

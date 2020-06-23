@@ -46,29 +46,32 @@ function SearchLocationInput(props) {
     return (
         <>
             { props.searching && (
+                <>
                 <SearchPopUp
                     closeSearch={closeSearch}
                     viewport={viewport}
                     suggestions={suggestions}
                     currentPosition={currentPosition}
                     onCurrentPosition={onCurrentPosition}/>
+
+                <form className={classes.locForm}>
+                    <div className={classes.inputBox}>
+                        <input
+                            ref={searchRef}
+                            type="text"
+                            placeholder="Search location"
+                            onFocus={props.startSearchLoc}
+                            onChange={changeHandler}/>
+                        <Justicon icon={'search'} className={classes.searchIcon}/>
+                        {props.searching && (
+                            <button onClick={closeSearch} className={classes.closeButton}>
+                                <Justicon icon={'x'} className={classes.closeIcon}/>
+                            </button>
+                        )}
+                    </div>
+                </form>
+                </>
             )}
-            <form className={classes.locForm}>
-                <div className={classes.inputBox}>
-                    <input
-                        ref={searchRef}
-                        type="text"
-                        placeholder="Search location"
-                        onFocus={props.startSearchLoc}
-                        onChange={changeHandler}/>
-                    <Justicon icon={'search'} className={classes.searchIcon}/>
-                    {props.searching && (
-                        <button onClick={closeSearch} className={classes.closeButton}>
-                            <Justicon icon={'x'} className={classes.closeIcon}/>
-                        </button>
-                    )}
-                </div>
-            </form>
         </>
     )
 }

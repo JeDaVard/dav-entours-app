@@ -19,12 +19,12 @@ function Locations(props) {
                                 <div className={classes.locItem}>
                                     <Justicon icon={'map-pin'} className={classes.locIcon}/>
                                     <div className={classes.locListButton} >
-                                        {loc.description}
+                                        {loc.address}
                                     </div>
                                 </div>
                             </div>
                             <p className={classes.locationDesc}>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aperiam, assumenda beatae blanditiis dolore ducimus fugit inventore labore modi molestiae nostrum odio omnis praesentium, quasi quia rerum tempora voluptas voluptatem!
+                                {loc.description}
                             </p>
                         </div>
                     ))}
