@@ -58,8 +58,22 @@ export const MAKE_A_TOUR = gql`
 `
 
 export const EDIT_TOUR_HEADING = gql`
-    mutation tourHeading($id: ID!, $difficulty: String!, $name:String!, $maxGroupSize: Int! $hashtags: String) {
-        tourHeading(id: $id difficulty:$difficulty name:$name maxGroupSize:$maxGroupSize hashtags: $hashtags) {
+    mutation tourHeading(
+        $id: ID!
+        $difficulty: String!
+        $name:String!
+        $maxGroupSize: Int!
+        $hashtags: String
+        $price: Int
+    ) {
+        tourHeading(
+            id: $id
+            difficulty:$difficulty
+            name:$name
+            maxGroupSize:$maxGroupSize
+            hashtags: $hashtags
+            price: $price
+        ) {
             message
             success
             code
@@ -84,5 +98,34 @@ export const EDIT_TOUR_HEADING = gql`
 				draft
             }
 	    }
+	}
+`
+export const EDIT_TOUR_DETAILS = gql`
+	mutation tourDetails($id: ID! $summary: String $description: String) {
+		tourDetails(id: $id summary: $summary description: $description) {
+			message
+			success
+			code
+			data {
+				_id
+				slug
+				name
+				hashtags
+				maxGroupSize
+				difficulty
+				price
+				summary
+				description
+				imageCover
+				images
+				locations {
+					coordinates
+					description
+					day
+					address
+				}
+				draft
+			}
+		}
 	}
 `

@@ -1,0 +1,54 @@
+.locForm {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(5px);
+}
+
+.inputBox {
+    width: 100%;
+}
+
+.locForm input {
+    outline: 0;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    width: 100%;
+    font-family: inherit;
+    color: rgba(0, 0, 0, 0.7);
+    font-size: 1.6rem;
+    padding: 1.8rem 1.6rem 1.8rem 4rem;
+    background: transparent;
+}
+
+.searchIcon {
+    position: absolute;
+    width: 1.6rem;
+    height: 1.6rem;
+    left: 2rem;
+    top: 50%;
+    fill: rgba(0, 0, 0, 0.5);
+    transform: translateY(-55%);
+}
+
+.closeButton {
+    border: none;
+    outline: none;
+    display: inline;
+}
+
+.closeIcon {
+    cursor: pointer;
+    position: absolute;
+    width: 2rem;
+    height: 2rem;
+    right: 2rem;
+    background: rgba(0, 0, 0, 0.06);
+    border-radius: 50%;
+    padding: .3rem;
+    top: 50%;
+    fill: rgba(0, 0, 0, 0.4);
+    transform: translateY(-55%);
+}

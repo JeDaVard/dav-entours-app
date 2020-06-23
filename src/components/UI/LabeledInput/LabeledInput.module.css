@@ -7,6 +7,15 @@
     margin-bottom: 1.1rem;
 }
 
+.preText {
+    position: absolute;
+    top: 1.3rem;
+    padding: 0 1.6rem;
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: #3db062;
+}
+
 .input {
     background: white;
     border-radius: 1rem;
@@ -31,22 +40,51 @@
     transition: all .1s;
 }
 
+.form .input textarea {
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+}
+
+.form .preInput input {
+    padding-left: 3.4rem;
+}
+
 .form .input input[value=""] + label,
-.form .input textarea[value=''] + label {
+.form .input textarea[value=""] + label,
+.form .input textarea + label {
     cursor: text;
     position: absolute;
     color: rgba(0, 0, 0, 0.4);
     padding: 0 .2rem;
     left: 1.4rem;
     font-size: 2rem;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 1.2rem;
+    /*transform: translateY(-50%);*/
     transition: all .2s ease-in-out;
+}
+
+.form .preInput input[value=""] + label {
+    margin-left: 2rem;
 }
 
 .form .input input:hover,
 .form .input textarea:hover {
     border: 1px solid rgba(0,0,0, .24);
+    animation: animateInputOnHover .6s;
+}
+
+@keyframes animateInputOnHover {
+    0% {
+        border: 1px solid rgba(0,0,0, .24);
+        background: white;
+    }
+    50% {
+        border: 1px solid #3db062;
+        background: rgba(145, 208, 161, 0.07);
+    }
+    100% {
+        background: white;
+    }
 }
 
 .form .input input:focus,
@@ -57,7 +95,8 @@
 .form .input input:focus + label,
 .form .input input:not([value=""]) + label,
 .form .input textarea:focus + label,
-.form .input textarea:not([value=""]) + label {
+.form .input textarea:valid + label {
+    margin-left: 0;
     font-size: 1.4rem;
     position: absolute;
     padding: 0 .2rem;
@@ -118,6 +157,7 @@
 }
 
 .inputHint {
+    text-align: center;
     font-size: 1.3rem;
     color: rgba(0, 0, 0, 0.5);
 }

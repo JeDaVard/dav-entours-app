@@ -11,7 +11,7 @@ const TourMap =  React.forwardRef((props, ref) => {
                 scrollZoom={false}
                 width="100%"
                 height="100%"
-                mapStyle="mapbox://styles/jedavard/ck95ei4j42c421ip7jwoh6p73"
+                mapStyle={process.env.REACT_APP_MAP}
                 mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
                 onViewportChange={nextViewport => nextViewportHandler(nextViewport)}
             >

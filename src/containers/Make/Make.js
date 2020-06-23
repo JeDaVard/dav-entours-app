@@ -1,25 +1,15 @@
-import React, {Component, useEffect, useRef, useState} from "react";
+import React, {useState} from "react";
 import { useHistory } from 'react-router-dom';
 import classes from './Make.module.css';
 import t from './1-1.jpg'
 import StyledButton from "../../components/UI/StyledButton/StyledButton";
 import Separator from "../../components/UI/Separator/Separator";
 import Input from "../../components/UI/Input/Input";
-// import "mapbox-gl/dist/mapbox-gl.css"
 import "react-map-gl-geocoder/dist/mapbox-gl-geocoder.css"
-import mapboxgl from 'mapbox-gl';
-import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder'
-
-import MapGL  from "react-map-gl";
 import {useMutation} from "@apollo/react-hooks";
 import {MAKE_A_TOUR} from "./queries";
-import DotLoading from "../../components/UI/DotLoading/DotLoading";
 import TopLoading from "../../components/UI/TopLoading/TopLoading";
-// import Geocoder from "react-map-gl-geocoder";
 
-const token = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN
-
-mapboxgl.accessToken = token;
 
 function Make() {
     const history = useHistory()
@@ -101,57 +91,7 @@ function Make() {
                         <StyledButton type={'submit'}>{loading ? <>Saving...</> : <>Get Started &#8594;</>}</StyledButton>
                     </form>
             </div>
-            <div>
-            <div style={{width: '100%', height: '40rem', position: 'relative'}}>
-                {/*<SearchableMap />*/}
-                <Search />
-            </div>
-            </div>
         </div>
     )
 }
-
-function Search() {
-    const [ state, setState ] = useState([]);
-
-    // const theRef = useRef(null)
-
-    // useEffect(() => {
-// console.log(theRef.current)
-// console.log(document.getElementById('mmap'))
-//         var geocoder = new MapboxGeocoder({
-//             accessToken: mapboxgl.accessToken,
-//             types: 'country,region,place,postcode,locality,neighborhood'
-//         });
-//         geocoder.addTo(document.getElementById('mmap'))
-//     }, )
-
-    const changeHandler = async (e) => {
-        const target = e.target
-        try {
-            if (target.value !== '')
-            {
-                const res = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${target.value}.json?access_token=${token}&limit=5`)
-                const data = await res.json()
-                setState(data.features)
-            } else {
-                setState([])
-            }
-        } catch (e) {
-            console.log('error')
-        }
-    }
-
-    return (
-        <div>
-            <input type="text" onChange={changeHandler}/>
-            <div>
-                {state.map(loc => (
-                    <p key={loc.id}>{loc.text}</p>
-                ))}
-            </div>
-        </div>
-    )
-}
-
 export default Make

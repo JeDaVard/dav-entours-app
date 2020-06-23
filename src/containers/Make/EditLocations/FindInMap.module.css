@@ -1,0 +1,31 @@
+.marker {
+    background: url('../../../components/TourPage/TourLocations/pin.png') no-repeat;
+    background-size: contain;
+    width: 3rem;
+    height: 3.8rem;
+    cursor: pointer;
+}
+
+.sidebarStyle {
+    /*display: inline-block;*/
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    /*margin: 12px;*/
+    background-color: #404040;
+    color: #ffffff;
+    z-index: 1 !important;
+    padding: 6px;
+    font-weight: bold;
+}
+
+.map {
+    /*height: 40rem;*/
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    right: 0;
+    /*left: 0;*/
+    /*bottom: 0;*/
+}

@@ -4,6 +4,7 @@ import Justicon from "../Justicon";
 
 export function Input(props) {
     const {
+        pre,
         inputDescription,
         label,
         type,
@@ -12,22 +13,25 @@ export function Input(props) {
         value,
         onChange,
         autoComplete,
-        required
+        required,
+        maxlength = 200
     } = props;
 
     return (
         <div className={classes.inputBox}>
-            <div className={classes.input}>
+            <div className={!pre ? classes.input : `${classes.input} ${classes.preInput}`}>
                 <input
+                    maxLength={maxlength}
                     type={type}
                     name={name}
                     id={id}
-                    value={value}
+                    value={value || ''}
                     onChange={onChange}
                     autoComplete={autoComplete ? "on" : "off"}
                     required={required}
                 />
                 <label htmlFor={id}>{label}</label>
+                {pre ? <div className={classes.preText}>{pre}</div> : null}
             </div>
             <p className={classes.inputHint}>
                 {inputDescription}
@@ -81,9 +85,11 @@ export function Textarea(props) {
         label,
         id,
         name,
-        rows,
+        rows = '2',
         value,
-        onChange
+        onChange,
+        required,
+        maxLength = 800,
     } = props;
 
     return (
@@ -95,7 +101,9 @@ export function Textarea(props) {
                     // cols="100"
                     rows={rows}
                     onChange={onChange}
-                    value={value}
+                    value={value || ''}
+                    maxLength={maxLength}
+                    required={required}
                 />
                 <label htmlFor={id}>{label}</label>
             </div>

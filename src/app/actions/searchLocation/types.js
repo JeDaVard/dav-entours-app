@@ -1,0 +1,3 @@
+export const START_SEARCH_LOC = 'START_SEARCH_LOC'
+export const END_SEARCH_LOC = 'END_SEARCH_LOC'
+export const NEW_VIEWPORT = 'NEW_VIEWPORT'

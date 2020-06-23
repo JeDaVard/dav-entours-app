@@ -14,8 +14,6 @@ function EditHeading(props) {
         _id,
         slug,
         name,
-        summary,
-        description,
         difficulty,
         hashtags,
         maxGroupSize,
@@ -25,8 +23,6 @@ function EditHeading(props) {
 
     const [ state, setState ] = useState({
         name,
-        summary,
-        description,
         difficulty,
         hashtags: hashtags.join(', '),
         maxGroupSize,
@@ -39,7 +35,8 @@ function EditHeading(props) {
             name: state.name,
             difficulty: state.difficulty,
             maxGroupSize: state.maxGroupSize,
-            hashtags: state.hashtags.split(',').map(hash => hash.trim()).join(',')
+            hashtags: state.hashtags.split(',').map(hash => hash.trim()).join(','),
+            price: +state.price
         }
     })
 
@@ -65,11 +62,11 @@ function EditHeading(props) {
 
     const onTourHeading = e => {
         e.preventDefault();
-console.log(draft, 'redirecting?')
+
         mutateTourHeading()
             .then(res => {
                 if (draft) {
-                    history.push(`/tour/${res.data.tourHeading.data.slug}/edit/locations`)
+                    history.push(`/tour/${slug}/edit/locations`)
                 }
             })
     }
@@ -77,50 +74,62 @@ console.log(draft, 'redirecting?')
     return (
         <div className="row">
             { loading && <TopLoading />}
-            <Form onSubmit={onTourHeading}>
-                <Input
-                    label="Name"
-                    type="text"
-                    name="name"
-                    id="tourNameInput"
-                    value={state.name}
-                    onChange={onInputChange}
-                    autoComplete="off"
-                    required
-                    inputDescription="This is the tour name displayed
-                    in the listing, also it is used to generate a permanent tour link"
-                />
-                <MultiInput>
-                    <Select
-                        name={'difficulty'}
-                        options={difficultyOptions}
-                        value={state.difficulty}
+            <div className={classes.main}>
+                <Form onSubmit={onTourHeading}>
+                    <Input
+                        label="Name"
+                        type="text"
+                        name="name"
+                        id="tourNameInput"
+                        value={state.name}
                         onChange={onInputChange}
+                        autoComplete="off"
+                        required
+                        inputDescription="This is the tour name displayed
+                in the listing, also it is used to generate a permanent tour link"
                     />
-                    <Select
-                        name={'maxGroupSize'}
-                        options={maxGroupSizeOptions}
-                        value={state.maxGroupSize}
+                    <MultiInput>
+                        <Select
+                            name={'difficulty'}
+                            options={difficultyOptions}
+                            value={state.difficulty}
+                            onChange={onInputChange}
+                        />
+                        <Select
+                            name={'maxGroupSize'}
+                            options={maxGroupSizeOptions}
+                            value={state.maxGroupSize}
+                            onChange={onInputChange}
+                        />
+                    </MultiInput>
+                    <Input
+                        pre="$"
+                        label="Price"
+                        type="number"
+                        name="price"
+                        id="tourPriceInput"
+                        value={state.price}
                         onChange={onInputChange}
+                        autoComplete="off"
+                        required
                     />
-                </MultiInput>
-                <Input
-                    label="Hashtags"
-                    id="tourHashtagsInput"
-                    name="hashtags"
-                    style={{fontSize: '1.6rem'}}
-                    value={state.hashtags}
-                    onChange={onInputChange}
-                    autoComplete="off"
-                    required
-                    inputDescription="Do not enter hashtags from tour
-                    name, because we'll automatically generate it"
-                />
-
-                <StyledButton type={'submit'}>{loading ? <>Saving...</> : buttonText}</StyledButton>
-                {/*<textarea name={'summary'} value={state.summary} onChange={onInputChange}/>*/}
-                {/*<textarea name={'description'} value={state.description} onChange={onInputChange}/>*/}
-            </Form>
+                    <Input
+                        label="Hashtags"
+                        id="tourHashtagsInput"
+                        name="hashtags"
+                        style={{fontSize: '1.6rem'}}
+                        value={state.hashtags}
+                        onChange={onInputChange}
+                        autoComplete="off"
+                        required
+                        inputDescription="Do not enter hashtags from tour
+                name, because we'll automatically generate it"
+                    />
+                    <div className={classes.button}>
+                        <StyledButton type={'submit'}>{loading ? <>Saving...</> : buttonText}</StyledButton>
+                    </div>
+                </Form>
+            </div>
         </div>
     )
 }

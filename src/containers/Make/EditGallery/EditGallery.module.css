@@ -1,0 +1,14 @@
+.main {
+
+}
+
+@media (min-width: 744px) {
+    .main {
+        margin: 0 auto;
+        width: 60rem;
+    }
+}
+
+.button {
+    margin-top: 2rem;
+}

@@ -6,40 +6,28 @@ import StyledButton from "../../../components/UI/StyledButton/StyledButton";
 import {Form, Input, Textarea} from "../../../components/UI/LabeledInput/LabeledInput";
 import {useHistory} from "react-router-dom";
 import {useMutation} from "@apollo/react-hooks";
-import {EDIT_TOUR_HEADING} from "../queries";
+import {EDIT_TOUR_DETAILS} from "../queries";
 
 function EditDetails(props) {
     const history = useHistory()
     const {
         _id,
         slug,
-        name,
         summary,
         description,
-        difficulty,
-        hashtags,
-        maxGroupSize,
-        price,
         draft
     } = props;
 
     const [ state, setState ] = useState({
-        name,
         summary,
         description,
-        difficulty,
-        hashtags: hashtags.join(', '),
-        maxGroupSize,
-        price
     });
 
-    const [ mutateTourHeading, { loading } ] = useMutation(EDIT_TOUR_HEADING, {
+    const [ mutateTourHeading, { loading } ] = useMutation(EDIT_TOUR_DETAILS, {
         variables: {
             id: _id,
-            name: state.name,
-            difficulty: state.difficulty,
-            maxGroupSize: state.maxGroupSize,
-            hashtags: state.hashtags.split(',').map(hash => hash.trim()).join(',')
+            summary: state.summary,
+            description: state.description,
         }
     })
 
@@ -55,30 +43,44 @@ function EditDetails(props) {
 
     const onTourDetails = e => {
         e.preventDefault();
-        console.log(draft, 'redirecting?')
         mutateTourHeading()
             .then(res => {
                 if (draft) {
-                    history.push(`/tour/${res.data.tourHeading.data.slug}/edit/locations`)
+                    history.push(`/tour/${slug}/edit/locations`)
                 }
             })
     }
+    const buttonText = props.draft ? <>Finish</> : <>Save &#10003;</>;
+
     return (
         <div className="row">
-            <Form onSubmit={onTourDetails}>
-                <Input
-                    type='text'
-                    label="Summary"
-                    id="tourSummary"
-                    onChange={onInputChange}
-                />
-                <Textarea
-                    onChange={onInputChange}
-                    id="tourDescription"
-                    label="Description"
-                    rows={'5'}
-                />
-            </Form>
+            { loading && <TopLoading />}
+            <div className={classes.main}>
+                <Form onSubmit={onTourDetails}>
+                    <Input
+                        type='text'
+                        name="summary"
+                        label="Summary"
+                        id="tourSummaryInput"
+                        value={state.summary}
+                        onChange={onInputChange}
+                        inputDescription="Think of an addition of the title, or a very short description"
+                    />
+                    <Textarea
+                        maxLength={800}
+                        onChange={onInputChange}
+                        id="tourDescriptionInput"
+                        label="Description"
+                        name="description"
+                        value={state.description}
+                        rows={'8'}
+                        required
+                    />
+                    <div className={classes.button}>
+                        <StyledButton type={'submit'}>{loading ? <>Saving...</> : buttonText}</StyledButton>
+                    </div>
+                </Form>
+            </div>
         </div>
     )
 }

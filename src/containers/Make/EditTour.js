@@ -3,7 +3,7 @@ import {NavLink, Route, Switch, useParams} from 'react-router-dom';
 import { useQuery } from "@apollo/react-hooks";
 import classes from './EditTour.module.css';
 import {FETCH_EDIT_TOUR} from "./queries";
-import p1c from './1c.jpg'
+import p1c from './1c2.jpg'
 import EditHeading from "./EditHeading/EditHeading";
 import EditLocations from "./EditLocations/EditLocations";
 import EditGallery from "./EditGallery/EditGallery";
