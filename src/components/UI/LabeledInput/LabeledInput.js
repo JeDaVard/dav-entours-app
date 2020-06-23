@@ -14,7 +14,8 @@ export function Input(props) {
         onChange,
         autoComplete,
         required,
-        maxlength = 200
+        maxlength = 200,
+        style
     } = props;
 
     return (

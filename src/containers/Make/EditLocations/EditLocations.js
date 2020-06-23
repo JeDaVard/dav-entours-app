@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from "react";
 import classes from './EditLocations.module.css'
 import TopLoading from "../../../components/UI/TopLoading/TopLoading";
-import {Form, Input, Textarea} from "../../../components/UI/LabeledInput/LabeledInput";
+import {Form, Input, MultiInput, Textarea} from "../../../components/UI/LabeledInput/LabeledInput";
 import SearchLocationInput from "./SearchLocationInput";
 import { connect } from "react-redux";
 
@@ -26,7 +26,7 @@ function EditLocations(props) {
 
         setLocations(newState)
     }
-    // console.log(locations)
+    console.log(locations)
     return (
         <div className="row">
             <SearchLocationInput />
@@ -34,20 +34,29 @@ function EditLocations(props) {
             <div className={classes.main}>
                 <Form>
                     {locations.map(loc => (
-                        <div className={classes.locationBox} key={loc.address}>
+                        <div className={classes.locationBox} key={loc.coordinates[0]+loc.coordinates[1]}>
                             <div className={classes.addressBox}>
-                                <div className={classes.address}>
-
-                                </div>
-                                <div className={classes.day}>
-                                    <input type="number" name="day" onChange={e => onInputChange(e, loc.address)}/>
-                                </div>
+                                <MultiInput>
+                                    <Input
+                                        id={`address${loc.coordinates[0]+loc.coordinates[1]}`}
+                                        type="text"
+                                        name="address"
+                                        value={loc.address}
+                                        onChange={e => onInputChange(e, loc.address)}
+                                    />
+                                    <Input
+                                        type="number"
+                                        name="day"
+                                        id={`day${loc.coordinates[0]+loc.coordinates[1]}`}
+                                        value={loc.day}
+                                        onChange={e => onInputChange(e, loc.address)}/>
+                                </MultiInput>
                             </div>
                             <div className={classes.description}>
                                 <Textarea
                                     maxLength={400}
                                     onChange={e => onInputChange(e, loc.address)}
-                                    id={loc.address}
+                                    id={`description${loc.coordinates[0]+loc.coordinates[1]}`}
                                     label="Description"
                                     name="description"
                                     value={loc.description}
