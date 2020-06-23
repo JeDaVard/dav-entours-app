@@ -6,7 +6,6 @@ export default function useDebounce(fn, ms, deps) {
    useEffect(() => {
        timer = setTimeout(() => {
            fn.apply(this, arguments)
-           console.log('asd')
        }, ms)
 
        return () => {

@@ -22,12 +22,14 @@ export default function useMap(ref, markRef, initialViewport) {
             .setLngLat([viewport.longitude, viewport.latitude])
             .addTo(map)
         map.on('move', () => {
+            const longitude = +map.getCenter().lng.toFixed(7);
+            const latitude = +map.getCenter().lat.toFixed(7);
 
-            marker.setLngLat([map.getCenter().lng, map.getCenter().lat])
+            marker.setLngLat([longitude, latitude])
             setViewport({
-                longitude: +map.getCenter().lng.toFixed(7),
-                latitude: +map.getCenter().lat.toFixed(7),
-                zoom: +map.getZoom().toFixed(2)
+                longitude,
+                latitude,
+                zoom: +map.getZoom()
             });
         });
 

@@ -3,15 +3,25 @@ import classes from "./SearchPopUp.module.css";
 import Justicon from "../../../components/UI/Justicon";
 import 'mapbox-gl/dist/mapbox-gl.css';
 import FindInMap from "./FindInMap";
+import OutsideAlerter from "../../../hocs/EventDelegator";
 
 export default function SearchPopUp(props) {
 console.log('rend SearchPopUp')
+    // const [ hideSuggestions, setHideSuggestions ] = useState(false);
+    // const closeSuggestions = () => {
+    //     setHideSuggestions(true)
+    // }
+
     return (
-        <div className={classes.searchPage}>
-            <div className={classes.searchPlaceholder}/>
-            {
-                props.suggestions.length ? (
+        <>
+            <div className={classes.searchPage}>
+                <div className={classes.absoluteMap}>
+                    <FindInMap />
+                </div>
+                {/*<OutsideAlerter delegate={closeSuggestions}>*/}
+                {props.suggestions.length ? (
                         <div className={classes.locDrop}>
+                            <div className={classes.searchPlaceholder}/>
                             {props.suggestions.map(loc => (
                                 <button
                                     key={loc.geometry.coordinates[0].toString()+loc.place_name.slice(0.10)}
@@ -27,15 +37,9 @@ console.log('rend SearchPopUp')
                                 </button>
                             ))}
                         </div>)
-                    : null
-
-            }
-            <div>{props.currentPosition.address}</div>
-            <div>{props.currentPosition.coordinates}</div>
-
-            <div className={classes.absoluteMap}>
-                <FindInMap />
+                    : null}
+                {/*</OutsideAlerter>*/}
             </div>
-        </div>
+        </>
     )
 }

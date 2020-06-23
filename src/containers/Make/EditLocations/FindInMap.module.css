@@ -1,22 +1,22 @@
 .marker {
-    background: url('../../../components/TourPage/TourLocations/pin.png') no-repeat;
+    background: url('./pin.svg') no-repeat;
     background-size: contain;
     width: 3rem;
     height: 3.8rem;
     cursor: pointer;
+    position: relative;
 }
 
-.sidebarStyle {
-    /*display: inline-block;*/
-    position: absolute;
+.marker:after {
+    content: '';
+    width: 1rem;
+    height: 1rem;
+    background: rgba(0, 0, 0, 0.3);
     bottom: 0;
-    left: 0;
-    /*margin: 12px;*/
-    background-color: #404040;
-    color: #ffffff;
-    z-index: 1 !important;
-    padding: 6px;
-    font-weight: bold;
+    left: 50%;
+    transform: translateX(-50%);
+    filter: blur(8px);
+    position: absolute;
 }
 
 .map {
@@ -28,4 +28,44 @@
     right: 0;
     /*left: 0;*/
     /*bottom: 0;*/
+}
+
+.chosenLocPos {
+    position: absolute;
+    bottom: 8rem;
+    left: 5%;
+    width: 90%;
+    height:6rem;
+    background: transparent;
+}
+
+.chosenLoc {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 1);
+    color: rgba(0, 0, 0, 0.6);
+    padding: .8rem 1rem;
+    font-size: 1.3rem;
+    font-weight: 500;
+    border-radius: 1rem;
+    border: 4px solid rgba(255, 255, 255, 0.44);
+    box-shadow: 0 0 .3rem rgba(0, 0, 0, 0.2);
+}
+
+.pin {
+    padding: .5rem;
+    background: #4fc877;
+    width: 4rem;
+    height: 4rem;
+    border-radius: .5rem;
+}
+
+.pinIcon {
+    width: 3rem;
+    height: 3rem;
+    fill: white;
+}
+
+.chosenLocName {
+    margin-left: 1rem;
 }
