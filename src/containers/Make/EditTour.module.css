@@ -50,6 +50,12 @@
     text-align: center;
 }
 
+@media (max-width: 400px) {
+    .editNav {
+        margin-left: -1.4rem;
+    }
+}
+
 .navItem {
     margin-right: .6rem;
     margin-left: 1.9rem;
