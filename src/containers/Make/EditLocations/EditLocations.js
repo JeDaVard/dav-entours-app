@@ -61,7 +61,7 @@ function EditLocations(props) {
     // }
     const addLocation = e => {
         if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function(pos) {
+            navigator.geolocation.getCurrentPosition(pos => {
                 startSearchLoc({
                     longitude: pos.coords.longitude,
                     latitude: pos.coords.latitude,
@@ -162,8 +162,8 @@ const mSTP = s => ({
     newLocation: s.searchLocation.selLoc
 })
 const mDTP = d => ({
-    selectedLocation: (clear) => d(selectedLocation(clear)),
-    startSearchLoc: () => d(startSearchLoc())
+    selectedLocation: clear => d(selectedLocation(clear)),
+    startSearchLoc: viewport => d(startSearchLoc(viewport))
 })
 
 export default connect(mSTP, mDTP)(EditLocations)

@@ -18,6 +18,7 @@ const initialState = {
 const searchLocation = (state= initialState, action) => {
     switch (action.type) {
         case actionTypes.START_SEARCH_LOC:
+            console.log(action.viewport)
             return {
                 ...state,
                 searching: true,

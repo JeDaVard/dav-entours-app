@@ -1,7 +1,8 @@
 import * as actions from './types';
 
-export const startSearchLoc = () => ({
-    type: actions.START_SEARCH_LOC
+export const startSearchLoc = (viewport) => ({
+    type: actions.START_SEARCH_LOC,
+    viewport
 })
 
 export const endSearchLoc = (viewport) => ({
