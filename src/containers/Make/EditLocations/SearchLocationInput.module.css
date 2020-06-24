@@ -1,6 +1,6 @@
 .locForm {
     width: 100%;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     background: rgba(255, 255, 255, 0.8);
@@ -15,7 +15,7 @@
 .locForm input {
     outline: 0;
     border: none;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.26);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.16);
     width: 100%;
     font-family: inherit;
     color: rgba(0, 0, 0, 0.7);
@@ -43,13 +43,19 @@
 .closeIcon {
     cursor: pointer;
     position: absolute;
-    width: 2rem;
-    height: 2rem;
+    width: 2.6rem;
+    height: 2.6rem;
     right: 2rem;
-    background: rgba(0, 0, 0, 0.06);
-    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.04);
+    border-radius: 5px;
     padding: .3rem;
     top: 50%;
     fill: rgba(0, 0, 0, 0.4);
     transform: translateY(-55%);
+    transition: background .1s;
+}
+
+.closeIcon:hover,
+.closeIcon:active {
+    background: rgba(0, 0, 0, 0.07);
 }
