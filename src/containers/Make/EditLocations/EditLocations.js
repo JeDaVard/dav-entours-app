@@ -10,6 +10,7 @@ import {EDIT_TOUR_LOCATIONS} from "../queries";
 import {useHistory} from "react-router-dom";
 import { selectedLocation, startSearchLoc} from "../../../app/actions/searchLocation/actions";
 import Justicon from "../../../components/UI/Justicon";
+import {sikTypeNames} from "../../../utils/SiktirTypeName";
 
 
 function EditLocations(props) {
@@ -21,7 +22,7 @@ function EditLocations(props) {
     const [ mutateTourLocations, { loading } ] = useMutation(EDIT_TOUR_LOCATIONS, {
         variables: {
             id: props._id,
-            locations: locations.slice().reverse(),
+            locations: sikTypeNames(locations.slice().reverse()),
         }
     })
 
@@ -62,11 +63,15 @@ function EditLocations(props) {
     const addLocation = e => {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(pos => {
-                startSearchLoc({
-                    longitude: pos.coords.longitude,
-                    latitude: pos.coords.latitude,
-                    zoom: 12
-                })
+                if (typeof pos.coords.latitude === 'number') {
+                    startSearchLoc({
+                        longitude: pos.coords.longitude,
+                        latitude: pos.coords.latitude,
+                        zoom: 12
+                    })
+                } else {
+                    startSearchLoc()
+                }
             });
         } else {
             startSearchLoc()
@@ -78,7 +83,6 @@ function EditLocations(props) {
         mutateTourLocations()
             .then(res => {
                 if (props.draft) {
-                    console.log('done in', props.slug)
                     history.push(`/tour/${props.slug}/edit/gallery`)
                 }
             })
@@ -163,7 +167,7 @@ const mSTP = s => ({
 })
 const mDTP = d => ({
     selectedLocation: clear => d(selectedLocation(clear)),
-    startSearchLoc: viewport => d(startSearchLoc(viewport))
+    startSearchLoc: vprt => d(startSearchLoc(vprt))
 })
 
 export default connect(mSTP, mDTP)(EditLocations)

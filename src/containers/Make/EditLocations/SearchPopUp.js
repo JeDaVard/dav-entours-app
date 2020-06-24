@@ -8,7 +8,6 @@ import FindInMap from "./FindInMap";
 import OutsideAlerter from "../../../hocs/EventDelegator";
 
 function SearchPopUp(props) {
-console.log('rend SearchPopUp')
     // const [ hideSuggestions, setHideSuggestions ] = useState(false);
     // const closeSuggestions = () => {
     //     setHideSuggestions(true)
@@ -25,7 +24,6 @@ console.log('rend SearchPopUp')
                         <div className={classes.locDrop}>
                             <div className={classes.searchPlaceholder}/>
                             {props.suggestions.map(loc => {
-                                console.log(loc.geometry.coordinates)
                                 return (
                                     <button
                                         key={loc.geometry.coordinates[0].toString()+loc.place_name.slice(0.10)}
@@ -60,7 +58,7 @@ console.log('rend SearchPopUp')
 // })
 
 const mDTP = d => ({
-    newViewport: (viewport) => d(newViewport(viewport))
+    newViewport: (vprt) => d(newViewport(vprt))
 })
 
 export default connect(null, mDTP)(SearchPopUp)

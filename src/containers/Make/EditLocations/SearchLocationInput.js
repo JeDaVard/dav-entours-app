@@ -3,14 +3,11 @@ import {connect} from "react-redux";
 import { startSearchLoc, endSearchLoc } from '../../../app/actions/'
 import classes from './SearchLocationInput.module.css';
 import Justicon from "../../../components/UI/Justicon";
-import FindInMap from "./FindInMap";
 import SearchPopUp from "./SearchPopUp";
 
 
 function SearchLocationInput(props) {
     const searchRef = useRef(null);
-
-    const [ viewport, setViewport ] = useState( {longitude: -116.214531, latitude: 51.417611, zoom: 4})
 
     const [ currentPosition, setCurrentPosition ] = useState({})
     const [ suggestions, setSuggestions ] = useState([]);
@@ -49,7 +46,7 @@ function SearchLocationInput(props) {
                 <>
                 <SearchPopUp
                     closeSearch={closeSearch}
-                    viewport={viewport}
+                    viewport={props.vprt}
                     suggestions={suggestions}
                     currentPosition={currentPosition}
                     onCurrentPosition={onCurrentPosition}/>
@@ -60,7 +57,7 @@ function SearchLocationInput(props) {
                             ref={searchRef}
                             type="text"
                             placeholder="Search location"
-                            onFocus={props.startSearchLoc}
+                            onFocus={() => props.startSearchLoc()}
                             onChange={changeHandler}/>
                         <Justicon icon={'search'} className={classes.searchIcon}/>
                         {props.searching && (
@@ -78,7 +75,13 @@ function SearchLocationInput(props) {
 
 
 const mSTP = s => ({
-    searching: s.searchLocation.searching
+    searching: s.searchLocation.searching,
+    vprt: s.searchLocation.viewport
 })
 
-export default connect(mSTP, { startSearchLoc, endSearchLoc })(SearchLocationInput)
+const mDTP = d => ({
+    startSearchLoc: vprt => d(startSearchLoc(vprt)),
+    endSearchLoc: () => d(endSearchLoc())
+})
+
+export default connect(mSTP, mDTP)(SearchLocationInput)
