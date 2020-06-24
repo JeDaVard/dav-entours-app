@@ -11,6 +11,7 @@ import {useHistory} from "react-router-dom";
 import { selectedLocation, startSearchLoc} from "../../../app/actions/searchLocation/actions";
 import Justicon from "../../../components/UI/Justicon";
 import {sikTypeNames} from "../../../utils/SiktirTypeName";
+import SimpleMobileTop from "../SimpleMobileTop";
 
 
 function EditLocations(props) {
@@ -89,7 +90,26 @@ function EditLocations(props) {
     }
 
     const buttonText = props.draft ? <>Save & Next &#8594;</> : <>Save &#10003;</>
+    const submissionUI = props.isMobile ? (
+        <SimpleMobileTop
+            to={`/tour/${props.slug}/edit/heading`}
+            button={props.draft ? 'Next' : 'Save'}
+            type={'submit'}
+            disabled={!locations.length}
+            icon={props.draft ? 'chevron-right' : 'check'}
+            children={'Locations'}
+            loading={loading}
+            top
+        />
+    ) : (
+        <div className={classes.button}>
+            <StyledButton type={'submit'}>{loading ? <>Saving...</> : buttonText}</StyledButton>
+        </div>
+    );
+
     return (
+        <>
+
         <div className="row">
             <SearchLocationInput />
             { loading && <TopLoading />}
@@ -151,19 +171,18 @@ function EditLocations(props) {
                             </div>
                         </div>
                     ))}
-                    {locations.length ? (
-                        <div className={classes.button}>
-                            <StyledButton type={'submit'}>{loading ? <>Saving...</> : buttonText}</StyledButton>
-                        </div>
-                    ) : null}
+
+                    {submissionUI}
                 </Form>
             </div>
         </div>
+            </>
     )
 }
 
 const mSTP = s => ({
-    newLocation: s.searchLocation.selLoc
+    isMobile: s.ui.display.isMobile,
+    newLocation: s.searchLocation.selLoc,
 })
 const mDTP = d => ({
     selectedLocation: clear => d(selectedLocation(clear)),

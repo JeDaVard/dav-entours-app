@@ -123,3 +123,11 @@ and (display-mode: standalone) {
 .mobileBottomPlaceholder {
   height: calc(6rem + env(safe-area-inset-bottom));
 }
+
+@media all
+and (display-mode: standalone)
+and (orientation: portrait) {
+  .mobileBottomPlaceholder {
+    height: calc(9rem + env(safe-area-inset-bottom));
+  }
+}

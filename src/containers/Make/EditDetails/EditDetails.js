@@ -7,6 +7,8 @@ import {Form, Input, Textarea} from "../../../components/UI/LabeledInput/Labeled
 import {useHistory} from "react-router-dom";
 import {useMutation} from "@apollo/react-hooks";
 import {EDIT_TOUR_DETAILS} from "../queries";
+import SimpleMobileTop from "../SimpleMobileTop";
+import {connect} from "react-redux";
 
 function EditDetails(props) {
     const history = useHistory()
@@ -46,12 +48,26 @@ function EditDetails(props) {
         mutateTourHeading()
             .then(res => {
                 if (draft) {
-                    history.push(`/tour/${slug}/edit/locations`)
+                    history.push(`/mytours`)
                 }
             })
     }
     const buttonText = props.draft ? <>Finish</> : <>Save &#10003;</>;
-
+    const submissionUI = props.isMobile ? (
+        <SimpleMobileTop
+            to={`/tour/${props.slug}/edit/heading`}
+            button={props.draft ? 'Finish' : 'Save'}
+            type={'submit'}
+            icon={'check'}
+            children={'Details'}
+            loading={loading}
+            top
+        />
+    ) : (
+        <div className={classes.button}>
+            <StyledButton type={'submit'}>{loading ? <>Saving...</> : buttonText}</StyledButton>
+        </div>
+    );
     return (
         <div className="row">
             { loading && <TopLoading />}
@@ -76,13 +92,16 @@ function EditDetails(props) {
                         rows={'8'}
                         required
                     />
-                    <div className={classes.button}>
-                        <StyledButton type={'submit'}>{loading ? <>Saving...</> : buttonText}</StyledButton>
-                    </div>
+                    {submissionUI}
                 </Form>
             </div>
         </div>
     )
 }
 
-export default EditDetails
+
+const mSTP = s => ({
+    isMobile: s.ui.display.isMobile,
+})
+
+export default connect(mSTP)(EditDetails)

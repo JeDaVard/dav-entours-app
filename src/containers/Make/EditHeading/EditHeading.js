@@ -7,6 +7,8 @@ import {useMutation} from "@apollo/react-hooks";
 import {EDIT_TOUR_HEADING} from "../queries";
 import TopLoading from "../../../components/UI/TopLoading/TopLoading";
 import {Form, Input, MultiInput, Select} from "../../../components/UI/LabeledInput/LabeledInput";
+import SimpleMobileTop from "../SimpleMobileTop";
+import { connect } from "react-redux";
 
 function EditHeading(props) {
     const history = useHistory()
@@ -71,6 +73,21 @@ function EditHeading(props) {
             })
     }
     const buttonText = props.draft ? <>Save & Next &#8594;</> : <>Save &#10003;</>
+    const submissionUI = props.isMobile ? (
+        <SimpleMobileTop
+            to={props.draft ? `/mytours?tab=draft` : `/mytours`}
+            button={props.draft ? 'Next' : 'Save'}
+            type={'submit'}
+            icon={props.draft ? 'chevron-right' : 'check'}
+            children={'Heading'}
+            loading={loading}
+            top
+        />
+    ) : (
+        <div className={classes.button}>
+            <StyledButton type={'submit'}>{loading ? <>Saving...</> : buttonText}</StyledButton>
+        </div>
+    );
     return (
         <div className="row">
             { loading && <TopLoading />}
@@ -125,13 +142,15 @@ function EditHeading(props) {
                         inputDescription="Do not enter hashtags from tour
                 name, because we'll automatically generate it"
                     />
-                    <div className={classes.button}>
-                        <StyledButton type={'submit'}>{loading ? <>Saving...</> : buttonText}</StyledButton>
-                    </div>
+                    {submissionUI}
                 </Form>
             </div>
         </div>
     )
 }
 
-export default EditHeading
+const mSTP = s => ({
+    isMobile: s.ui.display.isMobile,
+})
+
+export default connect(mSTP)(EditHeading)

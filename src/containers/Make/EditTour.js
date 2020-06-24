@@ -1,14 +1,17 @@
 import React, {useEffect, useState} from "react";
-import {NavLink, Route, Switch, useParams} from 'react-router-dom';
+import { NavLink, Route, Switch, useParams } from 'react-router-dom';
 import { useQuery } from "@apollo/react-hooks";
 import classes from './EditTour.module.css';
-import {FETCH_EDIT_TOUR} from "./queries";
+import { FETCH_EDIT_TOUR } from "./queries";
 import p1c from './1c2.jpg'
 import EditHeading from "./EditHeading/EditHeading";
 import EditLocations from "./EditLocations/EditLocations";
 import EditGallery from "./EditGallery/EditGallery";
 import EditDetails from "./EditDetails/EditDetails";
 import TopLoading from "../../components/UI/TopLoading/TopLoading";
+import NavButton from "../../components/UI/NavButton/NavButton";
+import Justicon from "../../components/UI/Justicon";
+import SimpleMobileTop from "./SimpleMobileTop";
 
 function EditTour(props) {
     const { slug } = useParams();

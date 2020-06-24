@@ -1,0 +1,82 @@
+.topNav {
+    height: 5rem;
+    width: 100%;
+    left: 0;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    background: rgba(255, 255, 255, 0.92);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.16);
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.04);
+    z-index: 1;
+}
+
+.topNav0 {
+    top: 0;
+}
+
+.topNav:before {
+    content: '';
+    background: transparent;
+    backdrop-filter: blur(10px);
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+    z-index: -1;
+}
+
+.topNavItems {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.topNavTitle {
+    position: absolute;
+    transform: translateX(-50%);
+    left: 50%;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.7);
+    /*margin-left: 2rem;*/
+}
+
+.topNavButton {
+    cursor: pointer;
+    position: relative;
+    border: none;
+    outline: none;
+    font-size: 1.5rem;
+    background: #3db062;
+    color: white;
+    font-weight: 500;
+    padding: .6rem 1.2rem .8rem 1.2rem;
+    border-radius: 3px;
+    transition: all .2s;
+}
+
+.topNavButtonDisabled {
+    background: #b0cab8;
+}
+
+.topNavButton:hover,
+.topNavButton:active {
+    background: #34bf62;
+}
+
+.topNavButtonLabel {
+    display: flex;
+    align-items: center;
+}
+
+.topNavButtonLabelLoading {
+    opacity: 0;
+}
+
+.topNavButtonIcon {
+    width: 1.8rem;
+    height: 1.8rem;
+    fill: white;
+    margin-left: .2rem;
+}

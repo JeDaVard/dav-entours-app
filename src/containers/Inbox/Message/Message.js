@@ -1,10 +1,12 @@
 import React from "react";
 import classes from './Message.module.css';
 import moment from "moment";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import Justicon from "../../../components/UI/Justicon";
-import {useMutation} from "@apollo/react-hooks";
+import { useMutation } from "@apollo/react-hooks";
 import { REMOVE_MESSAGE } from "../Conversation/queries";
+import classNames from 'classnames/bind'
+let cx = classNames.bind(classes);
 
 function Message({data: {text, createdAt, sender, _id, isImage, convId }, own, guide}) {
     const [mutate] = useMutation(REMOVE_MESSAGE, {
@@ -39,7 +41,7 @@ function Message({data: {text, createdAt, sender, _id, isImage, convId }, own, g
     );
 
     return (
-        <div className={`${classes.Message} ${own ? classes.Message__own : ''}`}>
+        <div className={cx(classes.Message, {[classes.Message__own]:own})}>
             <div className={`${classes.Message__author} ${own ? classes.Message__authorOwn  : ''}`}>
                 <Link to={`/user/${sender._id}`}>
                     <img src={`${process.env.REACT_APP_SERVER}/images/user/${sender.photo}`}
@@ -47,11 +49,15 @@ function Message({data: {text, createdAt, sender, _id, isImage, convId }, own, g
                          alt=""/>
                 </Link>
             </div>
-            <div className={`${classes.Message__text} ${own ? classes.Message__textOwn : ''} ${text === '[Removed]' ? classes.Message__textRemoved : ''} ${_id.startsWith('optimistic') ? classes.Message__textOwnOptimistic : ''}`}>
+            <div className={cx(classes.Message__text, {
+                    [classes.Message__textOwn]:own,
+                    [classes.Message__textRemoved]:text === '[Removed]',
+                    [classes.Message__textOwnOptimistic]:_id.startsWith('optimistic')}
+                )}>
 
                 {isImage && text !== '[Removed]' ? image : <p>{text}</p>}
 
-                <div className={`${classes.Message__textOptions} ${text === '[Removed]' ? classes.Message__textOptionsRemoved : ''}`}>
+                <div className={cx(classes.Message__textOptions, {[classes.Message__textOptionsRemoved]:text === '[Removed]' })}>
                     <h4>{moment(createdAt).format('HH:MM | DD MMM YYYY')}</h4>
                     {own && text !== '[Removed]' && <button onClick={() => mutate({variables: { id: _id }})} className={classes.Message__textRemove}>
                         <Justicon icon={'trash'} className={classes.Message__textRemoveIcon} />

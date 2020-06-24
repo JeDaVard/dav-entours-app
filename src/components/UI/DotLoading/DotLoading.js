@@ -1,9 +1,9 @@
 import React from "react";
 import classes from './DotLoading.module.css'
 
-function DotLoading() {
+function DotLoading(props) {
     return (
-        <div className={classes.loading} >
+        <div className={props.small ? classes.loadingSmall : classes.loading} >
             <div />
             <div />
             <div />
