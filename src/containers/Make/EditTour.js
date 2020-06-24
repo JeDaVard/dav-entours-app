@@ -69,6 +69,7 @@ function EditTour(props) {
                 <Route path="/tour/:slug/edit/gallery" render={_ => <EditGallery {...data.me.myTour} />} />
                 <Route path="/tour/:slug/edit/details" render={_ => <EditDetails {...data.me.myTour} />} />
             </Switch>
+            <div className={classes.bottomPadding} />
         </div>
     )
 }

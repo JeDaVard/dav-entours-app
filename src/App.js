@@ -186,7 +186,7 @@ function App(props) {
                 footer={
                     props.isMobile ? (
                         !props.location.pathname.match(/^\/inbox\//) &&
-                        <div style={{ height: '6.5rem', width: '100%' }} />
+                        <div className="mobileBottomPlaceholder" />
                     ) : (
                         <>
                         {!props.location.pathname.match(/^\/inbox\//) && (

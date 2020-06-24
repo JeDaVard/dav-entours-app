@@ -114,3 +114,12 @@ and (display-mode: standalone) {
 .globalA:hover::after {
   width: 100%;
 }
+
+.mobileBottomPlaceholder {
+  width: 100%;
+  height: 6rem;
+}
+
+.mobileBottomPlaceholder {
+  height: calc(6rem + env(safe-area-inset-bottom));
+}
