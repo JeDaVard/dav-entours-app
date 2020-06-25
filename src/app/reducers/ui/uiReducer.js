@@ -2,7 +2,7 @@ import * as actionTypes from '../../actions/ui/types'
 
 const initialState = {
     display: {
-        isMobile: window.innerWidth < 743
+        isMobile: window.innerWidth < 744
     },
     loading: false
 }

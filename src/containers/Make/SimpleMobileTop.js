@@ -8,7 +8,11 @@ let cx = classNames.bind(classes);
 
 function SimpleMobileTop(props) {
     return (
-        <div className={cx(classes.topNav, {[classes.topNav0]: props.top})}>
+        <div className={cx(classes.topNav, {
+            [classes.topNav0]: props.top,
+            [classes.topNavFixed]: props.fixed,
+            [classes.topNavShadow]: props.shadow,
+        })}>
             <div className="row">
                 <div className={classes.topNavItems}>
                     <NavButton to={props.to}/>
@@ -16,7 +20,10 @@ function SimpleMobileTop(props) {
                     <button
                         type={props.type}
                         onClick={props.onClick ? (e) => props.onClick(e) : () => {}}
-                        className={cx(classes.topNavButton, {[classes.topNavButtonDisabled]: props.disabled})}>
+                        className={cx(classes.topNavButton, {
+                            [classes.topNavButtonDisabled]: props.disabled,
+                            [classes.topNavButtonInverse]:props.inverseButton
+                        })}>
                         {props.loading && (
                             <DotLoading small/>
                         )}

@@ -115,11 +115,8 @@ function App(props) {
 
     useEffect(() => {
         const debouncedHandleResize = debounce(function handleResize() {
-            if (window.innerWidth <= 743 && !props.isMobile) {
-                setMobile();
-            } else if (window.innerWidth > 743 && props.isMobile) {
-                setDesktop();
-            }
+            if (window.innerWidth <= 743 && !props.isMobile) setMobile();
+            if (window.innerWidth > 743 && props.isMobile) setDesktop();
         }, 300);
 
         window.addEventListener('resize', debouncedHandleResize);

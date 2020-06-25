@@ -3,17 +3,30 @@ import SimpleButton from "../../../components/UI/SimpleButton/SimpleButton";
 import React from "react";
 import {Link} from "react-router-dom";
 import NavButton from "../../../components/UI/NavButton/NavButton";
+import SimpleMobileTop from "../../Make/SimpleMobileTop";
 
 function ConversationHead({guides, participants, tour}) {
     return (
         <div className={classes.ConversationHead__head}>
-                <NavButton to={'/inbox'} />
-                <div className={classes.ConversationHead__user}>
-                    <img src={`${process.env.REACT_APP_SERVER}/images/user/${guides[0].photo}`} alt={guides[0].name}/>
-                    <Link to={`/user/${guides[0]._id}`}>
-                        <h4>{guides[0].name}</h4>
-                    </Link>
-                </div>
+                {/*<NavButton to={'/inbox'} />*/}
+
+             <SimpleMobileTop
+                    to={`/inbox`}
+                    button={''}
+                    type={'submit'}
+                    icon={'more-horizontal'}
+                    inverseButton
+                    // loading={loading}
+                    // top
+                    // disabled
+                >
+                 <div className={classes.ConversationHead__user}>
+                     <img src={`${process.env.REACT_APP_SERVER}/images/user/${guides[0].photo}`} alt={guides[0].name}/>
+                     <Link to={`/user/${guides[0]._id}`}>
+                         <h4>{guides[0].name}</h4>
+                     </Link>
+                 </div>
+             </SimpleMobileTop>
             <div className="row">
                 <div className={classes.ConversationHead__tourTitle}>
                     <h2>{tour.name}</h2>

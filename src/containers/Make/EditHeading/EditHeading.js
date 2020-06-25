@@ -81,6 +81,8 @@ function EditHeading(props) {
             icon={props.draft ? 'chevron-right' : 'check'}
             children={'Heading'}
             loading={loading}
+            shadow
+            fixed
             top
         />
     ) : (

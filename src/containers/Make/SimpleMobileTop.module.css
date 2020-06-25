@@ -4,13 +4,16 @@
     left: 0;
     display: flex;
     align-items: center;
-    position: fixed;
     background: rgba(255, 255, 255, 0.92);
     border-bottom: 1px solid rgba(0, 0, 0, 0.16);
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.04);
     z-index: 1;
 }
-
+.topNavShadow {
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.04);
+}
+.topNavFixed {
+    position: fixed;
+}
 .topNav0 {
     top: 0;
 }
@@ -60,9 +63,25 @@
     background: #b0cab8;
 }
 
+.topNavButtonInverse {
+    padding: 0;
+    color: #3db062;
+    background: white;
+}
+
 .topNavButton:hover,
 .topNavButton:active {
     background: #34bf62;
+}
+
+.topNavButtonDisabled:hover,
+.topNavButtonDisabled:active {
+    background: #b0cab8;
+}
+
+.topNavButtonInverse:hover,
+.topNavButtonInverse:active {
+    background: rgba(0, 0, 0, 0.06);
 }
 
 .topNavButtonLabel {
@@ -72,6 +91,13 @@
 
 .topNavButtonLabelLoading {
     opacity: 0;
+}
+
+.topNavButtonInverse .topNavButtonIcon {
+    width: 3rem;
+    height: 3rem;
+    fill: #3db062;
+    margin-left: .2rem;
 }
 
 .topNavButtonIcon {

@@ -100,6 +100,8 @@ function EditLocations(props) {
             children={'Locations'}
             loading={loading}
             top
+            shadow
+            fixed
         />
     ) : (
         <div className={classes.button}>

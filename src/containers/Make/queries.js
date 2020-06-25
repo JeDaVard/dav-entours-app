@@ -159,3 +159,33 @@ export const EDIT_TOUR_LOCATIONS = gql`
 		}
 	}
 `
+
+export const EDIT_TOUR_GALLERY = gql`
+	mutation tourGallery($id: ID! $file: Upload!) {
+		tourGallery(id: $id file: $file) {
+			message
+			success
+			code
+			data {
+				_id
+				slug
+				name
+				hashtags
+				maxGroupSize
+				difficulty
+				price
+				summary
+				description
+				imageCover
+				images
+				locations {
+					coordinates
+					description
+					day
+					address
+				}
+				draft
+			}
+		}
+	}
+`

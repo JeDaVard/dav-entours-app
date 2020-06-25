@@ -61,6 +61,8 @@ function EditDetails(props) {
             icon={'check'}
             children={'Details'}
             loading={loading}
+            shadow
+            fixed
             top
         />
     ) : (
