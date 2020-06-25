@@ -189,3 +189,12 @@ export const EDIT_TOUR_GALLERY = gql`
 		}
 	}
 `
+
+export const UPLOAD_IMAGE = gql`
+	mutation uploadImage($id: ID! $file: Upload!) {
+		uploadImage(id: $id file: $file) {
+			key
+			url
+		}
+	}
+`
