@@ -12,21 +12,21 @@ import classNames from 'classnames/bind'
 const cx = classNames.bind(classes)
 
 function EditGallery(props) {
-    const [ cover, setCover ] = useState({
-        data: null,
-        file: ''
-    });
-    const [ images, setImages ] = useState([]);
+    const initialCover = props.imageCover
+        ? { data: null, preview: `${process.env.REACT_APP_SERVER}/images/tour/${props.imageCover}` }
+        : { data: null, preview: '' };
+
+    const initialImages = props.images.length
+        ? props.images.map(image => ({data: null, preview: `${process.env.REACT_APP_SERVER}/images/tour/${image}`}))
+        : [];
+
+    const [ cover, setCover ] = useState(initialCover);
+
+    const [ images, setImages ] = useState(initialImages);
+
     const [ mutateEditGallery, { loading } ] = useMutation(UPLOAD_IMAGE, {
         variables: { file: cover, id: props._id, }
     });
-console.log(images)
-    // const onDrop = useCallback(
-    //     ([file]) => {
-    //         mutateEditGallery({ variables: { file, id: props._id, } });
-    //     },
-    //     [mutateEditGallery]
-    // );
 
     const onEditGallery = async (e) => {
         e.preventDefault();
@@ -44,19 +44,19 @@ console.log(images)
         })
         console.log(key)
     }
-    const onCoverDrop = ([file]) => {
+    const onCoverDrop = useCallback(([file]) => {
         setCover({ data: file, preview: URL.createObjectURL(file)})
-    }
+    }, [])
 
-    const onImageDrop = (images) => {
-    const newImages = images.map(file => Object.assign(file, {
+    const onImageDrop = useCallback( (images) => {
+    const newImages = images.map(file => Object.assign({data: file}, {
         preview: URL.createObjectURL(file)
     }))
         setImages(state => [
             ...newImages,
             ...state
         ]);
-    }
+    }, [])
 
     const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop: onCoverDrop });
     const { getRootProps: GRP, getInputProps: GIP, isDragActive: iDA } = useDropzone({ onDrop:onImageDrop });
@@ -95,44 +95,54 @@ console.log(images)
                 <div {...getRootProps({ className: classes.coverImage})} >
                     <input {...getInputProps()}/>
                     <div className={classes.coverImageFrame}>
-                        <img src={cover.preview ? cover.preview : 'null'} alt="" className={classes.coverImagePreview}/>
+                        {cover.preview ? (
+                            <>
+                                <img src={cover.preview}
+                                     className={classes.coverImagePreview}
+                                     alt=""/>
+                                <div className={classes.controls} style={{top: '2rem', right: '2rem'}}>
+                                    <button onClick={e => {e.stopPropagation(); e.preventDefault(); setCover({data: '', preview: null})}}>
+                                        <Justicon icon={'trash'} className={classes.controlIcon}/>
+                                    </button>
+                                </div>
+                            </>
+                        ) : null}
                     </div>
                     {!cover.preview && (
                         <div className={cx(classes.coverDragPlaceHolder, {[classes.coverDragPlaceHolderActive]: isDragActive})}>
-                            <Justicon icon={'upload-cloud'} className={classes.coverDragIcon}/>
+                            <Justicon icon={'upload-cloud'}
+                                      className={classes.coverDragIcon}/>
                             <h2>Upload Main Image</h2>
                         </div>
                     )}
 
                 </div>
 
-                <div {...GRP({ className: classes.images})} >
+                <div {...GRP({className: classes.images})} >
                     <input {...GIP()}/>
                     <div className={classes.imagesFrame}>
-                        {/*<div className={cx(classes.imagesDragPlaceHolder,{[classes.imagesDragPlaceHolderActive]: iDA})}>*/}
-                        {/*    <Justicon icon={'upload-cloud'} className={classes.imagesDragIcon}/>*/}
-                        {/*    <h2>Photos</h2>*/}
-                        {/*</div>*/}
                         <div className={cx(classes.containerDrag, {[classes.containerDragActive]: iDA})}>
                             <div className={cx(classes.contentDrag, {[classes.contentDragActive]: iDA})}>
-                                    <Justicon icon={'upload-cloud'} className={classes.imagesDragIcon}/>
+                                    <Justicon icon={'upload-cloud'}
+                                              className={classes.imagesDragIcon}/>
                                     <h2>Photos</h2>
                             </div>
                         </div>
-                        {
-                            images.map(file => (
-                                <div className={cx(classes.container, {[classes.containerActive]: iDA})} key={file.preview.toString()}>
+                        {images.map(file => (
+                                <div className={cx(classes.container, {[classes.containerActive]: iDA})}
+                                     key={file.preview.toString()}>
                                     <div className={classes.content}>
-                                        <img src={file.preview} className={classes.imagesPreview} alt=""/>
+                                        <img src={file.preview}
+                                             className={classes.imagesPreview}
+                                             alt=""/>
+                                        <div className={classes.controls}>
+                                            <button onClick={e => {}}>
+                                                <Justicon icon={'trash'} className={classes.controlIcon}/>
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
-                            ))
-                        }
-                        {/*<img src={'https://media.gettyimages.com/photos/armenia-yerevan-republic-square-dancing-fountains-picture-id1068746262?s=612x612'} alt="" className={classes.imagesPreview}/>*/}
-                        {/*<img src={'https://media.gettyimages.com/photos/armenia-yerevan-republic-square-dancing-fountains-picture-id1068746262?s=612x612'} alt="" className={classes.imagesPreview}/>*/}
-                        {/*<img src={'https://media.gettyimages.com/photos/armenia-yerevan-republic-square-dancing-fountains-picture-id1068746262?s=612x612'} alt="" className={classes.imagesPreview}/>*/}
-                        {/*<img src={'https://media.gettyimages.com/photos/armenia-yerevan-republic-square-dancing-fountains-picture-id1068746262?s=612x612'} alt="" className={classes.imagesPreview}/>*/}
-                        {/*<img src={'https://media.gettyimages.com/photos/armenia-yerevan-republic-square-dancing-fountains-picture-id1068746262?s=612x612'} alt="" className={classes.imagesPreview}/>*/}
+                            ))}
                     </div>
 
 

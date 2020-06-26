@@ -18,6 +18,9 @@
     margin: 0 auto
 }
 
+.uploadForm > :not(:last-child) {
+    margin-bottom: 1rem;
+}
 
 .coverImage {
     outline: none;
@@ -33,14 +36,14 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    border: 1px solid rgba(0, 0, 0, 0.12);
-    padding: 1rem;
+    border: 1px solid #3db062;
+    padding: .6rem;
     border-radius: 1rem;
     /*overflow: hidden;*/
 }
 
 .coverImagePreview {
-    border-radius: .5rem;
+    border-radius: .6rem;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -118,6 +121,16 @@
     }
 }
 
+.images {
+    outline: none;
+    border: none;
+}
+
+.images:active {
+    outline: none;
+    border: none;
+}
+
 .container {
     margin-right: 1px;
     margin-bottom: 1px;
@@ -191,7 +204,7 @@
     justify-content: flex-start;
     flex-direction: row;
     flex-wrap: wrap;
-    padding: 1rem;
+    padding: .6rem .4rem .4rem .6rem;
     border-radius: 1rem;
     border: 1px solid rgba(0, 0, 0, 0.1);
 }
@@ -221,4 +234,41 @@
 
 .contentDragActive .imagesDragIcon {
     animation: animateUploadIconHover infinite .6s;
+}
+
+.controls {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+.controls button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: rgba(255, 255, 255, 0.95);
+    padding: .2rem;
+    border-radius: 3px;
+    width: 2.8rem;
+    height: 2.8rem;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+    transition: all .1s;
+}
+
+.controls button:hover,
+.controls button:active {
+    background: rgb(255, 255, 255);
+}
+
+
+.controls > :not(:last-child) {
+    margin-right: .4rem;
+}
+
+.controlIcon {
+    width: 2rem;
+    height: 2rem;
+    fill: rgba(0, 0, 0, 0.6);
 }
