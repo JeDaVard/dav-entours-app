@@ -61,7 +61,7 @@ function Conversation() {
                            fetchPolicy="network-only"
                            >
                         {({subscribeToMore, ...result}) => {
-                            if (result.loading) return <div style={{marginTop: '13.4rem'}}><DotLoading /></div>
+                            if (result.loading) return <div style={{marginTop: '14.4rem'}}><DotLoading /></div>
                             if (result.error) return <h1>{result.error.message}</h1>
                             const { hasMore, messages } = result.data.me.conversation.messages
                             return (

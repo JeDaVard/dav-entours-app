@@ -46,7 +46,9 @@ function Messages(props) {
                     getScrollParent={() => selfRef.current}
                 >
                      <div className="row">
-                         {preventScroll && <DotLoading />}
+                         <div style={{marginTop: '1rem'}}>
+                             {preventScroll && <DotLoading />}
+                         </div>
                          {!hasMore && data.length > 12 && <p style={{fontSize: '1.3rem', textAlign: 'center', marginTop: '1.2rem', color: '#8d8d8d'}}>The start of the conversation</p>}
                          {data[0] ? data.sort((a, b) => a.createdAt - b.createdAt).map(message => (
                              <Message

@@ -61,6 +61,7 @@
 
 .topNavButtonDisabled {
     background: #b0cab8;
+    cursor: default;
 }
 
 .topNavButtonInverse {
@@ -77,6 +78,7 @@
 .topNavButtonDisabled:hover,
 .topNavButtonDisabled:active {
     background: #b0cab8;
+    cursor: default;
 }
 
 .topNavButtonInverse:hover,

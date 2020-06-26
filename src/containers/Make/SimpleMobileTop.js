@@ -18,6 +18,7 @@ function SimpleMobileTop(props) {
                     <NavButton to={props.to}/>
                     <h2 className={classes.topNavTitle}>{props.children}</h2>
                     <button
+                        disabled={props.disabled}
                         type={props.type}
                         onClick={props.onClick ? (e) => props.onClick(e) : () => {}}
                         className={cx(classes.topNavButton, {

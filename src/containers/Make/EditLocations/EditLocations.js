@@ -94,7 +94,7 @@ function EditLocations(props) {
         <SimpleMobileTop
             to={`/tour/${props.slug}/edit/heading`}
             button={props.draft ? 'Next' : 'Save'}
-            type={'submit'}
+            type={'disabled'}
             disabled={!locations.length}
             icon={props.draft ? 'chevron-right' : 'check'}
             children={'Locations'}
