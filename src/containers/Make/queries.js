@@ -161,8 +161,8 @@ export const EDIT_TOUR_LOCATIONS = gql`
 `
 
 export const EDIT_TOUR_GALLERY = gql`
-	mutation tourGallery($id: ID! $file: Upload!) {
-		tourGallery(id: $id file: $file) {
+	mutation tourGallery($id: ID! $imageCover: String $images: [String]!) {
+		tourGallery(id: $id imageCover: $imageCover images: $images) {
 			message
 			success
 			code
@@ -191,8 +191,8 @@ export const EDIT_TOUR_GALLERY = gql`
 `
 
 export const UPLOAD_IMAGE = gql`
-	mutation uploadImage($id: ID! $file: Upload!) {
-		uploadImage(id: $id file: $file) {
+	mutation uploadImage($id: ID! $fileName: String! $contentType: String!) {
+		uploadImage(id: $id fileName: $fileName contentType: $contentType) {
 			key
 			url
 		}

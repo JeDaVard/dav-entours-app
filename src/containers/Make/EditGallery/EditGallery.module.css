@@ -134,7 +134,7 @@
 .container {
     margin-right: 1px;
     margin-bottom: 1px;
-    background-color: #4fc877;
+    background-color: #eeeeee;
     border-radius: .5rem;
     overflow: hidden;
     width: calc(33.333% - 1px);
@@ -249,7 +249,7 @@
     border: none;
     outline: none;
     background: rgba(255, 255, 255, 0.95);
-    padding: .2rem;
+    padding: .4rem .2rem .2rem .2rem;
     border-radius: 3px;
     width: 2.8rem;
     height: 2.8rem;
