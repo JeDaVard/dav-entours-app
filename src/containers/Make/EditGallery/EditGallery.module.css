@@ -90,6 +90,10 @@
     animation: animateUploadIconHover .7s infinite;
 }
 
+.coverDragIconActive {
+    animation: animateUploadIconHover .7s infinite;
+}
+
 @keyframes animateUpload {
     0% {
         opacity: 0;

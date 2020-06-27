@@ -55,7 +55,7 @@ function EditDetails(props) {
     const buttonText = props.draft ? <>Finish</> : <>Save &#10003;</>;
     const submissionUI = props.isMobile ? (
         <SimpleMobileTop
-            to={`/tour/${props.slug}/edit/heading`}
+            to={props.draft ? `/mytours?tab=draft` : `/mytours`}
             button={props.draft ? 'Finish' : 'Save'}
             type={'submit'}
             icon={'check'}

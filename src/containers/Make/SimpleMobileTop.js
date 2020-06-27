@@ -29,7 +29,7 @@ function SimpleMobileTop(props) {
                             <DotLoading small/>
                         )}
                             <div className={cx(classes.topNavButtonLabel, {[classes.topNavButtonLabelLoading]: props.loading})}>
-                                <span>{props.button}</span>
+                                <span>{props.button}&nbsp;</span>
                                 <Justicon icon={props.icon} className={classes.topNavButtonIcon}/>
                             </div>
 

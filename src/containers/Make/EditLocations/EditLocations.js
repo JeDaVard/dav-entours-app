@@ -92,7 +92,7 @@ function EditLocations(props) {
     const buttonText = props.draft ? <>Save & Next &#8594;</> : <>Save &#10003;</>
     const submissionUI = props.isMobile ? (
         <SimpleMobileTop
-            to={`/tour/${props.slug}/edit/heading`}
+            to={props.draft ? `/mytours?tab=draft` : `/mytours`}
             button={props.draft ? 'Next' : 'Save'}
             type={'disabled'}
             disabled={!locations.length}
