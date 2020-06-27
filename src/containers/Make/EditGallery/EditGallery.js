@@ -5,115 +5,83 @@ import {Form} from "../../../components/UI/LabeledInput/LabeledInput";
 import SimpleMobileTop from "../SimpleMobileTop";
 import StyledButton from "../../../components/UI/StyledButton/StyledButton";
 import {useMutation} from "@apollo/react-hooks";
-import {EDIT_TOUR_GALLERY, UPLOAD_IMAGE} from "../queries";
+import {EDIT_TOUR_GALLERY, FETCH_EDIT_TOUR, UPLOAD_IMAGE} from "../queries";
 import {useDropzone} from "react-dropzone";
 import Justicon from "../../../components/UI/Justicon";
 import classNames from 'classnames/bind'
 import {loadingOff, loadingOn} from "../../../app/actions";
+import TopLoading from "../../../components/UI/TopLoading/TopLoading";
 const cx = classNames.bind(classes)
 
 function EditGallery(props) {
-    const initialCover = props.imageCover
-        ? { data: null, preview: props.imageCover }
-        : { data: null, preview: '' };
+    const [ signURL ] = useMutation(UPLOAD_IMAGE);
+    const [ loading, setLoading ] = useState({
+        cover: false,
+        images: false
+    });
 
-    const initialImages = props.images.length
-        ? props.images.map(image => ({data: null, preview: image })).slice().reverse()
-        : [];
+    const [ mutateGallery] = useMutation(EDIT_TOUR_GALLERY);
 
-    const [ cover, setCover ] = useState(initialCover);
+    const onCoverDrop = useCallback(async ([file]) => {
+        if (loading.cover) return;
+        setLoading(s => ({...s, cover: true}))
+        const res = await signURL({
+            variables: { fileName: `main_${Date.now()}.jpg`, contentType: file.type, id: props._id, }
+        });
 
-    const [ images, setImages ] = useState(initialImages);
+        const { key, url } = res.data.uploadImage;
 
-    const [ signURL, { loading } ] = useMutation(UPLOAD_IMAGE);
-    // "images" : [
-    //     "tour-1-1.jpg",
-    //     "tour-1-2.jpg",
-    //     "tour-1-3.jpg"
-    // ],
-    //     "imageCover" : "tour-1-cover.jpg",
-
-    const [ mutateCover] = useMutation(EDIT_TOUR_GALLERY);
-
-    const onEditGallery = async (e) => {
-        e.preventDefault();
-        props.loadingOn();
-
-        let key = null;
-        let uploadedImagesToDB = [];
-
-        if (cover.data) {
-            const res = await signURL({
-                variables: { fileName: 'main.jpg', contentType: cover.data && cover.data.type, id: props._id, }
-            });
-
-            key = res.data.uploadImage.key;
-            const url = res.data.uploadImage.url;
-
-            await fetch(url, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': cover.data && cover.data.type
-                },
-                body: cover.data,
-            })
-        }
-
-        const imagesToUpload = images.filter(image => image.data).map(image => image.data)
-
-        const uploadsToAsync = async () => Promise.all(imagesToUpload.map((file, index) => {
-            return signURL({
-                    variables: { fileName: `image_${index}_${Date.now()}.jpg`, contentType: file.type, id: props._id, }
-                })
-        }))
-        const urlKeyResponses = await uploadsToAsync();
-        const uploadsToS3 = async () => Promise.all(urlKeyResponses.map((toUpload, index) => {
-            return fetch(toUpload.data.uploadImage.url, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': imagesToUpload[index].type
-                },
-                body: imagesToUpload[index],
-            })
-        }))
-        const results = await uploadsToS3();
-        uploadedImagesToDB = urlKeyResponses.map(item => item.data.uploadImage.key)
-
-        const oldImages = images.filter(image => !image.data).map(image => image.preview)
-
-        const imagesToDB = [...uploadedImagesToDB, ...oldImages].reverse()
-
-
-        mutateCover({variables: {
-                id: props._id,
-                imageCover: key,
-                images: imagesToDB
-            }}).then((res) => {
-            props.loadingOff();
-            console.log(res);
-        }).catch(e => {
-            props.loadingOff();
-            console.log('e', e)
+        await fetch(url, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': file.type
+            },
+            body: file,
         })
-    };
 
-    const onCoverDrop = useCallback(([file]) => {
-        setCover({ data: file, preview: URL.createObjectURL(file)})
-    }, [])
-    // console.log(images, cover)
+        const dbRes = await mutateGallery({
+            variables: {
+                id: props._id,
+                removeImage: props.imageCover,
+                imageCover: key,
+                images: props.images
+            }
+        })
+        setLoading(s => ({...s, cover: false}))
+    }, [loading.cover, props.imageCover, props.images])
 
-    const onImageDrop = useCallback( (images) => {
-    const newImages = images.map(file => Object.assign({data: file}, {
-        preview: URL.createObjectURL(file)
-    }))
-        setImages(state => [
-            ...newImages,
-            ...state
-        ]);
-    }, []);
+    const onImageDrop = useCallback( async ([file]) => {
+        if (loading.images) return;
+        setLoading(s => ({...s, images: true}))
+        const res = await signURL({
+            variables: { fileName: `image_${Date.now()}.jpg`, contentType: file.type, id: props._id, }
+        });
+
+        const { key, url } = res.data.uploadImage;
+
+        await fetch(url, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': file.type
+            },
+            body: file,
+        })
+
+        const dbRes = await mutateGallery({
+            variables: {
+                id: props._id,
+                removeCover: null,
+                imageCover: props.imageCover,
+                images: props.images.length ? [...props.images, key] : [ key ]
+            }
+        })
+
+        setLoading(s => ({...s, images: false}))
+
+    }, [loading.images, props.images, props.imageCover]);
 
 
-    const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop: onCoverDrop });
+    const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop: onCoverDrop});
     const { getRootProps: GRP, getInputProps: GIP, isDragActive: iDA } = useDropzone({ onDrop:onImageDrop });
 
     const buttonText = props.draft ? <>Save & Next &#8594;</> : <>Save &#10003;</>
@@ -131,72 +99,72 @@ function EditGallery(props) {
         />
     ) : (
         <div className={classes.button}>
-            <StyledButton type={'submit'}>{loading ? <>Saving...</> : buttonText}</StyledButton>
+            <StyledButton type={'submit'}>{props.reduxLoading ? <>Saving...</> : buttonText}</StyledButton>
         </div>
     );
 
-    // const onFile = (e) => {
-    //     const file = e.target.files[0]
-    //     setFile(file)
-    // }
-    useEffect(() => () => {
-        // Make sure to revoke the data uris to avoid memory leaks
-        URL.revokeObjectURL(cover.preview)
-    }, [cover]);
+    const removeImage = useCallback(async (e, removeImage) => {
+        e.stopPropagation();
+        e.preventDefault();
+
+        await mutateGallery({
+            variables: {
+                id: props._id,
+                removeImage: removeImage || props.imageCover,
+                imageCover: removeImage ? props.imageCover : null,
+                images: removeImage ? props.images.filter(image => image !== removeImage) : props.images
+            }
+        })
+    }, [props.imageCover, props.images]);
 
     return (
         <div className="row">
-            <form onSubmit={(e) => onEditGallery(e)} className={classes.uploadForm}>
-                <div {...getRootProps({ className: classes.coverImage})} >
-                    <input {...getInputProps()}/>
-                    <div className={classes.coverImageFrame}>
-                        {cover.preview ? (
+            { (loading.images || loading.cover) && <TopLoading />}
+            <form onSubmit={(e) => {}} className={classes.uploadForm}>
+                <div {...getRootProps({ className: classes.coverImage})}>
+                    <input {...getInputProps()} multiple={false} name="cover"/>
+                    <div className={cx(classes.coverImageFrame, {[classes.coverImageFrameActive]: isDragActive})}>
+                        {props.imageCover ? (
                             <>
-                                <img src={cover.preview.startsWith('blob') ? cover.preview : `${process.env.REACT_APP_CDN}/${cover.preview}`}
+                                <img src={`${process.env.REACT_APP_CDN}/${props.imageCover}`}
                                      className={classes.coverImagePreview}
                                      alt=""/>
                                 <div className={classes.controls} style={{top: '2rem', right: '2rem'}}>
-                                    <button onClick={e => {e.stopPropagation(); e.preventDefault(); setCover({data: '', preview: null})}}>
+                                    <button onClick={e => removeImage(e)}>
                                         <Justicon icon={'trash'} className={classes.controlIcon}/>
                                     </button>
                                 </div>
                             </>
-                        ) : null}
+                        ) : (
+                            <div className={cx(classes.coverDragPlaceHolder, {[classes.coverDragPlaceHolderActive]: isDragActive})}>
+                                <Justicon icon={'upload-cloud'}
+                                          className={classes.coverDragIcon}/>
+                                <h2>Upload Main Image</h2>
+                            </div>
+                        )}
                     </div>
-                    {!cover.preview && (
-                        <div className={cx(classes.coverDragPlaceHolder, {[classes.coverDragPlaceHolderActive]: isDragActive})}>
-                            <Justicon icon={'upload-cloud'}
-                                      className={classes.coverDragIcon}/>
-                            <h2>Upload Main Image</h2>
-                        </div>
-                    )}
 
                 </div>
 
                 <div {...GRP({className: classes.images})} >
-                    <input {...GIP()}/>
+                    <input {...GIP()} multiple={false} name="images"/>
                     <div className={classes.imagesFrame}>
-                        <div className={cx(classes.containerDrag, {[classes.containerDragActive]: iDA})}>
-                            <div className={cx(classes.contentDrag, {[classes.contentDragActive]: iDA})}>
+                        <div className={cx(classes.containerDrag, {[classes.containerDragActive]: iDA && !loading.images})}>
+                            <div className={cx(classes.contentDrag, {[classes.contentDragActive]: iDA && !loading.images})}>
                                     <Justicon icon={'upload-cloud'}
-                                              className={classes.imagesDragIcon}/>
+                                              className={cx(classes.imagesDragIcon, {[classes.imagesDragIconActive]: loading.images})}/>
                                     <h2>Photos</h2>
                             </div>
                         </div>
-                        {images.map(file => (
-                                <div className={cx(classes.container, {[classes.containerActive]: iDA})}
-                                     key={file.preview.toString()}>
+                        {props.images.map(image => (
+                                <div className={cx(classes.container, {[classes.containerActive]: iDA && !loading.images})}
+                                     key={image}>
                                     <div className={classes.content}>
-                                        <img src={file.preview.startsWith('blob') ? file.preview : `${process.env.REACT_APP_CDN}/${file.preview}`}
+                                        <img src={`${process.env.REACT_APP_CDN}/${image}`}
                                              className={classes.imagesPreview}
                                              alt=""/>
                                         <div className={classes.controls}>
-                                            <button onClick={e => {
-                                                e.stopPropagation();
-                                                e.preventDefault();
-                                                const newState = images.filter(image => image.preview !== file.preview);
-                                                setImages(newState)
-                                            }}>
+                                            <button onClick={e => removeImage(e, image)}>
                                                 <Justicon icon={'trash'} className={classes.controlIcon}/>
                                             </button>
                                         </div>

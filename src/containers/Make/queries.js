@@ -161,8 +161,18 @@ export const EDIT_TOUR_LOCATIONS = gql`
 `
 
 export const EDIT_TOUR_GALLERY = gql`
-	mutation tourGallery($id: ID! $imageCover: String $images: [String]!) {
-		tourGallery(id: $id imageCover: $imageCover images: $images) {
+	mutation tourGallery(
+		$id: ID!
+		$imageCover:String
+		$images: [String]!
+		$removeImage: String
+	) {
+		tourGallery(
+			id: $id
+			imageCover: $imageCover
+			images: $images
+			removeImage: $removeImage
+		) {
 			message
 			success
 			code
@@ -189,6 +199,7 @@ export const EDIT_TOUR_GALLERY = gql`
 		}
 	}
 `
+
 
 export const UPLOAD_IMAGE = gql`
 	mutation uploadImage($id: ID! $fileName: String! $contentType: String!) {
