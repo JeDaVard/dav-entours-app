@@ -36,13 +36,13 @@
     margin: 1rem 1rem 1rem 0;
 }
 
-.UserPage__listingImage {
+.UserPage__listingImageFrame {
     width: 300px;
     height: 180px;
     background: rgba(0, 0, 0, 0.09);
 }
 
-.UserPage__listingImage img {
+.UserPage__listingImage {
     width: 300px;
     height: 180px;
     /*object-fit: cover;*/

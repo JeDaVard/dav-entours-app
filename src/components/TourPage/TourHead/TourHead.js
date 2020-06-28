@@ -11,27 +11,22 @@ function TourHead(props) {
     return (
         <div className={classes.TourHead__cover}>
             <ThumbedImage
+                src={tour.imageCover}
                 className={classes.TourHead__coverImage}
-                src={`${process.env.REACT_APP_SERVER}/images/tour/${tour.imageCover}`}
-                thumb={`${
-                    process.env.REACT_APP_SERVER
-                }/images/tour/${tour.imageCover.slice(
-                    0,
-                    tour.imageCover.length - 4
-                )}.thumb.jpeg`}
-                blur={true}
                 alt={tour.name}
+                XL
+                blur
             />
             <div className={'row'}>
                 <div className={classes.TourHead__shareBox}>
-                    <div className={classes.TourHead__share}>
+                    <button className={classes.TourHead__share}>
                         <Justicon icon={'upload'} className={classes.TourHead__shareIcon}/>
                         <b>Share</b>
-                    </div>
-                    <div className={classes.TourHead__share}>
+                    </button>
+                    <button  className={classes.TourHead__share}>
                         <Justicon icon={'heart'} className={classes.TourHead__shareIcon}/>
                         <b>Save</b>
-                    </div>
+                    </button>
                 </div>
                 <div className={classes.TourHead}>
                     <div className={classes.TourHead__left}>

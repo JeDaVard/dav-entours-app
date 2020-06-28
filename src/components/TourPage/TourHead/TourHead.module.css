@@ -93,19 +93,21 @@
 }
 
 .TourHead__share {
+    outline: none;
+    border: none;
     margin-left: 1rem;
     backdrop-filter: blur(7px);
     background: rgba(255, 255, 255, 0.9);
     box-shadow: 0 0 4px rgba(0, 0, 0, .1);
     border-radius: 5px;
     display: flex;
-    align-items: flex-start;
-    padding: 0.4rem 2rem;
+    align-items: center;
+    padding: 0.6rem 1.4rem;
     cursor: pointer;
 }
 
 .TourHead__share:active {
-    background: #e3e3e3;
+    background: rgba(255, 255, 255, 0.55);
 }
 
 .TourHead__share b {

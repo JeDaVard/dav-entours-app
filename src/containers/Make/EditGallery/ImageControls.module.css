@@ -1,0 +1,36 @@
+.controls {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+.controls button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: rgba(255, 255, 255, 0.95);
+    padding: .4rem .2rem .2rem .2rem;
+    border-radius: 3px;
+    width: 2.8rem;
+    height: 2.8rem;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+    transition: all .1s;
+}
+
+.controls button:hover,
+.controls button:active {
+    background: rgb(255, 255, 255);
+}
+
+
+.controls > :not(:last-child) {
+    margin-right: .4rem;
+}
+
+.controlIcon {
+    width: 2rem;
+    height: 2rem;
+    fill: rgba(0, 0, 0, 0.6);
+}

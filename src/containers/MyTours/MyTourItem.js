@@ -12,10 +12,10 @@ function MyToursItem({data}) {
                 {data.imageCover &&
                 <Link to={data.draft ? `/tour/${data.slug}/edit/heading` : `/tour/${data.slug}`}>
                     <ThumbedImage
-                            src={`${process.env.REACT_APP_SERVER}/images/tour/${data.imageCover}`}
-                            thumb={`${process.env.REACT_APP_SERVER}/images/tour/${data.imageCover.slice(0, data.imageCover.length-4)}.thumb.jpeg`} blur={true}
+                            src={data.imageCover}
                             className={classes.image}
                             alt={data.name}
+                            blur
                         />
                     </Link> }
                 <div className={classes.main}>

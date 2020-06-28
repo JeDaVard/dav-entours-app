@@ -123,23 +123,26 @@
 }
 
 .Saved__remove {
+    cursor: pointer;
+    border: none;
+    outline: none;
     position: absolute;
     top: 1rem;
     right: 1rem;
-    background: #f5f5f5;
+    background: rgba(0, 0, 0, 0.6);
     padding: .7rem .7rem .4rem .7rem;
-    border-radius: 12px;
-    box-shadow: 0 0 4px rgba(0, 0, 0, 0.14);
+    border-radius: 5px;
+    /*box-shadow: 0 0 4px rgba(0, 0, 0, 0.14);*/
     transition: background .2s;
 }
 
 .Saved__remove:hover,
 .Saved__remove:active {
-    background: white;
+    background: rgba(0, 0, 0, 0.5);
 }
 
 .Saved__removeIcon {
-    fill: rgba(0, 0, 0, 0.8);
+    fill: white;
     width: 2rem;
     height: 2rem;
 }

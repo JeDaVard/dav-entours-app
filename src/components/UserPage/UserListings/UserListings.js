@@ -2,6 +2,7 @@ import React from "react";
 import classes from './UserListings.module.css'
 import {Link} from "react-router-dom";
 import moment from "moment";
+import ThumbedImage from "../../../utils/ImageLoading/ThumbedImage";
 
 const UserListings = ({ tours }) => {
     return (
@@ -13,10 +14,12 @@ const UserListings = ({ tours }) => {
                     {tours.map(tour => (
                         <div className={classes.UserPage__listing} key={tour._id}>
                             <Link to={{pathname: `/tour/${tour.slug}`}}>
-                                <div className={classes.UserPage__listingImage}>
-                                    <img
-                                        src={`${process.env.REACT_APP_SERVER}/images/tour/${tour.imageCover}`}
+                                <div className={classes.UserPage__listingImageFrame}>
+                                    <ThumbedImage
+                                        src={tour.imageCover}
+                                        className={classes.UserPage__listingImage}
                                         alt={tour.name}
+                                        blur
                                     />
                                 </div>
                             </Link>

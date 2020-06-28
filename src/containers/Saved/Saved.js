@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Query } from 'react-apollo';
-import { FETCH_SAVED } from './queries';
+import {Query, useMutation} from 'react-apollo';
+import {FETCH_SAVED, REMOVE_SAVED_TOUR} from './queries';
 import moment from 'moment';
 import classes from './Saved.module.css';
 import Justicon from '../../components/UI/Justicon';
@@ -10,8 +10,10 @@ import TopLoading from '../../components/UI/TopLoading/TopLoading';
 import ThumbedImage from "../../utils/ImageLoading/ThumbedImage";
 
 function Saved() {
+    const [ removeSavedTour, {loading} ] = useMutation(REMOVE_SAVED_TOUR)
     return (
         <section className="row">
+            { loading && <TopLoading /> }
             <div className={classes.Saved}>
                 <h1 className={classes.Saved__name}>Saved</h1>
                 <Separator margin={'0 2'} color={'normal'} />
@@ -21,10 +23,9 @@ function Saved() {
                             ({loading, error, data}) => {
                                 if (loading) return <TopLoading />
                                 if (error) return <h1>Error while fetching saved tours</h1>
-                                const saved = data.tours
                                 return (
                                     <>
-                                        {saved.slice(3).map((tour) => (
+                                        {data.me.saved.map((tour) => (
                                             <div
                                                 className={classes.Saved__item}
                                                 key={tour.slug}
@@ -33,28 +34,25 @@ function Saved() {
                                                     <div className={classes.Saved__imageFrame}>
                                                         <div className={classes.Saved__box1}>
                                                             <ThumbedImage
-                                                                src={`${process.env.REACT_APP_SERVER}/images/tour/${tour.images[0]}`}
-                                                                thumb={`${process.env.REACT_APP_SERVER}/images/tour/${tour.images[0].slice(0, tour.images[0].length-4)}.thumb.jpeg`} blur={true}
+                                                                src={tour.images[0]}
                                                                 className={classes.Saved__image}
                                                                 alt={tour.name}
-                                                            />
+                                                                blur />
                                                         </div>
                                                         <div className={classes.Saved__box2}>
                                                             <div className={classes.Saved__box2c1}>
-                                                                <ThumbedImage
-                                                                    src={`${process.env.REACT_APP_SERVER}/images/tour/${tour.images[1]}`}
-                                                                    thumb={`${process.env.REACT_APP_SERVER}/images/tour/${tour.images[1].slice(0, tour.images[1].length-4)}.thumb.jpeg`} blur={true}
-                                                                    className={classes.Saved__image}
-                                                                    alt={tour.name}
-                                                                />
+                                                                 <ThumbedImage
+                                                                src={tour.images[1]}
+                                                                className={classes.Saved__image}
+                                                                alt={tour.name}
+                                                                blur />
                                                             </div>
                                                             <div className={classes.Saved__box2c2}>
-                                                                <ThumbedImage
-                                                                    src={`${process.env.REACT_APP_SERVER}/images/tour/${tour.images[2]}`}
-                                                                    thumb={`${process.env.REACT_APP_SERVER}/images/tour/${tour.images[2].slice(0, tour.images[2].length-4)}.thumb.jpeg`} blur={true}
-                                                                    className={classes.Saved__image}
-                                                                    alt={tour.name}
-                                                                />
+                                                                 <ThumbedImage
+                                                                src={tour.images[2]}
+                                                                className={classes.Saved__image}
+                                                                alt={tour.name}
+                                                                blur />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -84,16 +82,34 @@ function Saved() {
                                                     </div>
                                                 </div>
                                                 <div>
-                                                    <Link to={`/tour/${tour.slug}`}>
-                                                        <div className={classes.Saved__remove}>
+                                                    <button onClick={e => {
+                                                        e.preventDefault();
+                                                        removeSavedTour({
+                                                            variables: {
+                                                                id: tour._id
+                                                            },
+                                                            update(cache, res) {
+                                                                console.log(res.data.removeSavedTour)
+                                                                const { me } = cache.readQuery({query: FETCH_SAVED})
+                                                                cache.writeQuery({
+                                                                    query: FETCH_SAVED,
+                                                                    data: { me: {
+                                                                            ...me,
+                                                                            saved: res.data.removeSavedTour
+                                                                        }
+                                                                    }
+                                                                })
+                                                            }
+                                                        })
+                                                    }}
+                                                        className={classes.Saved__remove}>
                                                             <Justicon
-                                                                icon={'trash'}
+                                                                icon={'heart'}
                                                                 className={
                                                                     classes.Saved__removeIcon
                                                                 }
                                                             />
-                                                        </div>
-                                                    </Link>
+                                                    </button>
                                                 </div>
                                             </div>
                                         ))}

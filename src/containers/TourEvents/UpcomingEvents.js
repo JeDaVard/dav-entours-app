@@ -15,11 +15,10 @@ function UpcomingEvents(props) {
                     <Link to={`/tour/${tour.slug}`}>
                         <div className={classes.UpcomingEvents__imageFrame}>
                             <ThumbedImage
-                                src={`${process.env.REACT_APP_SERVER}/images/tour/${tour.imageCover}`}
-                                thumb={`${process.env.REACT_APP_SERVER}/images/tour/${tour.imageCover.slice(0, tour.imageCover.length-4)}.thumb.jpeg`} blur={true}
+                                src={tour.imageCover}
                                 className={classes.UpcomingEvents__image}
                                 alt={tour.name}
-                            />
+                                blur />
                         </div>
                     </Link>
                     <div className={classes.UpcomingEvents__info}>

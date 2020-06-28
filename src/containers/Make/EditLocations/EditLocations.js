@@ -183,7 +183,6 @@ function EditLocations(props) {
 }
 
 const mSTP = s => ({
-    isMobile: s.ui.display.isMobile,
     newLocation: s.searchLocation.selLoc,
 })
 const mDTP = d => ({

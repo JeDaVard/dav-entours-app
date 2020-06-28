@@ -151,8 +151,4 @@ function EditHeading(props) {
     )
 }
 
-const mSTP = s => ({
-    isMobile: s.ui.display.isMobile,
-})
-
-export default connect(mSTP)(EditHeading)
+export default EditHeading

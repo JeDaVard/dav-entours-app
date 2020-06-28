@@ -1,0 +1,93 @@
+.coverImage {
+    outline: none;
+    border: none;
+    width: 100%;
+    padding-bottom: 65%;
+    position: relative;
+    background: transparent;
+    height: 0.01px;
+    overflow: hidden;
+}
+
+.coverImageFrame {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #3db062;
+    overflow: hidden;
+    padding: .6rem;
+    border-radius: 1rem;
+    transition: all .2s;
+    /*overflow: hidden;*/
+}
+
+.coverImageFrameActive {
+    background: #eeeeee;
+    border: 1px solid #eeeeee;
+}
+
+.coverImagePreview {
+    border-radius: .6rem;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all .4s;
+}
+
+.coverDragPlaceHolder {
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: transparent;
+    border-radius: 1rem;
+    transition: all .2s;
+}
+
+.coverDragPlaceHolder h2 {
+    animation: animateUpload 1s;
+    color: #64be81;
+}
+.coverDragIcon {
+    width: 6rem;
+    height: 6rem;
+    fill: #64be81;
+    animation: animateUploadIconHover .7s .6s;
+}
+
+.coverDragPlaceHolderActive {
+    background: transparent;
+}
+
+.coverDragPlaceHolderActive .coverDragIcon {
+    animation: animateUploadIconHover .7s infinite;
+}
+
+.coverDragIconActive {
+    animation: animateUploadIconHover .7s infinite;
+}
+
+@keyframes animateUpload {
+    0% {
+        opacity: 0;
+        transform: scale(1.2) translateY(100%);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0%);
+    }
+}
+
+@keyframes animateUploadIconHover {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+}

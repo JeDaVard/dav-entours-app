@@ -2,6 +2,7 @@ import React from "react";
 import moment from "moment";
 import classes from './UserReviews.module.css';
 import {Link} from "react-router-dom";
+import ThumbedImage from "../../../utils/ImageLoading/ThumbedImage";
 
 const UserReviews = ({ reviews }) => {
     return (
@@ -21,7 +22,12 @@ const UserReviews = ({ reviews }) => {
                                 <h5>{moment(review.createdAt).format('DD MMM YYYY')}</h5>
                             </div>
                             <Link to={loc => ({...loc, pathname: `/tour/${review.tour.slug}`})}>
-                                <img src={`${process.env.REACT_APP_SERVER}/images/tour/${review.tour.imageCover}`} alt={review.tour.name}/>
+                                <ThumbedImage
+                                    src={review.tour.imageCover}
+                                    className={classes.UserReviews__tourImage}
+                                    alt={review.tour.name}
+                                    blur
+                                />
                             </Link>
                         </div>
                         <p>{review.review}</p>

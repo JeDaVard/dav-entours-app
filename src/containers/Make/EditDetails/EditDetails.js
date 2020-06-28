@@ -101,9 +101,4 @@ function EditDetails(props) {
     )
 }
 
-
-const mSTP = s => ({
-    isMobile: s.ui.display.isMobile,
-})
-
-export default connect(mSTP)(EditDetails)
+export default EditDetails

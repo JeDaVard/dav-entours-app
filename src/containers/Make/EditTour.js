@@ -1,5 +1,6 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import { NavLink, Route, Switch, useParams } from 'react-router-dom';
+import { connect } from 'react-redux';
 import { useQuery } from "@apollo/react-hooks";
 import classes from './EditTour.module.css';
 import { FETCH_EDIT_TOUR } from "./queries";
@@ -9,9 +10,6 @@ import EditLocations from "./EditLocations/EditLocations";
 import EditGallery from "./EditGallery/EditGallery";
 import EditDetails from "./EditDetails/EditDetails";
 import TopLoading from "../../components/UI/TopLoading/TopLoading";
-import NavButton from "../../components/UI/NavButton/NavButton";
-import Justicon from "../../components/UI/Justicon";
-import SimpleMobileTop from "./SimpleMobileTop";
 
 function EditTour(props) {
     const { slug } = useParams();
@@ -67,14 +65,22 @@ function EditTour(props) {
                 </div>
             </div>
             <Switch>
-                <Route path="/tour/:slug/edit/heading" render={_ => <EditHeading {...data.me.myTour} />}/>
-                <Route path="/tour/:slug/edit/locations" render={_ => <EditLocations {...data.me.myTour} />} />
-                <Route path="/tour/:slug/edit/gallery" render={_ => <EditGallery {...data.me.myTour} />} />
-                <Route path="/tour/:slug/edit/details" render={_ => <EditDetails {...data.me.myTour} />} />
+                <Route path="/tour/:slug/edit/heading"
+                       render={_ => <EditHeading {...data.me.myTour} isMobile={props.isMobile}/>}/>
+                <Route path="/tour/:slug/edit/locations"
+                       render={_ => <EditLocations {...data.me.myTour} isMobile={props.isMobile} />} />
+                <Route path="/tour/:slug/edit/gallery"
+                       render={_ => <EditGallery {...data.me.myTour} isMobile={props.isMobile} />} />
+                <Route path="/tour/:slug/edit/details"
+                       render={_ => <EditDetails {...data.me.myTour} isMobile={props.isMobile} />} />
             </Switch>
             <div className={classes.bottomPadding} />
         </div>
     )
 }
 
-export default EditTour
+const mSTP = s => ({
+    isMobile: s.ui.display.isMobile,
+})
+
+export default connect(mSTP)(EditTour)

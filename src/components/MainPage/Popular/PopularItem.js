@@ -5,6 +5,7 @@ import classes from './PopularItem.module.css';
 import ThumbedImage from "../../../utils/ImageLoading/ThumbedImage";
 import {FETCH_TOUR} from "../../../containers/TourContainer/queries";
 import {FETCH_USER} from "../../../containers/UserContainer/queries";
+import {Link} from "react-router-dom";
 
 export default ({ popular }) => {
     return (
@@ -17,10 +18,10 @@ export default ({ popular }) => {
                         query={FETCH_TOUR}
                     >
                         <ThumbedImage
-                            src={`${process.env.REACT_APP_SERVER}/images/tour/${popular.imageCover}`}
-                            thumb={`${process.env.REACT_APP_SERVER}/images/tour/${popular.imageCover.slice(0, popular.imageCover.length-4)}.thumb.jpeg`} blur={true}
+                            src={popular.imageCover}
                             className={classes.Popular__image}
                             alt={popular.name}
+                            blur
                         />
                     </PreloadLink>
                     {new Date() - new Date(popular.createdAt) <
