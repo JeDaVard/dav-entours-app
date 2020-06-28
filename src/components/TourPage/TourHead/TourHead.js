@@ -4,9 +4,21 @@ import '../animation.css';
 import ThumbedImage from '../../../utils/ImageLoading/ThumbedImage';
 import moment from "moment";
 import Justicon from "../../UI/Justicon";
+import {useMutation} from "react-apollo";
+import { SAVE_TOUR } from "../../../containers/Saved/queries";
 
 function TourHead(props) {
     const { tour } = props;
+    const [ saveTour, {loading} ] = useMutation(SAVE_TOUR)
+    const onSaveTour = e => {
+        e.preventDefault();
+
+        saveTour({
+            variables: {
+                id: tour._id
+            }
+        })
+    }
 
     return (
         <div className={classes.TourHead__cover}>
@@ -23,7 +35,7 @@ function TourHead(props) {
                         <Justicon icon={'upload'} className={classes.TourHead__shareIcon}/>
                         <b>Share</b>
                     </button>
-                    <button  className={classes.TourHead__share}>
+                    <button onClick={onSaveTour} className={classes.TourHead__share}>
                         <Justicon icon={'heart'} className={classes.TourHead__shareIcon}/>
                         <b>Save</b>
                     </button>

@@ -41,3 +41,23 @@ export const REMOVE_SAVED_TOUR = gql`
 		}
 	}
 `
+
+export const SAVE_TOUR = gql`
+	mutation saveTour($id: ID!) {
+		saveTour(id: $id) {
+			_id
+			slug
+			name
+			images
+			ratingsAverage
+			startDates
+			startLocation {
+				description
+			}
+			maxGroupSize
+			participants {
+				_id
+			}
+		}
+	}
+`

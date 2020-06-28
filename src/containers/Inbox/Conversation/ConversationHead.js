@@ -33,7 +33,7 @@ function ConversationHead({guides, participants, tour}) {
                 </div>
                 <div className={classes.ConversationHead__tour}>
                     <div className={classes.ConversationHead__tourImage}>
-                        <img src={`${process.env.REACT_APP_SERVER}/images/tour/${tour.imageCover}`} alt={tour.name} />
+                        <img src={`${process.env.REACT_APP_CDN}/${tour.imageCover}`} alt={tour.name} />
                     </div>
                     <div className={classes.ConversationHead__tourDetail}>
                         <div className={classes.ConversationHead__tourName}>

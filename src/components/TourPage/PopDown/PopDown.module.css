@@ -30,6 +30,7 @@
 .PopDown__content {
     color: rgba(0, 0, 0, 0.75);
     display: flex;
+    /*flex: 1;*/
     justify-content: space-between;
     align-items: center;
 }
@@ -41,7 +42,7 @@
     border-radius: 24px;
 }
 
-.PopDown__user img {
+.PopDown__image {
     width: 44px;
     height: 44px;
     object-fit: cover;

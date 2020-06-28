@@ -2,6 +2,7 @@ import React, {useCallback, useEffect, useState} from "react";
 import classes from './PopDown.module.css';
 import AnimatedButton from "../../UI/AnimatedButton/AnimatedButton";
 import Justicon from "../../UI/Justicon";
+import ThumbedImage from "../../../utils/ImageLoading/ThumbedImage";
 
 function PopDown(props) {
     const [showPopDown, setShowPopDown] = useState({
@@ -36,7 +37,13 @@ function PopDown(props) {
             <div className="row">
                 <div className={classes.PopDown__content}>
                     <div className={classes.PopDown__user}>
-                        <img src={props.tour.imageCover && `${process.env.REACT_APP_SERVER}/images/tour/${props.tour.imageCover}`} alt="user"/>
+                        <div>
+                            <ThumbedImage
+                                src={props.tour.imageCover}
+                                className={classes.PopDown__image}
+                                alt={'A tour you will like'}
+                                blur />
+                        </div>
                         <h3>{props.tour.name}</h3>
                         <div className={classes.PopDown__rating}>
                             <p><b>{props.tour.ratingsAverage}</b></p>

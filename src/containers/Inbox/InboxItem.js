@@ -18,7 +18,7 @@ function InboxItem() {
                         <Link to={loc => ({...loc, pathname: `/inbox/${conversation._id}`, state: { convId: conversation._id}})} key={conversation._id}>
                             <div className={classes.InboxItem__conversation}>
                                 <div className={classes.InboxItem__image}>
-                                    <img src={`${process.env.REACT_APP_SERVER}/images/tour/${conversation.tour.imageCover}`} className={classes.InboxItem__tourImage} alt={conversation.tour.name}/>
+                                    <img src={`${process.env.REACT_APP_CDN}/${conversation.tour.imageCover}`} className={classes.InboxItem__tourImage} alt={conversation.tour.name}/>
                                     <img src={`${process.env.REACT_APP_SERVER}/images/user/${conversation.guides[0].photo}`} className={classes.InboxItem__userImage} alt={conversation.guides[0].name}/>
                                 </div>
                                 <div className={classes.InboxItem__mainBlock}>

@@ -24,7 +24,7 @@ function Popular() {
                                 if (error) return (process.env.NODE_ENV === 'production' ? <h1>Error while fetching popular items</h1> : error.message)
                                 return (
                                         <>
-                                            {data.tours.slice(0,4).map( tour => (
+                                            {data.tours.map( tour => (
                                                 <PopularItem popular={tour} key={tour._id} />
                                             ))}
                                         </>
