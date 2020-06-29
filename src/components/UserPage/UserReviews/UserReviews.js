@@ -6,13 +6,13 @@ import ThumbedImage from "../../../utils/ImageLoading/ThumbedImage";
 
 const UserReviews = ({ reviews }) => {
     return (
-        <section className={classes.UserPage__stuff}>
-            <div className={classes.UserPage__reviews}>
+        <section className={classes.stuff}>
+            <div className={classes.reviews}>
                 <h1>{reviews.length} reviews</h1>
 
                 {reviews.map( review => (
-                    <div className={classes.UserPage__reviewContent} key={review._id}>
-                        <div className={classes.UserPage__participated}>
+                    <div className={classes.reviewContent} key={review._id}>
+                        <div className={classes.participated}>
                             <div>
                                 <h6>Participated&nbsp;
                                     <Link to={loc => ({...loc, pathname: `/tour/${review.tour.slug}`})}>
@@ -28,10 +28,13 @@ const UserReviews = ({ reviews }) => {
                                 {/*    alt={review.tour.name}*/}
                                 {/*    blur*/}
                                 {/*/>*/}
+                                <img src={`${process.env.REACT_APP_CDN}/${review.tour.imageCover}`}
+                                     className={classes.UserReviews__tourImage}
+                                     alt={review.tour.name}/>
                             </Link>
                         </div>
                         <p>{review.review}</p>
-                        <div className={classes.UserPage__reviewer}>
+                        <div className={classes.reviewer}>
                             <Link to={{pathname: `/user/${review.author._id}`}}>
                                 <img src={`${process.env.REACT_APP_SERVER}/images/user/${review.author.photo}`} alt={review.author.name}/>
                             </Link>

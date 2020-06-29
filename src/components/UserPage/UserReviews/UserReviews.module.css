@@ -1,41 +1,41 @@
-.UserPage__stuff {
+.stuff {
 }
 
-.UserPage__stuff h1 {
+.stuff h1 {
     font-weight: 500;
     font-size: 2rem;
     margin: 1rem 0;
 }
 
-.UserPage__reviews {
+.reviews {
 
 }
 
-.UserPage__reviewContent {
+.reviewContent {
     padding-bottom: 2rem;
 }
 
-.UserPage__reviewContent a {
+.reviewContent a {
     color: rgba(0, 0, 0, 0.8);
     text-decoration: none;
     transition: all .2s;
 }
 
-.UserPage__reviewContent a:hover,
-.UserPage__reviewContent a:visited,
-.UserPage__reviewContent a:active {
+.reviewContent a:hover,
+.reviewContent a:visited,
+.reviewContent a:active {
     color: rgba(0, 0, 0, 0.6);
 }
 
-.UserPage__reviewContent:not(:first-of-type) {
+.reviewContent:not(:first-of-type) {
     padding-top: 2rem;
 }
 
-.UserPage__reviewContent:not(:last-of-type) {
+.reviewContent:not(:last-of-type) {
     border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 }
 
-.UserPage__participated {
+.participated {
     display: flex;
     justify-content: space-between;
 }
@@ -47,35 +47,35 @@
     border-radius: 3px;
 }
 
-.UserPage__participated a {
+.participated a {
     color: rgba(0, 0, 0, 0.6);
 }
 
-.UserPage__participated h6 {
+.participated h6 {
     font-size: 1.2rem;
     padding: .4rem;
     font-weight: 400;
     color: rgba(0, 0, 0, 0.5);
 }
 
-.UserPage__reviewContent h5 {
+.reviewContent h5 {
     font-size: 1.2rem;
     padding: .4rem;
     font-weight: 700;
 }
 
-.UserPage__reviewContent p {
+.reviewContent p {
     font-size: 1.5rem;
     line-height: 2rem;
     padding: .5rem .5rem .5rem 0;
 }
 
-.UserPage__reviewer {
+.reviewer {
     display: flex;
     padding: .5rem .5rem .5rem 0;
 }
 
-.UserPage__reviewer img {
+.reviewer img {
     margin-right: 1.2rem;
     width: 42px;
     height: 42px;
@@ -83,7 +83,7 @@
     border-radius: 50%;
 }
 
-.UserPage__reviewer p {
+.reviewer p {
     font-size: 1.4rem;
     padding: 0;
 }
