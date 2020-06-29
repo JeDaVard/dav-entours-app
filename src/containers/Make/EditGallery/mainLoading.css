@@ -1,0 +1,22 @@
+.mainLoading {
+    position:absolute;
+    top: 0;
+    height: 100%;
+    background: #4fc877
+    linear-gradient(to right, #4fc877, #4fc877, #3ecdbd, #4fc877, #4fc877);
+    background-size: 500%;
+    animation: .5s linear infinite LProgress;
+    transform-origin: right;
+    width: 100%;
+    z-index: -1;
+    transition: all .6s;
+}
+
+@keyframes LProgress {
+    0% {
+        background-position: 125% 0;
+    }
+    to {
+        background-position: 0 0;
+    }
+}

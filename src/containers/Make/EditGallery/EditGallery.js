@@ -1,5 +1,6 @@
 import React, { useCallback, useState } from "react";
 import { useHistory } from 'react-router-dom';
+import axios from 'axios';
 import classes from './EditGallery.module.css'
 import { EDIT_TOUR_GALLERY, UPLOAD_IMAGE } from "../queries";
 import SimpleMobileTop from "../SimpleMobileTop";
@@ -21,6 +22,8 @@ function EditGallery(props) {
         images: false
     });
 
+    const [ percent, setPercent ] = useState({cover: 0, images: 0})
+
     const [ mutateGallery] = useMutation(EDIT_TOUR_GALLERY);
 
     const onCoverDrop = useCallback(async ([file]) => {
@@ -37,12 +40,20 @@ function EditGallery(props) {
 
         const { key, url } = res.data.uploadImage;
 
-        await fetch(url, {
-            method: 'PUT',
+        await axios.put(url, file,{
             headers: {
                 'Content-Type': file.type
             },
-            body: file,
+            onUploadProgress: (event) => {
+                // console.log(event);
+                // console.log(Math.floor(event.loaded * 100 / event.total), event.total)
+                const p = Math.floor(event.loaded * 100 / event.total)
+                if (p < 100) {
+                    setPercent({images: 0, cover: p})
+                } else {
+                    setPercent({images: 0, cover: 0})
+                }
+            }
         })
 
         await mutateGallery({
@@ -65,12 +76,18 @@ function EditGallery(props) {
 
         const { key, url } = res.data.uploadImage;
 
-        await fetch(url, {
-            method: 'PUT',
+        await axios.put(url, file,{
             headers: {
                 'Content-Type': file.type
             },
-            body: file,
+            onUploadProgress: (event) => {
+                const p = Math.floor(event.loaded * 100 / event.total)
+                if (p < 100) {
+                    setPercent({images: p, cover: 0})
+                } else {
+                    setPercent({images: 0, cover: 0})
+                }
+            }
         })
 
         await mutateGallery({
@@ -137,6 +154,7 @@ function EditGallery(props) {
                     loading={loading}
                     imageCover={imageCover}
                     removeImage={removeImage}
+                    percent={percent.cover}
                 />
                 <EditImages
                     getRootProps={GRP}
@@ -145,6 +163,7 @@ function EditGallery(props) {
                     removeImage={removeImage}
                     images={reversedImages}
                     loading={loading}
+                    percent={percent.images}
                 />
                     {submissionUI}
             </form>

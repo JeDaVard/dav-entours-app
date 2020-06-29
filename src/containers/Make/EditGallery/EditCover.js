@@ -12,12 +12,14 @@ export default function EditCover(props) {
         isDragActive,
         imageCover,
         loading,
-        removeImage
+        removeImage,
+        percent
     } = props;
     return (
         <div {...getRootProps({ className: classes.coverImage})}>
             <input {...getInputProps()} multiple={false} name="cover"/>
             <div className={cx(classes.coverImageFrame, {[classes.coverImageFrameActive]: isDragActive && !loading.images &&!loading.cover})}>
+                {percent !== 0 && <div className="mainLoading" style={{transform: `scaleX(${1.02-percent/100})`}}/>}
                 {imageCover ? (
                     <>
                         <img src={`${process.env.REACT_APP_CUN}/${imageCover}`}

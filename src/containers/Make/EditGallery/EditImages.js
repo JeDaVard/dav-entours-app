@@ -3,6 +3,8 @@ import classes from './EditImages.module.css';
 import classNames from 'classnames/bind'
 import Justicon from "../../../components/UI/Justicon";
 import ImageControls from "./ImageControls";
+import TopLoading from "../../../components/UI/TopLoading/TopLoading";
+import './mainLoading.css'
 const cx = classNames.bind(classes)
 
 export default function EditImages(props) {
@@ -12,7 +14,8 @@ export default function EditImages(props) {
         isDragActive,
         loading,
         images,
-        removeImage
+        removeImage,
+        percent
     } = props;
 
     return (
@@ -20,6 +23,7 @@ export default function EditImages(props) {
             <input {...getInputProps()} multiple={false} name="images"/>
             <div className={classes.imagesFrame}>
                 <div className={classes.containerDrag}>
+                    {percent !== 0 && <div className="mainLoading" style={{transform: `scaleX(${1-percent/100})`}}/>}
                     <div className={cx(classes.contentDrag, {[classes.contentDragActive]: isDragActive && !loading.images &&!loading.cover})}>
                         <Justicon icon={'upload-cloud'}
                                   className={cx(classes.imagesDragIcon, {[classes.imagesDragIconActive]: loading.images})}/>

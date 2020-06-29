@@ -38,7 +38,8 @@
 }
 
 .containerDrag {
-    border: 1px solid #3db062;
+    border: 1px solid #4fc877;
+    overflow: hidden;
     border-radius: .5rem;
     margin-right: 1px;
     margin-bottom: 1px;
@@ -59,6 +60,16 @@
     left: 0;
     bottom: 0;
     right: 0;
+}
+
+.contentDrag:before {
+    content: '';
+    background: white;
+    width: 95%;
+    height: 95%;
+    position: absolute;
+    border-radius: .3rem;
+    z-index: -1;
 }
 
 .imagesFrame {

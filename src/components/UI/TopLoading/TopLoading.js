@@ -4,7 +4,7 @@ import './animation.css';
 
 const TopLoading = () => {
     return (
-        <div className="topLoading"> </div>
+        <div className="topLoading" />
     )
 }
 
