@@ -1,4 +1,4 @@
-.ConversationHead__head {
+.head {
     z-index: 900;
     background: rgba(255, 255, 255, 0.9);
     position: fixed;
@@ -7,7 +7,7 @@
     /*top: 0;*/
 }
 
-.ConversationHead__head:before {
+.head:before {
     content: '';
     position: absolute;
     width: 100%;
@@ -16,7 +16,7 @@
     z-index: -1;
 }
 
-.ConversationHead__user {
+.user {
     justify-content: center;
     display: flex;
     flex-direction: row;
@@ -27,57 +27,57 @@
     /*border-top: 1px solid rgba(0, 0, 0, 0.1);*/
 }
 
-.ConversationHead__user img {
+.user img {
     width: 22px;
     height: 22px;
     border-radius: 50%;
     margin-right: .5rem;
 }
 
-.ConversationHead__user h4 {
+.user h4 {
     font-size: 1.2rem;
 }
 
-.ConversationHead__tourTitle {
+.tourTitle {
     padding-top: .6rem;
     text-align: center;
 }
-.ConversationHead__tourTitle h2 {
+.tourTitle h2 {
     font-size: 1.6rem;
     font-weight: 500;
 }
 
-.ConversationHead__tour {
+.tour {
     display: flex;
     align-items: center;
     padding-bottom: 1rem;
 }
 
-.ConversationHead__tourImage {
+.tourImage {
 }
 
-.ConversationHead__tourImage img {
+.tourImage img {
     width: 4.8rem;
     height: 4.8rem;
     object-fit: cover;
     border-radius: 50%;
 }
 
-.ConversationHead__tourDetail {
+.tourDetail {
     margin-left: 1.4rem;
     flex: 1;
 }
 
-.ConversationHead__tourName {
+.tourName {
     font-size: 1.4rem;
     font-weight: 400;
 }
 
-.ConversationHead__tourOrder {
+.tourOrder {
     font-size: 1.2rem;
     color: rgba(0, 0, 0, 0.6);
 }
 
-.ConversationHead__tourButton {
+.tourButton {
     /*justify-self: flex-end;*/
 }

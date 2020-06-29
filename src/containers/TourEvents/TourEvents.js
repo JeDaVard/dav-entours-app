@@ -15,7 +15,7 @@ function TourEvents(props) {
     return (
         <section className="row">
             <div className={classes.TourEvents}>
-                <h1 className={classes.TourEvents__name}>Tours</h1>
+                <h1 className={classes.name}>Tours</h1>
                     <Tabs defaultTab={tabParam}>
                         <Tab label={'upcoming'} tabName={'Upcoming'}>
                             <Query query={FETCH_TOUR_EVENTS}>

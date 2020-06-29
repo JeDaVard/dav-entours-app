@@ -1,7 +1,7 @@
-.Top__usercontainer a {
+.userContainer a {
 }
 
-.Top__user {
+.user {
     position: relative;
     margin: 1rem 2rem 1rem 0;
     display: flex;
@@ -16,11 +16,11 @@
     cursor: pointer;
 }
 
-.Top__user a {
+.user a {
     text-decoration: none;
 }
 
-.Top__imageFrame {
+.imageFrame {
     margin-left: 1rem;
     shape-outside: circle(50% at 50% 50%);
     clip-path: circle(50% at 50% 50%);
@@ -30,7 +30,7 @@
     border-radius: 50%;
 }
 
-.Top__userImage {
+.userImage {
     width: 10rem;
     height: 10rem;
     border-radius: 50%;
@@ -38,7 +38,7 @@
     transition: all .2s;
 }
 
-.Top__rating {
+.rating {
     position: absolute;
     background: transparent;
     padding: 1rem;
@@ -52,27 +52,27 @@
     color: #222222;
 }
 
-.Top__rating img {
+.rating img {
     width: 16px;
 }
 
-.Top__rating h2 {
+.rating h2 {
     color: #3db062;
     font-size: 2rem;
     margin: -.8rem 0 -.4rem
 }
 
-.Top__rating p {
+.rating p {
     color: #804115;
     font-size: 1.2rem;
     opacity: .8;
 }
 
-.Top__userinfo {
+.userinfo {
     margin-left: .5rem;
 }
 
-.Top__userinfoImg {
+.userinfoImg {
     box-sizing: initial;
     width: 14px;
     height: 14px;
@@ -83,7 +83,7 @@
     border-radius: 50%;
 }
 
-.Top__userinfo h3 {
+.userinfo h3 {
     display: flex;
     align-items: center;
     color: #444444;
@@ -93,24 +93,24 @@
     transition: all .1s;
 }
 
-.Top__userinfoDetails {
+.userinfoDetails {
     margin-top: -.5rem;
     font-size: 1.3rem;
     padding: .2rem .6rem;
 }
 
-.Top__user:hover .Top__userinfo h3 {
+.user:hover .userinfo h3 {
     color: #555555;
 }
 
-.Top__user:hover .Top__userImage {
+.user:hover .userImage {
     transform: scale(1);
 }
 
-/*.Top__user:hover  {*/
+/*.user:hover  {*/
 /*    filter: brightness(1.1);*/
 /*}*/
 
-.Top__user:active {
+.user:active {
     box-shadow: 1px 0 4px rgba(0, 0, 0, 0.14);
 }

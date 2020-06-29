@@ -55,7 +55,7 @@ function Conversation() {
                 participants={conversation.participants}
                 guides={conversation.guides}
             />
-            <div className={classes.Conversation__main}>
+            <div className={classes.main}>
                     <Query query={FETCH_MESSAGES}
                            variables={{id, limit: 12}}
                            fetchPolicy="network-only"
@@ -111,7 +111,7 @@ function Conversation() {
                         }}
                     </Query>
             </div>
-            <div className={classes.Conversation__bottom}>
+            <div className={classes.bottom}>
                 <MessageInput convId={id} />
             </div>
         </div>

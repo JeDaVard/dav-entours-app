@@ -11,7 +11,7 @@ function AnimatedValidation(props) {
             classNames='invalid'
             unmountOnExit
         >
-            <p className={classes.LoginForm__invalid}>
+            <p className={classes.invalid}>
                 {props.children}
             </p>
         </CSSTransition>

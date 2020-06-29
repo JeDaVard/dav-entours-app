@@ -10,12 +10,12 @@ function Top(props) {
     return (
         <section className={classes.Top}>
             <div className="row">
-                <div className={classes.Top__title}>
+                <div className={classes.title}>
                     <h3>Top tourmakers</h3>
                     <p>Monthly most active tourmaker</p>
                 </div>
 
-                <div className={classes.Top__content}>
+                <div className={classes.content}>
                     <Query query={FETCH_TOP_USERS}>
                         {
                             ({loading, error, data}) => {

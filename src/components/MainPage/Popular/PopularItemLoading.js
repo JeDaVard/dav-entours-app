@@ -3,8 +3,8 @@ import classes from "./PopularItemLoading.module.css";
 import ContentLoader from "react-content-loader";
 
 export default () => (
-    <div className={classes.PopularItemLoading__itemcontainer}>
-        <div className={classes.PopularItemLoading__tour}>
+    <div className={classes.itemContainer}>
+        <div className={classes.tour}>
             <ContentLoader
                 height={'100%'}
                 width={'100%'}

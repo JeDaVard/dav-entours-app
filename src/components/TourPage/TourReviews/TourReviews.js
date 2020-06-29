@@ -12,25 +12,25 @@ const TourReviews = ({ tour }) => {
             <div className={classes.Reviews}>
                 <div className="row">
                             <h2>Reviews</h2>
-                            <div className={classes.Reviews__info}>
-                                <div className={classes.Reviews__rating}>
+                            <div className={classes.info}>
+                                <div className={classes.rating}>
                                     <Justicon icon={'star'}/><h3> {tour.ratingsAverage.toString().length === 1 ? tour.ratingsAverage+'.0' : tour.ratingsAverage}</h3>
                                 </div>
                                 <Separator vertical margin={'.5 .5'} color={'normal'} height={'2'}/>
-                                <div className={classes.Reviews__quantity}>
+                                <div className={classes.quantity}>
                                     <h3><b>{tour.ratingsQuantity}</b> reviews</h3>
                                 </div>
                             </div>
                         <Separator color={'normal'} margin={'2 0'}/>
-                    <div className={classes.Reviews__content}>
+                    <div className={classes.content}>
 
                         {reviews.map( review => (
-                            <div className={classes.Reviews__review} key={review._id}>
-                                <div className={classes.Reviews__reviewInfo}>
+                            <div className={classes.review} key={review._id}>
+                                <div className={classes.reviewInfo}>
                                     <Link to={{pathname: `/user/${review.author._id}`}}>
                                         <img src={`${process.env.REACT_APP_SERVER}/images/user/${review.author.photo}`} alt={review.author.name}/>
                                     </Link>
-                                    <div className={classes.Reviews__reviewer}>
+                                    <div className={classes.reviewer}>
                                         <Link to={{pathname: `/user/${review.author._id}`}}>
                                             <h3>{review.author.name}</h3>
                                         </Link>

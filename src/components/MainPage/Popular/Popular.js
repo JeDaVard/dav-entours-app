@@ -9,7 +9,7 @@ function Popular() {
     return (
         <section className={classes.Popular}>
             <div className="row">
-                <div className={classes.Popular__content}>
+                <div className={classes.content}>
                     <Query query={FETCH_POPULAR}>
                         {
                             ({ loading, error, data }) => {

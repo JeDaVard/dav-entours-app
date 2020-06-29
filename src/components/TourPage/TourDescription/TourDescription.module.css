@@ -3,29 +3,29 @@
     color: rgba(0, 0, 0, 0.8);
 }
 
-.TourDescription__content {
+.content {
     display: flex;
     flex-direction: column;
     padding-bottom: 2rem;
 }
 
 
-.TourDescription__left {
+.left {
     padding: 2rem;
     flex: 0 0 50%;
 }
 
-.TourDescription__left h2 {
+.left h2 {
     font-size: 2rem;
     padding: 2rem;
 }
 
-.TourDescription__users a {
+.users a {
     text-decoration: none;
     color: rgba(0, 0, 0, 0.81);
 }
 
-.TourDescription__user {
+.user {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -36,20 +36,20 @@
     transition: all .2s;
 }
 
-.TourDescription__user:hover,
-.TourDescription__user:visited,
-.TourDescription__user:active {
+.user:hover,
+.user:visited,
+.user:active {
     color: rgba(0, 0, 0, 0.6);
 }
 
-.TourDescription__user:hover img,
-.TourDescription__user:visited img,
-.TourDescription__user:active img {
+.user:hover img,
+.user:visited img,
+.user:active img {
     filter: brightness(1.1);
 }
 
 
-.TourDescription__user img {
+.user img {
     width: 48px;
     height: 48px;
     object-fit: cover;
@@ -58,21 +58,21 @@
     /*border: 2px solid rgba(0, 0, 0, 0.08);*/
 }
 
-.TourDescription__user h3 {
+.user h3 {
     font-size: 1.5rem;
     margin-left: 5px;
     font-weight: 500;
     flex: 1 1 0
 }
 
-.TourDescription__user p {
+.user p {
     opacity: .7;
     font-size: 1.4rem;
     margin-left: 5px;
     padding: 1rem;
 }
 
-.TourDescription__right {
+.right {
     padding: 2rem;
     flex: 0 0 50%;
     background: linear-gradient(to right, #f3f3f3, #ffffff);
@@ -80,25 +80,25 @@
 
 
 @media (min-width: 744px) {
-    .TourDescription__content {
+    .content {
         display: flex;
         flex-direction: row;
         padding-bottom: 0;
     }
 }
 
-.TourDescription__right h2 {
+.right h2 {
     font-size: 2rem;
     padding: 2rem 2rem 0 2rem;
 }
 
-.TourDescription__right h3 {
+.right h3 {
     font-weight: 500;
     font-size: 1.4rem;
     padding: 0 2rem 0 2rem;
 }
 
-.TourDescription__right p {
+.right p {
     opacity: .7;
     font-size: 1.5rem;
     margin-left: 5px;

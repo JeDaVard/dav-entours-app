@@ -5,23 +5,23 @@ import parentClasses from './Discover.module.css';
 import ThumbedImage from "../../../utils/ImageLoading/ThumbedImage";
 
 export default ({ tour }) => (
-    <div className={classes.Discover__post}>
+    <div className={classes.post}>
         <Link to={loc => {
             return {pathname: `/tour/${tour.slug}`}
         }}>
-            <div className={classes.Discover__imageBox}>
-                <div className={parentClasses.Discover__imageBetween}>
-                    <div className={classes.Discover__image}>
+            <div className={classes.imageBox}>
+                <div className={parentClasses.imageBetween}>
+                    <div className={classes.image}>
                         <ThumbedImage
                             src={tour.imageCover}
-                            className={classes.Discover__img}
+                            className={classes.img}
                             alt={tour.name}
                             blur
                         />
                     </div>
                 </div>
-                <div className={classes.Discover__bottom}>
-                    <div className={classes.Discover__title}>
+                <div className={classes.bottom}>
+                    <div className={classes.title}>
                         <h2>{tour.name}</h2>
                         <p>{tour.summary}</p>
                     </div>

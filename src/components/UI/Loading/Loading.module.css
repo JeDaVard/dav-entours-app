@@ -1,4 +1,4 @@
-.Loading__button {
+.button {
     width: 100%;
     position: relative;
     height: 4.5rem;
@@ -8,7 +8,7 @@
     transition: all .4s;
 }
 
-.Loading__center {
+.center {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -72,14 +72,14 @@
     }
 }
 
-.Loading__white {
+.white {
     display: inline-block;
     position: relative;
     margin-left: -20%;
     /*width: 80px;*/
     /*height: 80px;*/
 }
-.Loading__white div {
+.white div {
     position: absolute;
     /*top: 33px;*/
     width: 13px;
@@ -89,19 +89,19 @@
     animation-timing-function: cubic-bezier(0, 1, 1, 0);
 }
 
-.Loading__white div:nth-child(1) {
+.white div:nth-child(1) {
     left: 8px;
     animation: Loading1 0.5s infinite;
 }
-.Loading__white div:nth-child(2) {
+.white div:nth-child(2) {
     left: 8px;
     animation: Loading2 0.5s infinite;
 }
-.Loading__white div:nth-child(3) {
+.white div:nth-child(3) {
     left: 32px;
     animation: Loading2 0.5s infinite;
 }
-.Loading__white div:nth-child(4) {
+.white div:nth-child(4) {
     left: 56px;
     animation: Loading3 0.5s infinite;
 }

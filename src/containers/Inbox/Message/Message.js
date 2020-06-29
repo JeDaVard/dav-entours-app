@@ -35,32 +35,32 @@ function Message({data: {text, createdAt, sender, _id, isImage, convId }, own, g
     });
 
     const image = (
-        <div className={classes.Message__photoFrame}>
-            <img src={text.startsWith('http') ? text : `${process.env.REACT_APP_SERVER}/users/${sender._id}/conversations/${convId}/${text}`} alt="tour moment" className={classes.Message__photo}/>
+        <div className={classes.photoFrame}>
+            <img src={text.startsWith('http') ? text : `${process.env.REACT_APP_SERVER}/users/${sender._id}/conversations/${convId}/${text}`} alt="tour moment" className={classes.photo}/>
         </div>
     );
 
     return (
-        <div className={cx(classes.Message, {[classes.Message__own]:own})}>
-            <div className={`${classes.Message__author} ${own ? classes.Message__authorOwn  : ''}`}>
+        <div className={cx(classes.Message, {[classes.own]:own})}>
+            <div className={`${classes.author} ${own ? classes.authorOwn  : ''}`}>
                 <Link to={`/user/${sender._id}`}>
                     <img src={`${process.env.REACT_APP_SERVER}/images/user/${sender.photo}`}
-                         className={guide ? classes.Message__authorGuide : ''}
+                         className={guide ? classes.authorGuide : ''}
                          alt=""/>
                 </Link>
             </div>
-            <div className={cx(classes.Message__text, {
-                    [classes.Message__textOwn]:own,
-                    [classes.Message__textRemoved]:text === '[Removed]',
-                    [classes.Message__textOwnOptimistic]:_id.startsWith('optimistic')}
+            <div className={cx(classes.text, {
+                    [classes.textOwn]:own,
+                    [classes.textRemoved]:text === '[Removed]',
+                    [classes.textOwnOptimistic]:_id.startsWith('optimistic')}
                 )}>
 
                 {isImage && text !== '[Removed]' ? image : <p>{text}</p>}
 
-                <div className={cx(classes.Message__textOptions, {[classes.Message__textOptionsRemoved]:text === '[Removed]' })}>
+                <div className={cx(classes.textOptions, {[classes.textOptionsRemoved]:text === '[Removed]' })}>
                     <h4>{moment(createdAt).format('HH:MM | DD MMM YYYY')}</h4>
-                    {own && text !== '[Removed]' && <button onClick={() => mutate({variables: { id: _id }})} className={classes.Message__textRemove}>
-                        <Justicon icon={'trash'} className={classes.Message__textRemoveIcon} />
+                    {own && text !== '[Removed]' && <button onClick={() => mutate({variables: { id: _id }})} className={classes.textRemove}>
+                        <Justicon icon={'trash'} className={classes.textRemoveIcon} />
                     </button>}
                 </div>
             </div>

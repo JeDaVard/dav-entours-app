@@ -19,12 +19,12 @@ function Modal(props) {
             >
                 <div className={classes.Modal}>
                     <OutsideAlerter delegate={props.onClick}>
-                            <header className={classes.Modal__header}>
+                            <header className={classes.header}>
                                 <h1>{props.title}</h1>
                                 <button onClick={props.onClick}><div>&times;</div></button>
                             </header>
                             <Separator color={'light'}/>
-                            <main className={classes.Modal__main}>
+                            <main className={classes.main}>
                                 {props.children}
                             </main>
                     </OutsideAlerter>

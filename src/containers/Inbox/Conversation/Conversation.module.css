@@ -11,12 +11,12 @@
     text-decoration: none;
 }
 
-.Conversation__main {
+.main {
     flex: 1;
     background: white;
 }
 
-.Conversation__bottom {
+.bottom {
     position: fixed;
     /*bottom: 0;*/
     width: 100%;
@@ -24,7 +24,7 @@
     overflow-Y: hidden;
 }
 
-.Conversation__bottom {
+.bottom {
     margin-bottom: env(safe-area-inset-bottom);
     padding-left: env(safe-area-inset-left);
     padding-right: env(safe-area-inset-right);
@@ -33,7 +33,7 @@
 @media all
 and (display-mode: standalone)
 and (orientation: portrait) {
-    .Conversation__bottom {
+    .bottom {
         bottom: -1rem;
     }
 }
@@ -41,12 +41,12 @@ and (orientation: portrait) {
 @media all
 and (display-mode: standalone)
 and (orientation: landscape) {
-    .Conversation__bottom {
+    .bottom {
         bottom: -1.6rem;
     }
 }
 
-.Conversation__bottom:before {
+.bottom:before {
     content: '';
     position: absolute;
     top: 0;

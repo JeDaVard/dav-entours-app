@@ -14,44 +14,44 @@
     color: rgba(0, 0, 0, 0.6);
 }
 
-.Profile__top {
+.top {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.Profile__name {
+.name {
     font-size: 2.4rem;
     font-weight: 400;
 }
 
-.Profile__full {
+.full {
     font-size: 1.5rem;
     font-weight: 500;
 }
 
-.Profile__photo {
+.photo {
     width: 60px;
     height: 60px;
     object-fit: cover;
     border-radius: 50%;
 }
 
-.Profile__bottom {
+.bottom {
     text-align: center;
 }
 
-.Profile__geo a {
+.geo a {
     font-size: 1.5rem;
     display: inline-block;
     padding: 1rem;
 }
 
-.Profile__out {
+.out {
     list-style: none;
 }
 
-.Profile__out li {
+.out li {
     font-size: 1.5rem;
     color: rgba(0, 0, 0, 0.6);
     padding: 1rem;
@@ -61,31 +61,31 @@
     transition: all .2s;
 }
 
-.Profile__out li:hover,
-.Profile__out li:active {
+.out li:hover,
+.out li:active {
     background: rgba(0, 0, 0, 0.06);
 }
 
-.Profile__deactivate {
+.deactivate {
     font-size: 1.4rem;
     display: inline-block;
     padding: 1rem;
 }
 
-.Profile__makeTour {
+.makeTour {
     margin: 2rem 0 1rem 0;
 }
 
-.Profile__mainMenu {
+.mainMenu {
 
 }
 
-.Profile__mainMenu ul {
+.mainMenu ul {
     list-style: none;
     text-align: center;
 }
 
-.Profile__mainMenu li {
+.mainMenu li {
     font-size: 1.5rem;
     padding: 1rem;
     background: rgba(0, 0, 0, 0.06);
@@ -93,13 +93,13 @@
     margin-bottom: .4rem;
 }
 
-.Profile__mainMenu li:hover,
-.Profile__mainMenu li:active {
+.mainMenu li:hover,
+.mainMenu li:active {
     font-weight: 700;
     color: white;
     background: #4fc877;
 }
 
 @media screen and (min-width: 744px) {
-    .Profile__bottom { display: none }
+    .bottom { display: none }
 }

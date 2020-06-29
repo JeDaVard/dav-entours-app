@@ -33,9 +33,9 @@ function UserPage(props) {
                             if (!data.user) return <Redirect to={'/oops-not-found'}/>
                             const { user } = data;
                             return (
-                                <div className={classes.UserPage__content}>
+                                <div className={classes.content}>
                                     <ScrollToTop />
-                                    <section className={classes.UserPage__profile}>
+                                    <section className={classes.profile}>
                                         <h2>
                                             Hi, I'm{' '}
                                             {user && user.name.split(' ')[0]}
@@ -51,10 +51,10 @@ function UserPage(props) {
                                             &nbsp; {isThatMe && <Link to={'/'}>Edit profile</Link> }</h3>
                                         <p>{user.about}</p>
                                         <Separator margin={'2 2'} color={'normal'}/>
-                                        <div className={classes.UserPage__profileTop}>
+                                        <div className={classes.profileTop}>
                                             <h2>{user.name}</h2>
-                                            <div className={classes.UserPage__photoFrame}>
-                                                <div className={classes.UserPage__photo}>
+                                            <div className={classes.photoFrame}>
+                                                <div className={classes.photo}>
                                                     <img
                                                         src={`${process.env.REACT_APP_SERVER}/images/user/${user.photo}`}
                                                         alt=""
@@ -64,14 +64,14 @@ function UserPage(props) {
                                             {isThatMe && <a href="/">Update image</a> }
                                         </div>
                                         <Separator margin={'2 2'} color={'normal'}/>
-                                        <div className={classes.UserPage__stats}>
+                                        <div className={classes.stats}>
                                             <h3>
                                                 <Justicon icon={'star'} className={classes.Justicon__star}/> <b>{user.reviews.length}</b>&nbsp;Reviews
                                             </h3>
                                             <h3> <Justicon icon={'globe'} className={classes.Justicon__globe}/> Speaks - {user.speaks}</h3>
                                         </div>
                                     </section>
-                                    <div className={classes.UserPage__more}>
+                                    <div className={classes.more}>
                                         <Separator margin={'0 2'} />
                                         {user.tours.length > 0 && (
                                             <>

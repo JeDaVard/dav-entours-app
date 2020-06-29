@@ -20,7 +20,7 @@
     display: none;
 }
 
-.Popular__content {
+.content {
     display: flex;
     position: relative;
     align-items: center;
@@ -36,6 +36,6 @@
     scrollbar-width: none;
 }
 
-.Popular__content::-webkit-scrollbar {
+.content::-webkit-scrollbar {
     display: none;
 }

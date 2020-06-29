@@ -6,7 +6,7 @@ import SimpleMobileTop from "../../Make/SimpleMobileTop";
 
 function ConversationHead({guides, participants, tour}) {
     return (
-        <div className={classes.ConversationHead__head}>
+        <div className={classes.head}>
                 {/*<NavButton to={'/inbox'} />*/}
 
              <SimpleMobileTop
@@ -19,7 +19,7 @@ function ConversationHead({guides, participants, tour}) {
                     // top
                     // disabled
                 >
-                 <div className={classes.ConversationHead__user}>
+                 <div className={classes.user}>
                      <img src={`${process.env.REACT_APP_SERVER}/images/user/${guides[0].photo}`} alt={guides[0].name}/>
                      <Link to={`/user/${guides[0]._id}`}>
                          <h4>{guides[0].name}</h4>
@@ -27,22 +27,22 @@ function ConversationHead({guides, participants, tour}) {
                  </div>
              </SimpleMobileTop>
             <div className="row">
-                <div className={classes.ConversationHead__tourTitle}>
+                <div className={classes.tourTitle}>
                     <h2>{tour.name}</h2>
                 </div>
-                <div className={classes.ConversationHead__tour}>
-                    <div className={classes.ConversationHead__tourImage}>
+                <div className={classes.tour}>
+                    <div className={classes.tourImage}>
                         <img src={`${process.env.REACT_APP_CDN}/${tour.imageCover}`} alt={tour.name} />
                     </div>
-                    <div className={classes.ConversationHead__tourDetail}>
-                        <div className={classes.ConversationHead__tourName}>
+                    <div className={classes.tourDetail}>
+                        <div className={classes.tourName}>
                             <p>Completed</p>
                         </div>
-                        <div className={classes.ConversationHead__tourOrder}>
+                        <div className={classes.tourOrder}>
                             <p>Sat, 21 Jan 2020</p>
                         </div>
                     </div>
-                    <div className={classes.ConversationHead__tourButton}>
+                    <div className={classes.tourButton}>
                         <SimpleButton to={`/tour/${tour.slug}`} primary>Details</SimpleButton>
                     </div>
                 </div>

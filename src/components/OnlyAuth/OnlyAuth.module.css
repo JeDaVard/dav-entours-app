@@ -3,12 +3,12 @@
     padding: 2rem 0;
 }
 
-.OnlyAuth__title {
+.title {
     font-size: 3rem;
     font-weight: 500;
 }
 
-.OnlyAuth__content {
+.content {
     text-align: center;
 }
 
@@ -19,12 +19,12 @@
     color: rgba(0, 0, 0, 0.8);
 }
 
-.OnlyAuth__illustration {
+.illustration {
     width: 256px;
     height: 256px;
 }
 
-.OnlyAuth__switchText {
+.switchText {
     padding: .7rem;
     font-size: 1.5rem;
     font-weight: 400;

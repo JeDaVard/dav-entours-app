@@ -6,8 +6,8 @@ export default () => (
     <div>
         <div className={classes.TopItemLoading}>
             <ContentLoader
-                height={'14rem'}
-                width={'36rem'}
+                height={'140px'}
+                width={'360px'}
                 speed={0.7}
                 gradientRatio={1}
                 backgroundColor={'#f1f1f1'}
@@ -15,13 +15,13 @@ export default () => (
                 viewBox="0 0 360 140"
             >
                 <circle cx="60px" cy="60px" r="50" />
-                <circle cx="14rem" cy="2.2rem" r="8" />
-                <rect x="16rem" y="1.3rem" rx="3" ry="3" width="120" height="17" />
-                <rect x="13rem" y="4.6rem" rx="3" ry="3" width="120" height="14" />
-                <rect x="13rem" y="4.6rem" rx="3" ry="3" width="120" height="14" />
-                <rect x="13rem" y="7rem" rx="3" ry="3" width="120" height="14" />
-                <rect x="13rem" y="9.4rem" rx="3" ry="3" width="70" height="14" />
-                <rect x="31.2rem" y="3.6rem" rx="3" ry="3" width="26" height="52" />
+                <circle cx="140px" cy="22px" r="8" />
+                <rect x="160" y="13px" rx="3" ry="3" width="120" height="17" />
+                <rect x="130" y="46px" rx="3" ry="3" width="120" height="14" />
+                <rect x="130" y="46px" rx="3" ry="3" width="120" height="14" />
+                <rect x="130" y="70px" rx="3" ry="3" width="120" height="14" />
+                <rect x="130" y="94px" rx="3" ry="3" width="70" height="14" />
+                <rect x="312px" y="36px" rx="3" ry="3" width="26" height="52" />
             </ContentLoader>
         </div>
     </div>

@@ -15,9 +15,9 @@ function Saved() {
         <section className="row">
             { loading && <TopLoading /> }
             <div className={classes.Saved}>
-                <h1 className={classes.Saved__name}>Saved</h1>
+                <h1 className={classes.name}>Saved</h1>
                 <Separator margin={'0 2'} color={'normal'} />
-                <div className={classes.Saved__content}>
+                <div className={classes.content}>
                     <Query query={FETCH_SAVED}>
                         {
                             ({loading, error, data}) => {
@@ -27,52 +27,52 @@ function Saved() {
                                     <>
                                         {data.me.saved.map((tour) => (
                                             <div
-                                                className={classes.Saved__item}
+                                                className={classes.item}
                                                 key={tour.slug}
                                             >
                                                 <Link to={`/tour/${tour.slug}`}>
-                                                    <div className={classes.Saved__imageFrame}>
-                                                        <div className={classes.Saved__box1}>
+                                                    <div className={classes.imageFrame}>
+                                                        <div className={classes.box1}>
                                                             <ThumbedImage
                                                                 src={tour.images[0]}
-                                                                className={classes.Saved__image}
+                                                                className={classes.image}
                                                                 alt={tour.name}
                                                                 blur />
                                                         </div>
-                                                        <div className={classes.Saved__box2}>
-                                                            <div className={classes.Saved__box2c1}>
+                                                        <div className={classes.box2}>
+                                                            <div className={classes.box2c1}>
                                                                  <ThumbedImage
                                                                 src={tour.images[1]}
-                                                                className={classes.Saved__image}
+                                                                className={classes.image}
                                                                 alt={tour.name}
                                                                 blur />
                                                             </div>
-                                                            <div className={classes.Saved__box2c2}>
+                                                            <div className={classes.box2c2}>
                                                                  <ThumbedImage
                                                                 src={tour.images[2]}
-                                                                className={classes.Saved__image}
+                                                                className={classes.image}
                                                                 alt={tour.name}
                                                                 blur />
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </Link>
-                                                <div className={classes.Saved__info}>
-                                                    <div className={classes.Saved__infoAbove}>
-                                                        <h4 className={classes.Saved__infoPart}>
+                                                <div className={classes.info}>
+                                                    <div className={classes.infoAbove}>
+                                                        <h4 className={classes.infoPart}>
                                                             Participants {tour.participants.length}/
                                                             {tour.maxGroupSize}
                                                         </h4>
-                                                        <div className={classes.Saved__rating}>
+                                                        <div className={classes.rating}>
                                                             <h3>{tour.ratingsAverage}</h3>&nbsp;<Justicon icon={'star'}/>
                                                         </div>
                                                     </div>
                                                     <Link to={'/'}>
-                                                        <h2 className={classes.Saved__title}>
+                                                        <h2 className={classes.title}>
                                                             {tour.name}
                                                         </h2>
                                                     </Link>
-                                                    <div className={classes.Saved__infoBottom}>
+                                                    <div className={classes.infoBottom}>
                                                         <p>{tour.startLocation.description}</p>
                                                         <p>
                                                             {moment(+tour.startDates[0]).format(
@@ -101,11 +101,11 @@ function Saved() {
                                                             }
                                                         })
                                                     }}
-                                                        className={classes.Saved__remove}>
+                                                        className={classes.remove}>
                                                             <Justicon
                                                                 icon={'heart'}
                                                                 className={
-                                                                    classes.Saved__removeIcon
+                                                                    classes.removeIcon
                                                                 }
                                                             />
                                                     </button>

@@ -4,10 +4,10 @@ import classes from './Loading.module.css';
 function Loading(props) {
     const loading = (
         <div className={!props.white ? classes.Loading : classes.Loading__white} >
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
+            <div />
+            <div />
+            <div />
+            <div />
         </div>
     )
     return (

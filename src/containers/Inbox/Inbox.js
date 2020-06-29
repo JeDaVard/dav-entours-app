@@ -8,7 +8,7 @@ function Inbox() {
     return (
         <section className="row">
             <div className={classes.Inbox}>
-                <h1 className={classes.Inbox__title}>Inbox</h1>
+                <h1 className={classes.title}>Inbox</h1>
                 <Separator margin={'0 1'} color={'normal'} />
                 
                 <InboxItem />

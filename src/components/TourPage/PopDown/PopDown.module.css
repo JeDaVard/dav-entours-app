@@ -27,7 +27,7 @@
     transform: translateY(100%);
 }
 
-.PopDown__content {
+.content {
     color: rgba(0, 0, 0, 0.75);
     display: flex;
     /*flex: 1;*/
@@ -35,27 +35,27 @@
     align-items: center;
 }
 
-.PopDown__user {
+.user {
     font-weight: 700;
     display: flex;
     align-items: center;
     border-radius: 24px;
 }
 
-.PopDown__image {
+.image {
     width: 44px;
     height: 44px;
     object-fit: cover;
     border-radius: 3px;
 }
 
-.PopDown__user h3 {
+.user h3 {
     font-size: 1.4rem;
     margin-left: 5px;
     font-weight: 700;
 }
 
-.PopDown__rating {
+.rating {
     margin-left: 1rem;
     font-size: 1.2rem;
     font-weight: 400;
@@ -63,21 +63,21 @@
     align-items: center;
 }
 
-.PopDown__rating b {
+.rating b {
     font-size: 1.4rem;
     color: #118d3a;
 }
 
-.PopDown__purchase {
+.purchase {
     display: flex;
     align-items: center;
 }
 
-.PopDown__purchase h2 {
+.purchase h2 {
     margin-right: 2rem;
 }
 
-.PopDown__purchase button {
+.purchase button {
     padding: 1rem 2rem;
     font-size: 1.5rem;
     font-weight: 700;
@@ -99,38 +99,38 @@
         padding-left: env(safe-area-inset-left);
         padding-right: env(safe-area-inset-right);
     }
-    .PopDown__user {
+    .user {
         display: none;
     }
-    .PopDown__purchase h2 {
+    .purchase h2 {
         display: none;
     }
-    .PopDown__userMobile {
+    .userMobile {
         display: flex;
         flex-direction: column;
     }
-    .PopDown__userMobile__title h3 {
+    .userMobile__title h3 {
         font-size: 1.3rem;
         font-weight: 400;
     }
-    .PopDown__userMobile__title {
+    .userMobile__title {
         display: flex;
         align-items: center;
     }
-    .PopDown__userMobile__title b {
+    .userMobile__title b {
         font-size: 1.4rem;
         color: #118d3a;
     }
-    .PopDown__userMobile__title p {
+    .userMobile__title p {
         font-size: 1.2rem;
     }
 }
 @media screen and (min-width: 744px) {
-    .PopDown__userMobile__title {
+    .userMobile__title {
         display: none;
     }
 
-    .PopDown__userMobile {
+    .userMobile {
         display: none;
     }
 }

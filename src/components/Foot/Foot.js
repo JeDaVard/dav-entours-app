@@ -6,34 +6,34 @@ function Foot() {
     return (
         <div className={classes.Foot}>
             <div className="row">
-                <div className={classes.Foot__content}>
-                    <div className={classes.Foot__col}>
+                <div className={classes.content}>
+                    <div className={classes.col}>
                         <ul>
-                            <h3 className={classes.Foot__title}>About</h3>
+                            <h3 className={classes.title}>About</h3>
                             <li><a href="/">Accessibility</a></li>
                             <li><a href="/">Trust & Safety</a></li>
                             <li><a href="/">Newsroom</a></li>
                         </ul>
                     </div>
-                    <div className={classes.Foot__col}>
+                    <div className={classes.col}>
                         <ul>
-                            <h3 className={classes.Foot__title}>About</h3>
+                            <h3 className={classes.title}>About</h3>
                             <li><a href="/">Accessibility</a></li>
                             <li><a href="/">Trust & Safety</a></li>
                             <li><a href="/">Newsroom</a></li>
                         </ul>
                     </div>
-                    <div className={classes.Foot__col}>
+                    <div className={classes.col}>
                         <ul>
-                            <h3 className={classes.Foot__title}>About</h3>
+                            <h3 className={classes.title}>About</h3>
                             <li><a href="/">Accessibility</a></li>
                             <li><a href="/">Trust & Safety</a></li>
                             <li><a href="/">Newsroom</a></li>
                         </ul>
                     </div>
-                    <div className={classes.Foot__col}>
+                    <div className={classes.col}>
                         <ul>
-                            <h3 className={classes.Foot__title}>About</h3>
+                            <h3 className={classes.title}>About</h3>
                             <li><a href="/">Accessibility</a></li>
                             <li><a href="/">Trust & Safety</a></li>
                             <li><a href="/">Newsroom</a></li>
@@ -41,8 +41,8 @@ function Foot() {
                     </div>
                 </div>
                 <Separator />
-                <div className={classes.Foot__bottom}>
-                    <div className={classes.Foot__rules}>
+                <div className={classes.bottom}>
+                    <div className={classes.rules}>
                         <p>© 2020 Entours Inc. All rights reserved</p>
                         <ul>
                             &nbsp; · &nbsp;
@@ -51,13 +51,13 @@ function Foot() {
                             <li><a href="/">Terms</a></li>
                         </ul>
                     </div>
-                    <div className={classes.Foot__right}>
-                        <div className={classes.Foot__geo}>
+                    <div className={classes.right}>
+                        <div className={classes.geo}>
                             <p>currency</p>
                         </div>
-                        <div className={classes.Foot__social}>
-                            <p className={classes.Foot__socialIcon}>instagram</p>
-                            <p className={classes.Foot__socialIcon}>facebook</p>
+                        <div className={classes.social}>
+                            <p className={classes.socialIcon}>instagram</p>
+                            <p className={classes.socialIcon}>facebook</p>
                         </div>
                     </div>
                 </div>

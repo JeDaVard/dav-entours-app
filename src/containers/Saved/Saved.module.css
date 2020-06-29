@@ -8,14 +8,14 @@
     color: rgba(0, 0, 0, 0.8);
 }
 
-.Saved__content {
+.content {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
 
 }
 
-.Saved__item {
+.item {
     flex: 0 0 100%;
     margin-bottom: 2rem;
     background: transparent;
@@ -24,18 +24,18 @@
     transition: all .2s;
 }
 
-.Saved__item:active {
+.item:active {
     transform: scale(.96);
 }
 
-.Saved__name {
+.name {
     font-size: 3rem;
     font-weight: 500;
     margin-bottom: 2rem;
 }
 
 
-.Saved__imageFrame {
+.imageFrame {
     border-radius: 8px;
     overflow: hidden;
     width: 100%;
@@ -45,7 +45,7 @@
     /*-webkit-mask-image: -webkit-radial-gradient(center, white, black);*/
 }
 
-.Saved__box1 {
+.box1 {
     height: 100%;
     overflow: hidden;
     position: relative;
@@ -53,76 +53,76 @@
     margin-right: 4px;
 }
 
-.Saved__box2 {
+.box2 {
     display: flex;
     flex-direction: column;
     position: relative;
     flex: 1;
 }
 
-.Saved__box2c1 {
+.box2c1 {
     overflow: hidden;
     position: relative;
     margin-bottom: 4px;
     flex-basis: 50%;
 }
 
-.Saved__box2c2 {
+.box2c2 {
     flex-basis: 50%;
     overflow: hidden;
     position: relative;
 }
 
 
-.Saved__image {
+.image {
     /*backface-visibility: hidden;*/
     object-fit: cover;
     width: 100%;
     height: 100%;
 }
 
-.Saved__info {
+.info {
     border-radius: 0 0 18px 18px;
     padding: 1rem 0 0 0;
 }
 
-.Saved__infoAbove {
+.infoAbove {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.Saved__rating {
+.rating {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.Saved__rating {
+.rating {
     font-size: 1rem;
 }
 
-.Saved__infoPart {
+.infoPart {
     font-size: 1.2rem;
     color: rgba(0, 0, 0, 0.5);
     font-weight: 400;
 }
 
-.Saved__title {
+.title {
     font-size: 1.8rem;
 }
 
-.Saved__infoBottom {
+.infoBottom {
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-size: 1.5rem;
 }
 
-.Saved__infoBottom :last-child {
+.infoBottom :last-child {
     font-size: 1.3rem;
 }
 
-.Saved__remove {
+.remove {
     cursor: pointer;
     border: none;
     outline: none;
@@ -136,38 +136,38 @@
     transition: background .2s;
 }
 
-.Saved__remove:hover,
-.Saved__remove:active {
+.remove:hover,
+.remove:active {
     background: rgba(0, 0, 0, 0.5);
 }
 
-.Saved__removeIcon {
+.removeIcon {
     fill: white;
     width: 2rem;
     height: 2rem;
 }
 
 @media screen and (min-width: 744px) and (max-width: 1127px){
-    .Saved__item {
+    .item {
         flex: 0 0 calc(50% - 1rem);
         margin: 0 2rem 2rem 0;
     }
 
-    .Saved__content :nth-child(even) {
+    .content :nth-child(even) {
         margin-right: 0;
     }
 }
 
 @media screen and (min-width: 1128px) {
-    .Saved__item {
+    .item {
         flex: 0 0 calc(33.333% - 1.333rem);
         margin: 0 2rem 2rem 0;
     }
 
-    .Saved__content :nth-child(3n) {
+    .content :nth-child(3n) {
         margin-right: 0;
     }
-    .Saved__imageFrame {
+    .imageFrame {
         height: 200px;
     }
 }

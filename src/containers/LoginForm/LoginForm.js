@@ -154,7 +154,7 @@ function LoginForm(props) {
                 onSubmit={(e) => authHandler(e, props.login)}
                 className={classes.LoginForm}
             >
-                <div className={classes.LoginForm__relative}>
+                <div className={classes.relative}>
                     <input
                         type="text"
                         name="name"
@@ -166,9 +166,9 @@ function LoginForm(props) {
                         Seems you entered an invalid full name
                     </AnimatedValidation>
                 </div>
-                <p className={classes.LoginForm__pText}>Choose your image by taping on default avatar down below</p>
-                <div className={classes.LoginForm__preview}>
-                    <div className={classes.LoginForm__user}>
+                <p className={classes.pText}>Choose your image by taping on default avatar down below</p>
+                <div className={classes.preview}>
+                    <div className={classes.user}>
                         <h2>
                             {state.input.name.value
                                 ? state.input.name.value.split(' ')[0]
@@ -176,7 +176,7 @@ function LoginForm(props) {
                         </h2>
                         <div>
                             <label htmlFor="photo">
-                                <div className={classes.LoginForm__image}>
+                                <div className={classes.image}>
                                     <Image
                                         url={
                                             state.input.image
@@ -191,12 +191,12 @@ function LoginForm(props) {
                                 name="photo"
                                 id="photo"
                                 onChange={inputHandler}
-                                className={classes.LoginForm__fileInput}
+                                className={classes.fileInput}
                             />
                         </div>
                     </div>
                 </div>
-                <p className={classes.LoginForm__pText}>You automatically accept our <a href="/policy">Policies</a> by signing up</p>
+                <p className={classes.pText}>You automatically accept our <a href="/policy">Policies</a> by signing up</p>
                 {props.loading ? (
                     <Loading white button/>
                 ) : (
@@ -210,7 +210,7 @@ function LoginForm(props) {
 
     const form = (
         <div hidden={state.nextUp}>
-            <div className={classes.LoginForm__options}>
+            <div className={classes.options}>
                 {props.login ? (
                     <p>
                         Not registered?&nbsp;
@@ -232,7 +232,7 @@ function LoginForm(props) {
                 onSubmit={(e) => authHandler(e, props.login)}
                 className={classes.LoginForm}
             >
-                <div className={classes.LoginForm__relative}>
+                <div className={classes.relative}>
                     <input
                         type="email"
                         name="email"

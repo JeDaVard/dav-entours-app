@@ -9,19 +9,19 @@ function Profile(props) {
     return (
         <div className={classes.Profile}>
             <div className="row">
-                <div className={classes.Profile__top}>
+                <div className={classes.top}>
                     <div>
-                        <h2 className={classes.Profile__name} >Hey, {props.name}!</h2>
-                        <Link to={`/user/${props.userId}`} className={classes.Profile__full} >Profile view</Link>
+                        <h2 className={classes.name} >Hey, {props.name}!</h2>
+                        <Link to={`/user/${props.userId}`} className={classes.full} >Profile view</Link>
                     </div>
                     <div>
-                        <img src={`${process.env.REACT_APP_SERVER}/images/user/${props.photo}`} alt={props.name.split(' ')[0]} className={classes.Profile__photo}/>
+                        <img src={`${process.env.REACT_APP_SERVER}/images/user/${props.photo}`} alt={props.name.split(' ')[0]} className={classes.photo}/>
                     </div>
                 </div>
-                <div className={classes.Profile__makeTour}>
+                <div className={classes.makeTour}>
                     <StyledButton to={'/make'} >Make A Tour</StyledButton>
                 </div>
-                <div className={classes.Profile__mainMenu}>
+                <div className={classes.mainMenu}>
                     <ul>
                         <Link to={'/mytours'}><li>My Tours</li></Link>
                         <Link to={'/'}><li>Payments & Payouts</li></Link>
@@ -30,16 +30,16 @@ function Profile(props) {
                     </ul>
                 </div>
                 <Separator color={'light'} margin={'4 0'}/>
-                <div className={classes.Profile__bottom}>
-                    <div className={classes.Profile__geo}>
+                <div className={classes.bottom}>
+                    <div className={classes.geo}>
                         <Link to={'/'}>$ Currency</Link>
                         <Link to={'/'}>English (US)</Link>
                     </div>
-                    <ul className={classes.Profile__out}>
+                    <ul className={classes.out}>
                         <Link to={'/'}><li>Help</li></Link>
                         <Logout>Logout</Logout>
                     </ul>
-                    <Link to={'/'} className={classes.Profile__deactivate}>Need to deactivate?</Link>
+                    <Link to={'/'} className={classes.deactivate}>Need to deactivate?</Link>
                 </div>
             </div>
         </div>

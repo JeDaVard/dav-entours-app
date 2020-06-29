@@ -21,28 +21,28 @@ function TourHead(props) {
     }
 
     return (
-        <div className={classes.TourHead__cover}>
+        <div className={classes.cover}>
             <ThumbedImage
                 src={tour.imageCover}
-                className={classes.TourHead__coverImage}
+                className={classes.coverImage}
                 alt={tour.name}
                 XL
                 blur
             />
             <div className={'row'}>
-                <div className={classes.TourHead__shareBox}>
-                    <button className={classes.TourHead__share}>
-                        <Justicon icon={'upload'} className={classes.TourHead__shareIcon}/>
+                <div className={classes.shareBox}>
+                    <button className={classes.share}>
+                        <Justicon icon={'upload'} className={classes.shareIcon}/>
                         <b>Share</b>
                     </button>
-                    <button onClick={onSaveTour} className={classes.TourHead__share}>
-                        <Justicon icon={'heart'} className={classes.TourHead__shareIcon}/>
+                    <button onClick={onSaveTour} className={classes.share}>
+                        <Justicon icon={'heart'} className={classes.shareIcon}/>
                         <b>Save</b>
                     </button>
                 </div>
                 <div className={classes.TourHead}>
-                    <div className={classes.TourHead__left}>
-                        <div className={classes.TourHead__hash}>
+                    <div className={classes.left}>
+                        <div className={classes.hash}>
                             {tour.hashtags ? (
                                 tour.hashtags.map((hash) => (
                                     <p key={hash}>#{hash}</p>
@@ -53,23 +53,23 @@ function TourHead(props) {
                         </div>
                         <h2>{tour.name}</h2>
                         <h4>
-                            <Justicon icon={'map-pin'} className={classes.TourHead__location} />{tour.startLocation.description}
+                            <Justicon icon={'map-pin'} className={classes.location} />{tour.startLocation.description}
                         </h4>
                     </div>
                 </div>
-                <div className={classes.TourHead__bottom}>
+                <div className={classes.bottom}>
                     <h3>{tour.summary}</h3>
-                    <div className={classes.TourHead__info}>
+                    <div className={classes.info}>
                         <p>
-                            <Justicon icon={'calendar'} className={classes.TourHead__icon}/>
+                            <Justicon icon={'calendar'} className={classes.icon}/>
                             <b>{moment(+tour.startDates[0]).format('ddd DD MMM YYYY')}</b>
                         </p>
                         <p>
-                            <Justicon icon={'zap'} className={classes.TourHead__icon}/>
+                            <Justicon icon={'zap'} className={classes.icon}/>
                             <b>Level {tour.difficulty}</b>
                         </p>
                         <p>
-                            <Justicon icon={'users'} className={classes.TourHead__icon}/>
+                            <Justicon icon={'users'} className={classes.icon}/>
                             <b>{tour.participants.length
                                 ? tour.participants.length + ' / ' + tour.maxGroupSize + ' people'
                                 : 'Be the first'}</b>

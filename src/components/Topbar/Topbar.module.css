@@ -21,7 +21,7 @@
 /*    z-index: -1;*/
 /*}*/
 
-.Topbar__relative {
+.relative {
     height: 8rem;
 }
 
@@ -39,7 +39,7 @@
     z-index: -1;
 }
 
-.Topbar__transparent {
+.transparent {
     font-weight: 500;
     width: 100%;
     position: fixed;
@@ -48,7 +48,7 @@
     transition: all .3s;
 }
 
-.Topbar__transparent:before {
+.transparent:before {
     content: "";
     position: absolute;
     opacity: 0.4;
@@ -68,18 +68,18 @@
     box-shadow: rgba(0, 0, 0, 0.18) 0 1px 2px ;
 }
 
-.Topbar__content {
+.content {
     display: flex;
     align-items: center;
     justify-content: space-between;
     height: 80px;
 }
 
-.Topbar__logo a::after {
+.logo a::after {
     display: none;
 }
 
-.Topbar__logo img {
+.logo img {
     width: 128px;
     height: 37px;
 }

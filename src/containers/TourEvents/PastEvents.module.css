@@ -1,10 +1,10 @@
-.PastEvents__content {
+.content {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
 }
 
-.PastEvents__item {
+.item {
     flex: 0 0 100%;
     margin-bottom: 2rem;
     background: transparent;
@@ -14,26 +14,26 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.16);
 }
 
-.PastEvents__item:hover .PastEvents__image {
+.item:hover .image {
     transform: scale(1);
 }
 
-.PastEvents__item:hover {
+.item:hover {
     filter: brightness(1.04);
 }
 
-.PastEvents__item:active {
+.item:active {
     transform: scale(.96);
 }
 
-.PastEvents__name {
+.name {
     font-size: 3rem;
     font-weight: 500;
     margin-bottom: 2rem;
 }
 
 
-.PastEvents__imageFrame {
+.imageFrame {
     border-radius: 18px 18px 0 0;
     overflow: hidden;
     width: 100%;
@@ -41,7 +41,7 @@
     -webkit-mask-image: -webkit-radial-gradient(center, white, black);
 }
 
-.PastEvents__image {
+.image {
     backface-visibility: hidden;
     border-radius: 18px 18px 0 0;
     width: 100%;
@@ -50,33 +50,33 @@
     transform: scale(1.01);
 }
 
-.PastEvents__info {
+.info {
     border-radius: 0 0 18px 18px;
     padding: 2rem;
 }
 
-.PastEvents__infoPart {
+.infoPart {
     font-size: 1.2rem;
     color: rgba(0, 0, 0, 0.5);
     font-weight: 400;
 }
 
-.PastEvents__title {
+.title {
     font-size: 1.8rem;
 }
 
-.PastEvents__infoBottom {
+.infoBottom {
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-size: 1.5rem;
 }
 
-.PastEvents__infoBottom :last-child {
+.infoBottom :last-child {
     font-size: 1.3rem;
 }
 
-.PastEvents__remove {
+.remove {
     position: absolute;
     top: 1rem;
     right: 1rem;
@@ -87,42 +87,42 @@
     transition: background .2s;
 }
 
-.PastEvents__remove:hover,
-.PastEvents__remove:active {
+.remove:hover,
+.remove:active {
     background: white;
 }
 
-.PastEvents__removeIcon {
+.removeIcon {
     fill: rgba(0, 0, 0, 0.8);
     width: 2rem;
     height: 2rem;
 }
 
 @media screen and (min-width: 744px) and (max-width: 1127px){
-    .PastEvents__item {
+    .item {
         flex: 0 0 calc(50% - 1rem);
         margin: 0 2rem 2rem 0;
     }
 
-    .PastEvents__content :nth-child(even) {
+    .content :nth-child(even) {
         margin-right: 0;
     }
 }
 
 @media screen and (min-width: 1128px) {
-    .PastEvents__item {
+    .item {
         flex: 0 0 calc(33.333% - 1.333rem);
         margin: 0 2rem 2rem 0;
     }
 
-    .PastEvents__content :nth-child(3n) {
+    .content :nth-child(3n) {
         margin-right: 0;
     }
-    .PastEvents__imageFrame {
+    .imageFrame {
         height: 200px;
     }
 
-    .PastEvents__image {
+    .image {
         height: 200px;
     }
 }

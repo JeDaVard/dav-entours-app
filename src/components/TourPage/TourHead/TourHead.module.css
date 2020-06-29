@@ -1,9 +1,9 @@
-.TourHead__cover {
+.cover {
     position: relative;
     width: 100%;
 }
 
-.TourHead__cover {
+.cover {
     width: 100%;
     height: 60rem;
     background: white;
@@ -11,7 +11,7 @@
     object-fit: cover;
 }
 
-.TourHead__coverImage {
+.coverImage {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -40,7 +40,7 @@
     z-index: -1;
 }
 
-.TourHead__left {
+.left {
     width: 90%;
     color: white;
     display: flex;
@@ -48,12 +48,12 @@
     align-items: center;
 }
 
-.TourHead__hash {
+.hash {
     display: flex;
     color: white;
 }
 
-.TourHead__hash p {
+.hash p {
     cursor: pointer;
     background: #4fc877;
     border-radius: 5px;
@@ -63,7 +63,7 @@
     margin-right: 1rem;
 }
 
-.TourHead__left h2 {
+.left h2 {
     font-size: 4rem;
     font-weight: 700;
     text-shadow: 0 0 4px rgba(0, 0, 0, 0.24);
@@ -71,20 +71,20 @@
     margin: 1.4rem 0;
 }
 
-.TourHead__left h4 {
+.left h4 {
     font-size: 1.6rem;
     font-weight: 400;
     text-shadow: 0 0 4px rgba(0, 0, 0, 0.24);
 }
 
-.TourHead__location {
+.location {
     width: 1.4rem;
     height: 1.4rem;
     margin-right: .4rem;
     fill: white;
 }
 
-.TourHead__shareBox {
+.shareBox {
     position: absolute;
     top: 5%;
     right: 5%;
@@ -92,7 +92,7 @@
     flex-direction: row;
 }
 
-.TourHead__share {
+.share {
     outline: none;
     border: none;
     margin-left: 1rem;
@@ -106,16 +106,16 @@
     cursor: pointer;
 }
 
-.TourHead__share:active {
+.share:active {
     background: rgba(255, 255, 255, 0.55);
 }
 
-.TourHead__share b {
+.share b {
     font-size: 1.4rem;
     font-weight: 500;
 }
 
-.TourHead__shareIcon {
+.shareIcon {
     width: 1.8rem;
     height: 1.8rem;
     fill: rgba(0, 0, 0, 0.7);
@@ -123,7 +123,7 @@
     margin-top: .1rem;
 }
 
-.TourHead__bottom {
+.bottom {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -133,14 +133,14 @@
     right: 5%;
 }
 
-.TourHead__info {
+.info {
     display: flex;
     flex-direction: column;
     color: rgba(0, 0, 0, 0.7);
     font-size: 1.6rem;
 }
 
-.TourHead__info p {
+.info p {
     border-radius: 5px;
     padding: 1rem 1.4rem;
     margin-bottom: .6rem;
@@ -150,7 +150,7 @@
     position: relative;
     z-index: 1;
 }
-.TourHead__info p:before {
+.info p:before {
     content: '';
     left: 0;
     top: 0;
@@ -163,18 +163,18 @@
     z-index: -1;
 }
 
-.TourHead__info b {
+.info b {
     font-weight: 500;
 }
 
-.TourHead__icon {
+.icon {
     width: 2rem;
     height: 2rem;
     fill: rgba(0, 0, 0, 0.7);
     margin-right: .5rem;
 }
 
-.TourHead__bottom h3 {
+.bottom h3 {
     margin-right: 1rem;
     flex: 0 0 36%;
     color: white;
@@ -185,16 +185,16 @@
 }
 
 @media (min-width: 744px) {
-    .TourHead__shareBox {
+    .shareBox {
         top: 10rem;
     }
-    .TourHead__info {
+    .info {
         flex-direction: row;
     }
-    .TourHead__left {
+    .left {
         align-items: flex-start;
     }
-    .TourHead__info p {
+    .info p {
         margin-left: 1rem;
     }
     .TourHead {

@@ -3,14 +3,14 @@
     min-height: 80vh;
 }
 
-.UserPage__content {
+.content {
     padding: 2rem 0;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
-.UserPage__profile {
+.profile {
     border: none;
     padding-bottom: 2rem;
     width: 100%;
@@ -18,11 +18,11 @@
 }
 
 @media screen and (min-width: 744px){
-    .UserPage__content {
+    .content {
         padding: 4rem 0;
     }
 
-    .UserPage__profile {
+    .profile {
         border: 1px solid rgba(0, 0, 0, 0.14);
         padding: 2rem;
         width: 100%;
@@ -31,19 +31,19 @@
 
 }
 
-.UserPage__profile a,
-.UserPage__profile a:visited {
+.profile a,
+.profile a:visited {
     color: rgb(0, 138, 80);
     position: relative;
     text-decoration: none;
     font-size: 1.6rem;
     transition: color .2s;
 }
-.UserPage__profile a:hover,
-.UserPage__profile a:active {
+.profile a:hover,
+.profile a:active {
     color: rgb(7, 171, 102);
 }
-.UserPage__profile a::after {
+.profile a::after {
     content: '';
     position: absolute;
     bottom: -2px;
@@ -56,23 +56,23 @@
     transition: width .2s;
 }
 
-.UserPage__profile a:visited::after,
-.UserPage__profile a:hover::after {
+.profile a:visited::after,
+.profile a:hover::after {
     width: 100%;
 }
 
-.UserPage__profile h2 {
+.profile h2 {
     font-weight: 400;
     margin: 0 0 .5rem 0;
     font-size: 3rem;
 }
-.UserPage__profileTop h2 {
+.profileTop h2 {
     font-weight: 500;
     margin: 0 0 .5rem 0;
     font-size: 1.6rem;
 }
 
-.UserPage__photoFrame {
+.photoFrame {
     margin-top: 1rem;
     width: 14rem;
     height: 14rem;
@@ -83,7 +83,7 @@
     border: 3px solid #4fc877;
 }
 
-.UserPage__photo {
+.photo {
     width: 12.6rem;
     height: 12.6rem;
     shape-outside: circle(50% at 50% 50%);
@@ -95,7 +95,7 @@
     align-items: center;
 }
 
-.UserPage__photo img {
+.photo img {
     width: 14rem;
     height: 14rem;
     object-fit: cover;
@@ -104,50 +104,50 @@
     transition: all .2s;
 }
 
-.UserPage__profile:hover .UserPage__photo img {
+.profile:hover .photo img {
     transform: scale(1.1);
 }
 
-.UserPage__profile a {
+.profile a {
     font-weight: 500;
     margin: 1rem 0 0 0;
     font-size: 1.5rem;
 }
 
-.UserPage__profile p {
+.profile p {
     font-size: 1.4rem;
     margin: 1rem 0 0 0;
     line-height: 2rem;
 }
 
-.UserPage__profile h3 {
+.profile h3 {
     font-size: 1.5rem;
     font-weight: 400;
 }
 
-.UserPage__stats h3 {
+.stats h3 {
     display: flex;
     align-items: center;
 }
 
-.UserPage__profileTop {
+.profileTop {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.UserPage__more {
+.more {
     width: 100%;
 }
 @media screen and (min-width: 743px) {
-    .UserPage__content {
+    .content {
         flex-direction: row;
     }
-    .UserPage__profile {
+    .profile {
         width: 28%;
         max-width: 300px;
     }
-    .UserPage__more {
+    .more {
         margin-left: 4rem;
         width: 70%;
     }

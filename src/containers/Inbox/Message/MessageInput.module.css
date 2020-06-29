@@ -16,19 +16,19 @@
     }
 }
 
-.MessageInput__content {
+.content {
     padding: 1rem;
     color: rgba(0, 0, 0, 0.8);
     background: transparent;
 }
 
-.MessageInput__form {
+.form {
     flex: 1;
     display: flex;
     align-items: center;
 }
 
-.MessageInput__input {
+.input {
     flex: 1;
     margin: 0 1rem;
     width: 100%;
@@ -45,11 +45,11 @@
     transition: all .1s ease-in;
 }
 
-.MessageInput__input:focus {
+.input:focus {
     border: 1px solid rgba(0, 0, 0, 0.4);
 }
 
-.MessageInput__sendPhoto {
+.sendPhoto {
     outline: none;
     cursor: pointer;
     border: none;
@@ -61,15 +61,15 @@
     transition: all .1s ease-in;
 }
 
-.MessageInput__sendPhoto:hover {
+.sendPhoto:hover {
     background: rgba(0, 0, 0, 0.05);
 }
 
-.MessageInput__sendPhoto:active {
+.sendPhoto:active {
     background: transparent;
 }
 
-.MessageInput__sendPhotoIcon {
+.sendPhotoIcon {
     box-sizing: initial;
     width: 2.6rem;
     height: 2.6rem;
@@ -79,14 +79,14 @@
     transition: all .1s ease-in;
 }
 
-.MessageInput__sendPhoto:hover .MessageInput__sendPhotoIcon {
+.sendPhoto:hover .sendPhotoIcon {
     transform: scale(.9);
 }
-.MessageInput__sendPhoto:active .MessageInput__sendPhotoIcon {
+.sendPhoto:active .sendPhotoIcon {
     transform: scale(1);
 }
 
-.MessageInput__sendIcon {
+.sendIcon {
     box-sizing: initial;
     width: 2.6rem;
     height: 2.6rem;
@@ -96,9 +96,9 @@
 }
 
 
-.MessageInput__sendPhoto:hover .MessageInput__sendIcon {
+.sendPhoto:hover .sendIcon {
     transform: scale(.9);
 }
-.MessageInput__sendPhoto:active .MessageInput__sendIcon {
+.sendPhoto:active .sendIcon {
     transform: scale(1);
 }

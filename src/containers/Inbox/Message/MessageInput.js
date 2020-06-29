@@ -61,7 +61,7 @@ function MessageInput({ convId }) {
         >
             {(sendMessage, { loading }) => (
             <div className={classes.MessageInput}>
-                <div className={classes.MessageInput__content}>
+                <div className={classes.content}>
                     <form
                         onSubmit={(e) => {
                         e.preventDefault();
@@ -73,14 +73,14 @@ function MessageInput({ convId }) {
                         sendMessage({variables: { convId, text }})
 
                              }}
-                        className={classes.MessageInput__form}
+                        className={classes.form}
                     >
-                        <div className={classes.MessageInput__sendPhoto}>
-                            <Justicon icon={'camera'} className={classes.MessageInput__sendPhotoIcon} />
+                        <div className={classes.sendPhoto}>
+                            <Justicon icon={'camera'} className={classes.sendPhotoIcon} />
                         </div>
-                        <input type="text" placeholder={'Text'} name={'message'} onChange={(e) => setText(e.target.value)} className={classes.MessageInput__input} autoComplete="off"/>
-                        <button type={'submit'} className={classes.MessageInput__sendPhoto}>
-                            {loading ? <WaveLoading /> : <Justicon icon={'send'} className={classes.MessageInput__sendIcon} />}
+                        <input type="text" placeholder={'Text'} name={'message'} onChange={(e) => setText(e.target.value)} className={classes.input} autoComplete="off"/>
+                        <button type={'submit'} className={classes.sendPhoto}>
+                            {loading ? <WaveLoading /> : <Justicon icon={'send'} className={classes.sendIcon} />}
                         </button>
                     </form>
                 </div>

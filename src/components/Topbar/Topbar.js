@@ -34,14 +34,14 @@ function Topbar(props) {
             <div
                 className={cx(
                     isTransparent
-                        ? classes.Topbar__transparent
+                        ? classes.transparent
                         : classes.Topbar,
                     { opaqueHeader: props.triggered }
                 )}
             >
                 <div className="row">
-                    <div className={classes.Topbar__content}>
-                        <div className={classes.Topbar__logo}>
+                    <div className={classes.content}>
+                        <div className={classes.logo}>
                             <Link
                                 to={(loc) => ({
                                     ...loc,
@@ -73,7 +73,7 @@ function Topbar(props) {
                     </div>
                 </div>
             </div>
-            {!inTour && <div className={classes.Topbar__relative} />}
+            {!inTour && <div className={classes.relative} />}
         </>
     );
 }

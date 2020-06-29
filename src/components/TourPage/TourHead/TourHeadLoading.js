@@ -6,22 +6,22 @@ import ContentLoader from "react-content-loader";
 
 function TourHeadLoading() {
     return (
-        <div className={classes.TourHead__cover}>
-            <div className={classes.TourHead__coverImage} style={{ background: 'rgba(0,0,0, .3'}} />
+        <div className={classes.cover}>
+            <div className={classes.coverImage} style={{ background: 'rgba(0,0,0, .3'}} />
 
             <div className={'row'}>
-                <div className={classes.TourHead__shareBox}>
-                    <div className={classes.TourHead__share}>
-                        <Justicon icon={'upload'} className={classes.TourHead__shareIcon}/>
+                <div className={classes.shareBox}>
+                    <div className={classes.share}>
+                        <Justicon icon={'upload'} className={classes.shareIcon}/>
                         <b>Share</b>
                     </div>
-                    <div className={classes.TourHead__share}>
-                        <Justicon icon={'heart'} className={classes.TourHead__shareIcon}/>
+                    <div className={classes.share}>
+                        <Justicon icon={'heart'} className={classes.shareIcon}/>
                         <b>Save</b>
                     </div>
                   </div>
                 <div className={classes.TourHead}>
-                    <div className={classes.TourHead__left}>
+                    <div className={classes.left}>
                         <ContentLoader
                             height={130}
                             width={500}
@@ -38,7 +38,7 @@ function TourHeadLoading() {
                         </ContentLoader>
                     </div>
                 </div>
-                <div className={classes.TourHead__bottom}>
+                <div className={classes.bottom}>
                     <h3>
                         <ContentLoader
                             height={50}
@@ -53,7 +53,7 @@ function TourHeadLoading() {
                             <rect x="0" y="30" rx="3" ry="3" width="200" height="20" />
                         </ContentLoader>
                     </h3>
-                    <div className={classes.TourHead__info}>
+                    <div className={classes.info}>
                         <ContentLoader
                             height={50}
                             width={500}

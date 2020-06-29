@@ -35,17 +35,17 @@ function PopDown(props) {
     return (
         <div className={`${classes.PopDown}${show}`} >
             <div className="row">
-                <div className={classes.PopDown__content}>
-                    <div className={classes.PopDown__user}>
+                <div className={classes.content}>
+                    <div className={classes.user}>
                         <div>
                             <ThumbedImage
                                 src={props.tour.imageCover}
-                                className={classes.PopDown__image}
+                                className={classes.image}
                                 alt={'A tour you will like'}
                                 blur />
                         </div>
                         <h3>{props.tour.name}</h3>
-                        <div className={classes.PopDown__rating}>
+                        <div className={classes.rating}>
                             <p><b>{props.tour.ratingsAverage}</b></p>
                             &nbsp;
                             <Justicon icon={'star'}/>
@@ -53,11 +53,11 @@ function PopDown(props) {
                             <p>({props.tour.ratingsQuantity})</p>
                         </div>
                     </div>
-                    <div className={classes.PopDown__userMobile}>
-                        <div className={classes.PopDown__userMobile__price}>
+                    <div className={classes.userMobile}>
+                        <div className={classes.userMobile__price}>
                             <h2>${props.tour.price} per person</h2>
                         </div>
-                        <div className={classes.PopDown__userMobile__title}>
+                        <div className={classes.userMobile__title}>
                             <h3>{props.tour.name} - </h3>
                             &nbsp;
                             <p><b>{props.tour.ratingsAverage}</b></p>
@@ -67,7 +67,7 @@ function PopDown(props) {
                             <p>({props.tour.ratingsQuantity})</p>
                         </div>
                     </div>
-                    <div className={classes.PopDown__purchase}>
+                    <div className={classes.purchase}>
                         <h2>${props.tour.price} per person</h2>
                         <AnimatedButton button={true} fn={() => console.log('hello')}>Reserve</AnimatedButton>
                     </div>

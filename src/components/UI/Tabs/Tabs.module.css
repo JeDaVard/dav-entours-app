@@ -1,21 +1,21 @@
 
-.Tabs__box {
+.box {
     margin: 0 -20px 2rem -20px;
 }
 
-.Tabs__box a {
+.box a {
     text-decoration: none;
     display: inline-block;
 }
 
-.Tabs__box:after {
+.box:after {
     content: '';
     margin: -4px 20px 0;
     display: block;
     border-bottom: 1px solid #DDDDDD;
 }
 
-.Tabs__button {
+.button {
     padding: 1.6rem;
     border: none;
     outline: none;
@@ -27,7 +27,7 @@
     cursor: pointer;
 }
 
-.Tabs__activeButton {
+.activeButton {
     padding: 1.6rem;
     border: none;
     outline: none;
@@ -39,7 +39,7 @@
     cursor: pointer;
 }
 
-.Tabs__activeButton:after {
+.activeButton:after {
     content: '';
     display: block;
     padding-top: 16px;
@@ -47,17 +47,17 @@
     border-bottom: 2px solid rgba(0, 0, 0, 0.74);
 }
 
-.Tabs__button:hover,
-.Tabs__activeButton:hover {
+.button:hover,
+.activeButton:hover {
     color: rgba(0, 0, 0, 0.8);
     background-color: rgba(0, 0, 0, 0.04);
 }
 
 @media (min-width: 744px) {
-    .Tabs__activeButton {
+    .activeButton {
         font-size: 1.6rem;
     }
-    .Tabs__button {
+    .button {
         font-size: 1.6rem;
     }
 }

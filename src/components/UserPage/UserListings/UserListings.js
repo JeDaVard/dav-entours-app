@@ -15,12 +15,12 @@ const UserListings = ({ tours }) => {
                         <div className={classes.UserPage__listing} key={tour._id}>
                             <Link to={{pathname: `/tour/${tour.slug}`}}>
                                 <div className={classes.UserPage__listingImageFrame}>
-                                    <ThumbedImage
-                                        src={tour.imageCover}
-                                        className={classes.UserPage__listingImage}
-                                        alt={tour.name}
-                                        blur
-                                    />
+                                    {/*<ThumbedImage*/}
+                                    {/*    src={tour.imageCover}*/}
+                                    {/*    className={classes.UserPage__listingImage}*/}
+                                    {/*    alt={tour.name}*/}
+                                    {/*    blur*/}
+                                    {/*/>*/}
                                 </div>
                             </Link>
                             <div className={classes.UserPage__listingTitle}>

@@ -22,12 +22,12 @@ const UserReviews = ({ reviews }) => {
                                 <h5>{moment(review.createdAt).format('DD MMM YYYY')}</h5>
                             </div>
                             <Link to={loc => ({...loc, pathname: `/tour/${review.tour.slug}`})}>
-                                <ThumbedImage
-                                    src={review.tour.imageCover}
-                                    className={classes.UserReviews__tourImage}
-                                    alt={review.tour.name}
-                                    blur
-                                />
+                                {/*<ThumbedImage*/}
+                                {/*    src={review.tour.imageCover}*/}
+                                {/*    className={classes.UserReviews__tourImage}*/}
+                                {/*    alt={review.tour.name}*/}
+                                {/*    blur*/}
+                                {/*/>*/}
                             </Link>
                         </div>
                         <p>{review.review}</p>

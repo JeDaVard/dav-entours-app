@@ -15,7 +15,7 @@ function Tabs({ children, defaultTab }) {
                     e.preventDefault();
                     handleActiveTab(child.props.label)
                 }}
-                className={activeTab === child.props.label ? classes.Tabs__activeButton : classes.Tabs__button}
+                className={activeTab === child.props.label ? classes.activeButton : classes.button}
                 key={child.props.label}
             >
                 {child.props.tabName}
@@ -25,7 +25,7 @@ function Tabs({ children, defaultTab }) {
     const tabContent = children.filter( child => child.props.label === activeTab)
     return (
         <>
-            <div className={classes.Tabs__box}>
+            <div className={classes.box}>
                 {tabs}
             </div>
             <div>

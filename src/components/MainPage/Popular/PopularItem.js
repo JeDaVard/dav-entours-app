@@ -8,9 +8,9 @@ import {FETCH_USER} from "../../../containers/UserContainer/queries";
 
 export default ({ popular }) => {
     return (
-        <div className={classes.Popular__tourcontainer}>
-            <div className={classes.Popular__tour}>
-                <div className={classes.Popular__imageFrame}>
+        <div className={classes.tourContainer}>
+            <div className={classes.tour}>
+                <div className={classes.imageFrame}>
                     <PreloadLink
                         to={`/tour/${popular.slug}`}
                         id={popular.slug}
@@ -18,7 +18,7 @@ export default ({ popular }) => {
                     >
                         <ThumbedImage
                             src={popular.imageCover}
-                            className={classes.Popular__image}
+                            className={classes.image}
                             alt={popular.name}
                             blur
                         />
@@ -29,7 +29,7 @@ export default ({ popular }) => {
                             <p>NEW</p>
                         </div>
                     )}
-                    <div className={classes.Popular__price}>
+                    <div className={classes.price}>
                         <h3>${popular.price}</h3>
                         <p>{popular.duration} days</p>
                     </div>
@@ -38,17 +38,17 @@ export default ({ popular }) => {
                         id={popular.slug}
                         query={FETCH_TOUR}
                     >
-                        <div className={classes.Popular__title}>
+                        <div className={classes.title}>
                             <b>{popular.name}</b>
                         </div>
                     </PreloadLink>
                 </div>
-                <div className={classes.Popular__bottom}>
+                <div className={classes.bottom}>
                     <PreloadLink
                         to={`/user/${popular.author._id}`}
                         id={popular.author._id}
                         query={FETCH_USER}
-                        className={classes.Popular__user}
+                        className={classes.user}
                      >
                         <img
                             src={`${process.env.REACT_APP_SERVER}/images/user/${popular.author.photo}`}
@@ -56,7 +56,7 @@ export default ({ popular }) => {
                         />
                         <p>{popular.author.name}</p>
                     </PreloadLink>
-                    <div className={classes.Popular__loc}>
+                    <div className={classes.loc}>
                         {popular.startLocation.description}
                     </div>
                 </div>

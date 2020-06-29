@@ -11,10 +11,10 @@ function Error(props) {
             classNames="error"
             unmountOnExit
         >
-            <div className={classes.Error__frame} >
+            <div className={classes.frame} >
                 <div className={classes.Error} >
                     <div className="row">
-                        <div className={classes.Error__content} >
+                        <div className={classes.content} >
                             <h4>{props.children}</h4>
                             <button onClick={props.onClose}><div>&times;</div></button>
                         </div>

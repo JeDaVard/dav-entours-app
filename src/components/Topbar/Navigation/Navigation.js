@@ -11,47 +11,47 @@ function Navigation(props) {
     return (
             <nav className={classes.Navigation}>
                 <OutsideAlerter delegate={props.closeGeo}>
-                    <div className={props.geo ? classes.Navigation__geo : classes.Navigation__geo_Closed}>
+                    <div className={props.geo ? classes.geo : classes.geo_Closed}>
                         <ul>
                             <Link to={{pathname: '/me'}}><li>Currency - $</li></Link>
                             <Link to={{pathname: '/me'}}><li>English - US</li></Link>
                         </ul>
                     </div>
                 </OutsideAlerter>
-                <div className={`${classes.Navigation__menu} ${props.transparent && classes.Navigation__menu__transparent}`}>
+                <div className={`${classes.menu} ${props.transparent && classes.menu__transparent}`}>
                     <Link to={'#'} onClick={props.geoHandler}>
-                        <div className={classes.Navigation__geoBox}>
-                            <Justicon icon={'globe'} className={classes.Navigation__geoIcon}/>
-                            <Justicon icon={'chevron-down'} className={classes.Navigation__geoIcon}/>
+                        <div className={classes.geoBox}>
+                            <Justicon icon={'globe'} className={classes.geoIcon}/>
+                            <Justicon icon={'chevron-down'} className={classes.geoIcon}/>
                         </div>
                     </Link>
                     <Link to="/make">Make a tour</Link>
                     {!props.isLogged && <Link to="/" onClick={(e) => {e.preventDefault(); props.loginModal()}}>Log In</Link>}
                 </div>
         <OutsideAlerter delegate={props.handleClose}>
-                <div className={classes.Navigation__user}>
-                    <div className={`${classes.Navigation__signup} ${props.transparent && !props.profileDrop && classes.Navigation__signup__transparent}`}>
+                <div className={classes.user}>
+                    <div className={`${classes.signup} ${props.transparent && !props.profileDrop && classes.signup__transparent}`}>
                         {props.isLogged
-                            ? <div className={classes.Navigation__profile} onClick={props.profileHandler}>
+                            ? <div className={classes.profile} onClick={props.profileHandler}>
                                 <p>{name ? name.split(' ')[0] : 'Entours'}</p>
                                 <img src={`${process.env.REACT_APP_SERVER}/images/user/${photo}`} alt="user" />
                             </div>
                             : <button onClick={props.signUpModal}>Sign Up</button>}
                     </div>
-                    <div className={!props.profileDrop ? `${classes.Navigation__profileDrop} ${classes.Navigation__profileDrop__close}` : `${classes.Navigation__profileDrop}`}>
-                        <ul className={classes.Navigation__profileDrop__ul1}>
+                    <div className={!props.profileDrop ? `${classes.profileDrop} ${classes.profileDrop__close}` : `${classes.profileDrop}`}>
+                        <ul className={classes.profileDrop__ul1}>
                             <Link to={{pathname: '/inbox'}}><li onClick={props.handleClose}>Inbox</li></Link>
                             <Link to={{pathname: '/tourevents'}}><li onClick={props.handleClose}>Tours</li></Link>
                             <Link to={{pathname: '/saved'}}><li onClick={props.handleClose}>Saved</li></Link>
                             <Link to={{pathname: '/me'}}><li onClick={props.handleClose}>Profile</li></Link>
                         </ul>
                         <Separator color={'light'}/>
-                        <ul className={classes.Navigation__profileDrop__ul1}>
+                        <ul className={classes.profileDrop__ul1}>
                             <Link to={{pathname: '/make'}}><li onClick={props.handleClose}>Make a Tour</li></Link>
                             <Link to={{pathname: '/mytours'}}><li onClick={props.handleClose}>My Tours</li></Link>
                         </ul>
                         <Separator color={'light'}/>
-                        <ul className={classes.Navigation__profileDrop__ul2}>
+                        <ul className={classes.profileDrop__ul2}>
                             <Logout onClose={props.handleClose}>Logout</Logout>
                         </ul>
                     </div>

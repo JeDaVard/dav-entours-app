@@ -8,20 +8,20 @@
     text-decoration: none;
 }
 
-.Navigation__geoBox {
+.geoBox {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.Navigation__geoIcon {
+.geoIcon {
     margin-top: .2rem;
     width: 1.6rem;
     height: 1.6rem;
     fill: rgba(0, 0, 0, 0.8);
 }
 
-.Navigation__geo {
+.geo {
     position: absolute;
     bottom: -9rem;
     margin-top: 1rem;
@@ -33,52 +33,52 @@
     transition: all .2s;
 }
 
-.Navigation__geo_Closed {
+.geo_Closed {
     display: none;
 }
 
-.Navigation__geo ul {
+.geo ul {
     list-style: none;
     margin: 1rem auto;
     font-size: 1.3rem;
     font-weight: 500;
 }
 
-.Navigation__geo ul li {
+.geo ul li {
     font-size: 1.3rem;
     padding: 1rem 1.6rem;
     transition: all .1s;
 }
 
-.Navigation__geo a::after {
+.geo a::after {
     display: none;
 }
 
-.Navigation__geo ul li:hover,
-.Navigation__geo ul li:active {
+.geo ul li:hover,
+.geo ul li:active {
     background: rgba(0, 0, 0, 0.05);
 }
 
-.Navigation__geo ul a li {
+.geo ul a li {
     text-decoration: none;
     color: black;
 }
 
-.Navigation__menu {
+.menu {
     list-style: none;
     display: flex;
     font-weight: 500;
 }
 
-.Navigation__menu a:first-of-type:hover svg {
+.menu a:first-of-type:hover svg {
     fill: white
 }
 
-.Navigation__menu a:last-of-type {
+.menu a:last-of-type {
     margin-right: 1rem;
 }
 
-.Navigation__menu a {
+.menu a {
     background: transparent;
     color: black;
     padding: 1rem 1.5rem;
@@ -87,27 +87,27 @@
     transition: all .1s;
 }
 
-.Navigation__menu a::after {
+.menu a::after {
     display: none;
 }
 
-.Navigation__menu a:hover {
+.menu a:hover {
     background: #4fc877;
     color: white;
     padding: 1rem 1.5rem;
 }
 
-.Navigation__menu__transparent a {
+.menu__transparent a {
     background: transparent;
     position: relative;
     color: white;
 }
 
-.Navigation__menu__transparent a:hover {
+.menu__transparent a:hover {
     background: transparent;
 }
 
-.Navigation__menu__transparent a::before {
+.menu__transparent a::before {
     content: '';
     left: 0;
     top: 0;
@@ -122,20 +122,20 @@
     z-index: -1;
 }
 
-.Navigation__menu__transparent a:hover::before {
+.menu__transparent a:hover::before {
     opacity: 1;
 }
 
-.Navigation__menu__transparent svg {
+.menu__transparent svg {
     fill: white;
 }
 
-.Navigation__user {
+.user {
     position: relative;
     user-select: none;
 }
 
-.Navigation__signup {
+.signup {
     padding: 0;
     border-radius: 60px;
     background: white;
@@ -147,12 +147,12 @@
     transition: all .2s;
 }
 
-.Navigation__signup:hover {
+.signup:hover {
     border: 1px solid rgba(0, 0, 0, 0.1);
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.18);
 }
 
-.Navigation__signup button {
+.signup button {
     padding: .9rem 1.2rem;
     font-size: 1.5rem;
     outline: 0;
@@ -163,7 +163,7 @@
     cursor: pointer;
 }
 
-.Navigation__signup__transparent {
+.signup__transparent {
     border: 1px solid rgba(255, 255, 255, 0);
     position: relative;
     background: rgba(255, 255, 255, 0.2);
@@ -171,13 +171,13 @@
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.14);
 }
 
-.Navigation__signup__transparent:hover {
+.signup__transparent:hover {
     border: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.18);
 }
 
 
-.Navigation__signup__transparent::before {
+.signup__transparent::before {
     content: '';
     left: 0;
     top: 0;
@@ -191,31 +191,31 @@
     z-index: -1;
 }
 
-.Navigation__profile {
+.profile {
     padding: .3rem .4rem .3rem 1rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.Navigation__profile img {
+.profile img {
     width: 30px;
     border-radius: 50%;
 }
-.Navigation__profile p {
+.profile p {
     padding: .5rem;
     font-weight: 500;
 }
 
-.Navigation__signup__transparent:hover::before {
+.signup__transparent:hover::before {
     background: rgba(38, 38, 38, 0.2);
 }
 
-.Navigation__signup__transparent button {
+.signup__transparent button {
     color: white;
 }
 
-.Navigation__profileDrop {
+.profileDrop {
     position: absolute;
     right: 0;
     margin-top: 1rem;
@@ -227,42 +227,42 @@
     transition: all .2s;
 }
 
-.Navigation__profileDrop__close {
+.profileDrop__close {
     transform: translateY(-1rem);
     width: 180px;
     visibility: hidden;
     opacity: 0;
 }
 
-.Navigation__profileDrop__ul1,
-.Navigation__profileDrop__ul2 {
+.profileDrop__ul1,
+.profileDrop__ul2 {
     list-style: none;
     margin: 1rem auto;
     font-size: 1.3rem;
     font-weight: 500;
 }
 
-.Navigation__profileDrop__ul2 {
+.profileDrop__ul2 {
     font-weight: 400;
     font-size: 1.3rem;
 }
 
-.Navigation__profileDrop ul li {
+.profileDrop ul li {
     font-size: 1.3rem;
     padding: 1rem 1.6rem;
     transition: all .1s;
 }
 
-.Navigation__profileDrop a::after {
+.profileDrop a::after {
     display: none;
 }
 
-.Navigation__profileDrop ul li:hover,
-.Navigation__profileDrop ul li:active {
+.profileDrop ul li:hover,
+.profileDrop ul li:active {
     background: rgba(0, 0, 0, 0.05);
 }
 
-.Navigation__profileDrop ul a li {
+.profileDrop ul a li {
     text-decoration: none;
     color: black;
 }

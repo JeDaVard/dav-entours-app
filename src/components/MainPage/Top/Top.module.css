@@ -3,28 +3,28 @@
 }
 
 
-.Top__title {
+.title {
     margin-bottom: 2rem;
 }
 
-.Top__title h3 {
+.title h3 {
     font-size: 2rem;
 }
 
-.Top__title p {
+.title p {
     font-size: 1.4rem;
 }
 
-.Top__content {
+.content {
     display: flex;
     width: 100%;
     overflow-x: scroll;
     scrollbar-base-color: rgba(0, 0, 0, 0.17)
 }
 
-.Top__content a {
+.content a {
     text-decoration: none;
     color: rgba(0, 0, 0, 0.7);
 }
 
-.Top__content::-webkit-scrollbar {    display: none;}
+.content::-webkit-scrollbar {    display: none;}

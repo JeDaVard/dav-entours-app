@@ -2,14 +2,14 @@
 
 }
 
-.LoginForm__relative {
+.relative {
     position: relative;
     margin: 2rem 0;
 }
-.LoginForm__relative :first-child {
+.relative :first-child {
     border-radius: 10px 10px 0 0;
 }
-.LoginForm__relative :last-child {
+.relative :last-child {
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.3);
@@ -40,24 +40,24 @@
     background: #f8f8f8;
 }
 
-.LoginForm__options {
+.options {
     display: flex;
     justify-content: space-between;
     color: rgba(0, 0, 0, 0.42)
 }
 
-.LoginForm__options a {
+.options a {
     text-decoration: none;
     color: rgba(0, 0, 0, 0.68);
     transition: all .2s
 }
 
-.LoginForm__options a:hover,
-.LoginForm__options a:active {
+.options a:hover,
+.options a:active {
     color: black;
 }
 
-.LoginForm__preview {
+.preview {
     position: relative;
     height: 6.6rem;
     margin: 2rem auto;
@@ -75,7 +75,7 @@
     z-index: -1000;
 }
 
-.LoginForm__fileInput + label {
+.fileInput + label {
     font-size: 1.25em;
     font-weight: 700;
     color: black;
@@ -84,12 +84,12 @@
     cursor: pointer;
 }
 
-.LoginForm__fileInput:focus + label,
-.LoginForm__fileInput + label:hover {
+.fileInput:focus + label,
+.fileInput + label:hover {
     background-color: #4fc877;
 }
 
-.LoginForm__user {
+.user {
     position: absolute;
     left: 50%;
     top: 50%;
@@ -105,19 +105,19 @@
     color: #393939;
 }
 
-.LoginForm__user h2 {
+.user h2 {
     padding: 0 1rem;
     /*margin: 0 2rem;*/
 }
 
-.LoginForm__image {
+.image {
     border-radius: 100px;
     background: white;
     overflow: hidden;
     width: 5.6rem;
     height: 5.6rem;
 }
-.LoginForm__pText {
+.pText {
     font-size: 1.2rem;
     color: rgba(0, 0, 0, 0.44);
     padding: .6rem;
@@ -126,13 +126,13 @@
     text-align: center;
 }
 
-.LoginForm__pText a,
-.LoginForm__pText a:visited {
+.pText a,
+.pText a:visited {
     text-decoration: none;
     color: rgba(0, 0, 0, 0.7);
     transition: all .2s;
 }
-.LoginForm__pText a:hover {
+.pText a:hover {
     color: rgba(0, 0, 0, 0.55);
 }
 

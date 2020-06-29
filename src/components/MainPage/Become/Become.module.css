@@ -2,24 +2,24 @@
     margin: 6rem 0 2rem 0;
 }
 
-.Become__content {
+.content {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
 }
 
-.Become__left {
+.left {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     margin-right: 1.4rem;
 }
 
-.Become__proposition {
+.proposition {
     font-size: 1.6rem;
 }
 
-.Become__button button {
+.button button {
     margin: 1.2rem 0;
     background: white;
     font-size: 1.5rem;
@@ -31,21 +31,21 @@
     cursor: pointer;
 }
 
-.Become__button button:hover {
+.button button:hover {
     background: black;
     color: white;
 }
 
-.Become__right {
+.right {
     width: 60%;
 }
 
-.Become__right p {
+.right p {
     font-size: 1.6rem;
 }
 
 @media (max-width: 743px) {
-    .Become__right {
+    .right {
         display: none;
     }
 }

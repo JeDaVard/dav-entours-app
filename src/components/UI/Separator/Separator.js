@@ -15,7 +15,7 @@ const Separator = (props) => {
     return (
         <>
             {props.vertical ? (
-                <div className={[classes.Separator__vertical, classes[props.color]].join(' ')} style={styles}> </div>
+                <div className={[classes.vertical, classes[props.color]].join(' ')} style={styles}> </div>
             ) : (
                 <div className={[classes.Separator, classes[props.color]].join(' ')} style={styles}> </div>
             )}

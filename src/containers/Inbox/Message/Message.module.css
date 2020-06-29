@@ -5,30 +5,30 @@
     margin: 1rem 0;
 }
 
-.Message__own {
+.own {
     justify-content: flex-end;
 }
 
-.Message__author {
+.author {
     order: 1;
 }
 
-.Message__authorOwn {
+.authorOwn {
     order: 2;
 }
 
-.Message__author img {
+.author img {
     width: 3.6rem;
     height: 3.6rem;
     border-radius: 50%;
 }
 
-.Message__authorGuide {
+.authorGuide {
     border: 1px solid #ffffff;
     box-shadow: 0 0 0 2px #4fc877;
 }
 
-.Message__text {
+.text {
     background: #efefef;
     color: rgba(0, 0, 0, 0.65);
     order: 1;
@@ -37,57 +37,57 @@
     padding:  1.4rem 2rem;
 }
 
-.Message__textOwn {
+.textOwn {
     background: #31bf71;
     color: white;
     border-radius: 1rem 1rem 4px 1rem;
 }
 
-.Message__text p {
+.text p {
     font-size: 1.6rem;
 }
 
-.Message__text h4 {
+.text h4 {
     font-size: 1.3rem;
     font-weight: 500;
     margin-top: .6rem;
     color: rgba(0, 0, 0, 0.3);
 }
 
-.Message__textOwn h4 {
+.textOwn h4 {
     color: rgba(255, 255, 255, 0.6);
 }
 
-.Message__textRemoved {
+.textRemoved {
     background: rgba(200, 35, 80, 0.89);
     color: rgba(255, 255, 255, 0.8);
 }
 
-.Message__textRemoved p {
+.textRemoved p {
     font-size: 1.4rem;
     font-weight: 700;
 }
 
-.Message__textOwnOptimistic {
+.textOwnOptimistic {
     background: #e27f2a;
 }
 
-.Message__textOptions {
+.textOptions {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.Message__textOptions h4 {
+.textOptions h4 {
     font-size: 1.2rem;
     margin-right: 1rem;
 }
 
-.Message__textOptionsRemoved h4 {
+.textOptionsRemoved h4 {
     color: rgba(255, 255, 255, 0.6);
 }
 
-.Message__textRemove {
+.textRemove {
     margin-top: 4px;
     cursor: pointer;
     border-radius: 50%;
@@ -99,7 +99,7 @@
     transition: all .1s;
 }
 
-.Message__textRemoveIcon {
+.textRemoveIcon {
     fill: rgba(255, 255, 255, 0.6);
     margin-top: 3px;
     width: 1.6rem;
@@ -107,24 +107,24 @@
     transition: all .1s;
 }
 
-.Message__textRemove:hover .Message__textRemoveIcon,
-.Message__textRemove:active .Message__textRemoveIcon {
+.textRemove:hover .textRemoveIcon,
+.textRemove:active .textRemoveIcon {
     fill: rgba(255, 255, 255, 0.8);
 }
 
-.Message__textRemove:hover,
-.Message__textRemove:active {
+.textRemove:hover,
+.textRemove:active {
     background: rgba(0, 0, 0, 0.05);
 }
 
-.Message__photoFrame {
+.photoFrame {
     padding-top: .5rem;
     position: relative;
     width: 100%;
     height: 40rem;
 }
 
-.Message__photo {
+.photo {
     border-radius: .5rem;
     width: 100%;
     height: 40rem;

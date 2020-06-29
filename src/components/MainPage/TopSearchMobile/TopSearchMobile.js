@@ -4,7 +4,7 @@ import TopSearch from "../../Topbar/TopSearch/TopSearch";
 
 function TopSearchMobile() {
     return (
-        <div className={classes.TopSearchMobile__spaceFix}>
+        <div className={classes.spaceFix}>
             <div className={classes.TopSearchMobile}>
                 <TopSearch />
             </div>

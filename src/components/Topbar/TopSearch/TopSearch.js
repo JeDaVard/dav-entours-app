@@ -10,25 +10,25 @@ function TopSearch(props) {
         <>
             {show &&
                 <div className={classes.TopSearch}>
-                    <div className={classes.TopSearch__block} role="search">
-                        <button className={classes.TopSearch__button} data-index="0" type="button">
-                            <span className={classes.TopSearch__buttonName}>Location</span>
+                    <div className={classes.block} role="search">
+                        <button className={classes.button} data-index="0" type="button">
+                            <span className={classes.buttonName}>Location</span>
                             Location
                         </button>
-                        <span className={classes.TopSearch__separator}> </span>
-                        <button className={classes.TopSearch__button} data-index="1" type="button">
+                        <span className={classes.separator}> </span>
+                        <button className={classes.button} data-index="1" type="button">
                     <span
-                        className={classes.TopSearch__buttonName}>Check in / Check out</span>
+                        className={classes.buttonName}>Check in / Check out</span>
                             Dates
                         </button>
-                        <span className={classes.TopSearch__separator}> </span>
-                        <button className={classes.TopSearch__button} data-index="2" type="button">
-                            <span className={classes.TopSearch__buttonName}>Participants</span>
+                        <span className={classes.separator}> </span>
+                        <button className={classes.button} data-index="2" type="button">
+                            <span className={classes.buttonName}>Participants</span>
                             Participants
                         </button>
-                        <span className={classes.TopSearch__separator}> </span>
-                        <button className={classes.TopSearch__searchButton} aria-label="Search" type="button">
-                            <svg className={classes.TopSearch__searchIcon}>
+                        <span className={classes.separator}> </span>
+                        <button className={classes.searchButton} aria-label="Search" type="button">
+                            <svg className={classes.searchIcon}>
                                 <use href={sprite + '#icon-search'} />
                             </svg>
                         </button>

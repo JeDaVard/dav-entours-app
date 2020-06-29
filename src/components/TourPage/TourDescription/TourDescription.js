@@ -9,12 +9,12 @@ function TourDescription(props) {
         <>
            <section className={classes.TourDescription}>
                 <div className="row">
-                    <div className={classes.TourDescription__content}>
-                        <div className={classes.TourDescription__left}>
+                    <div className={classes.content}>
+                        <div className={classes.left}>
                             <h2>YOUR TOUR GUIDES</h2>
-                            <div className={classes.TourDescription__users}>
+                            <div className={classes.users}>
                                 <Link to={{pathname: `/user/${tour.author._id}`}}>
-                                    <div className={classes.TourDescription__user}>
+                                    <div className={classes.user}>
                                         <img src={`${process.env.REACT_APP_SERVER}/images/user/${tour.author.photo}`} alt="user"/>
                                         <h3>{tour.author.name}</h3>
                                         <p>Author</p>
@@ -22,7 +22,7 @@ function TourDescription(props) {
                                 </Link>
                                 {tour.guides.map( guide => (
                                     <Link to={{pathname: `/user/${guide._id}`}} key={guide._id}>
-                                        <div className={classes.TourDescription__user}>
+                                        <div className={classes.user}>
                                             <img src={`${process.env.REACT_APP_SERVER}/images/user/${guide.photo}`} alt="user"/>
                                             <h3>{guide.name}</h3>
                                             <p>Guide</p>
@@ -31,7 +31,7 @@ function TourDescription(props) {
                                 ))}
                             </div>
                         </div>
-                        <div className={classes.TourDescription__right}>
+                        <div className={classes.right}>
                             <h2>ABOUT {tour.name.toUpperCase()} TOUR</h2>
                             <p>
                                 {tour.description}

@@ -1,10 +1,10 @@
-.PopularItemLoading__itemcontainer {
+.itemContainer {
     padding: 1rem .6rem;
     scroll-snap-align: start;
     min-width: 94%;
 }
 
-.PopularItemLoading__tour {
+.tour {
     position: relative;
     height: 41rem;
     overflow: hidden;
@@ -13,13 +13,13 @@
 }
 
 @media screen and (min-width: 744px) {
-    .PopularItemLoading__itemcontainer {
+    .itemContainer {
         min-width: 49%;
     }
 }
 
 @media screen and (min-width: 1128px) {
-    .PopularItemLoading__itemcontainer {
+    .itemContainer {
         min-width: 32%;
     }
 }

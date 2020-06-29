@@ -1,4 +1,4 @@
-.Error__frame {
+.frame {
     position: relative;
     height: 4.4rem;
     width: 100%;
@@ -16,13 +16,13 @@
     z-index: 100;
 }
 
-.Error__content {
+.content {
     margin-top: -.8rem;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.Error__content h4 {
+.content h4 {
     flex: 1 1;
 }
 
