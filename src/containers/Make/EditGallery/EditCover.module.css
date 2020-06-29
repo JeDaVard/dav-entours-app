@@ -19,6 +19,7 @@
     overflow: hidden;
     border-radius: .7rem;
     position: absolute;
+    /*z-index: 1;*/
 }
 
 .coverImageFrame {
@@ -30,6 +31,8 @@
     padding: .6rem;
     border-radius: 1rem;
     transition: all .2s;
+    /*-webkit-mask-image: -webkit-radial-gradient(center, white, black);*/
+    /*z-index: 2;*/
     /*overflow: hidden;*/
 }
 
@@ -47,6 +50,7 @@
 }
 
 .coverDragPlaceHolder {
+    backface-visibility: hidden;
     justify-content: center;
     position: absolute;
     width: 100%;
@@ -60,10 +64,12 @@
 }
 
 .coverDragPlaceHolder h2 {
+    backface-visibility: hidden;
     animation: animateUpload 1s;
     color: #64be81;
 }
 .coverDragIcon {
+    backface-visibility: hidden;
     width: 6rem;
     height: 6rem;
     fill: #64be81;

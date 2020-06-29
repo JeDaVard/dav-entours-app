@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, { useRef, useState} from "react";
 import { connect } from "react-redux";
 import classes from "./FindInMap.module.css";
 import useMap from "../../../hooks/useMap";

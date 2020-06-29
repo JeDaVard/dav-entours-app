@@ -5,7 +5,6 @@ import classes from './PopularItem.module.css';
 import ThumbedImage from "../../../utils/ImageLoading/ThumbedImage";
 import {FETCH_TOUR} from "../../../containers/TourContainer/queries";
 import {FETCH_USER} from "../../../containers/UserContainer/queries";
-import {Link} from "react-router-dom";
 
 export default ({ popular }) => {
     return (

@@ -1,11 +1,10 @@
-import React, {useState} from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { newViewport } from "../../../app/actions";
 import classes from "./SearchPopUp.module.css";
 import Justicon from "../../../components/UI/Justicon";
 import 'mapbox-gl/dist/mapbox-gl.css';
 import FindInMap from "./FindInMap";
-import OutsideAlerter from "../../../hocs/EventDelegator";
 
 function SearchPopUp(props) {
     // const [ hideSuggestions, setHideSuggestions ] = useState(false);

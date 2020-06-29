@@ -9,7 +9,7 @@ import { SAVE_TOUR } from "../../../containers/Saved/queries";
 
 function TourHead(props) {
     const { tour } = props;
-    const [ saveTour, {loading} ] = useMutation(SAVE_TOUR)
+    const [ saveTour ] = useMutation(SAVE_TOUR)
     const onSaveTour = e => {
         e.preventDefault();
 

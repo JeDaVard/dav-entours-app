@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {useEffect, useState} from "react";
 import classes from './EditLocations.module.css'
 import TopLoading from "../../../components/UI/TopLoading/TopLoading";
 import {Form, Input, MultiInput, Textarea} from "../../../components/UI/LabeledInput/LabeledInput";

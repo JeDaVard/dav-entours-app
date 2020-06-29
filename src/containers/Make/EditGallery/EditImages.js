@@ -3,7 +3,6 @@ import classes from './EditImages.module.css';
 import classNames from 'classnames/bind'
 import Justicon from "../../../components/UI/Justicon";
 import ImageControls from "./ImageControls";
-import TopLoading from "../../../components/UI/TopLoading/TopLoading";
 import './mainLoading.css'
 const cx = classNames.bind(classes)
 

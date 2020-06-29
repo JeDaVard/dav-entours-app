@@ -65,7 +65,7 @@ function EditGallery(props) {
             }
         })
         setLoading(s => ({...s, cover: false}))
-    }, [loading.cover, loading.images, imageCover, images])
+    }, [loading.cover, loading.images, imageCover, images, mutateGallery, signURL, props._id])
 
     const onImageDrop = useCallback( async ([file]) => {
         if (loading.images || loading.cover) return;
@@ -101,7 +101,7 @@ function EditGallery(props) {
 
         setLoading(s => ({...s, images: false}))
 
-    }, [loading.images, loading.cover, images, imageCover]);
+    }, [loading.images, loading.cover, images, imageCover, mutateGallery, props._id, signURL]);
 
 
     const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop: onCoverDrop});
@@ -142,7 +142,7 @@ function EditGallery(props) {
                 images: imageLink ? images.filter(image => image !== imageLink) : images
             }
         })
-    }, [imageCover, images, loading.images, loading.cover]);
+    }, [imageCover, images, loading.images, loading.cover, mutateGallery, props._id]);
 
     return (
         <div className="row">

@@ -1,20 +1,18 @@
 import React, {useState} from "react";
 import classes from './EditDetails.module.css'
 import TopLoading from "../../../components/UI/TopLoading/TopLoading";
-import Justicon from "../../../components/UI/Justicon";
 import StyledButton from "../../../components/UI/StyledButton/StyledButton";
 import {Form, Input, Textarea} from "../../../components/UI/LabeledInput/LabeledInput";
 import {useHistory} from "react-router-dom";
 import {useMutation} from "@apollo/react-hooks";
 import {EDIT_TOUR_DETAILS} from "../queries";
 import SimpleMobileTop from "../SimpleMobileTop";
-import {connect} from "react-redux";
 
 function EditDetails(props) {
     const history = useHistory()
     const {
         _id,
-        slug,
+        // slug,
         summary,
         description,
         draft

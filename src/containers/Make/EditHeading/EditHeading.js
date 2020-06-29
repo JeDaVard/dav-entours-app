@@ -1,14 +1,12 @@
 import React, {useState} from "react";
 import {useHistory} from "react-router-dom";
 import classes from './EditHeading.module.css'
-import Justicon from "../../../components/UI/Justicon";
 import StyledButton from "../../../components/UI/StyledButton/StyledButton";
 import {useMutation} from "@apollo/react-hooks";
 import {EDIT_TOUR_HEADING} from "../queries";
 import TopLoading from "../../../components/UI/TopLoading/TopLoading";
 import {Form, Input, MultiInput, Select} from "../../../components/UI/LabeledInput/LabeledInput";
 import SimpleMobileTop from "../SimpleMobileTop";
-import { connect } from "react-redux";
 
 function EditHeading(props) {
     const history = useHistory()
