@@ -1,6 +1,6 @@
 import React, { lazy, Suspense } from "react";
 
-const LazyLoading = (importFunc, { fallback = null }) => {
+const lazyLoading = (importFunc, { fallback = null }) => {
     const LazyComponent = lazy(importFunc);
     return props => (
         <Suspense fallback={fallback}>
@@ -9,11 +9,11 @@ const LazyLoading = (importFunc, { fallback = null }) => {
     );
 };
 
-LazyLoading.defaultProps = {
+lazyLoading.defaultProps = {
     fallback: null
 };
 
-export default LazyLoading;
+export default lazyLoading;
 
 // ############## USAGE ###############
 

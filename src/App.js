@@ -3,8 +3,6 @@ import { Route, Switch, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setDesktop, setMobile } from './app/actions';
 import Main from './containers/Main';
-import TourPage from './containers/TourContainer/TourPage';
-import UserPage from './containers/UserContainer/UserPage';
 import Profile from './containers/Profile/Profile';
 import LoginForm from './containers/LoginForm/LoginForm';
 import Modal from './components/UI/Modal/Modal';
@@ -15,19 +13,50 @@ import Foot from './components/Foot/Foot';
 import Error from './components/Error/Error';
 import MobileBar from './components/MobileBar/MobileBar';
 import debounce from './utils/debounce';
-import Saved from './containers/Saved/Saved';
-import TourEvents from './containers/TourEvents/TourEvents';
 import './App.css';
 import OnlyAuth from './components/OnlyAuth/OnlyAuth';
-import Inbox from "./containers/Inbox/Inbox";
-import Conversation from "./containers/Inbox/Conversation/Conversation";
 import { useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 import NotFound from "./components/NotFound/NotFound";
 import TopLoading from "./components/UI/TopLoading/TopLoading";
-import Make from "./containers/Make/Make";
-import MyTours from "./containers/MyTours/MyTours";
 import EditTour from "./containers/Make/EditTour";
+import lazyLoading from "./utils/LazyLoading";
+// import TourPage from './containers/TourContainer/TourPage';
+// import UserPage from './containers/UserContainer/UserPage';
+// import Saved from './containers/Saved/Saved';
+// import TourEvents from './containers/TourEvents/TourEvents';
+// import Inbox from "./containers/Inbox/Inbox";
+// import Conversation from "./containers/Inbox/Conversation/Conversation";
+// import Make from "./containers/Make/Make";
+// import MyTours from "./containers/MyTours/MyTours";
+
+
+
+const LazyTourPage = lazyLoading(() => import('./containers/TourContainer/TourPage'), {
+        fallback: <TopLoading /> }
+);
+const LazyUserPage = lazyLoading(() => import('./containers/UserContainer/UserPage'), {
+    fallback: <TopLoading /> }
+);
+const LazyMyTours = lazyLoading(() => import('./containers/MyTours/MyTours'), {
+    fallback: <TopLoading /> }
+);
+const LazyMake = lazyLoading(() => import('./containers/Make/Make'), {
+    fallback: <TopLoading /> }
+);
+const LazyInbox = lazyLoading(() => import('./containers/Inbox/Inbox'), {
+    fallback: <TopLoading /> }
+);
+const LazyConversation = lazyLoading(() => import('./containers/Inbox/Conversation/Conversation'), {
+    fallback: <TopLoading /> }
+);
+const LazySaved = lazyLoading(() => import('./containers/Saved/Saved'), {
+    fallback: <TopLoading /> }
+);
+const LazyTourEvents = lazyLoading(() => import('./containers/TourEvents/TourEvents'), {
+    fallback: <TopLoading /> }
+);
+
 
 
 const LOGGED_IN = gql`
@@ -200,14 +229,14 @@ function App(props) {
                 <Switch>
                     <Route path="/" exact component={Main} />
                     <Route path="/tour/:slug/edit" component={EditTour}/>
-                    <Route path="/user/:id" component={UserPage} />
-                    <Route path="/make" component={Make}/>
-                    <Route path="/mytours" component={MyTours}/>
-                    <Route exact path="/tour/:slug" component={TourPage}/>
-                    <Route exact path="/inbox/:id" component={Conversation} />
+                    <Route path="/user/:id" component={LazyUserPage} />
+                    <Route path="/make" component={LazyMake}/>
+                    <Route path="/mytours" component={LazyMyTours}/>
+                    <Route exact path="/tour/:slug" component={LazyTourPage}/>
+                    <Route exact path="/inbox/:id" component={LazyConversation} />
                     <Route path="/inbox" render={_ =>
                         loggedIn ? (
-                            <Inbox />
+                            <LazyInbox />
                         ) : (
                             <OnlyAuth
                                 signUp={signUpModalHandler}
@@ -215,12 +244,12 @@ function App(props) {
                             />
                         )
                     } />
-                    <Route path="/saved" component={Saved} />
+                    <Route path="/saved" component={LazySaved} />
                     <Route
                         path="/tourevents"
                         render={props =>
                             loggedIn ? (
-                                <TourEvents { ...props } />
+                                <LazyTourEvents { ...props } />
                             ) : (
                                 <OnlyAuth
                                     signUp={signUpModalHandler}
