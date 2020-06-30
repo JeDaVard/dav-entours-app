@@ -2,7 +2,7 @@ import React from "react";
 import moment from "moment";
 import classes from './UserReviews.module.css';
 import {Link} from "react-router-dom";
-import ThumbedImage from "../../../utils/ImageLoading/ThumbedImage";
+// import ThumbedImage from "../../../utils/ImageLoading/ThumbedImage";
 
 const UserReviews = ({ reviews }) => {
     return (
