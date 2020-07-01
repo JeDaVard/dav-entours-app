@@ -21,6 +21,7 @@ import NotFound from "./components/NotFound/NotFound";
 import TopLoading from "./components/UI/TopLoading/TopLoading";
 import EditTour from "./containers/Make/EditTour";
 import lazyLoading from "./utils/LazyLoading";
+import './assets/icons/sprite.svg'
 // import TourPage from './containers/TourContainer/TourPage';
 // import UserPage from './containers/UserContainer/UserPage';
 // import Saved from './containers/Saved/Saved';
@@ -146,7 +147,7 @@ function App(props) {
         const debouncedHandleResize = debounce(function handleResize() {
             if (window.innerWidth <= 743 && !props.isMobile) setMobile();
             if (window.innerWidth > 743 && props.isMobile) setDesktop();
-        }, 300);
+        }, 100);
 
         window.addEventListener('resize', debouncedHandleResize);
         return () => {
