@@ -21,7 +21,6 @@ import NotFound from "./components/NotFound/NotFound";
 import TopLoading from "./components/UI/TopLoading/TopLoading";
 import EditTour from "./containers/Make/EditTour";
 import lazyLoading from "./utils/LazyLoading";
-import './assets/icons/sprite.svg'
 // import TourPage from './containers/TourContainer/TourPage';
 // import UserPage from './containers/UserContainer/UserPage';
 // import Saved from './containers/Saved/Saved';

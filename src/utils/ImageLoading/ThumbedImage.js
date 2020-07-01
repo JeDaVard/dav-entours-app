@@ -1,17 +1,19 @@
-
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import classes from './ThumbedImage.module.css';
+import classNames from 'classnames/bind'
+const cx = classNames.bind(classes);
 
-
-const ThumbedImage = function(props) {
-    const { src, XL, alt } = props;
-    const [ state, setstate ] = useState({ ready: false });
+const ThumbedImage = React.memo(function(props) {
+    const { src, XL, alt, className } = props;
+    const [ ready, setReady ] = useState(false);
 
     const theSrc = XL
         ? `${process.env.REACT_APP_CDN}/${src.slice(0, src.length-4)}.large.jpg`
         : `${process.env.REACT_APP_CDN}/${src}`;
 
     const theThumb = `${process.env.REACT_APP_CDN}/${src.slice(0, src.length-4)}.thumb.jpg`;
+    const ref = useRef(null);
+
     // let _mounted = false;
     //
     // useEffect(() => {
@@ -22,43 +24,31 @@ const ThumbedImage = function(props) {
     // });
 
     useEffect(() => {
-        const bufferHandler = () => {if (!state.ready) setstate({ ready: true })}
         let buffer;
 
-        if (!state.ready) {
+        const bufferHandler = () => {
+            if (!ready) setReady(true)
+            ref.current.insertBefore(buffer, ref.current.firstChild)
+        }
+        if (!ready) {
             buffer = new Image();
             buffer.src = theSrc;
+            buffer.className = `${className} ${classes.original}`;
+            buffer.alt = alt;
             buffer.addEventListener('load', bufferHandler)
         }
         return () => buffer.removeEventListener('load', bufferHandler)
     }, [])
 
-    const { ready } = state;
-    
     return (
-        <div className={classes.ThumbedImage}>
-            <img className={`${props.className} ${classes.ThumbedImage__original}`}
-                 src={ready ? theSrc : ''}
-                 alt={props.alt} />
+        <div className={classes.ThumbedImage} ref={ref}>
             <img
-                className={`${props.className} ${ready && classes.ThumbedImage__hide}`}
                 src={theThumb}
+                className={cx(classes.thumb, className, {[classes.hide]: ready})}
                 alt={props.alt} />
-            <div className={ready ? classes.ThumbedImage__unBlur : classes.ThumbedImage__blur } />
+            <div className={cx(classes.blur, {[classes.unBlur]: ready})} />
         </div>
     )
-
-}
-//
-// function LazyImage(props) {
-//     return (
-//         <>
-//             {props.ready &&
-//             <img className={`${props.className} ${classes.ThumbedImage__original}`}
-//                  src={props.src}
-//                  alt={props.alt} />}
-//         </>
-//     )
-// }
+})
 
 export default ThumbedImage;
