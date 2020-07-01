@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import classes from './ThumbedImage.module.css';
 
 
@@ -21,19 +21,25 @@ const ThumbedImage = function(props) {
     //     }
     // });
 
-    if (!state.ready) {
-        const buffer = new Image();
-        buffer.onload = () => !state.ready && setstate({ ready: true });
-        buffer.src = theSrc;
-    }
+    useEffect(() => {
+        const bufferHandler = () => {if (!state.ready) setstate({ ready: true })}
+        let buffer;
+
+        if (!state.ready) {
+            buffer = new Image();
+            buffer.src = theSrc;
+            buffer.addEventListener('load', bufferHandler)
+        }
+        return () => buffer.removeEventListener('load', bufferHandler)
+    }, [])
 
     const { ready } = state;
-
+    
     return (
         <div className={classes.ThumbedImage}>
             <img className={`${props.className} ${classes.ThumbedImage__original}`}
-                 src={theSrc}
-                 alt={alt} />
+                 src={ready ? theSrc : ''}
+                 alt={props.alt} />
             <img
                 className={`${props.className} ${ready && classes.ThumbedImage__hide}`}
                 src={theThumb}
@@ -43,5 +49,16 @@ const ThumbedImage = function(props) {
     )
 
 }
+//
+// function LazyImage(props) {
+//     return (
+//         <>
+//             {props.ready &&
+//             <img className={`${props.className} ${classes.ThumbedImage__original}`}
+//                  src={props.src}
+//                  alt={props.alt} />}
+//         </>
+//     )
+// }
 
 export default ThumbedImage;
