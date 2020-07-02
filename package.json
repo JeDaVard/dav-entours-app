@@ -44,6 +44,7 @@
     "react-topbar-progress-indicator": "^4.1.0",
     "react-transition-group": "^4.3.0",
     "subscriptions-transport-ws": "^0.9.16",
+    "uuid": "^8.2.0",
     "validator": "^13.0.0"
   },
   "scripts": {
@@ -72,6 +73,7 @@
   "author": "Davit Vardanyan",
   "license": "ISC",
   "devDependencies": {
+    "@graphql-codegen/cli": "^1.16.0",
     "prettier": "^2.0.5"
   }
 }

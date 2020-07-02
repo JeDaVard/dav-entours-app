@@ -20,6 +20,7 @@ export const FETCH_EDIT_TOUR = gql`
                     description
                     day
                     address
+					_id
                 }
                 draft
 			}
@@ -50,6 +51,7 @@ export const MAKE_A_TOUR = gql`
 					description
 					day
 					address
+					_id
 				}
 				draft
 			}
@@ -94,6 +96,7 @@ export const EDIT_TOUR_HEADING = gql`
 					description
 					day
 					address
+					_id
 				}
 				draft
             }
@@ -123,6 +126,7 @@ export const EDIT_TOUR_DETAILS = gql`
 					description
 					day
 					address
+					_id
 				}
 				draft
 			}
@@ -153,6 +157,7 @@ export const EDIT_TOUR_LOCATIONS = gql`
 					description
 					day
 					address
+					_id
 				}
 				draft
 			}
@@ -193,6 +198,7 @@ export const EDIT_TOUR_GALLERY = gql`
 					description
 					day
 					address
+					_id
 				}
 				draft
 			}

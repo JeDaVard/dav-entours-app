@@ -11,7 +11,8 @@ const initialState = {
         address: '',
         coordinates: [],
         description: '',
-        day: null
+        day: null,
+        id: null
     }
 }
 

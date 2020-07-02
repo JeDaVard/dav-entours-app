@@ -34,7 +34,8 @@ function EditLocations(props) {
                 address: '',
                 coordinates: [],
                 description: '',
-                day: null
+                day: null,
+                id: null
             })
         }
     }, [selectedLocation, newLocation])
@@ -49,10 +50,13 @@ function EditLocations(props) {
 
         setLocations(newState)
     }
-    const removeLocation = (e, address) => {
+    const removeLocation = (e, id) => {
         e.preventDefault();
 
-        const newState = locations.filter(loc => loc.address !== address);
+        const newState = locations.filter(loc => {
+            const locId = loc.id || loc._id
+            return id !== locId
+        });
         setLocations(newState)
     }
     // const changeLocation = (e, viewport) => {
@@ -119,7 +123,7 @@ function EditLocations(props) {
                 <StyledButton onClick={addLocation}>Add New Location</StyledButton>
                 <Form onSubmit={onTourLocationSave}>
                     {locations.map(loc => (
-                        <div className={classes.locationBox} key={loc.coordinates[0]+loc.coordinates[1]}>
+                        <div className={classes.locationBox} key={loc._id || loc.id}>
                             <div className={classes.addressBox}>
                                 <div className={classes.controlsBox}>
                                     <div className={classes.coordinatesBox}>
@@ -134,7 +138,7 @@ function EditLocations(props) {
                                         {/*})}>*/}
                                         {/*    <Justicon icon={'edit'} className={classes.controlIcon}/>*/}
                                         {/*</button>*/}
-                                        <button onClick={e => removeLocation(e, loc.address)}>
+                                        <button onClick={e => removeLocation(e, loc._id || loc.id)}>
                                             <Justicon icon={'trash'} className={classes.controlIcon}/>
                                         </button>
                                     </div>

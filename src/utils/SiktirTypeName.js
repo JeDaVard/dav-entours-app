@@ -4,7 +4,7 @@ export function sikTypeNames (value) {
     } else if (value !== null && typeof(value) === "object") {
         const newObject = {}
         for (const property in value) {
-            if (property !== '__typename') {
+            if (property !== '__typename' && property !== 'id') {
                 newObject[property] = sikTypeNames(value[property])
             }
         }

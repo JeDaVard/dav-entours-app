@@ -6,6 +6,7 @@ import {newViewport} from "../../../app/actions";
 import useDebounce from "../../../hooks/useDebounce";
 import Justicon from "../../../components/UI/Justicon";
 import {selectedLocation} from "../../../app/actions/searchLocation/actions";
+import { v1 as uuid } from 'uuid';
 
 function FindInMap({viewport, newViewport, selectedLocation, closeSearch}) {
     const [ currLocation, setCurrLocation ] = useState(null)
@@ -23,9 +24,10 @@ function FindInMap({viewport, newViewport, selectedLocation, closeSearch}) {
                 if (data.features[0]) {
                     setCurrLocation({
                         address: data.features[0].place_name,
-                        coordinates: data.features[0].geometry.coordinates,
+                        coordinates: [longitude, latitude],
                         description: '',
-                        day: 0
+                        day: 0,
+                        id: uuid()
                     })
                 } else {
                     setCurrLocation(null)
