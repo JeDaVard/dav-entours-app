@@ -84,8 +84,8 @@ const client = new ApolloClient({
 cache.writeData({
     data: {
         loggedIn: !!getCookie('userId'),
-        photo: localStorage.getItem('photo'),
-        name: localStorage.getItem('name') || 'Entours',
+        photo: localStorage.getItem('photo') || 'default.jpg',
+        name: localStorage.getItem('name') || 'Entours App',
         userId: getCookie('userId'),
         // cartItems: []
     }

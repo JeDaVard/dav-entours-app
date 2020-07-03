@@ -43,7 +43,7 @@ function LoginForm(props) {
                     userId: login._id
                 }
             });
-            setCookie('userId', login._id, new Date(Date.now() + process.env.authExp))
+            setCookie('userId', login._id, new Date(Date.now() + process.env.REACT_APP_AUTH_EXP))
             localStorage.setItem('photo', login.photo);
             localStorage.setItem('name', login.name);
         }
