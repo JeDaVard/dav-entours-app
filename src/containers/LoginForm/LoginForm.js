@@ -10,7 +10,6 @@ import AnimatedValidation from "../../components/UI/AnimatedValidation/AnimatedV
 import { Link } from "react-router-dom";
 import { useApolloClient, useMutation } from '@apollo/react-hooks';
 import { SIGN_IN, SIGN_UP } from "./queries";
-import {setCookie} from "../../utils/cookies";
 
 function LoginForm(props) {
     const client = useApolloClient();
@@ -38,18 +37,14 @@ function LoginForm(props) {
         onCompleted({ login }) {
             client.writeData({ data: {
                     loggedIn: true,
-                    photo: login.user.photo,
-                    name: login.user.name,
-                    userId: login.user._id
+                    photo: login.photo,
+                    name: login.name,
+                    userId: login._id
                 }
             });
 
-            setCookie('authToken', login.token, +login.expires)
-            setCookie('exp', login.expires, +login.expires)
-            setCookie('userId', login.user._id, +login.expires)
-
-            localStorage.setItem('photo', login.user.photo);
-            localStorage.setItem('name', login.user.name);
+            localStorage.setItem('photo', login.photo);
+            localStorage.setItem('name', login.name);
         }
     });
 

@@ -42,7 +42,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "react-topbar-progress-indicator": "^4.1.0",
-    "react-transition-group": "^4.3.0",
+    "react-transition-group": "^4.4.1",
     "subscriptions-transport-ws": "^0.9.16",
     "uuid": "^8.2.0",
     "validator": "^13.0.0"
@@ -73,7 +73,6 @@
   "author": "Davit Vardanyan",
   "license": "ISC",
   "devDependencies": {
-    "@graphql-codegen/cli": "^1.16.0",
     "prettier": "^2.0.5"
   }
 }

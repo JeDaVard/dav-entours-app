@@ -13,7 +13,6 @@ import Foot from './components/Foot/Foot';
 import Error from './components/Error/Error';
 import MobileBar from './components/MobileBar/MobileBar';
 import debounce from './utils/debounce';
-import './App.css';
 import OnlyAuth from './components/OnlyAuth/OnlyAuth';
 import { useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
@@ -21,15 +20,7 @@ import NotFound from "./components/NotFound/NotFound";
 import TopLoading from "./components/UI/TopLoading/TopLoading";
 import EditTour from "./containers/Make/EditTour";
 import lazyLoading from "./utils/LazyLoading";
-// import TourPage from './containers/TourContainer/TourPage';
-// import UserPage from './containers/UserContainer/UserPage';
-// import Saved from './containers/Saved/Saved';
-// import TourEvents from './containers/TourEvents/TourEvents';
-// import Inbox from "./containers/Inbox/Inbox";
-// import Conversation from "./containers/Inbox/Conversation/Conversation";
-// import Make from "./containers/Make/Make";
-// import MyTours from "./containers/MyTours/MyTours";
-
+import './App.css';
 
 
 const LazyTourPage = lazyLoading(() => import('./containers/TourContainer/TourPage'), {
@@ -67,55 +58,7 @@ const LOGGED_IN = gql`
         userId @client
 	}
 `;
-// export const FETCH_TOUR = gql`
-// 	query FetchTour($id: ID!) {
-// 		tour(id: $id) {
-// 			_id
-// 			name
-// 			imageCover
-// 			slug
-// 			duration
-// 			createdAt
-// 			price
-// 			startDates
-// 			description
-// 			summary
-// 			hashtags
-// 			startDates
-// 			difficulty
-// 			images
-// 			ratingsAverage
-// 			ratingsQuantity
-// 			participants {
-// 				_id
-// 			}
-// 			startLocation {
-// 				description
-// 			}
-// 			author {
-// 				_id
-// 				name
-// 				photo
-// 			}
-// 			guides {
-// 				_id
-// 				name
-// 				photo
-// 			}
-// 			reviews {
-// 				review
-// 				_id
-// 				author {
-// 					_id
-// 					photo
-// 					name
-// 					createdAt
-// 				}
-// 			}
-//
-// 		}
-// 	}
-// `;
+
 
 function App(props) {
     const { setDesktop, setMobile } = props;
