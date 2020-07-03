@@ -16,15 +16,18 @@
 }
 
 .item {
+    backface-visibility: hidden;
     flex: 0 0 100%;
     margin-bottom: 2rem;
     background: transparent;
     border-radius: 8px;
     position: relative;
     transition: all .2s;
+    transform: scale(1);
 }
 
 .item:active {
+    backface-visibility: hidden;
     transform: scale(.96);
 }
 
@@ -42,7 +45,7 @@
     height: 300px;
     display: flex;
     flex-wrap: wrap;
-    /*-webkit-mask-image: -webkit-radial-gradient(center, white, black);*/
+    -webkit-mask-image: -webkit-radial-gradient(center, white, black);
 }
 
 .box1 {
@@ -76,6 +79,7 @@
 
 .image {
     /*backface-visibility: hidden;*/
+    z-index: 1;
     object-fit: cover;
     width: 100%;
     height: 100%;

@@ -89,7 +89,7 @@ function Saved() {
                                                                 id: tour._id
                                                             },
                                                             update(cache, res) {
-                                                                const { me } = cache.readQuery({query: FETCH_SAVED})
+                                                                 const { me } = cache.readQuery({query: FETCH_SAVED})
                                                                 cache.writeQuery({
                                                                     query: FETCH_SAVED,
                                                                     data: { me: {

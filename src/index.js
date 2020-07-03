@@ -85,7 +85,7 @@ cache.writeData({
     data: {
         loggedIn: !!getCookie('userId'),
         photo: localStorage.getItem('photo'),
-        name: localStorage.getItem('name'),
+        name: localStorage.getItem('name') || 'Entours',
         userId: getCookie('userId'),
         // cartItems: []
     }
