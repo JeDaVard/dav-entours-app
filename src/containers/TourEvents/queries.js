@@ -7,14 +7,10 @@ export const FETCH_TOUR_EVENTS = gql`
 			slug
 			name
 			imageCover
-			startDates
 			startLocation {
 				description
 			}
 			maxGroupSize
-			participants {
-				_id
-			}
 		}
 	}
 `;

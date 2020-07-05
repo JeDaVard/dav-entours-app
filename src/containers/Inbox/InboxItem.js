@@ -13,6 +13,7 @@ function InboxItem() {
             {({loading, error, data}) => {
                 if (loading) return <TopLoading />
                 if (error) return <h2>{error.message}. Error while fetching inboxes, please try later</h2>
+                console.log(data)
                 return <>
                     { data.me.conversations.map(conversation => {
 
@@ -40,12 +41,16 @@ function InboxItem() {
                         <Link to={loc => ({...loc, pathname: `/inbox/${conversation._id}`, state: { convId: conversation._id}})} key={conversation._id}>
                             <div className={classes.conversation}>
                                 <div className={classes.image}>
-                                    <img src={`${process.env.REACT_APP_CDN}/${conversation.tour.imageCover}`} className={classes.tourImage} alt={conversation.tour.name}/>
-                                    <img src={`${process.env.REACT_APP_SERVER}/images/user/${conversation.guides[0].photo}`} className={classes.userImage} alt={conversation.guides[0].name}/>
+                                    <img src={`${process.env.REACT_APP_CDN}/${conversation.tour.imageCover}`}
+                                         className={classes.tourImage}
+                                         alt={conversation.tour.name}/>
+                                    <img src={`${process.env.REACT_APP_SERVER}/images/user/${conversation.start.staff[0].photo}`}
+                                         className={classes.userImage}
+                                         alt={conversation.start.staff[0].name}/>
                                 </div>
                                 <div className={classes.mainBlock}>
                                     <div className={classes.userName}>
-                                        <h3>{conversation.guides[0].name}</h3>
+                                        <h3>{conversation.start.staff[0].name}</h3>
                                         <div className={classes.date}>
                                             <h4>{moment(conversation).format('ddd DD MMM YYYY')}</h4>
                                             <Justicon icon={'chevron-right'} className={classes.dateArrow} />

@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import { useQuery } from 'react-apollo';
-import { connect } from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import { Redirect, useParams } from 'react-router-dom'
 import { FETCH_TOUR } from "./queries";
 import Separator from '../../components/UI/Separator/Separator';
@@ -9,19 +9,19 @@ import TourDescription from '../../components/TourPage/TourDescription/TourDescr
 import TourImages from '../../components/TourPage/TourImages/TourImages';
 import TourLocations from "../../components/TourPage/TourLocations/TourLocations";
 import TourReviews from "../../components/TourPage/TourReviews/TourReviews";
-import PopDown from '../../components/TourPage/PopDown/PopDown';
 import TopLoading from "../../components/UI/TopLoading/TopLoading";
 import ScrollToTop from "../../components/UI/ScrollToTop";
 import TourHeadLoading from "../../components/TourPage/TourHead/TourHeadLoading";
 import TourHeadLoadingMobile from "../../components/TourPage/TourHead/TourHeadLoadingMobile";
-import {loadingOff} from "../../app/actions";
-import Modal from "../../components/UI/Modal/Modal";
+import * as actionsTypes from "../../app/actions/ui/types";
 import TourOrder from "../../components/TourPage/TourOrder/TourOrder";
 
 
 function TourPage(props) {
     const { slug } = useParams();
-    const { isLoading, loadingOff } = props;
+
+    const [isMobile, isLoading] = useSelector(s => [s.ui.display.isMobile, s.ui.loading])
+    const loadingOff = useDispatch()
 
     const { loading, data, error } = useQuery(FETCH_TOUR, {
         variables: {
@@ -30,13 +30,13 @@ function TourPage(props) {
     });
 
     useEffect(() => {
-        loadingOff()
+        loadingOff({type: actionsTypes.LOADING_OFF})
     }, [loadingOff, isLoading])
 
     if (loading) return (
         <>
             <TopLoading />
-            {props.isMobile ? <TourHeadLoadingMobile /> : <TourHeadLoading />}
+            {isMobile ? <TourHeadLoadingMobile /> : <TourHeadLoading />}
         </>
     )
     if (error) return <h1>Error while fetching the tour</h1>
@@ -57,9 +57,4 @@ function TourPage(props) {
     );
 }
 
-const mSTP = s => ({
-    isMobile: s.ui.display.isMobile,
-    isLoading: s.ui.loading
-})
-
-export default connect(mSTP, { loadingOff })(TourPage)
+export default TourPage

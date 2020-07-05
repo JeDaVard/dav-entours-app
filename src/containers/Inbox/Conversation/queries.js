@@ -13,15 +13,12 @@ export const FETCH_CONVERSATION = gql`
 					name
 					slug
 				}
-				participants {
-					_id
-					photo
-					name
-				}
-				guides {
-					_id
-					photo
-					name
+				start {
+					staff {
+						_id
+						name
+						photo
+					}
 				}
 			}
 		}

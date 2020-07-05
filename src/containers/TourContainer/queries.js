@@ -13,15 +13,19 @@ export const FETCH_TOUR = gql`
 			description
 			summary
 			hashtags
-			startDates
 			difficulty
 			images
 			ratingsAverage
 			ratingsQuantity
 			maxGroupSize
-			
-			participants {
+			starts {
 				_id
+				date
+				participants {
+					_id
+					name
+					photo
+				}
 			}
 			startLocation {
 				description

@@ -62,7 +62,8 @@ function TourHead(props) {
                     <div className={classes.info}>
                         <p>
                             <Justicon icon={'calendar'} className={classes.icon}/>
-                            <b>{moment(+tour.startDates[0]).format('ddd DD MMM YYYY')}</b>
+                            start dates
+                            {/*<b>{moment(+tour.startDates[0]).format('ddd DD MMM YYYY')}</b>*/}
                         </p>
                         <p>
                             <Justicon icon={'zap'} className={classes.icon}/>
@@ -70,9 +71,10 @@ function TourHead(props) {
                         </p>
                         <p>
                             <Justicon icon={'users'} className={classes.icon}/>
-                            <b>{tour.participants.length
-                                ? tour.participants.length + ' / ' + tour.maxGroupSize + ' people'
-                                : 'Be the first'}</b>
+                            participants
+                            {/*<b>{tour.participants.length*/}
+                            {/*    ? tour.participants.length + ' / ' + tour.maxGroupSize + ' people'*/}
+                            {/*    : 'Be the first'}</b>*/}
                         </p>
                     </div>
                 </div>

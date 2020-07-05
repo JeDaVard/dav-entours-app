@@ -53,7 +53,7 @@ function Conversation() {
             <ConversationHead
                 tour={conversation.tour}
                 participants={conversation.participants}
-                guides={conversation.guides}
+                guides={conversation.start.staff}
             />
             <div className={classes.main}>
                     <Query query={FETCH_MESSAGES}

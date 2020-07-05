@@ -12,13 +12,20 @@ export const FETCH_INBOXES = gql`
 					name
 					slug
 				}
-				guides {
-					photo
-					name
+				start {
+					staff {
+						_id
+						name
+						photo
+					}
+					participants {
+						_id
+						name
+						photo
+					}
 				}
 				lastMessage {
 					text
-					isImage
 					sender {
 						name
 					}

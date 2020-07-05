@@ -6,6 +6,7 @@ import BackDrop from "../BackDrop/BackDrop";
 import './animation.css';
 import Separator from "../Separator/Separator";
 import OutsideAlerter from "../../../hocs/EventDelegator";
+import Justicon from "../Justicon";
 
 function Modal(props) {
     const { onClick, showBackdrop } = props
@@ -36,7 +37,9 @@ function Modal(props) {
                     <OutsideAlerter delegate={closeModal}>
                             <header className={classes.header}>
                                 <h1>{props.title}</h1>
-                                <button onClick={closeModal}><div>&times;</div></button>
+                                <button onClick={closeModal}>
+                                    <Justicon icon={'x'} className={classes.closeIcon}/>
+                                </button>
                             </header>
                             <Separator color={'light'}/>
                             <main className={classes.main}>

@@ -124,9 +124,7 @@ function App(props) {
         <>
             {props.error && (
                 <Error
-                    onClose={() => {
-                        setError(false);
-                    }}
+                    onClose={() => setError(false)}
                     show={error}
                 >
                     {props.error}

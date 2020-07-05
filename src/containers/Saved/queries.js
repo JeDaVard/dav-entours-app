@@ -30,14 +30,19 @@ export const REMOVE_SAVED_TOUR = gql`
 			name
 			images
 			ratingsAverage
-			startDates
+			starts {
+				_id
+				date
+				participants {
+					_id
+					name
+					photo
+				}
+			}
 			startLocation {
 				description
 			}
 			maxGroupSize
-			participants {
-				_id
-			}
 		}
 	}
 `
@@ -50,13 +55,18 @@ export const SAVE_TOUR = gql`
 			name
 			images
 			ratingsAverage
-			startDates
 			startLocation {
 				description
 			}
 			maxGroupSize
-			participants {
+			starts {
 				_id
+				date
+				participants {
+					_id
+					name
+					photo
+				}
 			}
 		}
 	}
