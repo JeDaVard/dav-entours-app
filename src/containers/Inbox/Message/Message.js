@@ -6,9 +6,11 @@ import Justicon from "../../../components/UI/Justicon";
 import { useMutation } from "@apollo/react-hooks";
 import { REMOVE_MESSAGE } from "../Conversation/queries";
 import classNames from 'classnames/bind'
+import SmoothImage from "../../../utils/ImageLoading/SmoothImage";
 let cx = classNames.bind(classes);
 
 function Message({data: {text, createdAt, sender, _id, isImage, convId }, own, guide}) {
+    const isRemoved = text === '[Removed]'
     const [mutate] = useMutation(REMOVE_MESSAGE, {
             optimisticResponse: {
                 removeMessage: {
@@ -36,7 +38,11 @@ function Message({data: {text, createdAt, sender, _id, isImage, convId }, own, g
 
     const image = (
         <div className={classes.photoFrame}>
-            <img src={text.startsWith('http') ? text : `${process.env.REACT_APP_SERVER}/users/${sender._id}/conversations/${convId}/${text}`} alt="tour moment" className={classes.photo}/>
+             <SmoothImage
+                 src={text.startsWith('http') ? text : `${process.env.REACT_APP_CDN}/${text}`}
+                 alt="tour moment"
+                 className={classes.photo}
+             />
         </div>
     );
 
@@ -51,16 +57,28 @@ function Message({data: {text, createdAt, sender, _id, isImage, convId }, own, g
             </div>
             <div className={cx(classes.text, {
                     [classes.textOwn]:own,
-                    [classes.textRemoved]:text === '[Removed]',
-                    [classes.textOwnOptimistic]:_id.startsWith('optimistic')}
+                    [classes.image]: !isRemoved && isImage,
+                    [classes.textOwnOptimistic]:_id.startsWith('optimistic'),
+                    [classes.textRemoved]:isRemoved,
+            }
                 )}>
 
-                {isImage && text !== '[Removed]' ? image : <p>{text}</p>}
+                {(isImage && text !== '[Removed]') ? image : <p>{text}</p>}
 
-                <div className={cx(classes.textOptions, {[classes.textOptionsRemoved]:text === '[Removed]' })}>
+                <div className={cx(classes.textOptions, {
+                    [classes.imageOptions]: !isRemoved && isImage,
+                    [classes.textOptionsRemoved]:isRemoved,
+                })}>
                     <h4>{moment(createdAt).format('HH:MM | DD MMM YYYY')}</h4>
-                    {own && text !== '[Removed]' && <button onClick={() => mutate({variables: { id: _id }})} className={classes.textRemove}>
-                        <Justicon icon={'trash'} className={classes.textRemoveIcon} />
+                    {own && !isRemoved && <button onClick={() => mutate({
+                        variables: {
+                            id: _id,
+                            key: text.startsWith('users/') && isImage ? text : null
+                        }
+                    })}
+                                                  className={classes.textRemove}>
+                        <Justicon icon={'trash'}
+                                  className={classes.textRemoveIcon} />
                     </button>}
                 </div>
             </div>

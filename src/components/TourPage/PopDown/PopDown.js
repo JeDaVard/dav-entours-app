@@ -69,7 +69,7 @@ function PopDown(props) {
                     </div>
                     <div className={classes.purchase}>
                         <h2>${props.tour.price} per person</h2>
-                        <AnimatedButton button={true} fn={() => console.log('hello')}>Reserve</AnimatedButton>
+                        <AnimatedButton button fn={() => props.onReserve()}>Reserve</AnimatedButton>
                     </div>
                 </div>
             </div>

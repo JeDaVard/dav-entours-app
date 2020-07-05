@@ -15,6 +15,8 @@ import ScrollToTop from "../../components/UI/ScrollToTop";
 import TourHeadLoading from "../../components/TourPage/TourHead/TourHeadLoading";
 import TourHeadLoadingMobile from "../../components/TourPage/TourHead/TourHeadLoadingMobile";
 import {loadingOff} from "../../app/actions";
+import Modal from "../../components/UI/Modal/Modal";
+import TourOrder from "../../components/TourPage/TourOrder/TourOrder";
 
 
 function TourPage(props) {
@@ -50,7 +52,7 @@ function TourPage(props) {
             <TourLocations data={{start: data.tour.startLocation, locations: data.tour.locations}}/>
             <Separator margin={'0 2'}/>
             <TourReviews tour={data.tour} />
-            <PopDown tour={data.tour}/>
+            <TourOrder tour={data.tour} />
         </>
     );
 }

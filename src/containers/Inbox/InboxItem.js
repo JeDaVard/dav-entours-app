@@ -14,7 +14,29 @@ function InboxItem() {
                 if (loading) return <TopLoading />
                 if (error) return <h2>{error.message}. Error while fetching inboxes, please try later</h2>
                 return <>
-                    { data.me.conversations.map(conversation => (
+                    { data.me.conversations.map(conversation => {
+
+                        let lastMessage = null;
+                        if (conversation.lastMessage) {
+                            let lastM = null;
+                            if (conversation.lastMessage.isImage) {
+                                lastM = 'Sent a photo'
+                            } else {
+                                lastM = conversation.lastMessage.text.length > 23
+                                    ? conversation.lastMessage.text.slice(0,20) + '...'
+                                    : conversation.lastMessage.text
+                            }
+                            const name = conversation.lastMessage.sender.name.split(' ')[0];
+                            const lastMessageAuthor = name.length > 10 ? name.slice(0, 7) + '...' : name;
+
+                            lastMessage = (
+                                <p>
+                                    <b>{lastMessageAuthor}: </b>{lastM}
+                                </p>
+                            )
+                        }
+
+                        return (
                         <Link to={loc => ({...loc, pathname: `/inbox/${conversation._id}`, state: { convId: conversation._id}})} key={conversation._id}>
                             <div className={classes.conversation}>
                                 <div className={classes.image}>
@@ -31,16 +53,12 @@ function InboxItem() {
                                     </div>
                                     <h2>{conversation.tour.name}</h2>
                                     <div>
-                                        { conversation.lastMessage ? (
-                                            <p>
-                                                <b>{conversation.lastMessage.sender.name.split(' ')[0]}: </b>{conversation.lastMessage.text.length > 26 ? conversation.lastMessage.text.slice(0,26) + '...' : conversation.lastMessage.text}
-                                            </p>
-                                        ) : null}
+                                        {lastMessage}
                                     </div>
                                 </div>
                             </div>
                         </Link>
-                    ))}
+                    )})}
                     </>
             }}
         </Query>

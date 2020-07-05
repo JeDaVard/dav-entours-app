@@ -45,7 +45,7 @@ const ThumbedImage = React.memo(function(props) {
             <img
                 src={theThumb}
                 className={cx(classes.thumb, className, {[classes.hide]: ready})}
-                alt={props.alt} />
+                alt={alt} />
             <div className={cx(classes.blur, {[classes.unBlur]: ready})} />
         </div>
     )

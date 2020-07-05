@@ -34,7 +34,8 @@ function EditGallery(props) {
                 // We slice from 6 to cut the "image/" and keep the file extension
                 fileName: `main_${Date.now()}.jpg`,
                 contentType: file.type,
-                id: props._id
+                id: props._id,
+                genre: 'tours'
             }
         });
 
@@ -71,7 +72,12 @@ function EditGallery(props) {
         if (loading.images || loading.cover) return;
         setLoading(s => ({...s, images: true}))
         const res = await signURL({
-            variables: { fileName: `image_${Date.now()}.jpg`, contentType: file.type, id: props._id, }
+            variables: {
+                fileName: `image_${Date.now()}.jpg`,
+                contentType: file.type,
+                id: props._id,
+                genre: 'tours'
+            }
         });
 
         const { key, url } = res.data.uploadImage;

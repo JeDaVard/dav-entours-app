@@ -18,6 +18,7 @@ export const FETCH_INBOXES = gql`
 				}
 				lastMessage {
 					text
+					isImage
 					sender {
 						name
 					}

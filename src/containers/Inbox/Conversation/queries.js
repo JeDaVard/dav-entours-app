@@ -54,8 +54,8 @@ export const FETCH_MESSAGES = gql`
 `
 
 export const SEND_MESSAGE = gql`
-	mutation SendMessage($convId: ID!, $text: String!) {
-		sendMessage(convId: $convId, text: $text) {
+	mutation SendMessage($convId: ID!, $text: String! $isImage: Boolean) {
+		sendMessage(convId: $convId, text: $text isImage: $isImage) {
 			success
 			code
 			message
@@ -74,8 +74,8 @@ export const SEND_MESSAGE = gql`
 `
 
 export const REMOVE_MESSAGE = gql`
-	mutation RemoveMessage($id: ID!) {
-		removeMessage(id: $id) {
+	mutation RemoveMessage($id: ID! $key: String) {
+		removeMessage(id: $id key: $key) {
 			success
 			code
 			message

@@ -208,8 +208,18 @@ export const EDIT_TOUR_GALLERY = gql`
 
 
 export const UPLOAD_IMAGE = gql`
-	mutation uploadImage($id: ID! $fileName: String! $contentType: String!) {
-		uploadImage(id: $id fileName: $fileName contentType: $contentType) {
+	mutation uploadImage(
+		$id: ID!
+		$fileName: String!
+		$contentType: String!
+		$genre: String!
+	) {
+		uploadImage(
+			id: $id
+			fileName: $fileName
+			contentType: $contentType
+			genre: $genre
+		) {
 			key
 			url
 		}

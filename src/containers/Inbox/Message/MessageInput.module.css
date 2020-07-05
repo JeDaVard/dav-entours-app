@@ -61,6 +61,12 @@
     transition: all .1s ease-in;
 }
 
+.sendPhoto input {
+    height: 1px;
+    width: 1px;
+    display: none;
+}
+
 .sendPhoto:hover {
     background: rgba(0, 0, 0, 0.05);
 }
@@ -70,6 +76,7 @@
 }
 
 .sendPhotoIcon {
+    cursor: pointer;
     box-sizing: initial;
     width: 2.6rem;
     height: 2.6rem;

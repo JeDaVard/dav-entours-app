@@ -1,12 +1,12 @@
 @media screen and (min-width: 744px) {
     .modal-enter {
-        transform: translate(-50%, -10%);
+        transform: translate(-50%, 140%);
         opacity: 0;
     }
     .modal-enter-active {
         transform: translate(-50%, -50%);
         opacity: 1;
-        transition: all 200ms ;
+        transition: all 400ms;
         transition-delay: 200ms;
     }
     .modal-exit {
