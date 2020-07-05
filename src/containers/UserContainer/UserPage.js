@@ -10,16 +10,17 @@ import TopLoading from '../../components/UI/TopLoading/TopLoading';
 import Justicon from "../../components/UI/Justicon";
 import { getCookie } from "../../utils/cookies";
 import ScrollToTop from "../../components/UI/ScrollToTop";
-import {connect} from "react-redux";
-import {loadingOff} from "../../app/actions";
+import { useSelector, useDispatch } from "react-redux";
+import * as actionTypes from '../../app/actions/ui/types'
 
-function UserPage(props) {
+function UserPage() {
     const { id } = useParams();
-    const { isLoading, loadingOff } = props;
     const isThatMe = id === getCookie('userId');
+    const [ isMobile, isLoading ] = useSelector(s => [s.ui.display.isMobile, s.ui.loading]);
+    const loadingOff = useDispatch();
 
     useEffect(() => {
-        loadingOff()
+        loadingOff({type: actionTypes.LOADING_OFF})
     }, [loadingOff, isLoading])
 
     return (
@@ -91,9 +92,4 @@ function UserPage(props) {
     );
 }
 
-const mSTP = s => ({
-    isMobile: s.ui.display.isMobile,
-    isLoading: s.ui.loading
-})
-
-export default connect(mSTP, { loadingOff })(UserPage)
+export default UserPage

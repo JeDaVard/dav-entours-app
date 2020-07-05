@@ -1,0 +1,13 @@
+.main {
+
+}
+
+.button {
+    outline: none;
+    border: none;
+    background: transparent;
+}
+
+.content {
+    position: absolute;
+}

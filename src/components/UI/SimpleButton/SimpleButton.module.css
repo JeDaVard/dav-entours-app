@@ -1,5 +1,11 @@
 .SimpleButton {
     flex: none;
+    transition: transform .2s;
+    transform: scale(1);
+}
+
+.SimpleButton:active {
+    transform: scale(.95);
 }
 
 .SimpleButton a {
@@ -13,15 +19,15 @@
 }
 
 .SimpleButton__black a {
-    background: black;
+    background: rgba(0, 0, 0, 0.8);
     color: white;
-    border: 1px solid white;
+    border: 1px solid rgba(0, 0, 0, 0.8);
 }
 
 .SimpleButton__white a {
     background: white;
-    color: black;
-    border: 1px solid black;
+    color: rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
 }
 
 .SimpleButton__primary a {
@@ -33,12 +39,12 @@
 .SimpleButton__black a:hover,
 .SimpleButton__black a:active {
     background: white;
-    color: black;
+    color: rgba(0, 0, 0, 0.8);
 }
 
 .SimpleButton__white a:hover,
 .SimpleButton__white a:active {
-    background: black;
+    background: rgba(0, 0, 0, 0.8);
     color: white;
 }
 

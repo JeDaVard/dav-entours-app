@@ -39,6 +39,7 @@ const TourMap =  React.forwardRef((props, ref) => {
                                 closeButton={false}
                                 latitude={loc.coordinates[1]}
                                 longitude={loc.coordinates[0]}
+                                dynamicPosition={false}
                                 anchor="bottom" >
                                 <a
                                     href={`https://www.google.com/maps/place/${loc.coordinates[1]},${loc.coordinates[0]}`}

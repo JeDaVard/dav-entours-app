@@ -1,0 +1,47 @@
+.link {
+    text-decoration: none;
+    display: inline-block;
+    color: rgba(0, 0, 0, 0.7);
+    position: relative;
+    transition: all .2s ease-in;
+}
+
+.link:after {
+    content: '';
+    width: 0;
+    height: 1px;
+    border-radius: 2px;
+    background: #4fc877;
+    position: absolute;
+    bottom: 2px;
+    left: 0;
+    transition: all .2s ease-in;
+}
+
+.link:hover,
+.link:active {
+    color: #3db062;
+}
+
+.link:hover:after,
+.link:active:after {
+    width: 100%;
+}
+
+.location {
+    display: flex;
+    align-items: center;
+}
+
+.location p {
+    margin-left: .2rem;
+    font-weight: 400;
+    font-size: 1.5rem;
+}
+
+.locIcon {
+    margin-bottom: .2rem;
+    width: 1.4rem;
+    height: 1.4rem;
+    fill: #3db062;
+}

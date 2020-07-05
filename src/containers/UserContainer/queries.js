@@ -30,16 +30,18 @@ export const FETCH_USER = gql`
                 _id
                 name
 				slug
-				startDates
+				starts {
+                    date
+					participants {
+						_id
+					}
+                }
                 imageCover
                 createdAt
                 ratingsAverage
                 ratingsQuantity
 				startLocation {
                     description
-                }
-                participants {
-                    _id
                 }
                 maxGroupSize
             }

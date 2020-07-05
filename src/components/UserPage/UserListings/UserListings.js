@@ -5,6 +5,7 @@ import moment from "moment";
 import ThumbedImage from "../../../utils/ImageLoading/ThumbedImage";
 
 const UserListings = ({ tours }) => {
+    console.log(tours)
     return (
         <section className={classes.stuff}>
             <div className={classes.listingSection}>
@@ -25,7 +26,7 @@ const UserListings = ({ tours }) => {
                             </Link>
                             <div className={classes.listingTitle}>
                                 <Link to={{pathname: `/tour/${tour.slug}`}}>
-                                <h2>{tour.name.length > 34 ? tour.name.slice(0,34)+'...' : tour.name}</h2>
+                                <h2>{tour.name.length > 28 ? tour.name.slice(0,25)+'...' : tour.name}</h2>
                                 </Link>
                                 <div className={classes.listingTitleRight}>
                                     <p><b>{tour.ratingsAverage}</b></p><p>({tour.ratingsQuantity})</p>
@@ -33,10 +34,12 @@ const UserListings = ({ tours }) => {
                             </div>
                             <div className={classes.listingInfo}>
                                 <div>
-                                    <p><b>{tour.participants.length}</b>/{tour.maxGroupSize}</p>
+                                    <p>
+                                        <b>{tour.starts.length ? tour.starts[0].participants.length : '0'}</b>
+                                        /{tour.maxGroupSize}</p>
                                 </div>
                                 <div>
-                                    <p>{moment(+tour.startDates[0]).format('dd DD MMM YYYY')}</p>
+                                    <p>{tour.starts.length ? moment(+tour.starts[0].date).format('dd, DD MMM YYYY') : 'Coming soon!'}</p>
                                 </div>
                                 <div>
                                     <p>{tour.startLocation.description}</p>
