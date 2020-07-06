@@ -80,10 +80,11 @@ function Conversation() {
                                                          },
                                                          updateQuery: (prev, { fetchMoreResult }) => {
                                                              if (!fetchMoreResult) return prev;
-                                                             if (!fetchMoreResult.me.conversation.messages.messages) return;
+                                                             if (!fetchMoreResult.me.conversation.messages.data) return;
+
                                                              const mergedMessages = [
-                                                                 ...prev.me.conversation.messages.messages,
-                                                                 ...fetchMoreResult.me.conversation.messages.messages
+                                                                 ...prev.me.conversation.messages.data,
+                                                                 ...fetchMoreResult.me.conversation.messages.data
                                                              ];
 
                                                              return Object.assign({}, prev, {
@@ -92,10 +93,9 @@ function Conversation() {
                                                                          ...fetchMoreResult.me.conversation,
                                                                          messages: {
                                                                              ...fetchMoreResult.me.conversation.messages,
-                                                                             messages: _.uniqBy(mergedMessages, function (e) {
+                                                                             data: _.uniqBy(mergedMessages, function (e) {
                                                                                      return e._id;
                                                                                  })
-
                                                                          }
                                                                      },
                                                                      __typename: 'Me'
