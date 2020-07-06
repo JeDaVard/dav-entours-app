@@ -43,7 +43,7 @@ function MessageInput({ convId }) {
         // So we'll have a copy of the same message if we update the cache for the real one too
         if (sendMessage.data._id.startsWith('optimistic')) {
             const { me } = cache.readQuery({ query: FETCH_MESSAGES, variables: {id: convId, limit: 12} });
-            const messages = me.conversation.messages.messages
+            const messages = me.conversation.messages.data
 
             cache.writeQuery({
                 query: FETCH_MESSAGES,
@@ -63,7 +63,7 @@ function MessageInput({ convId }) {
                             },
                             messages: {
                                 ...me.conversation.messages,
-                                messages: [...messages, sendMessage.data]
+                                data: [...messages, sendMessage.data]
                             }
                         }
                     }},

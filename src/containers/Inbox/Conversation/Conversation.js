@@ -30,7 +30,7 @@ function Conversation() {
                 // we have a fetchPolicy "network-only", we can't remove
                 // the optimistic response automatically I guess, so here
                 // we remove it manually just at a time the message from sub is arrived
-                const oldMessages = prev.me.conversation.messages.messages.filter(m => !m._id.startsWith('optimistic'))
+                const oldMessages = prev.me.conversation.messages.data.filter(m => !m._id.startsWith('optimistic'))
                 return Object.assign({}, prev, {
                         me: {
                             ...prev.me,
@@ -38,7 +38,7 @@ function Conversation() {
                                 ...prev.me.conversation,
                                 messages: {
                                     ...prev.me.conversation.messages,
-                                    messages: [...oldMessages, newMessage]
+                                    data: [...oldMessages, newMessage]
                                 }
                             }
                         }
@@ -63,7 +63,7 @@ function Conversation() {
                         {({subscribeToMore, ...result}) => {
                             if (result.loading) return <div style={{marginTop: '14.4rem'}}><DotLoading /></div>
                             if (result.error) return <h1>{result.error.message}</h1>
-                            const { hasMore, messages } = result.data.me.conversation.messages
+                            const { hasMore, data: messages } = result.data.me.conversation.messages
                             return (
                                     <Messages
                                              convId={id}

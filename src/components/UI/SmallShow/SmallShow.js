@@ -1,7 +1,7 @@
-import React, {useRef, useState} from "react";
+import React, { useRef, useState } from "react";
 import classes from './SmallShow.module.css';
 import OutsideAlerter from "../../../hocs/EventDelegator";
-import {CSSTransition} from "react-transition-group";
+import { CSSTransition } from "react-transition-group";
 import './animation.css';
 
 const SmallShow = props => {

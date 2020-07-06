@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import {Query, useMutation} from 'react-apollo';
-import {FETCH_SAVED, REMOVE_SAVED_TOUR} from './queries';
+import { Query, useMutation } from 'react-apollo';
+import { FETCH_SAVED, REMOVE_SAVED_TOUR } from './queries';
 import moment from 'moment';
 import classes from './Saved.module.css';
 import Justicon from '../../components/UI/Justicon';
@@ -26,10 +26,8 @@ function Saved() {
                                 return (
                                     <>
                                         {data.me.saved.map((tour) => (
-                                            <div
-                                                className={classes.item}
-                                                key={tour.slug}
-                                            >
+                                            <div className={classes.item}
+                                                 key={tour.slug}>
                                                 <Link to={`/tour/${tour.slug}`}>
                                                     <div className={classes.imageFrame}>
                                                         <div className={classes.box1}>
@@ -60,7 +58,7 @@ function Saved() {
                                                 <div className={classes.info}>
                                                     <div className={classes.infoAbove}>
                                                         <h4 className={classes.infoPart}>
-                                                            Participants {tour.participants.length}/
+                                                            Participants {tour.starts.length && tour.starts[0].participants.length}/
                                                             {tour.maxGroupSize}
                                                         </h4>
                                                         <div className={classes.rating}>
@@ -75,7 +73,8 @@ function Saved() {
                                                     <div className={classes.infoBottom}>
                                                         <p>{tour.startLocation.description}</p>
                                                         <p>
-                                                            {moment(+tour.startDates[0]).format(
+                                                            {tour.starts.length &&
+                                                                moment(+tour.starts[0].date).format(
                                                                 'ddd, DD MMM YYYY'
                                                             )}
                                                         </p>

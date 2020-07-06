@@ -84,10 +84,10 @@ export default function TourOrder(props) {
                                         </div>
                                     </SmallShow>
                                     </div>
-                                        {/*<LocLink*/}
-                                        {/*    coordinates={props.tour.locations[0].coordinates}*/}
-                                        {/*    address={props.tour.locations[0].address.slice(0, 16) + ' ...'}*/}
-                                        {/*/>*/}
+                                        <LocLink
+                                            coordinates={props.tour.locations[0].coordinates}
+                                            address={props.tour.locations[0].address.slice(0, 16) + ' ...'}
+                                        />
                                 </div>
                             </div>
                         </div>

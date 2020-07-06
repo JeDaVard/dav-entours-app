@@ -9,19 +9,20 @@
     z-index: 102;
     box-shadow: 0 0 60px rgba(0, 0, 0, 0.2);
     transition: all;
-    -webkit-mask-image: -webkit-radial-gradient(center, white, black);
-    overflow: hidden;
+    /*-webkit-mask-image: -webkit-radial-gradient(center, white, black);*/
+    /*overflow: hidden;*/
 }
 
 .Modal:after {
-    content: '';
-    left: 0;
-    right: 0;
-    height: 1rem;
-    background: white;
-    position: absolute;
-    box-shadow: 0 -.5rem 1.4rem 1rem white;
-    bottom: 0;
+    /*content: '';*/
+    /*left: 0;*/
+    /*right: 0;*/
+    /*height: 1rem;*/
+    /*border-radius: 14px;*/
+    /*background: white;*/
+    /*position: absolute;*/
+    /*box-shadow: 0 -.5rem 1.4rem 1rem white;*/
+    /*bottom: 0;*/
 }
 
 .header {

@@ -9,13 +9,13 @@ import {Link} from "react-router-dom";
 import {SUBSCRIBE_MESSAGE} from "./Conversation/queries";
 
 function InboxItem() {
-    const a = useSubscription(SUBSCRIBE_MESSAGE, {
-        variables: {
-
-        }
-    })
-
-    console.log(a)
+    // const a = useSubscription(SUBSCRIBE_MESSAGE, {
+    //     variables: {
+    //
+    //     }
+    // })
+    //
+    // console.log(a)
 
     return (
         <Query query={FETCH_INBOXES}>

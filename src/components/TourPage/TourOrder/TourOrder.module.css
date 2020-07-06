@@ -1,7 +1,11 @@
 .block {
-    margin: 2rem 0;
+    margin-bottom: 2rem;
     color: rgba(0, 0, 0, 0.85);
-    overflow: hidden;
+    /*overflow: hidden;*/
+}
+
+.block:not(:first-of-type) {
+    margin-top: 2rem;
 }
 
 .date {
@@ -75,6 +79,7 @@
 }
 
 .more {
+    backface-visibility: hidden;
     cursor: pointer;
     width: 2.6rem;
     height: 2.6rem;

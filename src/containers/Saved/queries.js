@@ -9,14 +9,19 @@ export const FETCH_SAVED = gql`
 				name
 				images
 				ratingsAverage
-				startDates
+				starts {
+					_id
+					date
+					participants {
+						_id
+						name
+						photo
+					}
+				}
 				startLocation {
 					description
 				}
 				maxGroupSize
-				participants {
-					_id
-				}
 			}
 		}
 	}

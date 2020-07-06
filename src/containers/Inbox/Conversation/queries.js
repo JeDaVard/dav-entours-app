@@ -41,7 +41,7 @@ export const FETCH_MESSAGES = gql`
 					hasMore
 					nextPage
 					total
-					messages {
+					data {
 						_id
 						text
 						isImage
