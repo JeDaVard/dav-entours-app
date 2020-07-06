@@ -45,7 +45,42 @@ function Conversation() {
                     }
                 );
             }
-        })
+        });
+
+    const loadMore = async (hasMore, result) => {
+        if (hasMore) {
+            return result.fetchMore({
+                variables: {
+                    page: result.data.me.conversation.messages.nextPage,
+                    limit: hasMore ? 12 : 0
+                },
+                updateQuery: (prev, { fetchMoreResult }) => {
+                    if (!fetchMoreResult) return prev;
+                    if (!fetchMoreResult.me.conversation.messages.data) return;
+
+                    const mergedMessages = [
+                        ...prev.me.conversation.messages.data,
+                        ...fetchMoreResult.me.conversation.messages.data
+                    ];
+
+                    return Object.assign({}, prev, {
+                        me: {
+                            conversation: {
+                                ...fetchMoreResult.me.conversation,
+                                messages: {
+                                    ...fetchMoreResult.me.conversation.messages,
+                                    data: _.uniqBy(mergedMessages, function (e) {
+                                        return e._id;
+                                    })
+                                }
+                            },
+                            __typename: 'Me'
+                        }
+                    })
+                }
+            })
+        }
+    }
 
     const { conversation } = data.me
     return (
@@ -71,41 +106,7 @@ function Conversation() {
                                              data={messages || []}
                                              guides={conversation.guides || []}
                                              subscribeToMessages={() => sub(subscribeToMore)}
-                                             onLoadMore={async () => {
-                                                 if (hasMore) {
-                                                     return result.fetchMore({
-                                                         variables: {
-                                                             page: result.data.me.conversation.messages.nextPage,
-                                                             limit: hasMore ? 12 : 0
-                                                         },
-                                                         updateQuery: (prev, { fetchMoreResult }) => {
-                                                             if (!fetchMoreResult) return prev;
-                                                             if (!fetchMoreResult.me.conversation.messages.data) return;
-
-                                                             const mergedMessages = [
-                                                                 ...prev.me.conversation.messages.data,
-                                                                 ...fetchMoreResult.me.conversation.messages.data
-                                                             ];
-
-                                                             return Object.assign({}, prev, {
-                                                                 me: {
-                                                                     conversation: {
-                                                                         ...fetchMoreResult.me.conversation,
-                                                                         messages: {
-                                                                             ...fetchMoreResult.me.conversation.messages,
-                                                                             data: _.uniqBy(mergedMessages, function (e) {
-                                                                                     return e._id;
-                                                                                 })
-                                                                         }
-                                                                     },
-                                                                     __typename: 'Me'
-                                                                 }
-                                                             })
-                                                         }
-                                                     })
-                                                 }
-                                             }
-                                         }
+                                             onLoadMore={() => loadMore(hasMore, result)}
                                     />
                             )
                         }}

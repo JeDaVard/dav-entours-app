@@ -28,14 +28,15 @@ function TourPage() {
             id: slug,
             page: 1,
             limit: 4
-        }
+        },
+        notifyOnNetworkStatusChange: true,
     });
 
     useEffect(() => {
         loadingOff({type: actionsTypes.LOADING_OFF})
     }, [loadingOff, isLoading])
 
-    if (loading) return (
+    if (loading && !data) return (
         <>
             <TopLoading />
             {isMobile ? <TourHeadLoadingMobile /> : <TourHeadLoading />}
@@ -53,7 +54,7 @@ function TourPage() {
             <TourImages images={data.tour.images}/>
             <TourLocations data={{start: data.tour.startLocation, locations: data.tour.locations}}/>
             <Separator margin={'0 2'}/>
-            <TourReviews tour={data.tour} more={fetchMore}/>
+            <TourReviews tour={data.tour} more={fetchMore} loading={loading}/>
             <TourOrder tour={data.tour} />
         </>
     );

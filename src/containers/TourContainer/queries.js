@@ -68,3 +68,26 @@ export const FETCH_TOUR = gql`
 		}
 	}
 `;
+
+export const FETCH_MORE_REVIEWS = gql`
+	query fetchMoreReviews($id: ID! $page:Int $limit:Int) {
+		tour(id: $id) {
+			_id
+			reviews(page:$page limit:$limit) {
+				hasMore
+				nextPage
+				total
+				data {
+					review
+					_id
+					author {
+						_id
+						photo
+						name
+						createdAt
+					}
+				}
+			}
+		}
+	}
+`;

@@ -53,6 +53,12 @@
     background-color: rgba(0, 0, 0, 0.04);
 }
 
+.button:active,
+.activeButton:active {
+    color: rgba(0, 0, 0, 0.8);
+    background-color: transparent;
+}
+
 @media (min-width: 744px) {
     .activeButton {
         font-size: 1.6rem;

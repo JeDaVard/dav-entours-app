@@ -5,7 +5,6 @@ import moment from "moment";
 import ThumbedImage from "../../../utils/ImageLoading/ThumbedImage";
 
 const UserListings = ({ tours }) => {
-    console.log(tours)
     return (
         <section className={classes.stuff}>
             <div className={classes.listingSection}>

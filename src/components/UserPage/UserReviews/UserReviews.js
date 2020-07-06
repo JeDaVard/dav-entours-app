@@ -1,52 +1,78 @@
 import React from "react";
-import moment from "moment";
 import classes from './UserReviews.module.css';
-import {Link} from "react-router-dom";
-// import ThumbedImage from "../../../utils/ImageLoading/ThumbedImage";
+import {Tab, Tabs} from "../../UI/Tabs/Tabs";
+import SimpleButton from "../../UI/SimpleButton/SimpleButton";
+import UserReviewItem from "./UserReviewItem";
 
-const UserReviews = ({ reviews }) => {
+const UserReviews = (props)  => {
+    const { user, more, loading } = props;
+
+    const onMore = label => {
+        more({
+            variables: {
+                id: user._id,
+                limit: 6,
+                page: label === 'fromTravelers' ? user.reviews.nextPage : user.ownReviews.nextPage
+            },
+            updateQuery: (prev, { fetchMoreResult: { user }} ) => {
+                return label === 'fromTravelers'
+                    ? { ...prev, user: { ...prev.user, reviews: {
+                                ...user.reviews,
+                                data: [
+                                    ...prev.user.reviews.data,
+                                    ...user.reviews.data
+                                ]
+                            }},
+                    }
+                    : { ...prev, user: { ...prev.user, ownReviews: {
+                                ...user.ownReviews,
+                                data: [
+                                    ...prev.user.ownReviews.data,
+                                    ...user.ownReviews.data
+                                ]
+                            }},
+                    }
+            }
+        })
+    }
+
+    const travelerLabel = 'fromTravelers', guideLabel = 'fromGuides';
+
     return (
         <section className={classes.stuff}>
             <div className={classes.reviews}>
-                <h1>{reviews.length} reviews</h1>
+                <h1>{user.reviews.total + user.ownReviews.total} reviews</h1>
 
-                {reviews.map( review => (
-                    <div className={classes.reviewContent} key={review._id}>
-                        <div className={classes.participated}>
-                            <div>
-                                <h6>Participated&nbsp;
-                                    <Link to={loc => ({...loc, pathname: `/tour/${review.tour.slug}`})}>
-                                        {review.tour.name} tour
-                                    </Link>
-                                </h6>
-                                <h5>{moment(review.createdAt).format('DD MMM YYYY')}</h5>
-                            </div>
-                            <Link to={loc => ({...loc, pathname: `/tour/${review.tour.slug}`})}>
-                                {/*<ThumbedImage*/}
-                                {/*    src={review.tour.imageCover}*/}
-                                {/*    className={classes.UserReviews__tourImage}*/}
-                                {/*    alt={review.tour.name}*/}
-                                {/*    blur*/}
-                                {/*/>*/}
-                                <img src={`${process.env.REACT_APP_CDN}/${review.tour.imageCover}`}
-                                     className={classes.UserReviews__tourImage}
-                                     alt={review.tour.name}/>
-                            </Link>
+                <Tabs>
+                    <Tab label={travelerLabel} tabName={'From Travelers'}>
+                        {user.reviews.data.map( review => (
+                            <UserReviewItem key={review._id} review={review}/>
+                        ))}
+                        <div className={classes.more}>
+                            {user.reviews.hasMore
+                                ? (
+                                    loading
+                                        ? <SimpleButton onClick={() => {}}>&nbsp;&nbsp;&nbsp;Loading...&nbsp;&nbsp;</SimpleButton>
+                                        : <SimpleButton onClick={() => onMore(travelerLabel)}>More Reviews</SimpleButton>
+                                )
+                                : <p>All <b>{user.reviews.total}</b> reviews</p>}
                         </div>
-                        <p>{review.review}</p>
-                        <div className={classes.reviewer}>
-                            <Link to={{pathname: `/user/${review.author._id}`}}>
-                                <img src={`${process.env.REACT_APP_SERVER}/images/user/${review.author.photo}`} alt={review.author.name}/>
-                            </Link>
-                            <div>
-                                <Link to={{pathname: `/user/${review.author._id}`}}>
-                                    <p><b>{review.author.name}</b></p>
-                                </Link>
-                                <p>Joined {moment(review.author.createdAt).format('MMM YYYY')}</p>
-                            </div>
+                    </Tab>
+                    <Tab label={guideLabel} tabName={'From Guides'}>
+                        {user.ownReviews.data.map( review => (
+                            <UserReviewItem key={review._id} review={review}/>
+                        ))}
+                        <div className={classes.more}>
+                            {user.ownReviews.hasMore
+                                ? (
+                                    loading
+                                        ? <SimpleButton onClick={() => {}}>&nbsp;&nbsp;&nbsp;Loading...&nbsp;&nbsp;</SimpleButton>
+                                        : <SimpleButton onClick={() => onMore(guideLabel)}>More Reviews</SimpleButton>
+                                )
+                                : <p>All <b>{user.ownReviews.total}</b> reviews</p>}
                         </div>
-                    </div>
-                ))}
+                    </Tab>
+                </Tabs>
 
             </div>
         </section>

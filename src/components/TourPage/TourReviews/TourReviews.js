@@ -5,37 +5,40 @@ import Separator from "../../UI/Separator/Separator";
 import {Link} from "react-router-dom";
 import Justicon from "../../UI/Justicon";
 import SimpleButton from "../../UI/SimpleButton/SimpleButton";
-import {FETCH_TOUR} from "../../../containers/TourContainer/queries";
+import { FETCH_MORE_REVIEWS } from "../../../containers/TourContainer/queries";
 
 const TourReviews = (props) => {
     const { reviews } = props.tour;
 
     const moreReviewsHandler = () => {
         props.more({
-                // note this is a different query than the one used in the
-                // Query component
-                query: FETCH_TOUR,
-                variables: { id: props.tour.slug, page: reviews.nextPage, limit: 4 },
-                updateQuery: (previousResult, { fetchMoreResult }) => {
+            query: FETCH_MORE_REVIEWS,
+            variables: { id: props.tour.slug, page: reviews.nextPage, limit: 4 },
+            updateQuery: (previousResult, { fetchMoreResult }) => {
+                if (!fetchMoreResult.tour.reviews.data) return;
 
-                    const merged = [
-                        ...previousResult.tour.reviews.data,
-                        ...fetchMoreResult.tour.reviews.data
-                    ]
-                    return {
-                        ...previousResult,
-                        tour: {
-                            ...previousResult.tour,
-                            reviews: {
-                                // ATTENTION that's the new reviews
-                                ...fetchMoreResult.tour.reviews,
-                                data: merged
-                            }
+                const merged = [
+                    ...previousResult.tour.reviews.data,
+                    ...fetchMoreResult.tour.reviews.data
+                ]
+                return {
+                    ...previousResult,
+                    tour: {
+                        ...previousResult.tour,
+                        reviews: {
+                            // ATTENTION that's the new reviews
+                            ...fetchMoreResult.tour.reviews,
+                            data: merged
                         }
                     }
                 }
-            })
+            }
+        })
     }
+    const loadMoreButton = props.loading
+        ? <SimpleButton onClick={() => {}}>&nbsp;&nbsp;&nbsp;Loading...&nbsp;&nbsp;</SimpleButton>
+        : <SimpleButton onClick={moreReviewsHandler}>More Reviews</SimpleButton>;
+
     return (
         <>
             <div className={classes.Reviews}>
@@ -71,7 +74,7 @@ const TourReviews = (props) => {
                         ))}
                         <div className={classes.more}>
                         {reviews.hasMore
-                            ? <SimpleButton onClick={moreReviewsHandler}>More Reviews</SimpleButton>
+                            ? loadMoreButton
                             : <p>All <b>{reviews.total}</b> reviews</p>}
                         </div>
                     </div>

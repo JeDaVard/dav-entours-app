@@ -26,10 +26,12 @@ function UserPage() {
     return (
         <div className={classes.UserPage}>
             <div className="row">
-                <Query query={FETCH_USER} variables={{ id }}>
+                <Query query={FETCH_USER}
+                       notifyOnNetworkStatusChange={true}
+                       variables={{ id, page: 1, limit: 4 }}>
                     {
-                        ({loading, error, data}) => {
-                            if (loading) return <TopLoading />
+                        ({loading, error, data, fetchMore}) => {
+                            if (loading && !data) return <TopLoading />
                             if (error) return <h1>Error while fetching user profile</h1>
                             if (!data.user) return <Redirect to={'/oops-not-found'}/>
                             const { user } = data;
@@ -80,7 +82,10 @@ function UserPage() {
                                                 <Separator margin={'2 2'} />
                                             </>
                                         )}
-                                        <UserReviews reviews={user.reviews} />
+                                        <UserReviews user={user}
+                                                     more={fetchMore}
+                                                     loading={loading}
+                                        />
                                     </div>
                                 </div>
                             )
