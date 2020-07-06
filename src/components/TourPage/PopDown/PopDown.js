@@ -10,12 +10,15 @@ function PopDown(props) {
         visible: false,
     });
 
+
     const handleScroll = useCallback(() => {
         const { prevScrollPos } = showPopDown;
 
         const currentScrollPos = window.pageYOffset;
         const visible =
-            prevScrollPos < currentScrollPos && currentScrollPos > 70;
+            prevScrollPos < currentScrollPos
+            && currentScrollPos > 70
+            && currentScrollPos + 10 < document.body.clientHeight - window.innerHeight;
 
         setShowPopDown((state) => ({
             ...state,
@@ -23,6 +26,7 @@ function PopDown(props) {
             visible,
         }));
     }, [showPopDown]);
+
 
     useEffect(() => {
 

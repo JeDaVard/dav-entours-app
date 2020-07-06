@@ -46,19 +46,13 @@
 }
 
 .content {
+
 }
 
 .review {
     padding: 2rem 0;
+    border-bottom: 1rem solid rgba(0, 0, 0, 0.06);
 }
-
-.review:not(:last-of-type) {
-    border-bottom: .1rem solid rgba(0, 0, 0, 0.08);
-}
-
-/*.review {*/
-/*    border-bottom: .1rem solid rgba(0, 0, 0, 0.08);*/
-/*}*/
 
 .reviewInfo {
     display: flex;
@@ -81,4 +75,24 @@
 .reviewer h4 {
     font-size: 1.3rem;
     font-weight: 400;
+}
+
+.more {
+    display: flex;
+    justify-content: center;
+    margin: 3rem auto;
+}
+
+@media (min-width: 744px) {
+    .content {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .review {
+        flex-basis: 48%;
+    }
+    .more {
+        margin: 4rem auto 0 auto;
+    }
 }

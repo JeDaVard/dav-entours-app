@@ -4,9 +4,38 @@ import classes from './TourReviews.module.css';
 import Separator from "../../UI/Separator/Separator";
 import {Link} from "react-router-dom";
 import Justicon from "../../UI/Justicon";
+import SimpleButton from "../../UI/SimpleButton/SimpleButton";
+import {FETCH_TOUR} from "../../../containers/TourContainer/queries";
 
-const TourReviews = ({ tour }) => {
-    const { reviews } = tour;
+const TourReviews = (props) => {
+    const { reviews } = props.tour;
+
+    const moreReviewsHandler = () => {
+        props.more({
+                // note this is a different query than the one used in the
+                // Query component
+                query: FETCH_TOUR,
+                variables: { id: props.tour.slug, page: reviews.nextPage, limit: 4 },
+                updateQuery: (previousResult, { fetchMoreResult }) => {
+
+                    const merged = [
+                        ...previousResult.tour.reviews.data,
+                        ...fetchMoreResult.tour.reviews.data
+                    ]
+                    return {
+                        ...previousResult,
+                        tour: {
+                            ...previousResult.tour,
+                            reviews: {
+                                // ATTENTION that's the new reviews
+                                ...fetchMoreResult.tour.reviews,
+                                data: merged
+                            }
+                        }
+                    }
+                }
+            })
+    }
     return (
         <>
             <div className={classes.Reviews}>
@@ -14,17 +43,17 @@ const TourReviews = ({ tour }) => {
                             <h2>Reviews</h2>
                             <div className={classes.info}>
                                 <div className={classes.rating}>
-                                    <Justicon icon={'star'}/><h3> {tour.ratingsAverage.toString().length === 1 ? tour.ratingsAverage+'.0' : tour.ratingsAverage}</h3>
+                                    <Justicon icon={'star'}/><h3> {props.tour.ratingsAverage.toString().length === 1 ? props.tour.ratingsAverage+'.0' : props.tour.ratingsAverage}</h3>
                                 </div>
                                 <Separator vertical margin={'.5 .5'} color={'normal'} height={'2'}/>
                                 <div className={classes.quantity}>
-                                    <h3><b>{tour.ratingsQuantity}</b> reviews</h3>
+                                    <h3><b>{props.tour.ratingsQuantity}</b> reviews</h3>
                                 </div>
                             </div>
                         <Separator color={'normal'} margin={'2 0'}/>
                     <div className={classes.content}>
 
-                        {reviews.map( review => (
+                        {reviews.data.map( review => (
                             <div className={classes.review} key={review._id}>
                                 <div className={classes.reviewInfo}>
                                     <Link to={{pathname: `/user/${review.author._id}`}}>
@@ -40,7 +69,11 @@ const TourReviews = ({ tour }) => {
                                 <p>{review.review}</p>
                             </div>
                         ))}
-
+                        <div className={classes.more}>
+                        {reviews.hasMore
+                            ? <SimpleButton onClick={moreReviewsHandler}>More Reviews</SimpleButton>
+                            : <p>All <b>{reviews.total}</b> reviews</p>}
+                        </div>
                     </div>
                 </div>
             </div>

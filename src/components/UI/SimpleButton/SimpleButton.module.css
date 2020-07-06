@@ -1,4 +1,5 @@
 .SimpleButton {
+    backface-visibility: hidden;
     flex: none;
     transition: transform .2s;
     transform: scale(1);
@@ -8,7 +9,9 @@
     transform: scale(.95);
 }
 
-.SimpleButton a {
+.SimpleButton a,
+.SimpleButton button {
+    outline: none;
     margin: -4rem .4rem 0 0;
     font-size: 1.5rem;
     padding: 1rem 1.6rem;
@@ -18,38 +21,47 @@
     text-decoration: none;
 }
 
-.SimpleButton__black a {
+.SimpleButton__black a,
+.SimpleButton__black button {
     background: rgba(0, 0, 0, 0.8);
     color: white;
     border: 1px solid rgba(0, 0, 0, 0.8);
 }
 
-.SimpleButton__white a {
+.SimpleButton__white a,
+.SimpleButton__white button {
     background: white;
     color: rgba(0, 0, 0, 0.8);
     border: 1px solid rgba(0, 0, 0, 0.8);
 }
 
-.SimpleButton__primary a {
+.SimpleButton__primary a,
+.SimpleButton__primary button {
     background: white;
     color: #33b15d;
     border: 1px solid #33b15d;
 }
 
 .SimpleButton__black a:hover,
-.SimpleButton__black a:active {
+.SimpleButton__black a:active,
+.SimpleButton__black button:hover,
+.SimpleButton__black button:active {
     background: white;
     color: rgba(0, 0, 0, 0.8);
 }
 
 .SimpleButton__white a:hover,
-.SimpleButton__white a:active {
+.SimpleButton__white a:active,
+.SimpleButton__white button:hover,
+.SimpleButton__white button:active {
     background: rgba(0, 0, 0, 0.8);
     color: white;
 }
 
 .SimpleButton__primary a:hover,
-.SimpleButton__primary a:active {
+.SimpleButton__primary a:active,
+.SimpleButton__primary button:hover,
+.SimpleButton__primary button:active {
     background: #33b15d;
     color: white;
 }

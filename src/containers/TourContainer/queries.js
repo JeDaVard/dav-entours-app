@@ -1,7 +1,7 @@
 import gql from 'graphql-tag';
 
 export const FETCH_TOUR = gql`
-	query FetchTour($id: ID!) {
+	query FetchTour($id: ID! $page:Int $limit:Int) {
 		tour(id: $id) {
 			_id
 			name
@@ -49,14 +49,19 @@ export const FETCH_TOUR = gql`
 				name
 				photo
 			}
-			reviews {
-				review
-				_id
-				author {
+			reviews(page:$page limit:$limit) {
+				hasMore
+				nextPage
+				total
+				data {
+					review
 					_id
-					photo
-					name
-					createdAt
+					author {
+						_id
+						photo
+						name
+						createdAt
+					}
 				}
 			}
 

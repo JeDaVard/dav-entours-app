@@ -17,15 +17,17 @@ import * as actionsTypes from "../../app/actions/ui/types";
 import TourOrder from "../../components/TourPage/TourOrder/TourOrder";
 
 
-function TourPage(props) {
+function TourPage() {
     const { slug } = useParams();
 
     const [isMobile, isLoading] = useSelector(s => [s.ui.display.isMobile, s.ui.loading])
     const loadingOff = useDispatch()
 
-    const { loading, data, error } = useQuery(FETCH_TOUR, {
+    const { loading, data, error, fetchMore } = useQuery(FETCH_TOUR, {
         variables: {
-            id: slug
+            id: slug,
+            page: 1,
+            limit: 4
         }
     });
 
@@ -51,7 +53,7 @@ function TourPage(props) {
             <TourImages images={data.tour.images}/>
             <TourLocations data={{start: data.tour.startLocation, locations: data.tour.locations}}/>
             <Separator margin={'0 2'}/>
-            <TourReviews tour={data.tour} />
+            <TourReviews tour={data.tour} more={fetchMore}/>
             <TourOrder tour={data.tour} />
         </>
     );
