@@ -1,19 +1,28 @@
 import React from 'react';
-import { Query } from 'react-apollo';
+import {Query, useSubscription} from 'react-apollo';
 import { FETCH_INBOXES } from './queries'
 import moment from "moment";
 import classes from "./InboxItem.module.css";
 import Justicon from "../../components/UI/Justicon";
 import TopLoading from "../../components/UI/TopLoading/TopLoading";
 import {Link} from "react-router-dom";
+import {SUBSCRIBE_MESSAGE} from "./Conversation/queries";
 
 function InboxItem() {
+    const a = useSubscription(SUBSCRIBE_MESSAGE, {
+        variables: {
+
+        }
+    })
+
+    console.log(a)
+
     return (
         <Query query={FETCH_INBOXES}>
             {({loading, error, data}) => {
                 if (loading) return <TopLoading />
                 if (error) return <h2>{error.message}. Error while fetching inboxes, please try later</h2>
-                console.log(data)
+
                 return <>
                     { data.me.conversations.map(conversation => {
 

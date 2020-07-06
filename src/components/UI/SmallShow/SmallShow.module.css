@@ -10,4 +10,5 @@
 
 .content {
     position: absolute;
+    z-index: 200;
 }

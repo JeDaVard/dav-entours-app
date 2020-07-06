@@ -26,7 +26,7 @@ function MessageInput({ convId }) {
                 createdAt: Date.now(),
                 sender: {
                     _id: getCookie('userId'),
-                    name: 'Sending',
+                    name: 'Sending...',
                     photo: localStorage.getItem('photo'),
                     __typename: 'User',
                 },
@@ -41,10 +41,10 @@ function MessageInput({ convId }) {
         // we update the cache, but we pass it await if it is the real one from the
         // server. That's because we have receive the real one by a subscription
         // So we'll have a copy of the same message if we update the cache for the real one too
-        // console.log(sendMessage)
         if (sendMessage.data._id.startsWith('optimistic')) {
             const { me } = cache.readQuery({ query: FETCH_MESSAGES, variables: {id: convId, limit: 12} });
             const messages = me.conversation.messages.messages
+
             cache.writeQuery({
                 query: FETCH_MESSAGES,
                 variables: {id: convId, limit: 12 },
@@ -52,6 +52,15 @@ function MessageInput({ convId }) {
                         ...me,
                         conversation: {
                             ...me.conversation,
+                            lastMessage: {
+                                ...me.conversation.lastMessage,
+                                text: sendMessage.data.text,
+                                isImage: sendMessage.data.isImage,
+                                sender: {
+                                    ...me.conversation.lastMessage.sender,
+                                    sender: sendMessage.data.sender.name
+                                }
+                            },
                             messages: {
                                 ...me.conversation.messages,
                                 messages: [...messages, sendMessage.data]

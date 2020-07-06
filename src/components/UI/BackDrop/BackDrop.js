@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useRef} from 'react';
 import classes from './BackDrop.module.css';
 import { CSSTransition } from 'react-transition-group';
 import './animation.css';

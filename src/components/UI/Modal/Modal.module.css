@@ -9,6 +9,7 @@
     z-index: 102;
     box-shadow: 0 0 60px rgba(0, 0, 0, 0.2);
     transition: all;
+    -webkit-mask-image: -webkit-radial-gradient(center, white, black);
     overflow: hidden;
 }
 

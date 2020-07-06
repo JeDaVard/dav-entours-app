@@ -11,7 +11,7 @@ import Separator from "../../UI/Separator/Separator";
 import LocLink from "../../UI/LocLink/LocLink";
 
 export default function TourOrder(props) {
-    const [ state, setState ] = useState(true);
+    const [ state, setState ] = useState(false);
 
     const reserveHandler = e => {
         setState(true)
@@ -35,13 +35,17 @@ export default function TourOrder(props) {
                                         <p className={classes.price}><b>${props.tour.price}</b> per person</p>
                                     </div>
                                     <div className={classes.buttonBlock}>
-                                        <SimpleButton black to={'/'}>Choose</SimpleButton>
+                                        <SimpleButton
+                                            black
+                                            to={`/book?tourId=${props.tour._id}&dateId=${start._id}&date=${start.date}`}>
+                                            Choose
+                                        </SimpleButton>
                                     </div>
                                 </div>
                                 <Separator />
                                 <div className={classes.bottom}>
                                     <div className={classes.participants}>
-                                        {start.participants.map(participant => (
+                                        {start.participants.slice(0,3).map(participant => (
                                             <Link to={`/user/${participant._id}`}
                                                   className={classes.participantLink}
                                                   key={participant._id}
@@ -53,14 +57,37 @@ export default function TourOrder(props) {
                                         ))}
                                     <SmallShow
                                         handler={(trigger, opposite) => trigger(!opposite)}
-                                        button={<div>ASD</div>}>
-                                        <div>asdasdasd</div>
+                                        button={(
+                                            <div className={classes.more}>
+                                                <Justicon
+                                                    className={classes.moreIcon}
+                                                    icon={'more-horizontal'} />
+                                            </div>
+                                        )}>
+                                        <div className={classes.moreBlock}>
+                                            <div className={classes.moreHead}>
+                                                <h2>All participants</h2>
+                                            </div>
+                                            <Separator color={'normal'} />
+                                            <div className={classes.moreParticipants}>
+                                                {start.participants.map(participant => (
+                                                    <Link to={`/user/${participant._id}`}
+                                                          className={classes.participantLink}
+                                                          key={participant._id}
+                                                    >
+                                                        <img src={`${process.env.REACT_APP_SERVER}/images/user/${participant.photo}`}
+                                                             className={classes.photo}
+                                                             alt={participant.name}/>
+                                                    </Link>
+                                                ))}
+                                            </div>
+                                        </div>
                                     </SmallShow>
                                     </div>
-                                        <LocLink
-                                            coordinates={props.tour.locations[0].coordinates}
-                                            address={props.tour.locations[0].address.slice(0, 16) + ' ...'}
-                                        />
+                                        {/*<LocLink*/}
+                                        {/*    coordinates={props.tour.locations[0].coordinates}*/}
+                                        {/*    address={props.tour.locations[0].address.slice(0, 16) + ' ...'}*/}
+                                        {/*/>*/}
                                 </div>
                             </div>
                         </div>

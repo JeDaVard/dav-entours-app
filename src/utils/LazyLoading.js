@@ -1,16 +1,21 @@
 import React, { lazy, Suspense } from "react";
+import store from '../app/store'
 
-const lazyLoading = (importFunc, { fallback = null }) => {
+const s = store.getState();
+const isMobile = s.ui.display.isMobile;
+
+const lazyLoading = (importFunc, { fallback, mobileFallback }) => {
     const LazyComponent = lazy(importFunc);
     return props => (
-        <Suspense fallback={fallback}>
+        <Suspense fallback={isMobile ? mobileFallback || fallback : fallback}>
             <LazyComponent {...props} />
         </Suspense>
     );
 };
 
 lazyLoading.defaultProps = {
-    fallback: null
+    fallback: null,
+    mobileFallback: null
 };
 
 export default lazyLoading;

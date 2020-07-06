@@ -30,6 +30,13 @@ export const FETCH_MESSAGES = gql`
 		me {
 			conversation(id: $id) {
 				_id
+				lastMessage {
+					sender {
+						name
+					}
+					text
+					isImage
+				}
 				messages(page: $page, limit: $limit) {
 					hasMore
 					nextPage

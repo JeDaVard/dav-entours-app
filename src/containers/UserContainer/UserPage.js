@@ -16,7 +16,7 @@ import * as actionTypes from '../../app/actions/ui/types'
 function UserPage() {
     const { id } = useParams();
     const isThatMe = id === getCookie('userId');
-    const [ isMobile, isLoading ] = useSelector(s => [s.ui.display.isMobile, s.ui.loading]);
+    const [ , isLoading ] = useSelector(s => [s.ui.display.isMobile, s.ui.loading]);
     const loadingOff = useDispatch();
 
     useEffect(() => {
