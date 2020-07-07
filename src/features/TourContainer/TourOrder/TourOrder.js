@@ -5,10 +5,9 @@ import PopDown from "../PopDown/PopDown";
 import moment from 'moment'
 import SimpleButton from "../../../components/UI/SimpleButton/SimpleButton";
 import {Link} from "react-router-dom";
-import SmallShow from "../../../components/UI/SmallShow/SmallShow";
-import Justicon from "../../../components/UI/JustIcon/Justicon";
 import Separator from "../../../components/UI/Separator/Separator";
 import LocLink from "../../../components/UI/LocLink/LocLink";
+import ShowAllMembers from "./ShowAllMembers";
 
 export default function TourOrder(props) {
     const [ state, setState ] = useState(false);
@@ -55,34 +54,7 @@ export default function TourOrder(props) {
                                                      alt={participant.name}/>
                                             </Link>
                                         ))}
-                                    <SmallShow
-                                        handler={(trigger, opposite) => trigger(!opposite)}
-                                        button={(
-                                            <div className={classes.more}>
-                                                <Justicon
-                                                    className={classes.moreIcon}
-                                                    icon={'more-horizontal'} />
-                                            </div>
-                                        )}>
-                                        <div className={classes.moreBlock}>
-                                            <div className={classes.moreHead}>
-                                                <h2>All participants</h2>
-                                            </div>
-                                            <Separator color={'normal'} />
-                                            <div className={classes.moreParticipants}>
-                                                {start.participants.map(participant => (
-                                                    <Link to={`/user/${participant._id}`}
-                                                          className={classes.participantLink}
-                                                          key={participant._id}
-                                                    >
-                                                        <img src={`${process.env.REACT_APP_SERVER}/images/user/${participant.photo}`}
-                                                             className={classes.photo}
-                                                             alt={participant.name}/>
-                                                    </Link>
-                                                ))}
-                                            </div>
-                                        </div>
-                                    </SmallShow>
+                                    <ShowAllMembers start={start} />
                                     </div>
                                         <LocLink
                                             coordinates={props.tour.locations[0].coordinates}

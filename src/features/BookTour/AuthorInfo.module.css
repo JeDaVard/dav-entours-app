@@ -1,0 +1,82 @@
+.authorInfo {
+    color: rgba(0, 0, 0, 0.7);
+    margin-bottom: 2rem;
+}
+
+.authorPhotoBigFrame {
+    position: relative;
+}
+
+.authorInfoMain {
+    align-items: center;
+    display: flex;
+}
+
+.authorID {
+    margin-left: 1rem;
+}
+
+.authorName {
+    display: flex;
+    align-items: center;
+}
+
+.authorName h3 {
+    font-size: 1.6rem;
+    font-weight: 500;
+}
+
+.authorNameIcon {
+    fill: #3db062;
+    width: 2rem;
+    height: 2rem;
+    margin-bottom: .2rem;
+}
+
+.authorPhotoBig {
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+}
+
+.authorMission {
+    margin-top: 1rem;
+    font-size: 1.5rem;
+}
+
+.authorAward {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.authorAwardIcon {
+    padding: .2rem;
+    background: coral;
+    border-radius: 50%;
+    fill: white;
+    width: 2.4rem;
+    height: 2.4rem;
+}
+
+.authorJoined {
+    display: flex;
+    align-items: center;
+}
+
+.authorJoined h4 {
+    font-size: 1.4rem;
+    color: rgba(0, 0, 0, 0.4);
+    font-weight: 400;
+}
+
+.authorSpeaks {
+    display: flex;
+    align-items: center;
+}
+
+.authorSpeaks h5 {
+    font-size: 1.4rem;
+    font-weight: 400;
+    margin-left: .3rem;
+}

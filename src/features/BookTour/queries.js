@@ -8,6 +8,8 @@ export const FETCH_TOUR_FOR_ORDER = gql`
             slug
             imageCover
             price
+            ratingsQuantity
+            ratingsAverage
             startLocation {
                 address
                 coordinates
@@ -16,6 +18,8 @@ export const FETCH_TOUR_FOR_ORDER = gql`
                 _id
                 name
                 photo
+                createdAt
+                speaks
             }
             starts {
                 _id
@@ -26,6 +30,10 @@ export const FETCH_TOUR_FOR_ORDER = gql`
                     photo
                 }
             }
+        }
+        me {
+            photo
+            name
         }
     }
 `

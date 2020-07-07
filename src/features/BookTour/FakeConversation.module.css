@@ -1,0 +1,46 @@
+.onePhotoFrame {
+    width: 5.4rem;
+    height: 5.4rem;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.1);
+}
+.onePhoto {
+    width: 5.4rem;
+    height: 5.4rem;
+    border-radius: 50%;
+}
+
+.oneWelcome {
+    display: flex;
+    align-items: flex-end;
+}
+
+.message {
+    margin-left: .5rem;
+    padding: 1.6rem 2rem;
+    background: rgba(0, 0, 0, 0.05);
+    color: rgba(0, 0, 0, 0.8);
+    font-size: 1.5rem;
+    width: 100%;
+    border-radius: 1rem 1rem 1rem .3rem;
+}
+
+.secondHello {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: flex-end;
+    margin-top: 1rem;
+}
+
+.secondMessage {
+    font-family: inherit;
+    font-size: 1.5rem;
+    margin-left: 0;
+    width: 100%;
+    margin-right: .4rem;
+    border-radius: 1rem 1rem .3rem 1rem;
+    background: rgba(0, 0, 0, 0.05);
+    color: rgba(0, 0, 0, 0.8);
+    border: none;
+    outline: none;
+}
