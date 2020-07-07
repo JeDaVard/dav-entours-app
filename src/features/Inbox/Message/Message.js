@@ -39,7 +39,7 @@ function Message({data: {text, createdAt, sender, _id, isImage, convId }, own, g
     const image = (
         <div className={classes.photoFrame}>
              <SmoothImage
-                 src={text.startsWith('http') ? text : `${process.env.REACT_APP_CDN}/${text}`}
+                 src={text}
                  alt="tour moment"
                  className={classes.photo}
              />

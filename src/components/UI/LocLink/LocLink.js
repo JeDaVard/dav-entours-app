@@ -10,7 +10,7 @@ const LocLink = props => (
         className={classes.link}
     >
         {props.children || (
-            <div className={classes.location}>
+            <div className={`${classes.location} ${props.className ? props.className : ''}`}>
                 <Justicon icon={'map-pin'} className={classes.locIcon}/>
                 <p>{props.address}</p>
             </div>

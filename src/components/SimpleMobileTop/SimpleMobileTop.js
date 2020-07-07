@@ -18,24 +18,26 @@ function SimpleMobileTop(props) {
                 <div className={classes.topNavItems}>
                     <NavButton to={props.to}/>
                     <h2 className={classes.topNavTitle}>{props.children}</h2>
-                    <button
-                        disabled={props.disabled}
-                        type={props.type}
-                        onClick={props.onClick ? (e) => props.onClick(e) : () => {}}
-                        className={cx(classes.topNavButton, {
-                            [classes.topNavButtonDisabled]: props.disabled,
-                            [classes.topNavButtonInverse]:props.inverseButton
-                        })}>
-                        {props.loading && (
-                            // <DotLoading small/>
-                            <ButtonLoading />
-                        )}
+                    {props.button && (
+                        <button
+                            disabled={props.disabled}
+                            type={props.type}
+                            onClick={props.onClick ? (e) => props.onClick(e) : () => {}}
+                            className={cx(classes.topNavButton, {
+                                [classes.topNavButtonDisabled]: props.disabled,
+                                [classes.topNavButtonInverse]:props.inverseButton
+                            })}>
+                            {props.loading && (
+                                // <DotLoading small/>
+                                <ButtonLoading />
+                            )}
                             <div className={cx(classes.topNavButtonLabel, {[classes.topNavButtonLabelLoading]: props.loading})}>
                                 <span>{props.button}&nbsp;</span>
                                 <Justicon icon={props.icon} className={classes.topNavButtonIcon}/>
                             </div>
 
-                    </button>
+                        </button>
+                    )}
                 </div>
             </div>
         </div>

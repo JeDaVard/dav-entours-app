@@ -15,7 +15,7 @@ const SmoothImage = React.memo(function(props) {
         }
         if (!ready) {
             buffer = new Image();
-            buffer.src = src;
+            buffer.src = src.startsWith('http') ? src : process.env.REACT_APP_CDN+'/'+src;
             buffer.className = `${className} ${classes.ready}`;
             buffer.alt = alt;
             buffer.addEventListener('load', bufferHandler)
