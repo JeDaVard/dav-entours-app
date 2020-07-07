@@ -1,6 +1,6 @@
 import React from "react";
 import classes from './LabeledInput.module.css';
-import Justicon from "../Justicon";
+import Justicon from "../JustIcon/Justicon";
 
 export function Input(props) {
     const {

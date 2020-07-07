@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from "./LocLink.module.css";
-import Justicon from "../Justicon";
+import Justicon from "../JustIcon/Justicon";
 
 const LocLink = props => (
     <a

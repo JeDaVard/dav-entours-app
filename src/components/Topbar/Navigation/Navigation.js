@@ -4,7 +4,7 @@ import Separator from "../../UI/Separator/Separator";
 import OutsideAlerter from "../../../hocs/EventDelegator";
 import {Link} from "react-router-dom";
 import Logout from "./Logout";
-import Justicon from "../../UI/Justicon";
+import Justicon from "../../UI/JustIcon/Justicon";
 
 function Navigation(props) {
     const { name, photo } = props;

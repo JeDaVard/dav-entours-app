@@ -6,20 +6,23 @@ import BackDrop from "../BackDrop/BackDrop";
 import './animation.css';
 import Separator from "../Separator/Separator";
 import OutsideAlerter from "../../../hocs/EventDelegator";
-import Justicon from "../Justicon";
+import Justicon from "../JustIcon/Justicon";
 
 function Modal(props) {
     const { onClick, showBackdrop } = props
     const nodeRef = useRef(null);
 
     useEffect(() => {
-        if (nodeRef.current && showBackdrop) {
-            nodeRef.current.parentElement.parentElement.style.overflow = 'hidden'
+        if (showBackdrop) {
+            document.body.style.overflow = 'hidden'
         }
-    }, [nodeRef, showBackdrop])
+        return () => {
+            document.body.style.overflow = 'auto'
+        }
+    }, [showBackdrop])
 
     const closeModal = () => {
-        nodeRef.current.parentElement.parentElement.style.overflow = 'auto'
+        document.body.style.overflow = 'auto'
         onClick()
     }
 

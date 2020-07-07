@@ -1,6 +1,6 @@
 import React from "react";
 import classes from './Input.module.css'
-import Justicon from "../Justicon";
+import Justicon from "../JustIcon/Justicon";
 
 function Input(props) {
     if (props.options) return (

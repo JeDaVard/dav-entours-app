@@ -14,7 +14,7 @@ import { setContext } from 'apollo-link-context';
 import { typeDefs, resolvers } from "./resolvers";
 import store from './app/store';
 import { BrowserRouter } from 'react-router-dom';
-import App from './App';
+import App from './app/App';
 import { getCookie } from "./utils/cookies";
 import './index.css';
 import * as serviceWorker from './serviceWorker';

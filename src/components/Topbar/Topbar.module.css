@@ -3,6 +3,7 @@
     width: 100%;
     position: fixed;
     height: 8rem;
+    background: transparent;
     /*top: 0;*/
     z-index: 100;
     margin-top: env(safe-area-inset-top);
