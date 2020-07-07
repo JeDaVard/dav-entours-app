@@ -43,6 +43,8 @@ export const FETCH_TOUR = gql`
 				_id
 				name
 				photo
+				createdAt
+				speaks
 			}
 			guides {
 				_id
@@ -65,6 +67,10 @@ export const FETCH_TOUR = gql`
 				}
 			}
 
+		}
+		me {
+			photo
+			name
 		}
 	}
 `;

@@ -5,20 +5,18 @@ import classes from './BookTour.module.css';
 import SimpleMobileTop from "../../components/SimpleMobileTop/SimpleMobileTop";
 import {useQuery} from "@apollo/react-hooks";
 import {FETCH_TOUR_FOR_ORDER} from "./queries";
-import SmoothImage from "../../components/UI/ImageLoading/SmoothImage";
-import LocLink from "../../components/UI/LocLink/LocLink";
-import Justicon from "../../components/UI/JustIcon/Justicon";
 import moment from "moment";
 import Separator from "../../components/UI/Separator/Separator";
-import SmallShow from "../../components/UI/SmallShow/SmallShow";
 import {useSelector} from "react-redux";
 import StyledButton from "../../components/UI/StyledButton/StyledButton";
 import locker from "../../assets/icons/locker.svg";
 import ScrollToTop from "../../components/UI/ScrollToTop";
-import ShowAllMembers from "../TourContainer/TourOrder/ShowAllMembers";
-import {Form, Input} from "../../components/UI/LabeledInput/LabeledInput";
 import AuthorInfo from "./AuthorInfo";
 import FakeConversation from "./FakeConversation";
+import OrderItemHead from "./OrderItemHead";
+import DatePrice from "./DatePrice";
+import TourParticipants from "./TourParticipants";
+import TopLoading from "../../components/UI/TopLoading/TopLoading";
 
 function BookTour() {
     const { location } = useHistory();
@@ -31,7 +29,7 @@ function BookTour() {
     })
     if (!parsedData.slug || !parsedData.start) return <Redirect to={'/'}/>
 
-if (loading) return <p>loading...</p>
+if (loading) return <TopLoading />
     const { tour, me } = data;
 
     const start = data.tour.starts.find(start => start._id === parsedData.start);
@@ -56,110 +54,16 @@ if (loading) return <p>loading...</p>
                 <div className={classes.content}>
 
                     <div className={classes.tour}>
-                        <div className={classes.details}>
-                            <div className={classes.imageFrame}>
-                                <SmoothImage src={tour.imageCover}
-                                             className={classes.image}
-                                             alt={tour.name}/>
-                                <div className={classes.gradient}/>
-                            </div>
-                            <div className={classes.info}>
-                                <div className={classes.nameFrame}>
-                                    <h2 className={classes.name}>{tour.name.slice(0,16)+'...'}</h2>
-                                    <LocLink
-                                        className={classes.loc}
-                                        address={tour.startLocation.address.length > 30
-                                            ? tour.startLocation.address.slice(0,30)+'...'
-                                            : tour.startLocation.address}
-                                        coordinates={['asd']}/>
-                                </div>
-                                <div className={classes.rating}>
-                                    <Justicon icon={'star'} />
-                                    <p><b>&nbsp;{tour.ratingsAverage}</b>&nbsp;({tour.ratingsQuantity})</p>
-                                </div>
-                            </div>
-                        </div>
+                        <OrderItemHead tour={tour}/>
                         <div className={classes.participation}>
                             <div className={classes.date}>
-                                <div className={classes.time}>
-                                    <div className={classes.timeIcon}>
-                                        <Justicon icon={'calendar'} className={classes.icon}/><p>&nbsp;Date</p>
-                                    </div>
-                                    <p>{moment(+start.date).format('dd, DD MMM, hh:mm A')}</p>
-                                </div>
-                                <div className={classes.datePrice}>
-                                    <div className={classes.datePriceIcon}>
-                                        <Justicon icon={'dollar-sign'} className={classes.icon}/><p>&nbsp;Price</p>
-                                    </div>
-                                    <p>${tour.price} per person</p>
-                                </div>
-                                <div className={classes.datePrice}>
-                                    <div className={classes.datePriceIcon}>
-                                        <Justicon icon={'users'} className={classes.icon}/><p>&nbsp;By members</p>
-                                    </div>
-                                    <p>${tour.price}</p>
-                                </div>
-                                <div className={classes.datePrice}>
-                                    <div className={classes.datePriceIcon}>
-                                        <Justicon icon={'database'} className={classes.icon}/><p>&nbsp;Fee</p>
-                                    </div>
-                                    <p style={{color: 'green'}}>+${tour.price*8/100}</p>
-                                </div>
-                                <div className={classes.datePrice}>
-                                    <div className={classes.datePriceIcon}>
-                                        <Justicon icon={'credit-card'} className={classes.icon}/><p>&nbsp;Total(USD)</p>
-                                    </div>
-                                    <p><b>${tour.price + (tour.price*8/100)}</b></p>
-                                </div>
+                                <DatePrice price={tour.price} date={start.date}/>
                             </div>
-                            <Separator margin={'1 1'} />
+                            <Separator margin={'2 2'} />
                             <div className={classes.joined}>
                                 <p>People joined to this date with you</p>
                             </div>
-                            <div className={classes.participants}>
-                                <div className={classes.addGuest}>
-                                    <SmallShow
-                                        handler={(trigger, opposite) => trigger(!opposite)}
-                                        button={(
-                                            <div className={classes.invite}>
-                                                <Justicon
-                                                    className={classes.inviteIcon}
-                                                    icon={'plus'} />
-                                            </div>
-                                        )}>
-                                        <div className={classes.inviteBlock}>
-                                            <div className={classes.inviteHead}>
-                                                <h2>Invite a member</h2>
-                                            </div>
-                                            <Separator color={'normal'} />
-                                            <Form>
-                                                <Input
-                                                    type='email'
-                                                    name="guestEmail"
-                                                    label="E-mail"
-                                                    id="inviteGuestEmail"
-                                                    // value={state.summary}
-                                                    // onChange={onInputChange}
-                                                    inputDescription="Come with your friend or family member,
-                                                    just add their account and pay"
-                                                />
-                                            </Form>
-                                        </div>
-                                    </SmallShow>
-                                    <img src={process.env.REACT_APP_SERVER+'/images/user/'+me.photo}
-                                         alt={me.name}
-                                         className={classes.user}/>
-                                </div>
-                                <div className={classes.members}>
-                                    {start.participants.slice(0,5).map(p => (
-                                        <img src={process.env.REACT_APP_SERVER+'/images/user/'+p.photo}
-                                             key={p._id}
-                                             alt={p.name}
-                                             className={classes.user}/>
-                                    ))}
-                                    <ShowAllMembers start={start} />
-                                </div>
-                            </div>
+                            <TourParticipants me={me} start={start}/>
                             <div className={classes.inviteNote}>
                                 <p>You can buy more places if you want to go with someone,
                                     just click add, and he/she will be here with you (price will be recalculated)</p>

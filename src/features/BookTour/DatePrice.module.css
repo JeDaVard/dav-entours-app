@@ -1,0 +1,28 @@
+.time {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.datePrice {
+    margin-top: .5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.timeIcon {
+    display: flex;
+    align-items: center;
+}
+
+.datePriceIcon {
+    display: flex;
+    align-items: center;
+}
+
+.icon {
+    width: 1.8rem;
+    height: 1.8rem;
+    fill: rgba(0, 0, 0, 0.62);
+}

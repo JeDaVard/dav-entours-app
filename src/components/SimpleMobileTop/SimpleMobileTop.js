@@ -3,7 +3,6 @@ import classes from "./SimpleMobileTop.module.css";
 import classNames from 'classnames/bind';
 import NavButton from "../UI/NavButton/NavButton";
 import Justicon from "../UI/JustIcon/Justicon";
-import DotLoading from "../UI/DotLoading/DotLoading";
 import ButtonLoading from "../UI/ButtonLoading/ButtonLoading";
 let cx = classNames.bind(classes);
 
