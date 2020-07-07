@@ -8,14 +8,17 @@ export const FETCH_MY_TOURS = gql`
 				slug
 				name
 				imageCover
-				startDates
+				starts {
+					_id
+					date
+					participants {
+						_id
+					}
+				}
 				startLocation {
 					description
 				}
 				maxGroupSize
-				participants {
-					_id
-				}
 				ratingsAverage
                 ratingsQuantity
 				draft
@@ -32,14 +35,17 @@ export const FETCH_MY_GUIDE_TOURS = gql`
 				slug
 				name
 				imageCover
-				startDates
+				starts {
+					_id
+					date
+					participants {
+						_id
+					}
+				}
 				startLocation {
 					description
 				}
 				maxGroupSize
-				participants {
-					_id
-				}
 				ratingsAverage
 				ratingsQuantity
 				draft
@@ -56,14 +62,17 @@ export const FETCH_MY_DRAFT_TOURS = gql`
 				slug
 				name
 				imageCover
-				startDates
+				starts {
+					_id
+					date
+					participants {
+						_id
+					}
+				}
 				startLocation {
 					description
 				}
 				maxGroupSize
-				participants {
-					_id
-				}
 				ratingsAverage
 				ratingsQuantity
 				draft

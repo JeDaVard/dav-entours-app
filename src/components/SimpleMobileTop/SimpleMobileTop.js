@@ -1,9 +1,10 @@
 import React from "react";
 import classes from "./SimpleMobileTop.module.css";
 import classNames from 'classnames/bind';
-import NavButton from "../../components/UI/NavButton/NavButton";
-import Justicon from "../../components/UI/JustIcon/Justicon";
-import DotLoading from "../../components/UI/DotLoading/DotLoading";
+import NavButton from "../UI/NavButton/NavButton";
+import Justicon from "../UI/JustIcon/Justicon";
+import DotLoading from "../UI/DotLoading/DotLoading";
+import ButtonLoading from "../UI/ButtonLoading/ButtonLoading";
 let cx = classNames.bind(classes);
 
 function SimpleMobileTop(props) {
@@ -26,7 +27,8 @@ function SimpleMobileTop(props) {
                             [classes.topNavButtonInverse]:props.inverseButton
                         })}>
                         {props.loading && (
-                            <DotLoading small/>
+                            // <DotLoading small/>
+                            <ButtonLoading />
                         )}
                             <div className={cx(classes.topNavButtonLabel, {[classes.topNavButtonLabelLoading]: props.loading})}>
                                 <span>{props.button}&nbsp;</span>

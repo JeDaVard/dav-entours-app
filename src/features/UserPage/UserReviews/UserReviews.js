@@ -3,6 +3,7 @@ import classes from './UserReviews.module.css';
 import {Tab, Tabs} from "../../../components/UI/Tabs/Tabs";
 import SimpleButton from "../../../components/UI/SimpleButton/SimpleButton";
 import UserReviewItem from "./UserReviewItem";
+import ButtonLoading from "../../../components/UI/ButtonLoading/ButtonLoading";
 
 const UserReviews = (props)  => {
     const { user, more, loading } = props;
@@ -51,9 +52,20 @@ const UserReviews = (props)  => {
                         <div className={classes.more}>
                             {user.reviews.hasMore
                                 ? (
-                                    loading
-                                        ? <SimpleButton onClick={() => {}}>&nbsp;&nbsp;&nbsp;Loading...&nbsp;&nbsp;</SimpleButton>
-                                        : <SimpleButton onClick={() => onMore(travelerLabel)}>More Reviews</SimpleButton>
+                                    <SimpleButton
+                                        disabled={loading}
+                                        onClick={() => onMore(travelerLabel)}>
+                                        {loading
+                                            ? (<>
+                                                <div className={classes.loading}>
+                                                    <ButtonLoading />
+                                                </div>
+                                                <span style={{opacity: '0'}}>More Reviews</span>
+                                            </>)
+                                            : (
+                                                'More Reviews'
+                                            )}
+                                    </SimpleButton>
                                 )
                                 : <p>All <b>{user.reviews.total}</b> reviews</p>}
                         </div>
@@ -65,9 +77,20 @@ const UserReviews = (props)  => {
                         <div className={classes.more}>
                             {user.ownReviews.hasMore
                                 ? (
-                                    loading
-                                        ? <SimpleButton onClick={() => {}}>&nbsp;&nbsp;&nbsp;Loading...&nbsp;&nbsp;</SimpleButton>
-                                        : <SimpleButton onClick={() => onMore(guideLabel)}>More Reviews</SimpleButton>
+                                    <SimpleButton
+                                        disabled={loading}
+                                        onClick={() => onMore(guideLabel)}>
+                                        {loading
+                                            ? (<>
+                                                <div className={classes.loading}>
+                                                    <ButtonLoading />
+                                                </div>
+                                                <span style={{opacity: '0'}}>More Reviews</span>
+                                            </>)
+                                            : (
+                                                'More Reviews'
+                                            )}
+                                    </SimpleButton>
                                 )
                                 : <p>All <b>{user.ownReviews.total}</b> reviews</p>}
                         </div>

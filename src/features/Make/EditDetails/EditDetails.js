@@ -6,7 +6,7 @@ import {Form, Input, Textarea} from "../../../components/UI/LabeledInput/Labeled
 import {useHistory} from "react-router-dom";
 import {useMutation} from "@apollo/react-hooks";
 import {EDIT_TOUR_DETAILS} from "../queries";
-import SimpleMobileTop from "../SimpleMobileTop";
+import SimpleMobileTop from "../../../components/SimpleMobileTop/SimpleMobileTop";
 
 function EditDetails(props) {
     const history = useHistory()

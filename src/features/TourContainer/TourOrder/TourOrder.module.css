@@ -1,7 +1,7 @@
 .block {
     margin-bottom: 2rem;
     color: rgba(0, 0, 0, 0.85);
-    /*overflow: hidden;*/
+    overflow: hidden;
 }
 
 .block:not(:first-of-type) {

@@ -6,7 +6,7 @@ import {useMutation} from "@apollo/react-hooks";
 import {EDIT_TOUR_HEADING} from "../queries";
 import TopLoading from "../../../components/UI/TopLoading/TopLoading";
 import {Form, Input, MultiInput, Select} from "../../../components/UI/LabeledInput/LabeledInput";
-import SimpleMobileTop from "../SimpleMobileTop";
+import SimpleMobileTop from "../../../components/SimpleMobileTop/SimpleMobileTop";
 
 function EditHeading(props) {
     const history = useHistory()

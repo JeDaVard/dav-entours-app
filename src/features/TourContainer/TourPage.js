@@ -53,7 +53,7 @@ function TourPage() {
             <Separator />
             <TourImages images={data.tour.images}/>
             <TourLocations data={{start: data.tour.startLocation, locations: data.tour.locations}}/>
-            <Separator margin={'0 2'}/>
+            <Separator margin={'0 2'} />
             <TourReviews tour={data.tour} more={fetchMore} loading={loading}/>
             <TourOrder tour={data.tour} />
         </>

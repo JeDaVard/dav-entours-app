@@ -3,6 +3,7 @@
     flex: none;
     transition: transform .2s;
     transform: scale(1);
+    position: relative;
 }
 
 .SimpleButton:active {
@@ -28,6 +29,21 @@
     border: 1px solid rgba(0, 0, 0, 0.8);
 }
 
+.SimpleButton__black a:hover,
+.SimpleButton__black a:active,
+.SimpleButton__black button:hover,
+.SimpleButton__black button:active {
+    background: white;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.SimpleButton__black button:disabled,
+.SimpleButton__black button:disabled:hover,
+.SimpleButton__black button:disabled:active {
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid transparent;
+}
+
 .SimpleButton__white a,
 .SimpleButton__white button {
     background: white;
@@ -42,14 +58,6 @@
     border: 1px solid #33b15d;
 }
 
-.SimpleButton__black a:hover,
-.SimpleButton__black a:active,
-.SimpleButton__black button:hover,
-.SimpleButton__black button:active {
-    background: white;
-    color: rgba(0, 0, 0, 0.8);
-}
-
 .SimpleButton__white a:hover,
 .SimpleButton__white a:active,
 .SimpleButton__white button:hover,
@@ -58,10 +66,24 @@
     color: white;
 }
 
+.SimpleButton__white button:disabled,
+.SimpleButton__white button:disabled:hover,
+.SimpleButton__white button:disabled:active {
+    background: rgba(0, 0, 0, 0.1);
+    border: 1px solid transparent;
+}
+
 .SimpleButton__primary a:hover,
 .SimpleButton__primary a:active,
 .SimpleButton__primary button:hover,
 .SimpleButton__primary button:active {
     background: #33b15d;
     color: white;
+}
+
+.SimpleButton__primary button:disabled,
+.SimpleButton__primary button:disabled:hover,
+.SimpleButton__primary button:disabled:active {
+    background: #81a78c;
+    border: 1px solid transparent;
 }

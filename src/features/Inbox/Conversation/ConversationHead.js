@@ -2,7 +2,7 @@ import classes from "./ConversationHead.module.css";
 import SimpleButton from "../../../components/UI/SimpleButton/SimpleButton";
 import React from "react";
 import {Link} from "react-router-dom";
-import SimpleMobileTop from "../../Make/SimpleMobileTop";
+import SimpleMobileTop from "../../../components/SimpleMobileTop/SimpleMobileTop";
 
 function ConversationHead({guides, participants, tour}) {
     return (

@@ -5,7 +5,9 @@ import ThumbedImage from "../../components/UI/ImageLoading/ThumbedImage";
 import moment from "moment";
 import {Link} from "react-router-dom";
 
-function MyToursItem({data}) {
+function MyToursItem(props) {
+    const { data } = props;
+
     return (
         <div className={classes.tourBox}>
             <div className={classes.imageFrame}>
@@ -22,8 +24,8 @@ function MyToursItem({data}) {
                     <div className={classes.top}>
                         <div className={classes.stats}>
                             <div>
-                                {!!data.participants.length &&
-                                (<h2>{data.participants.length} / {data.maxGroupSize} participants</h2>)}
+                                {data.starts.length &&
+                                (<h2>{data.starts[0].participants.length} / {data.maxGroupSize} participants</h2>)}
                             </div>
                         </div>
                         <div className={classes.instruments}>
@@ -55,9 +57,11 @@ function MyToursItem({data}) {
                                 <h1>{data.name.length > 40 ? data.name.slice(40) : data.name}</h1>
                             </div>
                             <div className={classes.bottomInfo}>
-                                {data.startLocation &&
+                                {data.starts.length &&
                                     <div className={classes.startLoc}>
-                                        <p className={classes.nextStart}>{moment(+data.startDates[0]).format('ddd DD MMMM YYYY')}</p>
+                                        <p className={classes.nextStart}>
+                                            {moment(+data.starts[0].date).format('ddd DD MMMM YYYY')}
+                                        </p>
                                         <p>{data.startLocation.description}</p>
                                     </div>
                                 }

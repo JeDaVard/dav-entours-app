@@ -11,7 +11,7 @@ import {useHistory} from "react-router-dom";
 import { selectedLocation, startSearchLoc} from "../../../app/actions/searchLocation/actions";
 import Justicon from "../../../components/UI/JustIcon/Justicon";
 import {sikTypeNames} from "../../../utils/SiktirTypeName";
-import SimpleMobileTop from "../SimpleMobileTop";
+import SimpleMobileTop from "../../../components/SimpleMobileTop/SimpleMobileTop";
 
 
 function EditLocations(props) {

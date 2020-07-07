@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import classes from './EditGallery.module.css'
 import { EDIT_TOUR_GALLERY, UPLOAD_IMAGE } from "../queries";
-import SimpleMobileTop from "../SimpleMobileTop";
+import SimpleMobileTop from "../../../components/SimpleMobileTop/SimpleMobileTop";
 import StyledButton from "../../../components/UI/StyledButton/StyledButton";
 import { useMutation } from "@apollo/react-hooks";
 import { useDropzone } from "react-dropzone";

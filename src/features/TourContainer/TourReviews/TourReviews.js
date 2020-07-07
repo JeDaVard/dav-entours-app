@@ -6,6 +6,7 @@ import {Link} from "react-router-dom";
 import Justicon from "../../../components/UI/JustIcon/Justicon";
 import SimpleButton from "../../../components/UI/SimpleButton/SimpleButton";
 import { FETCH_MORE_REVIEWS } from "../queries";
+import ButtonLoading from "../../../components/UI/ButtonLoading/ButtonLoading";
 
 const TourReviews = (props) => {
     const { reviews } = props.tour;
@@ -35,9 +36,20 @@ const TourReviews = (props) => {
             }
         })
     }
-    const loadMoreButton = props.loading
-        ? <SimpleButton onClick={() => {}}>&nbsp;&nbsp;&nbsp;Loading...&nbsp;&nbsp;</SimpleButton>
-        : <SimpleButton onClick={moreReviewsHandler}>More Reviews</SimpleButton>;
+    const loadMoreButton = <SimpleButton
+        disabled={props.loading}
+        onClick={moreReviewsHandler}>
+        {props.loading
+            ? (<>
+                <div className={classes.loading}>
+                    <ButtonLoading />
+                </div>
+                <span style={{opacity: '0'}}>More Reviews</span>
+            </>)
+            : (
+            'More Reviews'
+        )}
+    </SimpleButton>
 
     return (
         <>
