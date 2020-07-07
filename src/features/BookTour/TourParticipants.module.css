@@ -73,8 +73,9 @@
     box-shadow: 0 0 1.6rem rgba(0, 0, 0, 0.12);
     border-radius: 1rem;
     overflow-y: auto;
-    max-width: 20rem;
+    max-width: 40rem;
     max-height: 40vh;
+    padding: 0 2rem;
 }
 
 .inviteBlock:before {
@@ -99,4 +100,13 @@
     font-size: 1.4rem;
     font-weight: 500;
     color: rgba(0, 0, 0, 0.8);
+}
+
+.add {
+    cursor: pointer;
+    align-self: flex-start;
+    flex: 0 0 5.2rem;
+    height: 5.2rem;
+    border-radius: 1rem;
+    border: none
 }
