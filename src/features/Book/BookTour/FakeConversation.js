@@ -22,6 +22,7 @@ export default function FakeConversation(props) {
                          alt={second.name}/>
                 </div>
                 <textarea
+                    rows={'4'}
                     placeholder={`Hello! I am ${second.name}. I can't wait to join you ...`}
                     className={`${classes.message} ${classes.secondMessage}`}/>
             </div>

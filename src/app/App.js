@@ -21,10 +21,13 @@ import TopLoading from "../components/UI/TopLoading/TopLoading";
 import EditTour from "../features/Make/EditTour";
 import lazyLoading from "../utils/lazyLoading";
 import './App.css';
-import BookTour from "../features/BookTour/BookTour";
 import TourHeadLoadingMobile from "../features/TourContainer/TourHead/TourHeadLoadingMobile";
 import TourHeadLoading from "../features/TourContainer/TourHead/TourHeadLoading";
 
+
+const LazyBook = lazyLoading(() => import('../features/Book/Book'), {
+    fallback: <TopLoading /> }
+);
 
 const LazyTourPage = lazyLoading(() => import('../features/TourContainer/TourPage'), {
         fallback: <TourHeadLoading />,
@@ -174,7 +177,7 @@ function App(props) {
                 {props.asyncLoading && <TopLoading />}
                 <Switch>
                     <Route path="/" exact component={Main} />
-                    <Route path="/book" component={BookTour}/>
+                    <Route path="/payments/book" component={LazyBook} />
                     <Route path="/tour/:slug/edit" component={EditTour}/>
                     <Route path="/user/:id" component={LazyUserPage} />
                     <Route path="/make" component={LazyMake}/>

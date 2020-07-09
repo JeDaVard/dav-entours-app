@@ -1,8 +1,8 @@
 import React from "react";
 import classes from "./OrderItemHead.module.css";
-import SmoothImage from "../../components/UI/ImageLoading/SmoothImage";
-import LocLink from "../../components/UI/LocLink/LocLink";
-import Justicon from "../../components/UI/JustIcon/Justicon";
+import SmoothImage from "../../../components/UI/ImageLoading/SmoothImage";
+import LocLink from "../../../components/UI/LocLink/LocLink";
+import Justicon from "../../../components/UI/JustIcon/Justicon";
 
 export default function OrderItemHead(props) {
     const { tour } = props;

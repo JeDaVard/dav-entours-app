@@ -1,5 +1,5 @@
 import classes from "./DatePrice.module.css";
-import Justicon from "../../components/UI/JustIcon/Justicon";
+import Justicon from "../../../components/UI/JustIcon/Justicon";
 import moment from "moment";
 import React from "react";
 

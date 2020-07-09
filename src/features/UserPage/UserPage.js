@@ -1,27 +1,19 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import { Query } from 'react-apollo';
 import { FETCH_USER } from "./queries";
 import classes from './UserPage.module.css';
 import Separator from '../../components/UI/Separator/Separator';
-import {Link, Redirect, useParams} from 'react-router-dom';
+import { Link, Redirect, useParams } from 'react-router-dom';
 import UserListings from './UserListings/UserListings';
 import UserReviews from './UserReviews/UserReviews';
 import TopLoading from '../../components/UI/TopLoading/TopLoading';
 import Justicon from "../../components/UI/JustIcon/Justicon";
 import { getCookie } from "../../utils/cookies";
 import ScrollToTop from "../../components/UI/ScrollToTop";
-import { useSelector, useDispatch } from "react-redux";
-import * as actionTypes from '../../app/actions/ui/types'
 
 function UserPage() {
     const { id } = useParams();
     const isThatMe = id === getCookie('userId');
-    const [ , isLoading ] = useSelector(s => [s.ui.display.isMobile, s.ui.loading]);
-    const loadingOff = useDispatch();
-
-    useEffect(() => {
-        loadingOff({type: actionTypes.LOADING_OFF})
-    }, [loadingOff, isLoading])
 
     return (
         <div className={classes.UserPage}>

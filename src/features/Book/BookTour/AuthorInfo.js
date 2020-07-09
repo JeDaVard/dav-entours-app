@@ -1,6 +1,6 @@
 import React from "react";
 import classes from "./AuthorInfo.module.css";
-import Justicon from "../../components/UI/JustIcon/Justicon";
+import Justicon from "../../../components/UI/JustIcon/Justicon";
 import moment from "moment";
 
 export default function AuthorInfo(props) {

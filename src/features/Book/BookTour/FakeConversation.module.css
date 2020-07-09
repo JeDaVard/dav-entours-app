@@ -23,6 +23,7 @@
     font-size: 1.5rem;
     width: 100%;
     border-radius: 1rem 1rem 1rem .3rem;
+    -webkit-appearance: none;
 }
 
 .secondHello {

@@ -10,6 +10,7 @@ import EditLocations from "./EditLocations/EditLocations";
 import EditGallery from "./EditGallery/EditGallery";
 import EditDetails from "./EditDetails/EditDetails";
 import TopLoading from "../../components/UI/TopLoading/TopLoading";
+// import ScrollToTop from "../../components/UI/ScrollToTop";
 
 function EditTour(props) {
     const { slug } = useParams();

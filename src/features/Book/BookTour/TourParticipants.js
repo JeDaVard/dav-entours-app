@@ -1,11 +1,11 @@
 import React from "react";
 import classes from "./TourParticipants.module.css";
-import SmallShow from "../../components/UI/SmallShow/SmallShow";
-import Justicon from "../../components/UI/JustIcon/Justicon";
-import Separator from "../../components/UI/Separator/Separator";
-import {Form, Input, MultiInput} from "../../components/UI/LabeledInput/LabeledInput";
-import ShowAllMembers from "../TourContainer/TourOrder/ShowAllMembers";
-import SimpleButton from "../../components/UI/SimpleButton/SimpleButton";
+import SmallShow from "../../../components/UI/SmallShow/SmallShow";
+import Justicon from "../../../components/UI/JustIcon/Justicon";
+import Separator from "../../../components/UI/Separator/Separator";
+import {Form, Input, MultiInput} from "../../../components/UI/LabeledInput/LabeledInput";
+import ShowAllMembers from "../../TourContainer/TourOrder/ShowAllMembers";
+import SimpleButton from "../../../components/UI/SimpleButton/SimpleButton";
 
 export default function (props) {
     const { me, start } = props;
@@ -41,7 +41,7 @@ export default function (props) {
                                 />
                                 <button className={classes.add}>
                                     <Justicon
-                                        className={classes.inviteIcon}
+                                        className={`${classes.inviteIcon} ${classes.adInviteIcon}`}
                                         icon={'plus'} />
                                 </button>
                             </MultiInput>

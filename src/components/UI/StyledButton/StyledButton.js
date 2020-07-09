@@ -30,7 +30,7 @@ function StyledButton(props) {
         <>
             {
                 !props.to ? (
-                    <button className={classes.StyledButton} onClick={props.onClick}>
+                    <button className={classes.StyledButton} disabled={props.disabled} onClick={props.onClick}>
                         {button}
                     </button>
                 ) : (

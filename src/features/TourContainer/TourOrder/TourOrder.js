@@ -36,7 +36,7 @@ export default function TourOrder(props) {
                                     <div className={classes.buttonBlock}>
                                         <SimpleButton
                                             black
-                                            to={`/book?tourId=${props.tour._id}&slug=${props.tour.slug}&start=${start._id}&date=${start.date}`}>
+                                            to={`/payments/book?tourId=${props.tour._id}&slug=${props.tour.slug}&start=${start._id}&date=${start.date}`}>
                                             Choose
                                         </SimpleButton>
                                     </div>

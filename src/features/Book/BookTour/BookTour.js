@@ -1,22 +1,23 @@
 import React from 'react';
-import {useHistory, Redirect} from 'react-router-dom';
+import {useHistory, Redirect, Route, Switch } from 'react-router-dom';
 import qs from 'query-string';
 import classes from './BookTour.module.css';
-import SimpleMobileTop from "../../components/SimpleMobileTop/SimpleMobileTop";
+import SimpleMobileTop from "../../../components/SimpleMobileTop/SimpleMobileTop";
 import {useQuery} from "@apollo/react-hooks";
 import {FETCH_TOUR_FOR_ORDER} from "./queries";
 import moment from "moment";
-import Separator from "../../components/UI/Separator/Separator";
+import Separator from "../../../components/UI/Separator/Separator";
 import {useSelector} from "react-redux";
-import StyledButton from "../../components/UI/StyledButton/StyledButton";
-import locker from "../../assets/icons/locker.svg";
-import ScrollToTop from "../../components/UI/ScrollToTop";
+import StyledButton from "../../../components/UI/StyledButton/StyledButton";
+import locker from "../../../assets/icons/locker.svg";
+import ScrollToTop from "../../../components/UI/ScrollToTop";
 import AuthorInfo from "./AuthorInfo";
 import FakeConversation from "./FakeConversation";
 import OrderItemHead from "./OrderItemHead";
 import DatePrice from "./DatePrice";
 import TourParticipants from "./TourParticipants";
-import TopLoading from "../../components/UI/TopLoading/TopLoading";
+import TopLoading from "../../../components/UI/TopLoading/TopLoading";
+
 
 function BookTour() {
     const { location } = useHistory();
@@ -27,7 +28,7 @@ function BookTour() {
     const { data, error, loading } = useQuery(FETCH_TOUR_FOR_ORDER, {
         variables: { id: parsedData.slug }
     })
-    if (!parsedData.slug || !parsedData.start) return <Redirect to={'/'}/>
+    // if (!parsedData.slug || !parsedData.start) return <Redirect to={'/'}/>
 
 if (loading) return <TopLoading />
     const { tour, me } = data;
@@ -101,8 +102,9 @@ if (loading) return <TopLoading />
                    </div>
                </div>
 
+
                <div className={classes.payButton}>
-                   <StyledButton>
+                   <StyledButton to={loc => ({...loc, pathname: '/payments/book/pay', state: {query: location.search }})}>
                        <img src={locker} className={classes.payIcon}  alt="secure"/>
                        <span>Confirm and Pay</span>
                    </StyledButton>

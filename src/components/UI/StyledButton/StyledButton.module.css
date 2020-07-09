@@ -52,6 +52,7 @@
     color: #ffffff;
 }
 
+
 .effectContainer {
     position: absolute;
     top: 0;
@@ -104,4 +105,16 @@
 
 .text svg {
     margin-right: .4rem;
+}
+
+
+.StyledButton:disabled ,
+.StyledButton:disabled:hover ,
+.StyledButton:disabled:active  {
+    background: #7e9f87;
+}
+
+
+.StyledButton:disabled .effect:hover {
+    opacity: 0;
 }

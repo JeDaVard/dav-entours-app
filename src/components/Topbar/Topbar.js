@@ -43,10 +43,7 @@ function Topbar(props) {
                     <div className={classes.content}>
                         <div className={classes.logo}>
                             <Link
-                                to={(loc) => ({
-                                    ...loc,
-                                    pathname: '/',
-                                })}
+                                to={'/'}
                             >
                                 {isTransparent ? (
                                     <img src={logo2} alt="logo" />
