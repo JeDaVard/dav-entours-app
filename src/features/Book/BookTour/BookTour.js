@@ -1,15 +1,14 @@
-import React from 'react';
-import {useHistory, Redirect, Route, Switch } from 'react-router-dom';
+import React, {useState} from 'react';
+import { useHistory } from 'react-router-dom';
 import qs from 'query-string';
 import classes from './BookTour.module.css';
 import SimpleMobileTop from "../../../components/SimpleMobileTop/SimpleMobileTop";
-import {useQuery} from "@apollo/react-hooks";
-import {FETCH_TOUR_FOR_ORDER} from "./queries";
+import { useQuery } from "@apollo/react-hooks";
+import { FETCH_TOUR_FOR_ORDER } from "./queries";
 import moment from "moment";
 import Separator from "../../../components/UI/Separator/Separator";
 import {useSelector} from "react-redux";
 import StyledButton from "../../../components/UI/StyledButton/StyledButton";
-import locker from "../../../assets/icons/locker.svg";
 import ScrollToTop from "../../../components/UI/ScrollToTop";
 import AuthorInfo from "./AuthorInfo";
 import FakeConversation from "./FakeConversation";
@@ -20,19 +19,29 @@ import TopLoading from "../../../components/UI/TopLoading/TopLoading";
 
 
 function BookTour() {
+    // Tour and tour start infos pass to booking center with query params
     const { location } = useHistory();
     const parsedData = qs.parse(location.search);
+    // price to calculated (only for UX, not to be sent to the server)
+    const [ price, setPrice ] = useState(0)
+    // Make UI based on device
+    const isMobile = useSelector(s => s.ui.display.isMobile);
+    // Users first message to be passed with order
+    const [ message, setMessage ] = useState('');
 
-    const isMobile = useSelector(s => s.ui.display.isMobile)
+    // Fetch tour based on query
+    const { data, loading } = useQuery(FETCH_TOUR_FOR_ORDER, {
+        variables: { id: parsedData.slug },
+        onCompleted: () => {
+            setPrice(data.tour.price)
+        }
+    });
 
-    const { data, error, loading } = useQuery(FETCH_TOUR_FOR_ORDER, {
-        variables: { id: parsedData.slug }
-    })
-    // if (!parsedData.slug || !parsedData.start) return <Redirect to={'/'}/>
 
-if (loading) return <TopLoading />
+    if (loading) return <TopLoading />
     const { tour, me } = data;
 
+    // Find start object based on query's startId
     const start = data.tour.starts.find(start => start._id === parsedData.start);
 
     return (
@@ -58,13 +67,16 @@ if (loading) return <TopLoading />
                         <OrderItemHead tour={tour}/>
                         <div className={classes.participation}>
                             <div className={classes.date}>
-                                <DatePrice price={tour.price} date={start.date}/>
+                                <DatePrice price={price} singlePrice={tour.price} date={start.date}/>
                             </div>
                             <Separator margin={'2 2'} />
                             <div className={classes.joined}>
                                 <p>People joined to this date with you</p>
                             </div>
-                            <TourParticipants me={me} start={start}/>
+                            <TourParticipants me={me}
+                                              query={location.search}
+                                              setPrice={setPrice}
+                                              start={start}/>
                             <div className={classes.inviteNote}>
                                 <p>You can buy more places if you want to go with someone,
                                     just click add, and he/she will be here with you (price will be recalculated)</p>
@@ -80,7 +92,7 @@ if (loading) return <TopLoading />
                             <h1>Say hello to {tour.author.name.split(' ')[0]} and other members</h1>
                             <h2>Let them know a little about yourself and why you’re coming.</h2>
                         </div>
-                        <FakeConversation one={tour.author} second={me} />
+                        <FakeConversation setMessage={setMessage} one={tour.author} second={me} />
                     </div>
                 </div>
 
@@ -104,9 +116,9 @@ if (loading) return <TopLoading />
 
 
                <div className={classes.payButton}>
-                   <StyledButton to={loc => ({...loc, pathname: '/payments/book/pay', state: {query: location.search }})}>
-                       <img src={locker} className={classes.payIcon}  alt="secure"/>
-                       <span>Confirm and Pay</span>
+                   <StyledButton to={loc => ({...loc, pathname: '/payments/book/pay', state: {query: location.search, message }})}>
+                       {/*<img src={locker} className={classes.payIcon}  alt="secure"/>*/}
+                       <span>Confirm and Pay	&rarr;</span>
                    </StyledButton>
                </div>
            </div>

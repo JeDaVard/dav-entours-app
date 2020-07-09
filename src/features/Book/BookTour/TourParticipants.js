@@ -1,14 +1,55 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
+import { useHistory } from 'react-router-dom'
 import classes from "./TourParticipants.module.css";
 import SmallShow from "../../../components/UI/SmallShow/SmallShow";
 import Justicon from "../../../components/UI/JustIcon/Justicon";
 import Separator from "../../../components/UI/Separator/Separator";
 import {Form, Input, MultiInput} from "../../../components/UI/LabeledInput/LabeledInput";
 import ShowAllMembers from "../../TourContainer/TourOrder/ShowAllMembers";
-import SimpleButton from "../../../components/UI/SimpleButton/SimpleButton";
+import { useMutation } from "@apollo/react-hooks";
+import {FETCH_ADDED_MEMBER} from "./queries";
+import RoundLoading from "../../../components/UI/RoundLoading/RoundLoading";
+
 
 export default function (props) {
-    const { me, start } = props;
+    const { me, start, setPrice, query } = props;
+    const defaultQuery = query;
+
+    const history = useHistory()
+
+    const [ input, setInput ] = useState({
+        inviteEmail: '',
+        inviteUsers: []
+    })
+    const [ addMember, { loading } ] = useMutation(FETCH_ADDED_MEMBER, {
+        variables: {
+            email: input.inviteEmail
+        },
+        onCompleted: data => {
+            const newUsers = [data.inviteUser, ...input.inviteUsers]
+            setInput(p => ({
+                ...p,
+                inviteUsers: newUsers
+            }))
+        }
+    });
+console.log(input.inviteUsers)
+    useEffect(() => {
+        const queryUsers = input.inviteUsers.map(user => user._id);
+
+        history.replace({
+            pathname: history.location.pathname,
+            search: input.inviteUsers.length ? defaultQuery + `&invite=${queryUsers.toString()}` : defaultQuery
+        });
+
+        setPrice(p => p * (input.inviteUsers.length+1));
+
+    }, [input.inviteUsers.length])
+
+    const removeInvited = (e, id) => {
+        const newUsers = input.inviteUsers.filter(user => user._id !== id);
+        setInput(p => ({...p, inviteUsers: newUsers}))
+    }
 
     return (
         <div className={classes.participants}>
@@ -34,23 +75,39 @@ export default function (props) {
                                     name="guestEmail"
                                     label="E-mail"
                                     id="inviteGuestEmail"
-                                    // value={state.summary}
-                                    // onChange={onInputChange}
+                                    value={input.inviteEmail}
+                                    onChange={e => {
+                                        const value = e.target.value
+                                        setInput(p => ({...p, inviteEmail: value}))
+                                    }}
                                     inputDescription="Come with your friend or family member,
                                                     just add their account and pay"
                                 />
-                                <button className={classes.add}>
-                                    <Justicon
+                                <button disabled={loading} className={classes.add} onClick={e => {
+                                    e.preventDefault();
+                                    addMember()
+                                }}>
+                                    {loading ? <RoundLoading /> : <Justicon
                                         className={`${classes.inviteIcon} ${classes.adInviteIcon}`}
-                                        icon={'plus'} />
+                                        icon={'plus'} />}
                                 </button>
                             </MultiInput>
                         </Form>
                     </div>
                 </SmallShow>
-                <img src={process.env.REACT_APP_SERVER+'/images/user/'+me.photo}
-                     alt={me.name}
-                     className={classes.user}/>
+                {input.inviteUsers.map(p => (
+                    <div className={classes.invitedUser} key={p._id}>
+                        <img src={process.env.REACT_APP_SERVER+'/images/user/'+p.photo}
+                             alt={p.name}
+                             className={classes.user}/>
+                        <button className={classes.invitedUserRemove} onClick={e => removeInvited(e, p._id)}>
+                        <Justicon icon={'trash'} className={classes.invitedUserRemoveIcon}/>
+                        </button>
+                    </div>
+                ))}
+                    <img src={process.env.REACT_APP_SERVER+'/images/user/'+me.photo}
+                         alt={me.name}
+                         className={classes.user}/>
             </div>
             <div className={classes.members}>
                 {start.participants.slice(0,5).map(p => (

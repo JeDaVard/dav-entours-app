@@ -2,7 +2,7 @@ import React from "react";
 import classes from "./FakeConversation.module.css";
 
 export default function FakeConversation(props) {
-    const { one, second } = props;
+    const { one, second, setMessage } = props;
     return (
         <>
             <div className={classes.oneWelcome}>
@@ -22,6 +22,7 @@ export default function FakeConversation(props) {
                          alt={second.name}/>
                 </div>
                 <textarea
+                    onChange={e => { const value = e.target.value; setMessage(value)}}
                     rows={'4'}
                     placeholder={`Hello! I am ${second.name}. I can't wait to join you ...`}
                     className={`${classes.message} ${classes.secondMessage}`}/>

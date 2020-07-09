@@ -105,11 +105,13 @@
 .add {
     cursor: pointer;
     align-self: flex-start;
+    position: relative;
     flex: 0 0 5.2rem;
     height: 5.2rem;
     background: rgba(0, 0, 0, 0.06);
     border-radius: 1rem;
     border: none;
+    outline: none;
     transition: all .3s;
 }
 
@@ -119,8 +121,63 @@
     transform: scale(1);
 }
 
+
 .add:hover,
 .add:active {
     transform: scale(1.6);
     background: transparent;
+}
+
+.add:disabled {
+    background: transparent;
+}
+
+.add:disabled:hover,
+.add:disabled:active {
+    transform: scale(1);
+}
+
+.invitedUser {
+    width: 3rem;
+    height: 3rem;
+    position: relative;
+}
+
+.invitedUserRemove {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 0;
+    top: 1px;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    backdrop-filter: blur(3px);
+    background: rgba(0, 0, 0, 0.3);
+    transition: all .1s ease-in;
+    opacity: 0;
+}
+
+.invitedUserRemoveIcon {
+    width: 1.6rem;
+    height: 1.6rem;
+    fill: white;
+    transform: translateY(1rem);
+    opacity: 0;
+    transition: all .2s ease-in-out;
+}
+
+.invitedUser:hover .invitedUserRemove,
+.invitedUser:active .invitedUserRemove {
+    opacity: 1;
+}
+
+.invitedUser:hover .invitedUserRemoveIcon,
+.invitedUser:active .invitedUserRemoveIcon {
+    opacity: 1;
+    transform: translateY(0);
 }

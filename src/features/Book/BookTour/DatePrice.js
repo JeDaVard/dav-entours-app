@@ -4,7 +4,7 @@ import moment from "moment";
 import React from "react";
 
 export default function DatePrice(props) {
-    const { price, date } = props;
+    const { price, date, singlePrice } = props;
     
     return (
         <>
@@ -18,11 +18,11 @@ export default function DatePrice(props) {
                 <div className={classes.datePriceIcon}>
                     <Justicon icon={'dollar-sign'} className={classes.icon}/><p>&nbsp;Price</p>
                 </div>
-                <p>${price} per person</p>
+                <p>${singlePrice} per person</p>
             </div>
             <div className={classes.datePrice}>
                 <div className={classes.datePriceIcon}>
-                    <Justicon icon={'users'} className={classes.icon}/><p>&nbsp;By members</p>
+                    <Justicon icon={'users'} className={classes.icon}/><p>&nbsp;After invitation</p>
                 </div>
                 <p>${price}</p>
             </div>
