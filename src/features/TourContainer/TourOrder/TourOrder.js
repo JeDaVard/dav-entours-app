@@ -16,6 +16,7 @@ export default function TourOrder(props) {
         setState(true)
     }
 
+
     return (
         <>
             <Modal
@@ -24,6 +25,8 @@ export default function TourOrder(props) {
                 title={'Book the tour'}
             >
                 {props.tour.starts.map(start => {
+                    const pathname = '/payments/book';
+                    const search = `?tourId=${props.tour._id}&slug=${props.tour.slug}&start=${start._id}&date=${start.date}`;
                     return (
                         <div key={start.date} className={classes.block}>
                             <p className={classes.date}>{moment(+start.date).format('dd, DD MMM')}</p>
@@ -36,7 +39,7 @@ export default function TourOrder(props) {
                                     <div className={classes.buttonBlock}>
                                         <SimpleButton
                                             black
-                                            to={`/payments/book?tourId=${props.tour._id}&slug=${props.tour.slug}&start=${start._id}&date=${start.date}`}>
+                                            to={loc => ({...loc, pathname, search, state: search})}>
                                             Choose
                                         </SimpleButton>
                                     </div>

@@ -176,7 +176,7 @@ function App(props) {
             >
                 {props.asyncLoading && <TopLoading />}
                 <Switch>
-                    <Route path="/" exact component={Main} />
+                    <Route exact path="/" component={Main} />
                     <Route path="/payments/book" component={LazyBook} />
                     <Route path="/tour/:slug/edit" component={EditTour}/>
                     <Route path="/user/:id" component={LazyUserPage} />

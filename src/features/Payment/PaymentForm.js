@@ -1,4 +1,5 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import classes from "./PaymentForm.module.css";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import StyledButton from "../../components/UI/StyledButton/StyledButton";
@@ -9,6 +10,8 @@ import locker from "../../assets/icons/locker.svg";
 import './_payments.css'
 
 export default function PaymentForm() {
+    const location = useLocation()
+    console.log(location)
     const stripe = useStripe();
     const elements = useElements();
     const [ intentPayment ] = useMutation(INTENT_PAYMENT);

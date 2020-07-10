@@ -45,12 +45,14 @@
     align-items: center;
     justify-content: center;
     margin-top: .1rem;
+    transform: scale(1);
     transition: all .1s;
 }
 
 .invite:hover,
 .invite:active {
     background: #4fc877;
+    transform: scale(1);
 }
 
 .invite:active {
@@ -143,6 +145,12 @@
     position: relative;
 }
 
+.inviteUserImage {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+}
+
 .invitedUserRemove {
     cursor: pointer;
     border: none;
@@ -152,7 +160,7 @@
     justify-content: center;
     align-items: center;
     left: 0;
-    top: 1px;
+    top: 0;
     width: 100%;
     height: 100%;
     border-radius: 50%;

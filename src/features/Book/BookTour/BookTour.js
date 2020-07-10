@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Redirect } from 'react-router-dom';
 import qs from 'query-string';
 import classes from './BookTour.module.css';
 import SimpleMobileTop from "../../../components/SimpleMobileTop/SimpleMobileTop";
@@ -29,8 +29,10 @@ function BookTour() {
     // Users first message to be passed with order
     const [ message, setMessage ] = useState('');
 
+    const [initialQuery] = useState(location.state);
+
     // Fetch tour based on query
-    const { data, loading } = useQuery(FETCH_TOUR_FOR_ORDER, {
+    const { data, loading, error } = useQuery(FETCH_TOUR_FOR_ORDER, {
         variables: { id: parsedData.slug },
         onCompleted: () => {
             setPrice(data.tour.price)
@@ -39,6 +41,13 @@ function BookTour() {
 
 
     if (loading) return <TopLoading />
+    if (error) return <h1>{error.message}</h1>
+    if (!data || !initialQuery) {
+        if (parsedData.slug) {
+            return <Redirect to={`/tour/${parsedData.slug}`} />
+        }
+    }
+
     const { tour, me } = data;
 
     // Find start object based on query's startId
@@ -74,7 +83,8 @@ function BookTour() {
                                 <p>People joined to this date with you</p>
                             </div>
                             <TourParticipants me={me}
-                                              query={location.search}
+                                              query={initialQuery}
+                                              singlePrice={tour.price}
                                               setPrice={setPrice}
                                               start={start}/>
                             <div className={classes.inviteNote}>
@@ -116,7 +126,7 @@ function BookTour() {
 
 
                <div className={classes.payButton}>
-                   <StyledButton to={loc => ({...loc, pathname: '/payments/book/pay', state: {query: location.search, message }})}>
+                   <StyledButton to={loc => ({...loc, pathname: '/payments/book/pay', state: {initialQuery, message }})}>
                        {/*<img src={locker} className={classes.payIcon}  alt="secure"/>*/}
                        <span>Confirm and Pay	&rarr;</span>
                    </StyledButton>

@@ -12,9 +12,7 @@ import RoundLoading from "../../../components/UI/RoundLoading/RoundLoading";
 
 
 export default function (props) {
-    const { me, start, setPrice, query } = props;
-    const defaultQuery = query;
-
+    const { me, start, setPrice, query, singlePrice } = props;
     const history = useHistory()
 
     const [ input, setInput ] = useState({
@@ -33,16 +31,16 @@ export default function (props) {
             }))
         }
     });
-console.log(input.inviteUsers)
+
     useEffect(() => {
         const queryUsers = input.inviteUsers.map(user => user._id);
 
         history.replace({
             pathname: history.location.pathname,
-            search: input.inviteUsers.length ? defaultQuery + `&invite=${queryUsers.toString()}` : defaultQuery
+            search: input.inviteUsers.length ? query + `&invite=${queryUsers.toString()}` : query
         });
 
-        setPrice(p => p * (input.inviteUsers.length+1));
+        setPrice(singlePrice * (input.inviteUsers.length+1));
 
     }, [input.inviteUsers.length])
 
@@ -85,7 +83,9 @@ console.log(input.inviteUsers)
                                 />
                                 <button disabled={loading} className={classes.add} onClick={e => {
                                     e.preventDefault();
-                                    addMember()
+                                    addMember().then(() => {
+                                        setInput(p => ({...p, inviteEmail: ''}))
+                                    })
                                 }}>
                                     {loading ? <RoundLoading /> : <Justicon
                                         className={`${classes.inviteIcon} ${classes.adInviteIcon}`}
@@ -99,7 +99,8 @@ console.log(input.inviteUsers)
                     <div className={classes.invitedUser} key={p._id}>
                         <img src={process.env.REACT_APP_SERVER+'/images/user/'+p.photo}
                              alt={p.name}
-                             className={classes.user}/>
+                             className={classes.inviteUserImage}
+                        />
                         <button className={classes.invitedUserRemove} onClick={e => removeInvited(e, p._id)}>
                         <Justicon icon={'trash'} className={classes.invitedUserRemoveIcon}/>
                         </button>

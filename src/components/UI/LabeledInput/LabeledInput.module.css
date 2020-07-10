@@ -59,7 +59,7 @@
     left: 1.4rem;
     font-size: 1.8rem;
     top: 1.2rem;
-    /*transform: translateY(-50%);*/
+    transform: translateY(0);
     transition: all .2s ease-in-out;
 }
 

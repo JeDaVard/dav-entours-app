@@ -13,9 +13,8 @@ function Payment() {
         if (!!location.state && !payment) setPayment(location.state)
     }, [location.state])
 
+    console.log(location)
     if (!location.state)  return <Redirect to={'/payments/book'+location.search} />
-
-    // console.log(history)
 
     return (
         <Modal
