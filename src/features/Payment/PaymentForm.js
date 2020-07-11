@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
+import qs from "query-string";
 import classes from "./PaymentForm.module.css";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import StyledButton from "../../components/UI/StyledButton/StyledButton";
@@ -11,10 +12,19 @@ import './_payments.css'
 
 export default function PaymentForm() {
     const location = useLocation()
-    console.log(location)
+    const { tourId, start, invite } = qs.parse(location.search);
+    const firstMessage = location.state.message;
+
     const stripe = useStripe();
     const elements = useElements();
-    const [ intentPayment ] = useMutation(INTENT_PAYMENT);
+    const [ intentPayment ] = useMutation(INTENT_PAYMENT, {
+        variables: {
+            tourId,
+            startId: start,
+            firstMessage,
+            invitedIds: invite
+        },
+    });
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -50,22 +60,21 @@ export default function PaymentForm() {
 
 
     return (
-        <div className="StripeElement">
-
-            <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
+             <div className="StripeElement">
                 <label>
                     Card details
                     <CardElement options={CARD_ELEMENT_OPTIONS} />
                 </label>
-                <div className={classes.payButton}>
-                    <StyledButton disabled={!stripe}>
-                        <img hidden={false} src={locker} className={classes.payIcon}  alt="secure"/>
-                        <span hidden={false}>Confirm and Pay</span>
-                        {!stripe && <ButtonLoading />}
-                    </StyledButton>
-                </div>
-            </form>
-        </div>
+            </div>
+            <div className={classes.payButton}>
+                <StyledButton disabled={!stripe}>
+                    <img hidden={false} src={locker} className={classes.payIcon}  alt="secure"/>
+                    <span hidden={false}>Confirm and Pay</span>
+                    {!stripe && <ButtonLoading />}
+                </StyledButton>
+            </div>
+        </form>
     )
 }
 
