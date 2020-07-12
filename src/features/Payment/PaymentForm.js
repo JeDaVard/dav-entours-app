@@ -30,8 +30,9 @@ export default function PaymentForm() {
         event.preventDefault();
         if (!stripe || !elements) return;
 
-        const { data } = await intentPayment();
-        const { clientSecret } = data.intentPayment;
+        const response = await intentPayment();
+        console.log(response)
+        const { clientSecret } = response.data.intentTourPayment;
 
         const result = await stripe.confirmCardPayment(clientSecret, {
             payment_method: {
@@ -79,6 +80,7 @@ export default function PaymentForm() {
 }
 
 const CARD_ELEMENT_OPTIONS = {
+    hidePostalCode: true,
     style: {
         base: {
             color: "#32325d",

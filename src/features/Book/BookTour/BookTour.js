@@ -29,8 +29,6 @@ function BookTour() {
     // Users first message to be passed with order
     const [ message, setMessage ] = useState('');
 
-    const [initialQuery] = useState(location.state);
-
     // Fetch tour based on query
     const { data, loading, error } = useQuery(FETCH_TOUR_FOR_ORDER, {
         variables: { id: parsedData.slug },
@@ -42,7 +40,7 @@ function BookTour() {
 
     if (loading) return <TopLoading />
     if (error) return <h1>{error.message}</h1>
-    if (!data || !initialQuery) {
+    if (!data) {
         if (parsedData.slug) {
             return <Redirect to={`/tour/${parsedData.slug}`} />
         }
@@ -83,7 +81,6 @@ function BookTour() {
                                 <p>People joined to this date with you</p>
                             </div>
                             <TourParticipants me={me}
-                                              query={initialQuery}
                                               singlePrice={tour.price}
                                               setPrice={setPrice}
                                               start={start}/>
@@ -126,10 +123,10 @@ function BookTour() {
 
 
                <div className={classes.payButton}>
-                   <StyledButton to={loc => ({...loc, pathname: '/payments/book/pay', state: {initialQuery, message }})}>
+                   {/*<StyledButton to={loc => ({...loc, pathname: '/payments/book/pay', state: {initialQuery, message }})}>*/}
                        {/*<img src={locker} className={classes.payIcon}  alt="secure"/>*/}
-                       <span>Confirm and Pay	&rarr;</span>
-                   </StyledButton>
+                       {/*<span>Confirm and Pay	&rarr;</span>*/}
+                   {/*</StyledButton>*/}
                </div>
            </div>
         </div>

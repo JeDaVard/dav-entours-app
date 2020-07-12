@@ -14,7 +14,7 @@ export default function Book() {
     return (
         <>
             <Route path="/payments/book" component={BookTour} />
-            <Route path="/payments/book/pay" component={LazyPayment} />
+            {/*<Route path="/payments/book/pay" component={LazyPayment} />*/}
         </>
     )
 }

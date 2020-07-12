@@ -4,16 +4,17 @@ import classes from "./TourParticipants.module.css";
 import SmallShow from "../../../components/UI/SmallShow/SmallShow";
 import Justicon from "../../../components/UI/JustIcon/Justicon";
 import Separator from "../../../components/UI/Separator/Separator";
-import {Form, Input, MultiInput} from "../../../components/UI/LabeledInput/LabeledInput";
+import { Form, Input, MultiInput } from "../../../components/UI/LabeledInput/LabeledInput";
 import ShowAllMembers from "../../TourContainer/TourOrder/ShowAllMembers";
 import { useMutation } from "@apollo/react-hooks";
-import {FETCH_ADDED_MEMBER} from "./queries";
+import { FETCH_ADDED_MEMBER } from "./queries";
 import RoundLoading from "../../../components/UI/RoundLoading/RoundLoading";
 
 
 export default function (props) {
-    const { me, start, setPrice, query, singlePrice } = props;
+    const { me, start, setPrice, singlePrice } = props;
     const history = useHistory()
+    const query = history.location.search;
 
     const [ input, setInput ] = useState({
         inviteEmail: '',
