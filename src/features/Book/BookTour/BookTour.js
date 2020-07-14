@@ -37,10 +37,9 @@ function BookTour() {
         }
     });
 
-
     if (loading) return <TopLoading />
     if (error) return <h1>{error.message}</h1>
-    if (!data) {
+    if (!data || !parsedData) {
         if (parsedData.slug) {
             return <Redirect to={`/tour/${parsedData.slug}`} />
         }
@@ -123,10 +122,10 @@ function BookTour() {
 
 
                <div className={classes.payButton}>
-                   {/*<StyledButton to={loc => ({...loc, pathname: '/payments/book/pay', state: {initialQuery, message }})}>*/}
+                   <StyledButton to={loc => ({...loc, pathname: '/payments/book/pay', state: { message, me, price }})}>
                        {/*<img src={locker} className={classes.payIcon}  alt="secure"/>*/}
-                       {/*<span>Confirm and Pay	&rarr;</span>*/}
-                   {/*</StyledButton>*/}
+                       <span>Confirm and Pay&nbsp;&rarr;</span>
+                   </StyledButton>
                </div>
            </div>
         </div>

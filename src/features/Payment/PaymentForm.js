@@ -9,11 +9,12 @@ import {INTENT_PAYMENT} from "./queries";
 import ButtonLoading from "../../components/UI/ButtonLoading/ButtonLoading";
 import locker from "../../assets/icons/locker.svg";
 import './_payments.css'
+import Separator from "../../components/UI/Separator/Separator";
 
 export default function PaymentForm() {
     const location = useLocation()
     const { tourId, start, invite } = qs.parse(location.search);
-    const firstMessage = location.state.message;
+    const { message, me } = location.state;
 
     const stripe = useStripe();
     const elements = useElements();
@@ -21,7 +22,7 @@ export default function PaymentForm() {
         variables: {
             tourId,
             startId: start,
-            firstMessage,
+            firstMessage: message,
             invitedIds: invite
         },
     });
@@ -38,7 +39,7 @@ export default function PaymentForm() {
             payment_method: {
                 card: elements.getElement(CardElement),
                 billing_details: {
-                    name: 'Jenny Rosen',
+                    name: me.name,
                 },
             }
         });
@@ -62,11 +63,14 @@ export default function PaymentForm() {
 
     return (
         <form onSubmit={handleSubmit}>
-             <div className="StripeElement">
-                <label>
-                    Card details
+            <div className="heading">
+                <h2 className="entoursPay">Entours Pay</h2>
+                <h3 className="name">{me.name}</h3>
+            </div>
+            <div className="card">
+                <div className="cardDetails">
                     <CardElement options={CARD_ELEMENT_OPTIONS} />
-                </label>
+                </div>
             </div>
             <div className={classes.payButton}>
                 <StyledButton disabled={!stripe}>

@@ -34,6 +34,7 @@ export const FETCH_TOUR_FOR_ORDER = gql`
         me {
             photo
             name
+            email
         }
     }
 `

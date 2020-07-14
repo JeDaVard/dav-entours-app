@@ -14,7 +14,7 @@ import RoundLoading from "../../../components/UI/RoundLoading/RoundLoading";
 export default function (props) {
     const { me, start, setPrice, singlePrice } = props;
     const history = useHistory()
-    const query = history.location.search;
+    const query = history.location.search.split('&invite')[0];
 
     const [ input, setInput ] = useState({
         inviteEmail: '',

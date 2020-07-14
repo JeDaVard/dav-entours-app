@@ -5,18 +5,41 @@
 * to the CardElement component.
 * https://stripe.com/docs/js/elements_object/create_element?type=card#elements_create-options-classes
 */
+.heading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+.entoursPay {
+    font-size: 2rem;
+    color: #3db062;
+    padding-right: 1rem;
+}
+.name {
+    font-size: 1.2rem;
+    padding-left: 1rem;
+    border-left: 1px solid rgba(0, 0, 0, 0.14);
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.6);
+    text-align: center;
+}
+
+.card {
+    width: 100%;
+    /*background: rgba(0, 0, 0, 0.08);*/
+}
 
 .StripeElement {
-    height: 20rem;
-    padding: 10px 12px;
     width: 100%;
+    padding: 1rem 1.2rem;
+    border-radius: .4rem;
     color: rgba(0, 0, 0, 0.4);
     background-color: #ffffff;
     border: 1px solid rgba(0, 0, 0, 0);
-    border-radius: 4px;
-    box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.1);
-    -webkit-transition: box-shadow 150ms ease;
+    box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.07);
     transition: box-shadow 150ms ease;
+    -webkit-transition: box-shadow 150ms ease;
 }
 
 .StripeElement--focus {
