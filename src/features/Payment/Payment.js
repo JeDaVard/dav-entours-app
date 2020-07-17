@@ -9,24 +9,34 @@ function Payment() {
 
     const [ payment, setPayment ] = useState(location.state)
 
-    // if (!payment) history.replace(`/payments/book` + location.search)
+    const [ show, setShow ] = useState(false)
 
     useEffect(() => {
-        if (!!location.state && !payment) setPayment(location.state)
+        if (!!location.state && !show) {
+            new Promise(resolve => {
+                    setTimeout(() => {
+                        setShow(true)
+                    }, 0)
+                    resolve()
+            })
+        }
     }, [location.state])
 
     return (
-        <Modal
-            onClick={() => {
-                setPayment(false)
-            }}
-            showBackdrop={!!payment}
-            title={'Entours Secure Payments'}
-        >
-            <div>
-                <Pay />
-            </div>
-        </Modal>
+        <div>
+            <Modal
+                onClick={() => {
+                    setPayment(false)
+                    history.push(`/payments/book` + location.search)
+                }}
+                showBackdrop={show}
+                title={'Entours Secure Payments'}
+            >
+                <div>
+                    <Pay />
+                </div>
+            </Modal>
+        </div>
     )
 }
 

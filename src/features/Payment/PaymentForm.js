@@ -75,7 +75,7 @@ export default function PaymentForm() {
             <div className={classes.payButton}>
                 <StyledButton disabled={!stripe}>
                     <img hidden={false} src={locker} className={classes.payIcon}  alt="secure"/>
-                    <span hidden={false}>Confirm and Pay</span>
+                    <span hidden={false}>Pay</span>
                     {!stripe && <ButtonLoading />}
                 </StyledButton>
             </div>

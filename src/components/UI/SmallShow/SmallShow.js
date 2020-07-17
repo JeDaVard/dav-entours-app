@@ -13,7 +13,7 @@ const SmallShow = props => {
             <OutsideAlerter delegate={() => setShow(false)}>
             <button
                     className={classes.button}
-                    onClick={() => props.handler(setShow, show)}>
+                    onClick={(e) => {e.preventDefault(); props.handler(setShow, show)}}>
                 {props.button || (
                     'Show'
                 )}

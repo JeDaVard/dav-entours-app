@@ -12,6 +12,7 @@ import { selectedLocation, startSearchLoc} from "../../../app/actions/searchLoca
 import Justicon from "../../../components/UI/JustIcon/Justicon";
 import {sikTypeNames} from "../../../utils/SiktirTypeName";
 import SimpleMobileTop from "../../../components/SimpleMobileTop/SimpleMobileTop";
+import Separator from "../../../components/UI/Separator/Separator";
 
 
 function EditLocations(props) {
@@ -125,6 +126,7 @@ function EditLocations(props) {
                 <Form onSubmit={onTourLocationSave}>
                     {locations.map(loc => (
                         <div className={classes.locationBox} key={loc._id || loc.id}>
+                            <Separator margin={'2 2'} height={'1'} color={'light'}/>
                             <div className={classes.addressBox}>
                                 <div className={classes.controlsBox}>
                                     <div className={classes.coordinatesBox}>

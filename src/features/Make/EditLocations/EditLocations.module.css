@@ -18,13 +18,7 @@
 }
 
 .locationBox:not(:last-of-type) {
-    border-top: 1px solid rgba(0, 0, 0, 0.14);
-    padding-top: 1.2rem;
-}
-
-.locationBox:first-of-type {
-    border-top: none;
-    /*padding-top: 0;*/
+    /*padding-top: 1.2rem;*/
 }
 
 .addressBox {
@@ -42,11 +36,14 @@
 .coordinatesBox {
     display: flex;
     align-items: center;
+    background: linear-gradient(to right, #3db062, #4fc877);
+    padding: .2rem 1rem .1rem 1rem;
+    border-radius: 2rem;
 }
 
 .coordinates {
     font-size: 1.2rem;
-    color: rgba(0, 0, 0, 0.4);
+    color: rgba(255, 255, 255, 1);
     margin-left: .3rem;
 }
 
@@ -86,5 +83,5 @@
 .checkIcon {
     width: 1.6rem;
     height: 1.6rem;
-    fill: #3db062;
+    fill: white;
 }
