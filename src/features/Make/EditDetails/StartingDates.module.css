@@ -1,0 +1,47 @@
+.startingDates {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.dateBlock {
+    padding: 1.6rem 2rem;
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 0 1.4rem rgba(0, 0, 0, 0.12);
+    max-width: 28rem;
+    position: relative;
+}
+
+.addButton {
+    cursor: pointer;
+    padding: 1.6rem 2.2rem;
+    border-radius: 1rem;
+    background: rgba(0, 0, 0, 0.05);
+    color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    transition: all .2s ease-in-out;
+}
+
+.addButton:hover,
+.addButton:active {
+    background: rgba(0, 0, 0, 0.08);
+}
+
+.addButton span {
+    margin-left: .4rem;
+}
+
+.dateTop {
+
+}
+
+.dateTop h2 {
+    font-weight: 500;
+}
+
+.main {
+    width: 100%;
+    position: relative;
+}
