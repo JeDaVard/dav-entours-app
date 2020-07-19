@@ -90,6 +90,7 @@ export function Textarea(props) {
         value,
         onChange,
         required,
+        inputDescription,
         maxLength = 800,
     } = props;
 
@@ -108,6 +109,9 @@ export function Textarea(props) {
                 />
                 <label htmlFor={id}>{label}</label>
             </div>
+            <p className={classes.inputHint}>
+                {inputDescription}
+            </p>
         </div>
     )
 }

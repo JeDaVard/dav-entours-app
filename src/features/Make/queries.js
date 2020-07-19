@@ -11,6 +11,7 @@ export const FETCH_EDIT_TOUR = gql`
                 maxGroupSize
                 difficulty
                 price
+				firstMessage
                 summary
                 description
                 imageCover
@@ -42,6 +43,7 @@ export const MAKE_A_TOUR = gql`
 				maxGroupSize
 				difficulty
 				price
+				firstMessage
 				summary
 				description
 				imageCover
@@ -87,6 +89,7 @@ export const EDIT_TOUR_HEADING = gql`
 				maxGroupSize
 				difficulty
 				price
+				firstMessage
 				summary
 				description
 				imageCover
@@ -104,8 +107,18 @@ export const EDIT_TOUR_HEADING = gql`
 	}
 `
 export const EDIT_TOUR_DETAILS = gql`
-	mutation tourDetails($id: ID! $summary: String $description: String) {
-		tourDetails(id: $id summary: $summary description: $description) {
+	mutation tourDetails(
+		$id: ID!
+		$summary: String
+		$description: String
+		$firstMessage: String
+	) {
+		tourDetails(
+			id: $id
+			summary:$summary
+			description:$description
+			firstMessage:$firstMessage
+		) {
 			message
 			success
 			code
@@ -117,6 +130,7 @@ export const EDIT_TOUR_DETAILS = gql`
 				maxGroupSize
 				difficulty
 				price
+				firstMessage
 				summary
 				description
 				imageCover
@@ -148,6 +162,7 @@ export const EDIT_TOUR_LOCATIONS = gql`
 				maxGroupSize
 				difficulty
 				price
+				firstMessage
 				summary
 				description
 				imageCover
@@ -189,6 +204,7 @@ export const EDIT_TOUR_GALLERY = gql`
 				maxGroupSize
 				difficulty
 				price
+				firstMessage
 				summary
 				description
 				imageCover

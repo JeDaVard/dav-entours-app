@@ -56,6 +56,7 @@ function MessageInput({ convId }) {
                                 ...me.conversation.lastMessage,
                                 text: sendMessage.data.text,
                                 isImage: sendMessage.data.isImage,
+                                // TODO when we just create a start and send a message in an EMPTY chat, we get can't get sender of null
                                 sender: {
                                     ...me.conversation.lastMessage.sender,
                                     sender: sendMessage.data.sender.name

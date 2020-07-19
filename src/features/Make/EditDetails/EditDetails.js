@@ -1,11 +1,11 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import classes from './EditDetails.module.css'
 import TopLoading from "../../../components/UI/TopLoading/TopLoading";
 import StyledButton from "../../../components/UI/StyledButton/StyledButton";
-import {Form, Input, Textarea} from "../../../components/UI/LabeledInput/LabeledInput";
-import {useHistory} from "react-router-dom";
-import {useMutation} from "@apollo/react-hooks";
-import {EDIT_TOUR_DETAILS} from "../queries";
+import { Form, Input, Textarea } from "../../../components/UI/LabeledInput/LabeledInput";
+import { useHistory } from "react-router-dom";
+import { useMutation } from "@apollo/react-hooks";
+import { EDIT_TOUR_DETAILS } from "../queries";
 import SimpleMobileTop from "../../../components/SimpleMobileTop/SimpleMobileTop";
 import Separator from "../../../components/UI/Separator/Separator";
 import StartingDates from "./StratingDates";
@@ -15,13 +15,15 @@ function EditDetails(props) {
     const history = useHistory()
     const {
         _id,
-        // slug,
+        slug,
+        firstMessage,
         summary,
         description,
         draft
     } = props;
 
     const [ state, setState ] = useState({
+        firstMessage,
         summary,
         description,
     });
@@ -29,6 +31,7 @@ function EditDetails(props) {
     const [ mutateTourHeading, { loading } ] = useMutation(EDIT_TOUR_DETAILS, {
         variables: {
             id: _id,
+            firstMessage: state.firstMessage,
             summary: state.summary,
             description: state.description,
         }
@@ -76,17 +79,18 @@ function EditDetails(props) {
         <div className="row">
             { loading && <TopLoading />}
             <div className={classes.main}>
-                <StartingDates />
-                <Separator margin={'2 3'} height={'1'} color={'light'}/>
+                <StartingDates slug={slug} id={_id} />
+                <Separator margin={'1 3'} height={'1'} color={'light'}/>
                 <Form onSubmit={onTourDetails}>
                     <Textarea
-                        maxLength={800}
+                        maxLength={400}
                         onChange={onInputChange}
                         id="firstMessageInput"
                         label="Message"
                         name="firstMessage"
-                        value={state.description}
+                        value={state.firstMessage}
                         rows={'4'}
+                        inputDescription="Provide a welcome message for all clients, this will be the first message in the inbox channel for each start date"
                         required
                     />
                     <Input

@@ -9,7 +9,7 @@
     background: white;
     border-radius: 1rem;
     box-shadow: 0 0 1.4rem rgba(0, 0, 0, 0.12);
-    max-width: 28rem;
+    max-width: 16.6rem;
     position: relative;
 }
 
@@ -30,7 +30,7 @@
 }
 
 .addButton span {
-    margin-left: .4rem;
+    margin-left: 1rem;
 }
 
 .dateTop {
@@ -44,4 +44,60 @@
 .main {
     width: 100%;
     position: relative;
+}
+
+.startList {
+    margin-top: 2rem;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.startItem {
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+    display: flex;
+    justify-content: flex-start;
+    padding: 1rem 0;
+    align-items: center;
+}
+
+.startState {
+}
+
+.startItem h2 {
+    font-weight: 400;
+    font-size: 1.5rem;
+}
+
+.startItem p {
+    font-weight: 400;
+    font-size: 1.3rem;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.startMain {
+    margin-left: 1rem;
+    flex: 1;
+}
+
+.removeButton {
+    cursor: pointer;
+    padding-top: .2rem;
+    border: none;
+    outline: none;
+    width: 2.6rem;
+    height: 2.6rem;
+    border-radius: 50%;
+    background: transparent;
+    transition: all .1s;
+}
+
+.removeButton:hover,
+.removeButton:active {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+
+.removeIcon {
+    width: 1.8rem;
+    height: 1.8rem;
+    fill: rgba(0, 0, 0, 0.6);
 }

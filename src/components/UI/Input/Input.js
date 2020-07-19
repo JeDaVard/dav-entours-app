@@ -16,7 +16,14 @@ function Input(props) {
     )
     return (
         <label className={classes.makeInputBox}>
-            <input type={props.type} name={props.name} onChange={props.onChange} className={classes.makeInput} placeholder={props.placeholder} autoComplete={props.autoComplete ? 'on' : 'off'}/>
+            <input
+                type={props.type}
+                name={props.name}
+                value={props.value || ''}
+                onChange={props.onChange}
+                className={classes.makeInput}
+                placeholder={props.placeholder}
+                autoComplete={props.autoComplete ? 'on' : 'off'}/>
         </label>
     )
 }
