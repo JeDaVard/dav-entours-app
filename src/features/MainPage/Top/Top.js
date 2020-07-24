@@ -1,5 +1,5 @@
 import React from 'react';
-import { Query } from 'react-apollo';
+import { Query } from '@apollo/client/react/components';
 import { FETCH_TOP_USERS } from "./queries";
 import { Link } from 'react-router-dom';
 import TopItemLoading from './TopItemLoading';

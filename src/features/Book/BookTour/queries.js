@@ -1,4 +1,4 @@
-import gql from 'graphql-tag';
+import { gql } from '@apollo/client';
 
 export const FETCH_TOUR_FOR_ORDER = gql`
     query fetchTourForOrder($id: ID!) {

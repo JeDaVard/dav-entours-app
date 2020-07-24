@@ -1,5 +1,5 @@
 import React from 'react';
-import { useQuery } from 'react-apollo';
+import { useQuery } from '@apollo/client';
 import { useSelector } from 'react-redux';
 import { Redirect, useParams } from 'react-router-dom'
 import { FETCH_TOUR } from "./queries";

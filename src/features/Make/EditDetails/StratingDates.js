@@ -6,7 +6,7 @@ import Input from "../../../components/UI/Input/Input";
 import StyledButton from "../../../components/UI/StyledButton/StyledButton";
 import moment from "moment";
 import { createArrSkeleton } from "../../../utils/arrUtil";
-import { useMutation, useQuery } from "@apollo/react-hooks";
+import { useMutation, useQuery } from "@apollo/client";
 import { FETCH_STARTS, MANAGE_STARTS } from "./queries";
 import DotLoading from "../../../components/UI/DotLoading/DotLoading";
 

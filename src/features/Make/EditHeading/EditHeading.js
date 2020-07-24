@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {useHistory} from "react-router-dom";
 import classes from './EditHeading.module.css'
 import StyledButton from "../../../components/UI/StyledButton/StyledButton";
-import {useMutation} from "@apollo/react-hooks";
+import {useMutation} from "@apollo/client";
 import {EDIT_TOUR_HEADING} from "../queries";
 import TopLoading from "../../../components/UI/TopLoading/TopLoading";
 import {Form, Input, MultiInput, Select} from "../../../components/UI/LabeledInput/LabeledInput";

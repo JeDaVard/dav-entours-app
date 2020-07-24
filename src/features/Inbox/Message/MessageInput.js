@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import classes from './MessageInput.module.css';
 import Justicon from "../../../components/UI/JustIcon/Justicon";
-import { Mutation } from "react-apollo";
+import { Mutation } from "@apollo/client/react/components";
 import { FETCH_MESSAGES, SEND_MESSAGE} from "../Conversation/queries";
 import {getCookie} from "../../../utils/cookies";
+import {useMutation} from "@apollo/client";
 import WaveLoading from "../../../components/UI/WaveLoading/WaveLoading";
-import {useMutation} from "@apollo/react-hooks";
 import {UPLOAD_IMAGE} from "../../Make/queries";
 import axios from "axios";
 

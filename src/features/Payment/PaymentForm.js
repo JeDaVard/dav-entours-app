@@ -4,7 +4,7 @@ import qs from "query-string";
 import classes from "./PaymentForm.module.css";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import StyledButton from "../../components/UI/StyledButton/StyledButton";
-import {useMutation} from "@apollo/react-hooks";
+import {useMutation} from "@apollo/client";
 import {INTENT_PAYMENT} from "./queries";
 import ButtonLoading from "../../components/UI/ButtonLoading/ButtonLoading";
 import locker from "../../assets/icons/locker.svg";

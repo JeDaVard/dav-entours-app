@@ -1,4 +1,4 @@
-import gql from 'graphql-tag';
+import { gql } from '@apollo/client';
 
 export const FETCH_USER = gql`
 	query fetchUser($id: ID! $page:Int $limit:Int) {

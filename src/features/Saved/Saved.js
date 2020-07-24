@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Query, useMutation } from 'react-apollo';
+import { Query } from '@apollo/client/react/components';
+import { useMutation } from '@apollo/client';
 import { FETCH_SAVED, REMOVE_SAVED_TOUR } from './queries';
 import moment from 'moment';
 import classes from './Saved.module.css';

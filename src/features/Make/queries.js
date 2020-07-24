@@ -1,4 +1,4 @@
-import gql from 'graphql-tag'
+import { gql } from '@apollo/client';
 
 export const FETCH_EDIT_TOUR = gql`
 	query fetchEditTour($slug: String!) {

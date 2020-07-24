@@ -4,7 +4,7 @@ import '../animation.css';
 import ThumbedImage from '../../../components/UI/ImageLoading/ThumbedImage';
 import moment from "moment";
 import Justicon from "../../../components/UI/JustIcon/Justicon";
-import {useMutation} from "react-apollo";
+import {useMutation} from "@apollo/client";
 import { SAVE_TOUR } from "../../Saved/queries";
 
 function TourHead(props) {

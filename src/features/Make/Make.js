@@ -6,7 +6,7 @@ import StyledButton from "../../components/UI/StyledButton/StyledButton";
 import Separator from "../../components/UI/Separator/Separator";
 import Input from "../../components/UI/Input/Input";
 import "react-map-gl-geocoder/dist/mapbox-gl-geocoder.css"
-import {useMutation} from "@apollo/react-hooks";
+import {useMutation} from "@apollo/client";
 import {MAKE_A_TOUR} from "./queries";
 import TopLoading from "../../components/UI/TopLoading/TopLoading";
 

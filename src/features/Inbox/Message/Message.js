@@ -3,7 +3,7 @@ import classes from './Message.module.css';
 import moment from "moment";
 import { Link } from "react-router-dom";
 import Justicon from "../../../components/UI/JustIcon/Justicon";
-import { useMutation } from "@apollo/react-hooks";
+import { useMutation } from "@apollo/client";
 import { REMOVE_MESSAGE } from "../Conversation/queries";
 import classNames from 'classnames/bind'
 import SmoothImage from "../../../components/UI/ImageLoading/SmoothImage";

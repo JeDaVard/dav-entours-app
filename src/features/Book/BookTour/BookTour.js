@@ -3,7 +3,7 @@ import { useHistory, Redirect } from 'react-router-dom';
 import qs from 'query-string';
 import classes from './BookTour.module.css';
 import SimpleMobileTop from "../../../components/SimpleMobileTop/SimpleMobileTop";
-import { useQuery } from "@apollo/react-hooks";
+import { useQuery } from "@apollo/client";
 import { FETCH_TOUR_FOR_ORDER } from "./queries";
 import moment from "moment";
 import Separator from "../../../components/UI/Separator/Separator";

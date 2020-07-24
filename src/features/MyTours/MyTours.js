@@ -1,6 +1,6 @@
 import React from "react";
 import { useLocation } from 'react-router-dom'
-import { Query } from 'react-apollo'
+import { Query } from '@apollo/client/react/components'
 import classes from './MyTours.module.css';
 import Separator from "../../components/UI/Separator/Separator";
 import {Tab, Tabs} from "../../components/UI/Tabs/Tabs";

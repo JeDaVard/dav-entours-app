@@ -8,9 +8,10 @@ import validator from "validator";
 import { validateState } from "../../utils/validateState";
 import AnimatedValidation from "../../components/UI/AnimatedValidation/AnimatedValidation";
 import { Link } from "react-router-dom";
-import { useApolloClient, useMutation } from '@apollo/react-hooks';
+import { useApolloClient, useMutation } from '@apollo/client';
 import { SIGN_IN, SIGN_UP } from "./queries";
 import {setCookie} from "../../utils/cookies";
+import {gql} from "@apollo/client";
 
 function LoginForm(props) {
     const client = useApolloClient();
@@ -36,7 +37,16 @@ function LoginForm(props) {
 
     const [sign] = useMutation(props.login ? SIGN_IN : SIGN_UP, {
         onCompleted({ login }) {
-            client.writeData({ data: {
+            client.writeQuery({
+                query: gql`
+					query {
+						loggedIn
+						photo
+						name
+						userId
+					}
+                `,
+                data: {
                     loggedIn: true,
                     photo: login.photo,
                     name: login.name,

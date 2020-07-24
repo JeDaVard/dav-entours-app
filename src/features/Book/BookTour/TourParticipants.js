@@ -6,7 +6,7 @@ import Justicon from "../../../components/UI/JustIcon/Justicon";
 import Separator from "../../../components/UI/Separator/Separator";
 import { Form, Input, MultiInput } from "../../../components/UI/LabeledInput/LabeledInput";
 import ShowAllMembers from "../../TourContainer/TourOrder/ShowAllMembers";
-import { useMutation } from "@apollo/react-hooks";
+import { useMutation } from "@apollo/client";
 import { FETCH_ADDED_MEMBER } from "./queries";
 import RoundLoading from "../../../components/UI/RoundLoading/RoundLoading";
 

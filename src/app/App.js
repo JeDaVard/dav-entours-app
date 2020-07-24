@@ -14,8 +14,7 @@ import Error from './Error/Error';
 import MobileBar from '../components/MobileBar/MobileBar';
 import debounce from '../utils/debounce';
 import OnlyAuth from './OnlyAuth/OnlyAuth';
-import { useQuery } from "@apollo/react-hooks";
-import gql from "graphql-tag";
+import { useQuery, gql } from "@apollo/client";
 import NotFound from "./NotFound/NotFound";
 import TopLoading from "../components/UI/TopLoading/TopLoading";
 import EditTour from "../features/Make/EditTour";
@@ -59,7 +58,7 @@ const LazyTourEvents = lazyLoading(() => import('../features/TourEvents/TourEven
 
 
 const LOGGED_IN = gql`
-	query IsUserLoggedIn {
+	query AuthData {
 		loggedIn @client
 		name @client
 		photo @client

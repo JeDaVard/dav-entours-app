@@ -1,7 +1,7 @@
 import React from "react";
 import classes from './Logout.module.css'
 import { SIGN_OUT } from './queries'
-import {useMutation} from "@apollo/react-hooks";
+import {useMutation} from "@apollo/client";
 import {removeCookie} from "../../../utils/cookies";
 
 const Logout = props => {

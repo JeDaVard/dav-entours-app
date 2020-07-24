@@ -1,6 +1,6 @@
 import React from "react";
 import queryString from 'query-string';
-import { Query } from 'react-apollo'
+import { Query } from '@apollo/client/react/components'
 import { FETCH_TOUR_EVENTS } from "./queries";
 import { Tabs, Tab} from "../../components/UI/Tabs/Tabs";
 import TopLoading from "../../components/UI/TopLoading/TopLoading";

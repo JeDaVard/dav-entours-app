@@ -1,5 +1,5 @@
 import React from 'react';
-import { Query } from 'react-apollo';
+import { Query } from '@apollo/client/react/components';
 import { FETCH_DISCOVER } from "./queries";
 import {Link} from "react-router-dom";
 import classes from './Discover.module.css';

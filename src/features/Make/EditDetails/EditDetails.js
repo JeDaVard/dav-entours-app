@@ -4,7 +4,7 @@ import TopLoading from "../../../components/UI/TopLoading/TopLoading";
 import StyledButton from "../../../components/UI/StyledButton/StyledButton";
 import { Form, Input, Textarea } from "../../../components/UI/LabeledInput/LabeledInput";
 import { useHistory } from "react-router-dom";
-import { useMutation } from "@apollo/react-hooks";
+import { useMutation } from "@apollo/client";
 import { EDIT_TOUR_DETAILS } from "../queries";
 import SimpleMobileTop from "../../../components/SimpleMobileTop/SimpleMobileTop";
 import Separator from "../../../components/UI/Separator/Separator";

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Query} from 'react-apollo';
+import {Query} from '@apollo/client/react/components';
 import { FETCH_INBOXES } from './queries'
 import moment from "moment";
 import classes from "./InboxItem.module.css";

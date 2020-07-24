@@ -1,5 +1,6 @@
 import React from "react";
-import {useQuery, Query} from "react-apollo";
+import { Query } from "@apollo/client/react/components";
+import { useQuery } from "@apollo/client";
 import {FETCH_CONVERSATION, FETCH_MESSAGES, SUBSCRIBE_MESSAGE} from './queries';
 import { useParams } from "react-router-dom";
 import classes from './Conversation.module.css';

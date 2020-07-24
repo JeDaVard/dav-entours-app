@@ -5,7 +5,7 @@ import {Form, Input, MultiInput, Textarea} from "../../../components/UI/LabeledI
 import SearchLocationInput from "./SearchLocationInput";
 import { connect } from "react-redux";
 import StyledButton from "../../../components/UI/StyledButton/StyledButton";
-import {useMutation} from "@apollo/react-hooks";
+import {useMutation} from "@apollo/client";
 import {EDIT_TOUR_LOCATIONS} from "../queries";
 import {useHistory} from "react-router-dom";
 import { selectedLocation, startSearchLoc} from "../../../app/actions/searchLocation/actions";

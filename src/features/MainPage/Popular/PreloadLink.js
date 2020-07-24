@@ -1,6 +1,6 @@
 import React from 'react';
 import { Redirect } from "react-router-dom";
-import { useLazyQuery} from 'react-apollo';
+import { useLazyQuery} from '@apollo/client';
 import { loadingOn } from "../../../app/actions";
 import { connect } from "react-redux";
 

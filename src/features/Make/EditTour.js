@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink, Route, Switch, useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { useQuery } from "@apollo/react-hooks";
+import { useQuery } from "@apollo/client";
 import classes from './EditTour.module.css';
 import { FETCH_EDIT_TOUR } from "./queries";
 import p1c from './1c2.jpg'

@@ -62,7 +62,8 @@ function MyToursItem(props) {
                                         <p className={classes.nextStart}>
                                             {moment(+data.starts[0].date).format('ddd DD MMMM YYYY')}
                                         </p>
-                                        <p>{data.startLocation.description}</p>
+                                        {/*<p>{data.startLocation.description}</p>*/}
+                                        loc
                                     </div>
                                 }
                                 {data.ratingsQuantity > 1 &&

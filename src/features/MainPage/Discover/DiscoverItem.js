@@ -6,9 +6,7 @@ import ThumbedImage from "../../../components/UI/ImageLoading/ThumbedImage";
 
 export default ({ tour }) => (
     <div className={classes.post}>
-        <Link to={loc => {
-            return {pathname: `/tour/${tour.slug}`}
-        }}>
+        <Link to={`/tour/${tour.slug}`}>
             <div className={classes.imageBox}>
                 <div className={parentClasses.imageBetween}>
                     <div className={classes.image}>

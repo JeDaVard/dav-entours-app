@@ -1,5 +1,5 @@
 import React from 'react';
-import { Query } from 'react-apollo';
+import { Query } from '@apollo/client/react/components';
 import { FETCH_USER } from "./queries";
 import classes from './UserPage.module.css';
 import Separator from '../../components/UI/Separator/Separator';

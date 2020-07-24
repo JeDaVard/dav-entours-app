@@ -17,7 +17,7 @@ function Main(props) {
             <Popular />
             <Become />
             <Discover isMobile={props.isMobile}/>
-            <Top />
+            {/*<Top />*/}
         </>
     );
 }

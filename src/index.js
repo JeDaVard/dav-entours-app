@@ -1,16 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import ApolloClient from 'apollo-client';
-import { ApolloProvider } from '@apollo/react-hooks';
-import { split } from 'apollo-link';
-import { HttpLink } from "apollo-link-http";
+import { ApolloClient, ApolloProvider, HttpLink, split, gql } from '@apollo/client';
 // import { createUploadLink } from "apollo-upload-client";
 // import { persistCache } from 'apollo-cache-persist';
-import { WebSocketLink } from 'apollo-link-ws';
-import { InMemoryCache } from 'apollo-cache-inmemory';
-import { getMainDefinition } from 'apollo-utilities';
-import { setContext } from 'apollo-link-context';
+import { WebSocketLink } from '@apollo/client/link/ws';
+import { InMemoryCache } from '@apollo/client/cache';
+import { getMainDefinition } from '@apollo/client/utilities';
+import { setContext } from '@apollo/client/link/context';
 import { typeDefs, resolvers } from "./resolvers";
 import store from './app/store';
 import { BrowserRouter } from 'react-router-dom';
@@ -81,7 +78,15 @@ const client = new ApolloClient({
     link,
 });
 
-cache.writeData({
+cache.writeQuery({
+    query: gql`
+		query {
+			loggedIn
+            photo
+            name
+            userId
+		}
+    `,
     data: {
         loggedIn: !!getCookie('userId'),
         photo: localStorage.getItem('photo') || 'default.jpg',
