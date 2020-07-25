@@ -62,9 +62,19 @@ const link = split(
     authLink.concat(httpLink),
 );
 
-const cache = new InMemoryCache(
-    // { addTypename: false }
-);
+const cache = new InMemoryCache({
+    typePolicies: {
+        Query: {
+            fields: {
+                me: {
+                    merge(existing, incoming) {
+                        return { ...existing, ...incoming }
+                    }
+                }
+            }
+        },
+    },
+});
 
 // persistCache({
 //     cache,
