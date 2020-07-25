@@ -27,8 +27,9 @@ const httpLink = new HttpLink({
 // })
 
 
-const authLink = setContext((_, { headers }) => {
+const authLink = setContext((_, a ) => {
     // const token = getCookie('authToken');
+    const { headers } = a;
     return {
         headers: {
             ...headers,

@@ -68,10 +68,6 @@ export const FETCH_TOUR = gql`
 			}
 
 		}
-		me {
-			photo
-			name
-		}
 	}
 `;
 

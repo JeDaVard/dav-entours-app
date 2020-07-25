@@ -12,7 +12,10 @@ import RoundLoading from "../../../components/UI/RoundLoading/RoundLoading";
 
 
 export default function (props) {
-    const { me, start, setPrice, singlePrice } = props;
+    const { start, setPrice, singlePrice } = props;
+    const name = localStorage.getItem('name')
+    const photo = localStorage.getItem('photo')
+
     const history = useHistory()
     const query = history.location.search.split('&invite')[0];
 
@@ -107,8 +110,8 @@ export default function (props) {
                         </button>
                     </div>
                 ))}
-                    <img src={process.env.REACT_APP_SERVER+'/images/user/'+me.photo}
-                         alt={me.name}
+                    <img src={process.env.REACT_APP_SERVER+'/images/user/'+photo}
+                         alt={name}
                          className={classes.user}/>
             </div>
             <div className={classes.members}>

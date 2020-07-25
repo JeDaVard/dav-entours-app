@@ -79,8 +79,7 @@ function BookTour() {
                             <div className={classes.joined}>
                                 <p>People joined to this date with you</p>
                             </div>
-                            <TourParticipants me={me}
-                                              singlePrice={tour.price}
+                            <TourParticipants singlePrice={tour.price}
                                               setPrice={setPrice}
                                               start={start}/>
                             <div className={classes.inviteNote}>
