@@ -114,7 +114,7 @@ export default function PaymentForm() {
                 // The payment has succeeded.
             // }
         }
-    });
+    };
 
     const options = {
         paymentRequest,
