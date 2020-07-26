@@ -94,8 +94,7 @@ export default function PaymentForm() {
                 // One of 'dark', 'light', or 'light-outline'
                 // Defaults to 'dark'
 
-                height: '84px',
-                borderRadius: '10px',
+                height: '64px',
 
                 // Defaults to '40px'. The width is always '100%'.
             },
@@ -114,13 +113,22 @@ export default function PaymentForm() {
                 </div>
             </div>
             <div className={classes.payButton}>
-                <StyledButton disabled={!stripe}>
-                    <div style={{opacity: stripe ? '1' : '0'}}>
-                        <img hidden={false} src={locker} className={classes.payIcon}  alt="secure"/>
-                        <span hidden={false} className={classes.pay}>Pay</span>
-                    </div>
-                    {!stripe && <ButtonLoading />}
-                </StyledButton>
+                <div className={classes.entoursPayFrame}>
+                    <button className={classes.entoursPay} disabled={!stripe}>
+                        <div style={{opacity: stripe ? '1' : '0'}}>
+                            <img hidden={false} src={locker} className={classes.payIcon}  alt="secure"/>
+                            <span hidden={false} className={classes.pay}>Pay</span>
+                        </div>
+                        {!stripe && <ButtonLoading />}
+                    </button>
+                </div>
+                {/*<StyledButton disabled={!stripe}>*/}
+                {/*    <div style={{opacity: stripe ? '1' : '0'}}>*/}
+                {/*        <img hidden={false} src={locker} className={classes.payIcon}  alt="secure"/>*/}
+                {/*        <span hidden={false} className={classes.pay}>Pay</span>*/}
+                {/*    </div>*/}
+                {/*    {!stripe && <ButtonLoading />}*/}
+                {/*</StyledButton>*/}
                 {paymentRequest && <PaymentRequestButtonElement options={options} />}
             </div>
             <div className={classes.otherMethods}>
