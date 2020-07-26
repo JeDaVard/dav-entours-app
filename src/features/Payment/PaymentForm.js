@@ -82,6 +82,26 @@ export default function PaymentForm() {
         }
     };
 
+    const options = {
+        paymentRequest,
+        style: {
+            paymentRequestButton: {
+                type: 'default',
+                // One of 'default', 'book', 'buy', or 'donate'
+                // Defaults to 'default'
+
+                theme: 'dark',
+                // One of 'dark', 'light', or 'light-outline'
+                // Defaults to 'dark'
+
+                height: '84px',
+                borderRadius: '10px',
+
+                // Defaults to '40px'. The width is always '100%'.
+            },
+        }
+    }
+
     return (
         <form onSubmit={handleSubmit}>
             <div className="heading">
@@ -101,7 +121,7 @@ export default function PaymentForm() {
                     </div>
                     {!stripe && <ButtonLoading />}
                 </StyledButton>
-                {paymentRequest && <PaymentRequestButtonElement options={{paymentRequest}} />}
+                {paymentRequest && <PaymentRequestButtonElement options={options} />}
             </div>
             <div className={classes.otherMethods}>
             </div>
