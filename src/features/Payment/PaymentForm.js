@@ -102,38 +102,45 @@ export default function PaymentForm() {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <div className="heading">
-                <h2 className="entoursPay">Entours Pay</h2>
-                <h3 className="name">{me.name}</h3>
-            </div>
-            <div className="card">
-                <div className="cardDetails">
-                    <CardElement options={CARD_ELEMENT_OPTIONS} />
-                </div>
+        <>
+            <div className={classes.entoursMethod}>
+                <form onSubmit={handleSubmit}>
+                    <div className="heading">
+                        <h2 className="entoursPay">Entours Pay</h2>
+                        <h3 className="name">{me.name}</h3>
+                    </div>
+                    <div className="card">
+                        <div className="cardDetails">
+                            <CardElement options={CARD_ELEMENT_OPTIONS} />
+                        </div>
+                    </div>
+                    <div className={classes.payButton}>
+                        <div className={classes.entoursPayFrame}>
+                            <button className={classes.entoursPay} disabled={!stripe}>
+                                <div style={{opacity: stripe ? '1' : '0'}}>
+                                    <img hidden={false} src={locker} className={classes.payIcon}  alt="secure"/>
+                                    <span hidden={false} className={classes.pay}>Pay</span>
+                                </div>
+                                {!stripe && <ButtonLoading />}
+                            </button>
+                        </div>
+                        {/*<StyledButton disabled={!stripe}>*/}
+                        {/*    <div style={{opacity: stripe ? '1' : '0'}}>*/}
+                        {/*        <img hidden={false} src={locker} className={classes.payIcon}  alt="secure"/>*/}
+                        {/*        <span hidden={false} className={classes.pay}>Pay</span>*/}
+                        {/*    </div>*/}
+                        {/*    {!stripe && <ButtonLoading />}*/}
+                        {/*</StyledButton>*/}
+                    </div>
+                </form>
             </div>
             <div className={classes.payButton}>
-                <div className={classes.entoursPayFrame}>
-                    <button className={classes.entoursPay} disabled={!stripe}>
-                        <div style={{opacity: stripe ? '1' : '0'}}>
-                            <img hidden={false} src={locker} className={classes.payIcon}  alt="secure"/>
-                            <span hidden={false} className={classes.pay}>Pay</span>
-                        </div>
-                        {!stripe && <ButtonLoading />}
-                    </button>
+                <div className={classes.test}>
+
                 </div>
-                {/*<StyledButton disabled={!stripe}>*/}
-                {/*    <div style={{opacity: stripe ? '1' : '0'}}>*/}
-                {/*        <img hidden={false} src={locker} className={classes.payIcon}  alt="secure"/>*/}
-                {/*        <span hidden={false} className={classes.pay}>Pay</span>*/}
-                {/*    </div>*/}
-                {/*    {!stripe && <ButtonLoading />}*/}
-                {/*</StyledButton>*/}
                 {paymentRequest && <PaymentRequestButtonElement options={options} />}
             </div>
-            <div className={classes.otherMethods}>
-            </div>
-        </form>
+        </>
     )
 }
 
