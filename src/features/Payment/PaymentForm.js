@@ -82,7 +82,7 @@ export default function PaymentForm() {
         }
     };
 
-    paymentRequest.on('paymentmethod', async (ev) => {
+    const applePayHandler = async (ev) => {
         // Confirm the PaymentIntent without handling potential next actions (yet).
 
 
@@ -161,7 +161,7 @@ export default function PaymentForm() {
                 </form>
             </div>
             <div className={classes.payButton}>
-                {paymentRequest && <PaymentRequestButtonElement options={options} />}
+                {paymentRequest && <PaymentRequestButtonElement onClick={applePayHandler} options={options} />}
             </div>
         </>
     )
