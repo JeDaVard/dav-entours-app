@@ -3,13 +3,13 @@ import { useLocation } from 'react-router-dom';
 import qs from "query-string";
 import classes from "./PaymentForm.module.css";
 import { CardElement, useElements, useStripe, PaymentRequestButtonElement } from "@stripe/react-stripe-js";
-import StyledButton from "../../components/UI/StyledButton/StyledButton";
+// import StyledButton from "../../components/UI/StyledButton/StyledButton";
 import {useMutation} from "@apollo/client";
 import {INTENT_PAYMENT} from "./queries";
 import ButtonLoading from "../../components/UI/ButtonLoading/ButtonLoading";
 import locker from "../../assets/icons/locker.svg";
 import './_payments.css'
-import Separator from "../../components/UI/Separator/Separator";
+// import Separator from "../../components/UI/Separator/Separator";
 
 export default function PaymentForm() {
     const location = useLocation()
@@ -51,6 +51,8 @@ export default function PaymentForm() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        console.log('started')
+        console.log(stripe, elements)
         if (!stripe || !elements) return;
 
         const response = await intentPayment();
