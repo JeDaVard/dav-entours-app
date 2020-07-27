@@ -52,9 +52,9 @@ export default function PaymentForm() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         console.log('started')
-        console.log(stripe, elements)
+        console.log(stripe)
         if (!stripe || !elements) return;
-
+console.log(elements, 'elem')
         const response = await intentPayment();
         console.log(response)
         const { clientSecret } = response.data.intentTourPayment;
