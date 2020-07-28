@@ -141,7 +141,7 @@ export default function PaymentForm() {
                             <CardElement options={CARD_ELEMENT_OPTIONS} />
                         </div>
                     </div>
-                    <div className={classes.payButton}>
+                    <div className={`${classes.payButton} ${classes.applePayButton}`}>
                         <button className={classes.entoursPay} disabled={!stripe}>
                             <div style={{opacity: stripe ? '1' : '0'}}>
                                 <img hidden={false} src={locker} className={classes.payIcon}  alt="secure"/>
@@ -149,11 +149,9 @@ export default function PaymentForm() {
                             </div>
                             {!stripe && <ButtonLoading />}
                         </button>
+                        {paymentRequest && <PaymentRequestButtonElement options={options} />}
                     </div>
                 </form>
-            </div>
-            <div className={`${classes.payButton} ${classes.applePayButton}`}>
-                {paymentRequest && <PaymentRequestButtonElement options={options} />}
             </div>
         </>
     )
