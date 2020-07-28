@@ -11,6 +11,7 @@ import locker from "../../assets/icons/locker.svg";
 import './_payments.css'
 import Top from "../MainPage/Top/Top";
 import TopLoading from "../../components/UI/TopLoading/TopLoading";
+import DotLoading from "../../components/UI/DotLoading/DotLoading";
 // import Separator from "../../components/UI/Separator/Separator";
 
 export default function PaymentForm() {
@@ -27,7 +28,7 @@ export default function PaymentForm() {
 
     const toyPrice = ((price + (invite.split(',').length * price))
         + ((price + (invite.split(',').length * price)) * +process.env.REACT_APP_FEE / 100)) * 100;
-
+console.log(toyPrice)
     const [paymentRequest, setPaymentRequest] = useState(null);
 
     const stripe = useStripe();
@@ -155,9 +156,11 @@ export default function PaymentForm() {
 
     return (
         <>
-            {loading.message.startsWith('Congratulations')
+            {!loading.message.startsWith('Congratulations')
                 ? (
-                <TopLoading />
+                <div className={classes.loading}>
+                    <DotLoading />
+                </div>
             ) : (
                 <div className={classes.entoursMethod}>
                     <form onSubmit={handleSubmit}>
