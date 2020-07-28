@@ -7,7 +7,7 @@ function Payment() {
     const history = useHistory();
     const { location } = history
 
-    const [ payment, setPayment ] = useState(location.state)
+    // const [ payment, setPayment ] = useState(location.state)
 
     const [ show, setShow ] = useState(false)
 
@@ -26,7 +26,7 @@ function Payment() {
         <div>
             <Modal
                 onClick={() => {
-                    setPayment(false)
+                    // setPayment(false)
                     history.push(`/payments/book` + location.search)
                 }}
                 showBackdrop={show}

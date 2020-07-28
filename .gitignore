@@ -20,6 +20,9 @@
 .env.production.local
 .env.*
 
+server.key
+server.crt
+
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*

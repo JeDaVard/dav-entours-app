@@ -14,7 +14,7 @@ import './_payments.css'
 export default function PaymentForm() {
     const location = useLocation()
     const { tourId, start, invite } = qs.parse(location.search);
-    const { message, me } = location.state;
+    const { message, me, price } = location.state;
 
     const [paymentRequest, setPaymentRequest] = useState(null);
 
@@ -36,7 +36,7 @@ export default function PaymentForm() {
                 currency: 'usd',
                 total: {
                     label: 'Demo total',
-                    amount: 1099,
+                    amount: price,
                 },
                 requestPayerName: true,
                 requestPayerEmail: true,
@@ -51,12 +51,9 @@ export default function PaymentForm() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        console.log('started')
-        console.log(stripe)
         if (!stripe || !elements) return;
-console.log(elements, 'elem')
+
         const response = await intentPayment();
-        console.log(response)
         const { clientSecret } = response.data.intentTourPayment;
 
         const result = await stripe.confirmCardPayment(clientSecret, {
@@ -85,9 +82,6 @@ console.log(elements, 'elem')
     };
 
     const applePayHandler = async (ev) => {
-        // Confirm the PaymentIntent without handling potential next actions (yet).
-
-
         const response = await intentPayment();
         const { clientSecret } = response.data.intentTourPayment;
 
