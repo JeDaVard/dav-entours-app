@@ -15,6 +15,8 @@ export default function PaymentForm() {
     const location = useLocation()
     const { tourId, start, invite } = qs.parse(location.search);
     const { message, me, price } = location.state;
+    const toyPrice = invite ? ((price + (invite.length * price))
+        + ((price + (invite.length * price)) * +process.env.REACT_APP_FEE / 100)) * 100 : 0;
 
     const [paymentRequest, setPaymentRequest] = useState(null);
 
@@ -36,7 +38,7 @@ export default function PaymentForm() {
                 currency: 'usd',
                 total: {
                     label: 'Demo total',
-                    amount: price * 100,
+                    amount: toyPrice
                 },
                 requestPayerName: true,
                 requestPayerEmail: true,
@@ -54,8 +56,6 @@ export default function PaymentForm() {
             paymentRequest.on('paymentmethod', async (ev) => {
                 const response = await intentPayment();
                 const { clientSecret } = response.data.intentTourPayment;
-                console.log(ev)
-                console.log(clientSecret)
                 const {error: confirmError} = await stripe.confirmCardPayment(
                     clientSecret,
                     {payment_method: ev.paymentMethod.id},
@@ -96,7 +96,7 @@ export default function PaymentForm() {
             payment_method: {
                 card: elements.getElement(CardElement),
                 billing_details: {
-                    name: me.name,
+                    name: me.email,
                 },
             }
         });
@@ -142,26 +142,17 @@ export default function PaymentForm() {
                         </div>
                     </div>
                     <div className={classes.payButton}>
-                        <div className={classes.entoursPayFrame}>
-                            <button className={classes.entoursPay} disabled={!stripe}>
-                                <div style={{opacity: stripe ? '1' : '0'}}>
-                                    <img hidden={false} src={locker} className={classes.payIcon}  alt="secure"/>
-                                    <span hidden={false} className={classes.pay}>Pay</span>
-                                </div>
-                                {!stripe && <ButtonLoading />}
-                            </button>
-                        </div>
-                        {/*<StyledButton disabled={!stripe}>*/}
-                        {/*    <div style={{opacity: stripe ? '1' : '0'}}>*/}
-                        {/*        <img hidden={false} src={locker} className={classes.payIcon}  alt="secure"/>*/}
-                        {/*        <span hidden={false} className={classes.pay}>Pay</span>*/}
-                        {/*    </div>*/}
-                        {/*    {!stripe && <ButtonLoading />}*/}
-                        {/*</StyledButton>*/}
+                        <button className={classes.entoursPay} disabled={!stripe}>
+                            <div style={{opacity: stripe ? '1' : '0'}}>
+                                <img hidden={false} src={locker} className={classes.payIcon}  alt="secure"/>
+                                <span hidden={false} className={classes.pay}>Pay</span>
+                            </div>
+                            {!stripe && <ButtonLoading />}
+                        </button>
                     </div>
                 </form>
             </div>
-            <div className={classes.payButton}>
+            <div className={`${classes.payButton} ${classes.applePayButton}`}>
                 {paymentRequest && <PaymentRequestButtonElement options={options} />}
             </div>
         </>
