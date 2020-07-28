@@ -31,10 +31,15 @@
     border-radius: 5px;
     background: #4fc877;
     margin-bottom: 1rem;
+    position: relative;
 }
 
 .entoursPay:disabled {
     background: #98ae9f;
+}
+
+.applePayLoading {
+    background: #464646;
 }
 
 .pay {
@@ -54,4 +59,24 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.paymentError {
+    width: 100%;
+    margin-top: 2rem;
+    text-align: center;
+    padding: .6rem 1rem;
+    /*border: 1px solid rgb(239, 208, 208);*/
+    border-radius: 1.5rem;
+    background: rgba(236, 182, 199, 0.2);
+    color: rgba(93, 17, 43, 0.96);
+}
+
+.paymentResult {
+    background: rgba(182, 236, 206, 0.2);
+    color: rgba(17, 93, 58, 0.96);
+}
+
+.paymentMessage {
+
 }

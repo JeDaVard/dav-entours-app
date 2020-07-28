@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import { useLocation } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import qs from "query-string";
 import classes from "./PaymentForm.module.css";
 import { CardElement, useElements, useStripe, PaymentRequestButtonElement } from "@stripe/react-stripe-js";
@@ -9,14 +9,24 @@ import {INTENT_PAYMENT} from "./queries";
 import ButtonLoading from "../../components/UI/ButtonLoading/ButtonLoading";
 import locker from "../../assets/icons/locker.svg";
 import './_payments.css'
+import Top from "../MainPage/Top/Top";
+import TopLoading from "../../components/UI/TopLoading/TopLoading";
 // import Separator from "../../components/UI/Separator/Separator";
 
 export default function PaymentForm() {
-    const location = useLocation()
-    const { tourId, start, invite } = qs.parse(location.search);
-    const { message, me, price } = location.state;
-    const toyPrice = invite ? ((price + (invite.length * price))
-        + ((price + (invite.length * price)) * +process.env.REACT_APP_FEE / 100)) * 100 : 0;
+    const history = useHistory();
+    const { location } = history;
+
+    const { tourId, start, invite = '' } = qs.parse(location.search);
+    const { message, me, price = 0 } = location.state;
+    const [ loading, setLoading ] = useState({
+        card: false,
+        apple: false,
+        message: ''
+    })
+
+    const toyPrice = ((price + (invite.split(',').length * price))
+        + ((price + (invite.split(',').length * price)) * +process.env.REACT_APP_FEE / 100)) * 100;
 
     const [paymentRequest, setPaymentRequest] = useState(null);
 
@@ -32,13 +42,19 @@ export default function PaymentForm() {
     });
 
     useEffect(() => {
+        if (loading.message.startsWith('Congratulations')) {
+            setTimeout(() => history.push('/'), 3000)
+        }
+    }, [loading.message])
+
+    useEffect(() => {
         if (stripe) {
             const pr = stripe.paymentRequest({
                 country: 'US',
                 currency: 'usd',
                 total: {
                     label: 'Demo total',
-                    amount: toyPrice
+                    amount: toyPrice || 0
                 },
                 requestPayerName: true,
                 requestPayerEmail: true,
@@ -54,6 +70,7 @@ export default function PaymentForm() {
     useEffect(() => {
         if (paymentRequest) {
             paymentRequest.on('paymentmethod', async (ev) => {
+                setLoading(p => ({...p, apple: true}))
                 const response = await intentPayment();
                 const { clientSecret } = response.data.intentTourPayment;
                 const {error: confirmError} = await stripe.confirmCardPayment(
@@ -63,23 +80,33 @@ export default function PaymentForm() {
                 );
 
                 if (confirmError) {
-                    // Report to the browser that the payment failed, prompting it to
-                    // re-show the payment interface, or show an error message and close
-                    // the payment interface.
                     ev.complete('fail');
+                    setLoading(p => ({
+                        ...p,
+                        apple: false,
+                        message: confirmError.message || 'There was some issue, please try again, or try Entours payments method'
+                    }))
                 } else {
-                    // Report to the browser that the confirmation was successful, prompting
-                    // it to close the browser payment method collection interface.
                     ev.complete('success');
-                    // Let Stripe.js handle the rest of the payment flow.
 
-                    const {error, paymentIntent} = await stripe.confirmCardPayment(clientSecret);
-                    console.log(error, paymentIntent)
-                    // if (error) {
-                    // The payment failed -- ask your customer for a new payment method.
-                    // } else {
-                    // The payment has succeeded.
-                    // }
+                    const {
+                        error,
+                        // paymentIntent
+                    } = await stripe.confirmCardPayment(clientSecret);
+
+                    if (error) {
+                        setLoading(p => ({
+                            ...p,
+                            apple: false,
+                            message: error.message || 'There was some issue, please try again, or try Entours payments method'
+                        }))
+                    } else {
+                        setLoading(p => ({
+                            ...p,
+                            apple: false,
+                            message: 'Congratulations! You bought it, and now you will be redirected'
+                        }))
+                    }
                 }
             });
         }
@@ -88,6 +115,7 @@ export default function PaymentForm() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         if (!stripe || !elements) return;
+        setLoading(p => ({...p, card: true}))
 
         const response = await intentPayment();
         const { clientSecret } = response.data.intentTourPayment;
@@ -102,17 +130,14 @@ export default function PaymentForm() {
         });
 
         if (result.error) {
-            // Show error to your customer (e.g., insufficient funds)
-            console.log(result.error.message);
+            setLoading(p => ({...p, card: false, message: result.error.message}))
         } else {
-            // The payment has been processed!
             if (result.paymentIntent.status === 'succeeded') {
-                console.log(result)
-                // Show a success message to your customer
-                // There's a risk of the customer closing the window before callback
-                // execution. Set up a webhook or plugin to listen for the
-                // payment_intent.succeeded event that handles any business critical
-                // post-payment actions.
+                setLoading(p => ({
+                    ...p,
+                    card: false,
+                    message: 'Congratulations! You bought it, and now you will be redirected'
+                }))
             }
         }
     };
@@ -130,29 +155,48 @@ export default function PaymentForm() {
 
     return (
         <>
-            <div className={classes.entoursMethod}>
-                <form onSubmit={handleSubmit}>
-                    <div className="heading">
-                        <h2 className="entoursPay">Entours Pay</h2>
-                        <h3 className="name">{me.name}</h3>
-                    </div>
-                    <div className="card">
-                        <div className="cardDetails">
-                            <CardElement options={CARD_ELEMENT_OPTIONS} />
+            {loading.message.startsWith('Congratulations')
+                ? (
+                <TopLoading />
+            ) : (
+                <div className={classes.entoursMethod}>
+                    <form onSubmit={handleSubmit}>
+                        <div className="heading">
+                            <h2 className="entoursPay">Entours Pay</h2>
+                            <h3 className="name">{me.name}</h3>
                         </div>
-                    </div>
-                    <div className={`${classes.payButton} ${classes.applePayButton}`}>
-                        <button className={classes.entoursPay} disabled={!stripe}>
-                            <div style={{opacity: stripe ? '1' : '0'}}>
-                                <img hidden={false} src={locker} className={classes.payIcon}  alt="secure"/>
-                                <span hidden={false} className={classes.pay}>Pay</span>
+                        <div className="card">
+                            <div className="cardDetails">
+                                <CardElement options={CARD_ELEMENT_OPTIONS} />
                             </div>
-                            {!stripe && <ButtonLoading />}
-                        </button>
-                        {paymentRequest && <PaymentRequestButtonElement options={options} />}
-                    </div>
-                </form>
+                        </div>
+                        <div className={classes.payButton}>
+                            <button className={classes.entoursPay} disabled={!stripe || loading.card}>
+                                <div style={{opacity: (!loading.card || !stripe) ? '1' : '0'}}>
+                                    <img src={locker} className={classes.payIcon}  alt="secure"/>
+                                    <span className={classes.pay}>Pay</span>
+                                </div>
+                                {(!stripe || loading.card) && <ButtonLoading />}
+                            </button>
+                            {paymentRequest && ( loading.apple
+                                ?   <button className={`${classes.entoursPay} ${classes.applePayLoading}`} disabled={true}>
+                                    <div style={{opacity: '0'}}>
+                                        <span hidden={false} className={classes.pay}>Loading...</span>
+                                    </div>
+                                    <ButtonLoading />
+                                </button>
+                                :   <PaymentRequestButtonElement options={options} />)}
+                        </div>
+                    </form>
+                </div>
+            )}
+            {!!loading.message.length && (
+            <div className={`${classes.paymentError} ${loading.message.startsWith('Congratulations') ? classes.paymentResult : ''}`}>
+                <div className={classes.paymentMessage}>
+                    <p>{loading.message}</p>
+                </div>
             </div>
+                )}
         </>
     )
 }
