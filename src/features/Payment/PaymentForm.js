@@ -12,7 +12,27 @@ import './_payments.css'
 import Top from "../MainPage/Top/Top";
 import TopLoading from "../../components/UI/TopLoading/TopLoading";
 import DotLoading from "../../components/UI/DotLoading/DotLoading";
+import {ApplePay} from "./ApplePay";
 // import Separator from "../../components/UI/Separator/Separator";
+
+const CARD_ELEMENT_OPTIONS = {
+    hidePostalCode: true,
+    style: {
+        base: {
+            color: "#32325d",
+            fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+            fontSmoothing: "antialiased",
+            fontSize: "16px",
+            "::placeholder": {
+                color: "#aab7c4",
+            },
+        },
+        invalid: {
+            color: "#a76d61",
+            iconColor: "#a76d61",
+        },
+    },
+};
 
 export default function PaymentForm() {
     const history = useHistory();
@@ -28,8 +48,7 @@ export default function PaymentForm() {
 
     const toyPrice = ((price + (invite.split(',').length * price))
         + ((price + (invite.split(',').length * price)) * +process.env.REACT_APP_FEE / 100)) * 100;
-console.log(toyPrice)
-    const [paymentRequest, setPaymentRequest] = useState(null);
+
 
     const stripe = useStripe();
     const elements = useElements();
@@ -44,74 +63,9 @@ console.log(toyPrice)
 
     useEffect(() => {
         if (loading.message.startsWith('Congratulations')) {
-            setTimeout(() => history.push('/'), 3000)
+            setTimeout(() => history.push('/tourevents'), 3000)
         }
     }, [loading.message])
-
-    useEffect(() => {
-        if (stripe) {
-            const pr = stripe.paymentRequest({
-                country: 'US',
-                currency: 'usd',
-                total: {
-                    label: 'Demo total',
-                    amount: toyPrice || 0
-                },
-                requestPayerName: true,
-                requestPayerEmail: true,
-            });
-            pr.canMakePayment().then(result => {
-                if (result) {
-                    setPaymentRequest(pr);
-                }
-            });
-        }
-    }, [stripe]);
-
-    useEffect(() => {
-        if (paymentRequest) {
-            paymentRequest.on('paymentmethod', async (ev) => {
-                setLoading(p => ({...p, apple: true}))
-                const response = await intentPayment();
-                const { clientSecret } = response.data.intentTourPayment;
-                const {error: confirmError} = await stripe.confirmCardPayment(
-                    clientSecret,
-                    {payment_method: ev.paymentMethod.id},
-                    {handleActions: false}
-                );
-
-                if (confirmError) {
-                    ev.complete('fail');
-                    setLoading(p => ({
-                        ...p,
-                        apple: false,
-                        message: confirmError.message || 'There was some issue, please try again, or try Entours payments method'
-                    }))
-                } else {
-                    ev.complete('success');
-
-                    const {
-                        error,
-                        // paymentIntent
-                    } = await stripe.confirmCardPayment(clientSecret);
-
-                    if (error) {
-                        setLoading(p => ({
-                            ...p,
-                            apple: false,
-                            message: error.message || 'There was some issue, please try again, or try Entours payments method'
-                        }))
-                    } else {
-                        setLoading(p => ({
-                            ...p,
-                            apple: false,
-                            message: 'Congratulations! You bought it, and now you will be redirected'
-                        }))
-                    }
-                }
-            });
-        }
-    }, [paymentRequest])
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -143,20 +97,11 @@ console.log(toyPrice)
         }
     };
 
-    const options = {
-        paymentRequest,
-        style: {
-            paymentRequestButton: {
-                type: 'default',
-                theme: 'dark',
-                height: '40px',
-            },
-        }
-    }
+
 
     return (
         <>
-            {!loading.message.startsWith('Congratulations')
+            {loading.message.startsWith('Congratulations')
                 ? (
                 <div className={classes.loading}>
                     <DotLoading />
@@ -181,14 +126,11 @@ console.log(toyPrice)
                                 </div>
                                 {(!stripe || loading.card) && <ButtonLoading />}
                             </button>
-                            {paymentRequest && ( loading.apple
-                                ?   <button className={`${classes.entoursPay} ${classes.applePayLoading}`} disabled={true}>
-                                    <div style={{opacity: '0'}}>
-                                        <span hidden={false} className={classes.pay}>Loading...</span>
-                                    </div>
-                                    <ButtonLoading />
-                                </button>
-                                :   <PaymentRequestButtonElement options={options} />)}
+                            <ApplePay
+                                amount={toyPrice}
+                                intentPayment={intentPayment}
+                                loading={loading}
+                                setLoading={setLoading}/>
                         </div>
                     </form>
                 </div>
@@ -203,22 +145,3 @@ console.log(toyPrice)
         </>
     )
 }
-
-const CARD_ELEMENT_OPTIONS = {
-    hidePostalCode: true,
-    style: {
-        base: {
-            color: "#32325d",
-            fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-            fontSmoothing: "antialiased",
-            fontSize: "16px",
-            "::placeholder": {
-                color: "#aab7c4",
-            },
-        },
-        invalid: {
-            color: "#fa755a",
-            iconColor: "#fa755a",
-        },
-    },
-};
