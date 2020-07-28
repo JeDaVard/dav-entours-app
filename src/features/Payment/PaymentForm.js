@@ -36,7 +36,7 @@ export default function PaymentForm() {
                 currency: 'usd',
                 total: {
                     label: 'Demo total',
-                    amount: price,
+                    amount: price * 100,
                 },
                 requestPayerName: true,
                 requestPayerEmail: true,
@@ -47,6 +47,38 @@ export default function PaymentForm() {
                 }
             });
         }
+
+        paymentRequest.on('paymentmethod', async (ev) => {
+            const response = await intentPayment();
+            const { clientSecret } = response.data.intentTourPayment;
+            console.log(ev)
+            console.log(clientSecret)
+            const {error: confirmError} = await stripe.confirmCardPayment(
+                clientSecret,
+                {payment_method: ev.paymentMethod.id},
+                {handleActions: false}
+            );
+
+            if (confirmError) {
+                // Report to the browser that the payment failed, prompting it to
+                // re-show the payment interface, or show an error message and close
+                // the payment interface.
+                ev.complete('fail');
+            } else {
+                // Report to the browser that the confirmation was successful, prompting
+                // it to close the browser payment method collection interface.
+                ev.complete('success');
+                // Let Stripe.js handle the rest of the payment flow.
+
+                const {error, paymentIntent} = await stripe.confirmCardPayment(clientSecret);
+                console.log(error, paymentIntent)
+                // if (error) {
+                // The payment failed -- ask your customer for a new payment method.
+                // } else {
+                // The payment has succeeded.
+                // }
+            }
+        });
     }, [stripe]);
 
     const handleSubmit = async (event) => {
@@ -78,37 +110,6 @@ export default function PaymentForm() {
                 // payment_intent.succeeded event that handles any business critical
                 // post-payment actions.
             }
-        }
-    };
-
-    const applePayHandler = async (ev) => {
-        const response = await intentPayment();
-        const { clientSecret } = response.data.intentTourPayment;
-
-        const {error: confirmError} = await stripe.confirmCardPayment(
-            clientSecret,
-            {payment_method: ev.paymentMethod.id},
-            {handleActions: false}
-        );
-
-        if (confirmError) {
-            // Report to the browser that the payment failed, prompting it to
-            // re-show the payment interface, or show an error message and close
-            // the payment interface.
-            ev.complete('fail');
-        } else {
-            // Report to the browser that the confirmation was successful, prompting
-            // it to close the browser payment method collection interface.
-            ev.complete('success');
-            // Let Stripe.js handle the rest of the payment flow.
-
-            const {error, paymentIntent} = await stripe.confirmCardPayment(clientSecret);
-            console.log(error, paymentIntent)
-            // if (error) {
-                // The payment failed -- ask your customer for a new payment method.
-            // } else {
-                // The payment has succeeded.
-            // }
         }
     };
 
@@ -157,7 +158,7 @@ export default function PaymentForm() {
                 </form>
             </div>
             <div className={classes.payButton}>
-                {paymentRequest && <PaymentRequestButtonElement onClick={applePayHandler} options={options} />}
+                {paymentRequest && <PaymentRequestButtonElement options={options} />}
             </div>
         </>
     )
