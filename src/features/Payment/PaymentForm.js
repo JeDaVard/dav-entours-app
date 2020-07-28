@@ -46,9 +46,8 @@ export default function PaymentForm() {
         message: ''
     })
 
-    const toyPrice = ((price + (invite.split(',').length * price))
-        + ((price + (invite.split(',').length * price)) * +process.env.REACT_APP_FEE / 100)) * 100;
-
+    const priceGross = price + !!invite ? (invite.split(',').length * price) : 0;
+    const toyPrice = (priceGross + (priceGross * +process.env.REACT_APP_FEE / 100)) * 100;
 
     const stripe = useStripe();
     const elements = useElements();
