@@ -16,10 +16,6 @@
     box-shadow: none;
 }
 
-.payButton:not( :first-child) {
-    margin-top: 2rem;
-}
-
 .entoursPayFrame:active,
 .entoursPayFrame:focus {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.14);
@@ -27,13 +23,14 @@
 
 .entoursPay {
     cursor: pointer;
-    height: 4rem;
+    height: 3.8rem;
     width: 100%;
     border: none;
     outline: none;
     color: white;
     border-radius: 5px;
     background: #4fc877;
+    margin-bottom: 1rem;
 }
 
 .entoursPay:disabled {
