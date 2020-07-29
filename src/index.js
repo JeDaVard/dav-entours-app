@@ -68,12 +68,36 @@ const cache = new InMemoryCache({
         Query: {
             fields: {
                 me: {
+                    merge(existing, incoming, { mergeObjects }) {
+                        return mergeObjects(existing, incoming)
+                    }
+                },
+                // tour: {
+                //     read(slug) {
+                //        console.log(slug)
+                //     }
+                // }
+            }
+        },
+        Conversation: {
+            fields: {
+                start: {
                     merge(existing, incoming) {
-                        return { ...existing, ...incoming }
+                        return {...existing, ...incoming}
                     }
                 }
             }
         },
+        // Tour: {
+        //     fields: {
+        //         reviews: {
+        //             merge(existing, incoming, { args }) {
+        //                 console.log(existing, incoming, args)
+        //                 return { ...existing, ...incoming}
+        //             }
+        //         }
+        //     }
+        // }
     },
 });
 

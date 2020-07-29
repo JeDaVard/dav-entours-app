@@ -36,9 +36,14 @@
 
 .entoursPay:disabled {
     background: #98ae9f;
+    height: 4rem;
 }
 
 .applePayLoading {
+    background: #000000;
+}
+
+.applePayLoading:disabled {
     background: #000000;
 }
 
@@ -50,7 +55,7 @@
 .payIcon {
     width: 1.5rem;
     height: 1.5rem;
-    margin-right: .4rem;
+    margin-right: .2rem;
     margin-top: .2rem;
 }
 

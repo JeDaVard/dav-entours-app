@@ -90,11 +90,11 @@ export function ApplePay(props) {
         <>
             {paymentRequest && ( loading.apple
                 ?   <button className={`${classes.entoursPay} ${classes.applePayLoading}`} disabled={true}>
-                    <div style={{opacity: '0'}}>
-                        <span hidden={false} className={classes.pay}>Loading...</span>
-                    </div>
-                    <ButtonLoading />
-                </button>
+                        <div style={{opacity: '0'}}>
+                            <span hidden={false} className={classes.pay}>Loading...</span>
+                        </div>
+                        <ButtonLoading />
+                    </button>
                 :   <PaymentRequestButtonElement options={options} />)}
         </>
     )

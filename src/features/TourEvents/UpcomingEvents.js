@@ -23,7 +23,8 @@ function UpcomingEvents(props) {
                     </Link>
                     <div className={classes.info}>
                         <h4 className={classes.infoPart}>
-                            Participants {tour.participants.length}/
+                            {/*Participants {tour.participants.length}/*/}
+                            participants
                             {tour.maxGroupSize}
                         </h4>
                         <Link to={'/'}>
@@ -34,9 +35,10 @@ function UpcomingEvents(props) {
                         <div className={classes.infoBottom}>
                             <p>{tour.startLocation.description}</p>
                             <p>
-                                {moment(+tour.startDates[0]).format(
-                                    'ddd, DD MMM YYYY'
-                                )}
+                                {/*{moment(+tour.startDates[0]).format(*/}
+                                {/*    'ddd, DD MMM YYYY'*/}
+                                {/*)}*/}
+                                dates
                             </p>
                         </div>
                     </div>

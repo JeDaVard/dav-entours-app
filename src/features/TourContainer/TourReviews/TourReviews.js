@@ -11,31 +11,33 @@ import ButtonLoading from "../../../components/UI/ButtonLoading/ButtonLoading";
 const TourReviews = (props) => {
     const { reviews } = props.tour;
 
+
     const moreReviewsHandler = () => {
         props.more({
             query: FETCH_MORE_REVIEWS,
             variables: { id: props.tour.slug, page: reviews.nextPage, limit: 4 },
-            updateQuery: (previousResult, { fetchMoreResult }) => {
-                if (!fetchMoreResult.tour.reviews.data) return;
-
-                const merged = [
-                    ...previousResult.tour.reviews.data,
-                    ...fetchMoreResult.tour.reviews.data
-                ]
-                return {
-                    ...previousResult,
-                    tour: {
-                        ...previousResult.tour,
-                        reviews: {
-                            // ATTENTION that's the new reviews
-                            ...fetchMoreResult.tour.reviews,
-                            data: merged
-                        }
-                    }
-                }
-            }
+            // updateQuery: (previousResult, { fetchMoreResult }) => {
+            //     if (!fetchMoreResult.tour.reviews.data) return;
+            //
+            //     const merged = [
+            //         ...previousResult.tour.reviews.data,
+            //         ...fetchMoreResult.tour.reviews.data
+            //     ]
+            //     return {
+            //         ...previousResult,
+            //         tour: {
+            //             ...previousResult.tour,
+            //             reviews: {
+            //                 // ATTENTION that's the new reviews
+            //                 ...fetchMoreResult.tour.reviews,
+            //                 data: merged
+            //             }
+            //         }
+            //     }
+            // }
         })
     }
+    console.log(props.loading)
     const loadMoreButton = <SimpleButton
         disabled={props.loading}
         onClick={moreReviewsHandler}>

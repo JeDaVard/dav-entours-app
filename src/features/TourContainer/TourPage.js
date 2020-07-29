@@ -28,7 +28,7 @@ function TourPage() {
         },
         notifyOnNetworkStatusChange: true,
     });
-
+console.log(loading, 'aaaaaaaaaaaa')
     if (loading && !data) return (
         <>
             {isMobile ? <TourHeadLoadingMobile /> : <TourHeadLoading />}
