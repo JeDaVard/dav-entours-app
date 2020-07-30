@@ -11,14 +11,14 @@ function TourHeadLoading() {
 
             <div className={'row'}>
                 <div className={classes.shareBox}>
-                    <div className={classes.share}>
+                    <button className={classes.share}>
                         <Justicon icon={'upload'} className={classes.shareIcon}/>
                         <b>Share</b>
-                    </div>
-                    <div className={classes.share}>
+                    </button>
+                    <button className={classes.share}>
                         <Justicon icon={'heart'} className={classes.shareIcon}/>
                         <b>Save</b>
-                    </div>
+                    </button>
                   </div>
                 <div className={classes.TourHead}>
                     <div className={classes.left}>

@@ -207,6 +207,13 @@
     font-weight: 500;
 }
 
+.menuIcon {
+    width: 2rem;
+    height: 2.4rem;
+    margin: .6rem .8rem .6rem .4rem;
+    fill: rgba(0, 0, 0, 0.7);
+}
+
 .signup__transparent:hover::before {
     background: rgba(38, 38, 38, 0.2);
 }
@@ -222,7 +229,7 @@
     width: 200px;
     background: white;
     border-radius: 14px;
-    box-shadow: 0 0 8px rgba(0, 0, 0, .1);
+    box-shadow: 0 0 1.6rem rgba(0, 0, 0, .12);
     z-index: 101;
     transition: all .2s;
 }

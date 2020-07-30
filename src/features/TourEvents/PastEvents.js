@@ -6,11 +6,11 @@ import Justicon from '../../components/UI/JustIcon/Justicon';
 import ThumbedImage from "../../components/UI/ImageLoading/ThumbedImage";
 
 function PastEvents(props) {
-    const { tours } = props;
+    const { orders } = props;
 
     return (
         <div className={classes.content}>
-            {tours.map((tour) => (
+            {orders.map(({tour, start}) => (
                 <div className={classes.item} key={tour.slug}>
                     <Link to={`/tour/${tour.slug}`}>
                         <div className={classes.imageFrame}>
@@ -23,8 +23,7 @@ function PastEvents(props) {
                     </Link>
                     <div className={classes.info}>
                         <h4 className={classes.infoPart}>
-                            {/*Participants {tour.participants.length}/*/}
-                            participants
+                            Participants {start.participants.length}/
                             {tour.maxGroupSize}
                         </h4>
                         <Link to={'/'}>
@@ -35,21 +34,12 @@ function PastEvents(props) {
                         <div className={classes.infoBottom}>
                             <p>{tour.startLocation.description}</p>
                             <p>
-                                {/*{moment(+tour.startDates[0]).format(*/}
-                                {/*    'ddd, DD MMM YYYY'*/}
-                                {/*)}*/}
-                                dates
+                                {moment(start.date).format(
+                                    'ddd, DD MMM YYYY'
+                                )}
                             </p>
                         </div>
                     </div>
-                    <Link to={`/tour/${tour.slug}`}>
-                        <div className={classes.remove}>
-                            <Justicon
-                                icon={'trash'}
-                                className={classes.removeIcon}
-                            />
-                        </div>
-                    </Link>
                 </div>
             ))}
         </div>

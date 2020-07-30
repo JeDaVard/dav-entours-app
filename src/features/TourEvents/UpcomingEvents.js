@@ -1,56 +1,41 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import moment from 'moment';
+import React, {useRef, useState} from 'react';
 import classes from './UpcomingEvents.module.css';
-import Justicon from '../../components/UI/JustIcon/Justicon';
-import ThumbedImage from "../../components/UI/ImageLoading/ThumbedImage";
+import UpcomingEvent from "./UpcomingEvent";
+import {useMutation} from "@apollo/client";
+import Modal from "../../components/UI/Modal/Modal";
+import SimpleButton from "../../components/UI/SimpleButton/SimpleButton";
+import {CANCEL_ORDER} from "./queries";
+
 
 function UpcomingEvents(props) {
-    const { tours } = props;
+    const { orders } = props;
+    const [ cancelItem, setCancelItem ] = useState(null)
+
+    const [ cancelOrder ] = useMutation(CANCEL_ORDER)
+
+    const cancelHandler = (id) => {
+        cancelOrder({
+            variables: {
+                id
+            }
+        })
+    }
 
     return (
         <div className={classes.content}>
-            {tours.map((tour) => (
-                <div className={classes.item} key={tour.slug}>
-                    <Link to={`/tour/${tour.slug}`}>
-                        <div className={classes.imageFrame}>
-                            <ThumbedImage
-                                src={tour.imageCover}
-                                className={classes.image}
-                                alt={tour.name}
-                                blur />
-                        </div>
-                    </Link>
-                    <div className={classes.info}>
-                        <h4 className={classes.infoPart}>
-                            {/*Participants {tour.participants.length}/*/}
-                            participants
-                            {tour.maxGroupSize}
-                        </h4>
-                        <Link to={'/'}>
-                            <h2 className={classes.title}>
-                                {tour.name}
-                            </h2>
-                        </Link>
-                        <div className={classes.infoBottom}>
-                            <p>{tour.startLocation.description}</p>
-                            <p>
-                                {/*{moment(+tour.startDates[0]).format(*/}
-                                {/*    'ddd, DD MMM YYYY'*/}
-                                {/*)}*/}
-                                dates
-                            </p>
-                        </div>
-                    </div>
-                    <Link to={`/tour/${tour.slug}`}>
-                        <div className={classes.remove}>
-                            <Justicon
-                                icon={'trash'}
-                                className={classes.removeIcon}
-                            />
-                        </div>
-                    </Link>
+            <Modal
+                onClick={() => setCancelItem(false)}
+                showBackdrop={cancelItem}
+                title={'Order Cancellation'}
+            >
+                <div>
+                    <SimpleButton onClick={() => cancelHandler(cancelItem)}>
+                        Cancel
+                    </SimpleButton>
                 </div>
+            </Modal>
+            {orders.map(order => (
+                <UpcomingEvent order={order} key={order._id} setCancelItem={setCancelItem} />
             ))}
         </div>
     );

@@ -131,7 +131,7 @@ export default function StartingDates({ slug, id }) {
                             <Justicon icon={new Date(d.date) < Date.now() ? 'check-square' : 'calendar'} className={classes.removeIcon}/>
                         </div>
                         <div className={classes.startMain}>
-                            <h2>{moment(d.date).format('DD MMMM YYYY, HH:MM, dd')}</h2>
+                            <h2>{moment(d.date).format('DD MMMM YYYY, HH:mm, dd')}</h2>
                             <div><p><b>{d.participants.length}</b> orders for now</p></div>
                         </div>
                         <button onClick={e => startHandler(e, null, d._id)} className={classes.removeButton}>
