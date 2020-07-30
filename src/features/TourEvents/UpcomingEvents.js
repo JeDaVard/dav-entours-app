@@ -6,7 +6,6 @@ import Modal from "../../components/UI/Modal/Modal";
 import SimpleButton from "../../components/UI/SimpleButton/SimpleButton";
 import {CANCEL_ORDER, FETCH_CURRENT_ORDERS} from "./queries";
 import DotLoading from "../../components/UI/DotLoading/DotLoading";
-import {FETCH_SAVED} from "../Saved/queries";
 
 
 function UpcomingEvents(props) {

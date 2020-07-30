@@ -31,33 +31,7 @@ export const typeDefs = gql`
 		description: String
 		day: Int
 	}
-#	fragment editedTourResponseFields on Tour {
-#		message
-#		success
-#		code
-#		data {
-#			_id
-#			slug
-#			name
-#			hashtags
-#			maxGroupSize
-#			difficulty
-#			price
-#			summary
-#			description
-#			imageCover
-#			images
-#			locations {
-#				coordinates
-#				description
-#				day
-#				address
-#			}
-#			draft
-#		}
-#	}
-	
-	
+#	fragme
 #	type Mutation {
 #		logout: 
 #	}

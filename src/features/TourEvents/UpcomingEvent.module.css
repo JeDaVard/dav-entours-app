@@ -1,0 +1,154 @@
+.item {
+    flex: 0 0 100%;
+    margin-bottom: 2rem;
+    background: transparent;
+    border-radius: 18px;
+    position: relative;
+    transition: all .2s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.16);
+}
+
+.item:hover {
+    filter: brightness(1.04);
+}
+
+.item:active {
+    transform: scale(.96);
+}
+
+.item:hover .image {
+    transform: scale(1);
+}
+
+.name {
+    font-size: 3rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+}
+
+
+.imageFrame {
+    border-radius: 18px 18px 0 0;
+    overflow: hidden;
+    width: 100%;
+    height: 300px;
+    -webkit-mask-image: -webkit-radial-gradient(center, white, black);
+}
+
+.image {
+    backface-visibility: hidden;
+    border-radius: 18px 18px 0 0;
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    transform: scale(1.01);
+}
+
+.info {
+    border-radius: 0 0 18px 18px;
+    padding: 2rem;
+}
+
+.infoPart {
+    font-size: 1.2rem;
+    color: rgba(0, 0, 0, 0.5);
+    font-weight: 400;
+}
+
+.title {
+    font-size: 1.8rem;
+}
+
+.infoBottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.5rem;
+}
+
+.infoBottom :last-child {
+    font-size: 1.3rem;
+}
+
+.more {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(245, 245, 245, 0.91);
+    padding: .3rem;
+    width: 3.2rem;
+    height: 3.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.14);
+    transition: background .2s;
+}
+
+.more:hover,
+.more:active {
+    background: white;
+}
+
+.moreIcon {
+    fill: rgba(0, 0, 0, 0.8);
+    width: 2.8rem;
+    height: 2.8rem;
+}
+
+.moreBlock {
+    background: white;
+    padding: .8rem 0;
+    border-radius: 1rem;
+    right: 1rem;
+    top: 4.6rem;
+    position: absolute;
+}
+
+.moreBlock ul {
+    list-style: none;
+    text-align: center;
+}
+
+.moreBlock ul li {
+    padding: .3rem 1.2rem;
+    font-size: 1.4rem;
+    cursor: pointer;
+    transition: all .2s;
+}
+
+.moreBlock ul li:hover,
+.moreBlock ul li:active {
+    background: #efefef;
+}
+
+@media screen and (min-width: 744px) and (max-width: 1127px){
+    .item {
+        flex: 0 0 calc(50% - 1rem);
+        margin: 0 2rem 2rem 0;
+    }
+    .button {
+        justify-content: flex-end;
+    }
+}
+
+@media screen and (min-width: 1128px) {
+    .item {
+        flex: 0 0 calc(33.333% - 1.333rem);
+        margin: 0 2rem 2rem 0;
+    }
+    .imageFrame {
+        height: 200px;
+    }
+
+    .image {
+        height: 200px;
+    }
+    .button {
+        justify-content: flex-end;
+    }
+}

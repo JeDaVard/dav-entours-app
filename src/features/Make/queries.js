@@ -1,32 +1,39 @@
 import { gql } from '@apollo/client';
 
+const EditTourFields = gql`
+	fragment EditTourFields on Tour {
+		_id
+		slug
+		name
+		hashtags
+		maxGroupSize
+		difficulty
+		price
+		firstMessage
+		summary
+		description
+		imageCover
+		images
+		locations {
+			coordinates
+			description
+			day
+			address
+			_id
+		}
+		draft
+	}
+`
+
 export const FETCH_EDIT_TOUR = gql`
 	query fetchEditTour($slug: String!) {
 		me {
 			myTour(slug: $slug) {
-				_id
-				slug
-				name
-                hashtags
-                maxGroupSize
-                difficulty
-                price
-				firstMessage
-                summary
-                description
-                imageCover
-                images
-                locations {
-                    coordinates
-                    description
-                    day
-                    address
-					_id
-                }
-                draft
+				...EditTourFields
 			}
 		}
 	}
+	${EditTourFields}
 `
 
 export const MAKE_A_TOUR = gql`
@@ -36,29 +43,11 @@ export const MAKE_A_TOUR = gql`
 			success
 			code
 			data {
-				_id
-				slug
-				name
-				hashtags
-				maxGroupSize
-				difficulty
-				price
-				firstMessage
-				summary
-				description
-				imageCover
-				images
-				locations {
-					coordinates
-					description
-					day
-					address
-					_id
-				}
-				draft
+				...EditTourFields
 			}
 		}
 	}
+	${EditTourFields}
 `
 
 export const EDIT_TOUR_HEADING = gql`
@@ -82,29 +71,11 @@ export const EDIT_TOUR_HEADING = gql`
             success
             code
             data {
-				_id
-				slug
-				name
-				hashtags
-				maxGroupSize
-				difficulty
-				price
-				firstMessage
-				summary
-				description
-				imageCover
-				images
-				locations {
-					coordinates
-					description
-					day
-					address
-					_id
-				}
-				draft
+				...EditTourFields
             }
 	    }
 	}
+	${EditTourFields}
 `
 export const EDIT_TOUR_DETAILS = gql`
 	mutation tourDetails(
@@ -123,29 +94,11 @@ export const EDIT_TOUR_DETAILS = gql`
 			success
 			code
 			data {
-				_id
-				slug
-				name
-				hashtags
-				maxGroupSize
-				difficulty
-				price
-				firstMessage
-				summary
-				description
-				imageCover
-				images
-				locations {
-					coordinates
-					description
-					day
-					address
-					_id
-				}
-				draft
+				...EditTourFields
 			}
 		}
 	}
+	${EditTourFields}
 `
 
 export const EDIT_TOUR_LOCATIONS = gql`
@@ -155,29 +108,11 @@ export const EDIT_TOUR_LOCATIONS = gql`
 			success
 			code
 			data {
-				_id
-				slug
-				name
-				hashtags
-				maxGroupSize
-				difficulty
-				price
-				firstMessage
-				summary
-				description
-				imageCover
-				images
-				locations {
-					coordinates
-					description
-					day
-					address
-					_id
-				}
-				draft
+				...EditTourFields
 			}
 		}
 	}
+	${EditTourFields}
 `
 
 export const EDIT_TOUR_GALLERY = gql`
@@ -197,29 +132,11 @@ export const EDIT_TOUR_GALLERY = gql`
 			success
 			code
 			data {
-				_id
-				slug
-				name
-				hashtags
-				maxGroupSize
-				difficulty
-				price
-				firstMessage
-				summary
-				description
-				imageCover
-				images
-				locations {
-					coordinates
-					description
-					day
-					address
-					_id
-				}
-				draft
+				...EditTourFields
 			}
 		}
 	}
+	${EditTourFields}
 `
 
 

@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import classes from "./UpcomingEvents.module.css";
+import classes from "./UpcomingEvent.module.css";
 import {Link} from "react-router-dom";
 import ThumbedImage from "../../components/UI/ImageLoading/ThumbedImage";
 import moment from "moment";
