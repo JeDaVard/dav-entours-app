@@ -4,9 +4,10 @@ import {Link} from "react-router-dom";
 import ThumbedImage from "../../components/UI/ImageLoading/ThumbedImage";
 import moment from "moment";
 import Justicon from "../../components/UI/JustIcon/Justicon";
+import OutsideAlerter from "../../hocs/EventDelegator";
 
 export default function UpcomingEvent(props) {
-    const { order } = props;
+    const { order, setCancelItem } = props;
     const { start, tour } = props.order
 
     const [ more, setMore ] = useState(false)
@@ -40,20 +41,23 @@ export default function UpcomingEvent(props) {
                     </p>
                 </div>
             </div>
-            <div className={classes.more} onClick={() => setMore(!more)}>
-                <Justicon
-                    icon={'more-horizontal'}
-                    className={classes.moreIcon}
-                />
-            </div>
-            {more && (
-                <div className={classes.moreBlock}>
-                    <ul>
-                        <li><Link to={'/tour/'+tour.slug}>More</Link></li>
-                        <li>Cancel</li>
-                    </ul>
-                </div>
-            )}
+            <OutsideAlerter delegate={() => setMore(false)}>
+                <button className={classes.more} onClick={() => setMore(!more)}>
+                    <Justicon
+                        icon={'more-horizontal'}
+                        className={classes.moreIcon}
+                    />
+                </button>
+                {more && (
+
+                        <div className={classes.moreBlock}>
+                            <ul>
+                                <li><Link to={'/tour/'+tour.slug}>More</Link></li>
+                                <li onClick={() => setCancelItem(order._id)}>Cancel</li>
+                            </ul>
+                        </div>
+                )}
+            </OutsideAlerter>
         </div>
     )
 }

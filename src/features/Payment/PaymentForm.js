@@ -2,18 +2,14 @@ import React, {useEffect, useState} from 'react';
 import { useHistory } from 'react-router-dom';
 import qs from "query-string";
 import classes from "./PaymentForm.module.css";
-import { CardElement, useElements, useStripe, PaymentRequestButtonElement } from "@stripe/react-stripe-js";
-// import StyledButton from "../../components/UI/StyledButton/StyledButton";
+import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import {useMutation} from "@apollo/client";
 import {INTENT_PAYMENT} from "./queries";
 import ButtonLoading from "../../components/UI/ButtonLoading/ButtonLoading";
 import locker from "../../assets/icons/locker.svg";
 import './_payments.css'
-import Top from "../MainPage/Top/Top";
-import TopLoading from "../../components/UI/TopLoading/TopLoading";
 import DotLoading from "../../components/UI/DotLoading/DotLoading";
 import {ApplePay} from "./ApplePay";
-// import Separator from "../../components/UI/Separator/Separator";
 
 const CARD_ELEMENT_OPTIONS = {
     hidePostalCode: true,
@@ -43,7 +39,7 @@ export default function PaymentForm() {
     const [ loading, setLoading ] = useState({
         card: false,
         apple: false,
-        message: ''
+        message: '',
     })
 
     const priceGross = price + !!invite ? (invite.split(',').length * price) : 0;
@@ -62,7 +58,7 @@ export default function PaymentForm() {
 
     useEffect(() => {
         if (loading.message.startsWith('Congratulations')) {
-            setTimeout(() => history.push('/tourevents'), 3000)
+            setTimeout(() => window.location.replace('/tourevents'), 6000)
         }
     }, [loading.message])
 

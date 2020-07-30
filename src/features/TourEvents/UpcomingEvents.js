@@ -1,23 +1,39 @@
-import React, {useRef, useState} from 'react';
+import React, { useState } from 'react';
 import classes from './UpcomingEvents.module.css';
 import UpcomingEvent from "./UpcomingEvent";
-import {useMutation} from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import Modal from "../../components/UI/Modal/Modal";
 import SimpleButton from "../../components/UI/SimpleButton/SimpleButton";
-import {CANCEL_ORDER} from "./queries";
+import {CANCEL_ORDER, FETCH_CURRENT_ORDERS} from "./queries";
+import DotLoading from "../../components/UI/DotLoading/DotLoading";
+import {FETCH_SAVED} from "../Saved/queries";
 
 
 function UpcomingEvents(props) {
     const { orders } = props;
     const [ cancelItem, setCancelItem ] = useState(null)
 
-    const [ cancelOrder ] = useMutation(CANCEL_ORDER)
+    const [ cancelOrder, { loading } ] = useMutation(CANCEL_ORDER, {
+        update(cache, res ) {
+            const { me } = cache.readQuery({query: FETCH_CURRENT_ORDERS})
+            cache.writeQuery({
+                query: FETCH_CURRENT_ORDERS,
+                data: { me: {
+                        ...me,
+                        orders: res.data.cancelOrder.data
+                    }
+                }
+            })
+        }
+    })
 
     const cancelHandler = (id) => {
         cancelOrder({
             variables: {
                 id
             }
+        }).then(() => {
+            setCancelItem(null)
         })
     }
 
@@ -25,13 +41,29 @@ function UpcomingEvents(props) {
         <div className={classes.content}>
             <Modal
                 onClick={() => setCancelItem(false)}
-                showBackdrop={cancelItem}
+                showBackdrop={!!cancelItem}
                 title={'Order Cancellation'}
             >
-                <div>
-                    <SimpleButton onClick={() => cancelHandler(cancelItem)}>
-                        Cancel
-                    </SimpleButton>
+                <div className={classes.cancelBlock}>
+                    {loading && <DotLoading />}
+                    <h2>Are you sure?</h2>
+                    <p className={classes.cancelText}>You will receive receive a refund by our <b>Cancellation Policy</b></p>
+                    <p className={classes.cancelPolicy}>
+                        By selecting the button below, I agree to all rules, Cancellation Policy,
+                        and the Refund Policy.
+                    </p>
+                    {!loading ? (
+                        <div className={classes.button}>
+                            <SimpleButton onClick={() => cancelHandler(cancelItem)}>
+                                Yes, Cancel
+                            </SimpleButton>
+                            <SimpleButton white onClick={() => setCancelItem(false)}>
+                                Close
+                            </SimpleButton>
+                        </div>
+                    ) : (
+                        <h2 className={classes.wait} >Please wait...</h2>
+                    )}
                 </div>
             </Modal>
             {orders.map(order => (

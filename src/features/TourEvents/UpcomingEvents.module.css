@@ -1,3 +1,35 @@
+.button {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.cancelBlock {
+
+}
+
+.cancelBlock h2 {
+    font-size: 1.6rem;
+    margin-bottom: .8rem;
+}
+
+.cancelText {
+    font-size: 1.3rem;
+}
+
+.cancelPolicy {
+    margin-top: 1rem;
+    font-size: 1.3rem;
+    padding-left: 1rem;
+    border-left: 2px solid #4fc877;
+}
+
+.wait {
+    margin-top: 2rem;
+    text-align: center;
+    font-size: 1.6rem;
+}
+
 .content {
     display: flex;
     flex-wrap: wrap;
@@ -78,6 +110,8 @@
 
 .more {
     cursor: pointer;
+    border: none;
+    outline: none;
     position: absolute;
     top: 1rem;
     right: 1rem;
@@ -139,6 +173,9 @@
     .content :nth-child(even) {
         margin-right: 0;
     }
+    .button {
+        justify-content: flex-end;
+    }
 }
 
 @media screen and (min-width: 1128px) {
@@ -156,5 +193,8 @@
 
     .image {
         height: 200px;
+    }
+    .button {
+        justify-content: flex-end;
     }
 }

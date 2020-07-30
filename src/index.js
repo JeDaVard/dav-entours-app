@@ -65,13 +65,24 @@ const link = split(
 
 const cache = new InMemoryCache({
     typePolicies: {
+        // Me: {
+        //   fields: {
+        //       orders: {
+        //           merge(existing = [], incoming) {
+        //               console.log(existing)
+        //               console.log(incoming)
+        //               return [...existing, ...incoming]
+        //           }
+        //       }
+        //   }
+        // },
         Query: {
             fields: {
                 me: {
                     merge(existing, incoming, { mergeObjects }) {
                         return mergeObjects(existing, incoming)
                     }
-                },
+                }
             }
         },
         Conversation: {
