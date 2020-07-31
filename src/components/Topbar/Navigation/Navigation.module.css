@@ -1,6 +1,7 @@
 .Navigation {
     display: flex;
     align-items: center;
+    /*flex: 1 0 auto;*/
     font-size: 1.5rem;
 }
 
@@ -8,268 +9,181 @@
     text-decoration: none;
 }
 
-.geoBox {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.geoIcon {
-    margin-top: .2rem;
-    width: 1.6rem;
-    height: 1.6rem;
-    fill: rgba(0, 0, 0, 0.8);
-}
-
-.geo {
-    position: absolute;
-    bottom: -9rem;
-    margin-top: 1rem;
-    width: 160px;
-    background: white;
-    border-radius: 14px;
-    box-shadow: 0 0 8px rgba(0, 0, 0, .1);
-    z-index: 101;
-    transition: all .2s;
-}
-
-.geo_Closed {
-    display: none;
-}
-
-.geo ul {
-    list-style: none;
-    margin: 1rem auto;
-    font-size: 1.3rem;
-    font-weight: 500;
-}
-
-.geo ul li {
-    font-size: 1.3rem;
-    padding: 1rem 1.6rem;
-    transition: all .1s;
-}
-
-.geo a::after {
-    display: none;
-}
-
-.geo ul li:hover,
-.geo ul li:active {
-    background: rgba(0, 0, 0, 0.05);
-}
-
-.geo ul a li {
-    text-decoration: none;
-    color: black;
-}
-
-.menu {
-    list-style: none;
-    display: flex;
-    font-weight: 500;
-}
-
-.menu a:first-of-type:hover svg {
-    fill: white
-}
-
-.menu a:last-of-type {
-    margin-right: 1rem;
-}
-
-.menu a {
-    background: transparent;
-    color: black;
-    padding: 1rem 1.5rem;
-    font-size: 1.4rem;
-    border-radius: 60px;
-    transition: all .1s;
-}
-
-.menu a::after {
-    display: none;
-}
-
-.menu a:hover {
-    background: #4fc877;
-    color: white;
-    padding: 1rem 1.5rem;
-}
-
-.menu__transparent a {
-    background: transparent;
-    position: relative;
-    color: white;
-}
-
-.menu__transparent a:hover {
-    background: transparent;
-}
-
-.menu__transparent a::before {
-    content: '';
-    left: 0;
-    top: 0;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 50px;
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    backdrop-filter: blur(4px) brightness(120%);
-    opacity: 0;
-    transition: all .2s;
-    z-index: -1;
-}
-
-.menu__transparent a:hover::before {
-    opacity: 1;
-}
-
-.menu__transparent svg {
-    fill: white;
-}
-
-.user {
-    position: relative;
-    user-select: none;
-}
-
-.signup {
-    padding: 0;
-    border-radius: 60px;
-    background: white;
-    font-size: 1.5rem;
-    font-weight: 700;
-    cursor: pointer;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.14);
-    transition: all .2s;
-}
-
-.signup:hover {
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.18);
-}
-
-.signup button {
-    padding: .9rem 1.2rem;
-    font-size: 1.5rem;
-    outline: 0;
-    color: black;
-    font-weight: 700;
-    background: transparent;
-    border:none;
-    cursor: pointer;
-}
-
-.signup__transparent {
-    border: 1px solid rgba(255, 255, 255, 0);
-    position: relative;
-    background: rgba(255, 255, 255, 0.2);
-    color: white;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.14);
-}
-
-.signup__transparent:hover {
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.18);
-}
-
-
-.signup__transparent::before {
-    content: '';
-    left: 0;
-    top: 0;
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 50px;
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    backdrop-filter: blur(4px) brightness(120%);
-    transition: all .2s;
-    z-index: -1;
-}
-
 .profile {
-    padding: .3rem .4rem .3rem 1rem;
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 10rem;
+    padding: .2rem .5rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    transition: all 0.2s ease 0s;
+}
+.profile:hover,
+.profile:active {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+}
+
+.profileBlur {
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(.4rem);
+}
+
+.profileBlur:hover,
+.profileBlur:active {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.22);
 }
 
 .profile img {
-    width: 30px;
+    width: 3rem;
+    height: 3rem;
     border-radius: 50%;
-}
-.profile p {
-    padding: .5rem;
-    font-weight: 500;
 }
 
 .menuIcon {
     width: 2rem;
     height: 2.4rem;
-    margin: .6rem .8rem .6rem .4rem;
+    margin: .6rem 1.2rem .6rem .8rem;
     fill: rgba(0, 0, 0, 0.7);
 }
 
-.signup__transparent:hover::before {
-    background: rgba(38, 38, 38, 0.2);
-}
+/*.user {*/
+/*    position: relative;*/
+/*    user-select: none;*/
+/*}*/
 
-.signup__transparent button {
-    color: white;
-}
+/*.signup {*/
+/*    padding: 0;*/
+/*    border-radius: 60px;*/
+/*    background: white;*/
+/*    font-size: 1.5rem;*/
+/*    font-weight: 700;*/
+/*    cursor: pointer;*/
+/*    border: 1px solid #dddddd;*/
+/*    transition: all .2s;*/
+/*}*/
 
-.profileDrop {
-    position: absolute;
-    right: 0;
-    margin-top: 1rem;
-    width: 200px;
-    background: white;
-    border-radius: 14px;
-    box-shadow: 0 0 1.6rem rgba(0, 0, 0, .12);
-    z-index: 101;
-    transition: all .2s;
-}
+/*.signup:hover {*/
+/*    border: 1px solid rgba(0, 0, 0, 0.1);*/
+/*    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);*/
+/*}*/
 
-.profileDrop__close {
-    transform: translateY(-1rem);
-    width: 180px;
-    visibility: hidden;
-    opacity: 0;
-}
+/*.signup button {*/
+/*    padding: .9rem 1.2rem;*/
+/*    font-size: 1.5rem;*/
+/*    outline: 0;*/
+/*    color: black;*/
+/*    font-weight: 700;*/
+/*    background: transparent;*/
+/*    border:none;*/
+/*    cursor: pointer;*/
+/*}*/
 
-.profileDrop__ul1,
-.profileDrop__ul2 {
-    list-style: none;
-    margin: 1rem auto;
-    font-size: 1.3rem;
-    font-weight: 500;
-}
+/*.signup__transparent {*/
+/*    border: 1px solid rgba(255, 255, 255, 0);*/
+/*    position: relative;*/
+/*    background: rgba(255, 255, 255, 0.2);*/
+/*    color: white;*/
+/*    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.14);*/
+/*}*/
 
-.profileDrop__ul2 {
-    font-weight: 400;
-    font-size: 1.3rem;
-}
+/*.signup__transparent:hover {*/
+/*    border: 1px solid rgba(255, 255, 255, 0.2);*/
+/*    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.18);*/
+/*}*/
 
-.profileDrop ul li {
-    font-size: 1.3rem;
-    padding: 1rem 1.6rem;
-    transition: all .1s;
-}
 
-.profileDrop a::after {
-    display: none;
-}
+/*.signup__transparent::before {*/
+/*    content: '';*/
+/*    left: 0;*/
+/*    top: 0;*/
+/*    background: rgba(0, 0, 0, 0.2);*/
+/*    border-radius: 50px;*/
+/*    position: absolute;*/
+/*    height: 100%;*/
+/*    width: 100%;*/
+/*    backdrop-filter: blur(4px) brightness(120%);*/
+/*    transition: all .2s;*/
+/*    z-index: -1;*/
+/*}*/
 
-.profileDrop ul li:hover,
-.profileDrop ul li:active {
-    background: rgba(0, 0, 0, 0.05);
-}
+/*.profile {*/
+/*    padding: .3rem .4rem .3rem 1rem;*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: space-between;*/
+/*}*/
 
-.profileDrop ul a li {
-    text-decoration: none;
-    color: black;
-}
+/*.profile img {*/
+/*    width: 30px;*/
+/*    border-radius: 50%;*/
+/*}*/
+/*.profile p {*/
+/*    padding: .5rem;*/
+/*    font-weight: 500;*/
+/*}*/
+
+
+
+/*.signup__transparent:hover::before {*/
+/*    background: rgba(38, 38, 38, 0.2);*/
+/*}*/
+
+/*.signup__transparent button {*/
+/*    color: white;*/
+/*}*/
+
+/*.profileDrop {*/
+/*    position: absolute;*/
+/*    right: 0;*/
+/*    margin-top: 1rem;*/
+/*    width: 200px;*/
+/*    background: white;*/
+/*    border-radius: 14px;*/
+/*    box-shadow: 0 0 1.6rem rgba(0, 0, 0, .12);*/
+/*    z-index: 101;*/
+/*    transition: all .2s;*/
+/*}*/
+
+/*.profileDrop__close {*/
+/*    transform: translateY(-1rem);*/
+/*    width: 180px;*/
+/*    visibility: hidden;*/
+/*    opacity: 0;*/
+/*}*/
+
+/*.profileDrop__ul1,*/
+/*.profileDrop__ul2 {*/
+/*    list-style: none;*/
+/*    margin: 1rem auto;*/
+/*    font-size: 1.3rem;*/
+/*    font-weight: 500;*/
+/*}*/
+
+/*.profileDrop__ul2 {*/
+/*    font-weight: 400;*/
+/*    font-size: 1.3rem;*/
+/*}*/
+
+/*.profileDrop ul li {*/
+/*    font-size: 1.3rem;*/
+/*    padding: 1rem 1.6rem;*/
+/*    transition: all .1s;*/
+/*}*/
+
+/*.profileDrop a::after {*/
+/*    display: none;*/
+/*}*/
+
+/*.profileDrop ul li:hover,*/
+/*.profileDrop ul li:active {*/
+/*    background: rgba(0, 0, 0, 0.05);*/
+/*}*/
+
+/*.profileDrop ul a li {*/
+/*    text-decoration: none;*/
+/*    color: black;*/
+/*}*/

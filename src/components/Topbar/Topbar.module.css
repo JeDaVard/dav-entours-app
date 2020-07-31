@@ -46,7 +46,7 @@
     position: fixed;
     /*top: 0;*/
     z-index: 100;
-    transition: all .3s;
+    transition: all .4s;
 }
 
 .transparent:before {
@@ -66,14 +66,18 @@
 .opaqueHeader {
     background: rgba(255, 255, 255, .9);
     backdrop-filter: blur(10px);
-    box-shadow: rgba(0, 0, 0, 0.18) 0 1px 2px ;
+    box-shadow: rgba(0, 0, 0, 0.08) 0 1px 12px ;
 }
 
 .content {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 80px;
+    height: 8rem;
+}
+
+.logo {
+    flex: 0 0 auto;
 }
 
 .logo a::after {

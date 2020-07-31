@@ -1,29 +1,26 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import Search from './Search/Search';
+import { useSelector } from 'react-redux';
 import Popular from './Popular/Popular';
 import Become from './Become/Become';
 import Discover from './Discover/Discover';
-import Top from './Top/Top';
-import TopSearchMobile from "../../components/TopSearchMobile/TopSearchMobile";
+// import Top from './Top/Top';
 import ScrollToTop from "../../components/UI/ScrollToTop";
+import MainHead from "./MainHead/MainHead";
 
 
-function Main(props) {
+function Main() {
+    const isMobile = useSelector(s => s.ui.display.isMobile);
+
     return (
         <>
             <ScrollToTop />
-            {props.isMobile ? <TopSearchMobile /> : <Search />}
+            <MainHead isMobile={isMobile}/>
             <Popular />
+            <Discover isMobile={isMobile}/>
             <Become />
-            <Discover isMobile={props.isMobile}/>
             {/*<Top />*/}
         </>
     );
 }
 
-const mapStateToProps = (state) => ({
-    isMobile: state.ui.display.isMobile,
-});
-
-export default connect(mapStateToProps)(Main);
+export default Main;

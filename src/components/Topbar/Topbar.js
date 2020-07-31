@@ -14,19 +14,12 @@ function Topbar(props) {
     const cx = classNames.bind(classes);
 
     const [profileDrop, setProfileDrop] = useState(false);
-    const [geoDrop, setGeoDrop] = useState(false);
 
     const profileHandler = () => {
         setProfileDrop(!profileDrop);
     };
     const closeHandler = () => {
         setProfileDrop(false);
-    };
-    const geoHandler = () => {
-        setGeoDrop(!geoDrop);
-    };
-    const closeGeoHandler = () => {
-        setGeoDrop(false);
     };
 
     return (
@@ -52,21 +45,19 @@ function Topbar(props) {
                                 )}
                             </Link>
                         </div>
-                        <TopSearch inTour={inTour} />
+                        <TopSearch
+                            inTour={inTour}
+                            transparent={isTransparent} />
                         <Navigation
                             transparent={isTransparent}
                             isLogged={props.isLogged}
                             profileHandler={profileHandler}
                             profileDrop={profileDrop}
                             handleClose={closeHandler}
-                            geo={geoDrop}
-                            geoHandler={geoHandler}
-                            closeGeo={closeGeoHandler}
                             loginModal={props.onLogin}
                             signUpModal={props.onSignUp}
                             name={props.name}
-                            photo={props.photo}
-                        />
+                            photo={props.photo}/>
                     </div>
                 </div>
             </div>
