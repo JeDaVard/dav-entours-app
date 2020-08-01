@@ -1,36 +1,51 @@
 .Search {
-    text-align: center;
-    margin: 2rem 0;
 }
 
-.content {
-    margin: 0 auto;
-    width: 100%;
-    height: 7rem;
-    position: relative;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
-    border: 1px solid rgba(0, 0, 0, 0.04);
+.container {
+
 }
+
+.navigation {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.navigation > :not(:last-child) {
+    margin-right: 3rem;
+}
+
+.link {
+    font-size: 1.6rem;
+    color: white;
+    text-decoration: none;
+    transition: all .1s ease-in-out;
+}
+.link:hover {
+    color: rgba(255, 255, 255, 0.7);
+}
+/*.link a {*/
+/*    list-style: none;*/
+/*}*/
+
+.linkActive {
+
+}
+
 .form {
-    border: 1px solid #f7f7f7;
-    border-radius: 12px;
-    background-color: #FFFFFF;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.08);
-    color: #222222;
-    display: -webkit-inline-flex;
-    display: inline-flex;
     width: 100%;
+    display: flex;
+    align-items: center;
+    height: 6.6rem;
+    background: rgba(247, 247, 247, 1);
+    border-radius: 3.3rem;
+    border: 1px solid rgba(0, 0, 0, 0.18);
     position: relative;
 }
-.search {
-    display: inline-flex;
-    width: 100%;
-}
+
 .but {
-    padding: 11px;
-    margin-left: 2px;
+    padding: 0 1rem
 }
+
 .but svg {
     width: 1.6rem;
     height: 1.6rem;
@@ -40,98 +55,151 @@
 .sep {
     align-self: center;
     border-right: 1px solid #DDDDDD;
-    -webkit-flex: 0 1 0px;
-    flex: 0 1 0px;
-    height: 44px;
+    -webkit-flex: 0 1 0;
+    flex: 0 0 0;
+    height: 3.2rem;
 }
-.cell {
-    flex: 1 0 0;
-}
-.q {
-    margin: -1px;
+
+.fieldBlock {
+    /*flex: 1 1;*/
+    height: 100%;
     position: relative;
 }
-.loc {
-    transition: border-color 0.2s ease;
-    border: 2px solid transparent;
-    border-radius: 12px;
-    display: block;
-    padding: 16px 22px;
+
+.field {
+    position: relative;
+    height: 100%;
+    /*overflow: hidden;*/
+    /*width: 100%;*/
+}
+
+.button {
     cursor: pointer;
+    /*width: 100%;*/
+    font-family: inherit;
     position: relative;
+    border: none;
+    outline: none;
     text-align: left;
-    z-index: 2;
-}
-.loc__name {
-    font-size: 10px;
-    line-height: 12px;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    padding-bottom: 4px;
-}
-.loc__input {
-    font-family: inherit;
-    display: block;
-    border: 0;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    background: none;
-    font-size: 14px;
-    line-height: 18px;
-    font-weight: 600;
-    color: #222222;
-    text-overflow: ellipsis;
-}
-.loc__input:focus {
-    outline: 0;
-}
-.loc__input::placeholder {
-    font-weight: 400;
-}
-.loc:hover {
-    border: 2px solid #DDDDDD;
-}
-.loc:focus {
-    border: 2px solid #222222;
-}
-.buttonBox {
-    font-family: inherit;
-    width: 100%;
-    display: inline-block;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    position: relative;
-    cursor: pointer;
-    z-index: 2;
-    margin: 0;
-    padding: 16px 22px;
-    border-radius: 12px;
-    border: 2px solid transparent;
+    border-radius: 3.3rem;
+    padding: 0 2.4rem;
+    height: 100%;
     background: transparent;
-    text-align: left;
-    transition: all 0.2s ease;
+    z-index: 1;
 }
-.buttonBox:hover {
-    border: 2px solid #DDDDDD;
+
+.button:before {
+    content: '';
+    width: calc(100% + 4px);
+    height: 100%;
+    top: 0;
+    left: -2px;
+    position: absolute;
+    background: rgb(247, 247, 247);
+    display: none;
+    z-index: -1;
 }
-.buttonBox:active, .buttonBox:focus {
-    outline: 0;
-    border: 2px solid #222222;
+
+.button:after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    background: rgba(0, 0, 0, .05);
+    opacity: 0;
+    border-radius: 3.3rem;
+    z-index: -1;
 }
+
+.button:hover:before {
+    display: block;
+}
+.button:hover:after {
+    opacity: 1;
+}
+
+/*.buttonActive {*/
+
+/*}*/
+/*.buttonActive:after {*/
+/*    background: white;*/
+/*    transition: all .1s ease-in-out;*/
+/*    box-shadow: 0 0 20px rgba(0, 0, 0, 0.16);*/
+/*}*/
+
 .buttonBox__title {
-    font-size: 10px;
-    line-height: 12px;
+    font-size: 1.2rem;
+    line-height: 1.6rem;
     font-weight: 700;
     letter-spacing: 0.04em;
-    text-transform: uppercase;
-    padding-bottom: 4px;
+    padding-bottom: 3px;
+    color: rgba(0, 0, 0, 0.76);
+    z-index: 1;
 }
 .buttonBox__selection {
-    font-size: 14px;
-    line-height: 18px;
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+    color: #717171;
     font-weight: 400;
-    color: #222222;
-    opacity: 0.7;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    z-index: 1;
+}
+
+.label {
+    cursor: pointer;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 2.4rem;
+    border-radius: 3.3rem;
+    background: transparent;
+    top: 0;
+    left: 0;
+}
+
+.label:before {
+    content: '';
+    width: calc(100% + 4px);
+    height: 100%;
+    border-radius: 3.3rem 0 0 3.3rem;
+    top: 0;
+    left: 0;
+    position: absolute;
+    background: rgb(247, 247, 247);
+    display: none;
+}
+
+.label:after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    background: rgba(0, 0, 0, .05);
+    opacity: 0;
+    border-radius: 3.3rem;
+}
+
+.label:hover:before {
+    display: block;
+}
+.label:hover:after {
+    opacity: 1;
+}
+
+
+.input {
+    font-family: inherit;
+    background: transparent;
+    outline: none;
+    color: rgba(0, 0, 0, 0.74);
+    border: none;
+    font-size: 1.4rem;
+    z-index: 1;
 }

@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
+import classNames from 'classnames/bind'
 import classes from './StyledButton.module.css'
 import { Link } from "react-router-dom";
+
+const cx = classNames.bind(classes)
 
 function StyledButton(props) {
     const [ styles, setStyles ] = useState({})
@@ -30,11 +33,17 @@ function StyledButton(props) {
         <>
             {
                 !props.to ? (
-                    <button className={classes.StyledButton} disabled={props.disabled} onClick={props.onClick}>
+                    <button className={cx(classes.StyledButton, {
+                        [classes.round]: props.round,
+                        [classes.rounded]: props.rounded
+                    })} disabled={props.disabled} onClick={props.onClick}>
                         {button}
                     </button>
                 ) : (
-                    <Link className={classes.StyledButton} to={props.to} style={{color: 'white'}}>
+                    <Link className={cx(classes.StyledButton, {
+                        [classes.round]: props.round,
+                        [classes.rounded]: props.rounded
+                    })} to={props.to} style={{color: 'white'}}>
                         {button}
                     </Link>
                 )

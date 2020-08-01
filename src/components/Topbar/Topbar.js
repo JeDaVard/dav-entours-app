@@ -7,10 +7,18 @@ import logo2 from './entours2.png';
 import Navigation from './Navigation/Navigation';
 import { Link } from 'react-router-dom';
 import TopSearch from './TopSearch/TopSearch';
+import useScrollTrigger from "../../hooks/useScrollTrigger";
 
 function Topbar(props) {
-    const inTour = !!props.location.pathname.match(/^\/tour\/.*/) || !!props.location.pathname.match(/^\/make.*/);
-    const isTransparent = inTour && !props.triggered;
+    const inTour = !!props.location.pathname.match(/^\/tour\/.*/);
+    const inMakeTour = !!props.location.pathname.match(/^\/make.*/);
+    const inMain = props.location.pathname === '/'
+
+    const initialTrigger = inTour || inMain || inMakeTour
+
+    const [ triggered, setTriggered ] = useScrollTrigger({changePoint: inMain ? 360 : 10});
+
+    const isTransparent = initialTrigger && !triggered;
     const cx = classNames.bind(classes);
 
     const [profileDrop, setProfileDrop] = useState(false);
@@ -29,7 +37,7 @@ function Topbar(props) {
                     isTransparent
                         ? classes.transparent
                         : classes.Topbar,
-                    { opaqueHeader: props.triggered }
+                    { opaqueHeader: triggered }
                 )}
             >
                 <div className="row">
@@ -46,7 +54,7 @@ function Topbar(props) {
                             </Link>
                         </div>
                         <TopSearch
-                            inTour={inTour}
+                            initialTrigger={inTour || inMakeTour}
                             transparent={isTransparent} />
                         <Navigation
                             transparent={isTransparent}
@@ -61,9 +69,9 @@ function Topbar(props) {
                     </div>
                 </div>
             </div>
-            {!inTour && <div className={classes.relative} />}
+            {!initialTrigger && <div className={classes.relative} />}
         </>
     );
 }
 
-export default withScroll(Topbar);
+export default Topbar;

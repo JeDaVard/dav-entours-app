@@ -52,6 +52,24 @@
     color: #ffffff;
 }
 
+.rounded {
+    border-radius: 3rem;
+    -webkit-mask-image: -webkit-radial-gradient(center, white, black);
+}
+
+.rounded:hover {
+    border-radius: 3rem;
+}
+
+.round {
+    border-radius: 3rem;
+    width: 4.6rem;
+    -webkit-mask-image: -webkit-radial-gradient(center, white, black);
+}
+
+.round:hover {
+    border-radius: 3rem;
+}
 
 .effectContainer {
     position: absolute;
