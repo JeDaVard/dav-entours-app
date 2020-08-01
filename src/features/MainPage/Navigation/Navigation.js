@@ -17,7 +17,14 @@ function Navigation() {
                 className={classes.link}
                 activeClassName={classes.linkActive}
             >
-                Make your own
+                Make a tour
+            </NavLink>
+            <NavLink
+                to={'/saved'}
+                className={classes.link}
+                activeClassName={classes.linkActive}
+            >
+                Saved tours
             </NavLink>
             <NavLink
                 to={'/help'}

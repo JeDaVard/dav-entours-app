@@ -1,14 +1,3 @@
-.Search {
-}
-
-.container {
-
-}
-
-.navigation {
-    margin: 2.7rem auto;
-}
-
 .form {
     width: 100%;
     display: flex;
@@ -39,7 +28,7 @@
 }
 
 .fieldBlock {
-    flex: 1 1 30%;
+    /*flex: 1 1 30%;*/
     height: 100%;
     position: relative;
 }

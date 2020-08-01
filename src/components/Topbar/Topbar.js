@@ -16,7 +16,7 @@ function Topbar(props) {
 
     const initialTrigger = inTour || inMain || inMakeTour
 
-    const [ triggered, setTriggered ] = useScrollTrigger({changePoint: inMain ? 360 : 10});
+    const [ triggered, setTriggered ] = useScrollTrigger({changePoint: inMain ? 500 : 10});
 
     const isTransparent = initialTrigger && !triggered;
     const cx = classNames.bind(classes);
