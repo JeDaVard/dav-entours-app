@@ -1,0 +1,21 @@
+.navigation {
+    text-align: center;
+}
+
+.navigation > :not(:last-child) {
+    margin-right: 3rem;
+}
+
+.link {
+    font-size: 1.6rem;
+    color: white;
+    text-decoration: none;
+    transition: all .1s ease-in-out;
+}
+.link:hover {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.linkActive {
+
+}

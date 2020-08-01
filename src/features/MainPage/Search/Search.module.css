@@ -6,29 +6,7 @@
 }
 
 .navigation {
-    text-align: center;
-    margin-bottom: 3rem;
-}
-
-.navigation > :not(:last-child) {
-    margin-right: 3rem;
-}
-
-.link {
-    font-size: 1.6rem;
-    color: white;
-    text-decoration: none;
-    transition: all .1s ease-in-out;
-}
-.link:hover {
-    color: rgba(255, 255, 255, 0.7);
-}
-/*.link a {*/
-/*    list-style: none;*/
-/*}*/
-
-.linkActive {
-
+    margin: 2.7rem auto;
 }
 
 .form {
@@ -61,7 +39,7 @@
 }
 
 .fieldBlock {
-    /*flex: 1 1;*/
+    flex: 1 1 30%;
     height: 100%;
     position: relative;
 }

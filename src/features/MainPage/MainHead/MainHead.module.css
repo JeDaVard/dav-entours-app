@@ -11,9 +11,10 @@
 }
 
 .search {
+    z-index: 100;
     position: absolute;
     left: 50%;
+    top: 0;
     transform: translateX(-50%);
-    top: 2.7rem;
     max-width: 85rem;
 }
