@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Logout from "../../components/Topbar/Navigation/Logout";
+import Logout from "../../components/NavProfile/Logout";
 import classes from './Profile.module.css';
 import StyledButton from "../../components/UI/StyledButton/StyledButton";
 import Separator from "../../components/UI/Separator/Separator";
