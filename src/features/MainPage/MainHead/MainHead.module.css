@@ -1,7 +1,30 @@
 .MainHead {
+    background-image: url('../../../assets/img/main_mob.jpg');
+    background-size: cover;
+    background-position: bottom;
     width: 100%;
-    height: 71.5vh;
+    height: 55.1rem;
     position: relative;
+}
+
+@media (min-width: 744px) and (max-width: 950px) {
+    .MainHead {
+        background-image: url('../../../assets/img/main_tab.jpg');
+        background-size: cover;
+        width: 100%;
+        height: 100vh;
+        position: relative;
+    }
+}
+
+@media (min-width: 951px){
+    .MainHead {
+        background-image: url('../../../assets/img/main.jpg');
+        background-size: cover;
+        width: 100%;
+        height: 55.1rem;
+        position: relative;
+    }
 }
 
 .mainImg {
@@ -10,23 +33,15 @@
     height: 55.1rem;
     object-fit: cover;
 }
-
-.search {
-    z-index: 100;
-    position: absolute;
-    left: 50%;
-    top: 0;
-    transform: translateX(-50%);
-    max-width: 85rem;
+.mainMob {
+    width: 100%;
+    /*height: 71.5vh;*/
+    height: 55.1rem;
+    object-fit: cover;
 }
-
-.bigSearch {
-}
-
-.container {
-
-}
-
-.navigation {
-    margin: 2.7rem auto;
+.mainTab {
+    width: 100%;
+    /*height: 71.5vh;*/
+    height: 55.1rem;
+    object-fit: cover;
 }

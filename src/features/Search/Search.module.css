@@ -7,10 +7,11 @@
     border-radius: 3.3rem;
     border: 1px solid rgba(0, 0, 0, 0.18);
     position: relative;
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2), 0 3px 8px rgba(0, 0, 0, 0.1)
 }
 
 .but {
-    padding: 0 1rem
+    padding: 0 .9rem 0 1rem
 }
 
 .but svg {
@@ -28,21 +29,25 @@
 }
 
 .fieldBlock {
-    /*flex: 1 1 30%;*/
+    flex: 1 1;
     height: 100%;
     position: relative;
+}
+
+.fieldBlockInput {
+    flex: 1.4 1;
 }
 
 .field {
     position: relative;
     height: 100%;
     /*overflow: hidden;*/
-    /*width: 100%;*/
+    width: 100%;
 }
 
 .button {
     cursor: pointer;
-    /*width: 100%;*/
+    width: 100%;
     font-family: inherit;
     position: relative;
     border: none;

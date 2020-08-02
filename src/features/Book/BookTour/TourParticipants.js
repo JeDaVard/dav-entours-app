@@ -16,9 +16,10 @@ export default function (props) {
     const name = localStorage.getItem('name')
     const photo = localStorage.getItem('photo')
 
-    const history = useHistory()
+    const history = useHistory();
     const query = history.location.search.split('&invite')[0];
 
+    const [ show, setShow ] = useState(false);
     const [ input, setInput ] = useState({
         inviteEmail: '',
         inviteUsers: []
@@ -57,7 +58,7 @@ export default function (props) {
         <div className={classes.participants}>
             <div className={classes.addGuest}>
                 <SmallShow
-                    handler={(trigger, opposite) => trigger(!opposite)}
+                    showIn={[show, setShow]}
                     button={(
                         <div className={classes.invite}>
                             <Justicon
@@ -88,7 +89,8 @@ export default function (props) {
                                 <button disabled={loading} className={classes.add} onClick={e => {
                                     e.preventDefault();
                                     addMember().then(() => {
-                                        setInput(p => ({...p, inviteEmail: ''}))
+                                        setInput(p => ({...p, inviteEmail: ''}));
+                                        setShow(false);
                                     })
                                 }}>
                                     {loading ? <RoundLoading /> : <Justicon

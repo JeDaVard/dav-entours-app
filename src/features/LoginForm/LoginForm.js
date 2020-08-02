@@ -188,7 +188,7 @@ function LoginForm(props) {
                                         url={
                                             state.input.image
                                                 ? state.input.image
-                                                : `${process.env.REACT_APP_SERVER}/images/user/default.jpg`
+                                                : `${process.env.REACT_APP_SERVER}/images/user/default.svg`
                                         }
                                     />{' '}
                                 </div>

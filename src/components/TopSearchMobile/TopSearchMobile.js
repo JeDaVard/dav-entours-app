@@ -1,6 +1,6 @@
 import React from "react";
 import classes from './TopSearchMobile.module.css';
-import TopSearch from "../Topbar/TopSearch/TopSearch";
+import TopSearch from "../TopSearch/TopSearch";
 
 function TopSearchMobile() {
     return (

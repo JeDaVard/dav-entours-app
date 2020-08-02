@@ -1,0 +1,132 @@
+.Navigation {
+    display: flex;
+    align-items: center;
+    /*flex: 1 0 auto;*/
+    font-size: 1.5rem;
+}
+
+.Navigation a {
+    text-decoration: none;
+}
+
+.profile {
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 10rem;
+    padding: .2rem .5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.2s ease 0s;
+}
+.profile:hover,
+.profile:active {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+}
+
+.profileBlur {
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.profileBlur:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    backdrop-filter: blur(.4rem);
+    border-radius: 10rem;
+    z-index: -1
+}
+
+.profileBlur:hover,
+.profileBlur:active {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.22);
+}
+
+.profile img {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+}
+
+.menuIcon {
+    width: 2rem;
+    height: 2.4rem;
+    margin: .6rem 1.2rem .6rem .8rem;
+    fill: rgba(0, 0, 0, 0.7);
+}
+
+.profileDrop {
+    position: absolute;
+    right: 5%;
+    margin-top: 1rem;
+    width: 200px;
+    background: white;
+    border-radius: 14px;
+    box-shadow: 0 0 1.6rem rgba(0, 0, 0, .12);
+    z-index: 101;
+    transition: all .2s;
+}
+
+.profileButton {
+    cursor: pointer;
+    outline: none;
+    padding: .4rem 0;
+    border: none;
+    display: block;
+    background: transparent;
+    width: 100%;
+    text-align: left;
+}
+
+.profileButton:hover,
+.profileButton:active {
+    background: transparent;
+}
+
+.profileDrop__ul1,
+.profileDrop__ul2 {
+    list-style: none;
+    margin: 1rem auto;
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+.profileDrop__ul2 {
+    font-weight: 400;
+    font-size: 1.3rem;
+}
+
+.profileDrop ul li {
+    font-size: 1.4rem;
+    padding: 1rem 1.6rem;
+    transition: all .1s;
+    display: flex;
+    align-items: center;
+}
+
+.profileDrop ul li h4 {
+    margin-left: .8rem;
+    font-weight: 500;
+    font-size: 1.5rem;
+}
+
+.profileDrop a::after {
+    display: none;
+}
+
+.profileDrop ul li:hover,
+.profileDrop ul li:active {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.profileDrop ul a li {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.8);
+}

@@ -50,9 +50,9 @@
     min-height: 4.2rem;
     font-size: 1.6rem;
     padding: 1rem 1.6rem;
-    background: rgba(200, 200, 200, 0.4);
-    backdrop-filter: blur(7px);
-    text-shadow: 0 0 2px rgba(0, 0, 0, 0.16);
+    background: rgba(0, 0, 0, 0.4);
+    /*backdrop-filter: blur(7px);*/
+    /*text-shadow: 0 0 2px rgba(0, 0, 0, 0.16);*/
     color: rgba(255, 255, 255, 0.76);
 }
 

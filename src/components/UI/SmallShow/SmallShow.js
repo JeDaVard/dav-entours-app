@@ -10,26 +10,33 @@ const SmallShow = props => {
 
     return (
         <div className={classes.main}>
-            <OutsideAlerter delegate={() => setShow(false)}>
-            <button
-                    className={classes.button}
-                    onClick={(e) => {e.preventDefault(); props.handler(setShow, show)}}>
-                {props.button || (
-                    'Show'
-                )}
-            </button>
+            <OutsideAlerter delegate={props.showIn ? () => props.showIn[1](false) : () => setShow(false)}>
+                <button
+                        className={classes.button}
+                        onClick={(e) => {
+                            e.preventDefault();
+                            if (props.showIn) {
+                                props.showIn[1](!props.showIn[0])
+                            } else {
+                                props.handler(setShow, show)
+                            }
+                        }}>
+                    {props.button || (
+                        'Show'
+                    )}
+                </button>
                 <CSSTransition
                     nodeRef={nodeRef}
-                    in={show}
+                    in={props.showIn ? props.showIn[0] : show}
                     timeout={400}
                     classNames='smallShow'
                     unmountOnExit
                 >
-                    <div className={classes.content} ref={nodeRef}>
+                    <div className={props.className ? props.className : classes.content} ref={nodeRef}>
                         {props.children}
                     </div>
                 </CSSTransition>
-                </OutsideAlerter>
+            </OutsideAlerter>
         </div>
     )
 }

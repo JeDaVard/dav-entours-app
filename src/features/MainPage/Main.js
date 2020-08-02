@@ -14,10 +14,10 @@ function Main() {
     return (
         <>
             <ScrollToTop />
-            <MainHead isMobile={isMobile}/>
+            <MainHead />
             <Popular />
             <Discover isMobile={isMobile}/>
-            <Become />
+            { isMobile && <Become/>}
             {/*<Top />*/}
         </>
     );

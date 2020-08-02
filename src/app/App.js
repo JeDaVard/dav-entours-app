@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { setDesktop, setMobile } from './actions';
+import { setDesktop, setMobile, setTablet } from './actions';
 import Main from '../features/MainPage/Main';
 import Profile from '../features/Profile/Profile';
 import LoginForm from '../features/LoginForm/LoginForm';
@@ -22,6 +22,7 @@ import lazyLoading from "../utils/lazyLoading";
 import './App.css';
 import TourHeadLoadingMobile from "../features/TourContainer/TourHead/TourHeadLoadingMobile";
 import TourHeadLoading from "../features/TourContainer/TourHead/TourHeadLoading";
+import Become from "../features/MainPage/Become/Become";
 
 
 const LazyBook = lazyLoading(() => import('../features/Book/Book'), {
@@ -68,7 +69,7 @@ const LOGGED_IN = gql`
 
 
 function App(props) {
-    const { setDesktop, setMobile } = props;
+    const { setDesktop, setMobile, setTablet } = props;
     const { data } = useQuery(LOGGED_IN)
     const { loggedIn, name, photo } = data;
 
@@ -95,7 +96,8 @@ function App(props) {
     useEffect(() => {
         const debouncedHandleResize = debounce(function handleResize() {
             if (window.innerWidth <= 743 && !props.isMobile) setMobile();
-            if (window.innerWidth > 743 && props.isMobile) setDesktop();
+            if (window.innerWidth > 743 && window.innerWidth <= 950 && !props.isTablet) setTablet();
+            if (window.innerWidth > 950 && (props.isMobile || props.isTablet)) setDesktop();
         }, 100);
 
         window.addEventListener('resize', debouncedHandleResize);
@@ -165,6 +167,7 @@ function App(props) {
                         <>
                         {!props.location.pathname.match(/^\/inbox\//) && (
                             <>
+                                <Become />
                                 <Separator margin={'4 0'} />
                                 <Foot />
                             </>
@@ -246,8 +249,9 @@ function App(props) {
 
 const mapStateToProps = (state) => ({
     isMobile: state.ui.display.isMobile,
+    isTablet: state.ui.display.isTablet,
     asyncLoading: state.ui.loading
 });
-export default connect(mapStateToProps, { setDesktop, setMobile })(
+export default connect(mapStateToProps, { setDesktop, setMobile, setTablet })(
     withRouter(App)
 );

@@ -2,7 +2,8 @@ import * as actionTypes from '../../actions/ui/types'
 
 const initialState = {
     display: {
-        isMobile: window.innerWidth < 744
+        isMobile: window.innerWidth < 744,
+        isTablet: window.innerWidth >= 744 && window.innerWidth <= 950
     },
     loading: false
 }
@@ -14,7 +15,17 @@ const uiReducer = (state= initialState, action) => {
                 ...state,
                 display: {
                     ...state.display,
-                    isMobile: true
+                    isMobile: true,
+                    isTablet: false
+                }
+            }
+        case actionTypes.MEDIUM_WIDTH_DISPLAY:
+            return {
+                ...state,
+                display: {
+                    ...state.display,
+                    isTablet: true,
+                    isMobile: false
                 }
             }
         case actionTypes.NORMAL_DISPLAY:
@@ -22,7 +33,8 @@ const uiReducer = (state= initialState, action) => {
                 ...state,
                 display: {
                     ...state.display,
-                    isMobile: false
+                    isMobile: false,
+                    isTablet: false
                 }
             }
         case actionTypes.LOADING_OFF:
