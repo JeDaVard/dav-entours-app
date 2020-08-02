@@ -11,10 +11,9 @@ const cx = classNames.bind(classes);
 
 function TopSearch(props) {
     const ref = useRef(null);
-    const isMobile = useSelector(s => s.ui.display.isMobile)
     const [ triggered ] = useScrollTrigger({ changePoint: 10})
 
-    const show = (props.initialTrigger || triggered || isMobile) && !props.forced;
+    const show = (props.initialTrigger || triggered) && !props.forced;
 
     return (
         <CSSTransition

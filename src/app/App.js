@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { setDesktop, setMobile, setTablet } from './actions';
+import { setDesktop, setMobile } from './actions';
 import Main from '../features/MainPage/Main';
 import Profile from '../features/Profile/Profile';
 import LoginForm from '../features/LoginForm/LoginForm';
@@ -96,8 +96,7 @@ function App(props) {
     useEffect(() => {
         const debouncedHandleResize = debounce(function handleResize() {
             if (window.innerWidth <= 743 && !props.isMobile) setMobile();
-            if (window.innerWidth > 743 && window.innerWidth <= 950 && !props.isTablet) setTablet();
-            if (window.innerWidth > 950 && (props.isMobile || props.isTablet)) setDesktop();
+            if (window.innerWidth > 743 && props.isMobile) setDesktop();
         }, 100);
 
         window.addEventListener('resize', debouncedHandleResize);
@@ -249,9 +248,8 @@ function App(props) {
 
 const mapStateToProps = (state) => ({
     isMobile: state.ui.display.isMobile,
-    isTablet: state.ui.display.isTablet,
     asyncLoading: state.ui.loading
 });
-export default connect(mapStateToProps, { setDesktop, setMobile, setTablet })(
+export default connect(mapStateToProps, { setDesktop, setMobile })(
     withRouter(App)
 );

@@ -5,6 +5,60 @@
     width: 100%;
     height: 55.1rem;
     position: relative;
+    color: white;
+}
+
+.headCall {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 10%;
+    text-align: center;
+    left: 0;
+    top: 20%;
+    background: rgba(0, 0, 0, 0.07);
+}
+
+.title h1 {
+    font-size: 4rem;
+    line-height: 5rem;
+    text-shadow: -2px -2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.description {
+    margin-top: 1rem;
+    width: 60%;
+}
+
+.description h4 {
+    font-weight: 400;
+    font-size: 1.4rem;
+    text-shadow: -2px -2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.button {
+    margin-top: 1rem;
+}
+
+.button button {
+    cursor: pointer;
+    font-family: inherit;
+    border: none;
+    outline: none;
+    font-size: 1.5rem;
+    font-weight: 500;
+    padding: .8rem 2rem;
+    color: rgba(0, 0, 0, 0.8);
+    background: white;
+    border-radius: .8rem;
+    transition: background .1s;
+}
+
+.button button:hover,
+.button button:active {
+    background: #efefef;
 }
 
 @media (min-width: 744px) and (max-width: 950px) {
@@ -14,6 +68,25 @@
         width: 100%;
         height: 100vh;
         position: relative;
+    }
+    .headCall {
+        align-items: flex-start;
+        text-align: left;
+        top: 50%;
+        background: none;
+        width: 50%;
+        padding: 2rem 5%;
+    }
+    .title h1 {
+        font-size: 3rem;
+        line-height: 3.8rem;
+        text-shadow: -2px -2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .description {
+        width: unset;
+    }
+    .button {
+        margin-top: 3rem;
     }
 }
 
@@ -25,23 +98,21 @@
         height: 55.1rem;
         position: relative;
     }
-}
-
-.mainImg {
-    width: 100%;
-    /*height: 71.5vh;*/
-    height: 55.1rem;
-    object-fit: cover;
-}
-.mainMob {
-    width: 100%;
-    /*height: 71.5vh;*/
-    height: 55.1rem;
-    object-fit: cover;
-}
-.mainTab {
-    width: 100%;
-    /*height: 71.5vh;*/
-    height: 55.1rem;
-    object-fit: cover;
+    .headCall {
+        top: 35%;
+        align-items: flex-start;
+        text-align: left;
+        background: rgba(0, 0, 0, 0.05);
+        background: none;
+        width: 50%;
+        padding: 2rem 5%;
+    }
+    .title h1 {
+        font-size: 3.2rem;
+        line-height: 4rem;
+        text-shadow: -2px -2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .button {
+        margin-top: 3rem;
+    }
 }

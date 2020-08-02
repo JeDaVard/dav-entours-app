@@ -1,23 +1,22 @@
 import React from "react";
 import classes from './MainHead.module.css';
-import mainImg from '../../../assets/img/main.jpg';
-import mainMob from '../../../assets/img/main_mob.jpg';
-import mainTab from '../../../assets/img/main_tab.jpg';
-import {useSelector} from "react-redux";
 
 export default function MainHead() {
-    const { isMobile, isTablet } = useSelector(s => ({
-        isMobile: s.ui.display.isMobile,
-        isTablet: s.ui.display.isTablet
-    }));
-
     return (
         <div className={classes.MainHead}>
-            {/*{isMobile && <img src={mainMob} className={classes.mainMob} alt="entours main"/>}*/}
-            {/*{isTablet && !isMobile*/}
-            {/*    ? <img src={mainTab} className={classes.mainTab} alt="entours main"/>*/}
-            {/*    : <img src={mainImg} className={classes.mainImg} alt="entours main"/>}*/}
-
+            <div className="row">
+                <div className={classes.headCall}>
+                    <div className={classes.title}>
+                        <h1>Get out and stretch your imagination</h1>
+                    </div>
+                    <div className={classes.description}>
+                        <h4>Take a tour, go find a world of wonder, discover our home planet.</h4>
+                    </div>
+                    <div className={classes.button}>
+                        <button>Explore</button>
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }
