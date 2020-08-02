@@ -1,14 +1,17 @@
 import React from 'react';
 import classes from './Search.module.css';
 import StyledButton from '../../components/UI/StyledButton/StyledButton';
+import classNames from 'classnames/bind'
 import sprite from '../../assets/icons/sprite.svg';
 
-function Search() {
+const cx = classNames.bind(classes)
+
+function Search(props) {
     return (
-        <form onSubmit={() => {}} className={classes.form}>
+        <form onSubmit={() => {}} className={cx(classes.form, {formSearching: props.searching})}>
             <div className={`${classes.fieldBlock} ${classes.fieldBlockInput}`}>
                 <div className={classes.field}>
-                    <label className={classes.label}>
+                    <label className={cx(classes.label, {labelSearching: props.searching})}>
                         <div className={classes.buttonBox__title}>
                             Location
                         </div>
@@ -23,7 +26,7 @@ function Search() {
             <div className={classes.sep} />
             <div className={classes.fieldBlock}>
                 <div className={classes.field}>
-                    <button className={classes.button}>
+                    <button className={cx(classes.button, {buttonSearching: props.searching})}>
                         <div className={classes.buttonBox__title}>
                             Dates
                         </div>
@@ -36,7 +39,7 @@ function Search() {
             <div className={classes.sep} />
             <div className={classes.fieldBlock}>
                 <div className={classes.field}>
-                    <button className={classes.button}>
+                    <button className={cx(classes.button, {buttonSearching: props.searching})}>
                         <div className={classes.buttonBox__title}>
                             Participants
                         </div>

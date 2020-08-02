@@ -1,15 +1,13 @@
-import React, {useState} from 'react';
+import React, {useRef, useState} from 'react';
 import classNames from 'classnames/bind';
 import classes from './Topbar.module.css';
-// import logo from '../../assets/img/entours.png';
-import logo from '../../assets/img/entours.svg';
-// import logo from '../../assets/img/entours2.png';
-import { Link } from 'react-router-dom';
 import TopSearch from '../TopSearch/TopSearch';
 import useScrollTrigger from "../../hooks/useScrollTrigger";
 import BigSearch from "../BigSearch/BigSearch";
 import NavProfile from "../NavProfile/NavProfile";
 import Logo from "../UI/Logo/Logo";
+import {CSSTransition} from "react-transition-group";
+import './_animations.css'
 
 const cx = classNames.bind(classes);
 
@@ -19,11 +17,13 @@ function Topbar(props) {
     const inMain = props.location.pathname === '/'
     const initialTrigger = inTour || inMain || inMakeTour
 
-    const [ searching, setSearching ] = useState(false)
+    const [ searching, setSearching ] = useState(false);
+
+    const ref = useRef(null);
 
     const [ triggered, setTriggered ] = useScrollTrigger({changePoint: inMain ? 480 : 10});
 
-    const isTransparent = initialTrigger && !triggered;
+    const isTransparent = initialTrigger && !triggered && !searching;
 
     const openBigHandler = () => {
         setSearching(true)
@@ -41,12 +41,21 @@ function Topbar(props) {
 
     return (
         <>
+            <CSSTransition
+                nodeRef={ref}
+                in={searching}
+                timeout={310}
+                classNames="searchBlur"
+                unmountOnExit
+            >
+                <div ref={ref} onClick={closeBigHandler} className={classes.searchBlur}/>
+            </CSSTransition>
             <div
                 className={cx(
                     isTransparent
                         ? classes.transparent
                         : classes.Topbar,
-                    { opaqueHeader: triggered }
+                    { opaqueHeader: triggered, searchHeader: searching }
                 )}
             >
                 <div className="row">

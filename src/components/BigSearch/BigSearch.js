@@ -21,10 +21,10 @@ export default function BigSearch(props) {
         >
             <div className={classes.bigSearch} ref={ref}>
                 <div className={classes.navigation}>
-                    <Navigation />
+                    <Navigation searching={props.forced}/>
                 </div>
                 <div className={classes.container}>
-                    <Search />
+                    <Search searching={props.forced}/>
                 </div>
             </div>
         </CSSTransition>

@@ -56,3 +56,31 @@
     height: 2px;
     width: 2rem;
 }
+
+.linkBlack {
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.linkBlack:hover {
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.linkBlack:before {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.linkActiveBlack {
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.linkActiveBlack:before,
+.linkActive:hover:before {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.linkActiveBlack,
+.linkActiveBlack:hover,
+.linkActiveBlack:active {
+    cursor: default;
+    color: rgba(0, 0, 0, 0.8);
+}

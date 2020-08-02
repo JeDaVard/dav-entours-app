@@ -1,0 +1,13 @@
+.searchBlur-enter {
+    opacity: 0;
+    transition: all .3s;
+}
+.searchBlur-enter-active {
+    opacity: 1;
+}
+.searchBlur-exit {
+    transition: all .3s;
+}
+.searchBlur-exit-active {
+    opacity: 0;
+}
