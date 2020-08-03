@@ -167,6 +167,7 @@ console.log(input.date)
                     if (input.focused.date) {
                         setInput(p => ({...p, focused: {...p.focused, date: false}}))
                     }
+
                 }}>
                     {input.focused.date && (
                             <div className={classes.date}>
