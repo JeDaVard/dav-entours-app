@@ -30,5 +30,5 @@ export default function OutsideAlerter(props) {
     const wrapperRef = useRef(null);
     useOutsideAlerter(wrapperRef, props.delegate);
 
-    return <div ref={wrapperRef}>{props.children}</div>;
+    return <div ref={wrapperRef} className={props.className}>{props.children}</div>;
 }

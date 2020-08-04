@@ -8,6 +8,7 @@ import Locations from "./Locations";
 import Date from "./Date";
 import OutsideAlerter from "../../hocs/EventDelegator";
 import moment from "moment";
+import Justicon from "../../components/UI/JustIcon/Justicon";
 
 const cx = classNames.bind(classes)
 
@@ -23,6 +24,7 @@ function Search(props) {
 
     const [ input, setInput ] = useState({
         locations: [],
+        location: '',
         date: {
             startDate: null,
             endDate: null,
@@ -43,16 +45,16 @@ function Search(props) {
 
         switch (id) {
             case 'minusParticipant':
-                setInput(p => ({...p, participants: +p.participants - 1}));
+                setInput(p => ({...p, participants: (+p.participants - 1).toString()}));
                 break;
             case 'plusParticipant':
-                setInput(p => ({...p, participants: +p.participants + 1}));
+                setInput(p => ({...p, participants: (+p.participants + 1).toString()}));
                 break;
             case 'minusMaxGroupSize':
-                setInput(p => ({...p, maxGroupSize: +p.maxGroupSize - 1}));
+                setInput(p => ({...p, maxGroupSize: (+p.maxGroupSize - 1).toString()}));
                 break;
             case 'plusMaxGroupSize':
-                setInput(p => ({...p, maxGroupSize: +p.maxGroupSize + 1}));
+                setInput(p => ({...p, maxGroupSize: (+p.maxGroupSize + 1).toString()}));
                 break;
             default:
                 break;
@@ -61,6 +63,7 @@ function Search(props) {
 
     const eventHandler = async e => {
         const target = e.target
+        setInput(p => ({...p, location: target.value}))
         try {
             if (target.value !== '') {
                 const res = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${target.value}.json?access_token=${process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}&limit=5`)
@@ -80,9 +83,9 @@ function Search(props) {
         setInput(p => ({
             ...p,
             focused: {
-                location: id.includes('location'),
-                date: id.includes('date'),
-                participants: id.includes('participants')
+                location: p.focused.location ? false : id.includes('location'),
+                date: p.focused.date ? false : id.includes('date'),
+                participants: p.focused.participants ? false : id.includes('participants')
             }
         }))
     }
@@ -112,7 +115,11 @@ console.log(input.date)
     return (
         <form onSubmit={() => {}} className={cx(classes.form, {formSearching: props.searching})}>
             <div className={`${classes.fieldBlock} ${classes.fieldBlockInput}`}>
-                <div className={classes.field}>
+                <OutsideAlerter className={classes.field} delegate={() => {
+                    if (input.focused.location) {
+                        setInput(p => ({...p, focused: {...p.focused, location: false}}))
+                    }
+                }}>
                     <label id="locationLabel"
                            className={cx(classes.label, {
                         labelSearching: props.searching,
@@ -134,12 +141,14 @@ console.log(input.date)
                             autoComplete="off"
                         />
                     </label>
-                </div>
-                <OutsideAlerter delegate={() => {
-                    if (input.focused.location) {
-                        setInput(p => ({...p, focused: {...p.focused, location: false}}))
-                    }
-                }}>
+                    {input.focused.location && input.location !== '' && (
+                        <button className={classes.clear} onClick={e => {
+                            e.preventDefault();
+                            setInput(p => ({...p, locations: [], location: ''}))
+                        }}>
+                            <Justicon icon={'x'} className={classes.clearIcon}/>
+                        </button>
+                    )}
                     {input.locations.length > 0 && input.focused.location && (
                         <Locations locations={input.locations}/>
                     )}
@@ -147,7 +156,11 @@ console.log(input.date)
             </div>
             <div className={classes.sep} />
             <div className={classes.fieldBlock}>
-                    <div className={classes.field}>
+                <OutsideAlerter className={classes.field} delegate={() => {
+                    if (input.focused.date) {
+                        setInput(p => ({...p, focused: {...p.focused, date: false}}))
+                    }
+                }}>
                         <button
                             onClick={uiEventHandler}
                             id="dateButton"
@@ -159,16 +172,28 @@ console.log(input.date)
                                 Dates
                             </div>
                             <div className={classes.buttonBox__selection}>
-                                {input.date.startDate}
+                                {!input.date.startDate ? 'Add date' : (
+                                    <>
+                                        <h4 className={classes.filterText}>
+                                            {moment(+input.date.startDate).format('DD MMM')}
+                                        </h4>
+                                        {input.date.endDate && (
+                                            <h4 className={classes.filterText}>
+                                                &nbsp;-&nbsp;{moment(+input.date.endDate).format('DD MMM')}
+                                            </h4>
+                                        )}
+                                    </>
+                                )}
                             </div>
                         </button>
-                    </div>
-                <OutsideAlerter delegate={() => {
-                    if (input.focused.date) {
-                        setInput(p => ({...p, focused: {...p.focused, date: false}}))
-                    }
-
-                }}>
+                        {input.focused.date && (input.date.startDate !== null || input.date.endDate !== null) && (
+                            <button className={classes.clear} onClick={e => {
+                                e.preventDefault();
+                                setInput(p => ({...p, date: { startDate: null, endDate: null, focusedInput: 'startDate'}}))
+                            }}>
+                                <Justicon icon={'x'} className={classes.clearIcon}/>
+                            </button>
+                        )}
                     {input.focused.date && (
                             <div className={classes.date}>
                                 <Date startDate={input.date.startDate}
@@ -179,10 +204,21 @@ console.log(input.date)
                             </div>
                     )}
                 </OutsideAlerter>
+                            {/*</div>*/}
             </div>
             <div className={classes.sep} />
             <div className={classes.fieldBlock}>
-                <div className={classes.field}>
+                <OutsideAlerter className={classes.field} delegate={() => {
+                    if (input.focused.participants) {
+                        setInput(p => ({
+                            ...p,
+                            focused: {
+                                ...p.focused,
+                                participants: false
+                            }
+                        }))
+                    }
+                }}>
                     <button
                         onClick={uiEventHandler}
                         id="participantsButton"
@@ -194,21 +230,29 @@ console.log(input.date)
                             Participants
                         </div>
                         <div className={classes.buttonBox__selection}>
-                            Add participants
+                            {input.participants !== '1' && (
+                                    <h4 className={classes.filterText}>
+                                        {input.participants}&nbsp;par.
+                                    </h4>
+                            )}
+                            {input.maxGroupSize !== '25' && (
+                                <h4 className={classes.filterText}>
+                                    &nbsp;Max&nbsp;{input.maxGroupSize}
+                                </h4>
+                            )}
+                            {input.maxGroupSize === '25' && input.participants === '1' && (
+                                'Add participants'
+                            )}
                         </div>
                     </button>
-                </div>
-                <OutsideAlerter delegate={() => {
-                    if (input.focused.participants) {
-                        setInput(p => ({
-                            ...p,
-                            focused: {
-                                ...p.focused,
-                                participants: false
-                            }
-                        }))
-                    }
-                }}>
+                    {input.focused.participants && (input.participants !== '1' || input.maxGroupSize !== '25') && (
+                        <button className={classes.clear} onClick={e => {
+                            e.preventDefault();
+                            setInput(p => ({...p, participants: '1', maxGroupSize: '25'}))
+                        }}>
+                            <Justicon icon={'x'} className={classes.clearIcon}/>
+                        </button>
+                    )}
                     {input.focused.participants && (
                         <Participants participantsHandler={participantsHandler}
                                       participants={+input.participants}

@@ -33,7 +33,7 @@ export default function Participants(props) {
             <div className={classes.section}>
                 <div className={classes.types}>
                     <h2>Group Size</h2>
-                    <p>Maximum tour places</p>
+                    <p>Maximum tour capacity</p>
                 </div>
                 <div className={classes.counter}>
                     <button className={classes.prButton}
