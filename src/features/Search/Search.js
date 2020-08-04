@@ -60,6 +60,7 @@ function Search(props) {
                 break;
         }
     }
+    console.log(input)
 
     const eventHandler = async e => {
         const target = e.target
@@ -83,7 +84,7 @@ function Search(props) {
         setInput(p => ({
             ...p,
             focused: {
-                location: p.focused.location ? false : id.includes('location'),
+                location: id.includes('location'),
                 date: p.focused.date ? false : id.includes('date'),
                 participants: p.focused.participants ? false : id.includes('participants')
             }
@@ -111,7 +112,6 @@ function Search(props) {
             }
         }));
     }
-console.log(input.date)
     return (
         <form onSubmit={() => {}} className={cx(classes.form, {formSearching: props.searching})}>
             <div className={`${classes.fieldBlock} ${classes.fieldBlockInput}`}>
@@ -204,7 +204,6 @@ console.log(input.date)
                             </div>
                     )}
                 </OutsideAlerter>
-                            {/*</div>*/}
             </div>
             <div className={classes.sep} />
             <div className={classes.fieldBlock}>
