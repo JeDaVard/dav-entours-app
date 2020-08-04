@@ -1,0 +1,65 @@
+.locationBlock {
+    position: absolute;
+    padding: 2rem 0;
+    top: 7.4rem;
+    z-index: 2;
+    width: 40rem;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.24);
+    background: white;
+    border-radius: 3rem;
+    /*margin-top: 1rem;*/
+    /*position: absolute;*/
+    /*bottom: -4rem;*/
+    /*left: 0;*/
+}
+
+.locationLink {
+    color: rgba(0, 0, 0, 0.8);
+    text-decoration: none;
+}
+
+.location {
+    display: flex;
+    align-items: center;
+    background: transparent;
+    padding: 1rem 3rem;
+}
+
+.locationLink:hover .location,
+.locationLink:active .location {
+    background: rgba(0, 0, 0, 0.04);
+}
+
+.iconFrame {
+    width: 5rem;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: .8rem;
+    border: 1px solid rgba(0, 0, 0, 0.07);
+}
+
+.icon {
+    width: 1.8rem;
+    height: 1.8rem;
+    fill: rgba(0, 0, 0, 0.8);
+}
+
+.title {
+    margin-left: 1.6rem;
+    flex: 1;
+}
+
+.title h1 {
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 1.7rem;
+}
+
+.title p {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.5);
+}

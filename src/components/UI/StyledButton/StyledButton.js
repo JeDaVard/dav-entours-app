@@ -22,7 +22,7 @@ function StyledButton(props) {
     const button = (
         <>
             <span className={classes.effectContainer}>
-                <span onMouseMove={mouseMoveHandler} style={styles} className={classes.effect}> </span>
+                <span onMouseMove={mouseMoveHandler} style={styles} className={classes.effect} />
             </span>
             <span className={classes.text}>
                 {props.children}

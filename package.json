@@ -32,6 +32,7 @@
     "react-infinite-scroller": "^1.2.4",
     "react-map-gl": "^5.2.7",
     "react-map-gl-geocoder": "^2.0.11",
+    "react-moment-proptypes": "^1.7.0",
     "react-redux": "^7.1.3",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
@@ -67,6 +68,7 @@
   "author": "Davit Vardanyan",
   "license": "ISC",
   "devDependencies": {
+    "airbnb-prop-types": "^2.16.0",
     "prettier": "^2.0.5"
   }
 }

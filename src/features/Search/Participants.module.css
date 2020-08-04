@@ -1,0 +1,91 @@
+.participantsBlock {
+    position: absolute;
+    padding: 2.6rem 3rem;
+    top: 7.4rem;
+    z-index: 2;
+    width: 36rem;
+    right: -7rem;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.24);
+    background: white;
+    border-radius: 3rem;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.section:not(:first-of-type) {
+    padding-top: 1.2rem;
+}
+.section:not(:last-of-type) {
+    padding-bottom: 1.2rem;
+}
+
+.participants {
+    width: 4rem;
+    display: flex;
+    justify-content: center;
+}
+
+.participants h2 {
+    font-size: 1.8rem;
+    font-weight: 400;
+}
+
+.prButton {
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    width: 3.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3.2rem;
+    outline: none;
+    background: transparent;
+}
+
+.prButton:hover,
+.prButton:active {
+    border: 1px solid #000000;
+}
+
+.prButton:disabled {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    cursor: no-drop;
+}
+
+.pIcon {
+    width: 1.6rem;
+    height: 1.6rem;
+    fill: rgba(0, 0, 0, 0.6);
+}
+
+.prButton:hover .pIcon,
+.prButton:active .pIcon {
+    fill: rgba(0, 0, 0, 0.9);
+}
+
+.prButton:disabled .pIcon {
+    fill: rgba(0, 0, 0, 0.1);
+}
+
+.types h2 {
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: black;
+    line-height: 1.8rem;
+}
+
+.types p {
+    color: rgba(0, 0, 0, 0.4);
+    font-size: 1.3rem;
+}
+
+.counter {
+    display: flex;
+    align-items: center;
+}

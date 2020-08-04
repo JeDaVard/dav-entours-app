@@ -12,7 +12,6 @@
 
 .formSearching {
     box-shadow: none;
-    background: white;
 }
 
 .but {
@@ -67,19 +66,19 @@
 
 .button:before {
     content: '';
-    width: calc(100% + 4px);
+    width: calc(100% + 2px);
     height: 100%;
     top: 0;
-    left: -2px;
+    left: -1px;
     position: absolute;
     background: rgb(247, 247, 247);
     display: none;
     z-index: -1;
 }
 
-.buttonSearching:before {
-    background: white;
-}
+/*.buttonSearching:before {*/
+/*    background: white;*/
+/*}*/
 
 .button:after {
     content: '';
@@ -101,14 +100,23 @@
     opacity: 1;
 }
 
-/*.buttonActive {*/
+.buttonActive {
+    z-index: 2;
+}
 
-/*}*/
-/*.buttonActive:after {*/
-/*    background: white;*/
-/*    transition: all .1s ease-in-out;*/
-/*    box-shadow: 0 0 20px rgba(0, 0, 0, 0.16);*/
-/*}*/
+.buttonActive:before {
+    position: absolute;
+    display: block;
+}
+
+.buttonActive:after {
+    height: calc(100% + 2px);
+    top: -1px;
+    background: white;
+    transition: all .1s ease-in-out;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 20px;
+    opacity: 1;
+}
 
 .buttonBox__title {
     font-size: 1.2rem;
@@ -145,7 +153,7 @@
 
 .label:before {
     content: '';
-    width: calc(100% + 4px);
+    width: calc(100% + 1px);
     height: 100%;
     border-radius: 3.3rem 0 0 3.3rem;
     top: 0;
@@ -155,9 +163,9 @@
     display: none;
 }
 
-.labelSearching:before {
-    background: white;
-}
+/*.labelSearching:before {*/
+/*    background: white;*/
+/*}*/
 
 .label:after {
     content: '';
@@ -178,13 +186,44 @@
     opacity: 1;
 }
 
+.labelActive {
+    z-index: 2;
+    position: relative;
+}
+
+.labelActive:before {
+    position: absolute;
+    display: block;
+}
+
+.labelActive:after {
+    height: calc(100% + 2px);
+    width: calc(100% + 1px);
+    top: -1px;
+    left: -1px;
+    background: white;
+    transition: all .1s ease-in-out;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 6px 20px;
+    opacity: 1;
+}
 
 .input {
     font-family: inherit;
     background: transparent;
     outline: none;
+    font-weight: 500;
     color: rgba(0, 0, 0, 0.74);
     border: none;
     font-size: 1.4rem;
     z-index: 1;
+}
+
+.input::placeholder {
+    font-weight: 400;
+}
+
+.date {
+    position: absolute;
+    top: 7.4rem;
+    transform: translateX(-20%);
 }

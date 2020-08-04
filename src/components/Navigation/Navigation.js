@@ -17,6 +17,7 @@ function Navigation(props) {
                 to={'/'}
                 className={style[0]}
                 activeClassName={style[1]}
+                exact
             >
                 Find a tour
             </NavLink>
