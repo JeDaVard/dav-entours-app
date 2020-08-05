@@ -12,7 +12,7 @@ import './_animations.css'
 const cx = classNames.bind(classes);
 
 function Topbar(props) {
-    const inTour = !!props.location.pathname.match(/^\/tour\/.*/);
+    const inTour = !!props.location.pathname.match(/^\/tour\/.*/) || !! props.location.pathname.match(/^\/tours\/.*/);
     const inMakeTour = !!props.location.pathname.match(/^\/make.*/);
     const inMain = props.location.pathname === '/'
     const initialTrigger = inTour || inMain || inMakeTour

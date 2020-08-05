@@ -1,5 +1,6 @@
 import React from "react";
 import classes from './Become.module.css';
+import {Link} from "react-router-dom";
 
 function Become() {
     return (
@@ -8,11 +9,10 @@ function Become() {
                 <div className={classes.content}>
                     <div className={classes.left}>
                         <div className={classes.proposition}>
-                            <h3>Become a tourmaker, Earn from $700 monthly</h3>
-                            <h3>Communicate with others</h3>
+                            <h3>Become a tourmaker, Earn from $700 monthly. Communicate with others</h3>
                         </div>
                         <div className={classes.button}>
-                            <button>Start now</button>
+                            <Link to={'/make'}>Start Now</Link>
                         </div>
                     </div>
                     <div className={classes.right}>

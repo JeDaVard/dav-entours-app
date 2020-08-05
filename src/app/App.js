@@ -23,6 +23,7 @@ import './App.css';
 import TourHeadLoadingMobile from "../features/TourContainer/TourHead/TourHeadLoadingMobile";
 import TourHeadLoading from "../features/TourContainer/TourHead/TourHeadLoading";
 import Become from "../features/MainPage/Become/Become";
+import SearchResults from "../features/SearchResults/SearchResults";
 
 
 const LazyBook = lazyLoading(() => import('../features/Book/Book'), {
@@ -180,6 +181,7 @@ function App(props) {
                     <Route exact path="/" component={Main} />
                     <Route path="/payments/book" component={LazyBook} />
                     <Route path="/tour/:slug/edit" component={EditTour}/>
+                    <Route path="/tours/search" component={SearchResults}/>
                     <Route path="/user/:id" component={LazyUserPage} />
                     <Route path="/make" component={LazyMake}/>
                     <Route path="/mytours" component={LazyMyTours}/>

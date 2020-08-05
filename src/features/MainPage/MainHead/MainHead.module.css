@@ -8,6 +8,27 @@
     color: white;
 }
 
+.SearchHead {
+    height: 20rem;
+}
+
+.searchTitle {
+    position: absolute;
+    bottom: 2rem;
+}
+
+.searchTitle h1 {
+    font-weight: 500;
+    font-size: 3rem;
+    line-height: 3.4rem;
+}
+
+.searchTitle h4 {
+    font-weight: 400;
+    font-size: 1.3rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
 .headCall {
     position: absolute;
     width: 100%;
@@ -69,6 +90,14 @@
         height: 100vh;
         position: relative;
     }
+    .SearchHead {
+        height: 20rem;
+        background-position: bottom;
+    }
+    .searchTitle {
+    position: absolute;
+    bottom: 4rem;
+    }
     .headCall {
         align-items: flex-start;
         text-align: left;
@@ -97,6 +126,14 @@
         width: 100%;
         height: 55.1rem;
         position: relative;
+    }
+    .SearchHead {
+        height: 20rem;
+        background-position: 0 68%;
+    }
+    .searchTitle {
+    position: absolute;
+    bottom: 4rem;
     }
     .headCall {
         top: 35%;
