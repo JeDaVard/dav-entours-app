@@ -1,4 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
+import { useHistory } from 'react-router-dom';
 import classes from './Search.module.css';
 import StyledButton from '../../components/UI/StyledButton/StyledButton';
 import classNames from 'classnames/bind'
@@ -14,13 +15,26 @@ const cx = classNames.bind(classes)
 
 function Search(props) {
     const ref = useRef(null);
+    const history = useHistory();
     const { searching } = props;
+
+    function onInputEnter(e) {
+        if (e.key === 'Enter') {
+            searchHandler();
+            e.preventDefault();
+        }
+    }
+
+    useEffect(() => {
+        ref.current.addEventListener('keydown', onInputEnter);
+        return () => ref.current.removeEventListener('keydown', onInputEnter);
+    }, [ref, onInputEnter])
 
     useEffect(() => {
         if (searching) {
             ref.current.focus();
         }
-    }, [searching, ref])
+    }, [searching])
 
     const [ input, setInput ] = useState({
         locations: [],
@@ -60,7 +74,6 @@ function Search(props) {
                 break;
         }
     }
-    console.log(input)
 
     const eventHandler = async e => {
         const target = e.target
@@ -112,8 +125,30 @@ function Search(props) {
             }
         }));
     }
+
+    const searchHandler = ( e, specificLoc ) => {
+        if (e) e.preventDefault();
+        if (!input.locations.length) {
+            ref.current.focus();
+            return;
+        }
+
+        const loc = specificLoc || input.locations[0]
+
+        const qLocName = loc.place_name
+            .split(',')
+            .slice(-1)
+            .toString()
+            .trim();
+        const qCoordinates = loc.geometry.coordinates.toString();
+        const qDates = [+input.date.startDate, +input.date.endDate].toString();
+        const qParticipants = [input.participants, input.maxGroupSize].toString();
+
+        history.push(`/tours/search?=${qLocName}&coordinates=${qCoordinates}&dates=${qDates}&participants=${qParticipants}`)
+    }
+
     return (
-        <form onSubmit={() => {}} className={cx(classes.form, {formSearching: props.searching})}>
+        <form onSubmit={searchHandler} className={cx(classes.form, {formSearching: props.searching})}>
             <div className={`${classes.fieldBlock} ${classes.fieldBlockInput}`}>
                 <OutsideAlerter className={classes.field} delegate={() => {
                     if (input.focused.location) {
@@ -132,6 +167,7 @@ function Search(props) {
                             ref={ref}
                             type="text"
                             name='location'
+                            // onSubmit={() => console.log('aaaaaaaaaaaa')}
                             id='locationInput'
                             onChange={eventHandler}
                             onFocus={uiEventHandler}
@@ -150,7 +186,7 @@ function Search(props) {
                         </button>
                     )}
                     {input.locations.length > 0 && input.focused.location && (
-                        <Locations locations={input.locations}/>
+                        <Locations locations={input.locations} onSearch={searchHandler} />
                     )}
                 </OutsideAlerter>
             </div>
@@ -261,7 +297,9 @@ function Search(props) {
                 </OutsideAlerter>
             </div>
             <div className={classes.but}>
-                <StyledButton rounded={props.searching} round={!props.searching}>
+                <StyledButton type="submit"
+                              rounded={props.searching}
+                              round={!props.searching}>
                     {props.searching ? (
                             <>
                                 <svg>
