@@ -11,8 +11,8 @@ export default function MainHead(props) {
             <div className="row">
                 {location ? (
                     <div className={classes.searchTitle}>
-                        <h1>Tours around LOCATION</h1>
-                        <h4>World of wonder around LOCATION by our tour makers</h4>
+                        <h1>Tours around {location}</h1>
+                        <h4>Wonder World in {location} and around, by our tour makers</h4>
                     </div>
                 ) : (
                     <div className={classes.headCall}>

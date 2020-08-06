@@ -144,7 +144,7 @@ function Search(props) {
         const qDates = [+input.date.startDate, +input.date.endDate].toString();
         const qParticipants = [input.participants, input.maxGroupSize].toString();
 
-        history.push(`/tours/search?=${qLocName}&coordinates=${qCoordinates}&dates=${qDates}&participants=${qParticipants}`)
+        history.push(`/tours/search?place=${qLocName}&coordinates=${qCoordinates}&dates=${qDates}&participants=${qParticipants}`)
     }
 
     return (
