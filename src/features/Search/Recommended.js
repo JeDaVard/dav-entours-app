@@ -7,7 +7,7 @@ export default function Recommended(props) {
     const { tours } = props;
 
     return (
-        <div className={classes.content}>
+        <div className={classes.content} dir="ltr">
             {tours.map(tour => (
                 <div className={classes.tour}>
                     <div className={classes.imageFrame}>
@@ -18,10 +18,12 @@ export default function Recommended(props) {
                             <Justicon icon={'star'}/>
                             <h2>{tour.ratingsAverage}</h2>
                             <p>&nbsp;|&nbsp;</p>
-                            <h3>(<b>{tour.ratingsQuantity}</b>)</h3>
+                            <h3>({tour.ratingsQuantity})</h3>
                         </div>
                         <div className={classes.title}>
-                            <h1>{tour.name}</h1>
+                            <h1>
+                                {tour.name.length > 40 ? tour.name.slice(' ').slice(0,4).join(' ') : tour.name}
+                            </h1>
                         </div>
                     </div>
                 </div>

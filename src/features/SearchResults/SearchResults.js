@@ -47,18 +47,22 @@ export default function SearchResults() {
                 <div className={classes.result}>
 
                 </div>
-                <div className={classes.paginate}>
-
-                </div>
-                <div className={classes.recommended}>
+            </div>
+            <div className={classes.recommended}>
+                <div className="row">
                     <div className={classes.title}>
                         <h1>Recommended places to visit</h1>
                         <h4>Explore some of the best places to visit in the world</h4>
                     </div>
-                    {!loading && (
-                        <Recommended tours={data.recommended}/>
-                    )}
                 </div>
+                {!loading && (
+                    <Recommended tours={data.recommended.slice(0,4)}/>
+                )}
+            </div>
+            <div className="row">
+                <div className={classes.paginate}>
+
+            </div>
             </div>
         </div>
     )

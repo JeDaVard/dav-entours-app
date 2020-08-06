@@ -152,8 +152,8 @@
     display: -ms-flexbox;
     display: -webkit-flex;
     display: flex;
-    grid-template-rows: 1fr;
     margin: -6px;
+    grid-template-rows: 1fr;
 }
 
 
