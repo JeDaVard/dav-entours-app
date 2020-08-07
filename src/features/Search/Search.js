@@ -16,7 +16,7 @@ const cx = classNames.bind(classes)
 function Search(props) {
     const ref = useRef(null);
     const history = useHistory();
-    const { searching } = props;
+    const { searching, closeSearch } = props;
 
     function onInputEnter(e) {
         if (e.key === 'Enter') {
@@ -140,11 +140,18 @@ function Search(props) {
             .slice(-1)
             .toString()
             .trim();
+        const qPreciseLoc = loc.place_name
+            .split(',')[0];
         const qCoordinates = loc.geometry.coordinates.toString();
         const qDates = [+input.date.startDate, +input.date.endDate].toString();
         const qParticipants = [input.participants, input.maxGroupSize].toString();
 
-        history.push(`/tours/search?place=${qLocName}&coordinates=${qCoordinates}&dates=${qDates}&participants=${qParticipants}`)
+        const fromSearch = history.location.pathname.startsWith('/tours/search')
+
+        if (fromSearch) closeSearch(false);
+
+        history.push(`/tours/search?place=${qLocName}&precise=${qPreciseLoc}&coordinates=${qCoordinates}&dates=${qDates}&participants=${qParticipants}`,
+            { fromSearch })
     }
 
     return (

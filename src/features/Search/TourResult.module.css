@@ -1,0 +1,487 @@
+.tourResults {
+    padding: 0 2rem 0 7.5%;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.tour {
+    padding: 2rem 0;
+    display: flex;
+    position: relative;
+    /*align-items: center;*/
+}
+
+.tour:not(:last-of-type) {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+.tour:last-of-type {
+    padding-bottom: 0;
+}
+
+.imageFrame {
+    width: 34rem;
+    height: 20rem;
+    border-radius: 1.4rem;
+    position: relative;
+    -webkit-mask-image: -webkit-radial-gradient(center, white, black);
+}
+
+.image {
+    width: 34rem;
+    height: 20rem;
+    object-fit: cover;
+    border-radius: 1.4rem;
+}
+
+.tourInfo {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    padding-left: 1.4rem;
+}
+
+.top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.locInfo {
+    display: flex;
+}
+
+.locInfo > :first-child {
+    margin-right: 1rem;
+}
+
+.title {
+
+}
+
+.titleLink {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.title h1 {
+    font-weight: 400;
+    font-size: 1.7rem;
+}
+
+.distance {
+    display: flex;
+    align-items: center;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.distance h2,
+.distance h3 {
+    font-size: 1.3rem;
+    font-weight: 400;
+}
+
+.distance h2 {
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.64);
+}
+
+.location {
+    display: flex;
+    align-items: center;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.location h2 {
+    font-size: 1.3rem;
+    font-weight: 400;
+}
+
+.locIcon {
+    width: 1.4rem;
+    height: 1.4rem;
+    fill: rgba(0, 0, 0, 0.5);
+    margin-right: .2rem;
+}
+
+.saveBig {
+    cursor: pointer;
+    background: transparent;
+    outline: none;
+    border: none;
+    width: 3.6rem;
+    height: 3.6rem;
+    border-radius: .5rem;
+    transition: all .1s;
+}
+
+.saveBig:hover,
+.saveBig:active {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.saveBigIcon {
+    width: 2.6rem;
+    height: 2.6rem;
+    fill: rgb(234, 10, 62);
+    transition: all .2s;
+}
+
+.saveBig:hover .saveBigIcon,
+.saveBig:active .saveBigIcon {
+    fill: rgba(0, 0, 0, 0.8);
+}
+
+.middle {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.bottom {
+    display: flex;
+    justify-content: space-between;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+}
+
+.ratingIcon {
+    width: 1.5rem;
+    height: 1.5rem;
+    fill: #3db062;
+    margin-top: -.2rem;
+}
+
+.rating h1 {
+    font-weight: 500;
+    font-size: 1.5rem;
+    margin-left: .2rem;
+}
+
+.rating h2 {
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.rating p {
+    margin: 4px;
+    font-size: 1.4rem;
+    color: rgba(0, 0, 0, 0.2);
+}
+
+.price {
+    display: flex;
+}
+
+.price h1 {
+    font-size: 1.6rem;
+    font-weight: 500;
+}
+.price h2 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    /*color: rgba(0, 0, 0, 0.6);*/
+}
+
+.locs {
+    margin-top: 3.4rem;
+    display: flex;
+}
+
+.locs > div:not(:first-of-type) {
+    /*position: absolute;*/
+    margin-left: 4rem;
+}
+.locs > div:first-of-type {
+    /*position: absolute;*/
+    margin-left: 1rem;
+}
+
+.locs > div {
+    /*background: rgba(0, 0, 0, 0.8);*/
+    background: #4fc877;
+    width: .5rem;
+    height: .5rem;
+    border-radius: 50%;
+    position: relative;
+}
+
+.locs > :nth-child(odd) {
+}
+
+.locs > :nth-child(odd):not(:first-of-type):before {
+    content: '';
+    position: absolute;
+    width: 5rem;
+    height: 1px;
+    background: rgba(0, 0, 0, 0.08);
+    left: -4.5rem;
+    top: 1.2rem;
+    transform: rotate(-24deg);
+}
+
+.locs > :nth-child(odd) {
+}
+
+.locs > :nth-child(even) {
+    margin-top: 2rem;
+}
+
+.locs > :nth-child(even):before {
+    content: '';
+    position: absolute;
+    width: 5rem;
+    height: 1px;
+    background: rgba(0, 0, 0, 0.08);
+    left: -4.5rem;
+    top: -.8rem;
+    transform: rotate(24deg);
+}
+
+.locs > :nth-child(even) {
+}
+
+.locs > div:after {
+    content: '';
+    position: absolute;
+    width: .7rem;
+    height: .7rem;
+    left: -.1rem;
+    top: -.1rem;
+    background: #4fc877;
+    border-radius: 50%;
+    z-index: 2;
+}
+
+.locs > :nth-child(odd) > .locAnim .locVisible {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.6);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-left: -1rem;
+    font-size: 1.3rem;
+    position: absolute;
+    padding-bottom: 2rem;
+    top: -2.5rem;
+    opacity: 1;
+    transition: all .2s;
+}
+.locs > :nth-child(odd) > .locAnim .locInvisible {
+    /*text-decoration: none;*/
+    color: rgba(0, 0, 0, 0.8);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-left: -1rem;
+    font-size: 1.3rem;
+    visibility: hidden;
+    position: absolute;
+    top: -2.5rem;
+    opacity: 0;
+    transition: all .2s;
+}
+.locs > :nth-child(odd) > .locAnim:hover .locVisible,
+.locs > :nth-child(odd) > .locAnim:active .locVisible {
+    transform: translateY(-1.8rem);
+    opacity: 0;
+}
+.locs > :nth-child(odd) > .locAnim:hover .locInvisible,
+.locs > :nth-child(odd) > .locAnim:active .locInvisible {
+    transform: translateY(-1.8rem);
+    visibility: initial;
+    opacity: 1;
+}
+
+.locs > :nth-child(even) > .locAnim .locVisible {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.6);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-left: -1rem;
+    font-size: 1.3rem;
+    position: absolute;
+    padding: 1rem 0;
+    /*top: 1rem;*/
+    opacity: 1;
+    transition: all .2s;
+}
+.locs > :nth-child(even) > .locAnim .locInvisible {
+    /*text-decoration: none;*/
+    color: rgba(0, 0, 0, 0.8);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-left: -1rem;
+    font-size: 1.3rem;
+    position: absolute;
+    visibility: hidden;
+    /*padding: 2rem 0;*/
+    top: 1rem;
+    opacity: 0;
+    transition: all .2s;
+}
+.locs > :nth-child(even) > .locAnim:hover .locVisible,
+.locs > :nth-child(even) > .locAnim:active .locVisible {
+    transform: translateY(1.8rem);
+    opacity: 0;
+}
+.locs > :nth-child(even) > .locAnim:hover .locInvisible,
+.locs > :nth-child(even) > .locAnim:active .locInvisible {
+    transform: translateY(1.8rem);
+    visibility: initial;
+    opacity: 1;
+}
+
+.locAnim {
+    cursor: pointer;
+    width: .3rem;
+    height: .3rem;
+    background: #4e4e4e;
+    position: absolute;
+    top: .1rem;
+    left: .1rem;
+    border-radius: 50%;
+    z-index: 3;
+}
+
+.locAnim:after {
+    content: '';
+    width: .3rem;
+    height: .3rem;
+    background: #4e4e4e;
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(1);
+    transition: all .1s;
+}
+
+.locAnim:before {
+    content: '';
+    width: .3rem;
+    height: .3rem;
+    background: #4fc877;
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(1);
+    transition: all .2s;
+}
+
+.locAnim:hover:after {
+    transform: scale(8);
+}
+
+.locAnim:hover a {
+    opacity: 1;
+}
+
+.locAnim:hover:before {
+    transform: scale(10);
+}
+
+.guides {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin-top: -2rem;
+}
+
+.guideLink {
+    transition: all .2s;
+    transform: scale(1);
+}
+
+.guideLink:hover,
+.guideLink:active {
+    transform: scale(1.1);
+}
+
+.guidePhotoFrame {
+    width: 3.2rem;
+    height: 2rem;
+}
+
+.guidePhoto {
+    position: absolute;
+    width: 3.2rem;
+    height: 3.2rem;
+    border-radius: 50%;
+    object-fit: cover;
+    background: rgba(0, 0, 0, 0.14);
+    border: 3px solid white;
+}
+
+.separator {
+    display: initial;
+}
+
+@media (max-width: 744px) {
+    .separator {
+        display: none;
+    }
+    .tourResults {
+        padding: 0 5%
+    }
+    .tour {
+        flex-direction: column;
+        padding: 2rem 0 .6rem 0;
+    }
+    .imageFrame {
+        width: 100%;
+        height: 24rem;
+    }
+    .image {
+        width: 100%;
+        height: 24rem;
+    }
+    .tourInfo {
+        margin-top: 1rem;
+        padding-left: 0;
+    }
+    .distance {
+        position: absolute;
+        top: 3.2rem;
+        left: 1.2rem;
+        padding: .6rem 1rem;
+        background: rgba(255, 255, 255, 0.94);
+        border-radius: .5rem;
+    }
+    .middle {
+        display: none;
+    }
+    .map {
+        display: none;
+    }
+}
+
+@media (min-width: 745px) and (max-width: 950px) {
+    .title h1 {
+        font-size: 2.6rem;
+    }
+    .tour {
+        /*padding: 2rem 0 .6rem 0;*/
+    }
+    .map {
+        display: none;
+    }
+    .tours {
+        flex: 1 1 100%;
+    }
+    .tourResults {
+        padding: 0 5%
+    }
+    .locInfo {
+        flex-direction: column;
+    }
+    .imageFrame {
+        width: 30rem;
+        height: 22rem;
+    }
+    .image {
+        width: 30rem;
+        height: 22rem;
+    }
+    .title h1 {
+        font-size: 1.7rem;
+    }
+}

@@ -29,6 +29,15 @@
     color: rgba(255, 255, 255, 0.7);
 }
 
+@media (max-width: 745px) {
+    .searchTitle h1 {
+        text-shadow: 0 0 10px black;
+    }
+    .searchTitle h4 {
+        text-shadow: 0 0 2px black;
+    }
+}
+
 .headCall {
     position: absolute;
     width: 100%;

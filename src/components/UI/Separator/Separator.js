@@ -11,6 +11,7 @@ const Separator = (props) => {
     }
 
     if (props.height) styles.height = props.height+'rem';
+    if (props.width) styles.width = props.width+'rem';
 
     return (
         <>

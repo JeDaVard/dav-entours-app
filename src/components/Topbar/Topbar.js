@@ -70,7 +70,7 @@ function Topbar(props) {
                             transparent={isTransparent} />
                         {(inMain || searching) && (
                             <div className={classes.search}>
-                                <BigSearch forced={searching} />
+                                <BigSearch forced={searching} setForce={setSearching}/>
                             </div>
                         )}
                         <NavProfile

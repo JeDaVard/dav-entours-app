@@ -44,6 +44,7 @@
     border-radius: 1.4rem;
     /*overflow: hidden;*/
     position: relative;
+    -webkit-mask-image: -webkit-radial-gradient(center, white, black);
 }
 
 .image {
@@ -51,11 +52,16 @@
     height: 34rem;
     object-fit: cover;
     border-radius: 1.4rem;
-    position: relative;
 }
 
 .bottom {
     margin-top: .6rem;
+}
+
+.ratingBox {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .rating {
@@ -66,7 +72,7 @@
 .rating h2 {
     font-size: 1.4rem;
     font-weight: 500;
-    margin-left: .4rem;
+    margin-left: .2rem;
 }
 
 .rating h3 {
@@ -80,13 +86,87 @@
     font-size: 1.5rem;
 }
 
+.price {
+    display: flex;
+    align-items: center;
+}
+
+.price h2 {
+    font-weight: 500;
+    font-size: 1.4rem;
+}
+
+.price h3 {
+    font-weight: 400;
+    font-size: 1.4rem;
+}
+
 .title {
-    margin-top: .2rem;
+    margin-top: 0;
 }
 
 .title h1 {
     font-size: 1.5rem;
     font-weight: 400;
+}
+
+.title h2 {
+    margin-top: .2rem;
+    display: flex;
+    align-items: center;
+}
+
+.title h2 span {
+    font-size: 1.3rem;
+    margin-left: .2rem;
+    font-weight: 400;
+}
+
+.icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    padding-bottom: .2rem;
+    fill: rgba(0, 0, 0, 0.7);
+}
+
+.iconRating {
+    width: 1.8rem;
+    height: 1.8rem;
+    fill: #3db062;
+    padding-bottom: .3rem;
+}
+
+.start {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.95);
+    padding: .2rem .6rem;
+    border-radius: .5rem;
+}
+
+.start h4 {
+    color: rgba(0, 0, 0, 0.8);
+    font-size: 1.3rem;
+    font-weight: 400;
+    margin-left: .2rem;
+}
+
+.save {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: .5rem .5rem 0 .5rem;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: .5rem;
+}
+
+.iconSave {
+    width: 1.8rem;
+    height: 1.8rem;
+    fill: white;
 }
 
 @media (min-width: 744px) and (max-width: 950px) {
@@ -98,7 +178,11 @@
     .tour:first-of-type {
         padding: 0 0 0 2rem;
     }
-    .content {
+    .imageFrame {
+        height: 24rem;
+    }
+    .image {
+        height: 24rem;
     }
 }
 
@@ -111,6 +195,7 @@
     }
     .tour {
         width: 25%;
+        padding: 0;
     }
     .imageFrame {
         height: 19rem;
@@ -125,13 +210,13 @@
         margin-top: 2rem;
     }
 
-    .content > :nth-child(1n),
-    .content > :nth-child(2n),
-    .content > :nth-child(3n),
-    .content > :nth-child(5n),
-    .content > :nth-child(6n),
-    .content > :nth-child(7n) {
-        padding-right: .8rem;
+    .tour:nth-child(1),
+    .tour:nth-child(2),
+    .tour:nth-child(3),
+    .tour:nth-child(5),
+    .tour:nth-child(6),
+    .tour:nth-child(7) {
+        padding-right: 1rem;
     }
 
 }

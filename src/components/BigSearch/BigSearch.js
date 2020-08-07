@@ -10,7 +10,6 @@ export default function BigSearch(props) {
     const [ trigger, setTrigger ] = useScrollTrigger({changePoint: 10})
     const ref = useRef(null);
 
-
     return (
         <CSSTransition
             nodeRef={ref}
@@ -24,7 +23,7 @@ export default function BigSearch(props) {
                     <Navigation searching={props.forced}/>
                 </div>
                 <div className={classes.container}>
-                    <Search searching={props.forced}/>
+                    <Search searching={props.forced} closeSearch={props.setForce}/>
                 </div>
             </div>
         </CSSTransition>
