@@ -82,6 +82,16 @@ const cache = new InMemoryCache({
                     merge(existing, incoming, { mergeObjects }) {
                         return mergeObjects(existing, incoming)
                     }
+                },
+                search: {
+                    merge(ex= {}, inc) {
+                        return inc
+                    }
+                },
+                recommended: {
+                    merge(ex= [], inc) {
+                        return inc
+                    }
                 }
             }
         },

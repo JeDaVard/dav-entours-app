@@ -3,9 +3,9 @@ import classes from './TourMap.module.css'
 import ReactMapGL, {Marker, NavigationControl, Popup } from "react-map-gl";
 
 const TourMap =  React.forwardRef((props, ref) => {
-    const { viewport, nextViewportHandler } = props;
+    const { viewport, nextViewportHandler, search } = props;
     return (
-        <div className={classes.mapFrame} ref={ref}>
+        <div className={search ? classes.mapFrameSearch : classes.mapFrame} ref={ref}>
             <ReactMapGL
                 {...viewport}
                 scrollZoom={false}

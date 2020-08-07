@@ -13,6 +13,8 @@ import ScrollToTop from "../../components/UI/ScrollToTop";
 import TourHeadLoading from "./TourHead/TourHeadLoading";
 import TourHeadLoadingMobile from "./TourHead/TourHeadLoadingMobile";
 import TourOrder from "./TourOrder/TourOrder";
+import Recommended from "../Search/Recommended";
+import {FETCH_RECOMMENDED} from "../SearchResults/queries";
 
 
 function TourPage() {
@@ -27,6 +29,10 @@ function TourPage() {
             limit: 4
         },
     });
+
+    const recommended = useQuery(FETCH_RECOMMENDED);
+
+
     if (loading && !data) return (
         <>
             {isMobile ? <TourHeadLoadingMobile /> : <TourHeadLoading />}
@@ -45,6 +51,9 @@ function TourPage() {
             <TourLocations data={{start: data.tour.startLocation, locations: data.tour.locations}}/>
             <Separator margin={'0 2'} />
             <TourReviews tour={data.tour} more={fetchMore} loading={loading}/>
+            <Separator margin={'3 2'} />
+            {!recommended.loading && <Recommended tours={recommended.data.recommended.slice(0,4)}/>}
+            <Separator color="light" margin={'3 2'} height={'1'}/>
             <TourOrder tour={data.tour} />
         </>
     );

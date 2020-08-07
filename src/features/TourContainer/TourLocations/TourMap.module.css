@@ -6,6 +6,14 @@
     overflow: hidden;
 }
 
+.mapFrameSearch {
+    color: rgba(0, 0, 0, 0.6);
+    position: relative;
+    height: calc(100vh - 8rem);
+    width: 100%;
+    overflow: hidden;
+}
+
 .marker {
     background: url('pin.png') no-repeat;
     background-size: contain;

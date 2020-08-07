@@ -56,15 +56,28 @@ const SearchQueryFragment = gql`
 
 export const FETCH_SEARCH_RESULTS = gql`
 	query tourSearchResult($initInput: SearchInput) {
-		search(initInput: $initInput) {
+		search(initInput: $initInput) @connection(key: "search") {
 			hasMore
 			nextPage
+			hasPrevPage
 			total
+			page
+			totalPages
+			prevPage
 			data {
 				distance
 				...SearchQueryFragment
 			}
 		}
+		recommended {
+			...SearchQueryFragment
+		}
+	}
+	${SearchQueryFragment}
+`
+
+export const FETCH_RECOMMENDED = gql`
+	query fetchRecommended {
 		recommended {
 			...SearchQueryFragment
 		}

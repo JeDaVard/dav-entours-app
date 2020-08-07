@@ -384,6 +384,7 @@
     flex-direction: column;
     position: relative;
     margin-top: -2rem;
+    margin-right: .2rem;
 }
 
 .guideLink {

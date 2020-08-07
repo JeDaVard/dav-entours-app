@@ -21,7 +21,7 @@ function TourLocations(props) {
         height: 400,
         latitude,
         longitude,
-        zoom
+        zoom: props.search ? 3 : zoom
         // latitude: props.data.start.coordinates[1],
         // longitude: props.data.start.coordinates[0],
         // zoom: 6
@@ -43,10 +43,13 @@ function TourLocations(props) {
     }
     return (
             <div>
-                <Locations
-                    viewportHandler={viewportHandler}
-                    data={props.data} />
+                {!props.search && (
+                    <Locations
+                        viewportHandler={viewportHandler}
+                        data={props.data} />
+                )}
                 <TourMap
+                    search={props.search}
                     ref={ref}
                     viewport={viewport}
                     nextViewportHandler={nextViewportHandler}

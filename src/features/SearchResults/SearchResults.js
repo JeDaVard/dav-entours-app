@@ -9,6 +9,7 @@ import Recommended from "../Search/Recommended";
 import Justicon from "../../components/UI/JustIcon/Justicon";
 import TourResult from "../Search/TourResult";
 import {useSelector} from "react-redux";
+import TourLocations from "../TourContainer/TourLocations/TourLocations";
 
 export default function SearchResults() {
     const history = useHistory();
@@ -30,15 +31,17 @@ export default function SearchResults() {
 
     let { coordinates, dates } = parsedData
 
-    const { loading, error, data, refetch } = useQuery(FETCH_SEARCH_RESULTS, {
+    const { loading, error, data, refetch, fetchMore } = useQuery(FETCH_SEARCH_RESULTS, {
         variables: {
             initInput: {
                 coordinates,
                 dates,
                 maxGroupSize,
-                participants
+                participants,
+                page: 1,
+                limit: 8
             }
-        },
+        }
     });
 
     useEffect(() => {
@@ -47,6 +50,25 @@ export default function SearchResults() {
         }
     }, [location.search])
 
+    const search = !loading && data ? data.search : {};
+
+    const paginate = (e, page) => {
+        e.preventDefault();
+
+        fetchMore({
+            notifyOnNetworkStatusChange: true,
+            variables: {
+                initInput: {
+                    coordinates,
+                    dates,
+                    maxGroupSize,
+                    participants,
+                    page,
+                    limit: 8
+                }
+            },
+        })
+    }
 
     return (
         <div>
@@ -60,7 +82,17 @@ export default function SearchResults() {
                         )}
                     </div>
                     <div className={classes.map}>
-
+                        <div className={classes.mapFrame}>
+                            {!loading && !isMobile && (
+                                <TourLocations
+                                    search
+                                    data={{
+                                        start: data.search.data[0].startLocation,
+                                        // locations: data.search.data.reduce((c, v) => c.concat(v.locations), [])
+                                        locations: data.search.data.map(t => t.startLocation)
+                                    }} />
+                            )}
+                        </div>
                     </div>
                 </div>
             <div className={classes.recommended}>
@@ -76,13 +108,59 @@ export default function SearchResults() {
             </div>
             <div className="row">
                 <div className={classes.paginate}>
-                    <button className={classes.nextButton}>
-                        <Justicon icon={'chevron-left'} className={classes.nextIcon}/>
-                    </button>
-                    <button className={classes.page}>2</button>
-                    <button className={classes.nextButton}>
-                        <Justicon icon={'chevron-right'} className={classes.nextIcon}/>
-                    </button>
+                    {search.hasPrevPage && (
+                        <button className={classes.nextButton}
+                                onClick={e => paginate(e, search.prevPage)}
+                                disabled={loading}>
+                            <Justicon icon={'chevron-left'} className={classes.nextIcon}/>
+                        </button>
+                    )}
+                    {search.page > 3 && (
+                        <>
+                            <button className={classes.page}
+                                    onClick={e => paginate(e, 1)}
+                                    disabled={loading}>
+                                1
+                            </button>
+                            <div>
+                                <h2>...</h2>
+                            </div>
+                        </>
+                    )}
+                    {search.page - 2 > 1 && (
+                        <button className={classes.page}
+                                onClick={e => paginate(e, search.page - 1)}
+                                disabled={loading}>
+                            {search.page - 1}
+                        </button>
+                    )}
+                    <button className={classes.pageActive} disabled={true}>{search.page}</button>
+                    {search.page + 2 < search.totalPages && (
+                        <button className={classes.page}
+                                onClick={e => paginate(e, search.page + 1)}
+                                disabled={loading}>
+                            {search.page + 1}
+                        </button>
+                    )}
+                    {search.hasMore && search.totalPages - 1 > search.page && (
+                        <>
+                            <div>
+                                <h2>...</h2>
+                            </div>
+                            <button className={classes.page}
+                                    onClick={e => paginate(e, search.totalPages)}
+                                    disabled={loading}>
+                                {search.totalPages}
+                            </button>
+                        </>
+                    )}
+                    {search.hasMore && (
+                        <button className={classes.nextButton}
+                                onClick={e => paginate(e, search.nextPage)}
+                                disabled={loading}>
+                            <Justicon icon={'chevron-right'} className={classes.nextIcon}/>
+                        </button>
+                    )}
                 </div>
                 <div className={classes.info}>
                     <p>Prices are for a single person. Additional fees apply. Taxes may be added.</p>
