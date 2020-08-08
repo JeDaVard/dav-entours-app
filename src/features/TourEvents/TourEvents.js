@@ -7,6 +7,7 @@ import TopLoading from "../../components/UI/TopLoading/TopLoading";
 import PastEvents from "./PastEvents";
 import UpcomingEvents from "./UpcomingEvents";
 import classes from './TourEvents.module.css'
+import Saved from "../Saved/Saved";
 
 function TourEvents(props) {
     const { location } = props;
@@ -17,6 +18,9 @@ function TourEvents(props) {
             <div className={classes.TourEvents}>
                 <h1 className={classes.name}>Tours</h1>
                     <Tabs defaultTab={tabParam}>
+                        <Tab label={'saved'} tabName={'Saved'}>
+                            <Saved />
+                        </Tab>
                         <Tab label={'upcoming'} tabName={'Upcoming'}>
                             <Query query={FETCH_CURRENT_ORDERS}>
                                 {

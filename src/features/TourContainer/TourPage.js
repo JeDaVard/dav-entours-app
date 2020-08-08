@@ -52,7 +52,9 @@ function TourPage() {
             <Separator margin={'0 2'} />
             <TourReviews tour={data.tour} more={fetchMore} loading={loading}/>
             <Separator margin={'3 2'} />
-            {!recommended.loading && <Recommended tours={recommended.data.recommended.slice(0,4)}/>}
+            {!recommended.loading
+                && recommended.data
+                && <Recommended tours={recommended.data.recommended.slice(0,4)}/>}
             <Separator color="light" margin={'3 2'} height={'1'}/>
             <TourOrder tour={data.tour} />
         </>

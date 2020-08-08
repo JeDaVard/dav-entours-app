@@ -24,7 +24,7 @@ const TourMap =  React.forwardRef((props, ref) => {
                 </div>
                 {props.data.locations.map((loc, index) => (
                     <div
-                        key={loc.description}
+                        key={loc.coordinates.toString()}
                     >
                         <Marker
                             latitude={loc.coordinates[1]}
@@ -47,7 +47,11 @@ const TourMap =  React.forwardRef((props, ref) => {
                                     rel="noopener noreferrer"
                                     className={classes.popUpLink}
                                 >
-                                    <div className={classes.popUp}><b>{index+1}</b>&nbsp;-&nbsp;{loc.description}&nbsp;({loc.day} days)</div>
+                                    {search ? (
+                                        <div className={classes.popUp}>{loc.address.split(',').slice(0,2).join(', ')}</div>
+                                    ) : (
+                                        <div className={classes.popUp}><b>{index+1}</b>&nbsp;-&nbsp;{loc.description}&nbsp;({loc.day} days)</div>
+                                    )}
                                 </a>
                             </Popup>
                     </div>

@@ -6,18 +6,18 @@ import { FETCH_SAVED, REMOVE_SAVED_TOUR } from './queries';
 import moment from 'moment';
 import classes from './Saved.module.css';
 import Justicon from '../../components/UI/JustIcon/Justicon';
-import Separator from '../../components/UI/Separator/Separator';
+// import Separator from '../../components/UI/Separator/Separator';
 import TopLoading from '../../components/UI/TopLoading/TopLoading';
 import ThumbedImage from "../../components/UI/ImageLoading/ThumbedImage";
 
 function Saved() {
     const [ removeSavedTour, {loading} ] = useMutation(REMOVE_SAVED_TOUR)
     return (
-        <section className="row">
+        <section>
             { loading && <TopLoading /> }
             <div className={classes.Saved}>
-                <h1 className={classes.name}>Saved</h1>
-                <Separator margin={'0 2'} color={'normal'} />
+            {/*    <h1 className={classes.name}>Saved</h1>*/}
+            {/*    <Separator margin={'0 2'} color={'normal'} />*/}
                 <div className={classes.content}>
                     <Query query={FETCH_SAVED}>
                         {

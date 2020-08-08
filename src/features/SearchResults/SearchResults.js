@@ -10,6 +10,8 @@ import Justicon from "../../components/UI/JustIcon/Justicon";
 import TourResult from "../Search/TourResult";
 import {useSelector} from "react-redux";
 import TourLocations from "../TourContainer/TourLocations/TourLocations";
+import {Pagination} from "../Pagination/Pagination";
+import ScrollToTop from "../../components/UI/ScrollToTop";
 
 export default function SearchResults() {
     const history = useHistory();
@@ -31,7 +33,7 @@ export default function SearchResults() {
 
     let { coordinates, dates } = parsedData
 
-    const { loading, error, data, refetch, fetchMore } = useQuery(FETCH_SEARCH_RESULTS, {
+    const { loading, error, data, fetchMore, networkStatus } = useQuery(FETCH_SEARCH_RESULTS, {
         variables: {
             initInput: {
                 coordinates,
@@ -39,21 +41,18 @@ export default function SearchResults() {
                 maxGroupSize,
                 participants,
                 page: 1,
-                limit: 8
+                limit: 4
             }
-        }
+        },
+        fetchPolicy: "network-only",
+        nextFetchPolicy: "cache-first"
     });
 
-    useEffect(() => {
-        if (location.state.fromSearch) {
-            refetch()
-        }
-    }, [location.search])
-
-    const search = !loading && data ? data.search : {};
+    const search = data ? data.search : {};
 
     const paginate = (e, page) => {
         e.preventDefault();
+        window.scrollTo(0, 0);
 
         fetchMore({
             notifyOnNetworkStatusChange: true,
@@ -64,11 +63,13 @@ export default function SearchResults() {
                     maxGroupSize,
                     participants,
                     page,
-                    limit: 8
+                    limit: 4
                 }
             },
         })
     }
+
+    console.log(networkStatus)
 
     return (
         <div>
@@ -83,7 +84,7 @@ export default function SearchResults() {
                     </div>
                     <div className={classes.map}>
                         <div className={classes.mapFrame}>
-                            {!loading && !isMobile && (
+                            {data && !!data.search.data.length && !isMobile && (
                                 <TourLocations
                                     search
                                     data={{
@@ -102,66 +103,20 @@ export default function SearchResults() {
                         <h4>Explore some of the best places to visit in the world</h4>
                     </div>
                 </div>
-                {!loading && (
+                {data && !!data.recommended.length && (
                     <Recommended tours={data.recommended.slice(0,4)}/>
                 )}
             </div>
             <div className="row">
-                <div className={classes.paginate}>
-                    {search.hasPrevPage && (
-                        <button className={classes.nextButton}
-                                onClick={e => paginate(e, search.prevPage)}
-                                disabled={loading}>
-                            <Justicon icon={'chevron-left'} className={classes.nextIcon}/>
-                        </button>
-                    )}
-                    {search.page > 3 && (
-                        <>
-                            <button className={classes.page}
-                                    onClick={e => paginate(e, 1)}
-                                    disabled={loading}>
-                                1
-                            </button>
-                            <div>
-                                <h2>...</h2>
-                            </div>
-                        </>
-                    )}
-                    {search.page - 2 > 1 && (
-                        <button className={classes.page}
-                                onClick={e => paginate(e, search.page - 1)}
-                                disabled={loading}>
-                            {search.page - 1}
-                        </button>
-                    )}
-                    <button className={classes.pageActive} disabled={true}>{search.page}</button>
-                    {search.page + 2 < search.totalPages && (
-                        <button className={classes.page}
-                                onClick={e => paginate(e, search.page + 1)}
-                                disabled={loading}>
-                            {search.page + 1}
-                        </button>
-                    )}
-                    {search.hasMore && search.totalPages - 1 > search.page && (
-                        <>
-                            <div>
-                                <h2>...</h2>
-                            </div>
-                            <button className={classes.page}
-                                    onClick={e => paginate(e, search.totalPages)}
-                                    disabled={loading}>
-                                {search.totalPages}
-                            </button>
-                        </>
-                    )}
-                    {search.hasMore && (
-                        <button className={classes.nextButton}
-                                onClick={e => paginate(e, search.nextPage)}
-                                disabled={loading}>
-                            <Justicon icon={'chevron-right'} className={classes.nextIcon}/>
-                        </button>
-                    )}
-                </div>
+                <Pagination loading={loading}
+                            hasPrevPage={search.hasPrevPage}
+                            prevPage={search.prevPage}
+                            page={search.page}
+                            hasMore={search.hasMore}
+                            nextPage={search.nextPage}
+                            totalPages={search.totalPages}
+                            paginate={paginate} />
+
                 <div className={classes.info}>
                     <p>Prices are for a single person. Additional fees apply. Taxes may be added.</p>
                 </div>
