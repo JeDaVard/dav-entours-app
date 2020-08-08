@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
+import {
+    LazyBook, LazyTourPage, LazyUserPage, LazyMyTours, LazyMake,
+    LazyInbox, LazyConversation, LazySaved, LazyTourEvents, LazySearchResults,
+    LazyEditTour, LazyMobileTopSearch
+} from './';
 import { connect } from 'react-redux';
 import { setDesktop, setMobile } from './actions';
 import Main from '../features/MainPage/Main';
@@ -17,45 +22,11 @@ import OnlyAuth from './OnlyAuth/OnlyAuth';
 import { useQuery, gql } from "@apollo/client";
 import NotFound from "./NotFound/NotFound";
 import TopLoading from "../components/UI/TopLoading/TopLoading";
-import EditTour from "../features/Make/EditTour";
-import lazyLoading from "../utils/lazyLoading";
-import './App.css';
-import TourHeadLoadingMobile from "../features/TourContainer/TourHead/TourHeadLoadingMobile";
-import TourHeadLoading from "../features/TourContainer/TourHead/TourHeadLoading";
 import Become from "../features/MainPage/Become/Become";
-import SearchResults from "../features/SearchResults/SearchResults";
+import MobileSearch from "../features/MobileSearch/MobileSearch";
+import './App.css';
 
 
-const LazyBook = lazyLoading(() => import('../features/Book/Book'), {
-    fallback: <TopLoading /> }
-);
-
-const LazyTourPage = lazyLoading(() => import('../features/TourContainer/TourPage'), {
-        fallback: <TourHeadLoading />,
-        mobileFallback: <TourHeadLoadingMobile />
-    }
-);
-const LazyUserPage = lazyLoading(() => import('../features/UserPage/UserPage'), {
-    fallback: <TopLoading /> }
-);
-const LazyMyTours = lazyLoading(() => import('../features/MyTours/MyTours'), {
-    fallback: <TopLoading /> }
-);
-const LazyMake = lazyLoading(() => import('../features/Make/Make'), {
-    fallback: <TopLoading /> }
-);
-const LazyInbox = lazyLoading(() => import('../features/Inbox/Inbox'), {
-    fallback: <TopLoading /> }
-);
-const LazyConversation = lazyLoading(() => import('../features/Inbox/Conversation/Conversation'), {
-    fallback: <TopLoading /> }
-);
-const LazySaved = lazyLoading(() => import('../features/MyTours/Saved/Saved'), {
-    fallback: <TopLoading /> }
-);
-const LazyTourEvents = lazyLoading(() => import('../features/TourEvents/TourEvents'), {
-    fallback: <TopLoading /> }
-);
 
 
 
@@ -142,7 +113,13 @@ function App(props) {
             <Layout
                 header={
                     props.isMobile ? (
-                        <MobileBar photo={photo} />
+                        <>
+                            {(props.location.pathname.startsWith('/tours')
+                                || props.location.pathname === '/') && (
+                                    <LazyMobileTopSearch />
+                            )}
+                            <MobileBar photo={photo} />
+                        </>
                     ) : (
                         <>
                             {!props.location.pathname.match(/^\/inbox\//) && (
@@ -180,8 +157,9 @@ function App(props) {
                 <Switch>
                     <Route exact path="/" component={Main} />
                     <Route path="/payments/book" component={LazyBook} />
-                    <Route path="/tour/:slug/edit" component={EditTour}/>
-                    <Route path="/tours/search" component={SearchResults}/>
+                    <Route path="/tour/:slug/edit" component={LazyEditTour}/>
+                    <Route path="/tours/search" component={LazySearchResults}/>
+                    <Route path="/tours" component={MobileSearch}/>
                     <Route path="/user/:id" component={LazyUserPage} />
                     <Route path="/make" component={LazyMake}/>
                     <Route path="/mytours" component={LazyMyTours}/>

@@ -1,5 +1,5 @@
 .MainHead {
-    background-image: url('../../../assets/img/main_mob.jpg');
+    background-image: url('../../../assets/img/mainMobC.jpg');
     background-size: cover;
     background-position: bottom;
     width: 100%;
@@ -52,8 +52,9 @@
 }
 
 .title h1 {
-    font-size: 4rem;
-    line-height: 5rem;
+    font-size: 2.6rem;
+    line-height: 3.rem;
+    width: 27rem;
     text-shadow: -2px -2px 4px rgba(0, 0, 0, 0.2);
 }
 
@@ -118,13 +119,14 @@
     .title h1 {
         font-size: 3rem;
         line-height: 3.8rem;
+        width: unset;
         text-shadow: -2px -2px 4px rgba(0, 0, 0, 0.1);
     }
     .description {
         width: unset;
     }
     .button {
-        margin-top: 3rem;
+        margin-top: 2rem;
     }
 }
 
@@ -156,9 +158,10 @@
     .title h1 {
         font-size: 3.2rem;
         line-height: 4rem;
+        width: unset;
         text-shadow: -2px -2px 4px rgba(0, 0, 0, 0.1);
     }
     .button {
-        margin-top: 3rem;
+        margin-top: 2rem;
     }
 }

@@ -5,8 +5,8 @@ import React from "react";
 export default function SearchLoading({isMobile}) {
     return (
         <div className={classes.tourResults}>
-            {[1,2,3,4].map(_ => (
-                <div className={classes.tour}>
+            {[1,2,3,4].map(i => (
+                <div className={classes.tour} key={i}>
                     {isMobile ? (
                         <ContentLoader
                             height={'327px'}

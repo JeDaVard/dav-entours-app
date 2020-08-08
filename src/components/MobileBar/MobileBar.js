@@ -16,11 +16,11 @@ function MobileBar(props) {
                     </svg>
                     <h2>Explore</h2>
                 </NavLink>
-                <NavLink to={'/saved'} className={classes.tab} activeClassName={classes.tab__active}>
+                <NavLink to={'/tours'} className={classes.tab} activeClassName={classes.tab__active}>
                     <svg className={classes.icon}>
-                        <use href={sprite + "#icon-heart"} />
+                        <use href={sprite + "#icon-search"} />
                     </svg>
-                    <h2>Saved</h2>
+                    <h2>Search</h2>
                 </NavLink>
                 <NavLink to={'/tourevents'} className={classes.tab} activeClassName={classes.tab__active}>
                     <svg className={classes.icon}>
