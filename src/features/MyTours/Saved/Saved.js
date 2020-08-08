@@ -5,10 +5,10 @@ import { useMutation } from '@apollo/client';
 import { FETCH_SAVED, REMOVE_SAVED_TOUR } from './queries';
 import moment from 'moment';
 import classes from './Saved.module.css';
-import Justicon from '../../components/UI/JustIcon/Justicon';
+import Justicon from '../../../components/UI/JustIcon/Justicon';
 // import Separator from '../../components/UI/Separator/Separator';
-import TopLoading from '../../components/UI/TopLoading/TopLoading';
-import ThumbedImage from "../../components/UI/ImageLoading/ThumbedImage";
+import TopLoading from '../../../components/UI/TopLoading/TopLoading';
+import ThumbedImage from "../../../components/UI/ImageLoading/ThumbedImage";
 
 function Saved() {
     const [ removeSavedTour, {loading} ] = useMutation(REMOVE_SAVED_TOUR)

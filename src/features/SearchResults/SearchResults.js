@@ -6,12 +6,11 @@ import { FETCH_SEARCH_RESULTS } from "./queries";
 import { useHistory } from "react-router-dom";
 import qs from "query-string";
 import Recommended from "../Search/Recommended";
-import Justicon from "../../components/UI/JustIcon/Justicon";
 import TourResult from "../Search/TourResult";
 import {useSelector} from "react-redux";
 import TourLocations from "../TourContainer/TourLocations/TourLocations";
-import {Pagination} from "../Pagination/Pagination";
-import ScrollToTop from "../../components/UI/ScrollToTop";
+import {Pagination} from "../../components/Pagination/Pagination";
+import SearchLoading from "../Search/SearchLoading";
 
 export default function SearchResults() {
     const history = useHistory();
@@ -69,17 +68,17 @@ export default function SearchResults() {
         })
     }
 
-    console.log(networkStatus)
-
     return (
         <div>
             <MainHead location={parsedData.place} />
                 <div className={classes.result}>
                     <div className={classes.tours}>
-                        {!loading && data && (
+                        {!loading && data ? (
                             <TourResult tours={data.search.data}
                                         searchCountry={parsedData.place}
                                         searchLocation={parsedData.precise} />
+                        ) : (
+                            <SearchLoading isMobile={isMobile}/>
                         )}
                     </div>
                     <div className={classes.map}>

@@ -50,7 +50,7 @@ const LazyInbox = lazyLoading(() => import('../features/Inbox/Inbox'), {
 const LazyConversation = lazyLoading(() => import('../features/Inbox/Conversation/Conversation'), {
     fallback: <TopLoading /> }
 );
-const LazySaved = lazyLoading(() => import('../features/Saved/Saved'), {
+const LazySaved = lazyLoading(() => import('../features/MyTours/Saved/Saved'), {
     fallback: <TopLoading /> }
 );
 const LazyTourEvents = lazyLoading(() => import('../features/TourEvents/TourEvents'), {

@@ -7,7 +7,7 @@ import TopLoading from "../../components/UI/TopLoading/TopLoading";
 import PastEvents from "./PastEvents";
 import UpcomingEvents from "./UpcomingEvents";
 import classes from './TourEvents.module.css'
-import Saved from "../Saved/Saved";
+import Saved from "../MyTours/Saved/Saved";
 
 function TourEvents(props) {
     const { location } = props;

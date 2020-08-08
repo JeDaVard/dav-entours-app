@@ -1,6 +1,6 @@
 import React from "react";
 import classes from './Pagination.module.css'
-import Justicon from "../../components/UI/JustIcon/Justicon";
+import Justicon from "../UI/JustIcon/Justicon";
 
 export const Pagination = ({
     loading,

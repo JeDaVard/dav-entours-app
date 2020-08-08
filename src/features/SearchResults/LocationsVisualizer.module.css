@@ -1,0 +1,191 @@
+.locs {
+    display: flex;
+}
+
+.locs > div:not(:first-of-type) {
+    /*position: absolute;*/
+    margin-left: 4rem;
+}
+.locs > div:first-of-type {
+    /*position: absolute;*/
+    margin-left: 1rem;
+}
+
+.locs > div {
+    /*background: rgba(0, 0, 0, 0.8);*/
+    background: #4fc877;
+    width: .5rem;
+    height: .5rem;
+    border-radius: 50%;
+    position: relative;
+}
+
+.locs > :nth-child(odd) {
+}
+
+.locs > :nth-child(odd):not(:first-of-type):before {
+    content: '';
+    position: absolute;
+    width: 5rem;
+    height: 1px;
+    background: rgba(0, 0, 0, 0.08);
+    left: -4.5rem;
+    top: 1.2rem;
+    transform: rotate(-24deg);
+}
+
+.locs > :nth-child(odd) {
+}
+
+.locs > :nth-child(even) {
+    margin-top: 2rem;
+}
+
+.locs > :nth-child(even):before {
+    content: '';
+    position: absolute;
+    width: 5rem;
+    height: 1px;
+    background: rgba(0, 0, 0, 0.08);
+    left: -4.5rem;
+    top: -.8rem;
+    transform: rotate(24deg);
+}
+
+.locs > :nth-child(even) {
+}
+
+.locs > div:after {
+    content: '';
+    position: absolute;
+    width: .7rem;
+    height: .7rem;
+    left: -.1rem;
+    top: -.1rem;
+    background: #4fc877;
+    border-radius: 50%;
+    z-index: 2;
+}
+
+.locs > :nth-child(odd) > .locAnim .locVisible {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.6);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-left: -1rem;
+    font-size: 1.3rem;
+    position: absolute;
+    padding-bottom: 2rem;
+    top: -2.5rem;
+    opacity: 1;
+    transition: all .2s;
+}
+.locs > :nth-child(odd) > .locAnim .locInvisible {
+    /*text-decoration: none;*/
+    color: rgba(0, 0, 0, 0.8);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-left: -1rem;
+    font-size: 1.3rem;
+    visibility: hidden;
+    position: absolute;
+    top: -2.5rem;
+    opacity: 0;
+    transition: all .2s;
+}
+.locs > :nth-child(odd) > .locAnim:hover .locVisible,
+.locs > :nth-child(odd) > .locAnim:active .locVisible {
+    transform: translateY(-1.8rem);
+    opacity: 0;
+}
+.locs > :nth-child(odd) > .locAnim:hover .locInvisible,
+.locs > :nth-child(odd) > .locAnim:active .locInvisible {
+    transform: translateY(-1.8rem);
+    visibility: initial;
+    opacity: 1;
+}
+
+.locs > :nth-child(even) > .locAnim .locVisible {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.6);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-left: -1rem;
+    font-size: 1.3rem;
+    position: absolute;
+    padding: 1rem 0;
+    /*top: 1rem;*/
+    opacity: 1;
+    transition: all .2s;
+}
+.locs > :nth-child(even) > .locAnim .locInvisible {
+    /*text-decoration: none;*/
+    color: rgba(0, 0, 0, 0.8);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-left: -1rem;
+    font-size: 1.3rem;
+    position: absolute;
+    visibility: hidden;
+    /*padding: 2rem 0;*/
+    top: 1rem;
+    opacity: 0;
+    transition: all .2s;
+}
+.locs > :nth-child(even) > .locAnim:hover .locVisible,
+.locs > :nth-child(even) > .locAnim:active .locVisible {
+    transform: translateY(1.8rem);
+    opacity: 0;
+}
+.locs > :nth-child(even) > .locAnim:hover .locInvisible,
+.locs > :nth-child(even) > .locAnim:active .locInvisible {
+    transform: translateY(1.8rem);
+    visibility: initial;
+    opacity: 1;
+}
+
+.locAnim {
+    cursor: pointer;
+    width: .3rem;
+    height: .3rem;
+    background: #4e4e4e;
+    position: absolute;
+    top: .1rem;
+    left: .1rem;
+    border-radius: 50%;
+    z-index: 3;
+}
+
+.locAnim:after {
+    content: '';
+    width: .3rem;
+    height: .3rem;
+    background: #4e4e4e;
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(1);
+    transition: all .1s;
+}
+
+.locAnim:before {
+    content: '';
+    width: .3rem;
+    height: .3rem;
+    background: #4fc877;
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(1);
+    transition: all .2s;
+}
+
+.locAnim:hover:after {
+    transform: scale(8);
+}
+
+.locAnim:hover a {
+    opacity: 1;
+}
+
+.locAnim:hover:before {
+    transform: scale(10);
+}

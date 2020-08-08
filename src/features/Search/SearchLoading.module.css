@@ -1,0 +1,34 @@
+.tourResults {
+    padding: 0 2rem 0 7.5%;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.tour {
+    padding: 2rem 0;
+    display: flex;
+    position: relative;
+    /*align-items: center;*/
+}
+
+.tour:not(:last-of-type) {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+.tour:last-of-type {
+    padding-bottom: 0;
+}
+
+@media (max-width: 744px) {
+    .tourResults {
+        padding: 0 5%
+    }
+    .tour {
+        flex-direction: column;
+        padding: 2rem 0 .6rem 0;
+    }
+}
+
+@media (max-width: 1128px) and (min-width: 744px) {
+    .tourResults {
+        padding: 0 5%
+    }
+}

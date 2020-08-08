@@ -4,6 +4,7 @@ import ThumbedImage from "../../components/UI/ImageLoading/ThumbedImage";
 import Justicon from "../../components/UI/JustIcon/Justicon";
 import Separator from "../../components/UI/Separator/Separator";
 import { Link } from "react-router-dom";
+import LocationsVisualizer from "../SearchResults/LocationsVisualizer";
 
 export default function TourResult(props) {
     const { tours, searchLocation, searchCountry } = props;
@@ -11,7 +12,7 @@ export default function TourResult(props) {
         <div className={classes.tourResults}>
             {tours.map(tour => (
                 <div className={classes.tour} key={tour._id}>
-
+                    <Link to={`/tour/${tour.slug}`} className={classes.tourLinkAbsolute}/>
                     <Link to={`/tour/${tour.slug}`} className={classes.titleLink}>
                         <div className={classes.imageFrame}>
                             <ThumbedImage src={tour.imageCover} className={classes.image} alt={tour.name}/>
@@ -43,23 +44,8 @@ export default function TourResult(props) {
                         <div className={classes.separator}><Separator color='normal' width='4' margin='1 1'/></div>
                         <div className={classes.middle}>
                             <div className={classes.locs}>
-                                {tour.locations.length && (
-                                    tour.locations.map(loc => {
-                                        const locName = loc.address && loc.address.split(',')[0]
-                                        return (
-                                            <div key={loc.coordinates.toString()}><div className={classes.locAnim}>
-                                                <p className={classes.locVisible}>
-                                                    {locName && locName.split(' ')[0]}
-                                                </p>
-                                                <a href={`https://www.google.com/maps/place/${loc.coordinates.slice().reverse()}`}
-                                                   target="_blank"
-                                                   className={classes.locInvisible}>
-                                                    {locName && locName}
-                                                </a>
-                                            </div></div>
-                                        )
-                                        }
-                                    )
+                                {!!tour.locations.length && (
+                                    <LocationsVisualizer locations={tour.locations}/>
                                 )}
                             </div>
                             <div className={classes.guides}>
