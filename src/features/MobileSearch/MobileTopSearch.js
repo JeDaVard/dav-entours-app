@@ -23,8 +23,6 @@ export default function MobileTopSearch() {
         searching: false,
     });
 
-    console.log(state.locations)
-
     useEffect(() => {
         if (locationHistory.length) {
             setState(p => ({...p, locationHistory}))

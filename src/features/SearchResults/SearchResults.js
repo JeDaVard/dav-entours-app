@@ -24,12 +24,12 @@ export default function SearchResults() {
     let maxGroupSize = parsedData.participants ? +parsedData.participants.split(',')[1] : null;
     maxGroupSize = maxGroupSize < 1 || maxGroupSize > 25 ? null : maxGroupSize
 
-    useEffect(() => {
+    // useEffect(() => {
         // if (!participants || !maxGroupSize) {
         //     history.push('/')
         // }
         // console.log(participants, maxGroupSize)
-    })
+    // })
 
     let { coordinates, dates } = parsedData
 
