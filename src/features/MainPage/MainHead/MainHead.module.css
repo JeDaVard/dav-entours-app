@@ -1,5 +1,5 @@
 .MainHead {
-    background-image: url('../../../assets/img/mainMobC.jpg');
+    background-image: url('../../../assets/img/main_mob_xl.jpg');
     background-size: cover;
     background-position: bottom;
     width: 100%;
@@ -47,13 +47,13 @@
     padding: 2rem 10%;
     text-align: center;
     left: 0;
-    top: 20%;
-    background: rgba(0, 0, 0, 0.07);
+    top: 6rem;
+    /*background: rgba(0, 0, 0, 0.07);*/
 }
 
 .title h1 {
     font-size: 2.6rem;
-    line-height: 3.rem;
+    line-height: 3.2rem;
     width: 27rem;
     text-shadow: -2px -2px 4px rgba(0, 0, 0, 0.2);
 }
@@ -65,12 +65,12 @@
 
 .description h4 {
     font-weight: 400;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     text-shadow: -2px -2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .button {
-    margin-top: 1rem;
+    margin-top: 1.4rem;
 }
 
 .button button {
@@ -122,6 +122,9 @@
         width: unset;
         text-shadow: -2px -2px 4px rgba(0, 0, 0, 0.1);
     }
+    .title h4 {
+        font-size: 1.4rem;
+    }
     .description {
         width: unset;
     }
@@ -160,6 +163,9 @@
         line-height: 4rem;
         width: unset;
         text-shadow: -2px -2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .title h4 {
+        font-size: 1.4rem;
     }
     .button {
         margin-top: 2rem;

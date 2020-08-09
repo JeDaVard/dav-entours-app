@@ -2,13 +2,37 @@
     position: fixed;
     width: 100%;
     z-index: 100;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.searching {
+    width: 100%;
+    height: 7.6rem;
+    border-bottom: 1px solid transparent;
+    position: relative;
+    background: rgba(255, 255, 255, 1);
+}
+
+.searchTransparent {
+    width: 100%;
+    height: 7.6rem;
+    background: transparent;
+    border-bottom: 1px solid transparent;
+    position: relative;
+    transition: all .2s;
 }
 
 .search {
     width: 100%;
     height: 7.6rem;
-    background: white;
+    border-bottom: 1px solid transparent;
     position: relative;
+    background: rgba(255, 255, 255, 1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08)
+}
+
+.search {
+    border: none;
 }
 
 .form {
@@ -16,30 +40,65 @@
     height: 7.6rem;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 }
 
 .label {
-    position: absolute;
-    width: 90%;
-    height: 4.4rem;
+    /*position: absolute;*/
     display: flex;
+    align-items: center;
+    flex: 1 1 90%;
+    margin: 0 5%;
+    height: 4.4rem;
     box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
     border-radius: 2.2rem;
+    border: 1px solid transparent;
+    background: white;
     overflow: hidden;
+    transition: all .2s;
+}
+
+.labelActive {
+    box-shadow: none;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    background: rgba(0, 0, 0, 0.03);
 }
 
 .button {
     outline: none;
     border: none;
+    cursor: pointer;
     background: transparent;
-    margin-left: 2rem;
+    padding: .4rem;
+    margin-left: 1.4rem;
 }
 
 .icon {
-    width: 2rem;
-    height: 2rem;
+    width: 1.8rem;
+    height: 1.8rem;
     fill: rgba(0, 0, 0, 0.8);
+    margin-top: .2rem;
+}
+
+.cancel {
+    cursor: pointer;
+    padding: 1rem 0;
+    font-family: inherit;
+    color: rgba(0, 0, 0, 0.7);
+    font-size: 1.6rem;
+    font-weight: 500;
+    margin-right: 5%;
+    background: transparent;
+    border: 0;
+    outline: 0;
+    transform: scale(1);
+    transition: all .2s;
+}
+
+.cancel:hover,
+.cancel:active {
+    color: rgba(0, 0, 0, 0.54);
+    transform: scale(0.95);
 }
 
 .input {
@@ -47,11 +106,23 @@
     font-size: 1.6rem;
     border: none;
     width: 100%;
-    /*border-radius: 2.2rem;*/
+    margin-left: 1rem;
+    color: rgba(0, 0, 0, 0.8);
     outline: none;
     -webkit-appearance: none;
+    background: transparent;
+}
+
+.input::placeholder {
+    color: rgba(0, 0, 0, 0.5);
 }
 
 .suggestions {
+    background: white;
+    width: 100%;
+    height: calc(100vh - 7.6rem);
+}
 
+.locations {
+    width: 100%;
 }

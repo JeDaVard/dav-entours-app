@@ -3,10 +3,11 @@ import classes from './Locations.module.css';
 import Justicon from '../../components/UI/JustIcon/Justicon';
 
 export default function Locations(props) {
-    const { locations, onSearch } = props;
+    const { locations, onSearch, className, recent } = props;
 
     return (
-        <div className={classes.locationBlock}>
+        <div className={className ? className : classes.locationBlock}>
+            {!!locations.length && recent && <h3 className={classes.recent}>RECENT SEARCHES</h3>}
             {locations.map((loc) => {
                 const locArr = loc.place_name.split(',');
                 return (
@@ -22,9 +23,9 @@ export default function Locations(props) {
                         }
                         className={classes.locationLink}
                     >
-                        <div className={classes.location}>
+                        <div className={`${classes.location} ${className ? classes.locationMobile : ''}`}>
                             <div className={classes.iconFrame}>
-                                <Justicon icon="map-pin" className={classes.icon} />
+                                <Justicon icon={recent ? 'clock' : 'map-pin'} className={classes.icon} />
                             </div>
                             <div className={classes.title}>
                                 <h1>{locArr[0].length > 40 ? locArr[0].split(' ').slice(0, 3).join(' ') : locArr[0] }</h1>

@@ -10,6 +10,7 @@ import Date from "./Date";
 import OutsideAlerter from "../../hocs/EventDelegator";
 import moment from "moment";
 import Justicon from "../../components/UI/JustIcon/Justicon";
+import _ from "lodash";
 
 const cx = classNames.bind(classes)
 
@@ -149,6 +150,14 @@ function Search(props) {
         const fromSearch = history.location.pathname.startsWith('/tours/search')
 
         if (fromSearch) closeSearch(false);
+
+        const localHistory = localStorage.getItem('search_history');
+        const searchHistory = localHistory ? JSON.parse(localHistory) : [];
+        searchHistory.unshift(specificLoc);
+        localStorage.setItem('search_history', JSON.stringify(_
+            .uniqBy(searchHistory,function(i){return i.geometry.coordinates.toString()})
+            .slice(0,5)
+        ))
 
         history.push(`/tours/search?place=${qLocName}&precise=${qPreciseLoc}&coordinates=${qCoordinates}&dates=${qDates}&participants=${qParticipants}`,
             { fromSearch })

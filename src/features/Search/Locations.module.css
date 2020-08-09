@@ -13,6 +13,11 @@
     /*left: 0;*/
 }
 
+.recent {
+    padding: .4rem 5%;
+    color: rgba(0, 0, 0, 0.8);
+}
+
 .locationLink {
     color: rgba(0, 0, 0, 0.8);
     cursor: pointer;
@@ -31,6 +36,10 @@
     align-items: center;
     background: transparent;
     padding: .8rem 3rem;
+}
+
+.locationMobile {
+    padding: .8rem 5%;
 }
 
 .locationLink:hover .location,
