@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Route, Switch, withRouter } from 'react-router-dom';
+import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
 import {
     LazyBook, LazyTourPage, LazyUserPage, LazyMyTours, LazyMake,
     LazyInbox, LazyConversation, LazySaved, LazyTourEvents, LazySearchResults,
@@ -25,9 +25,6 @@ import TopLoading from "../components/UI/TopLoading/TopLoading";
 import Become from "../features/MainPage/Become/Become";
 import MobileSearch from "../features/MobileSearch/MobileSearch";
 import './App.css';
-
-
-
 
 
 const LOGGED_IN = gql`
@@ -159,7 +156,8 @@ function App(props) {
                     <Route path="/payments/book" component={LazyBook} />
                     <Route path="/tour/:slug/edit" component={LazyEditTour}/>
                     <Route path="/tours/search" component={LazySearchResults}/>
-                    <Route path="/tours" component={MobileSearch}/>
+                    <Route path="/tours" render={_ =>
+                        props.isMobile ? <MobileSearch /> : <Redirect to={'/'} />}/>
                     <Route path="/user/:id" component={LazyUserPage} />
                     <Route path="/make" component={LazyMake}/>
                     <Route path="/mytours" component={LazyMyTours}/>
