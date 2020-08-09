@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 import classes from './PastEvents.module.css';
-import Justicon from '../../components/UI/JustIcon/Justicon';
+// import Justicon from '../../components/UI/JustIcon/Justicon';
 import ThumbedImage from "../../components/UI/ImageLoading/ThumbedImage";
 
 function PastEvents(props) {

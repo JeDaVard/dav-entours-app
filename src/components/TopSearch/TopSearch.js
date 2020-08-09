@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import classes from './TopSearch.module.css';
 import sprite from '../../assets/icons/sprite.svg'
 import classNames from 'classnames/bind';

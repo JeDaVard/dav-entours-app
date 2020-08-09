@@ -27,6 +27,7 @@ export default function MobileTopSearch() {
         if (locationHistory.length) {
             setState(p => ({...p, locationHistory}))
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [localSearchHistory])
 
     useEffect(() => {

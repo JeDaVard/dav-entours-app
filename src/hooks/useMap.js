@@ -46,7 +46,7 @@ export default function useMap(ref, markRef, initialViewport) {
         return () => {
             mapboxgl.clearStorage();
         }
-
+// eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     // useEffect(() => {

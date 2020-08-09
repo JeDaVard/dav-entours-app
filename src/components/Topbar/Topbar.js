@@ -21,7 +21,7 @@ function Topbar(props) {
 
     const ref = useRef(null);
 
-    const [ triggered, setTriggered ] = useScrollTrigger({changePoint: inMain ? 480 : 10});
+    const [ triggered ] = useScrollTrigger({changePoint: inMain ? 480 : 10});
 
     const isTransparent = initialTrigger && !triggered && !searching;
 

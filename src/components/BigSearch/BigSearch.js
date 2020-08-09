@@ -7,7 +7,7 @@ import useScrollTrigger from "../../hooks/useScrollTrigger";
 import './_animation.css';
 
 export default function BigSearch(props) {
-    const [ trigger, setTrigger ] = useScrollTrigger({changePoint: 10})
+    const [ trigger ] = useScrollTrigger({changePoint: 10})
     const ref = useRef(null);
 
     return (

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import BookTour from "./BookTour/BookTour";
-import NotFound from "../../app/NotFound/NotFound";
 import lazyLoading from "../../utils/lazyLoading";
 import TopLoading from "../../components/UI/TopLoading/TopLoading";
 

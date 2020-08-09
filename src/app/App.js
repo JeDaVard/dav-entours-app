@@ -38,7 +38,7 @@ const LOGGED_IN = gql`
 
 
 function App(props) {
-    const { setDesktop, setMobile, setTablet } = props;
+    const { setDesktop, setMobile } = props;
     const { data } = useQuery(LOGGED_IN)
     const { loggedIn, name, photo } = data;
 

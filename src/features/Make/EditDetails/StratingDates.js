@@ -27,7 +27,7 @@ export default function StartingDates({ slug, id }) {
         year: years[0].value.toString()
     })
 
-    const { loading, error, data } = useQuery(FETCH_STARTS, {
+    const { loading, data } = useQuery(FETCH_STARTS, {
         variables: { slug }
     })
 

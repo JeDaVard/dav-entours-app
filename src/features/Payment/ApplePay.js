@@ -27,6 +27,7 @@ export function ApplePay(props) {
                 }
             });
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [stripe]);
 
     useEffect(() => {
@@ -73,6 +74,7 @@ export function ApplePay(props) {
                 }
             });
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [paymentRequest]);
 
     const options = {

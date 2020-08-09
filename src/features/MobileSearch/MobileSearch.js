@@ -8,7 +8,7 @@ import Justicon from "../../components/UI/JustIcon/Justicon";
 import {Link} from "react-router-dom";
 
 export default function MobileSearch() {
-    const { loading, error, data} = useQuery(FETCH_RECOMMENDED);
+    const { loading, data} = useQuery(FETCH_RECOMMENDED);
     return (
         <div>
             <div className={classes.topPlaceHolder}/>

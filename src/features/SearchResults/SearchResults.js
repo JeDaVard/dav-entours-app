@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 import MainHead from "../MainPage/MainHead/MainHead";
 import classes from './SearchResults.module.css';
 import { useQuery } from "@apollo/client";
@@ -33,7 +33,7 @@ export default function SearchResults() {
 
     let { coordinates, dates } = parsedData
 
-    const { loading, error, data, fetchMore, networkStatus } = useQuery(FETCH_SEARCH_RESULTS, {
+    const { loading, data, fetchMore } = useQuery(FETCH_SEARCH_RESULTS, {
         variables: {
             initInput: {
                 coordinates,

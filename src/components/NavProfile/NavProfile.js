@@ -10,7 +10,7 @@ import classNames from 'classnames/bind';
 const cx = classNames.bind(classes)
 
 function NavProfile(props) {
-    const { name, photo } = props;
+    const { photo } = props;
     const [ show, setShow ] = useState(false);
 
     return (

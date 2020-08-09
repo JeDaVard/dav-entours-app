@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
 import { useHistory } from 'react-router-dom';
 import classes from './Search.module.css';
 import StyledButton from '../../components/UI/StyledButton/StyledButton';
@@ -18,18 +18,6 @@ function Search(props) {
     const ref = useRef(null);
     const history = useHistory();
     const { searching, closeSearch } = props;
-
-    function onInputEnter(e) {
-        if (e.key === 'Enter') {
-            searchHandler();
-            e.preventDefault();
-        }
-    }
-
-    useEffect(() => {
-        ref.current.addEventListener('keydown', onInputEnter);
-        return () => ref.current.removeEventListener('keydown', onInputEnter);
-    }, [ref, onInputEnter])
 
     useEffect(() => {
         if (searching) {
@@ -127,7 +115,7 @@ function Search(props) {
         }));
     }
 
-    const searchHandler = ( e, specificLoc ) => {
+    const searchHandler = useCallback(( e, specificLoc ) => {
         if (e) e.preventDefault();
         if (!input.locations.length) {
             ref.current.focus();
@@ -161,8 +149,21 @@ function Search(props) {
 
         history.push(`/tours/search?place=${qLocName}&precise=${qPreciseLoc}&coordinates=${qCoordinates}&dates=${qDates}&participants=${qParticipants}`,
             { fromSearch })
-    }
+    }, [closeSearch, history, input.date.endDate, input.date.startDate, input.locations, input.maxGroupSize, input.participants])
 
+
+    const onInputEnter = useCallback((e) => {
+        if (e.key === 'Enter') {
+            searchHandler();
+            e.preventDefault();
+        }
+    }, [searchHandler])
+
+    useEffect(() => {
+        const r = ref.current
+        r.addEventListener('keydown', onInputEnter);
+        return () => r.removeEventListener('keydown', onInputEnter);
+    }, [ref, onInputEnter])
     return (
         <form onSubmit={searchHandler} className={cx(classes.form, {formSearching: props.searching})}>
             <div className={`${classes.fieldBlock} ${classes.fieldBlockInput}`}>

@@ -46,7 +46,7 @@ export default function (props) {
         });
 
         setPrice(singlePrice * (input.inviteUsers.length+1));
-
+// eslint-disable-next-line react-hooks/exhaustive-deps
     }, [input.inviteUsers.length])
 
     const removeInvited = (e, id) => {
