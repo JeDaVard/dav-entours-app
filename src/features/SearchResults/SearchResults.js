@@ -11,6 +11,7 @@ import {useSelector} from "react-redux";
 import TourLocations from "../TourContainer/TourLocations/TourLocations";
 import {Pagination} from "../../components/Pagination/Pagination";
 import SearchLoading from "../Search/SearchLoading";
+import ScrollToTop from "../../components/UI/ScrollToTop";
 
 export default function SearchResults() {
     const history = useHistory();
@@ -70,6 +71,7 @@ export default function SearchResults() {
 
     return (
         <div>
+            <ScrollToTop />
             <MainHead location={parsedData.place} />
                 <div className={classes.result}>
                     <div className={classes.tours}>

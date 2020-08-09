@@ -85,6 +85,7 @@ and (display-mode: standalone) {
   margin: 0 auto;
 }
 
+
 .globalA,
 .globalA:visited {
   color: rgb(0, 138, 80);

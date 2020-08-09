@@ -71,6 +71,7 @@ export default function MobileTopSearch() {
                 setState(p => ({...p, locations: []}))
             }
         } catch (e) {
+            setState(p => ({...p, locations: []}))
             console.log('error')
         }
     }
@@ -125,6 +126,14 @@ export default function MobileTopSearch() {
                             onChange={changeHandler}
                             placeholder="Where are your going?"
                             autoComplete="off"/>
+                        {state.location !== '' && (
+                            <button className={classes.clear} onClick={e => {
+                                e.preventDefault();
+                                setState(p => ({...p, locations: [], location: ''}))
+                            }}>
+                                <Justicon icon={'x'} className={classes.clearIcon}/>
+                            </button>
+                        )}
                     </label>
                     {state.searching && (
                         <button onClick={closeHandler} className={classes.cancel}>
