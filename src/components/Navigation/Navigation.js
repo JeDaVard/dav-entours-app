@@ -19,7 +19,7 @@ function Navigation(props) {
                 activeClassName={style[1]}
                 exact
             >
-                Find a tour
+                Home page
             </NavLink>
             <NavLink
                 to={'/make'}

@@ -8,6 +8,7 @@ export default function MainHead(props) {
     const { location } = props;
     return (
         <div className={cx(classes.MainHead, {SearchHead: location})}>
+            <div className={location ? classes.darker : classes.hide}/>
             <div className="row">
                 {location ? (
                     <div className={classes.searchTitle}>

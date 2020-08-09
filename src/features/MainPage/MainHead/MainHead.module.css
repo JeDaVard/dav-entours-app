@@ -1,6 +1,7 @@
 .MainHead {
     background-image: url('../../../assets/img/main_mob_xl.jpg');
     background-size: cover;
+    background-color: #43678f;
     background-position: bottom;
     width: 100%;
     height: 55.1rem;
@@ -30,11 +31,18 @@
 }
 
 @media (max-width: 745px) {
+    .darker {
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0) 70%);
+        width: 100%;
+        height: 100%;
+    }
     .searchTitle h1 {
-        text-shadow: 0 0 10px black;
+        font-size: 2.4rem;
+        line-height: 2.8rem;
     }
     .searchTitle h4 {
-        text-shadow: 0 0 2px black;
+        line-height: 1.8rem;
+        color: rgba(255, 255, 255, 0.8);
     }
 }
 
@@ -90,6 +98,10 @@
 .button button:hover,
 .button button:active {
     background: #efefef;
+}
+
+.hide {
+    display: none;
 }
 
 @media (min-width: 744px) and (max-width: 950px) {

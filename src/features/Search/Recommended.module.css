@@ -17,6 +17,11 @@
     scrollbar-width: none;
 }
 
+.content a {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.8);
+}
+
 /*@media (min-width: 744px) {*/
 /*    .content {*/
 /*        margin: 0px;*/

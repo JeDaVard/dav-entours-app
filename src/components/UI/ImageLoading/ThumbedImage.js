@@ -14,6 +14,8 @@ const ThumbedImage = React.memo(function(props) {
     const theThumb = `${process.env.REACT_APP_CDN}/${src.slice(0, src.length-4)}.thumb.jpg`;
     const ref = useRef(null);
 
+    const [ blur, setBlur ] = useState(true)
+
     // let _mounted = false;
     //
     // useEffect(() => {
@@ -22,6 +24,14 @@ const ThumbedImage = React.memo(function(props) {
     //         _mounted = false
     //     }
     // });
+
+    useEffect(() => {
+        if (ready) {
+            setTimeout(() => {
+                setBlur(false);
+            }, 3000)
+        }
+    }, [ready])
 
     useEffect(() => {
         let buffer;
@@ -45,9 +55,9 @@ const ThumbedImage = React.memo(function(props) {
         <div className={classes.ThumbedImage} ref={ref}>
             <img
                 src={theThumb}
-                className={cx(classes.thumb, className, {[classes.hide]: ready})}
+                className={cx(classes.thumb, className, {hide: ready})}
                 alt={alt} />
-            <div className={cx(classes.blur, {[classes.unBlur]: ready})} />
+            {blur && <div className={cx(classes.blur, {unBlur: ready})} />}
         </div>
     )
 })
