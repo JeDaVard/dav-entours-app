@@ -51,11 +51,12 @@ export default function MobileSearch() {
                         </div>
                     </div>
                 )) : (
-                    [1,2,3,4].map(loader => (<div className={classes.tour}>
-                        <div className={classes.imageFrame} key={loader}>
-                            <div className={classes.image} />
-                        </div>
-                    </div>))
+                    [1,2,3,4].map(loader => (
+                        <div className={classes.tour} key={loader}>
+                            <div className={classes.imageFrame}>
+                                <div className={classes.image} />
+                            </div>
+                        </div>))
                 )}
             </div>
             <div className={classes.recommended}>

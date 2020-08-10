@@ -12,6 +12,13 @@
     text-align: center;
 }
 
+@media (min-width: 744px) {
+    .content {
+        width: 30rem;
+        margin: 0 auto;
+    }
+}
+
 .OnlyAuth a {
     text-decoration: none;
     font-weight: 500;

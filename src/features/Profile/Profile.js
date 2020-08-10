@@ -23,18 +23,15 @@ function Profile(props) {
                 </div>
                 <div className={classes.mainMenu}>
                     <ul>
+                        <Link to={`/user/${props.userId}`}><li>Profile View</li></Link>
                         <Link to={'/mytours'}><li>My Tours</li></Link>
                         <Link to={'/'}><li>Payments & Payouts</li></Link>
                         <Link to={'/'}><li>Personal Info</li></Link>
                         <Link to={'/'}><li>Login & Security</li></Link>
                     </ul>
                 </div>
-                <Separator color={'light'} margin={'4 0'}/>
+                <Separator color={'light'} margin={'2 2'}/>
                 <div className={classes.bottom}>
-                    <div className={classes.geo}>
-                        <Link to={'/'}>$ Currency</Link>
-                        <Link to={'/'}>English (US)</Link>
-                    </div>
                     <ul className={classes.out}>
                         <Link to={'/'}><li>Help</li></Link>
                         <Logout>Logout</Logout>

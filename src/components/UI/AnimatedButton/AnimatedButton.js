@@ -25,11 +25,13 @@ function AnimatedButton(props) {
         onClick={handleButtonAnimation}
         className={classes.AnimatedButton}
         type={'submit'}
+        disabled={props.disabled}
     >
         {props.children}
     </button> : <button
         onClick={handleButtonAnimation}
         className={classes.AnimatedButton}
+        disabled={props.disabled}
     >
         {props.children}
     </button>;
