@@ -134,7 +134,7 @@ cache.writeQuery({
     `,
     data: {
         loggedIn: !!getCookie('userId'),
-        photo: localStorage.getItem('photo') || 'default.svg',
+        photo: localStorage.getItem('photo') || 'assets/icons/default.svg',
         name: localStorage.getItem('name') || 'Entours App',
         userId: getCookie('userId'),
         // cartItems: []

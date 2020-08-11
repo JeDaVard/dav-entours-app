@@ -8,6 +8,7 @@ import {Link} from "react-router-dom";
 import Separator from "../../../components/UI/Separator/Separator";
 import LocLink from "../../../components/UI/LocLink/LocLink";
 import ShowAllMembers from "./ShowAllMembers";
+import UserAvatar from "../../../components/UI/UserAvatar/UserAvatar";
 
 export default function TourOrder(props) {
     const [ state, setState ] = useState(false);
@@ -52,9 +53,9 @@ export default function TourOrder(props) {
                                                   className={classes.participantLink}
                                                   key={participant._id}
                                             >
-                                                <img src={`${process.env.REACT_APP_SERVER}/images/user/${participant.photo}`}
-                                                     className={classes.photo}
-                                                     alt={participant.name}/>
+                                                <UserAvatar alt={participant.name}
+                                                            className={classes.photo}
+                                                            src={participant.photo}/>
                                             </Link>
                                         ))}
                                     <ShowAllMembers start={start} />

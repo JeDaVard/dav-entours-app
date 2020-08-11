@@ -4,8 +4,13 @@ import Logout from "../../components/NavProfile/Logout";
 import classes from './Profile.module.css';
 import StyledButton from "../../components/UI/StyledButton/StyledButton";
 import Separator from "../../components/UI/Separator/Separator";
+import UserAvatar from "../../components/UI/UserAvatar/UserAvatar";
+import {SHOW_PROFILE_PHOTO} from "../../app/actions/ui/types";
+import {useDispatch} from "react-redux";
 
 function Profile(props) {
+    const dispatch = useDispatch();
+
     return (
         <div className={classes.Profile}>
             <div className="row">
@@ -15,7 +20,11 @@ function Profile(props) {
                         <Link to={`/user/${props.userId}`} className={classes.full} >Profile view</Link>
                     </div>
                     <div>
-                        <img src={`${process.env.REACT_APP_SERVER}/images/user/${props.photo}`} alt={props.name.split(' ')[0]} className={classes.photo}/>
+                        <Link to={'#'} onClick={() => dispatch({type: SHOW_PROFILE_PHOTO})}>
+                            <UserAvatar alt={props.name.split(' ')[0]}
+                                        className={classes.photo}
+                                        src={props.photo}/>
+                        </Link>
                     </div>
                 </div>
                 <div className={classes.makeTour}>
@@ -25,8 +34,8 @@ function Profile(props) {
                     <ul>
                         <Link to={`/user/${props.userId}`}><li>Profile View</li></Link>
                         <Link to={'/mytours'}><li>My Tours</li></Link>
+                        <Link to={'#'} onClick={() => dispatch({type: SHOW_PROFILE_PHOTO})}><li>Edit Profile</li></Link>
                         <Link to={'/'}><li>Payments & Payouts</li></Link>
-                        <Link to={'/'}><li>Personal Info</li></Link>
                         <Link to={'/'}><li>Login & Security</li></Link>
                     </ul>
                 </div>

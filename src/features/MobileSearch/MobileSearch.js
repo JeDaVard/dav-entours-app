@@ -6,6 +6,7 @@ import Recommended from "../Search/Recommended";
 import ThumbedImage from "../../components/UI/ImageLoading/ThumbedImage";
 import Justicon from "../../components/UI/JustIcon/Justicon";
 import {Link} from "react-router-dom";
+import UserAvatar from "../../components/UI/UserAvatar/UserAvatar";
 
 export default function MobileSearch() {
     const { loading, data} = useQuery(FETCH_RECOMMENDED);
@@ -42,9 +43,9 @@ export default function MobileSearch() {
                             <div className={classes.title}>
                                 <Link to={`/tour/${rec.slug}`} className={classes.globalLink}/>
                                 <Link to={`/user/${rec.author._id}`} className={classes.authorLink}>
-                                    <img src={`${process.env.REACT_APP_SERVER}/images/user/${rec.author.photo}`}
-                                         className={classes.author}
-                                         alt={rec.author.name}/>
+                                    <UserAvatar alt={rec.author.name}
+                                                className={classes.author}
+                                                src={rec.author.photo}/>
                                 </Link>
                                     <h1>{rec.name}</h1>
                             </div>

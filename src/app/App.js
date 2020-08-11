@@ -241,8 +241,8 @@ function App(props) {
                 </Modal>
                 <Modal
                     onClick={() => dispatch({type: FINISH_PROFILE_PHOTO})}
-                    showBackdrop={true || profilePhoto}
-                    title={'Profile photo'}
+                    showBackdrop={profilePhoto}
+                    title={'Profile'}
                 >
                     <ProfilePhoto
                         name={localStorage.getItem('name')

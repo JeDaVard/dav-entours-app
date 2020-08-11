@@ -10,10 +10,15 @@ import TopLoading from '../../components/UI/TopLoading/TopLoading';
 import Justicon from "../../components/UI/JustIcon/Justicon";
 import { getCookie } from "../../utils/cookies";
 import ScrollToTop from "../../components/UI/ScrollToTop";
+import UserAvatar from "../../components/UI/UserAvatar/UserAvatar";
+import {useDispatch} from "react-redux";
+import {SHOW_PROFILE_PHOTO} from "../../app/actions/ui/types";
 
 function UserPage() {
     const { id } = useParams();
     const isThatMe = id === getCookie('userId');
+
+    const dispatch = useDispatch()
 
     return (
         <div className={classes.UserPage}>
@@ -43,20 +48,19 @@ function UserPage() {
                                             new Date(
                                                 user.createdAt
                                             ).getFullYear()}
-                                            &nbsp; {isThatMe && <Link to={'/'}>Edit profile</Link> }</h3>
+                                            &nbsp; {isThatMe && <Link to={'#'} onClick={() => dispatch({type: SHOW_PROFILE_PHOTO})}>Edit profile</Link> }</h3>
                                         <p>{user.about}</p>
                                         <Separator margin={'2 2'} color={'normal'}/>
                                         <div className={classes.profileTop}>
                                             <h2>{user.name}</h2>
                                             <div className={classes.photoFrame}>
                                                 <div className={classes.photo}>
-                                                    <img
-                                                        src={`${process.env.REACT_APP_SERVER}/images/user/${user.photo}`}
-                                                        alt=""
-                                                    />
+                                                    <UserAvatar alt={user.name}
+                                                                src={user.photo}
+                                                                medium />
                                                 </div>
                                             </div>
-                                            {isThatMe && <a href="/">Update image</a> }
+                                            {isThatMe && <a href="#" onClick={() => dispatch({type: SHOW_PROFILE_PHOTO})}>Update image</a> }
                                         </div>
                                         <Separator margin={'2 2'} color={'normal'}/>
                                         <div className={classes.stats}>

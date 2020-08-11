@@ -7,6 +7,7 @@ import { useMutation } from "@apollo/client";
 import { REMOVE_MESSAGE } from "../Conversation/queries";
 import classNames from 'classnames/bind'
 import SmoothImage from "../../../components/UI/ImageLoading/SmoothImage";
+import UserAvatar from "../../../components/UI/UserAvatar/UserAvatar";
 let cx = classNames.bind(classes);
 
 function Message({data: {text, createdAt, sender, _id, isImage, convId }, own, guide}) {
@@ -50,9 +51,9 @@ function Message({data: {text, createdAt, sender, _id, isImage, convId }, own, g
         <div className={cx(classes.Message, {[classes.own]:own})}>
             <div className={`${classes.author} ${own ? classes.authorOwn  : ''}`}>
                 <Link to={`/user/${sender._id}`}>
-                    <img src={`${process.env.REACT_APP_SERVER}/images/user/${sender.photo}`}
-                         className={guide ? classes.authorGuide : ''}
-                         alt=""/>
+                    <UserAvatar alt={sender.name}
+                                className={guide ? classes.authorGuide : null}
+                                src={sender.photo}/>
                 </Link>
             </div>
             <div className={cx(classes.text, {

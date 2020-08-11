@@ -57,7 +57,7 @@ export default function ProfilePhoto(props) {
         if (input.photo) {
             const res = await signURL({
                 variables: {
-                    fileName: `photo.jpg`,
+                    fileName: `avatar.jpg`,
                     contentType: input.photo.type,
                     genre: 'avatar',
                     id: 'doesn\'t make sense'
@@ -81,7 +81,7 @@ export default function ProfilePhoto(props) {
         await updateProfile({
             variables
         })
-
+        localStorage.setItem('photo', key)
     }
 
     const navHandler = (e, dir) => {
@@ -91,9 +91,7 @@ export default function ProfilePhoto(props) {
         history.push(dir)
     }
 
-    const uiPhoto = input.currentPhoto
-        ? `${process.env.REACT_APP_CDN}/${input.currentPhoto}`
-        : input.b64 || `${process.env.REACT_APP_CDN}/assets/icons/default.svg`
+    const uiPhoto = input.b64 || `${process.env.REACT_APP_CDN}/${input.currentPhoto}`
 
     return (
         <div>
