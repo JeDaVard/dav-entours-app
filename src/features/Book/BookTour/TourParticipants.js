@@ -9,6 +9,7 @@ import ShowAllMembers from "../../TourContainer/TourOrder/ShowAllMembers";
 import { useMutation } from "@apollo/client";
 import { FETCH_ADDED_MEMBER } from "./queries";
 import RoundLoading from "../../../components/UI/RoundLoading/RoundLoading";
+import UserAvatar from "../../../components/UI/UserAvatar/UserAvatar";
 
 
 export default function (props) {
@@ -103,7 +104,7 @@ export default function (props) {
                 </SmallShow>
                 {input.inviteUsers.map(p => (
                     <div className={classes.invitedUser} key={p._id}>
-                        <img src={process.env.REACT_APP_SERVER+'/images/user/'+p.photo}
+                        <UserAvatar src={p.photo}
                              alt={p.name}
                              className={classes.inviteUserImage}
                         />
@@ -112,13 +113,13 @@ export default function (props) {
                         </button>
                     </div>
                 ))}
-                    <img src={process.env.REACT_APP_SERVER+'/images/user/'+photo}
+                    <UserAvatar src={photo}
                          alt={name}
                          className={classes.user}/>
             </div>
             <div className={classes.members}>
                 {start.participants.slice(0,5).map(p => (
-                    <img src={process.env.REACT_APP_SERVER+'/images/user/'+p.photo}
+                    <UserAvatar src={p.photo}
                          key={p._id}
                          alt={p.name}
                          className={classes.user}/>

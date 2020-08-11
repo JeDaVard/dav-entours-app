@@ -160,6 +160,7 @@ function App(props) {
                         <>
                         {!props.location.pathname.match(/^\/inbox\//) && (
                             <>
+                                <Separator height={'1'} margin={'4 0'} color={'light'} />
                                 <Become />
                                 <Separator margin={'4 0'} />
                                 <Foot />

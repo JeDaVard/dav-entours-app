@@ -79,17 +79,9 @@ const UserReviews = (props)  => {
                                 ? (
                                     <SimpleButton
                                         disabled={loading}
+                                        loading={loading}
                                         onClick={() => onMore(guideLabel)}>
-                                        {loading
-                                            ? (<>
-                                                <div className={classes.loading}>
-                                                    <ButtonLoading />
-                                                </div>
-                                                <span style={{opacity: '0'}}>More Reviews</span>
-                                            </>)
-                                            : (
-                                                'More Reviews'
-                                            )}
+                                        More Reviews
                                     </SimpleButton>
                                 )
                                 : <p>All <b>{user.ownReviews.total}</b> reviews</p>}

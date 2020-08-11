@@ -87,3 +87,11 @@
     background: #81a78c;
     border: 1px solid transparent;
 }
+
+.loading {
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 50%;
+    position: absolute;
+}

@@ -5,6 +5,7 @@ import Justicon from "../../components/UI/JustIcon/Justicon";
 import Separator from "../../components/UI/Separator/Separator";
 import { Link } from "react-router-dom";
 import LocationsVisualizer from "../SearchResults/LocationsVisualizer";
+import UserAvatar from "../../components/UI/UserAvatar/UserAvatar";
 
 export default function TourResult(props) {
     const { tours, searchLocation, searchCountry } = props;
@@ -51,9 +52,9 @@ export default function TourResult(props) {
                             <div className={classes.guides}>
                                 <Link to={`/user/${tour.author._id}`} className={classes.guideLink}>
                                     <div className={classes.guidePhotoFrame}>
-                                        <img src={process.env.REACT_APP_SERVER+'/images/user/'+tour.author.photo}
-                                             className={classes.guidePhoto}
-                                             alt={tour.author.name}/>
+                                        <UserAvatar src={tour.author.photo}
+                                                    className={classes.guidePhoto}
+                                                    alt={tour.author.name}/>
                                     </div>
                                 </Link>
                                 {tour.guides.map(guide => {
@@ -62,9 +63,9 @@ export default function TourResult(props) {
                                               key={guide._id}
                                               className={classes.guideLink}>
                                             <div className={classes.guidePhotoFrame}>
-                                                <img src={process.env.REACT_APP_SERVER+'/images/user/'+guide.photo}
-                                                     className={classes.guidePhoto}
-                                                     alt={guide.name}/>
+                                                <UserAvatar src={guide.photo}
+                                                            className={classes.guidePhoto}
+                                                            alt={guide.name}/>
                                             </div>
                                         </Link>
                                     )

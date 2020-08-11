@@ -41,19 +41,11 @@ const TourReviews = (props) => {
     }
 
     const loadMoreButton = <SimpleButton
-        disabled={props.loading}
-        onClick={moreReviewsHandler}>
-        {props.loading
-            ? (<>
-                <div className={classes.loading}>
-                    <ButtonLoading />
-                </div>
-                <span style={{opacity: '0'}}>More Reviews</span>
-            </>)
-            : (
-            'More Reviews'
-        )}
-    </SimpleButton>
+            disabled={props.loading}
+            loading={props.loading}
+            onClick={moreReviewsHandler}>
+            More Reviews
+        </SimpleButton>
 
     return (
         <>

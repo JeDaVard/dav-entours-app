@@ -2,6 +2,7 @@ import React from "react";
 import classes from "./AuthorInfo.module.css";
 import Justicon from "../../../components/UI/JustIcon/Justicon";
 import moment from "moment";
+import UserAvatar from "../../../components/UI/UserAvatar/UserAvatar";
 
 export default function AuthorInfo(props) {
     const { author } = props;
@@ -9,7 +10,7 @@ export default function AuthorInfo(props) {
         <div className={classes.authorInfo}>
             <div className={classes.authorInfoMain}>
                 <div className={classes.authorPhotoBigFrame}>
-                    <img src={process.env.REACT_APP_SERVER+'/images/user/'+author.photo}
+                    <UserAvatar src={author.photo}
                          className={classes.authorPhotoBig}
                          alt={author.name}/>
                     <div className={classes.authorAward}>

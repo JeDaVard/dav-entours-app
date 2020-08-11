@@ -1,5 +1,6 @@
 import React from "react";
 import classes from "./FakeConversation.module.css";
+import UserAvatar from "../../../components/UI/UserAvatar/UserAvatar";
 
 export default function FakeConversation(props) {
     const { one, second, setMessage } = props;
@@ -7,9 +8,9 @@ export default function FakeConversation(props) {
         <>
             <div className={classes.oneWelcome}>
                 <div className={classes.onePhotoFrame}>
-                    <img src={process.env.REACT_APP_SERVER+'/images/user/'+one.photo}
-                         className={classes.onePhoto}
-                         alt={one.name}/>
+                    <UserAvatar src={one.photo}
+                                className={classes.onePhoto}
+                                alt={one.name}/>
                 </div>
                 <div className={classes.message}>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum illo omnis repellat tenetur voluptate? At delectus, dolore ducimus eligendi eos et eveniet maxime molestias nam, perferendis quae quasi sed tenetur?</p>
@@ -17,9 +18,9 @@ export default function FakeConversation(props) {
             </div>
             <div className={classes.secondHello}>
                 <div className={classes.onePhotoFrame}>
-                    <img src={process.env.REACT_APP_SERVER+'/images/user/'+second.photo}
-                         className={classes.onePhoto}
-                         alt={second.name}/>
+                    <UserAvatar src={second.photo}
+                                className={classes.onePhoto}
+                                alt={second.name}/>
                 </div>
                 <textarea
                     onChange={e => { const value = e.target.value; setMessage(value)}}

@@ -55,7 +55,6 @@ function TourPage() {
             {!recommended.loading
                 && recommended.data
                 && <Recommended tours={recommended.data.recommended.slice(0,4)}/>}
-            <Separator color="light" margin={'3 2'} height={'1'}/>
             <TourOrder tour={data.tour} />
         </>
     );
