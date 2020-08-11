@@ -19,17 +19,18 @@ export default function ProfilePhoto(props) {
     const { name } = props;
 
     const [ input, setInput ] = useState({
+        loading: false,
         photo: null,
         b64: null,
         currentPhoto: localStorage.getItem('photo') || null
     });
 
-    const [ signURL ] = useMutation(UPLOAD_IMAGE);
+    const [ signURL, { loading} ] = useMutation(UPLOAD_IMAGE);
     const [ updateProfile ] = useMutation(UPDATE_PROFILE, {
         onCompleted({updateProfile}) {
             if (updateProfile.data) {
                 const { photo, name } = updateProfile.data;
-                console.log(photo, name, 'dddddd')
+
                 const data = client.readQuery({
                     query: gql`
 						query {
@@ -40,6 +41,7 @@ export default function ProfilePhoto(props) {
 						}
                     `
                 });
+
                 client.writeQuery({
                     query: gql`
 						query {
@@ -61,17 +63,20 @@ export default function ProfilePhoto(props) {
             console.log(e)
         }
     });
+    
 
     const changeHandler = (e) => {
         const target = e.target;
+        if (!target.files) return;
+        const photo = target.files[0]
 
-        if (target.files && target.name === 'photo') {
-            generateBase64FromImage(target.files[0])
+        if (photo && target.name === 'photo') {
+            generateBase64FromImage(photo)
                 .then(b64 => {
                     setInput((state) => ({
                             ...state,
                             b64,
-                            photo: target.files[0],
+                            photo,
                         })
                     );
                 })
@@ -81,13 +86,15 @@ export default function ProfilePhoto(props) {
                         b64: null,
                         photo: null
                     }));
-                    console.log(e)
                 });
         }
     }
 
     const submitHandler = async (e) => {
         e.preventDefault();
+        if (input.loading) return;
+
+        setInput(p => ({...p, loading: true}))
 
         let key;
         if (input.photo) {
@@ -108,16 +115,15 @@ export default function ProfilePhoto(props) {
                     'Content-Type': input.photo.type
                 },
             })
+            const variables = {}
+            if (key) variables.photo = key;
 
+            await updateProfile({
+                variables
+            })
+            localStorage.setItem('photo', key)
         }
-
-        const variables = {}
-        if (key) variables.photo = key;
-
-        await updateProfile({
-            variables
-        })
-        localStorage.setItem('photo', key)
+        setInput(p => ({...p, loading: false, photo: null}))
     }
 
     const navHandler = (e, dir) => {
@@ -160,7 +166,7 @@ export default function ProfilePhoto(props) {
                 </div>
                 <p className={classes.pText}>You automatically accept
                     our <a href="/policy">Policies</a> by clicking the button bellow</p>
-                <StyledButton>
+                <StyledButton disabled={!input.photo} loading={input.loading}>
                     Save
                 </StyledButton>
                 <div className={classes.upButtons}>

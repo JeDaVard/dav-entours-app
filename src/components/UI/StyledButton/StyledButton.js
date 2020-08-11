@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import classNames from 'classnames/bind'
 import classes from './StyledButton.module.css'
 import { Link } from "react-router-dom";
+import DotLoading from "../DotLoading/DotLoading";
+import ButtonLoading from "../ButtonLoading/ButtonLoading";
 
 const cx = classNames.bind(classes)
 
@@ -19,13 +21,16 @@ function StyledButton(props) {
             "--mouse-y": y * 2.25,
         })
     }
+    const opacity = props.loading ? { opacity: 0 } : null;
+
     const button = (
         <>
             <span className={classes.effectContainer}>
                 <span onMouseMove={mouseMoveHandler} style={styles} className={classes.effect} />
             </span>
             <span className={classes.text}>
-                {props.children}
+                <span style={opacity}>{props.children}</span>
+                {props.loading && <ButtonLoading />}
                 </span>
         </>
     )
