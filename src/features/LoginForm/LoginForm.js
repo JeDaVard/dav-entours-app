@@ -58,7 +58,7 @@ function LoginForm(props) {
                 return;
             }
             const userData = {
-                loggedIn: true,
+                loggedIn: false,
                 photo: data.data.photo,
                 name: data.data.name,
                 userId: data.data._id

@@ -37,8 +37,7 @@ function MobileBar(props) {
                 </NavLink>
                 <NavLink to={{pathname: '/me'}} className={classes.tab} activeClassName={classes.tab__active}>
                     <div className={classes.photo}>
-                        <UserAvatar alt={'me'}
-                                    src={props.photo}/>
+                        <UserAvatar src={props.photo} alt={'me'}/>
                     </div>
                     <h2>Profile</h2>
                 </NavLink>

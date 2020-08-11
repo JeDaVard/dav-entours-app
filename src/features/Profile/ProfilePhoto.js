@@ -9,10 +9,11 @@ import {UPLOAD_IMAGE} from "../Make/queries";
 import {UPDATE_PROFILE} from "./queries";
 import {generateBase64FromImage} from "../../utils/generateBase64FromImage";
 import StyledButton from "../../components/UI/StyledButton/StyledButton";
-import {useMutation} from "@apollo/client";
+import {gql, useApolloClient, useMutation} from "@apollo/client";
 import axios from "axios";
 
 export default function ProfilePhoto(props) {
+    const client = useApolloClient();
     const history = useHistory();
     const dispatch = useDispatch();
     const { name } = props;
@@ -24,7 +25,42 @@ export default function ProfilePhoto(props) {
     });
 
     const [ signURL ] = useMutation(UPLOAD_IMAGE);
-    const [ updateProfile ] = useMutation(UPDATE_PROFILE);
+    const [ updateProfile ] = useMutation(UPDATE_PROFILE, {
+        onCompleted({updateProfile}) {
+            if (updateProfile.data) {
+                const { photo, name } = updateProfile.data;
+                console.log(photo, name, 'dddddd')
+                const data = client.readQuery({
+                    query: gql`
+						query {
+							loggedIn @client
+							photo @client
+							name @client
+							userId @client
+						}
+                    `
+                });
+                client.writeQuery({
+                    query: gql`
+						query {
+							loggedIn
+							photo
+							name
+							userId
+						}
+                    `,
+                    data: {
+                        ...data,
+                        photo: input.b64,
+                        name,
+                    }
+                });
+            }
+        },
+        onError(e) {
+            console.log(e)
+        }
+    });
 
     const changeHandler = (e) => {
         const target = e.target;
@@ -57,7 +93,7 @@ export default function ProfilePhoto(props) {
         if (input.photo) {
             const res = await signURL({
                 variables: {
-                    fileName: `avatar.jpg`,
+                    fileName: `avatar_${Date.now()}.jpg`,
                     contentType: input.photo.type,
                     genre: 'avatar',
                     id: 'doesn\'t make sense'
