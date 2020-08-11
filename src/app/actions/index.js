@@ -2,7 +2,12 @@ export {
     setMobile,
     setDesktop,
     loadingOn,
-    loadingOff
+    loadingOff,
+    finishProfilePhoto,
+    showProfilePhoto,
+    dismissError,
+    showError
+
 } from './ui/actions'
 
 export {

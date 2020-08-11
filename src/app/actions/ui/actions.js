@@ -15,3 +15,20 @@ export const loadingOff = () => ({
 export const loadingOn = () => ({
     type: actions.LOADING_ON
 })
+
+export const finishProfilePhoto = () => ({
+    type: actions.FINISH_PROFILE_PHOTO
+})
+
+export const showProfilePhoto = () => ({
+    type: actions.SHOW_PROFILE_PHOTO
+})
+
+export const dismissError = () => ({
+    type: actions.DISMISS_ERROR
+})
+
+export const showError = error => ({
+    type: actions.SHOW_ERROR,
+    error
+})

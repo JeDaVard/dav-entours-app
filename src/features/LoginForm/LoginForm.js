@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import classes from './LoginForm.module.css';
 import AnimatedButton from '../../components/UI/AnimatedButton/AnimatedButton';
-import Loading from '../../components/UI/Loading/Loading';
-import Image from '../../components/UI/Image/Image';
-import { generateBase64FromImage } from '../../utils/generateBase64FromImage';
 import validator from "validator";
 import { validateState } from "../../utils/validateState";
 import AnimatedValidation from "../../components/UI/AnimatedValidation/AnimatedValidation";
@@ -12,10 +9,13 @@ import { useApolloClient, useMutation } from '@apollo/client';
 import { SIGN_IN, SIGN_UP } from "./queries";
 import {setCookie} from "../../utils/cookies";
 import {gql} from "@apollo/client";
-import NextUp from "./NextUp";
+import {useDispatch} from "react-redux";
+import { SHOW_PROFILE_PHOTO } from "../../app/actions/ui/types";
 
 function LoginForm(props) {
     const client = useApolloClient();
+    const dispatch = useDispatch();
+
     const [state, setState] = useState({
         input: {
             email: {
@@ -34,12 +34,35 @@ function LoginForm(props) {
                 message: ''
             },
         },
-        nextUp: false,
         isValid: false,
     });
 
     const [sign, { loading }] = useMutation(props.login ? SIGN_IN : SIGN_UP, {
-        onCompleted({ login }) {
+        onCompleted(res) {
+            const data = res.signUp || res.login;
+
+            if (!data.success) {
+                if (data.message.includes('password')) {
+                    validateState(false,
+                        'password', setState,
+                        data.message)
+                } else if (data.message.includes('name')) {
+                    validateState(false,
+                        'name', setState,
+                        data.message)
+                } else {
+                    validateState(false,
+                        'email', setState,
+                        data.message)
+                }
+                return;
+            }
+            const userData = {
+                loggedIn: true,
+                photo: data.data.photo,
+                name: data.data.name,
+                userId: data.data._id
+            };
             client.writeQuery({
                 query: gql`
 					query {
@@ -49,29 +72,15 @@ function LoginForm(props) {
 						userId
 					}
                 `,
-                data: {
-                    loggedIn: true,
-                    photo: login.photo,
-                    name: login.name,
-                    userId: login._id
-                }
+                data: userData
             });
 
-            setCookie('userId', login._id, Date.now() + +process.env.REACT_APP_AUTH_EXP)
-            localStorage.setItem('photo', login.photo);
-            localStorage.setItem('name', login.name);
+            setCookie('userId', userData.userId, Date.now() + +process.env.REACT_APP_AUTH_EXP)
+            localStorage.setItem('photo', userData.photo);
+            localStorage.setItem('name', userData.name);
         },
         onError(e) {
-            console.log(e)
-            if (e.errors[0].message.includes('E11000')) {
-                validateState(false,
-                    'email', setState,
-                    'This E-mail is already registered')
-            } else {
-                validateState(false,
-                    'password', setState,
-                    'Incorrect password')
-            }
+            console.log(e, 'error')
         }
     });
 
@@ -109,10 +118,10 @@ function LoginForm(props) {
                     password: state.input.password.value,
                     name: state.input.name.value ? state.input.name.value.trim() : '',
                 }
-            }).then(r=> {
-                setState(state => ({ ...state, nextUp: true }))
-                console.log(r)
-            }).catch(e=>console.log)
+            }).then(r => {
+                if (!r.data.signUp.success) return;
+                dispatch({type: SHOW_PROFILE_PHOTO});
+            }).catch(e =>console.log)
         }
     }
     const continueHandler = login => {
@@ -200,26 +209,16 @@ function LoginForm(props) {
                         {props.error}
                     </AnimatedValidation>
                 </div>
-                {props.loading ? (
-                    <Loading white button/>
-                ) : (
-                    <AnimatedButton button type={'submit'} disabled={loading}>
-                        {!loading && props.login ? <>Login &#8594;</> : <>Sign Up &#8594;</>}
-                        {loading && ' '}
-                    </AnimatedButton>
-                )}
+                <AnimatedButton button type={'submit'} disabled={loading}>
+                    {props.login && <>Login &#8594;</>}
+                    {props.signUp && <>Sign Up &#8594;</>}
+                </AnimatedButton>
             </form>
         </div>
     )
     return (
         <>
             {form}
-            {state.nextUp && <NextUp
-                                     name={
-                                            state.input.name.value
-                                            ? state.input.name.value.split(' ')[0]
-                                            : 'Entours'
-                                    } />}
         </>
     );
 }
