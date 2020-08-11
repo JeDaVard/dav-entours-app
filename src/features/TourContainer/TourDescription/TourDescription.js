@@ -1,6 +1,7 @@
 import React from "react";
 import classes from './TourDescription.module.css';
 import {Link} from "react-router-dom";
+import UserAvatar from "../../../components/UI/UserAvatar/UserAvatar";
 
 
 function TourDescription(props) {
@@ -15,7 +16,8 @@ function TourDescription(props) {
                             <div className={classes.users}>
                                 <Link to={{pathname: `/user/${tour.author._id}`}}>
                                     <div className={classes.user}>
-                                        <img src={`${process.env.REACT_APP_SERVER}/images/user/${tour.author.photo}`} alt="user"/>
+                                        <UserAvatar alt={tour.author.name}
+                                                    src={tour.author.photo}/>
                                         <h3>{tour.author.name}</h3>
                                         <p>Author</p>
                                     </div>
@@ -23,7 +25,8 @@ function TourDescription(props) {
                                 {tour.guides.map( guide => (
                                     <Link to={{pathname: `/user/${guide._id}`}} key={guide._id}>
                                         <div className={classes.user}>
-                                            <img src={`${process.env.REACT_APP_SERVER}/images/user/${guide.photo}`} alt="user"/>
+                                            <UserAvatar alt={guide.name}
+                                                        src={guide.photo}/>
                                             <h3>{guide.name}</h3>
                                             <p>Guide</p>
                                         </div>

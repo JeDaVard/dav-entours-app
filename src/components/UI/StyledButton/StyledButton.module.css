@@ -92,15 +92,15 @@
     opacity: 0;
     background-image: radial-gradient(
             circle at center center,
-            #49d76c 0%,
+            #4dd96e 0%,
             #38d25f 8%,
-            #2ec872 27.5%,
+            #2ec866 27.5%,
             #32c368 40%,
             #2dba78 57.5%,
             #28b56d 75%,
             #28b779 100%
     );
-    transition: opacity 1.25s ease 0s;
+    transition: opacity .8s ease 0s;
 }
 
 .effect:hover {

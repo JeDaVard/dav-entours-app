@@ -2,11 +2,11 @@
     height: 0;
 }
 .invalid-enter-active {
-    height: 3rem;
+    height: 3.3rem;
     transition: all 200ms ;
 }
 .invalid-exit {
-    height: 3rem;
+    height: 3.3rem;
 }
 .invalid-exit-active {
     height: 0;

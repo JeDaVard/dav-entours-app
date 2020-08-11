@@ -7,6 +7,7 @@ import Justicon from "../../../components/UI/JustIcon/Justicon";
 import SimpleButton from "../../../components/UI/SimpleButton/SimpleButton";
 import { FETCH_MORE_REVIEWS } from "../queries";
 import ButtonLoading from "../../../components/UI/ButtonLoading/ButtonLoading";
+import UserAvatar from "../../../components/UI/UserAvatar/UserAvatar";
 
 const TourReviews = (props) => {
     const { reviews } = props.tour;
@@ -75,7 +76,8 @@ const TourReviews = (props) => {
                             <div className={classes.review} key={review._id}>
                                 <div className={classes.reviewInfo}>
                                     <Link to={{pathname: `/user/${review.author._id}`}}>
-                                        <img src={`${process.env.REACT_APP_SERVER}/images/user/${review.author.photo}`} alt={review.author.name}/>
+                                        <UserAvatar alt={review.author.name}
+                                                    src={review.author.photo}/>
                                     </Link>
                                     <div className={classes.reviewer}>
                                         <Link to={{pathname: `/user/${review.author._id}`}}>

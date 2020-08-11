@@ -2,12 +2,15 @@ import React from "react";
 import moment from "moment";
 import classes from './TopItem.module.css';
 import Justicon from "../../../components/UI/JustIcon/Justicon";
+import UserAvatar from "../../../components/UI/UserAvatar/UserAvatar";
 
 export default ({ user }) => (
     <div className={classes.userContainer}>
         <div className={classes.user}>
             <div className={classes.imageFrame}>
-                <img src={`${process.env.REACT_APP_SERVER}/images/user/${user.photo}`} alt={user.name} className={classes.userImage}/>
+                <UserAvatar alt={user.name}
+                            className={classes.userImage}
+                            src={user.photo}/>
             </div>
             <div className={classes.userinfo}>
                 <h3>

@@ -1,0 +1,101 @@
+.NexUp input[type=file] {
+    width: 0.1px;
+    height: 0.1px;
+    display: none;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    border: 1px solid black;
+    -webkit-appearance: none;
+    z-index: -1000;
+}
+
+.preview {
+    position: relative;
+    height: 6.6rem;
+    margin: 2rem auto;
+    background: white;
+}
+
+.fileInput + label {
+    font-size: 1.25em;
+    font-weight: 700;
+    color: black;
+    background-color: black;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.fileInput:focus + label,
+.fileInput + label:hover {
+    background-color: #4fc877;
+}
+
+.user {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    height: 100%;
+    background: white;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+    border-radius: 50px;
+    padding: 1rem .5rem;
+    color: #393939;
+}
+
+.user h2 {
+    padding: 0 1rem;
+    font-size: 2.2rem;
+    color: rgba(0, 0, 0, 0.7);
+    /*margin: 0 2rem;*/
+}
+
+.image {
+    cursor: pointer;
+    border-radius: 100px;
+    background: white;
+    overflow: hidden;
+    width: 5.6rem;
+    height: 5.6rem;
+}
+
+.success {
+    font-size: 1.6rem;
+    text-align: center;
+    font-weight: 400;
+    padding: 1.1rem 1rem;
+    color: #336b44;
+    background: rgba(61, 176, 98, 0.14);
+    border-radius: .5rem;
+}
+
+.pText {
+    font-size: 1.2rem;
+    color: rgba(0, 0, 0, 0.44);
+    padding: .6rem;
+    width: 86%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.pText a,
+.pText a:visited {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.7);
+    transition: all .2s;
+}
+
+.pText a:hover {
+    color: rgba(0, 0, 0, 0.55);
+}
+
+.upButtons {
+    margin: 4rem 0 2rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}

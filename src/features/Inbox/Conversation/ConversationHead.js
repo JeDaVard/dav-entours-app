@@ -3,6 +3,7 @@ import SimpleButton from "../../../components/UI/SimpleButton/SimpleButton";
 import React from "react";
 import {Link} from "react-router-dom";
 import SimpleMobileTop from "../../../components/SimpleMobileTop/SimpleMobileTop";
+import UserAvatar from "../../../components/UI/UserAvatar/UserAvatar";
 
 function ConversationHead({guides, participants, tour}) {
     return (
@@ -20,7 +21,8 @@ function ConversationHead({guides, participants, tour}) {
                     // disabled
                 >
                  <div className={classes.user}>
-                     <img src={`${process.env.REACT_APP_SERVER}/images/user/${guides[0].photo}`} alt={guides[0].name}/>
+                     <UserAvatar alt={guides[0].name}
+                                 src={guides[0].photo}/>
                      <Link to={`/user/${guides[0]._id}`}>
                          <h4>{guides[0].name}</h4>
                      </Link>

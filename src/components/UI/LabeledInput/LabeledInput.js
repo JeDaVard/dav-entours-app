@@ -4,6 +4,7 @@ import Justicon from "../JustIcon/Justicon";
 
 export function Input(props) {
     const {
+        onBlur,
         pre,
         inputDescription,
         label,
@@ -30,6 +31,7 @@ export function Input(props) {
                     onChange={onChange}
                     autoComplete={autoComplete ? "on" : "off"}
                     required={required}
+                    onBlur={onBlur}
                 />
                 <label htmlFor={id}>{label}</label>
                 {pre ? <div className={classes.preText}>{pre}</div> : null}

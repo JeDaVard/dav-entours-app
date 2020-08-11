@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import classes from './LoginForm.module.css';
 import AnimatedButton from '../../components/UI/AnimatedButton/AnimatedButton';
-import Loading from '../../components/UI/Loading/Loading';
-import Image from '../../components/UI/Image/Image';
-import { generateBase64FromImage } from '../../utils/generateBase64FromImage';
 import validator from "validator";
 import { validateState } from "../../utils/validateState";
 import AnimatedValidation from "../../components/UI/AnimatedValidation/AnimatedValidation";
@@ -12,31 +9,60 @@ import { useApolloClient, useMutation } from '@apollo/client';
 import { SIGN_IN, SIGN_UP } from "./queries";
 import {setCookie} from "../../utils/cookies";
 import {gql} from "@apollo/client";
+import {useDispatch} from "react-redux";
+import { SHOW_PROFILE_PHOTO } from "../../app/actions/ui/types";
 
 function LoginForm(props) {
     const client = useApolloClient();
+    const dispatch = useDispatch();
+
     const [state, setState] = useState({
         input: {
             email: {
                 value: '',
                 valid: true,
+                message: '',
             },
             password: {
                 value: '',
-                valid: true
+                valid: true,
+                message: ''
             },
             name: {
                 value: '',
-                valid: true
+                valid: true,
+                message: ''
             },
-            image: null,
         },
-        nextUp: false,
-        isValid: false
+        isValid: false,
     });
 
-    const [sign] = useMutation(props.login ? SIGN_IN : SIGN_UP, {
-        onCompleted({ login }) {
+    const [sign, { loading }] = useMutation(props.login ? SIGN_IN : SIGN_UP, {
+        onCompleted(res) {
+            const data = res.signUp || res.login;
+
+            if (!data.success) {
+                if (data.message.includes('password')) {
+                    validateState(false,
+                        'password', setState,
+                        data.message)
+                } else if (data.message.includes('name')) {
+                    validateState(false,
+                        'name', setState,
+                        data.message)
+                } else {
+                    validateState(false,
+                        'email', setState,
+                        data.message)
+                }
+                return;
+            }
+            const userData = {
+                loggedIn: true,
+                photo: data.data.photo,
+                name: data.data.name,
+                userId: data.data._id
+            };
             client.writeQuery({
                 query: gql`
 					query {
@@ -46,174 +72,79 @@ function LoginForm(props) {
 						userId
 					}
                 `,
-                data: {
-                    loggedIn: true,
-                    photo: login.photo,
-                    name: login.name,
-                    userId: login._id
-                }
+                data: userData
             });
-            console.log(process.env.REACT_APP_AUTH_EXP)
-            setCookie('userId', login._id, Date.now() + +process.env.REACT_APP_AUTH_EXP)
-            localStorage.setItem('photo', login.photo);
-            localStorage.setItem('name', login.name);
+
+            setCookie('userId', userData.userId, Date.now() + +process.env.REACT_APP_AUTH_EXP)
+            localStorage.setItem('photo', userData.photo);
+            localStorage.setItem('name', userData.name);
+        },
+        onError(e) {
+            console.log(e, 'error')
         }
     });
 
     const inputHandler = (e) => {
         const target = e.target;
-        if (target.files && target.name === 'photo') {
-            generateBase64FromImage(target.files[0])
-                .then((b64) => {
-                    setState((state) => ({
-                        ...state,
-                        input: {
-                            ...state.input,
-                            image: b64,
-                        },
-                    }));
-                })
-                .catch((e) => {
-                    setState((state) => ({
-                        ...state,
-                        input: {
-                            ...state.input,
-                            image: null,
-                        },
-                    }));
-                });
-        } else {
-            const updated = { ...state.input };
-            updated[target.name].value = target.value;
+        const updated = { ...state.input };
+        updated[target.name].value = target.value;
 
-            setState((state) => ({
-                ...state,
-                input: updated,
-                isValid: false
-            }));
-        }
+        setState((state) => ({
+            ...state,
+            input: updated,
+            isValid: false
+        }));
     };
 
     const authHandler = (e, login) => {
         e.preventDefault();
 
-        if (!login) {
-            const validName = !state.input.name.value.match(/\d/)
-                && state.input.name.value.trim().split(' ').length > 1;
-            validateState(validName, 'name', setState);
-        }
+        if (login) {
+            if (!continueHandler(login)) return;
 
-        login
-            ? sign({
+            sign({
                 variables: {
                     email: state.input.email.value.trim(),
                     password: state.input.password.value,
                 }
-            })
-            : sign({
+            }).then(r=>console.log).catch(e=>console.log)
+        }
+
+        if (!login) {
+            if (!continueHandler()) return;
+            sign({
                 variables: {
                     email: state.input.email.value.trim(),
                     password: state.input.password.value,
                     name: state.input.name.value ? state.input.name.value.trim() : '',
-                    image: state.input.image,
                 }
-            })
+            }).then(r => {
+                if (!r.data.signUp.success) return;
+                dispatch({type: SHOW_PROFILE_PHOTO});
+            }).catch(e =>console.log)
+        }
     }
-    const continueHandler = async () => {
+    const continueHandler = login => {
         const validEmail = validator.isEmail(state.input.email.value)
-        validateState(validEmail, 'email', setState)
+        validateState(validEmail, 'email', setState, 'You must enter a valid email address')
 
         const validPassword = validator.isByteLength(state.input.password.value, {min:8, max: undefined})
-        validateState(validPassword, 'password', setState)
+        validateState(validPassword,
+            'password', setState,
+            'Password must have 8 or bigger length')
 
-        if (validEmail && validPassword) {
-            setState(state => ({
-                ...state,
-                nextUp: true
-            }))
+        let validName = true;
+        if (!login) {
+            validName = !state.input.name.value.match(/\d/)
+                && state.input.name.value.trim().split(' ').length > 1;
+            validateState(validName,
+                'name',setState,
+                'Seems you entered an invalid full name');
         }
-    };
-    const backHandler = () => {
-        setState(state => ({
-            ...state,
-            nextUp: false
-        }))
-    };
 
-    const formButton = props.login
-        ? (
-            <AnimatedButton button={true} type={'submit'}>
-                Login &#8594;
-            </AnimatedButton>
-        ) : (
-            <AnimatedButton button={true} fn={continueHandler} prevent>
-                Continue &#8594;
-            </AnimatedButton>
-        )
-    const nextUp = (
-        <div hidden={!state.nextUp}>
-            <div style={{marginBottom: '2rem'}}>
-                <AnimatedButton button fn={backHandler} prevent>
-                    &#8592; Back
-                </AnimatedButton>
-            </div>
-            <form
-                onSubmit={(e) => authHandler(e, props.login)}
-                className={classes.LoginForm}
-            >
-                <div className={classes.relative}>
-                    <input
-                        type="text"
-                        name="name"
-                        autoComplete={'name'}
-                        placeholder={'Full Name'}
-                        onChange={inputHandler}
-                    />
-                    <AnimatedValidation startCondition={!state.input.name.valid}>
-                        Seems you entered an invalid full name
-                    </AnimatedValidation>
-                </div>
-                <p className={classes.pText}>Choose your image by taping on default avatar down below</p>
-                <div className={classes.preview}>
-                    <div className={classes.user}>
-                        <h2>
-                            {state.input.name.value
-                                ? state.input.name.value.split(' ')[0]
-                                : 'Entours'}
-                        </h2>
-                        <div>
-                            <label htmlFor="photo">
-                                <div className={classes.image}>
-                                    <Image
-                                        url={
-                                            state.input.image
-                                                ? state.input.image
-                                                : `${process.env.REACT_APP_SERVER}/images/user/default.svg`
-                                        }
-                                    />{' '}
-                                </div>
-                            </label>
-                            <input
-                                type="file"
-                                name="photo"
-                                id="photo"
-                                onChange={inputHandler}
-                                className={classes.fileInput}
-                            />
-                        </div>
-                    </div>
-                </div>
-                <p className={classes.pText}>You automatically accept our <a href="/policy">Policies</a> by signing up</p>
-                {props.loading ? (
-                    <Loading white button/>
-                ) : (
-                    <AnimatedButton button={true} type={'submit'}>
-                        Sign Up &#8594;
-                    </AnimatedButton>
-                )}
-            </form>
-        </div>
-    );
+        return login ? validEmail && validPassword
+            : validEmail && validName && validPassword
+    };
 
     const form = (
         <div hidden={state.nextUp}>
@@ -248,8 +179,22 @@ function LoginForm(props) {
                         onChange={inputHandler}
                     />
                     <AnimatedValidation startCondition={!state.input.email.valid}>
-                        You must enter a valid email address
+                        {state.input.email.message}
                     </AnimatedValidation>
+                    {!props.login && (
+                        <>
+                            <input
+                                type="text"
+                                name="name"
+                                autoComplete={'name'}
+                                placeholder={'Full Name'}
+                                onChange={inputHandler}
+                            />
+                            <AnimatedValidation startCondition={!state.input.name.valid}>
+                                {state.input.name.message}
+                            </AnimatedValidation>
+                        </>
+                    )}
                     <input
                         type="password"
                         name="password"
@@ -258,26 +203,25 @@ function LoginForm(props) {
                         onChange={inputHandler}
                     />
                     <AnimatedValidation startCondition={!state.input.password.valid}>
-                        Password must have 8 or bigger length
+                        {state.input.password.message}
                     </AnimatedValidation>
                     <AnimatedValidation startCondition={props.error}>
                         {props.error}
                     </AnimatedValidation>
                 </div>
-                {props.loading ? (
-                    <Loading white button/>
-                ) : (
-                    formButton
-                )}
+                <AnimatedButton button type={'submit'} disabled={loading}>
+                    {props.login && <>Login &#8594;</>}
+                    {props.signUp && <>Sign Up &#8594;</>}
+                </AnimatedButton>
             </form>
         </div>
     )
     return (
         <>
             {form}
-            {nextUp}
         </>
     );
 }
 
 export default LoginForm;
+

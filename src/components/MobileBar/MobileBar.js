@@ -2,6 +2,7 @@ import React from 'react';
 import classes from './MobileBar.module.css';
 import sprite from '../../assets/icons/sprite.svg';
 import { NavLink, useRouteMatch } from "react-router-dom";
+import UserAvatar from "../UI/UserAvatar/UserAvatar";
 
 function MobileBar(props) {
     const messageMatch = useRouteMatch("/inbox/:id");
@@ -36,7 +37,8 @@ function MobileBar(props) {
                 </NavLink>
                 <NavLink to={{pathname: '/me'}} className={classes.tab} activeClassName={classes.tab__active}>
                     <div className={classes.photo}>
-                        <img src={`${process.env.REACT_APP_SERVER}/images/user/${props.photo}`} alt='user' />
+                        <UserAvatar alt={'me'}
+                                    src={props.photo}/>
                     </div>
                     <h2>Profile</h2>
                 </NavLink>

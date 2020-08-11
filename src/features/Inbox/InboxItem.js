@@ -6,6 +6,7 @@ import classes from "./InboxItem.module.css";
 import Justicon from "../../components/UI/JustIcon/Justicon";
 import TopLoading from "../../components/UI/TopLoading/TopLoading";
 import {Link} from "react-router-dom";
+import UserAvatar from "../../components/UI/UserAvatar/UserAvatar";
 // import {SUBSCRIBE_MESSAGE} from "./Conversation/queries";
 
 function InboxItem() {
@@ -53,9 +54,9 @@ function InboxItem() {
                                     <img src={`${process.env.REACT_APP_CDN}/${conversation.tour.imageCover}`}
                                          className={classes.tourImage}
                                          alt={conversation.tour.name}/>
-                                    <img src={`${process.env.REACT_APP_SERVER}/images/user/${conversation.start.staff[0].photo}`}
-                                         className={classes.userImage}
-                                         alt={conversation.start.staff[0].name}/>
+                                    <UserAvatar alt={conversation.start.staff[0].name}
+                                                className={classes.userImage}
+                                                src={conversation.start.staff[0].photo}/>
                                 </div>
                                 <div className={classes.mainBlock}>
                                     <div className={classes.userName}>

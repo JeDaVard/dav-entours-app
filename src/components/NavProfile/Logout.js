@@ -9,7 +9,7 @@ const Logout = props => {
 
     const onLogout = () => {
         props.onClose && props.onClose();
-        localStorage.setItem('photo', 'default.svg');
+        localStorage.setItem('photo', 'assets/icons/default.svg');
         localStorage.setItem('name', 'Entours');
 
         signOut()

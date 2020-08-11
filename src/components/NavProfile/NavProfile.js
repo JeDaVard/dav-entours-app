@@ -6,6 +6,7 @@ import Logout from "./Logout";
 import Justicon from "../UI/JustIcon/Justicon";
 import SmallShow from "../UI/SmallShow/SmallShow";
 import classNames from 'classnames/bind';
+import UserAvatar from "../UI/UserAvatar/UserAvatar";
 
 const cx = classNames.bind(classes)
 
@@ -21,7 +22,8 @@ function NavProfile(props) {
                 button={(
                     <div className={cx(classes.profile, {[classes.profileBlur]: props.transparent})}>
                        <Justicon icon={'menu'} className={classes.menuIcon}/>
-                       <img src={`${process.env.REACT_APP_SERVER}/images/user/${photo}`} alt="user" />
+                        <UserAvatar alt={'Me'}
+                                    src={photo}/>
                     </div>
                 )}
             >

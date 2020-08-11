@@ -2,6 +2,7 @@ import React from 'react'
 import classes from './UserReviewItem.module.css'
 import { Link } from "react-router-dom";
 import moment from "moment";
+import UserAvatar from "../../../components/UI/UserAvatar/UserAvatar";
 
 export default function UserReviewItem({ review }) {
     return (
@@ -24,7 +25,8 @@ export default function UserReviewItem({ review }) {
             <p>{review.review}</p>
             <div className={classes.reviewer}>
                 <Link to={{pathname: `/user/${review.author._id}`}}>
-                    <img src={`${process.env.REACT_APP_SERVER}/images/user/${review.author.photo}`} alt={review.author.name}/>
+                    <UserAvatar alt={review.author.name}
+                                src={review.author.photo}/>
                 </Link>
                 <div>
                     <Link to={{pathname: `/user/${review.author._id}`}}>

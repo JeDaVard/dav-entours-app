@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
 import {
     LazyBook, LazyTourPage, LazyUserPage, LazyMyTours, LazyMake,
     LazyInbox, LazyConversation, LazySaved, LazyTourEvents, LazySearchResults,
     LazyEditTour, LazyMobileTopSearch
 } from './';
-import { connect } from 'react-redux';
+import {connect, useDispatch} from 'react-redux';
+import {DISMISS_ERROR, FINISH_PROFILE_PHOTO} from "./actions/ui/types";
 import { setDesktop, setMobile } from './actions';
 import Main from '../features/MainPage/Main';
 import Profile from '../features/Profile/Profile';
@@ -25,6 +26,7 @@ import TopLoading from "../components/UI/TopLoading/TopLoading";
 import Become from "../features/MainPage/Become/Become";
 import MobileSearch from "../features/MobileSearch/MobileSearch";
 import './App.css';
+import ProfilePhoto from "../features/Profile/ProfilePhoto";
 
 
 const LOGGED_IN = gql`
@@ -38,27 +40,36 @@ const LOGGED_IN = gql`
 
 
 function App(props) {
-    const { setDesktop, setMobile } = props;
+    const { setDesktop, setMobile, profilePhoto } = props;
     const { data } = useQuery(LOGGED_IN)
     const { loggedIn, name, photo } = data;
 
-    const [error, setError] = useState(false);
+    const dispatch = useDispatch();
+
+    const dismissError = useCallback(() => {
+        dispatch({type: DISMISS_ERROR})
+    }, [])
 
     useEffect(() => {
         if (props.error) {
-            setError(true);
+            dismissError();
         }
-    }, [props.error]);
+    }, [props.error, dismissError]);
 
     const [auth, setAuth] = useState({
         modal: false,
-        login: ['Login', false],
+        login: false,
+        signUp: false,
+        title: ''
     });
 
     if (loggedIn && auth.modal) {
         setAuth((state) => ({
             ...state,
             modal: false,
+            signUp: false,
+            login: false,
+            title: ''
         }));
     }
 
@@ -75,21 +86,29 @@ function App(props) {
     });
 
     const authModalClose = () => {
-        setAuth((state) => ({
-            ...state,
+        setAuth({
+            ...auth,
             modal: false,
-        }));
+            login: false,
+            signUp: false,
+            title: ''
+        });
     };
+
     const loginModalHandler = () => {
         setAuth({
             modal: true,
-            login: ['Login', true],
+            signUp: false,
+            login: true,
+            title: 'Login'
         });
     };
     const signUpModalHandler = () => {
         setAuth({
             modal: true,
-            login: ['Sign Up', false],
+            login: false,
+            signUp: true,
+            title: 'Sign Up'
         });
     };
 
@@ -101,8 +120,8 @@ function App(props) {
         <>
             {props.error && (
                 <Error
-                    onClose={() => setError(false)}
-                    show={error}
+                    onClose={dismissError}
+                    show={!!props.error}
                 >
                     {props.error}
                 </Error>
@@ -211,13 +230,24 @@ function App(props) {
                 <Modal
                     onClick={authModalClose}
                     showBackdrop={auth.modal}
-                    title={auth.login[0]}
+                    title={auth.title}
                 >
                     <LoginForm
-                        login={auth.login[1]}
+                        login={auth.login}
+                        signUp={auth.signUp}
                         onSignUp={signUpModalHandler}
                         onLogin={loginModalHandler}
                     />
+                </Modal>
+                <Modal
+                    onClick={() => dispatch({type: FINISH_PROFILE_PHOTO})}
+                    showBackdrop={profilePhoto}
+                    title={'Profile'}
+                >
+                    <ProfilePhoto
+                        name={localStorage.getItem('name')
+                            ? localStorage.getItem('name').split(' ')[0]
+                            : 'Photo'} />
                 </Modal>
             </Layout>
         </>
@@ -226,6 +256,8 @@ function App(props) {
 
 const mapStateToProps = (state) => ({
     isMobile: state.ui.display.isMobile,
+    profilePhoto: state.ui.profilePhoto,
+    error: state.ui.error,
     asyncLoading: state.ui.loading
 });
 export default connect(mapStateToProps, { setDesktop, setMobile })(

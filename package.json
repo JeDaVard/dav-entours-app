@@ -41,7 +41,8 @@
     "react-transition-group": "^4.4.1",
     "subscriptions-transport-ws": "^0.9.16",
     "uuid": "^8.2.0",
-    "validator": "^13.0.0"
+    "validator": "^13.0.0",
+    "yup": "^0.29.3"
   },
   "scripts": {
     "start": "react-scripts start",

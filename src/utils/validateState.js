@@ -1,4 +1,4 @@
-export function validateState(isValid, inputName, setState) {
+export function validateState(isValid, inputName, setState, message) {
     if (!isValid) {
         setState(state => ({
             ...state,
@@ -6,7 +6,8 @@ export function validateState(isValid, inputName, setState) {
                 ...state.input,
                 [inputName]: {
                     ...state.input[inputName],
-                    valid: false
+                    valid: false,
+                    message
                 }
             },
             isValid: false
@@ -18,7 +19,8 @@ export function validateState(isValid, inputName, setState) {
                 ...state.input,
                 [inputName]: {
                     ...state.input[inputName],
-                    valid: true
+                    valid: true,
+                    message: ''
                 }
             },
             isValid: true

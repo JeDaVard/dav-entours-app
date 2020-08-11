@@ -27,6 +27,7 @@ function EditGallery(props) {
     const [ mutateGallery] = useMutation(EDIT_TOUR_GALLERY);
 
     const onCoverDrop = useCallback(async ([file]) => {
+        if (!file.type.startsWith('image')) return;
         if (loading.images || loading.cover) return;
         setLoading(s => ({...s, cover: true}))
         const res = await signURL({
@@ -69,6 +70,7 @@ function EditGallery(props) {
     }, [loading.cover, loading.images, imageCover, images, mutateGallery, signURL, props._id])
 
     const onImageDrop = useCallback( async ([file]) => {
+        if (!file.type.startsWith('image')) return;
         if (loading.images || loading.cover) return;
         setLoading(s => ({...s, images: true}))
         const res = await signURL({

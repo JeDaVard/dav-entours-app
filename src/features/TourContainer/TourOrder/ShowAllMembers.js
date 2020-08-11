@@ -4,6 +4,7 @@ import Justicon from "../../../components/UI/JustIcon/Justicon";
 import Separator from "../../../components/UI/Separator/Separator";
 import {Link} from "react-router-dom";
 import SmallShow from "../../../components/UI/SmallShow/SmallShow";
+import UserAvatar from "../../../components/UI/UserAvatar/UserAvatar";
 
 export default function ShowAllMembers(props) {
     return (
@@ -27,9 +28,9 @@ export default function ShowAllMembers(props) {
                               className={classes.participantLink}
                               key={participant._id}
                         >
-                            <img src={`${process.env.REACT_APP_SERVER}/images/user/${participant.photo}`}
-                                 className={classes.photo}
-                                 alt={participant.name}/>
+                            <UserAvatar alt={participant.name}
+                                        className={classes.photo}
+                                        src={participant.photo}/>
                         </Link>
                     ))}
                 </div>

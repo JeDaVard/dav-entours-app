@@ -4,7 +4,9 @@ const initialState = {
     display: {
         isMobile: window.innerWidth < 744,
     },
-    loading: false
+    loading: false,
+    profilePhoto: false,
+    error: null
 }
 
 const uiReducer = (state= initialState, action) => {
@@ -36,6 +38,27 @@ const uiReducer = (state= initialState, action) => {
             return {
                 ...state,
                 loading: true
+            }
+        case actionTypes.SHOW_PROFILE_PHOTO:
+            return {
+                ...state,
+                profilePhoto: true
+            }
+        case actionTypes.FINISH_PROFILE_PHOTO:
+            return {
+                ...state,
+                profilePhoto: false
+            }
+        case actionTypes.SHOW_ERROR:
+            return {
+                ...state,
+                loading: false,
+                error: action.error
+            }
+        case actionTypes.DISMISS_ERROR:
+            return {
+                ...state,
+                error: null
             }
         default:
             return state

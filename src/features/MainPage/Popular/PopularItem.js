@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import classes from './PopularItem.module.css';
 import ThumbedImage from "../../../components/UI/ImageLoading/ThumbedImage";
+import UserAvatar from "../../../components/UI/UserAvatar/UserAvatar";
 
 export default ({ popular }) => {
     return (
@@ -41,10 +42,8 @@ export default ({ popular }) => {
                         to={`/user/${popular.author._id}`}
                         className={classes.user}
                     >
-                        <img
-                            src={`${process.env.REACT_APP_SERVER}/images/user/${popular.author.photo}`}
-                            alt="user"
-                        />
+                        <UserAvatar alt={'user'}
+                                  src={popular.author.photo}/>
                         <p>{popular.author.name}</p>
                     </Link>
                     <div className={classes.loc}>
