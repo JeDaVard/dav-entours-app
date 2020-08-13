@@ -21,9 +21,11 @@ function Profile(props) {
                     </div>
                     <div>
                         <Link to={'#'} onClick={() => dispatch({type: SHOW_PROFILE_PHOTO})}>
-                            <UserAvatar alt={props.name.split(' ')[0]}
-                                        className={classes.photo}
-                                        src={props.photo}/>
+                            <div className={classes.photoFrame}>
+                                <UserAvatar alt={props.name.split(' ')[0]}
+                                            className={classes.photo}
+                                            src={props.photo}/>
+                            </div>
                         </Link>
                     </div>
                 </div>

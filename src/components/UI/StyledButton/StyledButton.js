@@ -28,10 +28,10 @@ function StyledButton(props) {
             <span className={classes.effectContainer}>
                 <span onMouseMove={mouseMoveHandler} style={styles} className={classes.effect} />
             </span>
-            <span className={classes.text}>
-                <span style={opacity}>{props.children}</span>
-                {props.loading && <ButtonLoading />}
-                </span>
+            <span className={classes.text} style={opacity}>
+                {props.children}
+            </span>
+            {props.loading && <ButtonLoading />}
         </>
     )
     return (
