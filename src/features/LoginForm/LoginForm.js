@@ -78,6 +78,8 @@ function LoginForm(props) {
             setCookie('userId', userData.userId, Date.now() + +process.env.REACT_APP_AUTH_EXP)
             localStorage.setItem('photo', userData.photo);
             localStorage.setItem('name', userData.name);
+
+            // props.authModalClose()
         },
         onError(e) {
             console.log(e, 'error')

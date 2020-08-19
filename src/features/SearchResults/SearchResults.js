@@ -41,7 +41,7 @@ export default function SearchResults() {
                 maxGroupSize,
                 participants,
                 page: 1,
-                limit: 4
+                limit: 8
             }
         },
         fetchPolicy: "network-only",
@@ -63,7 +63,7 @@ export default function SearchResults() {
                     maxGroupSize,
                     participants,
                     page,
-                    limit: 4
+                    limit: 8
                 }
             },
         })

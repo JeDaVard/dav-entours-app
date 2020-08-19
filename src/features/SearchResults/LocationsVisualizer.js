@@ -15,7 +15,7 @@ export default function LocationsVisualizer({locations}) {
                                    target="_blank"
                                    rel="noopener noreferrer"
                                    className={classes.locInvisible}>
-                                    {locName && locName}
+                                    {loc.address}
                                 </a>
                             </div></div>
                         )

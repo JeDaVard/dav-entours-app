@@ -28,6 +28,38 @@ import MobileSearch from "../features/MobileSearch/MobileSearch";
 import './App.css';
 import ProfilePhoto from "../features/Profile/ProfilePhoto";
 
+// import { gql, useQuery } from '@apollo/client'
+
+function TestUsers() {
+    const { loading, data, error } = useQuery(gql`
+        query {
+            users {
+                _id
+                name
+                photo
+            }
+        }
+    `)
+    console.log(data)
+    return (
+        <div className="row">
+            <h1>Users</h1>
+            <div style={{display: 'flex', flexWrap: 'wrap'}}>
+                {!loading && data.users.map((user, index) => (
+                    <div key={user._id}
+                        style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
+                        <img style={{width: '64px',height: '64px', borderRadius: '50%'}}
+                             src={process.env.REACT_APP_CDN+'/'+user.photo}
+                             alt={user.name}/>
+                        <p><b>{index + 1}.</b> {user.name}</p>
+                    </div>
+                ))}
+            </div>
+            {!data && <h2>No data</h2>}
+        </div>
+    )
+}
+
 
 const LOGGED_IN = gql`
 	query AuthData {
@@ -174,6 +206,7 @@ function App(props) {
                 <Switch>
                     <Route exact path="/" component={Main} />
                     <Route path="/payments/book" component={LazyBook} />
+                    <Route path="/users" component={TestUsers} />
                     <Route path="/tour/:slug/edit" component={LazyEditTour}/>
                     <Route path="/tours/search" component={LazySearchResults}/>
                     <Route path="/tours" render={_ =>
@@ -234,6 +267,7 @@ function App(props) {
                     title={auth.title}
                 >
                     <LoginForm
+                        authModalClose={authModalClose}
                         login={auth.login}
                         signUp={auth.signUp}
                         onSignUp={signUpModalHandler}

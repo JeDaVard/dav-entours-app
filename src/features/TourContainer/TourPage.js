@@ -1,5 +1,5 @@
-import React from 'react';
-import { useQuery } from '@apollo/client';
+import React, {useEffect} from 'react';
+import {useLazyQuery, useQuery} from '@apollo/client';
 import { useSelector } from 'react-redux';
 import { Redirect, useParams } from 'react-router-dom'
 import { FETCH_TOUR } from "./queries";
@@ -27,11 +27,17 @@ function TourPage() {
             id: slug,
             page: 1,
             limit: 4
-        },
+        }
     });
 
-    const recommended = useQuery(FETCH_RECOMMENDED);
+    const [fetchRecommended, recommended] = useLazyQuery(FETCH_RECOMMENDED, {
+        fetchPolicy: "network-only"
+    });
 
+    useEffect(() => {
+        fetchRecommended();
+        console.log(slug)
+    }, [slug, fetchRecommended])
 
     if (loading && !data) return (
         <>

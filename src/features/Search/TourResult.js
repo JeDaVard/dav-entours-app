@@ -6,8 +6,10 @@ import Separator from "../../components/UI/Separator/Separator";
 import { Link } from "react-router-dom";
 import LocationsVisualizer from "../SearchResults/LocationsVisualizer";
 import UserAvatar from "../../components/UI/UserAvatar/UserAvatar";
+import {useSelector} from "react-redux";
 
 export default function TourResult(props) {
+    const isMobile = useSelector(s => s.ui.display.isMobile)
     const { tours, searchLocation, searchCountry } = props;
     return (
         <div className={classes.tourResults}>
@@ -35,7 +37,7 @@ export default function TourResult(props) {
                                     </div>
                                 </div>
                                 <Link to={`/tour/${tour.slug}`} className={classes.titleLink}>
-                                    <h1>{tour.name}</h1>
+                                    <h1>{tour.name.length > 40 && !isMobile ? tour.name.slice(0,37) + ' ...' : tour.name}</h1>
                                 </Link>
                             </div>
                             <button className={classes.saveBig}>

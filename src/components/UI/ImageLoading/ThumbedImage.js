@@ -47,7 +47,11 @@ const ThumbedImage = React.memo(function(props) {
             buffer.alt = alt;
             buffer.addEventListener('load', bufferHandler)
         }
-        return () => buffer.removeEventListener('load', bufferHandler)
+        return () => {
+            if (!!buffer) {
+                buffer.removeEventListener('load', bufferHandler)
+            }
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [alt, className, theSrc])
 

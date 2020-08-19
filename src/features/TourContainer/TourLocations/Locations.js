@@ -10,7 +10,7 @@ function Locations(props) {
                 <div className={classes.locations}>
                     {props.data.locations.map(loc => (
                         <div
-                            key={loc.description}
+                            key={loc._id}
                             className={classes.locListItemBlock}
                         >
                             <div className={classes.locListItem}

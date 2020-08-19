@@ -47,7 +47,7 @@ export default function Recommended(props) {
                             <Link to={`/tour/${tour.slug}`}>
                                 <h1>
                                     {tour.name.length > 40
-                                        ? tour.name.slice(' ').slice(0,4).join(' ') + ' ...'
+                                        ? tour.name.split(' ').slice(0,4).join(' ') + ' ...'
                                         : tour.name}
                                 </h1>
                             </Link>
@@ -55,7 +55,7 @@ export default function Recommended(props) {
                                 <Justicon icon={'map-pin'} className={classes.icon}/>
                                 <span>
                                 {tour.startLocation.description.length > 40
-                                    ? tour.startLocation.description.slice(' ').slice(0,4).join(' ')
+                                    ? tour.startLocation.description.split(' ').slice(0,4).join(' ')
                                     : tour.startLocation.description}
                                 </span>
                             </h2>

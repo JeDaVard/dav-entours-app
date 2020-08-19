@@ -25,11 +25,11 @@ export default function TourOrder(props) {
                 showBackdrop={state}
                 title={'Book the tour'}
             >
-                {props.tour.starts.map(start => {
+                {props.tour.starts.slice().sort((a, b) => a.date - b.date).map(start => {
                     const pathname = '/payments/book';
                     const search = `?tourId=${props.tour._id}&slug=${props.tour.slug}&start=${start._id}&date=${start.date}`;
                     return (
-                        <div key={start.date} className={classes.block}>
+                        <div key={start.date} className={classes.block} key={start._id}>
                             <p className={classes.date}>{moment(+start.date).format('dd, DD MMM')}</p>
                             <div className={classes.body}>
                                 <div className={classes.top}>
