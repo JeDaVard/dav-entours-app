@@ -7,7 +7,8 @@
     height: 6rem;
     background: rgba(255, 255, 255, 0.85);
     z-index: 99;
-    box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.14);
+    /*box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.14);*/
+    box-shadow: rgba(0, 0, 0, 0.08) 0 -1px 12px;
     transition: all .2s;
     color: rgba(0, 0, 0, 0.75);
 }
@@ -19,7 +20,7 @@
     height: 100%;
     top: 0;
     left: 0;
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(8px);
     z-index: -1;
 }
 
@@ -110,8 +111,9 @@
         flex-direction: column;
     }
     .userMobile__title h3 {
-        font-size: 1.3rem;
-        font-weight: 400;
+        display: none;
+        /*font-size: 1.3rem;*/
+        /*font-weight: 400;*/
     }
     .userMobile__title {
         display: flex;

@@ -57,7 +57,7 @@ function TourPage() {
             <TourLocations data={{start: data.tour.startLocation, locations: data.tour.locations}}/>
             <Separator margin={'0 2'} />
             <TourReviews tour={data.tour} more={fetchMore} loading={loading}/>
-            <Separator margin={'3 2'} />
+            <Separator margin={'3 4'} />
             {!recommended.loading
                 && recommended.data
                 && <Recommended tours={recommended.data.recommended.slice(0,4)}/>}

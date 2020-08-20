@@ -7,11 +7,13 @@ import ThumbedImage from "../../components/UI/ImageLoading/ThumbedImage";
 import Justicon from "../../components/UI/JustIcon/Justicon";
 import {Link} from "react-router-dom";
 import UserAvatar from "../../components/UI/UserAvatar/UserAvatar";
+import ScrollToTop from "../../components/UI/ScrollToTop";
 
 export default function MobileSearch() {
     const { loading, data} = useQuery(FETCH_RECOMMENDED);
     return (
         <div>
+            <ScrollToTop />
             <div className={classes.topPlaceHolder}/>
             <div className={classes.container}>
                 {!loading && data && !!data.recommended.length ? data.recommended.slice(0,4).map(rec => (

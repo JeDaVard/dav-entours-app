@@ -46,12 +46,12 @@
 }
 
 .content {
-
+    margin-top: 2rem;
 }
 
 .review {
-    padding: 2rem 0;
-    border-bottom: 1rem solid rgba(0, 0, 0, 0.06);
+    padding: 2rem 2rem;
+    border-top: 1rem solid rgba(0, 0, 0, 0.06);
 }
 
 .reviewInfo {

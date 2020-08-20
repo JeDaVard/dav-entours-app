@@ -48,7 +48,7 @@ function PopDown(props) {
                                 alt={'A tour you will like'}
                                 blur />
                         </div>
-                        <h3>{props.tour.name}</h3>
+                        <h3>{props.tour.name.length > 30 ? props.tour.name.slice(0,30) + ' ...' : props.tour.name}</h3>
                         <div className={classes.rating}>
                             <p><b>{props.tour.ratingsAverage}</b></p>
                             &nbsp;

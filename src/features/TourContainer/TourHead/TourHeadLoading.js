@@ -3,10 +3,12 @@ import classes from './TourHead.module.css';
 import '../animation.css';
 import Justicon from "../../../components/UI/JustIcon/Justicon";
 import ContentLoader from "react-content-loader";
+import ScrollToTop from "../../../components/UI/ScrollToTop";
 
 function TourHeadLoading() {
     return (
         <div className={classes.cover}>
+            <ScrollToTop />
             <div className={classes.coverImage} style={{ background: 'rgba(0,0,0, .3'}} />
 
             <div className={'row'}>

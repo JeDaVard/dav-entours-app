@@ -61,7 +61,6 @@ const TourReviews = (props) => {
                                     <h3><b>{props.tour.ratingsQuantity}</b> reviews</h3>
                                 </div>
                             </div>
-                        <Separator color={'normal'} margin={'2 0'}/>
                     <div className={classes.content}>
 
                         {reviews.data.map( review => (
