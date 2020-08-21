@@ -84,18 +84,8 @@ const cache = new InMemoryCache({
                 },
                 tour: {
                     merge(ex= {}, inc, {mergeObjects}) {
-                        // console.log(ex, 'ex')
-                        // console.log(inc, 'inc')
-                        // return {...ex, ...inc}
                         return mergeObjects(ex, inc)
                     },
-                    // read(a, b) {
-                    //     console.log(b.args.id, a)
-                    //     return b.toReference({
-                    //         __typename: 'Tour',
-                    //         id: '5f3239cfb642804b753024d1'
-                    //     })
-                    // }
                 }
             }
         },
@@ -126,18 +116,11 @@ const cache = new InMemoryCache({
                         }
                     },
                 },
-                // starts: {
-                //     merge(ex= [], inc) {
-                //         return [...ex, ...inc]
-                //     },
-                //     read(a, b) {
-                //         console.log(b)
-                //         return b.toReference({
-                //             __typename: 'Tour',
-                //             id: '5f3239cfb642804b753024d1'
-                //         })
-                //     }
-                // }
+                starts: {
+                    merge(ex= [], inc) {
+                        return [...ex, ...inc]
+                    }
+                }
             }
         }
     },

@@ -46,8 +46,8 @@ function TourPage() {
         },
         onCompleted() {
             fetchReviews();
-            fetchStarts();
             fetchRecommended();
+            fetchStarts();
         }
     });
 

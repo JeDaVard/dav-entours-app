@@ -40,7 +40,6 @@ function TestUsers() {
             }
         }
     `)
-    console.log(data)
     return (
         <div className="row">
             <h1>Users</h1>

@@ -56,6 +56,7 @@ export const FETCH_TOUR = gql`
 export const FETCH_TOUR_REVIEWS = gql`
 	query FetchTour($id: ID! $page:Int $limit:Int) {
 		tour(id: $id) {
+			_id
 			reviews(page:$page limit:$limit) @connection(key: "reviews") {
 				hasMore
 				nextPage
@@ -78,6 +79,7 @@ export const FETCH_TOUR_REVIEWS = gql`
 export const FETCH_TOUR_STARTS = gql`
 	query FetchTourStarts($id: ID!){
 		tour(id: $id) {
+			_id
 			starts {
 				_id
 				date
