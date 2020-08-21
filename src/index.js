@@ -81,6 +81,21 @@ const cache = new InMemoryCache({
                     merge(ex= [], inc) {
                         return inc
                     }
+                },
+                tour: {
+                    merge(ex= {}, inc, {mergeObjects}) {
+                        // console.log(ex, 'ex')
+                        // console.log(inc, 'inc')
+                        // return {...ex, ...inc}
+                        return mergeObjects(ex, inc)
+                    },
+                    // read(a, b) {
+                    //     console.log(b.args.id, a)
+                    //     return b.toReference({
+                    //         __typename: 'Tour',
+                    //         id: '5f3239cfb642804b753024d1'
+                    //     })
+                    // }
                 }
             }
         },
@@ -99,13 +114,30 @@ const cache = new InMemoryCache({
                     merge(existing, incoming) {
                         return {...existing, ...incoming}
                     },
-                    // starts: {
-                    //     merge(existing= [], incoming) {
-                    //         console.log({existing, incoming})
-                    //         return {...existing, ...incoming}
-                    //     },
-                    // }
-                }
+                },
+                reviews: {
+                    merge(existing= { data: [] }, incoming, { mergeObjects }) {
+                        return {
+                            ...incoming,
+                            data: [
+                                ...existing.data,
+                                ...incoming.data
+                            ]
+                        }
+                    },
+                },
+                // starts: {
+                //     merge(ex= [], inc) {
+                //         return [...ex, ...inc]
+                //     },
+                //     read(a, b) {
+                //         console.log(b)
+                //         return b.toReference({
+                //             __typename: 'Tour',
+                //             id: '5f3239cfb642804b753024d1'
+                //         })
+                //     }
+                // }
             }
         }
     },

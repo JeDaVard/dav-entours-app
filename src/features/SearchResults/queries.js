@@ -18,15 +18,6 @@ const SearchQueryFragment = gql`
 		ratingsAverage
 		ratingsQuantity
 		maxGroupSize
-		starts {
-			_id
-			date
-			participants {
-				_id
-				name
-				photo
-			}
-		}
 		startLocation {
 			description
 			coordinates
@@ -68,9 +59,6 @@ export const FETCH_SEARCH_RESULTS = gql`
 				distance
 				...SearchQueryFragment
 			}
-		}
-		recommended {
-			...SearchQueryFragment
 		}
 	}
 	${SearchQueryFragment}

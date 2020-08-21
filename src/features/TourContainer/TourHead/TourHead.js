@@ -8,7 +8,7 @@ import {useMutation} from "@apollo/client";
 import { SAVE_TOUR } from "../../MyTours/Saved/queries";
 
 function TourHead(props) {
-    const { tour } = props;
+    const { tour, starts } = props;
     const [ saveTour ] = useMutation(SAVE_TOUR)
     const onSaveTour = e => {
         e.preventDefault();
@@ -62,8 +62,8 @@ function TourHead(props) {
                     <div className={classes.info}>
                         <p>
                             <Justicon icon={'calendar'} className={classes.icon}/>
-                            <b>{tour.starts.length
-                                ? moment(+tour.starts[0].date).format('ddd, DD MMM')
+                            <b>{starts.length
+                                ? moment(+starts[0].date).format('ddd, DD MMM')
                                 : 'Soon!'}</b>
                         </p>
                         <p>
@@ -72,8 +72,8 @@ function TourHead(props) {
                         </p>
                         <p>
                             <Justicon icon={'users'} className={classes.icon}/>
-                            <b>{tour.starts.length
-                                ? tour.starts[0].participants.length + ' / ' + tour.maxGroupSize + ' people' : 'Soon!'}</b>
+                            <b>{starts.length
+                                ? starts[0].participants.length + ' / ' + tour.maxGroupSize + ' people' : 'Soon!'}</b>
                         </p>
                     </div>
                 </div>

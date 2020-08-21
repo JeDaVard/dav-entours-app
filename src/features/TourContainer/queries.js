@@ -17,15 +17,6 @@ export const TourPageFields = gql`
 		ratingsAverage
 		ratingsQuantity
 		maxGroupSize
-		starts {
-			_id
-			date
-			participants {
-				_id
-				name
-				photo
-			}
-		}
 		startLocation {
 			description
 			coordinates
@@ -50,26 +41,11 @@ export const TourPageFields = gql`
 			name
 			photo
 		}
-		reviews(page:$page limit:$limit) {
-			hasMore
-			nextPage
-			total
-			data {
-				review
-				_id
-				author {
-					_id
-					photo
-					name
-					createdAt
-				}
-			}
-		}
 	}
 `
 
 export const FETCH_TOUR = gql`
-	query FetchTour($id: ID! $page:Int $limit:Int) {
+	query FetchTour($id: ID!) {
 		tour(id: $id) {
 			...TourPageFields
 		}
@@ -77,11 +53,10 @@ export const FETCH_TOUR = gql`
 	${TourPageFields}
 `;
 
-export const FETCH_MORE_REVIEWS = gql`
-	query fetchMoreReviews($id: ID! $page:Int $limit:Int) {
+export const FETCH_TOUR_REVIEWS = gql`
+	query FetchTour($id: ID! $page:Int $limit:Int) {
 		tour(id: $id) {
-			_id
-			reviews(page:$page limit:$limit) {
+			reviews(page:$page limit:$limit) @connection(key: "reviews") {
 				hasMore
 				nextPage
 				total
@@ -99,3 +74,19 @@ export const FETCH_MORE_REVIEWS = gql`
 		}
 	}
 `;
+
+export const FETCH_TOUR_STARTS = gql`
+	query FetchTourStarts($id: ID!){
+		tour(id: $id) {
+			starts {
+				_id
+				date
+				participants {
+					_id
+					name
+					photo
+				}
+			}
+		}
+	}
+`

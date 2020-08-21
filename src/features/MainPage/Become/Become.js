@@ -16,7 +16,7 @@ function Become() {
                         </div>
                     </div>
                     <div className={classes.right}>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam amet animi aut, commodi dolor eligendi laborum libero nemo neque possimus! Atque deserunt earum facere nihil saepe. Alias illum labore vel!</p>
+                        <p>No matter what kind of home or tour you have to make, Entours makes it simple and secure to tour from all over the world. You’re in full control of your availability, prices, rules, also you can invite guides to make your tour better.</p>
                     </div>
                 </div>
             </div>

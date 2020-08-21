@@ -19,10 +19,10 @@ export default function Recommended(props) {
                                 <Justicon icon={'heart'} className={classes.iconSave}/>
                             </div>
                             <div className={classes.start}>
-                                {tour.starts.length ? (
+                                {tour ? (
                                     <>
                                         <Justicon icon="calendar" className={classes.icon}/>
-                                        <h4>{moment(tour.starts[0].date).format('ddd, DD MMM')}</h4>
+                                        {/*<h4>{moment(tour.starts[0].date).format('ddd, DD MMM')}</h4>*/}
                                     </>
                                 ) : (
                                     <h4>Save to follow its starts</h4>

@@ -11,12 +11,12 @@ import ShowAllMembers from "./ShowAllMembers";
 import UserAvatar from "../../../components/UI/UserAvatar/UserAvatar";
 
 export default function TourOrder(props) {
+    const { starts } = props;
     const [ state, setState ] = useState(false);
 
     const reserveHandler = e => {
         setState(true)
     }
-
 
     return (
         <>
@@ -25,7 +25,7 @@ export default function TourOrder(props) {
                 showBackdrop={state}
                 title={'Book the tour'}
             >
-                {props.tour.starts.slice().sort((a, b) => a.date - b.date).map(start => {
+                {starts.length && starts.slice().sort((a, b) => a.date - b.date).map(start => {
                     const pathname = '/payments/book';
                     const search = `?tourId=${props.tour._id}&slug=${props.tour.slug}&start=${start._id}&date=${start.date}`;
                     return (

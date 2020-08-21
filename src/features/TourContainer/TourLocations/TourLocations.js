@@ -13,7 +13,7 @@ function TourLocations(props) {
     const executeScroll = () => scrollToRef(ref)
     const {longitude, latitude, zoom} = new WebMercatorViewport({width: 400, height: 400})
         .fitBounds(props.data.locations.map( loc => loc.coordinates), {
-            padding: 10,
+            padding: 70,
             offset: [0, -70]
         });
     const [viewport, setViewport] = useState({

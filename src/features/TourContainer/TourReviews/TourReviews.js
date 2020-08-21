@@ -5,38 +5,38 @@ import Separator from "../../../components/UI/Separator/Separator";
 import {Link} from "react-router-dom";
 import Justicon from "../../../components/UI/JustIcon/Justicon";
 import SimpleButton from "../../../components/UI/SimpleButton/SimpleButton";
-import { FETCH_MORE_REVIEWS } from "../queries";
-import ButtonLoading from "../../../components/UI/ButtonLoading/ButtonLoading";
+import {FETCH_TOUR_REVIEWS} from "../queries";
+// import ButtonLoading from "../../../components/UI/ButtonLoading/ButtonLoading";
 import UserAvatar from "../../../components/UI/UserAvatar/UserAvatar";
 
 const TourReviews = (props) => {
-    const { reviews } = props.tour;
+    const { reviews } = props;
 
 
     const moreReviewsHandler = () => {
         props.more({
-            query: FETCH_MORE_REVIEWS,
+            query: FETCH_TOUR_REVIEWS,
             variables: { id: props.tour.slug, page: reviews.nextPage, limit: 4 },
             notifyOnNetworkStatusChange: true,
-            updateQuery: (previousResult, { fetchMoreResult }) => {
-                if (!fetchMoreResult.tour.reviews.data) return;
-
-                const merged = [
-                    ...previousResult.tour.reviews.data,
-                    ...fetchMoreResult.tour.reviews.data
-                ]
-                return {
-                    ...previousResult,
-                    tour: {
-                        ...previousResult.tour,
-                        reviews: {
-                            // ATTENTION that's the new reviews
-                            ...fetchMoreResult.tour.reviews,
-                            data: merged
-                        }
-                    }
-                }
-            }
+            // updateQuery: (previousResult, { fetchMoreResult }) => {
+            //     if (!fetchMoreResult.tour.reviews.data) return;
+            //
+            //     const merged = [
+            //         ...previousResult.tour.reviews.data,
+            //         ...fetchMoreResult.tour.reviews.data
+            //     ]
+            //     return {
+            //         ...previousResult,
+            //         tour: {
+            //             ...previousResult.tour,
+            //             reviews: {
+            //                 // ATTENTION that's the new reviews
+            //                 ...fetchMoreResult.tour.reviews,
+            //                 data: merged
+            //             }
+            //         }
+            //     }
+            // }
         })
     }
 
@@ -63,7 +63,7 @@ const TourReviews = (props) => {
                             </div>
                     <div className={classes.content}>
 
-                        {reviews.data.map( review => (
+                        {!!reviews.data.length && reviews.data.map( review => (
                             <div className={classes.review} key={review._id}>
                                 <div className={classes.reviewInfo}>
                                     <Link to={{pathname: `/user/${review.author._id}`}}>

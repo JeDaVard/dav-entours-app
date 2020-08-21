@@ -1,8 +1,8 @@
-import React from "react";
+import React, {useEffect} from "react";
 import MainHead from "../MainPage/MainHead/MainHead";
 import classes from './SearchResults.module.css';
-import { useQuery } from "@apollo/client";
-import { FETCH_SEARCH_RESULTS } from "./queries";
+import {useLazyQuery, useQuery} from "@apollo/client";
+import {FETCH_RECOMMENDED, FETCH_SEARCH_RESULTS} from "./queries";
 import { useHistory } from "react-router-dom";
 import qs from "query-string";
 import Recommended from "../Search/Recommended";
@@ -50,6 +50,14 @@ export default function SearchResults() {
 
     const search = data ? data.search : {};
 
+    const [ fetchRecommended, recommended ] = useLazyQuery(FETCH_RECOMMENDED, {
+        fetchPolicy: "network-only"
+    });
+
+    useEffect(() => {
+        fetchRecommended();
+    }, [fetchRecommended, location.search])
+
     const paginate = (e, page) => {
         e.preventDefault();
         window.scrollTo(0, 0);
@@ -67,6 +75,9 @@ export default function SearchResults() {
                 }
             },
         })
+            .then(_ => {
+                fetchRecommended();
+            })
     }
 
     return (
@@ -104,8 +115,8 @@ export default function SearchResults() {
                         <h4>Explore some of the best places to visit in the world</h4>
                     </div>
                 </div>
-                {data && !!data.recommended.length && (
-                    <Recommended tours={data.recommended.slice(0,4)}/>
+                {recommended.data && !!recommended.data.recommended.length && (
+                    <Recommended tours={recommended.data.recommended.slice(0,4)}/>
                 )}
             </div>
             <div className="row">
