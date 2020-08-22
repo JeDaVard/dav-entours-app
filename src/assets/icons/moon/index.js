@@ -1,56 +1,115 @@
-export {default as arrowDown} from './arrow-down.svg'
-export {default as arrowLeft} from './arrow-left.svg'
-export {default as arrowRight} from './arrow-right.svg'
-export {default as arrowUp} from './arrow-up.svg'
-export {default as award} from './award.svg'
-export {default as bell} from './bell.svg'
-export {default as calendar} from './calendar.svg'
-export {default as camera} from './camera.svg'
-export {default as checkSquare} from './check-square.svg'
-export {default as check} from './check.svg'
-export {default as chevronDown} from './chevron-down.svg'
-export {default as chevronLeft} from './chevron-left.svg'
-export {default as chevronRight} from './chevron-right.svg'
-export {default as chevronUp} from './chevron-up.svg'
-export {default as clipboard} from './clipboard.svg'
-export {default as clock} from './clock.svg'
-export {default as compass} from './compass.svg'
-export {default as creditCard} from './credit-card.svg'
-export {default as database} from './database.svg'
-export {default as dollarSign} from './dollar-sign.svg'
-export {default as edit} from './edit.svg'
-export {default as globe} from './globe.svg'
-export {default as heart} from './heart.svg'
-export {default as home} from './home.svg'
-export {default as inbox} from './inbox.svg'
-export {default as mail} from './mail.svg'
-export {default as mapPin} from './map-pin.svg'
-export {default as map} from './map.svg'
-export {default as menu} from './menu.svg'
-export {default as messageSquare} from './message-square.svg'
-export {default as minusSquare} from './minus-square.svg'
-export {default as minus} from './minus.svg'
-export {default as moon} from './moon.svg'
-export {default as moreHorizontal} from './more-horizontal.svg'
-export {default as phone} from './phone.svg'
-export {default as plusCircle} from './plus-circle.svg'
-export {default as plus} from './plus.svg'
-export {default as search} from './search.svg'
-export {default as send} from './send.svg'
-export {default as settings} from './settings.svg'
-export {default as slash} from './slash.svg'
-export {default as star} from './star.svg'
-export {default as sun} from './sun.svg'
-export {default as toggleLeft} from './toggle-left.svg'
-export {default as toggleRight} from './toggle-right.svg'
-export {default as trash} from './trash.svg'
-export {default as uploadCloud} from './upload-cloud.svg'
-export {default as upload} from './upload.svg'
-export {default as userCheck} from './user-check.svg'
-export {default as userMinus} from './user-minus.svg'
-export {default as userPlus} from './user-plus.svg'
-export {default as userX} from './user-x.svg'
-export {default as user} from './user.svg'
-export {default as users} from './users.svg'
-export {default as x} from './x.svg'
-export {default as zap} from './zap.svg'
+import {ReactComponent as arrowDown} from './arrow-down.svg'
+import {ReactComponent as arrowLeft} from './arrow-left.svg'
+import {ReactComponent as arrowRight} from './arrow-right.svg'
+import {ReactComponent as arrowUp} from './arrow-up.svg'
+import {ReactComponent as award} from './award.svg'
+import {ReactComponent as bell} from './bell.svg'
+import {ReactComponent as calendar} from './calendar.svg'
+import {ReactComponent as camera} from './camera.svg'
+import {ReactComponent as checkSquare} from './check-square.svg'
+import {ReactComponent as check} from './check.svg'
+import {ReactComponent as chevronDown} from './chevron-down.svg'
+import {ReactComponent as chevronLeft} from './chevron-left.svg'
+import {ReactComponent as chevronRight} from './chevron-right.svg'
+import {ReactComponent as chevronUp} from './chevron-up.svg'
+import {ReactComponent as clipboard} from './clipboard.svg'
+import {ReactComponent as clock} from './clock.svg'
+import {ReactComponent as compass} from './compass.svg'
+import {ReactComponent as creditCard} from './credit-card.svg'
+import {ReactComponent as database} from './database.svg'
+import {ReactComponent as dollarSign} from './dollar-sign.svg'
+import {ReactComponent as edit} from './edit.svg'
+import {ReactComponent as globe} from './globe.svg'
+import {ReactComponent as heart} from './heart.svg'
+import {ReactComponent as home} from './home.svg'
+import {ReactComponent as inbox} from './inbox.svg'
+import {ReactComponent as mail} from './mail.svg'
+import {ReactComponent as mapPin} from './map-pin.svg'
+import {ReactComponent as map} from './map.svg'
+import {ReactComponent as menu} from './menu.svg'
+import {ReactComponent as messageSquare} from './message-square.svg'
+import {ReactComponent as minusSquare} from './minus-square.svg'
+import {ReactComponent as minus} from './minus.svg'
+import {ReactComponent as moon} from './moon.svg'
+import {ReactComponent as moreHorizontal} from './more-horizontal.svg'
+import {ReactComponent as phone} from './phone.svg'
+import {ReactComponent as plusCircle} from './plus-circle.svg'
+import {ReactComponent as plus} from './plus.svg'
+import {ReactComponent as search} from './search.svg'
+import {ReactComponent as send} from './send.svg'
+import {ReactComponent as settings} from './settings.svg'
+import {ReactComponent as slash} from './slash.svg'
+import {ReactComponent as star} from './star.svg'
+import {ReactComponent as sun} from './sun.svg'
+import {ReactComponent as toggleLeft} from './toggle-left.svg'
+import {ReactComponent as toggleRight} from './toggle-right.svg'
+import {ReactComponent as trash} from './trash.svg'
+import {ReactComponent as uploadCloud} from './upload-cloud.svg'
+import {ReactComponent as upload} from './upload.svg'
+import {ReactComponent as userCheck} from './user-check.svg'
+import {ReactComponent as userMinus} from './user-minus.svg'
+import {ReactComponent as userPlus} from './user-plus.svg'
+import {ReactComponent as userX} from './user-x.svg'
+import {ReactComponent as user} from './user.svg'
+import {ReactComponent as users} from './users.svg'
+import {ReactComponent as x} from './x.svg'
+import {ReactComponent as zap} from './zap.svg'
+
+export const icons = {
+    'arrow-down': arrowDown,
+    'arrow-left': arrowLeft,
+    'arrow-right': arrowRight,
+    'arrow-up': arrowUp,
+    award,
+    bell,
+    calendar,
+    camera,
+    'check-square': checkSquare,
+    check,
+    'chevron-down': chevronDown,
+    'chevron-left': chevronLeft,
+    'chevron-right': chevronRight,
+    'chevron-up': chevronUp,
+    clipboard,
+    clock,
+    compass,
+    'credit-card': creditCard,
+    database,
+    'dollar-sign': dollarSign,
+    edit,
+    globe,
+    heart,
+    home,
+    inbox,
+    mail,
+    'map-pin': mapPin,
+    map,
+    menu,
+    'message-square': messageSquare,
+    'minus-square': minusSquare,
+    minus,
+    moon,
+    'more-horizontal': moreHorizontal,
+    phone,
+    'plus-circle': plusCircle,
+    plus,
+    search,
+    send,
+    settings,
+    slash,
+    star,
+    sun,
+    'toggle-left': toggleLeft,
+    'toggle-right': toggleRight,
+    trash,
+    'upload-cloud': uploadCloud,
+    upload,
+    'user-check': userCheck,
+    'user-minus': userMinus,
+    'user-plus': userPlus,
+    'user-x': userX,
+    user,
+    users,
+    x,
+    zap
+}

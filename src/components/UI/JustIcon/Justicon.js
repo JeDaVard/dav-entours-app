@@ -1,13 +1,15 @@
 import React from "react";
 import classes from './Justicon.module.css';
-import sprite from '../../../assets/icons/sprite.svg'
-// import * as icons from '../../../assets/icons/moon'
+// import sprite from '../../../assets/icons/sprite.svg'
+import { icons } from '../../../assets/icons/moon'
 
 const Justicon = props => {
+    const Icon = icons[props.icon]
     return (
-        <svg className={props.className ? props.className : classes.Justicon}>
-            <use href={sprite + `#icon-${props.icon}`} />
-        </svg>
+        // <svg className={props.className ? props.className : classes.Justicon}>
+        //     <use href={sprite + `#icon-${props.icon}`} />
+        // </svg>
+        <Icon className={props.className ? props.className : classes.Justicon}/>
     )
 }
 
