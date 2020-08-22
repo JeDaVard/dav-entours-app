@@ -1,8 +1,8 @@
-import React, {useEffect} from 'react';
-import {useLazyQuery, useQuery} from '@apollo/client';
+import React, { useEffect } from 'react';
+import { useLazyQuery, useQuery } from '@apollo/client';
 import { useSelector } from 'react-redux';
 import { Redirect, useParams } from 'react-router-dom'
-import {FETCH_TOUR, FETCH_TOUR_REVIEWS, FETCH_TOUR_STARTS} from "./queries";
+import { FETCH_TOUR, FETCH_TOUR_REVIEWS, FETCH_TOUR_STARTS } from "./queries";
 import Separator from '../../components/UI/Separator/Separator';
 import TourHead from './TourHead/TourHead';
 import TourDescription from './TourDescription/TourDescription';
@@ -14,7 +14,7 @@ import TourHeadLoading from "./TourHead/TourHeadLoading";
 import TourHeadLoadingMobile from "./TourHead/TourHeadLoadingMobile";
 import TourOrder from "./TourOrder/TourOrder";
 import Recommended from "../Search/Recommended";
-import {FETCH_RECOMMENDED} from "../SearchResults/queries";
+import { FETCH_RECOMMENDED } from "../SearchResults/queries";
 
 
 function TourPage() {

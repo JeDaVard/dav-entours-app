@@ -9,6 +9,7 @@ import { InMemoryCache } from '@apollo/client/cache';
 import { getMainDefinition } from '@apollo/client/utilities';
 import { setContext } from '@apollo/client/link/context';
 import { typeDefs, resolvers } from "./resolvers";
+import typePolicies from "./typePolicies";
 import store from './app/store';
 import { BrowserRouter } from 'react-router-dom';
 import App from './app/App';
@@ -63,68 +64,7 @@ const link = split(
     authLink.concat(httpLink),
 );
 
-const cache = new InMemoryCache({
-    typePolicies: {
-        Query: {
-            fields: {
-                me: {
-                    merge(existing, incoming, { mergeObjects }) {
-                        return mergeObjects(existing, incoming)
-                    }
-                },
-                search: {
-                    merge(ex= {}, inc) {
-                        return inc
-                    }
-                },
-                recommended: {
-                    merge(ex= [], inc) {
-                        return inc
-                    }
-                },
-                tour: {
-                    merge(ex= {}, inc, {mergeObjects}) {
-                        return mergeObjects(ex, inc)
-                    },
-                }
-            }
-        },
-        Conversation: {
-            fields: {
-                start: {
-                    merge(existing, incoming) {
-                        return {...existing, ...incoming}
-                    },
-                }
-            }
-        },
-        Tour: {
-            fields: {
-                startLocation: {
-                    merge(existing, incoming) {
-                        return {...existing, ...incoming}
-                    },
-                },
-                reviews: {
-                    merge(existing= { data: [] }, incoming, { mergeObjects }) {
-                        return {
-                            ...incoming,
-                            data: [
-                                ...existing.data,
-                                ...incoming.data
-                            ]
-                        }
-                    },
-                },
-                starts: {
-                    merge(ex= [], inc) {
-                        return [...ex, ...inc]
-                    }
-                }
-            }
-        }
-    },
-});
+const cache = new InMemoryCache({ typePolicies });
 
 // persistCache({
 //     cache,

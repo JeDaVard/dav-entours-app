@@ -104,6 +104,15 @@
     color: rgba(0, 0, 0, 0.8);
 }
 
+.error {
+    font-size: 1.4rem;
+    background: #fcf1f5;
+    color: #581724;
+    border-radius: .5rem;
+    padding: .5rem 1rem;
+    margin-bottom: 2rem;
+}
+
 .add {
     cursor: pointer;
     align-self: flex-start;

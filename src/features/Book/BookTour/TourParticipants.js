@@ -23,17 +23,26 @@ export default function (props) {
     const [ show, setShow ] = useState(false);
     const [ input, setInput ] = useState({
         inviteEmail: '',
-        inviteUsers: []
+        inviteUsers: [],
+        error: null
     })
     const [ addMember, { loading } ] = useMutation(FETCH_ADDED_MEMBER, {
         variables: {
             email: input.inviteEmail
         },
         onCompleted: data => {
-            const newUsers = [data.inviteUser, ...input.inviteUsers]
+            if (!data.inviteUser.success) {
+                return setInput(p => ({
+                    ...p,
+                    error: data.inviteUser.message,
+                }))
+            }
+            const newUsers = [data.inviteUser.data, ...input.inviteUsers]
             setInput(p => ({
                 ...p,
-                inviteUsers: newUsers
+                inviteEmail: '',
+                inviteUsers: newUsers,
+                error: null
             }))
         }
     });
@@ -72,10 +81,21 @@ export default function (props) {
                             <h2>Invite a member</h2>
                         </div>
                         <Separator color={'normal'} margin={'0 2'} />
-                        <Form>
+                        <Form onSubmit={e => {
+                            e.preventDefault();
+                            if (input.inviteEmail === '') {
+                                return setInput(p => ({...p, error: 'Please, enter a valid account email'}))
+                            }
+                            addMember().then(d => {
+                                if (d.data.inviteUser.success) setShow(false);
+                            })
+                        }}>
+                            {input.error && (
+                                <p className={classes.error}>{input.error}</p>
+                            )}
                             <MultiInput>
                                 <Input
-                                    type='email'
+                                    type="email"
                                     name="guestEmail"
                                     label="E-mail"
                                     id="inviteGuestEmail"
@@ -87,17 +107,13 @@ export default function (props) {
                                     inputDescription="Come with your friend or family member,
                                                     just add their account and pay"
                                 />
-                                <button disabled={loading} className={classes.add} onClick={e => {
-                                    e.preventDefault();
-                                    addMember().then(() => {
-                                        setInput(p => ({...p, inviteEmail: ''}));
-                                        setShow(false);
-                                    })
-                                }}>
-                                    {loading ? <RoundLoading /> : <Justicon
-                                        className={`${classes.inviteIcon} ${classes.adInviteIcon}`}
-                                        icon={'plus'} />}
-                                </button>
+                                {input.inviteEmail !== '' && (
+                                    <button disabled={loading} className={classes.add} type="submit">
+                                        {loading ? <RoundLoading /> : <Justicon
+                                            className={`${classes.inviteIcon} ${classes.adInviteIcon}`}
+                                            icon={'plus'} />}
+                                    </button>
+                                )}
                             </MultiInput>
                         </Form>
                     </div>

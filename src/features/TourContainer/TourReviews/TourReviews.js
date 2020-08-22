@@ -6,37 +6,16 @@ import {Link} from "react-router-dom";
 import Justicon from "../../../components/UI/JustIcon/Justicon";
 import SimpleButton from "../../../components/UI/SimpleButton/SimpleButton";
 import {FETCH_TOUR_REVIEWS} from "../queries";
-// import ButtonLoading from "../../../components/UI/ButtonLoading/ButtonLoading";
 import UserAvatar from "../../../components/UI/UserAvatar/UserAvatar";
 
 const TourReviews = (props) => {
     const { reviews } = props;
-
-
+    
     const moreReviewsHandler = () => {
         props.more({
             query: FETCH_TOUR_REVIEWS,
             variables: { id: props.tour.slug, page: reviews.nextPage, limit: 4 },
             notifyOnNetworkStatusChange: true,
-            // updateQuery: (previousResult, { fetchMoreResult }) => {
-            //     if (!fetchMoreResult.tour.reviews.data) return;
-            //
-            //     const merged = [
-            //         ...previousResult.tour.reviews.data,
-            //         ...fetchMoreResult.tour.reviews.data
-            //     ]
-            //     return {
-            //         ...previousResult,
-            //         tour: {
-            //             ...previousResult.tour,
-            //             reviews: {
-            //                 // ATTENTION that's the new reviews
-            //                 ...fetchMoreResult.tour.reviews,
-            //                 data: merged
-            //             }
-            //         }
-            //     }
-            // }
         })
     }
 
