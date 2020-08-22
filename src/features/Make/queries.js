@@ -22,6 +22,10 @@ const EditTourFields = gql`
 			_id
 		}
 		draft
+		guides {
+			_id
+			photo
+		}
 	}
 `
 
@@ -83,12 +87,14 @@ export const EDIT_TOUR_DETAILS = gql`
 		$summary: String
 		$description: String
 		$firstMessage: String
+		$guides: [String]!
 	) {
 		tourDetails(
 			id: $id
 			summary:$summary
 			description:$description
 			firstMessage:$firstMessage
+			guides:$guides
 		) {
 			message
 			success

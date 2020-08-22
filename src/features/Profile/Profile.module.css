@@ -1,5 +1,6 @@
 .Profile {
     padding: 2rem 0;
+    position: relative;
     color: rgba(0, 0, 0, 0.8);
 }
 
@@ -75,11 +76,18 @@
 }
 
 .deactivateBlock {
-    background: transparent;
+    background: white;
+    position: absolute;
+    /*left: 10%;*/
+    top: 60%;
+    border-radius: 1rem;
+    padding: 2rem;
+    width: 90%;
+    box-shadow: 0 0 1.4rem rgba(0, 0, 0, 0.2);
 }
 
 .deactivateText {
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
 }
 
 .deactivateText h4 {
@@ -89,7 +97,7 @@
 .deactivateText p {
     font-size: 1.2rem;
     width: 80%;
-    margin: 0 auto;
+    margin: 2rem auto;
 }
 
 .deactivate {

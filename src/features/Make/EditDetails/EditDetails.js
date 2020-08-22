@@ -9,16 +9,20 @@ import { EDIT_TOUR_DETAILS } from "../queries";
 import SimpleMobileTop from "../../../components/SimpleMobileTop/SimpleMobileTop";
 import Separator from "../../../components/UI/Separator/Separator";
 import StartingDates from "./StratingDates";
+import InviteUser from "../../Book/InviteUser";
 
 
 function EditDetails(props) {
-    const history = useHistory()
+    const name = localStorage.getItem('name')
+    const photo = localStorage.getItem('photo')
+    const history = useHistory();
     const {
         _id,
         slug,
         firstMessage,
         summary,
         description,
+        guides,
         draft
     } = props;
 
@@ -28,12 +32,20 @@ function EditDetails(props) {
         description,
     });
 
+    const [ show, setShow ] = useState(false);
+    const [ input, setInput ] = useState({
+        inviteEmail: '',
+        inviteUsers: guides,
+        error: null
+    })
+
     const [ mutateTourHeading, { loading } ] = useMutation(EDIT_TOUR_DETAILS, {
         variables: {
             id: _id,
             firstMessage: state.firstMessage,
             summary: state.summary,
             description: state.description,
+            guides: input.inviteUsers.map(g => g._id)
         }
     })
 
@@ -79,8 +91,20 @@ function EditDetails(props) {
         <div className="row">
             { loading && <TopLoading />}
             <div className={classes.main}>
-                <StartingDates slug={slug} id={_id} />
-                <Separator margin={'1 3'} height={'1'} color={'light'}/>
+                <div className={classes.section}>
+                    <h2>Guides</h2>
+                    <Separator margin={'0 2'} color={'light'}/>
+                    <InviteUser adding={{show, setShow}}
+                                inputDescription="Come with your friend or family member, just add their account and pay"
+                                title="Invite a member"
+                                data={{input, setInput}}
+                                author={{name, photo}}/>
+                </div>
+                <div className={classes.section}>
+                    <h2>Starting Dates</h2>
+                    <Separator margin={'0 2'} color={'light'}/>
+                    <StartingDates slug={slug} id={_id} />
+                </div>
                 <Form onSubmit={onTourDetails}>
                     <Textarea
                         maxLength={400}

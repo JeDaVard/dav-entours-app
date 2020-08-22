@@ -27,11 +27,18 @@ export default function StartingDates({ slug, id }) {
         year: years[0].value.toString()
     })
 
+    const [ adding, setAdding ] = useState(false);
+
     const { loading, data } = useQuery(FETCH_STARTS, {
         variables: { slug }
     })
 
-    const [ editStarts ] = useMutation(MANAGE_STARTS)
+    const [ editStarts, startProcess ] = useMutation(MANAGE_STARTS, {
+        onCompleted(d) {
+            console.log(d)
+            setAdding(false);
+        }
+    })
 
     const startDates = data ? data.me.myTour.starts : [];
 
@@ -77,7 +84,7 @@ export default function StartingDates({ slug, id }) {
         <>
             <div className={classes.startingDates}>
                 <SmallShow
-                    handler={(trigger, opposite) => trigger(!opposite)}
+                    showIn={[adding, setAdding]}
                     button={
                         <div className={classes.addButton}>
                             <Justicon icon={'plus'} />
@@ -111,14 +118,11 @@ export default function StartingDates({ slug, id }) {
                                     onChange={inputHandler}
                                     options={years}/>
                             </div>
-                            <StyledButton onClick={e => startHandler(e, true)}>
+                            <StyledButton loading={startProcess.loading}
+                                          disabled={startProcess.loading}
+                                          onClick={e => startHandler(e, true)}>
                                 Add
                             </StyledButton>
-                            {/*<button disabled={loading} className={classes.add} onClick={e => {}}>*/}
-                            {/*    {loading ? <RoundLoading /> : <Justicon*/}
-                            {/*        className={`${classes.inviteIcon} ${classes.adInviteIcon}`}*/}
-                            {/*        icon={'plus'} />}*/}
-                            {/*</button>*/}
                         </div>
 
                     </div>

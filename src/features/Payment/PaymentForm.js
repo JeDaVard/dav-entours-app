@@ -58,7 +58,7 @@ export default function PaymentForm() {
 
     useEffect(() => {
         if (loading.message.startsWith('Congratulations')) {
-            setTimeout(() => window.location.replace('/tourevents'), 6000)
+            setTimeout(() => window.location.replace('/tourevents?tab=upcoming'), 6000)
         }
     }, [loading.message])
 

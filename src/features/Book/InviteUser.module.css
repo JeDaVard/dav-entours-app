@@ -1,0 +1,190 @@
+.addGuest {
+    display: flex;
+    padding: .3rem .6rem;
+    border-radius: 3rem;
+    margin-top: .3rem;
+    margin-right: .4rem;
+    box-shadow: 0 0 2rem rgba(0, 0, 0, 0.1);
+}
+
+.addGuest > :not(:last-child) {
+    margin-right: .4rem;
+}
+
+.input {
+    display: flex;
+}
+
+.user {
+    margin-top: .1rem;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.invite {
+    backface-visibility: hidden;
+    cursor: pointer;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: .1rem;
+    transform: scale(1);
+    transition: all .1s;
+}
+
+.invite:hover,
+.invite:active {
+    background: #4fc877;
+    transform: scale(1);
+}
+
+.invite:active {
+    transform: scale(.9);
+}
+
+.inviteIcon {
+    width: 2.4rem;
+    height: 2.4rem;
+    fill: rgba(0, 0, 0, 0.6);
+    transition: all .2s;
+}
+.invite:hover .inviteIcon,
+.invite:active .inviteIcon {
+    fill: white;
+}
+
+.inviteBlock {
+    background: rgba(255, 255, 255, 0.85);
+    box-shadow: 0 0 1.6rem rgba(0, 0, 0, 0.12);
+    border-radius: 1rem;
+    overflow-y: auto;
+    max-width: 40rem;
+    max-height: 40vh;
+    padding: 0 2rem;
+}
+
+.inviteBlock:before {
+    content: '';
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 100%;
+    background: transparent;
+    backdrop-filter: blur(5px);
+    border-radius: 1rem;
+    position: absolute;
+    z-index: -1;
+}
+
+.inviteHead {
+    text-align: center;
+    padding: .8rem 3rem;
+}
+
+.inviteHead h2 {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.error {
+    font-size: 1.4rem;
+    background: #fcf1f5;
+    color: #581724;
+    border-radius: .5rem;
+    padding: .5rem 1rem;
+    margin-bottom: 2rem;
+}
+
+.add {
+    cursor: pointer;
+    align-self: flex-start;
+    position: relative;
+    flex: 0 0 5.2rem;
+    height: 5.2rem;
+    background: rgba(0, 0, 0, 0.06);
+    border-radius: 1rem;
+    margin-left: 1rem;
+    border: none;
+    outline: none;
+    transition: all .3s;
+}
+
+.adInviteIcon {
+    width: 3rem;
+    height: 3rem;
+    transform: scale(1);
+}
+
+
+.add:hover,
+.add:active {
+    transform: scale(1.6);
+    background: transparent;
+}
+
+.add:disabled {
+    background: transparent;
+}
+
+.add:disabled:hover,
+.add:disabled:active {
+    transform: scale(1);
+}
+
+.invitedUser {
+    width: 3rem;
+    height: 3rem;
+    position: relative;
+}
+
+.inviteUserImage {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+}
+
+.invitedUserRemove {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    backdrop-filter: blur(3px);
+    background: rgba(0, 0, 0, 0.3);
+    transition: all .1s ease-in;
+    opacity: 0;
+}
+
+.invitedUserRemoveIcon {
+    width: 1.6rem;
+    height: 1.6rem;
+    fill: white;
+    transform: translateY(1rem);
+    opacity: 0;
+    transition: all .2s ease-in-out;
+}
+
+.invitedUser:hover .invitedUserRemove,
+.invitedUser:active .invitedUserRemove {
+    opacity: 1;
+}
+
+.invitedUser:hover .invitedUserRemoveIcon,
+.invitedUser:active .invitedUserRemoveIcon {
+    opacity: 1;
+    transform: translateY(0);
+}

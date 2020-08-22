@@ -57,11 +57,21 @@ function Profile(props) {
                 </div>
                 <div className={classes.mainMenu}>
                     <ul>
-                        <Link to={`/user/${props.userId}`}><li>Profile View</li></Link>
                         <Link to={'/mytours'}><li>My Tours</li></Link>
+                        <Link to={`/user/${props.userId}`}><li>Profile View</li></Link>
+                        <Link to={'/tourevents?tab=saved'}><li>Saved Tours</li></Link>
+                        <Link to={'/tourevents?tab=upcoming'}><li>Upcoming Tours</li></Link>
+                        <Link to={'/tourevents?tab=past'}><li>Past Orders</li></Link>
                         <Link to={'#'} onClick={() => dispatch({type: SHOW_PROFILE_PHOTO})}><li>Edit Profile</li></Link>
-                        <Link to={'/'}><li>Payments & Payouts</li></Link>
-                        <Link to={'/'}><li>Login & Security</li></Link>
+                    </ul>
+                </div>
+                <Separator color={'light'} margin={'2 2'}/>
+                <div className={classes.mainMenu}>
+                    <ul>
+                        <Link to={'/make'}><li>Make a tour</li></Link>
+                        <Link to={'/mytours'}><li>My Tours</li></Link>
+                        <Link to={'/mytours?tab=guide'}><li>Guidance</li></Link>
+                        <Link to={'/mytours?tab=draft'}><li>Draft</li></Link>
                     </ul>
                 </div>
                 <Separator color={'light'} margin={'2 2'}/>

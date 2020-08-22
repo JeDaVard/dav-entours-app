@@ -39,7 +39,7 @@ function Discover(props) {
                                         if (error) return <h1>Error while fetching discover</h1>
                                         return (
                                             <div className={classes.grid}>
-                                                {data.tours.slice(0,4).map( discover => <DiscoverItem tour={discover} key={discover._id}/>)}
+                                                {data.tours.slice(4).map( discover => <DiscoverItem tour={discover} key={discover._id}/>)}
                                             </div>
                                         )
                                     }

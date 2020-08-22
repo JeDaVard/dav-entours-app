@@ -38,19 +38,3 @@ export const FETCH_TOUR_FOR_ORDER = gql`
         }
     }
 `
-
-export const FETCH_ADDED_MEMBER = gql`
-	mutation addMember($email: String!) {
-		inviteUser(email: $email) {
-			success
-            code
-            message
-            data {
-				_id
-				email
-				name
-				photo
-            }
-		}
-	}
-`

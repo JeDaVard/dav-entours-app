@@ -20,7 +20,7 @@ import Error from './Error/Error';
 import MobileBar from '../components/MobileBar/MobileBar';
 import debounce from '../utils/debounce';
 import OnlyAuth from './OnlyAuth/OnlyAuth';
-import { useQuery, gql } from "@apollo/client";
+import {useQuery, gql, useApolloClient} from "@apollo/client";
 import NotFound from "./NotFound/NotFound";
 import TopLoading from "../components/UI/TopLoading/TopLoading";
 import Become from "../features/MainPage/Become/Become";

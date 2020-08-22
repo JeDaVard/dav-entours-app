@@ -52,7 +52,7 @@ export default {
             },
             starts: {
                 merge(ex= [], inc) {
-                    return [...ex, ...inc]
+                    return inc
                 }
             }
         }
