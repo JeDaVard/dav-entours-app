@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useRef, useState} from 'react';
 import { useHistory, Redirect } from 'react-router-dom';
 import qs from 'query-string';
 import classes from './BookTour.module.css';
@@ -36,6 +36,14 @@ function BookTour() {
             setPrice(data.tour.price)
         }
     });
+
+    // Ref to focus on message, if its empty
+    const messageRef = useRef(null)
+    const focusOnMessage = e => {
+        e.preventDefault();
+
+        messageRef.current.focus()
+    }
 
     if (loading) return <TopLoading />
     if (error) return <h1>{error.message}</h1>
@@ -97,7 +105,11 @@ function BookTour() {
                             <h1>Say hello to {tour.author.name.split(' ')[0]} and other members</h1>
                             <h2>Let them know a little about yourself and why you’re coming.</h2>
                         </div>
-                        <FakeConversation setMessage={setMessage} one={tour.author} second={me} />
+                        <FakeConversation setMessage={setMessage}
+                                          one={tour.author}
+                                          message={tour.firstMessage}
+                                          messageRef={messageRef}
+                                          second={me} />
                     </div>
                 </div>
 
@@ -121,10 +133,20 @@ function BookTour() {
 
 
                <div className={classes.payButton}>
-                   <StyledButton to={loc => ({...loc, pathname: '/payments/book/pay', state: { message, me, price }})}>
-                       {/*<img src={locker} className={classes.payIcon}  alt="secure"/>*/}
-                       <span>Confirm and Pay&nbsp;&rarr;</span>
-                   </StyledButton>
+                   {message.length > 3 ? (
+                       <StyledButton to={loc => ({...loc, pathname: '/payments/book/pay', state: { message, me, price }})}>
+                           {/*<img src={locker} className={classes.payIcon}  alt="secure"/>*/}
+                           <span>Confirm and Pay&nbsp;&rarr;</span>
+                       </StyledButton>
+                   ) : (
+                       <>
+                           <p>Please, tell a bit yourself, before you can order</p>
+                           <StyledButton onClick={focusOnMessage}>
+                               <span>Confirm and Pay&nbsp;&rarr;</span>
+                           </StyledButton>
+                       </>
+                   )}
+
                </div>
            </div>
         </div>

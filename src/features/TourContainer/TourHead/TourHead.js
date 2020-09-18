@@ -44,7 +44,7 @@ function TourHead(props) {
                     <div className={classes.left}>
                         <div className={classes.hash}>
                             {tour.hashtags ? (
-                                tour.hashtags.map((hash) => (
+                                tour.hashtags.slice(1, 5).map((hash) => (
                                     <p key={hash}>#{hash}</p>
                                 ))
                             ) : (

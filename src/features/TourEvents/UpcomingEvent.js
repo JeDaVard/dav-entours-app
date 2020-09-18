@@ -23,10 +23,16 @@ export default function UpcomingEvent(props) {
                 </div>
             </Link>
             <div className={classes.info}>
-                <h4 className={classes.infoPart}>
-                    Participants {start.participants.length}/
-                    {tour.maxGroupSize}
-                </h4>
+                <div className={classes.orderTop}>
+                    <p>{moment(+order.createdAt).format(
+                        'MM:HH, DD MMM YYYY'
+                    )}
+                    </p>
+                    <h4 className={classes.infoPart}>
+                        Participants {start.participants.length}/
+                        {tour.maxGroupSize}
+                    </h4>
+                </div>
                 <Link to={'/'}>
                     <h2 className={classes.title}>
                         {tour.name}
@@ -34,11 +40,11 @@ export default function UpcomingEvent(props) {
                 </Link>
                 <div className={classes.infoBottom}>
                     <p>{tour.startLocation.description}</p>
-                    <p>
+                    <h4> Starts at{' '}
                         {moment(+start.date).format(
                             'ddd, DD MMM YYYY'
                         )}
-                    </p>
+                    </h4>
                 </div>
             </div>
             <OutsideAlerter delegate={() => setMore(false)}>

@@ -5,6 +5,7 @@ export const FETCH_MY_TOURS = gql`
 		me {
 			tours {
 				_id
+				createdAt
 				slug
 				name
 				imageCover
@@ -32,6 +33,7 @@ export const FETCH_MY_GUIDE_TOURS = gql`
 		me {
 			asGuide {
 				_id
+				createdAt
 				slug
 				name
 				imageCover
@@ -59,6 +61,7 @@ export const FETCH_MY_DRAFT_TOURS = gql`
 		me {
 			draft {
 				_id
+				createdAt
 				slug
 				name
 				imageCover

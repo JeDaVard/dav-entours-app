@@ -4,8 +4,9 @@ import React from "react";
 import {Link} from "react-router-dom";
 import SimpleMobileTop from "../../../components/SimpleMobileTop/SimpleMobileTop";
 import UserAvatar from "../../../components/UI/UserAvatar/UserAvatar";
+import moment from "moment";
 
-function ConversationHead({guides, participants, tour}) {
+function ConversationHead({guides, participants, tour, date}) {
     return (
         <div className={classes.head}>
                 {/*<NavButton to={'/inbox'} />*/}
@@ -38,10 +39,18 @@ function ConversationHead({guides, participants, tour}) {
                     </div>
                     <div className={classes.tourDetail}>
                         <div className={classes.tourName}>
-                            <p>Completed</p>
+                            {date < +Date.now() ? (
+                                <p>Completed</p>
+                            ) : (
+                                <p style={{color: '#3ac87f'}}>Ongoing</p>
+                            )}
                         </div>
                         <div className={classes.tourOrder}>
-                            <p>Sat, 21 Jan 2020</p>
+                            <h4> Starts at{' '}
+                                {moment(+date).format(
+                                    'ddd DD | HH:00'
+                                )}
+                            </h4>
                         </div>
                     </div>
                     <div className={classes.tourButton}>

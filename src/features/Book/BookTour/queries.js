@@ -8,6 +8,7 @@ export const FETCH_TOUR_FOR_ORDER = gql`
             slug
             imageCover
             price
+			firstMessage
             ratingsQuantity
             ratingsAverage
             startLocation {

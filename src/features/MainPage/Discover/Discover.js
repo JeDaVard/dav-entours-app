@@ -15,14 +15,12 @@ function Discover(props) {
                             <div className={classes.description}>
                                 <h1 className={classes.titleBox}>
                                     <div className={classes.title}>
-                                        Introducing Online Experiences
+                                        Top Tours
                                     </div>
                                 </h1>
                                 <div className={classes.text}>
-                                    Now you can meet people all over the
-                                    world while trying something new. Join
-                                    live, interactive video sessions led by
-                                    expert hosts—all without leaving home.
+                                    Choose from the top tours, always enjoy your travel.
+                                    Discover the world
                                 </div>
                             </div>
                             <div className={classes.link}>

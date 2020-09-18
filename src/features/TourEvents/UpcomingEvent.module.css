@@ -49,6 +49,16 @@
     padding: 2rem;
 }
 
+.orderTop {
+    display: flex;
+    justify-content: space-between;
+}
+
+.orderTop p {
+    color: rgba(0,0,0,0.6);
+    font-size: 1.2rem;
+}
+
 .infoPart {
     font-size: 1.2rem;
     color: rgba(0, 0, 0, 0.5);
@@ -64,6 +74,11 @@
     justify-content: space-between;
     align-items: center;
     font-size: 1.5rem;
+}
+
+.infoBottom h4 {
+    font-weight: 500;
+    color: #3ac87f;
 }
 
 .infoBottom :last-child {

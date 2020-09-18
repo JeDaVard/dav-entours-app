@@ -66,7 +66,7 @@ function InboxItem() {
                                             <Justicon icon={'chevron-right'} className={classes.dateArrow} />
                                         </div>
                                     </div>
-                                    <h2>{conversation.tour.name}</h2>
+                                    <h2>{conversation.tour.name.length > 30 ? conversation.tour.name.slice(0, 27) + '...' : conversation.tour.name}</h2>
                                     <div>
                                         {lastMessage}
                                     </div>

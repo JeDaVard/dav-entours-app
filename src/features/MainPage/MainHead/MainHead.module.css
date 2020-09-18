@@ -81,7 +81,8 @@
     margin-top: 1.4rem;
 }
 
-.button button {
+.button a {
+    text-decoration: none;
     cursor: pointer;
     font-family: inherit;
     border: none;
@@ -95,8 +96,8 @@
     transition: background .1s;
 }
 
-.button button:hover,
-.button button:active {
+.button a:hover,
+.button a:active {
     background: #efefef;
 }
 

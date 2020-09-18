@@ -14,6 +14,7 @@ export const FETCH_CONVERSATION = gql`
 					slug
 				}
 				start {
+					date
 					staff {
 						_id
 						name

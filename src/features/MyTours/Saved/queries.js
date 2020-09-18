@@ -5,6 +5,7 @@ export const FETCH_SAVED = gql`
 		me {
 			saved {
 				_id
+				createdAt
 				slug
 				name
 				images
@@ -31,6 +32,7 @@ export const REMOVE_SAVED_TOUR = gql`
 	mutation removeSavedTour($id: ID!) {
 		removeSavedTour(id: $id) {
 			_id
+			createdAt
 			slug
 			name
 			images
@@ -56,6 +58,7 @@ export const SAVE_TOUR = gql`
 	mutation saveTour($id: ID!) {
 		saveTour(id: $id) {
 			_id
+			createdAt
 			slug
 			name
 			images

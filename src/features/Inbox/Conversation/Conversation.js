@@ -84,12 +84,14 @@ function Conversation() {
     }
 
     const { conversation } = data.me
+    console.log(conversation)
     return (
         <div className={classes.Conversation}>
             <ConversationHead
                 tour={conversation.tour}
                 participants={conversation.participants}
                 guides={conversation.start.staff}
+                date={conversation.start.date}
             />
             <div className={classes.main}>
                     <Query query={FETCH_MESSAGES}

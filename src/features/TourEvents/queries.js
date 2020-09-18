@@ -3,6 +3,7 @@ import { gql } from '@apollo/client';
 const OrderFields = gql`
 	fragment OrderFields on Order {
 		_id
+		createdAt
 		start {
 			_id
 			date

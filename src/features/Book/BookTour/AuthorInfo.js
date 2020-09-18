@@ -30,7 +30,7 @@ export default function AuthorInfo(props) {
                     </div>
                 </div>
             </div>
-            <p className={classes.authorMission}>{author.mission} Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto assumenda atque aut, blanditiis ea earum et id illo, incidunt inventore minima necessitatibus omnis perferendis quasi qui quia rerum totam ullam?</p>
+            <p className={classes.authorMission}>{author.mission}. Welcome to our great tour! Hope you'll enjoy it</p>
         </div>
     )
 }

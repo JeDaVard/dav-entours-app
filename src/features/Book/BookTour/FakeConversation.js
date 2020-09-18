@@ -3,7 +3,7 @@ import classes from "./FakeConversation.module.css";
 import UserAvatar from "../../../components/UI/UserAvatar/UserAvatar";
 
 export default function FakeConversation(props) {
-    const { one, second, setMessage } = props;
+    const { one, second, setMessage, message, messageRef } = props;
     return (
         <>
             <div className={classes.oneWelcome}>
@@ -13,7 +13,7 @@ export default function FakeConversation(props) {
                                 alt={one.name}/>
                 </div>
                 <div className={classes.message}>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum illo omnis repellat tenetur voluptate? At delectus, dolore ducimus eligendi eos et eveniet maxime molestias nam, perferendis quae quasi sed tenetur?</p>
+                    <p>{message}</p>
                 </div>
             </div>
             <div className={classes.secondHello}>
@@ -23,6 +23,7 @@ export default function FakeConversation(props) {
                                 alt={second.name}/>
                 </div>
                 <textarea
+                    ref={messageRef}
                     onChange={e => { const value = e.target.value; setMessage(value)}}
                     rows={'4'}
                     placeholder={`Hello! I am ${second.name}. I can't wait to join you ...`}

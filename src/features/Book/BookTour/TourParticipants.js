@@ -4,6 +4,7 @@ import classes from "./TourParticipants.module.css";
 import ShowAllMembers from "../../TourContainer/TourOrder/ShowAllMembers";
 import UserAvatar from "../../../components/UI/UserAvatar/UserAvatar";
 import InviteUser from "../InviteUser";
+import {getCookie} from "../../../utils/cookies";
 
 
 export default function (props) {
@@ -23,6 +24,10 @@ export default function (props) {
 
     useEffect(() => {
         const queryUsers = input.inviteUsers.map(user => user._id);
+
+        if (start.participants.find(p => p._id === getCookie('userId'))) {
+            window.location.replace('/tourevents?tab=upcoming')
+        }
 
         history.replace({
             pathname: history.location.pathname,

@@ -21,7 +21,7 @@ export const Pagination = ({
                     <Justicon icon={'chevron-left'} className={classes.nextIcon}/>
                 </button>
             )}
-            {page > 3 && (
+            {page > 2 && (
                 <>
                     <button className={classes.page}
                             onClick={e => paginate(e, 1)}
@@ -40,15 +40,15 @@ export const Pagination = ({
                     {page - 1}
                 </button>
             )}
-            {hasMore && <button className={classes.pageActive} disabled={true}>{page}</button>}
-            {page + 2 < totalPages && (
+            {(totalPages > 1) && <button className={classes.pageActive} disabled={true}>{page}</button>}
+            {page < totalPages && (
                 <button className={classes.page}
                         onClick={e => paginate(e, page + 1)}
                         disabled={loading}>
                     {page + 1}
                 </button>
             )}
-            {hasMore && totalPages - 1 > page && (
+            {hasMore && (totalPages - 1 > page) && (
                 <>
                     <div>
                         <h2>...</h2>

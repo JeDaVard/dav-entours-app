@@ -46,3 +46,22 @@
     outline: none;
     line-height: 2rem;
 }
+
+.secondMessage:focus {
+    animation: fakeMessAnim .4s
+}
+
+@keyframes fakeMessAnim {
+    0% {
+        background: rgba(0, 0, 0, 0.05);
+        transform: scale(1);
+    }
+    50% {
+        background: rgb(234, 250, 241);
+        transform: scale(1.05);
+    }
+    100% {
+        background: rgba(0, 0, 0, 0.05);
+        transform: scale(1);
+    }
+}
