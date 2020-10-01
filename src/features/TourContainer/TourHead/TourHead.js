@@ -58,7 +58,8 @@ function TourHead(props) {
                     </div>
                 </div>
                 <div className={classes.bottom}>
-                    <h3>{tour.summary}</h3>
+                    {/*<h3>{tour.summary}</h3>*/}
+                    <h3></h3>
                     <div className={classes.info}>
                         <p>
                             <Justicon icon={'calendar'} className={classes.icon}/>
